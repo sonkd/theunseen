@@ -27,8 +27,8 @@ layout: compress
     
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
-
-  {% include navbar.html %}
+<div id="post-viewer" class="p-5 mx-5 my-5 border border-gray-100 rounded-2xl max-w-full">
+  {% include post_navbar.html %}
   <div class="wrapper post">
     <main class="page-content" aria-label="Content">
       <article itemscope itemtype="https://schema.org/BlogPosting">
@@ -89,6 +89,7 @@ layout: compress
 
     {% include footer.html %}
   </div>
+</div>
 </body>
 
 </html>

@@ -1,0 +1,13 @@
+.card-stuff-01 {
+    box-sizing: border-box;
+    border: .5px solid #ada9a650;
+
+    .card-img {
+        background-color: rgba($dark-gray, 0.2);
+        
+        img {
+            min-height: 10rem;
+        }
+    }
+}
+

@@ -70,6 +70,7 @@
 // Post content
 .page-content {
   padding-top: 8px;
+  overflow-y: auto;
 
   iframe {
     text-align: center;
@@ -258,4 +259,43 @@
 
 .post-updated-at {
   font-family: "Ubuntu mono", "monospace";
+}
+
+#post-viewer {
+  margin: 1.25rem;
+  border: 1px solid #6b788650;
+  height: calc(95vh - 2.5rem);
+}
+.post-navbar {
+  position: relative;
+  padding-top: 4rem;
+  height: auto;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  border-bottom: 1px solid $light;
+  padding: $spacing-full - 15px $spacing-full;
+  @extend %clearfix;
+
+  .menu .post-header {
+    position: absolute !important;
+    top: 0px !important;
+    height: 4rem !important;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.button-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  flex: 0 0 auto;
+  opacity: .5;
 }
