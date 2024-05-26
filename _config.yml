@@ -16,8 +16,8 @@ author:
     <a href="https://www.azquotes.com/quote/777679?ref=unseen" target="_blank" rel="noopener">Plato</a>.
   username: tieunui # general username
   github: sonkd # github username
-  twitter: twitter_username # twitter username
-  facebook: facebook_username # facebook username
+  twitter: # twitter username
+  facebook: # facebook username
   email: your-email@email.com # email adress
   avatar: /assets/img/avatar.jpg # change with your own avatar
 

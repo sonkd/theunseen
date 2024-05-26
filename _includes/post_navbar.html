@@ -3,13 +3,23 @@
     <div class="post-trigger">
       <div class="trigger-container">
         <a class="button-close rounded-full bg-grey-50" href='{{site.url}}/' aria-label="Close">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 10.1367L5.48857 3.5L3.82089 5.19975L10.3324 11.8365L3.5 18.8002L5.16768 20.5L12 13.5362L18.8323 20.4999L20.5 18.8002L13.6677 11.8365L20.1791 5.19982L18.5114 3.50006L12 10.1367Z" fill="#000"/>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#767f87" xmlns="http://www.w3.org/2000/svg">
+            <title>CLOSE</title>
+            <path d="M12 10.1367L5.48857 3.5L3.82089 5.19975L10.3324 11.8365L3.5 18.8002L5.16768 20.5L12 13.5362L18.8323 20.4999L20.5 18.8002L13.6677 11.8365L20.1791 5.19982L18.5114 3.50006L12 10.1367Z"/>
           </svg>        
         </a>
       </div>
     </div>
-    <div class="sun-moon">
+    <div class="post-image">
+      <img class="post-imgthumb rounded-md" src="{{ page.image }}">
+    </div>
+    <div class="trigger gap-2">
+      {% unless page.discussing_link == '' %}
+      <div class="trigger-container">
+        <a class="menu-link" href="{{ page.discussing_link }}">Discuss</a>
+      </div>
+      {% endunless %}
+
       <a id="mode">
         <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
           <title>LIGHT</title>
@@ -44,11 +54,6 @@
           <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
         </svg>
       </a>
-    </div>
-    <div class="trigger">
-      <div class="trigger-container">
-        <a class="menu-link {% if url == '/about/' %}active{% endif %}" href="/about">Discuss together</a>
-      </div>
     </div>
   </nav>
 </div>

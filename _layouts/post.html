@@ -7,7 +7,7 @@ layout: compress
 
 {% include header.html %}
 
-<body data-theme="{{ site.mode }}" class="notransition">
+<body data-theme="{{ site.mode }}" class="notransition ">
 
   <script>
     const body = document.body;
@@ -29,12 +29,11 @@ layout: compress
   </script>
 <div id="post-viewer" class="mx-5 my-5 border border-gray-100 rounded-2xl max-w-full">
   {% include post_navbar.html %}
-  <div class="post">
+  <div id="post">
     <div class="wrapper">
-      <main class="page-content pb-20" aria-label="Content">
+      <main class="page-content" aria-label="Content">
         <article itemscope itemtype="https://schema.org/BlogPosting">
-  
-          <header class="header">
+          <header class="header mt-20 mb-5">
             {% if page.tags and page.tags != empty %}
             <div class="tags">
               {% assign tags = page.tags %}
@@ -72,25 +71,25 @@ layout: compress
               <a href="https://twitter.com/{{site.twitter}}/status/{{page.tweet}}">Twitter</a>.
             </p>
             {% endif %}
+            
+            {% if page.comments %}
+              {% include comments.html %}
+            {% endif %}
+            
           </div>
         </article>
-        
-        <!--
-        {% if page.comments %}
-          {% include comments.html %}
+        <!-- {% if page.modified %}
+        <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
         {% endif %}
         -->
-  
-        {% if page.next or page.previous %}
-          {% include navigation.html %}
-        {% endif %}
-      </main>
-  
-      {% if page.modified %}
-        <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
-      {% endif %}
+      </main> 
     </div>
   </div>
+  {% if page.next or page.previous %}
+  <div id="navpost" class="bottom-0" hidden>
+    {% include navigation.html %}
+  </div>
+  {% endif %}
   {% include footer.html %}
 </div>
 </body>

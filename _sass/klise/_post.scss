@@ -1,5 +1,5 @@
 // Post wrapper
-.wrapper.post {
+.wrapper, #post {
   @include media-query($on-mobile) {
     padding-left: $spacing-half;
     padding-right: $spacing-half;
@@ -8,8 +8,8 @@
 
 // Post title
 .header {
-  margin-top: 7.8em;
-  margin-bottom: 3em;
+  /* margin-top: 7.8em;
+  margin-bottom: 3em; */
 
   .tags {
     margin-left: 3px;
@@ -69,7 +69,7 @@
 
 // Post content
 .page-content {
-  padding-top: 8px;
+  padding: 2rem 0;
   overflow-y: auto;
 
   iframe {
@@ -91,6 +91,7 @@
   a {
     color: $text-link-blue;
     text-decoration: none;
+
     &[target="_blank"]::after {
       content: " \2197";
       font-size: $small-font-size;
@@ -109,14 +110,14 @@
     }
   }
 
-  > p {
+  >p {
     margin: 0;
     padding-top: $spacing-full - 15;
     padding-bottom: $spacing-full - 15;
   }
 
   ul.task-list {
-    list-style: none; 
+    list-style: none;
     margin: 0;
 
     li::before {
@@ -204,28 +205,31 @@
     font-weight: $bold-weight;
     padding-bottom: 10px;
 
-    .post-title {
-      color: $black;
-    }
+    a {
+      text-decoration: none;
 
-    &:hover,
-    &:focus {
       .post-title {
-        color: $text-link-blue-active;
-        opacity: 0.9;
+        color: $black;
       }
-    }
+  
+      &:hover,
+      &:focus {
+        .post-title {
+          color: $text-link-blue-active;
+          opacity: 0.9;
+        }
+      }
 
-    .nav-arrow {
-      font-weight: $normal-weight;
-      font-size: $small-font-size;
-      color: $gray;
-      margin-bottom: 3px;
+      .nav-arrow {
+        font-weight: $normal-weight;
+        font-size: $small-font-size;
+        color: $gray;
+        margin-bottom: 3px;
+      }
     }
 
     width: 50%;
     padding-top: 10px;
-    text-decoration: none;
     box-sizing: border-box;
 
     &:nth-child(odd) {
@@ -262,26 +266,41 @@
 }
 
 #post-viewer {
-  margin: 1.25rem;
+  position: relative;
   border: 1px solid #6b788650;
-  height: calc(100vh - 2.5rem);
+  height: calc(100vh - 4rem);
   overflow: hidden;
 
   .navbar {
     padding-left: 0;
     padding-right: 0;
     max-width: 100%;
+    height: 2rem;
     margin: auto
   }
 
-  .post {
-    height: 100%;
+  #post {
+    height: calc(100vh - 4.5rem);
     overflow-y: scroll;
+
+    footer {
+      display: none;
+    }
+  }
+
+  #navpost {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    transition: bottom 0.5s;
+
+    .post-nav {
+      margin-top: 0rem;
+    }
   }
 }
 
 #post-viewer .navbar .menu {
-  top: 0px !important;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -292,25 +311,42 @@
     opacity: .7;
   }
 
-  .sun-moon {
+  .post-image {
+    flex-grow: 1;
+    flex-basis: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    .post-imgthumb {
+      width: 40px;
+      height: 40px;
+      object-fit: cover
+    }
   }
 
   .post-trigger {
+    flex-grow: 1;
+    flex-basis: 0;
     display: flex;
     justify-content: flex-start;
   }
 
   .trigger {
+    flex-grow: 1;
+    flex-basis: 0;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
   }
 }
 
-#post-viewer .post .wrapper .page-content .post-nav {
-  bottom: 0px;
+#post-viewer #navpost .post-nav {
+  background-color: $white;
+}
+
+body[data-theme="dark"] #post-viewer #navpost .post-nav {
+  background-color: $dark-black;
 }
 
 .button-close {
@@ -323,4 +359,8 @@
   border: 1px solid transparent;
   flex: 0 0 auto;
   opacity: .7;
+
+  &:hover {
+    background-color: #ececec50;
+  }
 }
