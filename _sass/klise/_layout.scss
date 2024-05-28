@@ -1,14 +1,23 @@
 // Navbar
 .navbar {
+  z-index: 10;
   height: auto;
-  max-width: calc(#{$wide-size} - (#{$spacing-full} * 2));
-  max-width: -webkit-calc(#{$wide-size} - (#{$spacing-full} * 2));
+  /* max-width: calc(#{$wide-size} - (#{$spacing-full} * 2));
+  max-width: -webkit-calc(#{$wide-size} - (#{$spacing-full} * 2)); */
   position: relative;
   margin-right: auto;
   margin-left: auto;
   border-bottom: 1px solid $light;
-  padding: $spacing-full - 15px $spacing-full;
+  text-align: center;
+  background-color: $white;
+  /* padding: $spacing-full - 24px $spacing-full; */
   @extend %clearfix;
+}
+
+body[data-theme="dark"] {
+  .navbar {
+    background-color: $dark-black;
+  }
 }
 
 // Navigation
@@ -19,8 +28,8 @@
 
   a#mode {
     float: left;
-    left: 8px;
-    top: 6px;
+    /* left: 8px;
+    top: 6px; */
     position: relative;
     clear: both;
     -webkit-transform: scale(1, 1);
@@ -84,9 +93,11 @@
       opacity: 1;
     }
 
+    /* 
     &:not(:last-child) {
       margin-right: 5px;
     }
+     */
 
     &.rss {
       position: relative;
@@ -115,10 +126,12 @@
     background-color: $white;
     border-bottom: 1px solid $light;
 
+    /*
     a#mode {
       left: 10px;
       top: 12px;
     }
+    */
 
     .menu-icon {
       display: block;
@@ -179,6 +192,38 @@
   }
 }
 
+.trigger-container {
+  @include media-query($on-mobile) {
+    flex-direction: column;
+  }
+}
+
+// Logo
+.logo {
+  width: 40px;
+  height: 40px;
+  /* border-radius: 100%; */
+  user-select: none;
+
+  float: left;
+  position: relative;
+  clear: both;
+
+  background-color: $black;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -webkit-animation: 0.5s ease-in forwards fadein;
+  animation: 0.5s ease-in forwards fadein;
+  opacity: 1;
+
+  @include media-query($on-mobile) {
+    display: block;
+    position: absolute;
+    width: 40px;
+    margin: 5px 0;
+  }
+}
+
 // Author
 .author {
   margin-top: 6.3rem;
@@ -187,19 +232,6 @@
 
   @include media-query($on-mobile) {
     margin-bottom: 3em;
-  }
-
-  .author-avatar {
-    width: 70px;
-    height: 70px;
-    border-radius: 100%;
-    user-select: none;
-    background-color: $black;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    -webkit-animation: 0.5s ease-in forwards fadein;
-    animation: 0.5s ease-in forwards fadein;
-    opacity: 1;
   }
 
   .author-name {

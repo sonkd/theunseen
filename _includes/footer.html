@@ -16,6 +16,8 @@
     >
   </small>
 </footer>
+<a class="menu-link rss" href="/feed.xml">
+
 <script src="/assets/js/main.js" defer="defer"></script>
 {%- if site.google_analytics -%}
   <!-- Google tag (gtag.js) -->
@@ -43,40 +45,3 @@
     });
   </script>
 {%- endif -%}
-
-<!--
-<script>
-  const content = document.getElementById("navpost");
-  /* content.onscroll = function () { scrollContent() }; */
-  /* content.addEventListener("scroll", (event) => {
-    scrollContent();
-    // output.textContent = `scrollTop: ${scroller.scrollTop}`;
-    output.console(content.scrollTop);
-  }); */
-  content.addEventListener("scroll", scrollContent());
-
-  function scrollContent() {
-    console.log(content.scrollTop);
-    if (content.scrollTop > 0) {
-      document.getElementById("navpost").removeAttribute("hidden");
-    } else {
-      document.getElementById("navpost").setAttribute("hidden", "");
-    }
-  }
-</script>
--->
-
-<script type="text/javascript">
-  $(document).ready(function () {
-    console.log("TEST");
-    $("#post-viewer").scroll(function () {
-      var value = $(this).scrollTop();
-      if (value > 0)
-        $("#navpost").removeAttribute("hidden");
-      else
-        $("#navpost").setAttribute("hidden", "");
-      console.log(value);
-    });
-
-  });
-</script>

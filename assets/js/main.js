@@ -20,12 +20,29 @@
   );
 
   // Blur the content when the menu is open
-  const cbox = document.getElementById("menu-trigger");
+  if (document.getElementById("menu-trigger")){
+    const cbox = document.getElementById("menu-trigger");
 
-  cbox.addEventListener("change", function () {
-    const area = document.querySelector(".wrapper");
-    this.checked
-      ? area.classList.add("blurry")
-      : area.classList.remove("blurry");
+    cbox.addEventListener("change", function () {
+      const area = document.querySelector(".wrapper");
+      this.checked
+        ? area.classList.add("blurry")
+        : area.classList.remove("blurry");
+    });
+  };
+
+  // Check isReading state
+  const reading = document.getElementById("post");
+  var currentPos = 0;
+
+  reading.addEventListener("scroll", function() {
+    if (reading.scrollTop > currentPos) {
+      document.querySelector("#navpost").setAttribute("hidden", "");
+      currentPos = reading.scrollTop;
+    } else {
+      document.querySelector("#navpost").removeAttribute("hidden");
+      currentPos = reading.scrollTop;
+    }
   });
+
 })();

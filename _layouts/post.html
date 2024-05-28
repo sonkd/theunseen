@@ -27,9 +27,9 @@ layout: compress
     
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
-<div id="post-viewer" class="mx-5 my-5 border border-gray-100 rounded-2xl max-w-full">
+<div id="post-viewer" class="mx-5 my-5 border border-gray-100 rounded-2xl w-full">
   {% include post_navbar.html %}
-  <div id="post">
+  <div id="post" class="h-full">
     <div class="wrapper">
       <main class="page-content" aria-label="Content">
         <article itemscope itemtype="https://schema.org/BlogPosting">
@@ -64,7 +64,7 @@ layout: compress
             {% endif %}
           </header>
   
-          <div class="page-content" itemprop="articleBody">
+          <div class="page-content pb-20" itemprop="articleBody">
             {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=1 h_max=4 %}
             {% if page.tweet %}
             <p>Comments this article on 
@@ -76,13 +76,16 @@ layout: compress
               {% include comments.html %}
             {% endif %}
             
+            {% unless page.discussing_link == '' %}
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="{{ page.discussing_link | remove: "https://t.me/" }}" data-comments-limit="5" data-colorful="1" data-color="F646A4"></script>
+            {% endunless %}
           </div>
         </article>
         <!-- {% if page.modified %}
         <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
         {% endif %}
         -->
-      </main> 
+      </main>
     </div>
   </div>
   {% if page.next or page.previous %}
@@ -90,6 +93,7 @@ layout: compress
     {% include navigation.html %}
   </div>
   {% endif %}
+
   {% include footer.html %}
 </div>
 </body>

@@ -69,9 +69,6 @@
 
 // Post content
 .page-content {
-  padding: 2rem 0;
-  overflow-y: auto;
-
   iframe {
     text-align: center;
   }
@@ -245,18 +242,22 @@
   }
 
   @include media-query($on-mobile) {
-    display: block;
+    display: flex;
     font-size: $small-font-size;
 
     .post-nav-item {
       display: block;
-      width: 100%;
+      width: 100%
     }
 
     .post-nav-item:nth-child(even) {
       border-left: 0;
       padding-left: 0;
       border-top: 1px solid $light;
+    }
+
+    .post-title {
+      display: none
     }
   }
 }
@@ -266,9 +267,10 @@
 }
 
 #post-viewer {
-  position: relative;
+  position: fixed;
   border: 1px solid #6b788650;
-  height: calc(100vh - 4rem);
+  height: calc(100dvh - 2.5rem);
+  width: calc(100dvw - 2.5rem);;
   overflow: hidden;
 
   .navbar {
@@ -280,12 +282,7 @@
   }
 
   #post {
-    height: calc(100vh - 4.5rem);
     overflow-y: scroll;
-
-    footer {
-      display: none;
-    }
   }
 
   #navpost {
@@ -300,6 +297,35 @@
   }
 }
 
+@include media-query($on-mobile) {
+  #post-viewer {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    border: none;
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 0;
+      z-index: 2;
+
+      .menu {
+        width: unset;
+        padding-left: .5rem;
+        padding-right: .5rem
+      }
+    }
+
+    #post {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
 #post-viewer .navbar .menu {
   display: flex;
   justify-content: space-between;
@@ -307,16 +333,14 @@
   align-items: center;
 
   a#mode {
-    all: unset;
+    left: unset;
+    top: unset;
     opacity: .7;
   }
 
   .post-image {
     flex-grow: 1;
     flex-basis: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 
     .post-imgthumb {
       width: 40px;
@@ -350,8 +374,8 @@ body[data-theme="dark"] #post-viewer #navpost .post-nav {
 }
 
 .button-close {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background-color: #6b788650;
   display: flex;
   align-items: center;
