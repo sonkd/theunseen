@@ -367,3 +367,47 @@ mark,
     }
   }
 }
+
+// Button Share
+.button-share {
+  appearance: none;
+  border: 1px solid #6b788650;
+  color: $gray;
+  background-color: white;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.25rem;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  // transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-share:hover {
+  background-color: #F3F4F650;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-share:active {
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-share:focus {
+  outline: 1px transparent;
+}
+
+.button-share:before {
+  display: none;
+}
+
+.button-share:-webkit-details-marker {
+  display: none;
+}

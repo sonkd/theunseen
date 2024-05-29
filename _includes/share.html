@@ -1,35 +1,23 @@
-<div id="share">
-    <h2>The more we share, the more we have. Leonard Nimoy.</h2>
-    <ul>
-        <li class="reddit">
-            <a href="http://www.reddit.com/submit?url={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&title={{ page.title | default:"" | uri_escape }}"
-                target="_blank">
-                {% include share-icon-reddit.svg %}
-            </a>
-        </li>
-        <li class="hn">
-            <a href="http://news.ycombinator.com/submitlink?u={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&t={{ page.title | default:"" | uri_escape}}"
-                target="_blank">
-                {% include share-icon-hn.svg %}
-            </a>
-        </li>
-        <li class="twitter">
-            <a href="https://twitter.com/intent/tweet?via={{ site.twitter_username }}&url={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&text={{ page.title | default:"" | uri_escape}}"
-                target="_blank">
-                {% include share-icon-twitter.svg %}
-            </a>
-        </li>
-        <li class="facebook">
-            <a href="http://www.facebook.com/sharer.php?u={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&t={{ page.title | default:"" | uri_escape}}"
-                target="_blank">
-                {% include share-icon-facebook.svg %}
-            </a>
-        </li>
-        <li class="linkedin">
-            <a href="http://www.linkedin.com/shareArticle?url={{ site.twitter_username }}&url={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&title={{ page.title | default:"" | uri_escape}}"
-                target="_blank">
-                {% include share-icon-linkedin.svg %}
-            </a>
-        </li>
-    </ul>
+<div class="popup-share">
+    <header>
+        <span>Share Modal</span>
+        <div class="share-close">{% include close-icon.svg %}</div>
+    </header>
+    <div class="share-content">
+        <p>The more we share, the more we have. Leonard Nimoy.</p>
+        <ul class="share-icons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+                target="_blank">{% include share-icon-facebook.svg %}</a>
+            <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+                target="_blank">{% include share-icon-x.svg %}</a>
+            <a href="http://pinterest.com/pin/create/button/?url={{ site.url }}{{ page.url }}&amp;media={{ site.url }}{{ site.baseurl }}{{ page.image }}&amp;description={{ page.title | uri_escape }}"
+                target="_blank">{% include share-icon-pinterest.svg %}</a>
+        </ul>
+        <div class="share-field">
+            <i>{% include url-icon.svg %}</i>
+            <input type="text" readonly
+                value="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&t={{ page.title | default:"" | uri_escape}}">
+            <button>Copy</button>
+        </div>
+    </div>
 </div>
