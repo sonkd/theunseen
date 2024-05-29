@@ -115,6 +115,11 @@ body[data-theme="dark"] {
     font-weight: 600;
   }
 
+  .button-share-icon {
+    display: none;
+    color: $black
+  }
+
   @include media-query($on-mobile) {
     position: fixed;
     top: 0;
@@ -133,10 +138,12 @@ body[data-theme="dark"] {
     }
     */
 
-    .menu-icon {
+    .button-share {
+      display: none !important;
+    }
+
+    .menu-icon, .close-icon, .button-share-icon {
       display: block;
-      position: absolute;
-      right: 0;
       width: 50px;
       height: 23px;
       line-height: 0;
@@ -173,7 +180,7 @@ body[data-theme="dark"] {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      background-color: $white;
+      background-color: none;
       height: 100vh;
       width: 100%;
       top: 0;
@@ -414,13 +421,13 @@ body[data-theme="dark"] {
 // Share modal
 .popup-share{
   position: absolute;
-  left: 50%;
+  z-index: 10000;
+  right: 2rem;
 }
 
 .popup-share{
-  background: rgb(255, 254, 254);
+  background: $white;
   padding: 25px;
-  border-radius: 15px;
   top: 10%;
   max-width: 380px;
   width: 100%;
@@ -443,20 +450,22 @@ body[data-theme="dark"] {
               transform 0.2s 0s ease-in-out;
 
 }
-.popup-share :is(header, .icons, .field){
+/*
+.popup-share :is(header, .share-icons, .share-field){
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+}*/
+
 .popup-share header{
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
   border-bottom: 1px solid #ebedf9;
 }
 header span{
   font-size: 21px;
   font-weight: 600;
 }
-header .close, .icons a{
+header .close, .share-icons a{
   display: flex;
   align-items: center;
   border-radius: 50%;
@@ -474,83 +483,78 @@ header .close{
 header .close:hover{
   background: #ebedf9;
 }
-.popup-share .content{
-  margin: 20px 0;
-}
-.popup-share .icons{
-  margin: 15px 0 20px 0;
-}
-.content p{
+
+.share-content p{
   font-size: 16px;
 }
-.content .icons a{
+.share-content .share-icons a{
   height: 50px;
   width: 50px;
   font-size: 20px;
   text-decoration: none;
   border: 1px solid transparent;
 }
-.icons a i{
+.share-icons a i{
   transition: transform 0.3s ease-in-out;
 }
-.icons a:nth-child(1){
+.share-icons a:nth-child(1){
   color: #1877F2;
   border-color: #b7d4fb;
 }
-.icons a:nth-child(1):hover{
+.share-icons a:nth-child(1):hover{
   background: #1877F2;
 }
-.icons a:nth-child(2){
+.share-icons a:nth-child(2){
   color: #46C1F6;
   border-color: #b6e7fc;
 }
-.icons a:nth-child(2):hover{
+.share-icons a:nth-child(2):hover{
   background: #46C1F6;
 }
-.icons a:nth-child(3){
+.share-icons a:nth-child(3){
   color: #e1306c;
   border-color: #f5bccf;
 }
-.icons a:nth-child(3):hover{
+.share-icons a:nth-child(3):hover{
   background: #e1306c;
 }
-.icons a:hover{
+.share-icons a:hover{
   color: #fff;
   border-color: transparent;
 }
-.icons a:hover i{
+.share-icons a:hover i{
   transform: scale(1.2);
 }
-.content .field{
+.share-content .share-field{
   margin: 12px 0 -5px 0;
   height: 45px;
   border-radius: 4px;
   padding: 0 5px;
   border: 1px solid #757171;
 }
-.field.active{
+.share-field.active{
   border-color: #7d2ae8;
 }
-.field i{
+.share-field i{
   width: 50px;
   font-size: 18px;
   text-align: center;
 }
-.field.active i{
+.share-field.active i{
   color: #7d2ae8;
 }
-.field input{
+.share-field input{
   width: 100%;
-  height: 100%;
+  // height: 100%;
   border: none;
   outline: none;
   font-size: 15px;
 }
-.field button{
-  color: #fff;
+.share-field button{
+  color: $black;
   padding: 5px 18px;
-  background: #7d2ae8;
+  background: $smoke;
 }
-.field button:hover{
-  background: #8d39fa;
+.share-field button:hover{
+  background: $light;
 }

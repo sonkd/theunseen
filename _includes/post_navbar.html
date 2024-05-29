@@ -14,7 +14,8 @@
     </div>
     <div class="trigger">
       <div class="flex items-center justify-end gap-2">
-        <button id="view-modal" class="button-share rounded-lg" role="button">Share</button>
+        <button class="view-modal button-share rounded-lg" role="button">Share</button>
+        <a id="share-icon" class="view-modal button-share-icon">{% include share-icon.svg %}</a>
         <a id="mode" class="menu-link">
           <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
             <title>LIGHT</title>
@@ -57,3 +58,4 @@
     </div>
   </nav>
 </div>
+{% include share.html %}

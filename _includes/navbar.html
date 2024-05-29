@@ -3,16 +3,14 @@
     <input type="checkbox" id="menu-trigger" class="menu-trigger" />
     <label for="menu-trigger">
       <span class="menu-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 512 512"
-        >
-          <path
-            d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
-          />
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+          <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
         </svg>
+      </span>
+      <span class="close-icon" hidden>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.9999 13.4149L6.34312 19.0716L4.92913 17.6576L10.5859 12.0009L4.92908 6.34406L6.34307 4.93007L11.9999 10.5869L17.6571 4.92969L19.071 6.34368L13.4139 12.0009L19.071 17.658L17.657 19.072L11.9999 13.4149Z"/>
+        </svg>                 
       </span>
     </label>
     <img class="logo rounded-full" src="{{ site.author.avatar }}" alt="{{ site.author.username }}"/>
