@@ -508,6 +508,10 @@ legend {
     flex: 1 1 0%
 }
 
+.flex-logo {
+    flex: 1 1 2rem
+}
+
 .translate-y-3\/4 {
     --su--translate-y: 75%;
     transform: translate(var(--su--translate-x), var(--su--translate-y)) rotate(var(--su--rotate)) skewX(var(--su--skew-x)) skewY(var(--su--skew-y)) scaleX(var(--su--scale-x)) scaleY(var(--su--scale-y))
