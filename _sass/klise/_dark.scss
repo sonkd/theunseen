@@ -248,6 +248,14 @@ body[data-theme="dark"] {
   // Button Share
   .button-share {
     background-color: $dark-black;
-    color: $dark-white;
+    color: $dark-gray;
+
+    .button-share-icon {
+      fill: $dark-gray;
+    }
+  }
+
+  .button-share:hover {
+    background-color: rgba($dark-light, .5);
   }
 }

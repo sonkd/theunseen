@@ -387,10 +387,30 @@ mark,
   vertical-align: middle;
   white-space: nowrap;
   word-wrap: break-word;
+
+  .button-share-icon {
+    display: none;
+    color: $black;
+    width: 40px;
+    height: 24px;
+  }
+
+  @include media-query($on-mobile) {
+    border: none !important;
+    padding: 0;
+
+    .button-share-label {
+      display: none;
+    }
+
+    .button-share-icon {
+      display: block;
+    }
+  }
 }
 
 .button-share:hover {
-  background-color: #F3F4F650;
+  background-color: rgba($light, .5);
   text-decoration: none;
   transition-duration: 0.1s;
 }

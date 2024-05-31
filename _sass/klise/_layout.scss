@@ -115,11 +115,6 @@ body[data-theme="dark"] {
     font-weight: 600;
   }
 
-  .button-share-icon {
-    display: none;
-    color: $black
-  }
-
   @include media-query($on-mobile) {
     position: fixed;
     top: 0;
@@ -138,11 +133,7 @@ body[data-theme="dark"] {
     }
     */
 
-    .button-share {
-      display: none !important;
-    }
-
-    .menu-icon, .close-icon, .button-share-icon {
+    .menu-icon, .close-icon {
       display: block;
       width: 50px;
       height: 23px;
