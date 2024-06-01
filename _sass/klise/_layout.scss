@@ -27,7 +27,7 @@ body[data-theme="dark"] {
   -webkit-user-select: none;
 
   a#mode {
-    float: left;
+    // float: left;
     /* left: 8px;
     top: 6px; */
     position: relative;
@@ -36,16 +36,20 @@ body[data-theme="dark"] {
     transform: scale(1, 1);
     opacity: 0.7;
     z-index: 1;
+
     &:hover {
       cursor: pointer;
       opacity: 1;
     }
+
     &:active {
       -webkit-transform: scale(0.9, 0.9);
       transform: scale(0.9, 0.9);
     }
+
     .mode-moon {
       display: block;
+
       line {
         stroke: $black;
         fill: none;
@@ -56,12 +60,15 @@ body[data-theme="dark"] {
         stroke: $black;
       }
     }
+
     .mode-sunny {
       display: none;
+
       line {
         stroke: $dark-white;
         fill: none;
       }
+
       circle {
         fill: none;
         stroke: $dark-white;
@@ -118,19 +125,17 @@ body[data-theme="dark"] {
     left: 0;
     right: 0;
     z-index: 2;
-    text-align: center;
     height: max-content;
     background-color: $white;
     border-bottom: 1px solid $light;
 
-    /*
-    a#mode {
-      left: 10px;
-      top: 12px;
-    }
-    */
 
-    .menu-icon, .close-icon {
+    a#mode {
+      padding: unset
+    }
+
+    .menu-icon,
+    .close-icon {
       display: block;
       width: 24px;
       height: 24px;
@@ -139,28 +144,31 @@ body[data-theme="dark"] {
       cursor: pointer;
       text-align: center;
       z-index: 1;
-      > svg {
+
+      >svg {
         fill: $black;
         opacity: 0.7;
       }
+
       &:hover {
-        > svg {
+        >svg {
           opacity: 1;
         }
       }
+
       &:active {
         -webkit-transform: scale(0.9, 0.9);
         transform: scale(0.9, 0.9);
       }
     }
 
-    input[type="checkbox"]:not(:checked) ~ .trigger {
+    input[type="checkbox"]:not(:checked)~.trigger {
       clear: both;
       display: none;
       // visibility: hidden;
     }
 
-    input[type="checkbox"]:checked ~ .trigger {
+    input[type="checkbox"]:checked~.trigger {
       position: fixed;
       animation: 0.2s ease-in forwards fadein;
       -webkit-animation: 0.2s ease-in forwards fadein;
@@ -185,38 +193,35 @@ body[data-theme="dark"] {
         padding: 2px 0;
       }
     }
-  }
-}
 
-.trigger-container {
-  @include media-query($on-mobile) {
-    flex-direction: column;
+    .trigger-container {
+      flex-direction: column;
+    }
   }
 }
 
 // Logo
 .logo {
-  width: 40px;
-  height: 40px;
-  /* border-radius: 100%; */
   user-select: none;
-
-  float: left;
   position: relative;
   clear: both;
+  text-align: left;
 
-  background-color: $black;
   -ms-user-select: none;
   -webkit-user-select: none;
   -webkit-animation: 0.5s ease-in forwards fadein;
   animation: 0.5s ease-in forwards fadein;
   opacity: 1;
 
+  img {
+    width: 40px;
+    // height: 40px;
+    background-color: $gray;
+  }
+
   @include media-query($on-mobile) {
     display: block;
-    position: absolute;
-    width: 40px;
-    margin: 5px 0;
+    text-align: center;
   }
 }
 
@@ -301,12 +306,14 @@ body[data-theme="dark"] {
   @include media-query($on-mobile) {
     margin-top: 3em;
   }
+
   span.footer_item {
     color: $black;
     opacity: 0.8;
     font-weight: $bold-weight;
     font-size: $small-font-size;
   }
+
   a.footer_item {
     color: $black;
     opacity: 0.8;
@@ -314,6 +321,7 @@ body[data-theme="dark"] {
 
     &:not(:last-child) {
       margin-right: 10px;
+
       &:hover {
         opacity: 1;
       }
@@ -335,6 +343,7 @@ body[data-theme="dark"] {
   justify-content: center;
   flex-direction: column;
   height: 75vh;
+
   .title {
     font-size: 5em;
     font-weight: $bold-weight;
@@ -342,13 +351,16 @@ body[data-theme="dark"] {
     color: $black;
     text-shadow: 1px 0px 0px $text-link-blue;
   }
+
   .phrase {
     color: $text-base-color;
   }
+
   .solution {
     color: $text-link-blue;
     letter-spacing: 0.5px;
   }
+
   .solution:hover {
     color: $text-link-blue-active;
   }
@@ -380,9 +392,11 @@ body[data-theme="dark"] {
     font-size: $base-font-size;
     background-color: rgba(128, 128, 128, 0.1);
     border: 1px solid rgba(128, 128, 128, 0.1);
+
     &::-webkit-input-placeholder {
       color: #808080;
     }
+
     &::-webkit-search-decoration,
     &::-webkit-search-results-decoration {
       display: none;
@@ -392,6 +406,7 @@ body[data-theme="dark"] {
 
 #search-results {
   text-align: center;
+
   li {
     text-align: left;
   }
@@ -399,6 +414,7 @@ body[data-theme="dark"] {
 
 .archive-tags {
   height: auto;
+
   .tag-item {
     padding: 1px 3px;
     border-radius: 2px;
@@ -408,37 +424,38 @@ body[data-theme="dark"] {
 }
 
 // Share modal
-.popup-share{
+.popup-share {
   position: absolute;
   z-index: 10000;
   right: 2rem;
 }
 
-.popup-share{
+.popup-share {
   background: $white;
-  padding: 25px;
-  top: 10%;
+  //padding: 25px;
+  //top: 10%;
   max-width: 380px;
   width: 100%;
   opacity: 0;
   pointer-events: none;
-  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   transform: translate(-50%, -50%) scale(1.2);
   transition: top 0s 0.2s ease-in-out,
-              opacity 0.2s 0s ease-in-out,
-              transform 0.2s 0s ease-in-out;
+    opacity 0.2s 0s ease-in-out,
+    transform 0.2s 0s ease-in-out;
 }
-.popup-share.show{
-  top: 50%;
-  left: 50%;
+
+.popup-share.show {
+  top: 10rem;
   opacity: 1;
   pointer-events: auto;
-  transform:translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
   transition: top 0s 0s ease-in-out,
-              opacity 0.2s 0s ease-in-out,
-              transform 0.2s 0s ease-in-out;
+    opacity 0.2s 0s ease-in-out,
+    transform 0.2s 0s ease-in-out;
 
 }
+
 /*
 .popup-share :is(header, .share-icons, .share-field){
   display: flex;
@@ -446,22 +463,16 @@ body[data-theme="dark"] {
   justify-content: space-between;
 }*/
 
-.popup-share header{
-  /* padding-bottom: 15px; */
-  border-bottom: 1px solid #ebedf9;
-}
-header span{
-  font-size: 21px;
-  font-weight: 600;
-}
-header .close, .share-icons a{
+header .close,
+.share-icons a {
   display: flex;
   align-items: center;
   border-radius: 50%;
   justify-content: center;
   transition: all 0.3s ease-in-out;
-} 
-header .close{
+}
+
+header .close {
   color: #878787;
   font-size: 17px;
   background: #f3f3f3;
@@ -469,81 +480,90 @@ header .close{
   width: 33px;
   cursor: pointer;
 }
-header .close:hover{
+
+header .close:hover {
   background: #ebedf9;
 }
 
-.share-content p{
-  font-size: 16px;
-}
-.share-content .share-icons a{
+.share-content .share-icons a {
   height: 50px;
   width: 50px;
   font-size: 20px;
   text-decoration: none;
   border: 1px solid transparent;
 }
-.share-icons a i{
+
+.share-icons a i {
   transition: transform 0.3s ease-in-out;
 }
-.share-icons a:nth-child(1){
+
+.share-icons a:nth-child(1) {
   color: #1877F2;
   border-color: #b7d4fb;
 }
-.share-icons a:nth-child(1):hover{
+
+.share-icons a:nth-child(1):hover {
   background: #1877F2;
 }
-.share-icons a:nth-child(2){
+
+.share-icons a:nth-child(2) {
   color: #46C1F6;
   border-color: #b6e7fc;
 }
-.share-icons a:nth-child(2):hover{
+
+.share-icons a:nth-child(2):hover {
   background: #46C1F6;
 }
-.share-icons a:nth-child(3){
+
+.share-icons a:nth-child(3) {
   color: #e1306c;
   border-color: #f5bccf;
 }
-.share-icons a:nth-child(3):hover{
+
+.share-icons a:nth-child(3):hover {
   background: #e1306c;
 }
-.share-icons a:hover{
+
+.share-icons a:hover {
   color: #fff;
   border-color: transparent;
 }
-.share-icons a:hover i{
+
+.share-icons a:hover i {
   transform: scale(1.2);
 }
-.share-content .share-field{
+
+.share-content .share-field {
   margin: 12px 0 -5px 0;
-  height: 45px;
-  border-radius: 4px;
-  padding: 0 5px;
-  border: 1px solid #757171;
-}
-.share-field.active{
-  border-color: #7d2ae8;
-}
-.share-field i{
-  width: 50px;
-  font-size: 18px;
-  text-align: center;
-}
-.share-field.active i{
-  color: #7d2ae8;
-}
-.share-field input{
-  width: 100%;
-  // height: 100%;
-  border: none;
-  outline: none;
-  font-size: 15px;
-}
-.share-field button{
-  color: $black;
-  padding: 5px 18px;
-  background: $smoke;
-}
-.share-field button:hover{
-  background: $light;
+  height: 44px;
+  border: 1px solid $light;
+
+  i {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .active {
+    border-color: #7d2ae8;
+    i {
+      color: #7d2ae8;
+    }
+  }
+
+  input {
+    width: 100%;
+    // height: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+  }
+
+  button {
+    color: $black;
+    background: $primary-color;
+  }
+
+  button:hover {
+    background: rgba($primary-color, .8);
+  }
 }

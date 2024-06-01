@@ -258,4 +258,32 @@ body[data-theme="dark"] {
   .button-share:hover {
     background-color: rgba($dark-light, .5);
   }
+
+    .popup-share {
+      background-color: $dark-light;
+  
+      header {
+        .share-close {
+          fill: $light
+        }
+      }
+
+      .share-content {
+        .share-icons {
+          fill: $light
+        }
+
+        .share-field {
+          background-color: $dark-black;
+          border-color: rgba($dark-gray, .5);
+          .url-icon {
+            fill: $light
+          }
+        }
+
+        button {
+          color: $dark-black;
+        }
+      }
+    }
 }

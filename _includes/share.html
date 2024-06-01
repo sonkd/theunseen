@@ -1,23 +1,27 @@
-<div class="popup-share py-4 rounded-2xl">
-    <header class="flex items-center justify-end">
-        <div class="share-close">{% include close-icon.svg %}</div>
+<div class="popup-share p-6 rounded-2xl">
+    <header class="flex-col items-center justify-end">
+        <div class="flex items-center justify-end gap-4">
+            <h3 class="w-full">Share this stuff</h3><i class="share-close flex items-center">{% include close-icon.svg %}</i>
+        </div>
+        <span>
+            <blockquote>The more we share, the more we have.<br>Leonard Nimoy
+            </blockquote>
+        </span>
     </header>
     <div class="share-content">
-        <h3 style="margin-bottom:0 !important">The more we share, the more we have.</h3>
-        <p style="margin-top:0 !important">Leonard Nimoy</p>
-        <ul class="share-icons py-2 flex items-center justify-start gap-4">
+        <div class="share-icons py-2 flex items-center justify-start gap-4">
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"
                 target="_blank">{% include share-icon-facebook.svg %}</a>
             <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
                 target="_blank">{% include share-icon-x.svg %}</a>
             <a href="http://pinterest.com/pin/create/button/?url={{ site.url }}{{ page.url }}&amp;media={{ site.url }}{{ site.baseurl }}{{ page.image }}&amp;description={{ page.title | uri_escape }}"
                 target="_blank">{% include share-icon-pinterest.svg %}</a>
-        </ul>
-        <div class="share-field p-2 border border-gray-100 rounded-md flex items-center justify-center gap-2">
+        </div>
+        <div class="share-field px-2 border border-gray-100 rounded-md flex items-center justify-center gap-2">
             <i class="url-icon flex items-center">{% include url-icon.svg %}</i>
             <input type="text" readonly
                 value="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&t={{ page.title | default:"" | uri_escape}}">
-            <button>Copy</button>
+            <button class="rounded-md border p-2 w-24">Copy</button>
         </div>
     </div>
 </div>

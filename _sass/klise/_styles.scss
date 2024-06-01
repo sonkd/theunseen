@@ -468,6 +468,10 @@ legend {
     min-height: 100px
 }
 
+.w-24 {
+    width: 6rem
+}
+
 .w-12 {
     width: 3rem
 }
@@ -508,8 +512,8 @@ legend {
     flex: 1 1 0%
 }
 
-.flex-logo {
-    flex: 1 1 2rem
+.flex-nav {
+    flex: 1 0 auto
 }
 
 .translate-y-3\/4 {
