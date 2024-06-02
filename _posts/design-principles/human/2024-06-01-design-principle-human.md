@@ -1,12 +1,13 @@
 ---
-title: How this site was born 👶
-date: 2018-09-28 09:45:47 +07:00
-modified: 2019-08-29 09:24:47 +07:00
-tags: [blog, netlify, jekyll, github]
+title: Human
+date: 2024-06-01 09:45:47
+modified: 2024-06-01 09:24:47
+tags: [human, hci, design, product]
+categories: [design principes, psychology]
 description: All the services are free, a source code this site placed on github repository and intergration with netlify service, another service that you can use is github page for hosting your own static site.
 
-image: /assets/img/avatar.jpg
-discussing_link:
+image: \assets\img\design-principles\human.png
+discussing_link: 
 
 hidden: false
 ---

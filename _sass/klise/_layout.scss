@@ -425,18 +425,11 @@ body[data-theme="dark"] {
 
 // Share modal
 .popup-share {
-  position: absolute;
-  z-index: 10000;
-  right: 2rem;
-}
-
-.popup-share {
+  position: relative;
+  display: none;
   background: $white;
-  //padding: 25px;
-  //top: 10%;
   max-width: 380px;
   width: 100%;
-  opacity: 0;
   pointer-events: none;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   transform: translate(-50%, -50%) scale(1.2);
@@ -446,7 +439,11 @@ body[data-theme="dark"] {
 }
 
 .popup-share.show {
-  top: 10rem;
+  position: fixed;
+  top: 15rem;
+  left: calc(100% - 190px - 4rem);
+  display: block;
+  z-index: 1000;
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
@@ -463,7 +460,7 @@ body[data-theme="dark"] {
   justify-content: space-between;
 }*/
 
-header .close,
+header .share-close,
 .share-icons a {
   display: flex;
   align-items: center;
@@ -472,17 +469,15 @@ header .close,
   transition: all 0.3s ease-in-out;
 }
 
-header .close {
-  color: #878787;
-  font-size: 17px;
-  background: #f3f3f3;
-  height: 33px;
-  width: 33px;
+header .share-close {
+  fill: #6b788650;
+  height: 24px;
+  width: 24px;
   cursor: pointer;
 }
 
-header .close:hover {
-  background: #ebedf9;
+header .share-close:hover {
+  fill: $gray;
 }
 
 .share-content .share-icons a {
@@ -559,6 +554,7 @@ header .close:hover {
   }
 
   button {
+    cursor: pointer;
     color: $black;
     background: $primary-color;
   }

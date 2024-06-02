@@ -1,6 +1,6 @@
-<div class="navbar p-4 flex items-center" role="navigation">
-  <nav class="menu px-4 w-full">
-    <div class="post-trigger">
+<div class="navbar p-2 flex items-center" role="navigation">
+  <nav class="menu px-4 flex items-center justify-between w-full">
+    <div class="post-trigger flex items-start">
       <a class="button-close rounded-full bg-grey-50" href='{{site.url}}/' aria-label="Close">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#767f87" xmlns="http://www.w3.org/2000/svg">
           <title>CLOSE</title>
@@ -12,9 +12,7 @@
     <div class="post-image">
       <img class="post-imgthumb rounded-md" src="{{ page.image }}">
     </div>
-    <div class="trigger">
-      <div class="flex items-center justify-end gap-2">
-        {% include share.html %}
+    <div class="trigger flex items-center justify-end gap-2">
         <button class="view-modal button-share rounded-lg" role="button"><i class="button-share-icon">{% include share-icon.svg %}</i><a class="button-share-label">Share</a></button>
         <a id="mode" class="menu-link">
           <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
@@ -54,7 +52,6 @@
             <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
           </svg>
         </a>
-      </div>
     </div>
   </nav>
 </div>
