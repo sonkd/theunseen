@@ -36,6 +36,15 @@
     });
   };
 
+  // Back button
+  document.querySelector(".button-close").addEventListener("click", () => {
+    if (document.referrer == "") {
+      document.location.href="../index.html"
+    } else {
+      history.back()
+    }
+  });
+
   // Check isReading state
   if (document.getElementById("post")) {
     const reading = document.getElementById("post");

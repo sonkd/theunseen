@@ -1,13 +1,19 @@
-<h3 class="posts-item-note" aria-label="Recent Stories">Recent Stuff</h3>
+<!-- Init posts_list before use this content -->
 <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-{%- for post in site.posts limit: site.number_of_posts -%}
-{% unless post.hidden %}
+{% if cat == null or cat == "" %}
+    {%- for post in posts_list -%}
+    {% unless post.hidden %}
     <article class="card-stuff-01 p-3 mb-3 border border-gray-100 transition duration-500 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
         <a href="{{ post.url | prepend: site.baseurl }}" class="absolute opacity-0 top-0 end-0 start-0-0 bottom-0"></a>
         <div class="card-img relative mb-2 rounded-lg">
-            <img class="h-52 rounded-lg w-full object-cover transition-transform duration-500 transform group-hover:scale-105"
+            {% if post.image %}
+            <img class="h-52 rounded-lg w-full object-cover transition-transform duration-500 transform"
                 src="{{ post.image }}" alt="{{ post.title }}">
-            <a class="flex justify-center items-center bg-black bg-opacity-80 z-10 absolute top-0 start-0-0 w-full h-full text-white rounded-lg opacity-0 transition-all duration-300 transform group-hover:scale-105 text-xl group-hover:opacity-100"
+            {% else %}
+            <img class="h-52 rounded-lg w-full object-cover transition-transform duration-500 transform"
+                src="/assets/img/avatar.png" alt="{{ post.title }}">
+            {% endif %}
+            <a class="flex justify-center items-center bg-black bg-opacity-80 z-10 absolute top-0 start-0-0 w-full h-full text-white rounded-lg opacity-0 transition-all duration-300 transform text-xl group-hover:opacity-100"
                 href="{{ post.url | prepend: site.baseurl }}" rel="noopener noreferrer">
                 <svg class="ml-2 w-8 h-8" width="40" height="40" viewBox="0 0 40 40" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -23,6 +29,38 @@
             </a>
         </h4>
     </article>
-{% endunless %}
-{%- endfor -%}
+    {% endunless %}
+    {%- endfor -%}
+{% else %}
+    {%- for post in posts_list -%}
+    {% unless post.hidden %}
+    <article class="card-stuff-01 p-3 mb-3 border border-gray-100 transition duration-500 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer">
+        <a href="{{ post.url | prepend: site.baseurl }}" class="absolute opacity-0 top-0 end-0 start-0-0 bottom-0"></a>
+        <div class="card-img relative mb-2 rounded-lg">
+            {% if post.image %}
+            <img class="h-52 rounded-lg w-full object-cover transition-transform duration-500 transform"
+                src="{{ post.image }}" alt="{{ post.title }}">
+            {% else %}
+            <img class="h-52 rounded-lg w-full object-cover transition-transform duration-500 transform"
+                src="/assets/img/avatar.png" alt="{{ post.title }}">
+            {% endif %}
+            <a class="flex justify-center items-center bg-black bg-opacity-80 z-10 absolute top-0 start-0-0 w-full h-full text-white rounded-lg opacity-0 transition-all duration-300 transform text-xl group-hover:opacity-100"
+                href="{{ post.url | prepend: site.baseurl }}" rel="noopener noreferrer">
+                <svg class="ml-2 w-8 h-8" width="40" height="40" viewBox="0 0 40 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M20 8.54167C19.7237 8.54167 19.4588 8.43192 19.2634 8.23657C19.0681 8.04122 18.9583 7.77627 18.9583 7.5V5.41667C18.9583 5.1404 19.0681 4.87545 19.2634 4.6801C19.4588 4.48475 19.7237 4.375 20 4.375C20.2763 4.375 20.5412 4.48475 20.7366 4.6801C20.9319 4.87545 21.0417 5.1404 21.0417 5.41667V7.5C21.0417 7.77627 20.9319 8.04122 20.7366 8.23657C20.5412 8.43192 20.2763 8.54167 20 8.54167ZM29.1491 12.3766C31.8848 14.1294 34.0855 16.601 35.5104 19.5209C35.5871 19.669 35.6272 19.8333 35.6272 20C35.6272 20.1668 35.5871 20.3311 35.5104 20.4792C34.0855 23.3991 31.8848 25.8707 29.1491 27.6235C26.4134 29.3762 23.2482 30.3426 20 30.4167C16.7518 30.3426 13.5866 29.3762 10.8509 27.6235C8.11524 25.8707 5.91449 23.3991 4.48958 20.4792C4.41287 20.3311 4.37283 20.1668 4.37283 20C4.37283 19.8333 4.41287 19.669 4.48958 19.5209C5.91449 16.601 8.11524 14.1294 10.8509 12.3766C13.5866 10.6238 16.7518 9.65751 20 9.58337C23.2482 9.65751 26.4134 10.6238 29.1491 12.3766ZM25.2083 20C25.2083 22.8765 22.8765 25.2084 20 25.2084C17.1235 25.2084 14.7917 22.8765 14.7917 20C14.7917 17.1236 17.1235 14.7917 20 14.7917C22.8765 14.7917 25.2083 17.1236 25.2083 20ZM25.7812 9.46876C25.9253 9.54588 26.0866 9.5853 26.25 9.58334C26.4424 9.58276 26.6308 9.52892 26.7944 9.4278C26.9581 9.32667 27.0905 9.18221 27.1771 9.01043L28.2188 6.92709C28.3199 6.68429 28.3254 6.41222 28.2342 6.16552C28.143 5.91881 27.9619 5.71573 27.7271 5.59706C27.4924 5.47838 27.2215 5.45289 26.9688 5.5257C26.716 5.59851 26.5002 5.76423 26.3646 5.98959L25.3229 8.07293C25.1994 8.31894 25.1782 8.60385 25.2641 8.8654C25.35 9.12696 25.5359 9.34388 25.7812 9.46876ZM13.75 9.58337C13.5576 9.58278 13.3692 9.52895 13.2056 9.42782C13.0419 9.3267 12.9095 9.18224 12.8229 9.01045L11.7812 6.92712C11.7074 6.80438 11.6597 6.66773 11.641 6.52571C11.6223 6.38368 11.6332 6.23934 11.6728 6.10169C11.7125 5.96405 11.7801 5.83606 11.8715 5.72573C11.9628 5.6154 12.0759 5.52509 12.2038 5.46046C12.3316 5.39582 12.4714 5.35825 12.6144 5.35008C12.7574 5.34192 12.9006 5.36333 13.0349 5.41299C13.1693 5.46266 13.292 5.53949 13.3953 5.63871C13.4986 5.73792 13.5803 5.85738 13.6354 5.98962L14.6771 8.07295C14.8006 8.31896 14.8218 8.60388 14.7359 8.86543C14.65 9.12698 14.4641 9.3439 14.2187 9.46878C14.0747 9.54591 13.9134 9.58532 13.75 9.58337ZM19.2634 35.3199C19.4588 35.5153 19.7237 35.625 20 35.625C20.2763 35.625 20.5412 35.5153 20.7366 35.3199C20.9319 35.1246 21.0417 34.8596 21.0417 34.5834V32.5C21.0417 32.2238 20.9319 31.9588 20.7366 31.7635C20.5412 31.5681 20.2763 31.4584 20 31.4584C19.7237 31.4584 19.4588 31.5681 19.2634 31.7635C19.0681 31.9588 18.9583 32.2238 18.9583 32.5V34.5834C18.9583 34.8596 19.0681 35.1246 19.2634 35.3199ZM27.2917 34.5833C27.0993 34.5828 26.9109 34.5289 26.7472 34.4278C26.5836 34.3267 26.4511 34.1822 26.3646 34.0104L25.3229 31.9271C25.2218 31.6843 25.2163 31.4122 25.3075 31.1655C25.3987 30.9188 25.5798 30.7157 25.8145 30.5971C26.0492 30.4784 26.3202 30.4529 26.5729 30.5257C26.8256 30.5985 27.0415 30.7642 27.1771 30.9896L28.2188 33.0729C28.3423 33.3189 28.3635 33.6039 28.2776 33.8654C28.1917 34.127 28.0058 34.3439 27.7604 34.4688C27.6163 34.5459 27.4551 34.5853 27.2917 34.5833ZM12.2396 34.4688C12.3837 34.5459 12.5449 34.5853 12.7083 34.5834C12.9007 34.5828 13.0891 34.5289 13.2528 34.4278C13.4164 34.3267 13.5489 34.1822 13.6354 34.0105L14.6771 31.9271C14.7509 31.8044 14.7987 31.6677 14.8173 31.5257C14.836 31.3837 14.8252 31.2393 14.7855 31.1017C14.7458 30.9641 14.6782 30.8361 14.5869 30.7257C14.4955 30.6154 14.3824 30.5251 14.2546 30.4605C14.1267 30.3958 13.9869 30.3583 13.8439 30.3501C13.7009 30.3419 13.5578 30.3633 13.4234 30.413C13.289 30.4627 13.1664 30.5395 13.063 30.6387C12.9597 30.7379 12.878 30.8574 12.8229 30.9896L11.7812 33.073C11.6577 33.319 11.6366 33.6039 11.7224 33.8654C11.8083 34.127 11.9942 34.3439 12.2396 34.4688Z"
+                    fill="white" />
+                </svg>
+            </a>
+        </div>
+        <h4 class="post-item-title">
+            <a href="{{ post.url | prepend: site.baseurl }}" class="block relative group-hover:text-black transition-colors duration-200">
+                {{ post.title | escape }}
+            </a>
+        </h4>
+    </article>
+    {% endunless %}
+    {%- endfor -%}
+{% endif %}
 </div>

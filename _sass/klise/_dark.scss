@@ -140,7 +140,7 @@ body[data-theme="dark"] {
         background-color: $dark-black;
         border-color: $dark-light;
 
-        .menu-icon {
+        .menu-icon, .close-icon {
           > svg {
             fill: $dark-white;
           }

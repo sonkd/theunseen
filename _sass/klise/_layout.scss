@@ -180,6 +180,7 @@ body[data-theme="dark"] {
       height: 100vh;
       width: 100%;
       top: 0;
+      left: 0;
     }
 
     .menu-link {
@@ -216,7 +217,7 @@ body[data-theme="dark"] {
   img {
     width: 40px;
     // height: 40px;
-    background-color: $gray;
+    // background-color: $gray;
   }
 
   @include media-query($on-mobile) {
@@ -227,8 +228,6 @@ body[data-theme="dark"] {
 
 // Author
 .author {
-  margin-top: 6.3rem;
-  margin-bottom: 7.2rem;
   text-align: center;
 
   @include media-query($on-mobile) {
@@ -440,8 +439,8 @@ body[data-theme="dark"] {
 
 .popup-share.show {
   position: fixed;
-  top: 15rem;
-  left: calc(100% - 190px - 4rem);
+  top: 14.5rem;
+  left: calc(100% - 190px - 2.5rem);
   display: block;
   z-index: 1000;
   opacity: 1;
@@ -450,7 +449,6 @@ body[data-theme="dark"] {
   transition: top 0s 0s ease-in-out,
     opacity 0.2s 0s ease-in-out,
     transform 0.2s 0s ease-in-out;
-
 }
 
 /*

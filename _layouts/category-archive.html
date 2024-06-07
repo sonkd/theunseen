@@ -1,0 +1,18 @@
+---
+layout: page
+---
+
+<div class="archive-tags">
+  <a class="tag-item" href="/categories/">all</a>
+  {%- for category in site.categories -%} 
+    {% capture name %}{{ category | first }}{% endcapture %}
+    <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a> 
+  {%- endfor -%}
+</div>
+
+<section class="categories">
+    {% capture cat %}{{ category | first }}{% endcapture %}
+    {% assign posts_list = page.posts %}
+    <h2 id="{{ cat }}">{{ cat | upcase }}</h2>
+    {% include stuff.html %}
+</section>

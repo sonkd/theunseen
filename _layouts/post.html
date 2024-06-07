@@ -32,19 +32,21 @@ layout: compress
   {% include share.html %}
   <div id="post" class="h-full">
     <div class="wrapper">
-      <main class="page-content" aria-label="Content">
+      <main class="page-content pb-20" aria-label="Content">
         <article itemscope itemtype="https://schema.org/BlogPosting">
           <header class="header mt-20 mb-5">
-            {% if page.tags and page.tags != empty %}
-            <div class="tags">
-              {% assign tags = page.tags %}
+            {% if page.categories %}
+            <div class="categories">
+              {% assign cats = page.categories %}
               <span itemprop="keywords">
-                {% for tag in tags %}
-                <a class="tag"
-                  href="/tags/#{{tag | downcase | slugify}}">{{tag | upcase }}</a>{% unless forloop.last %},{% endunless %}
+                {% for cat in cats %}
+                <a class="category"
+                  href="/category/{{cat | downcase | slugify}}">{{cat | upcase }}</a>{% unless forloop.last %},{% endunless %}
                 {% endfor %}
               </span>
             </div>
+            {% else %}
+            <span>STUFF</span>
             {% endif %}
             <h1 class="header-title" itemprop="headline">{{ page.title | escape }}</h1>
             {% if page.date %}
@@ -65,7 +67,7 @@ layout: compress
             {% endif %}
           </header>
   
-          <div class="page-content pb-20" itemprop="articleBody">
+          <div class="page-content" itemprop="articleBody">
             {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=1 h_max=4 %}
             {% if page.tweet %}
             <p>Comments this article on 
@@ -76,16 +78,29 @@ layout: compress
             {% if page.comments %}
               {% include comments.html %}
             {% endif %}
+
+            <!-- TAGS -->
+            {% if page.tags and page.tags != empty %}
+            <div class="tags">
+              {% assign tags = page.tags %}
+              <span itemprop="keywords">
+                <a class="tag" style="color: gray">TAGS:</a>
+                {% for tag in tags %}
+                <a class="tag"
+                  href="/tag/{{tag | downcase | slugify}}">{{tag | upcase }}</a>{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              </span>
+            </div>
+            {% endif %}
             
             {% unless page.discussing_link == '' %}
             <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="{{ page.discussing_link | remove: "https://t.me/" }}" data-comments-limit="5" data-colorful="1" data-color="F646A4"></script>
             {% endunless %}
           </div>
         </article>
-        <!-- {% if page.modified %}
+        {% if page.modified %}
         <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
         {% endif %}
-        -->
       </main>
     </div>
   </div>

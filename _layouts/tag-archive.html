@@ -1,0 +1,18 @@
+---
+layout: page
+---
+
+<div class="archive-tags">
+  <a class="tag-item" href="/tags/">all</a>
+  {%- for tag in site.tags -%} 
+    {% capture name %}{{ tag | first }}{% endcapture %}
+    <a class="tag-item" href="/tag/{{name}}">{{ name }}</a> 
+  {%- endfor -%}
+</div>
+
+<section class="posts">
+  {% capture tag %}{{ tag | first }}{% endcapture %}
+  {% assign posts_list = page.posts %}
+  <h2 id="{{ tag }}">{{ tag | upcase }}</h2>
+  {% include stuff.html %}
+</section>

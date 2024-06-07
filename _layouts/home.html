@@ -2,15 +2,18 @@
 layout: default
 home: true
 ---
-
-{% include stuff.html %}
 <section>
-  <h3 class="posts-item-note" aria-label="Recent Posts">Categories</h3>
-  {% assign categories_list = site.categories %}
-  {%- for category in categories_list -%}
+  <h3 class="posts-item-note" aria-label="Recent Stuff">Recent Stuff</h3>
+  {% assign posts_list = site.posts | limit: site.number_of_posts %}
+  {% include stuff.html %}
+</section>
+<section>
+  <h3 class="posts-item-note" aria-label="Categories">Categories</h3>
+  {%- for category in site.categories -%}
   <article class="post-item">
     <h4 class="post-item-title">
-      <a href="#">{{ category | first }}</a>
+      {% capture name %}{{ category | first }}{% endcapture %}
+      <a href="/category/{{ name | slugify }}">{{ name }}</a>
     </h4>
   </article>
   {%- endfor -%}
