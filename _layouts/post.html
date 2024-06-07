@@ -66,7 +66,7 @@ layout: compress
             </div>
             {% endif %}
           </header>
-  
+          <hr>
           <div class="page-content" itemprop="articleBody">
             {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=1 h_max=4 %}
             {% if page.tweet %}
@@ -92,9 +92,9 @@ layout: compress
               </span>
             </div>
             {% endif %}
-            
+            <hr>
             {% unless page.discussing_link == '' %}
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="{{ page.discussing_link | remove: "https://t.me/" }}" data-comments-limit="5" data-colorful="1" data-color="F646A4"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="{{ page.discussing_link | remove: "https://t.me/" }}" data-comments-limit="5" data-colorful="1" data-color="ed812e"></script>
             {% endunless %}
           </div>
         </article>
