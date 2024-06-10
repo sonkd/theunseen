@@ -366,6 +366,10 @@ legend {
     margin-inline-end: .125rem
 }
 
+.ml-0 {
+    margin-left: 0
+}
+
 .ml-1 {
     margin-left: .25rem
 }
@@ -406,6 +410,14 @@ legend {
     margin-top: 1.25rem
 }
 
+.mr-0 {
+    margin-right: 0;
+}
+
+.mr-1 {
+    margin-right: .25rem;
+}
+
 .block {
     display: block
 }
@@ -416,6 +428,22 @@ legend {
 
 .flex {
     display: flex
+}
+
+.flex-1 {
+    flex: 1 1 0%
+}
+
+.flex\:shrink-1 {
+    flex-shrink: 1
+}
+
+.flex\:grow-1 {
+    flex-grow: 1
+}
+
+.flex\:basic-0 {
+    flex-basis: 0
 }
 
 .grid {
@@ -516,10 +544,6 @@ legend {
 
 .max-w-md {
     max-width: 28rem
-}
-
-.flex-1 {
-    flex: 1 1 0%
 }
 
 .flex-nav {
@@ -829,8 +853,16 @@ legend {
     vertical-align: middle
 }
 
+.text-left {
+    text-align: left
+}
+
 .text-center {
     text-align: center
+}
+
+.text-right {
+    text-align: right
 }
 
 .text-2xl {

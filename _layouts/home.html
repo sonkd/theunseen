@@ -2,12 +2,12 @@
 layout: default
 home: true
 ---
-<section>
+<section class="py-2">
   <h3 class="posts-item-note" aria-label="Recent Stuff">Recent Stuff</h3>
   {% assign posts_list = site.posts | limit: site.number_of_posts %}
   {% include stuff.html %}
 </section>
-<section>
+<section class="py-2">
   <h3 class="posts-item-note" aria-label="Categories">Categories</h3>
   {%- for category in site.categories -%}
   <article class="post-item">

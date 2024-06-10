@@ -21,7 +21,7 @@
             <i class="url-icon flex items-center">{% include url-icon.svg %}</i>
             <input type="text" readonly
                 value="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&t={{ page.title | default:"" | uri_escape}}">
-            <button class="rounded-md border p-2 w-24">Copy</button>
+            <button class="rounded-md p-2 w-24">Copy</button>
         </div>
     </div>
 </div>

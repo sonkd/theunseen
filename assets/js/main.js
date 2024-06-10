@@ -37,13 +37,32 @@
   };
 
   // Back button
-  document.querySelector(".button-close").addEventListener("click", () => {
-    if (document.referrer == "") {
-      document.location.href="../index.html"
-    } else {
-      history.back()
-    }
-  });
+  const xButton = document.querySelector(".button-close");
+  const prevButton = document.querySelector(".post-nav-prev");
+  const nextButton = document.querySelector(".post-nav-next");
+  const currentState = document.referrer;
+
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      history.replaceState({}, "", currentState);
+    });
+  };
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      history.replaceState({}, "", currentState);
+    });
+  }
+  
+  if (xButton) {
+    xButton.addEventListener("click", () => {
+      if (history.length == 2) {
+        document.location.href = "../index.html"
+      } else {       
+        history.back()
+      }
+    });
+  };
 
   // Check isReading state
   if (document.getElementById("post")) {
