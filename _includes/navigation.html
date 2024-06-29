@@ -1,14 +1,14 @@
 <nav class="post-nav flex">
   {% if page.previous %}
   <a class="post-nav-prev flex:grow-1 flex:basic-0" href="{{ page.previous | relative_url }}">
-    <div class="post-nav-item p-4 flex items-start flex-col">
+    <div class="post-nav-item my-4 flex items-start flex-col">
       <span class="nav-arrow">Previous</span>
       <span class="post-title">{{ page.previous.title }}</span>
     </div>
   </a>
   {% endif %} {% if page.next %}
   <a class="post-nav-next flex:grow-1 flex:basic-0" href="{{ page.next | relative_url }}">
-    <div class="post-nav-item p-4 flex justify-end flex-col text-right">
+    <div class="post-nav-item my-4 flex justify-end flex-col text-right">
       <span class="nav-arrow">Next</span>
       <span class="post-title">{{ page.next.title }}</span>
     </div>
