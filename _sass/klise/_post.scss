@@ -192,9 +192,25 @@
   }
 }
 
+#post-category {
+  visibility: hidden;
+  letter-spacing: 0.5px;
+
+  @include media-query($on-mobile) {
+    visibility: visible;
+    font-weight: $bold-weight;
+    font-size: $small-font-size - 2;
+
+    a {
+      color: $gray;
+      text-decoration: none;
+    }
+  }
+}
+
 // Tags
 .tags {
-  margin-left: 3px;
+  //margin-left: 3px;
   letter-spacing: 0.5px;
 
   .tag {
@@ -208,12 +224,26 @@
   }
 }
 
+@include media-query($on-mobile) {
+  .navbar {
+    .menu {
+      #category {
+        display: none
+      }
+    }
+  }
+}
+
 .post-nav {
   display: flex;
   position: relative;
   margin-top: 5em;
   border-top: 1px solid $light;
   line-height: 1.4;
+
+  img {
+    display: none;
+  }
 
   a {
     text-decoration: none;
@@ -261,6 +291,12 @@
     display: flex;
     font-size: $small-font-size;
 
+    img {
+      width: 28px;
+      height: 28px;
+      display: inline;
+    }
+
     .post-nav-item {
       display: block;
       //width: 100%
@@ -282,6 +318,17 @@
   font-family: "Ubuntu mono", "monospace";
 }
 
+#navpost {
+  margin: auto;
+  width: 100%;
+  transition: bottom 0.5s;
+
+  .post-nav {
+    margin-top: 0rem;
+  }
+}
+
+// See a stuff
 #post-viewer {
   position: fixed;
   border: 1px solid #6b788650;
@@ -297,24 +344,11 @@
     margin: auto
   }
 
-  #post {
+  #stuff {
     overflow-y: scroll;
   }
 
-  #navpost {
-    position: absolute;
-    margin: auto;
-    width: 100%;
-    transition: bottom 0.5s;
-
-    .post-nav {
-      margin-top: 0rem;
-    }
-  }
-}
-
-@include media-query($on-mobile) {
-  #post-viewer {
+  @include media-query($on-mobile) {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
@@ -371,11 +405,11 @@
   }
 }
 
-#post-viewer #navpost .post-nav {
+#navpost .post-nav {
   background-color: $white;
 }
 
-body[data-theme="dark"] #post-viewer #navpost .post-nav {
+body[data-theme="dark"] #navpost .post-nav {
   background-color: $dark-black;
 }
 

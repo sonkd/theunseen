@@ -1,7 +1,10 @@
-<nav class="post-nav flex">
+<nav class="wrapper post-nav flex">
   {% if page.previous %}
   <a class="post-nav-prev flex:grow-1 flex:basic-0" href="{{ page.previous | relative_url }}">
     <div class="post-nav-item my-4 flex items-start flex-col">
+      {% if page.previous.image %}
+      <img class="object-cover rounded-md" src="{{ page.previous.image }}" alt="{{ page.previous.title }}" title="{{ page.next.title }}"/>
+      {% endif %}
       <span class="nav-arrow">Previous</span>
       <span class="post-title">{{ page.previous.title }}</span>
     </div>
@@ -10,6 +13,9 @@
   <a class="post-nav-next flex:grow-1 flex:basic-0" href="{{ page.next | relative_url }}">
     <div class="post-nav-item my-4 flex justify-end flex-col text-right">
       <span class="nav-arrow">Next</span>
+      {% if page.next.image %}
+      <img class="object-cover rounded-md" src="{{ page.next.image }}" alt="{{ page.next.title }}" title="{{ page.next.title }}"/>
+      {% endif %}
       <span class="post-title">{{ page.next.title }}</span>
     </div>
   </a>

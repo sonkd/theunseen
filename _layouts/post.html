@@ -29,13 +29,16 @@ layout: compress
   {% include navbar.html %}
   <div class="wrapper post">
     <main class="page-content pb-20" aria-label="Content">
+      {% assign post = page %}
       {% include seeastuff.html %}
     </main>
-    {% if page.next or page.previous %}
-      {% include navigation.html %}
-    {% endif %}
   </div>
-  
+  {% if page.next or page.previous %}
+  <div id="navpost" class="sticky-bottom mx-0 transition-transform ease-in-out" hidden>
+    {% include navigation.html %}
+  </div>
+  {% endif %}
+
   {% include footer.html %}
 </body>
 

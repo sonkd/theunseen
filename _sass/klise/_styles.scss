@@ -400,16 +400,8 @@ legend {
     margin-top: .25rem
 }
 
-.mt-10 {
-    margin-top: 2.5rem
-}
-
 .mt-2 {
     margin-top: .5rem
-}
-
-.mt-20 {
-    margin-top: 5rem
 }
 
 .mt-4 {
@@ -418,6 +410,22 @@ legend {
 
 .mt-5 {
     margin-top: 1.25rem
+}
+
+.mt-10 {
+    margin-top: 2.5rem
+}
+
+.mt-20 {
+    margin-top: 5rem
+}
+
+.mt-30 {
+    margin-top: 7.5rem
+}
+
+.mt-40 {
+    margin-top: 10rem
 }
 
 .mr-0 {
@@ -448,8 +456,16 @@ legend {
     flex-shrink: 1
 }
 
+.flex\:shrink-2 {
+    flex-shrink: 2
+}
+
 .flex\:grow-1 {
     flex-grow: 1
+}
+
+.flex\:grow-2 {
+    flex-grow: 2
 }
 
 .flex\:basic-0 {
@@ -516,6 +532,10 @@ legend {
     min-height: 100px
 }
 
+.w-80 {
+    width: 20rem
+}
+
 .w-24 {
     width: 6rem
 }
@@ -532,12 +552,12 @@ legend {
     width: 1.5rem
 }
 
-.w-80 {
-    width: 20rem
-}
-
 .w-\[25\%\] {
     width: 25%
+}
+
+.w-\[250px\] {
+    width: 250px
 }
 
 .w-\[350px\] {
@@ -941,6 +961,10 @@ legend {
 
 .italic {
     font-style: italic
+}
+
+.not-underline {
+    text-decoration: none;
 }
 
 .leading-8 {
