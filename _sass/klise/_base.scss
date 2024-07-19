@@ -208,7 +208,7 @@ h6 {
     margin-top: 10px;
   }
 
-  @include media-query($on-mobile) {
+  @media #{$mobile} {
     scroll-margin-top: 65px;
   }
 }
@@ -284,7 +284,7 @@ blockquote {
   padding-left: $spacing-full;
   @extend %clearfix;
 
-  @include media-query($on-mobile) {
+  @media #{$mobile} {
     max-width: -webkit-calc(#{$narrow-size} - (#{$spacing-full}));
     max-width: calc(#{$narrow-size} - (#{$spacing-full}));
     padding-right: $spacing-full - 10;
@@ -395,7 +395,7 @@ mark,
     height: 24px;
   }
 
-  @include media-query($on-mobile) {
+  @media #{$mobile} {
     border: none !important;
     padding: 0;
 

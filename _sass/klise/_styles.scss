@@ -1,7 +1,3 @@
-/*
-Examples:
-https://techzaa.getappui.com/techcard/?storefront=envato-elements
-*/
 *,
 ::after,
 ::before {
@@ -60,109 +56,109 @@ https://techzaa.getappui.com/techcard/?storefront=envato-elements
 }
 
 small {
-  font-size: 80%
+    font-size: 80%
 }
 
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
 }
 
 sub {
-  bottom: -.25em
+    bottom: -.25em
 }
 
 sup {
-  top: -.5em
+    top: -.5em
 }
 
 table {
-  text-indent: 0;
-  border-color: inherit;
-  border-collapse: collapse
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse
 }
 
 :-moz-focusring {
-  outline: auto
+    outline: auto
 }
 
 :-moz-ui-invalid {
-  box-shadow: none
+    box-shadow: none
 }
 
 progress {
-  vertical-align: baseline
+    vertical-align: baseline
 }
 
 summary {
-  display: list-item
+    display: list-item
 }
 
 fieldset {
-  margin: 0;
-  padding: 0
+    margin: 0;
+    padding: 0
 }
 
 dialog,
 legend {
-  padding: 0
+    padding: 0
 }
 
 [hidden] {
-  display: none !important
+    display: none !important
 }
 
 ::backdrop {
-  --su--border-spacing-x: 0;
-  --su--border-spacing-y: 0;
-  --su--translate-x: 0;
-  --su--translate-y: 0;
-  --su--rotate: 0;
-  --su--skew-x: 0;
-  --su--skew-y: 0;
-  --su--scale-x: 1;
-  --su--scale-y: 1;
-  --su--pan-x: ;
-  --su--pan-y: ;
-  --su--pinch-zoom: ;
-  --su--scroll-snap-strictness: proximity;
-  --su--gradient-from-position: ;
-  --su--gradient-via-position: ;
-  --su--gradient-to-position: ;
-  --su--ordinal: ;
-  --su--slashed-zero: ;
-  --su--numeric-figure: ;
-  --su--numeric-spacing: ;
-  --su--numeric-fraction: ;
-  --su--ring-inset: ;
-  --su--ring-offset-width: 0px;
-  --su--ring-offset-color: #fff;
-  --su--ring-color: rgba(59, 130, 246, 0.5);
-  --su--ring-offset-shadow: 0 0 #0000;
-  --su--ring-shadow: 0 0 #0000;
-  --su--shadow: 0 0 #0000;
-  --su--shadow-colored: 0 0 #0000;
-  --su--blur: ;
-  --su--brightness: ;
-  --su--contrast: ;
-  --su--grayscale: ;
-  --su--hue-rotate: ;
-  --su--invert: ;
-  --su--saturate: ;
-  --su--sepia: ;
-  --su--drop-shadow: ;
-  --su--backdrop-blur: ;
-  --su--backdrop-brightness: ;
-  --su--backdrop-contrast: ;
-  --su--backdrop-grayscale: ;
-  --su--backdrop-hue-rotate: ;
-  --su--backdrop-invert: ;
-  --su--backdrop-opacity: ;
-  --su--backdrop-saturate: ;
-  --su--backdrop-sepia:
+    --su--border-spacing-x: 0;
+    --su--border-spacing-y: 0;
+    --su--translate-x: 0;
+    --su--translate-y: 0;
+    --su--rotate: 0;
+    --su--skew-x: 0;
+    --su--skew-y: 0;
+    --su--scale-x: 1;
+    --su--scale-y: 1;
+    --su--pan-x: ;
+    --su--pan-y: ;
+    --su--pinch-zoom: ;
+    --su--scroll-snap-strictness: proximity;
+    --su--gradient-from-position: ;
+    --su--gradient-via-position: ;
+    --su--gradient-to-position: ;
+    --su--ordinal: ;
+    --su--slashed-zero: ;
+    --su--numeric-figure: ;
+    --su--numeric-spacing: ;
+    --su--numeric-fraction: ;
+    --su--ring-inset: ;
+    --su--ring-offset-width: 0px;
+    --su--ring-offset-color: #fff;
+    --su--ring-color: rgba(59, 130, 246, 0.5);
+    --su--ring-offset-shadow: 0 0 #0000;
+    --su--ring-shadow: 0 0 #0000;
+    --su--shadow: 0 0 #0000;
+    --su--shadow-colored: 0 0 #0000;
+    --su--blur: ;
+    --su--brightness: ;
+    --su--contrast: ;
+    --su--grayscale: ;
+    --su--hue-rotate: ;
+    --su--invert: ;
+    --su--saturate: ;
+    --su--sepia: ;
+    --su--drop-shadow: ;
+    --su--backdrop-blur: ;
+    --su--backdrop-brightness: ;
+    --su--backdrop-contrast: ;
+    --su--backdrop-grayscale: ;
+    --su--backdrop-hue-rotate: ;
+    --su--backdrop-invert: ;
+    --su--backdrop-opacity: ;
+    --su--backdrop-saturate: ;
+    --su--backdrop-sepia:
 }
 
 @media (min-width: 640px) {
@@ -472,6 +468,14 @@ legend {
     flex-basis: 0
 }
 
+.flex\:basic-1 {
+    flex-basis: 1
+}
+
+.flex\:wrap {
+    flex-wrap: wrap;
+}
+
 .grid {
     display: grid
 }
@@ -496,6 +500,11 @@ legend {
     height: 14rem
 }
 
+.h-60 {
+    height: 15rem
+}
+
+
 .h-6 {
     height: 1.5rem
 }
@@ -518,6 +527,10 @@ legend {
 
 .h-\[350px\] {
     height: 350px
+}
+
+.h-\[600px\] {
+    height: 600px
 }
 
 .h-full {
@@ -552,10 +565,6 @@ legend {
     width: 1.5rem
 }
 
-.w-\[25\%\] {
-    width: 25%
-}
-
 .w-\[250px\] {
     width: 250px
 }
@@ -564,8 +573,37 @@ legend {
     width: 350px
 }
 
+.w-\[500px\] {
+    width: 500px
+}
+
+.w-\[25\%\] {
+    width: 25%
+}
+
+.w-\[50\%\] {
+    width: 50%
+}
+
 .w-full {
     width: 100%
+}
+
+.w-\[fit-to-screen\] {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    @media #{$mobile} {
+        left: initial;
+        right: initial;
+        margin-left: initial;
+        margin-right: initial;
+        width: 100%
+    }
 }
 
 .max-w-full {
@@ -674,6 +712,10 @@ legend {
 
 .border {
     border-width: 1px
+}
+
+.border-\[4px\] {
+    border-width: 4px
 }
 
 .border-none {
@@ -805,7 +847,7 @@ legend {
 
 .px-2 {
     padding-left: .5rem;
-    padding-right: .5rem  
+    padding-right: .5rem
 }
 
 .px-4 {
@@ -841,6 +883,11 @@ legend {
 .py-3 {
     padding-top: .75rem;
     padding-bottom: .75rem
+}
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem
 }
 
 .pb-20 {
@@ -1108,14 +1155,6 @@ textarea {
     -webkit-tap-highlight-color: transparent
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 600
-}
 
 .before\:pointer-events-none::before {
     content: var(--su--content);
@@ -1376,7 +1415,7 @@ h6 {
     transform: translate(var(--su--translate-x), var(--su--translate-y)) rotate(var(--su--rotate)) skewX(var(--su--skew-x)) skewY(var(--su--skew-y)) scaleX(var(--su--scale-x)) scaleY(var(--su--scale-y))
 }
 
-@media (min-width:768px) {
+@media (min-width:$on-mobile) {
     .md\:flex {
         display: flex
     }
@@ -1398,7 +1437,7 @@ h6 {
     }
 }
 
-@media (min-width:1024px) {
+@media (min-width:$on-desktop) {
     .lg\:flex {
         display: flex
     }

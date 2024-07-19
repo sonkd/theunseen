@@ -2,12 +2,37 @@
 layout: default
 home: true
 ---
-<section class="py-2">
-  <h3 class="posts-item-note" aria-label="Recent Stuff">Recent Stuff</h3>
-  {% assign posts_list = site.posts | limit: site.number_of_posts %}
-  {% include stuff.html %}
+
+<section class="mt-30">
+  {% include author.html %}
 </section>
-<section class="py-2">
+<section class="py-4">
+  <h3 class="posts-item-note text-center" aria-label="Recent Stuff">Recent Stuff</h3>
+  {% assign posts_list = site.posts | limit: site.number_of_posts %}
+
+  <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
+    {%- for post in posts_list -%}
+      {% unless post.hidden %}
+        {% include stuff.html %}
+      {% endunless %}
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="py-4">
+  <h3 class="posts-item-note" aria-label="Featured">Featured</h3>
+  {% assign stuff_list = site.posts | limit: site.number_of_posts %}
+
+  <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 py-2">
+    {%- for post in stuff_list -%}
+    {% if post.is_stuff &&  !post.hidden %}
+      {% include stuff.html %}
+    {% endif %}
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="py-4">
   <h3 class="posts-item-note" aria-label="Categories">Categories</h3>
   {%- for category in site.categories -%}
   <article class="post-item">

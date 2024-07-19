@@ -1,6 +1,86 @@
+/*
+Examples:
+https://techzaa.getappui.com/techcard/?storefront=envato-elements
+*/
+
+.deck {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    max-width: 500px;
+    max-height: 1000px;
+    position:relative;
+
+    .card {
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transition: all .5s linear;
+        transition: all .5s linear;
+        border-radius: 10px;
+    }
+
+    .face {
+        position: absolute;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background-color: whitesmoke;
+        border-radius: 10px;
+    }
+
+    .front {
+        background-color: antiquewhite;
+        z-index: 1;
+        box-shadow: 5px 5px 5px #aaa;
+    }
+
+    .back {
+        overflow: hidden;
+        z-index: -1;
+        display: block;
+        background-color: antiquewhite;
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+        box-sizing: border-box;
+        box-shadow: 0 0 0 #aaa;
+
+        &:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            background-size: 100% 100%;
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+    }
+
+    .front,
+    .back {
+        transition: all .5s linear;
+    }
+
+    .flipped,
+    .hovercard:hover {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+
+        .front {
+            box-shadow: 0 0 0 #aaa;
+        }
+
+        .back {
+            box-shadow: 5px 5px 5px #aaa;
+        }
+    }
+}
+
 .card-stuff-01 {
+    background-color: white;
     box-sizing: border-box;
     border: .5px solid #ada9a650;
+    width: 100%;
+    max-width: 20rem;
 
     .card-img {
         img {
@@ -15,10 +95,15 @@
 
         a {
             color: $text-base-color;
+
             &:hover,
             &focus {
                 color: $black;
             }
         }
+    }
+
+    @media #{$mobile} {
+        max-width: 100%;
     }
 }

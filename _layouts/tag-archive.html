@@ -1,6 +1,10 @@
 ---
-layout: page
+layout: default
 ---
+
+<header class="header mt-30">
+  <h1 class="header-title center" itemprop="headline">{{ page.title | escape }}.</h1>
+</header>
 
 <div class="archive-tags text-center">
   <a class="tag-item" href="/tags/">all</a>
@@ -14,5 +18,15 @@ layout: page
   {% capture tag %}{{ tag | first }}{% endcapture %}
   {% assign posts_list = page.posts %}
   <h2 id="{{ tag }}">{{ tag | upcase }}</h2>
-  {% include stuff.html %}
+  <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+    {% if tag == null or tag == "" %}
+      {%- for post in posts_list -%}
+      {% unless post.hidden %}
+        {% include stuff.html %}
+      {% endunless %}
+      {%- endfor -%}
+    {% else %}
+    <span>Nothing to show</span>
+    {% endif %}
+  </div>
 </section>

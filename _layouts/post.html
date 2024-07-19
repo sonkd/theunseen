@@ -27,19 +27,44 @@ layout: compress
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
   {% include navbar.html %}
-  <div class="wrapper post">
-    <main class="page-content pb-20" aria-label="Content">
-      {% assign post = page %}
-      {% include seeastuff.html %}
-    </main>
-  </div>
-  {% if page.next or page.previous %}
-  <div id="navpost" class="sticky-bottom mx-0 transition-transform ease-in-out" hidden>
-    {% include navigation.html %}
-  </div>
-  {% endif %}
+  {% assign post = page %}
+  {% if post.is_stuff %}
+    <div class="wrapper flex-col gap-2 post">
+      <main class="flex justify-center my-20">
+      {% include popastuff.html %}
+      </main>
+      {% if page.next or page.previous %}
 
-  {% include footer.html %}
+      <div class="py-4">
+        <h3 class="posts-item-note" aria-label="Recommended">Recommended</h3>
+        <div class="flex gap-4 py-2">
+          {% include navigation-card.html %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="wrapper post">
+      <main class="page-content pb-20" aria-label="Content">
+        {% include seeastuff.html %} 
+      </main>
+    </div>
+    {% if page.next or page.previous %}
+    <div id="navpost" class="sticky-bottom w-full transition-transform ease-in-out" hidden>
+      {% include navigation.html %}
+    </div>
+    {% endif %}
+    {% include footer.html %}
+  {% endif %}
 </body>
+<script>
+  /* flip card */
+  $(".flip").click(function () {
+    $(this).parents(".card").toggleClass("flipped");
+  });
+  $(".clickcard").click(function () {
+    $(this).toggleClass("flipped");
+  });
+</script>
 
 </html>

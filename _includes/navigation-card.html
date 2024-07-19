@@ -1,0 +1,16 @@
+{% if page.previous %}
+  {% assign post = page.previous %}
+  <a class="post-nav-prev" href="{{ page.previous | relative_url }}">
+    {% if post.is_stuff &&  !post.hidden %}
+      {% include stuff.html %}
+    {% endif %}
+  </a>
+  {% endif %} 
+  {% if page.next %}
+  {% assign post = page.next %}
+  <a class="post-nav-next" href="{{ page.next | relative_url }}">
+    {% if post.is_stuff &&  !post.hidden %}
+      {% include stuff.html %}
+    {% endif %}
+  </a>
+{% endif %}

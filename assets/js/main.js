@@ -44,18 +44,21 @@
   // Check isReading state
   let prevScrollTop = window.scrollY || document.documentElement.scrollTop;
   let prevScrollDirection = '';
+  const viewPost = document.querySelector("#navpost");
 
-  window.addEventListener('scroll', function () {
-    const st = window.scrollY || document.documentElement.scrollTop;
-    if (st > prevScrollTop && prevScrollDirection !== 'down') {
-      // downscroll code here
-      document.querySelector("#navpost").setAttribute("hidden", "");
-      prevScrollDirection = 'down';
-    } else if (st < prevScrollTop && prevScrollDirection !== 'up') {
-      // upscroll code
-      document.querySelector("#navpost").removeAttribute("hidden");
-      prevScrollDirection = 'up';
-    }
-    prevScrollTop = st <= 0 ? 0 : st; // for Mobile or negative scrolling
-  }, false);
+  if (viewPost) {
+    window.addEventListener('scroll', function () {
+      const st = window.scrollY || document.documentElement.scrollTop;
+      if (st > prevScrollTop && prevScrollDirection !== 'down') {
+        // downscroll code here
+        viewPost.setAttribute("hidden", "");
+        prevScrollDirection = 'down';
+      } else if (st < prevScrollTop && prevScrollDirection !== 'up') {
+        // upscroll code
+        viewPost.removeAttribute("hidden");
+        prevScrollDirection = 'up';
+      }
+      prevScrollTop = st <= 0 ? 0 : st; // for Mobile or negative scrolling
+    }, false);
+  }
 })();

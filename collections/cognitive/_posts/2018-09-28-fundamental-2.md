@@ -1,0 +1,35 @@
+---
+title: Fundamental 2
+date: 2018-09-28 09:45:47 +07:00
+modified: 2019-08-29 09:24:47 +07:00
+tags: [psychology, sociology]
+
+is_stuff: true
+impacts: [motivation, habit-forming, loyalty, experience, conversion, learning, product development, task completion]
+connected: [Limited Access, Limited Choice, Time Scarity]
+
+visibility: 2
+
+description: All the services are free, a source code this site placed on github repository and intergration with netlify service, another service that you can use is github page for hosting your own static site.
+
+image: \assets\img\design-principles\human.png
+discussing_link: https://t.me/thingsunseen/4
+
+hidden: false
+---
+
+#### Stydy
+The website was made using Jekyll the one of open source static sites generator, and using my own simple theme, I called [klisé](https://github.com/piharpi/klise).
+
+#### Key takeaways
+
+Requirements before we doing magic show.
+
+- [Ruby](https://www.ruby-lang.org/en/downloads/) programming language
+- [Git](https://git-scm.com) (version control)
+- [Netlify](https://netlify.com) and [Github](https://github.com) account
+- [Bundler](https://bundler.io)
+
+#### Practices
+
+First, you need some [SSG](https://www.staticgen.com/), there are many kind ssg, but in case i'm using Jekyll cause i'm already familiar with it, open your terminal and type command on below
