@@ -1,5 +1,5 @@
 ---
-title: Fundamental Attribution Error
+title: Time Scarity
 date: 2018-09-28 09:45:47 +07:00
 modified: 2019-08-29 09:24:47 +07:00
 is_stuff: true

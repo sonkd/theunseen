@@ -1,0 +1,31 @@
+---
+layout: page
+title: Product Development
+isImpact: true
+permalink: /category/product-development/
+excerpt: Sorted article by categories.
+---
+
+<div class="archive-tags text-center">
+  {%- for stuff in site.data.impacts -%}
+  {% capture name %}{{ stuff.title | first }}{% endcapture %}
+  <a class="tag-item" href="/category/{{ stuff.title | slugify }}">{{ stuff.title }}</a>
+  {%- endfor -%}
+</div>
+
+<section class="categories mt-4">
+  {%- for stuff in site.data.stuff -%}
+    {% if stuff.impacts contains page.title %}
+      {% assign postTmp = site.posts | where_exp: "item", "item.title == stuff.title" %}
+      {% assign posts_list = posts_list | concat: postTmp %}
+    {% endif %}
+  {%- endfor -%}
+  <ul class="posts">
+    {%- for post in posts_list -%}
+    <li>
+      <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

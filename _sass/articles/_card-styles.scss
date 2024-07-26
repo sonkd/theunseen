@@ -6,8 +6,6 @@ https://techzaa.getappui.com/techcard/?storefront=envato-elements
 .deck {
     -webkit-perspective: 1000px;
     perspective: 1000px;
-    max-width: 500px;
-    max-height: 1000px;
     position:relative;
 
     .card {
@@ -60,8 +58,7 @@ https://techzaa.getappui.com/techcard/?storefront=envato-elements
         transition: all .5s linear;
     }
 
-    .flipped,
-    .hovercard:hover {
+    .flipped {
         -webkit-transform: rotateY(180deg);
         transform: rotateY(180deg);
 
@@ -71,6 +68,32 @@ https://techzaa.getappui.com/techcard/?storefront=envato-elements
 
         .back {
             box-shadow: 5px 5px 5px #aaa;
+        }
+    }
+
+    @media #{$mobile} {
+        .card {
+            .front, .back {
+                height: 70vh;
+            }
+            
+            img {
+                height: 30vh !important;
+            }
+        }
+
+        .connected {
+            img {
+                width: 2rem !important;
+                height: 2rem !important
+            }
+        }
+
+        .impact {
+            img {
+                width: 4rem !important;
+                height: 4rem !important;
+            }
         }
     }
 }

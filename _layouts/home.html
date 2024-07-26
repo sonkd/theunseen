@@ -25,7 +25,7 @@ home: true
 
   <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 py-2">
     {%- for post in stuff_list -%}
-    {% if post.is_stuff &&  !post.hidden %}
+    {% if post.is_stuff and post.hidden == false %}
       {% include stuff.html %}
     {% endif %}
     {%- endfor -%}
@@ -42,4 +42,12 @@ home: true
     </h4>
   </article>
   {%- endfor -%}
+  {%- for impact in site.data.impacts -%}
+  <article class="post-item">
+    <h4 class="post-item-title">
+      {% capture name %}{{ impact.title | first }}{% endcapture %}
+      <a href="/category/{{ impact.title | slugify }}">{{ impact.title }}</a>
+    </h4>
+  </article>
+  {% endfor %}
 </section>

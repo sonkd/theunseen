@@ -6,25 +6,26 @@ excerpt: Sorted article by categories.
 ---
 
 <div class="archive-tags text-center">
-    <a class="tag-item" href="/categories/">all</a>
-    {%- for category in site.categories -%} 
-      {% capture name %}{{ category | first }}{% endcapture %}
-      <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a> 
-    {%- endfor -%}
+  <a class="tag-item" href="/categories/">all</a>
+  {%- for category in site.categories -%} 
+    {% capture name %}{{ category | first }}{% endcapture %}
+    <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a> 
+  {%- endfor -%}
 </div>
 
 <section class="categories">
-    {%- for category in site.categories -%}
-        {% capture cat %}{{ category | first }}{% endcapture %}
-        {% assign posts_list = site.categories[cat] %}
-        <h2 id="{{ cat }}">{{ cat | upcase }}</h2>
-        <ul class="posts">
-            {% for post in posts_list %}
-              <li>
-                <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-                <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              </li>
-            {% endfor %}
-        </ul>
+  {%- for category in site.categories -%}
+    {% capture cat %}{{ category | first }}{% endcapture %}
+      {% assign posts_list = site.categories[cat] %}
+      <h2 id="{{ cat }}">{{ cat | upcase }}</h2>
+      <ul class="posts">
+        {% for post in posts_list %}
+        <li>
+          <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <img class="object-cover rounded-md w-8 h-8" src="{{ post.image }}" alt="{{ post.title }}">
+        </li>
+        {% endfor %}
+      </ul>
     {%- endfor -%}
 </section>

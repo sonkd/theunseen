@@ -24,9 +24,16 @@
       {% endif %}
     {% else %}
       <div class="logo w-full">
+        {% if page.isImpact %}
+        {% assign impact = site.data.impacts | where_exp: "item", "item.title == page.title" %}
+        <a href="{{ page.url }}">
+          <img class="object-cover rounded-xl" src="{{ impact[0].image }}" alt="{{ page.title }}" title="{{ page.title }}"/>
+        </a>
+        {% else %}
         <a href="{{ site.url }}">
           <img class="rounded-full object-cover" src="{{ site.author.avatar }}" alt="{{ site.author.username }}"/>
         </a>
+        {% endif %}
       </div>
     {% endif %}
     

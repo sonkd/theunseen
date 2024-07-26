@@ -29,15 +29,14 @@ layout: compress
   {% include navbar.html %}
   {% assign post = page %}
   {% if post.is_stuff %}
-    <div class="wrapper flex-col gap-2 post">
-      <main class="flex justify-center my-20">
+    <div class="wrapper post">
+      <main class="flex justify-center mt-20" aria-label="Content">
       {% include popastuff.html %}
       </main>
       {% if page.next or page.previous %}
-
-      <div class="py-4">
+      <div class="py-4 mt-4">
         <h3 class="posts-item-note" aria-label="Recommended">Recommended</h3>
-        <div class="flex gap-4 py-2">
+        <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 py-2">
           {% include navigation-card.html %}
         </div>
       </div>
@@ -46,7 +45,7 @@ layout: compress
   {% else %}
     <div class="wrapper post">
       <main class="page-content pb-20" aria-label="Content">
-        {% include seeastuff.html %} 
+      {% include seeastuff.html %} 
       </main>
     </div>
     {% if page.next or page.previous %}

@@ -1,0 +1,8 @@
+- name: level-1
+  img: assets/img/visibility/level-1.png
+
+- name: level-2
+  img: assets/img/visibility/level-2.png
+
+- name: level-3
+  img: assets/img/visibility/level-3.png
