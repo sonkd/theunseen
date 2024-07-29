@@ -3,96 +3,116 @@ Examples:
 https://techzaa.getappui.com/techcard/?storefront=envato-elements
 */
 
-.deck {
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-    position:relative;
-
-    .card {
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        -webkit-transition: all .5s linear;
-        transition: all .5s linear;
-        border-radius: 10px;
+body[data-theme="dark"] {
+    .card-stuff {
+        background-color: $dark-smoke;
     }
+}
 
-    .face {
+/* ----- Product Section ----- */
+.card-stuff {
+    display: grid;
+    grid-template-columns: 0.9fr 1fr;
+    padding: 2.5em 0;
+    background-color: $white;
+    border-radius: 5px;
+
+    .card-container {
         position: absolute;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        background-color: whitesmoke;
-        border-radius: 10px;
+        display: grid;
+        grid-template-rows: 1fr;
+        background-color: $primary-color;
+        border-radius: 6px;
+        box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
     }
 
-    .front {
-        background-color: antiquewhite;
-        z-index: 1;
-        box-shadow: 5px 5px 5px #aaa;
-    }
+    .photo-main {
+        border-radius: 6px 6px 0 0;
 
-    .back {
-        overflow: hidden;
-        z-index: -1;
-        display: block;
-        background-color: antiquewhite;
-        -webkit-transform: rotateY(180deg);
-        transform: rotateY(180deg);
-        box-sizing: border-box;
-        box-shadow: 0 0 0 #aaa;
+        .controls {
+            z-index: 100;
+            color: #fff;
 
-        &:before {
-            content: "";
-            position: absolute;
-            z-index: -1;
-            background-size: 100% 100%;
-            -webkit-transform: rotateY(180deg);
-            -moz-transform: rotateY(180deg);
-            -ms-transform: rotateY(180deg);
-            -o-transform: rotateY(180deg);
-            transform: rotateY(180deg);
+            i {
+                cursor: pointer;
+            }
         }
     }
 
-    .front,
-    .back {
-        transition: all .5s linear;
-    }
+    .card-detail {
+        background-color: $white;
 
-    .flipped {
-        -webkit-transform: rotateY(180deg);
-        transform: rotateY(180deg);
-
-        .front {
-            box-shadow: 0 0 0 #aaa;
+        p {
+            @include relative-font-size(.75);
         }
 
-        .back {
-            box-shadow: 5px 5px 5px #aaa;
+        h4 {
+            @include relative-font-size(1);
+        }
+    }
+
+    /* ----- Informations Section ----- */
+
+    .title {
+        h1 {
+            margin-bottom: 0.1em;
+            color: $black;
+            font-size: 1.5em;
+            font-weight: 900;
+        }
+
+        span {
+            font-size: 0.7em;
+            color: $gray;
+        }
+    }
+
+    .variant {
+        overflow: auto;
+
+        h3 {
+            margin-bottom: 1.1em;
+        }
+    }
+
+    .description {
+        clear: left;
+        margin: 2em 0;
+
+        h3 {
+            margin-bottom: 1em;
+        }
+    }
+
+    .buy--btn {
+        padding: 1.5em 3.1em;
+        border: none;
+        border-radius: 7px;
+        font-size: 0.8em;
+        font-weight: 700;
+        letter-spacing: 1.3px;
+        color: #fff;
+        background-color: $light;
+        box-shadow: 2px 2px 25px -7px $black;
+        cursor: pointer;
+
+        &:active {
+            transform: scale(0.97);
         }
     }
 
     @media #{$mobile} {
-        .card {
-            .front, .back {
-                height: 70vh;
-            }
-            
-            img {
-                height: 30vh !important;
-            }
-        }
-
         .connected {
             img {
-                width: 2rem !important;
-                height: 2rem !important
+                width: 1.5rem !important;
+                height: 1.5rem !important
             }
         }
 
         .impact {
             img {
-                width: 4rem !important;
-                height: 4rem !important;
+                width: 3rem !important;
+                height: 3rem !important;
             }
         }
     }

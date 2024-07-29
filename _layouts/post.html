@@ -41,6 +41,7 @@ layout: compress
         </div>
       </div>
       {% endif %}
+      {% include footer.html %}
     </div>
   {% else %}
     <div class="wrapper post">
@@ -56,14 +57,4 @@ layout: compress
     {% include footer.html %}
   {% endif %}
 </body>
-<script>
-  /* flip card */
-  $(".flip").click(function () {
-    $(this).parents(".card").toggleClass("flipped");
-  });
-  $(".clickcard").click(function () {
-    $(this).toggleClass("flipped");
-  });
-</script>
-
 </html>
