@@ -1,78 +1,53 @@
-<!-- show a <post> -->
-{% assign post_attrs = site.data.stuff | where_exp: "item", "item.title == post.title" %}
-<article class="card-stuff gap-4 p-3">
-    <div class="relative h-[600px]">
-        <div class="card-container flex w-full h-full">
-            <div class="photo-main w-full">
-                <div class="controls flex items-center justify-between w-full absolute z-10 p-3">
-                    <i class="material-icons">share</i>
-                    <i class="material-icons">favorite_border</i>
-                </div>
-                {% if post.image %}
-                <img class="h-60 w-full rounded-lg object-cover absolute top-0" src="{{ post.image }}" alt="{{ post.title }}">
-                {% else %}
-                <img class="h-60 w-full rounded-lg object-cover absolute top-0" src="{{ site.author.avatar }}" alt="{{ post.title }}">
-                {% endif %}
+<!-- show a <post>: post_attrs[] defined -->
+<article class="card-stuff flex gap-6 w-full">
+    <div class="card-container flex h-[450px] w-fit overflow-hidden rounded-lg ">
+        <div class="photo-main relative w-full">
+            <div class="controls z-[1] absolute top-0 flex items-center justify-end w-full">
+                <button class="share-btn bg-white p-2 m-2 rounded-sm" title="share" type="button" onclick="sharePopup()">{% include share-icon.svg %}</button>
+                <button class="close_share-btn bg-white p-2 m-2 rounded-sm" title="close" type="button" onclick="closePopup()" hidden>{% include close-icon.svg %}</button>
             </div>
-            <div class="card-detail m-4">
-                <div class="flex justify-between items-start items-center px-3">
-                    <!-- Visibility -->
-                    <div class="visibility flex justify-between items-start items-center">
-                        {{ post_attrs[0].visibility }}
-                    </div>
-                    <!-- Connected -->
-                    <div class="connected flex gap-2 items-start items-center">
-                        {% for link in post_attrs[0].connected %}
-                        {% assign stuff_link = site.posts | where_exp: "item", "item.title == link" %}
-                        <a href="{{ site.url }}/{{ link | slugify }}">
-                            {% if stuff_link[0].image %}
-                            <img class="object-cover rounded-xl h-8 w-8" src="{{ stuff_link[0].image }}"
-                                alt="{{ link }}" title="{{ link }}" />
-                            {% else %}
-                            <img class="object-cover rounded-xl h-8 w-8" src="{{ site.author.avatar }}" alt="{{ link }}"
-                                title="{{ link }}" />
-                            {% endif %}
-                        </a>
-                        {% endfor %}
-                    </div>
+            {% include share-popup.html %}
+            {% if post.image %}
+            <img class="object-cover" src="{{ post.image }}" alt="{{ post.title }}">
+            {% else %}
+            <img class="object-cover" src="{{ site.author.avatar }}" alt="{{ post.title }}">
+            {% endif %}
+        </div>
+        <div class="card-detail m-4">
+            <div class="flex justify-between items-start items-center">
+                <!-- Connected -->
+                <div class="connected flex gap-2 items-start items-center">
+                    {% for link in post_attrs[0].connected %}
+                    {% assign stuff_link = site.posts | where_exp: "item", "item.title == link" %}
+                    <a href="{{ site.url }}/{{ link | slugify }}">
+                        {% if stuff_link[0].image %}
+                        <img class="object-cover rounded-xl h-8 w-8" src="{{ stuff_link[0].image }}" alt="{{ link }}"
+                            title="{{ link }}" />
+                        {% else %}
+                        <img class="object-cover rounded-xl h-8 w-8" src="{{ site.author.avatar }}" alt="{{ link }}"
+                            title="{{ link }}" />
+                        {% endif %}
+                    </a>
+                    {% endfor %}
                 </div>
-                <!-- Content -->
-                <div class="stuff-content px-3">
-                    <h4>{{ post.title }}</h4>
-                    <div>
-                        {{ post.description }}
-                    </div>
-                    <div>
-                        {{ post.reference }}
-                    </div>
-                </div>
-                <!-- Impact -->
-                <div class="p-3">
-                    <h4>Impact</h4>
-                    <div class="impact flex gap-2 items-start">
-                        {% for impact_link in post_attrs[0].impacts %}
-                        {% assign impact = site.data.impacts | where_exp: "item", "item.title == impact_link" %}
-                        <a href="{{ site.url }}/category/{{ impact_link | slugify }}">
-                            {% if impact[0].image %}
-                            <img class="object-cover rounded-xl h-12 w-12" src="{{ impact[0].image }}"
-                                alt="{{ impact_link }}" title="{{ impact_link }}" />
-                            {% else %}
-                            <img class="object-cover rounded-xl h-12 w-12" src="{{ site.author.avatar }}"
-                                alt="{{ impact_link }}" title="{{ impact_link }}" />
-                            {% endif %}
-                        </a>
-                        {% endfor %}
-                    </div>
+                <!-- Visibility -->
+                <div class="visibility flex justify-between items-start items-center">
+                    {% for i in (1..post.visibility) %}
+                    ⭐
+                    {% endfor %}
                 </div>
             </div>
+            <h4>{{ post.title }}</h4>
         </div>
     </div>
-    <div class="card-eplaination">
+
+    <div class="card-explaination">
         <div class="description">
-            <h5>SUMMARY</h5>
             {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=1
             h_max=4 %}
         </div>
-        <button class="buy--btn">Join Community to Discuss</button>
+        {% if post.discussing_link %}
+        <button class="buy--btn" onclick="{{ post.discussing_link }}" type="button">Join Community to Discuss</button>
+        {% endif %}
     </div>
 </article>

@@ -3,8 +3,8 @@ title: Limited Access
 date: 2018-09-28 09:45:47 +07:00
 modified: 2019-08-29 09:24:47 +07:00
 is_stuff: true
-
-description: All the services are free, a source code this site placed on github repository and intergration with netlify service, another service that you can use is github page for hosting your own static site.
+tags: [psychology, sociology]
+visibility: 1
 
 image: \assets\img\stuff\limited-access.jpg
 discussing_link: https://t.me/thingsunseen/4

@@ -267,6 +267,26 @@ legend {
     top: 2.5rem
 }
 
+.float-start {
+    float: inline-start;
+}
+
+.float-end {
+    float: inline-end;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.z-50 {
+    z-index: 50
+}
+
 .z-10 {
     z-index: 10
 }
@@ -277,6 +297,10 @@ legend {
 
 .z-\[2\] {
     z-index: 2
+}
+
+.m-2 {
+    margin: .5rem
 }
 
 .m-4 {
@@ -476,6 +500,14 @@ legend {
     flex-basis: 1
 }
 
+.basis-1\/4 {
+    flex-basis: 25%;
+}
+
+.basis-1\/2 {
+    flex-basis: 50%;
+}
+
 .flex\:wrap {
     flex-wrap: wrap;
 }
@@ -536,6 +568,18 @@ legend {
     height: 350px
 }
 
+.h-\[400px\] {
+    height: 400px
+}
+
+.h-\[450px\] {
+    height: 450px
+}
+
+.h-\[500px\] {
+    height: 500px
+}
+
 .h-\[600px\] {
     height: 600px
 }
@@ -546,6 +590,10 @@ legend {
 
 .h-full {
     height: 100%
+}
+
+.h-fit {
+    height: fit-content;
 }
 
 .max-h-64 {
@@ -713,12 +761,16 @@ legend {
     overflow: hidden
 }
 
+.rounded-full {
+    border-radius: 9999px
+}
+
 .rounded-2xl {
     border-radius: 1rem
 }
 
-.rounded-full {
-    border-radius: 9999px
+.rounded-xl {
+    border-radius: .75rem
 }
 
 .rounded-lg {
@@ -729,8 +781,8 @@ legend {
     border-radius: .375rem
 }
 
-.rounded-xl {
-    border-radius: .75rem
+.rounded-sm {
+    border-radius: .25rem
 }
 
 .border {
@@ -796,6 +848,10 @@ legend {
 
 .bg-opacity-80 {
     --su--bg-opacity: 0.8
+}
+
+.bg-opacity-50 {
+    --su--bg-opacity: 0.5
 }
 
 .bg-gradient-to-l {

@@ -3,45 +3,103 @@ Examples:
 https://techzaa.getappui.com/techcard/?storefront=envato-elements
 */
 
+// Card styles
+*,
+::after,
+::before {
+    --perception__universal-mind--default: #DB262F;
+    --perception__intelligence--default: #56446A;
+    --perception__agility--default: #A15B3C;
+    --thinking__intelligence--default: #8289AE;
+    --thinking__agility--default: #9F997D;
+    --emotion__intelligence--default: #5E9EE6;
+    --emotion__agility--default: #3CB07D;
+}
+
 body[data-theme="dark"] {
     .card-stuff {
-        background-color: $dark-smoke;
+        .card-container {
+            background-color: $dark-light;
+            border: 2px solid $dark-gray;
+            box-shadow: 4px 4px $dark-gray;
+        }
+    }
+
+    .card-stuff-01 {
+        background-color: $dark-light;
+        .post-item-title {
+            //font-size: $medium-font-size;
+            font-weight: $bold-weight;
+            letter-spacing: 0.1px;
+    
+            a {
+                color: $dark-text-base-color;
+    
+                &:hover,
+                &focus {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .card-stuff-02 {
+        background: $dark-black;
+        border: 2px solid $dark-gray;
+        box-shadow: 4px 4px $dark-gray;
+        .post-item-title {  
+            a {
+                color: $text-base-color;
+    
+                &:hover,
+                &focus {
+                    color: $primary-color;
+                }
+            }
+        }
     }
 }
 
 /* ----- Product Section ----- */
 .card-stuff {
-    display: grid;
-    grid-template-columns: 0.9fr 1fr;
-    padding: 2.5em 0;
-    background-color: $white;
     border-radius: 5px;
+    flex-direction: row;
+    max-width: $wide-size;
 
     .card-container {
-        position: absolute;
         display: grid;
         grid-template-rows: 1fr;
-        background-color: $primary-color;
-        border-radius: 6px;
+        background: $white;
+        border: 2px solid $black;
+        box-shadow: 4px 4px $black;
+        border-radius: 5px;
+        min-width: 300px;
+        max-width: 600px;
+        /*
+        background-color: $white;
         box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
+        */
     }
 
     .photo-main {
-        border-radius: 6px 6px 0 0;
-
         .controls {
-            z-index: 100;
             color: #fff;
-
             i {
+                cursor: pointer;
+            }
+
+            .share-btn {
+                cursor: pointer;
+            }
+
+            .close_share-btn {
                 cursor: pointer;
             }
         }
     }
 
     .card-detail {
-        background-color: $white;
-
+        /* background-color: $white; */
         p {
             @include relative-font-size(.75);
         }
@@ -52,7 +110,6 @@ body[data-theme="dark"] {
     }
 
     /* ----- Informations Section ----- */
-
     .title {
         h1 {
             margin-bottom: 0.1em;
@@ -75,33 +132,37 @@ body[data-theme="dark"] {
         }
     }
 
+    .card-explaination {
+        min-width: 343px;
+
+        .buy--btn {
+            padding: 1.25em 2em;
+            box-shadow: 3px 5px 0px $black;
+            border: 4px solid;
+            border-radius: 7px;
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            cursor: pointer;
+
+            &:hover,&:active {
+                transform: translate(2px, 2px);
+                box-shadow: 2px 3px 0px $black;
+                background-color: $primary-color;
+            }
+        }
+    }
+
     .description {
         clear: left;
-        margin: 2em 0;
-
         h3 {
             margin-bottom: 1em;
         }
     }
 
-    .buy--btn {
-        padding: 1.5em 3.1em;
-        border: none;
-        border-radius: 7px;
-        font-size: 0.8em;
-        font-weight: 700;
-        letter-spacing: 1.3px;
-        color: #fff;
-        background-color: $light;
-        box-shadow: 2px 2px 25px -7px $black;
-        cursor: pointer;
-
-        &:active {
-            transform: scale(0.97);
-        }
-    }
-
     @media #{$mobile} {
+        flex-direction: column;
+
         .connected {
             img {
                 width: 1.5rem !important;
@@ -119,11 +180,11 @@ body[data-theme="dark"] {
 }
 
 .card-stuff-01 {
-    background-color: white;
+    background-color: $white;
     box-sizing: border-box;
     border: .5px solid #ada9a650;
     width: 100%;
-    max-width: 20rem;
+    max-width: 15rem;
 
     .card-img {
         img {
@@ -142,6 +203,41 @@ body[data-theme="dark"] {
             &:hover,
             &focus {
                 color: $black;
+            }
+        }
+    }
+
+    @media #{$mobile} {
+        max-width: 100%;
+    }
+}
+
+.card-stuff-02 {
+    background: $white;
+    border: 2px solid $black;
+    box-shadow: 4px 4px $black;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 15rem;
+
+    .card-img {
+        img {
+            min-height: 10rem;
+        }
+    }
+
+    .post-item-title {
+        //font-size: $medium-font-size;
+        font-weight: $bold-weight;
+        text-align: center;
+        letter-spacing: 0.1px;
+
+        a {
+            color: $text-base-color;
+
+            &:hover,
+            &focus {
+                color: $primary-color;
             }
         }
     }

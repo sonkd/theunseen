@@ -304,7 +304,14 @@
   }
 }
 
+.related-posts {
+  width: fit-content;
+}
+
 @media #{$mobile} {
+  .related-posts {
+    width: 100%;
+  }
   .navbar {
     .menu {
       #category {
@@ -327,7 +334,7 @@
 }
 
 #navpost .post-nav {
-  background-color: $white;
+  background-color: $light;
 }
 
 body[data-theme="dark"] #navpost .post-nav {

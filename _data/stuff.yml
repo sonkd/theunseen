@@ -1,15 +1,12 @@
 - title: Limited Access
-  tags: [psychology, sociology]
   impacts: [Motivation, Habit Forming]
   connected: [Fundamental Attribution Error, Limited Choice, Time Scarity]
-  visibility: 2
 - title: Fundamental Attribution Error
-  tags: [psychology, sociology]
   impacts: [Motivation, Habit Forming, Loyalty, Experience, Conversion, Learning, Product Development, Task Completion]
   connected: [Limited Access, Limited Choice, Time Scarity]
-  visibility: 2
 - title: Time Scarity
-  tags: [psychology, sociology]
   impacts: [Motivation, Loyalty]
   connected: [Limited Access, Limited Choice]
-  visibility: 2
+- title: Default Bias
+  impacts: [Motivation]
+  connected: [Limited Choice]

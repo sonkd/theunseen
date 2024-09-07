@@ -2,9 +2,7 @@
 title: Simplicity
 date: 2024-06-01 09:45:47
 modified: 2024-06-01 09:24:47
-tags: 
-
-description: All the services are free, a source code this site placed on github repository and intergration with netlify service, another service that you can use is github page for hosting your own static site.
+tags: [Design Principle]
 
 image: \assets\img\design-principles\simplicity.png
 discussing_link:
