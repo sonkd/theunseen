@@ -36,7 +36,7 @@ layout: compress
     </main>
     <!-- Impact -->
     <div class="mt-4">
-      <h4>Impact</h4>
+      <h3>Impact</h3>
       <div class="impact">
         {% for impact_link in post_attrs[0].impacts %}
         {% assign impact = site.data.impacts | where_exp: "item", "item.title == impact_link" %}

@@ -116,3 +116,4 @@ plugins:
   - jekyll-sitemap
   - jekyll-postfiles
   - jekyll-archives
+  - jekyll-seo-tag

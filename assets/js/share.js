@@ -13,3 +13,12 @@ function closePopup() {
     shareBtn.removeAttribute("hidden");
     closeShareBtn.setAttribute("hidden", "");
 }
+
+const copyUrl = document.getElementById("copy-btn");
+copyUrl.addEventListener("click", function(){ 
+    copyUrl.innerHTML = "Copied";
+    navigator.clipboard.writeText(document.getElementById("copy-url").value);
+    setTimeout(function() {
+        copyUrl.innerHTML ="Copy";
+    }, 3000); 
+});

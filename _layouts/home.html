@@ -24,14 +24,12 @@ home: true
   {% assign stuff_list = site.posts | limit: site.number_of_posts %}
 
   <ul class="posts">
-    {%- for post in stuff_list -%}
-    {% if post.is_stuff and post.hidden == false %}
-    <li>
-      <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-      <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <img class="object-cover rounded-md w-6 h-6" src="{{ post.image }}" alt="{{ post.title }}">
-    </li>
-    {% endif %}
+    {%- for post in site.data.featured -%}
+      <li>
+        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <a class="post-link not-underline" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <img class="object-cover rounded-md w-6 h-6" src="{{ post.image }}" alt="{{ post.title }}">
+      </li>
     {%- endfor -%}
   </ul>
 </section>
