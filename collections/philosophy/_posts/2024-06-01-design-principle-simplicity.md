@@ -2,7 +2,7 @@
 title: Simplicity
 date: 2024-06-01 09:45:47
 modified: 2024-06-01 09:24:47
-tags: [Design Principle]
+tags: [design principle]
 
 image: \assets\img\design-principles\simplicity.png
 discussing_link:

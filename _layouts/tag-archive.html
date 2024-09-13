@@ -10,7 +10,7 @@ layout: default
   <a class="tag-item" href="/tags/">all</a>
   {%- for tag in site.tags -%} 
     {% capture name %}{{ tag | first }}{% endcapture %}
-    <a class="tag-item" href="/tag/{{name}}">{{ name }}</a> 
+    <a class="tag-item" href="/tag/{{name | downcase | slugify}}">{{ name }}</a> 
   {%- endfor -%}
 </div>
 
@@ -18,7 +18,7 @@ layout: default
   {% capture tag %}{{ tag | first }}{% endcapture %}
   {% assign posts_list = page.posts %}
   <h2 id="{{ tag }}">{{ tag | upcase }}</h2>
-  <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+  <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
     {% if tag == null or tag == "" %}
       {%- for post in posts_list -%}
       {% unless post.hidden %}
