@@ -23,6 +23,12 @@ body[data-theme="dark"] {
             border: 2px solid $dark-gray;
             box-shadow: 4px 4px $dark-gray;
         }
+
+        .card-explaination {
+            .buy--btn {
+                box-shadow: 3px 5px 0px $dark-gray;
+            }
+        }
     }
 
     .card-stuff-01 {
