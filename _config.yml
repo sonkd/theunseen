@@ -1,10 +1,10 @@
 # Site settings
 title: The Stuff Unseen # site title
-description: >- # site description
+description: >
   See the unseen things in mind and everything in the universe.
 lang: en-US # default lang
 timezone: Asia/Jakarta # set your timezone
-image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+image: assets/img/avatar.png # This image used for Open Graph more info https://ogp.me/
 repo: # site repo [optional]
 mode: light # default theme "dark" | "light"
 

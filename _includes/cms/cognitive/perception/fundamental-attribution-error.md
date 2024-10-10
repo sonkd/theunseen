@@ -26,9 +26,12 @@ layout:
 
 We judge others on their personality or fundamental character, but we judge ourselves on the situation.
 
+<img src="https://gitbookio.github.io/onboarding-template-images/editor-hero.png" alt="">
+
 **Key takeaways**
 
 Requirements before we do a magic show.
+<img src="https://gitbookio.github.io/onboarding-template-images/markdown-hero.png" alt="">
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/) programming language
 * [Git](https://git-scm.com) (version control)
