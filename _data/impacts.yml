@@ -1,8 +1,26 @@
 - title: Motivation
-  image: \assets\img\stuff\limited-access.jpg
+  image: \assets\img\impacts\motivation.png
 
 - title: Product Development
   image: \assets\img\stuff\limited-access.jpg
 
 - title: Habit Forming
+  image: \assets\img\impacts\habit.png
+
+- title: Loyalty
+  image: \assets\img\impacts\loyalty.png
+
+- title: Decision Making
+  image: \assets\img\impacts\decision.png
+
+- title: Conversion
+  image: \assets\img\stuff\limited-access.jpg
+
+- title: Learning
+  image: \assets\img\stuff\limited-access.jpg
+
+- title: Task Completion
+  image: \assets\img\stuff\limited-access.jpg
+
+- title: Emotion
   image: \assets\img\stuff\limited-access.jpg

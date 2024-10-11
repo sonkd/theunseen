@@ -29,34 +29,36 @@ layout: compress
   {% include navbar.html %}
   {% assign post = page %}
   {% if post.is_stuff %}
-  {% assign post_attrs = site.data.stuff | where_exp: "item", "item.title == post.title" %}
   <div class="wrapper post p-4">
     <main class="flex justify-center mt-20" aria-label="Content">
       {% include popastuff.html %}
     </main>
-    <!-- Impact -->
+    <!-- Connects -->
+    {% if post.connected.size > 0 %}
     <div class="mt-4">
-      <h3>Impact</h3>
+      <h3>Connects</h3>
       <div class="impact">
-        {% for impact_link in post_attrs[0].impacts %}
-        {% assign impact = site.data.impacts | where_exp: "item", "item.title == impact_link" %}
+        {% for stuff_name in post.connected %}
+        {% assign stuff = site.posts | where_exp: "item", "item.title == stuff_name" %}
         <article class="post-item">
           <h4 class="post-item-title">
-            <a href="{{ site.url }}/category/{{ impact_link | slugify }}" class="post-link flex items-center gap-2">
-            {% if impact[0].image %}
-            <img class="object-cover rounded-xl h-12 w-12" src="{{ impact[0].image }}" alt="{{ impact_link }}"
-              title="{{ impact_link }}" />
+            <a href="{{ site.url }}/{{ stuff_name | slugify }}" class="post-link flex items-center gap-2">
+            {% if stuff[0].image %}
+            <img class="object-cover rounded-xl h-12 w-12" src="{{ stuff[0].image }}" alt="{{ stuff_name }}"
+              title="{{ stuff_name }}" />
             {% else %}
-            <img class="object-cover rounded-xl h-12 w-12" src="{{ site.author.avatar }}" alt="{{ impact_link }}"
-              title="{{ impact_link }}" />
+            <img class="object-cover rounded-xl h-12 w-12" src="{{ site.author.avatar }}" alt="{{ stuff_name }}"
+              title="{{ stuff_name }}" />
             {% endif %}
-            {{ impact_link }}
+            {{ stuff_name }}
             </a>
           </h4>
         </article>
         {% endfor %}
       </div>
     </div>
+    {% endif %}
+
     {% if page.next or page.previous %}
     <div class="py-4 mt-4">
       <h3 class="posts-item-note" aria-label="Related Stuffs">Related Stuffs</h3>
