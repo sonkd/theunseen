@@ -1,10 +1,3 @@
----
-description: >-
-  Study The website was made using Jekyll the one of open source static sites
-  generator, and using my own simple theme, I called
-  [klisé](https://github.com/piharpi/klise).  Key takeaways ...
----
-
 # Fundamental Attribution Error
 
 We judge others on their personality or fundamental character, but we judge ourselves on the situation.
