@@ -1,5 +1,6 @@
 ---
 layout: default
+
 ---
 
 <header class="header mt-30">
@@ -20,7 +21,7 @@ layout: default
     <h2 id="{{ cat }}">{{ cat | upcase }}</h2>
     <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
       {% if cat == null or cat == "" %}
-        {%- for post in posts_list -%}
+        {%- for post in posts_list.posts -%}
         {% unless post.hidden %}
           {% include stuff.html %}
         {% endunless %}
@@ -30,3 +31,5 @@ layout: default
       {% endif %}
     </div>
 </section>
+
+{% include pagination.html %}

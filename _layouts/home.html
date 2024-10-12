@@ -8,10 +8,10 @@ home: true
 </section>
 <section class="py-4">
   <h3 class="posts-item-note text-center" aria-label="Recent Stuff">Recent Stuff</h3>
-  {% assign posts_list = site.posts | limit:9 %}
+  {% assign posts_list = site.posts %}
 
   <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
-    {%- for post in posts_list -%}
+    {%- for post in posts_list limit:site.number_of_posts -%}
       {% unless post.hidden %}
         {% include stuff.html %}
       {% endunless %}
@@ -24,7 +24,7 @@ home: true
   {% assign stuff_list = site.posts | limit:site.number_of_posts %}
 
   <ul class="posts">
-    {%- for post in site.data.featured -%}
+    {%- for post in site.data.featured limit:site.number_of_posts -%}
       <li>
         <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
           <a class="post-link not-underline" href="{{ post.url | relative_url }}">{{ post.title }}</a>

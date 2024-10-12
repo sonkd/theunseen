@@ -96,6 +96,9 @@ include:
   - .htaccess
   - _pages
 
+gems:
+  - jekyll-paginate-v2
+
 exclude:
   - CNAME
   - Gemfile
@@ -110,6 +113,21 @@ exclude:
   - klise-*.gem
   - klise.gemspec
 
+# Explicitly turn off the old code
+paginate: nil
+paginate_path: nil
+
+# Pagination Settings
+pagination:
+  enabled: true
+  per_page: 3
+  offset: 2
+  permalink: '/page/:num/'
+  title: ':title - page :num of :max'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+
 # Plugins
 plugins:
   - jekyll-feed
@@ -117,3 +135,4 @@ plugins:
   - jekyll-postfiles
   - jekyll-archives
   - jekyll-seo-tag
+  - jekyll-paginate-v2
