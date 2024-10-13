@@ -7,10 +7,12 @@ layout: default
 </header>
 
 <div class="archive-tags text-center">
-  <a class="tag-item" href="/tags/">all</a>
+  <a class="tag-item" href="/tags/">all tags</a>
   {%- for tag in site.tags -%} 
     {% capture name %}{{ tag | first }}{% endcapture %}
-    <a class="tag-item" href="/tag/{{name | downcase | slugify}}">{{ name }}</a> 
+    {% if page.title !=  name %}
+    <a class="tag-item" href="/tag/{{name | downcase | slugify}}">{{ name }}</a>
+    {% endif %}
   {%- endfor -%}
 </div>
 
@@ -20,7 +22,7 @@ layout: default
   <h2 id="{{ tag }}">{{ tag | upcase }}</h2>
   <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
     {% if tag == null or tag == "" %}
-      {%- for post in paginator.posts -%}
+      {%- for post in posts_list -%}
       {% unless post.hidden %}
         {% include stuff.html %}
       {% endunless %}

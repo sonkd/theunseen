@@ -1,6 +1,5 @@
 ---
 layout: default
-
 ---
 
 <header class="header mt-30">
@@ -8,20 +7,21 @@ layout: default
 </header>
 
 <div class="archive-tags text-center">
-  <a class="tag-item" href="/categories/">all</a>
+  <a class="tag-item" href="/category/">all categories</a>
   {%- for category in site.categories -%} 
     {% capture name %}{{ category | first }}{% endcapture %}
-    <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a> 
+      {% if page.title !=  name %}
+      <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a>
+      {% endif %}
   {%- endfor -%}
 </div>
 
 <section class="categories">
     {% capture cat %}{{ category | first }}{% endcapture %}
-    {% assign posts_list = page.posts %}
     <h2 id="{{ cat }}">{{ cat | upcase }}</h2>
     <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
       {% if cat == null or cat == "" %}
-        {%- for post in posts_list.posts -%}
+        {%- for post in paginator.posts -%}
         {% unless post.hidden %}
           {% include stuff.html %}
         {% endunless %}

@@ -3,13 +3,9 @@ title: Tags
 permalink: /tags/
 layout: page
 excerpt: Sorted article by tags.
-
-pagination: 
-  enabled: true
 ---
 
 <div class="archive-tags text-center">
-  <a class="tag-item" href="#">all</a>
   {%- for tag in site.tags -%} 
     {% capture name %}{{ tag | first }}{% endcapture %}
     <a class="tag-item" href="/tag/{{name | downcase | slugify}}">{{ name }}</a> 

@@ -1,12 +1,11 @@
 ---
 layout: page
 title: Categories
-permalink: /categories/
+permalink: /category/
 excerpt: Sorted article by categories.
 ---
 
 <div class="flex flex:wrap gap-2 items-center archive-tags text-center">
-  <a class="tag-item" href="/categories/">all</a>
   {%- for category in site.categories -%} 
     {% capture name %}{{ category | first }}{% endcapture %}
     <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a> 

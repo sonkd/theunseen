@@ -17,7 +17,7 @@
             <div class="flex justify-between items-start items-center">
                 <!-- Impacted -->
                 <div class="connected flex gap-2 items-start items-center">
-                    {% for impact in post.impacts %}
+                    {% for impact in post.categories %}
                         {% assign impact_link = site.data.impacts | where_exp: "item", "item.title == impact" %}
                         <a href="{{ site.url }}/category/{{ impact | slugify }}">
                             {% if impact_link[0].image %}

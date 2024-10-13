@@ -18,7 +18,7 @@ author:
   github: sonkd # github username
   twitter: # twitter username
   facebook: # facebook username
-  email:  # email adress
+  email:  sonkdbk@gmail.com
   avatar: /assets/img/avatar.png # change with your own avatar
 
 # URL settings
@@ -35,7 +35,6 @@ collections:
     output: true
   category:
     output: true
-    permalink: /categories/:name
 
 # Markdown settings
 markdown: kramdown
@@ -72,19 +71,19 @@ number_of_posts: 9
 # Show category
 jekyll-archives:
   enabled:
-    - categories
+    #- categories
     - year
     - tags
   layouts:
     year: year-archive
-    category: category-archive
+    #category: category-archive
     tag: tag-archive
   permalinks:
     year: '/:year/'
     month: '/:year/:month/'
     day: '/:year/:month/:day/'
     tag: '/tag/:name/'
-    category: '/category/:name/'
+    #category: '/category/:name/'
 
 # Build settings
 # theme: klise
@@ -113,15 +112,14 @@ exclude:
   - klise-*.gem
   - klise.gemspec
 
-# Explicitly turn off the old code
-paginate: nil
-paginate_path: nil
+# Produces a cleaner folder structure when using categories
+# permalink: /:year/:month/:title.html
 
 # Pagination Settings
 pagination:
   enabled: true
-  per_page: 3
-  offset: 2
+  per_page: 12
+  offset: 0
   permalink: '/page/:num/'
   title: ':title - page :num of :max'
   limit: 0

@@ -44,12 +44,4 @@ home: true
     </h4>
   </article>
   {%- endfor -%}
-  {%- for impact in site.data.impacts -%}
-  <article class="post-item">
-    <h4 class="post-item-title">
-      {% capture name %}{{ impact.title | first }}{% endcapture %}
-      <a href="/category/{{ impact.title | slugify }}">{{ impact.title }}</a>
-    </h4>
-  </article>
-  {% endfor %}
 </section>

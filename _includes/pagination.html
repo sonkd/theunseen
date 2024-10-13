@@ -1,5 +1,6 @@
 <!-- NOTE: unused file, but u can use if necessary -->
-<div class="pagination">
+{% if paginator.total_pages > 1 %}
+<div class="pagination mt-4 text-center">
   {% if paginator.previous_page %}
   <a
     class="page-previous"
@@ -19,3 +20,4 @@
   </a>
   {% endif %}
 </div>
+{% endif %}
