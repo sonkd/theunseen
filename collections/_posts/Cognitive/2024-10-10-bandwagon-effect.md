@@ -9,7 +9,7 @@ connected: [Limited Access, Limited Choice]
 
 categories: [Cognitive, Decision]
 
-image: \assets\img\stuff\fundamental-attribution-error.png
+image: \assets\img\stuff\bandwagon-effect.png
 discussing_link: 
 
 hidden: false
