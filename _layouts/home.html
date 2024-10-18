@@ -37,10 +37,11 @@ home: true
 <section class="py-4">
   <h3 class="posts-item-note" aria-label="Categories">Categories</h3>
   {%- for category in site.categories -%}
+  {% capture cat %}{{ category | first }}{% endcapture %}
   <article class="post-item">
     <h4 class="post-item-title">
       {% capture name %}{{ category | first }}{% endcapture %}
-      <a href="/category/{{ name | slugify }}">{{ name }}</a>
+      <a href="/category/{{ name | slugify }}">{{ name }} ({{ site.categories[cat].size }})</a>
     </h4>
   </article>
   {%- endfor -%}

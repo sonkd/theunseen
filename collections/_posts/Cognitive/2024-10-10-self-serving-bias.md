@@ -7,9 +7,9 @@ visibility: 2
 
 connected: [Limited Access, Limited Choice]
 
-categories: [Cognitive]
+categories: [Cognitive, Money, Social]
 
-image: \assets\img\stuff\fundamental-attribution-error.png
+image: \assets\img\stuff\self-serving-bias.png
 discussing_link: 
 
 hidden: false
