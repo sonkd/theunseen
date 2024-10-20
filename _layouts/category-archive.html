@@ -7,14 +7,25 @@ layout: default
 </header>
 
 <div class="archive-tags text-center">
-  <a class="tag-item" href="/category/">all categories</a>
+  <a class="tag-item p-2" href="/category/">all categories</a>
   {%- for category in site.categories -%} 
-    {% capture name %}{{ category | first }}{% endcapture %}
-      {% if page.title !=  name %}
-      <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a>
-      {% endif %}
+  {% capture name %}{{ category | first }}{% endcapture %}
+  {% if page.title !=  name %}
+  <a class="tag-item p-2" href="/category/{{ name | slugify }}">{{ name }}</a>  
+  {% endif %}
   {%- endfor -%}
 </div>
+
+<section class="py-4">
+  <div class="search-article">
+    <label for="search-input" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(128,128,128,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </label>
+    <input type="search" id="search-input" placeholder="Are you looking for some stuff ?" aria-label="Search">
+  </div>
+  
+  <ul id="search-results"></ul>
+</section>
 
 <section class="categories">
     {% capture cat %}{{ category | first }}{% endcapture %}

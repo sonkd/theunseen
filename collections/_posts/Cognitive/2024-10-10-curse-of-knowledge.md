@@ -7,9 +7,9 @@ visibility: 2
 
 connected: [Limited Access, Limited Choice]
 
-categories: [Cognitive, Decision]
+categories: [Cognitive, Social, Politics, Belief]
 
-image: \assets\img\stuff\fundamental-attribution-error.png
+image: \assets\img\stuff\curse-of-knowldege.png
 discussing_link: 
 
 hidden: false
