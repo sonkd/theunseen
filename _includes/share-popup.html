@@ -1,11 +1,11 @@
-<div class="share-popup border border-gray-50 h-full rounded-sm">
+<div class="share-popup border border-gray-50 w-full rounded-sm">
     <header class="px-4 mt-4 flex-col items-center justify-end">
         <h3 class="w-full">Share this stuff</h3>
         <blockquote class="quote">The more we share, the more we have.<br>Leonard Nimoy
         </blockquote>
     </header>
-    <div class="px-4 pb-6 share-content h-full">
-        <div class="share-icons py-10 flex items-center justify-start gap-4">
+    <div class="px-4 py-5 share-content h-full">
+        <div class="share-icons py-4 flex items-center justify-start gap-4">
             <a class="rounded-sm" href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ site.baseurl }}{{ page.url }}&title={{ page.title | uri_escape }}"
                 target="_blank">{% include share-icon-linkedin.svg %}</a>
             <a class="rounded-sm" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"

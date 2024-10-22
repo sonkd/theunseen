@@ -954,9 +954,9 @@ legend {
     padding-right: 2rem
 }
 
-.py-10 {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem
+.py-1 {
+    padding-top: .25rem;
+    padding-bottom: .25rem
 }
 
 .py-2 {
@@ -972,6 +972,26 @@ legend {
 .py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem
+}
+
+.py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem
+}
+
+.py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem
+}
+
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem
+}
+
+.py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem
 }
 
 .pb-20 {
@@ -1348,6 +1368,10 @@ textarea {
     --su--gradient-stops: var(--su--gradient-from), var(--su--gradient-to)
 }
 
+.hover\:grayscale-0 {
+    filter: grayscale(0);
+}
+
 .hover\:h-\[400px\]:hover {
     height: 400px
 }
@@ -1409,6 +1433,22 @@ textarea {
 
 .focus\:outline-amber-300:focus {
     outline-color: #fcd34d
+}
+
+.grayscale-0 {
+    filter: grayscale(0);
+}
+
+.grayscale-\[50\%\] {
+    filter: grayscale(50%);
+}
+
+.grayscale-\[75\%\] {
+    filter: grayscale(75%);
+}
+
+.grayscale {
+    filter: grayscale(100%);
 }
 
 .group:hover .group-hover\:-top-28 {

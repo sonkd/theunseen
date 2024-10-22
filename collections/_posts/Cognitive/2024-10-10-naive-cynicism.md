@@ -9,7 +9,7 @@ connected: [Limited Access, Limited Choice]
 
 categories: [Cognitive]
 
-image: \assets\img\stuff\fundamental-attribution-error.png
+image: \assets\img\stuff\naive-cynicism.png
 discussing_link: 
 
 hidden: false

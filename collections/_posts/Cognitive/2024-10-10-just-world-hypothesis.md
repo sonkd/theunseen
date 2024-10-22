@@ -9,7 +9,7 @@ connected: [Limited Access, Limited Choice]
 
 categories: [Cognitive, Decision]
 
-image: \assets\img\stuff\fundamental-attribution-error.png
+image: \assets\img\stuff\just-world-hypothesis.png
 discussing_link: 
 
 hidden: false
