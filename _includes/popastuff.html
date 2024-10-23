@@ -18,10 +18,10 @@
                 <!-- Impacted -->
                 <div class="connected flex gap-2 items-start items-center">
                     {% for impact in post.categories %}
-                        {% assign impact_link = site.data.impacts | where_exp: "item", "item.title == impact" %}
+                        {% assign impact_link = site.pages | where_exp: "item", "item.title == impact" %}
                         <a href="{{ site.url }}/category/{{ impact | slugify }}">
-                            {% if impact_link[0].image %}
-                            <img class="object-cover rounded-xl h-8 w-8" src="{{ impact_link[0].image }}" alt="{{ impact }}"
+                            {% if impact_link.image %}
+                            <img class="object-cover rounded-xl h-8 w-8" src="{{ impact_link.image }}" alt="{{ impact }}"
                                 title="{{ impact }}" />
                             {% else %}
                             <img class="object-cover rounded-xl h-8 w-8" src="{{ site.author.avatar }}" alt="{{ impact }}"
