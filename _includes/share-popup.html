@@ -1,4 +1,4 @@
-<div class="share-popup border border-gray-50 w-full rounded-sm">
+<div class="share-popup border border-gray-50 w-full h-full rounded-sm">
     <header class="px-4 mt-4 flex-col items-center justify-end">
         <h3 class="w-full">Share this stuff</h3>
         <blockquote class="quote">The more we share, the more we have.<br>Leonard Nimoy
@@ -7,16 +7,16 @@
     <div class="px-4 py-5 share-content h-full">
         <div class="share-icons py-4 flex items-center justify-start gap-4">
             <a class="rounded-sm" href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ site.baseurl }}{{ page.url }}&title={{ page.title | uri_escape }}"
-                target="_blank">{% include share-icon-linkedin.svg %}</a>
+                target="_blank">{% include icons/share-icon-linkedin.svg %}</a>
             <a class="rounded-sm" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"
-                target="_blank">{% include share-icon-facebook.svg %}</a>
+                target="_blank">{% include icons/share-icon-facebook.svg %}</a>
             <a class="rounded-sm" href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
-                target="_blank">{% include share-icon-x.svg %}</a>
+                target="_blank">{% include icons/share-icon-x.svg %}</a>
             <a class="rounded-sm" href="http://pinterest.com/pin/create/button/?url={{ site.url }}{{ page.url }}&amp;media={{ site.url }}{{ site.baseurl }}{{ page.image }}&amp;description={{ page.title | uri_escape }}"
-                target="_blank">{% include share-icon-pinterest.svg %}</a>
+                target="_blank">{% include icons/share-icon-pinterest.svg %}</a>
         </div>
         <div class="share-field px-2 border border-gray-100 rounded-sm flex items-center justify-center gap-2">
-            <i class="url-icon flex items-center">{% include url-icon.svg %}</i>
+            <i class="url-icon flex items-center">{% include icons/url-icon.svg %}</i>
             <input id="copy-url" type="text" readonly
                 value="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | uri_escape}}&t={{ page.title | default:"" | uri_escape}}">
             <button id="copy-btn" class="rounded-md p-2 w-24">Copy</button>

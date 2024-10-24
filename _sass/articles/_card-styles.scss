@@ -93,7 +93,6 @@ body[data-theme="dark"] {
     }
 
     .photo-main {
-        background-color: #EDDFD8;
         .controls {
             color: #fff;
             i {
@@ -174,6 +173,10 @@ body[data-theme="dark"] {
 
     @media #{$mobile} {
         flex-direction: column;
+
+        .card-container {
+            height: 500px !important;
+        }
 
         .connected {
             img {
