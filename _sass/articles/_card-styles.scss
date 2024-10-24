@@ -259,5 +259,11 @@ body[data-theme="dark"] {
 
     @media #{$mobile} {
         max-width: 100%;
+        .card-img { 
+            img {
+                min-height: 300px;
+                max-height: 400px;
+            }
+        }
     }
 }
