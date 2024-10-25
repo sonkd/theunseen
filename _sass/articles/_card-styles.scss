@@ -82,7 +82,7 @@ body[data-theme="dark"] {
         grid-template-rows: 1fr;
         background: $white;
         border: 2px solid $black;
-        box-shadow: 4px 4px $black;
+        box-shadow: 4px 8px $black;
         border-radius: 5px;
         min-width: 300px;
         max-width: 600px;
@@ -232,7 +232,6 @@ body[data-theme="dark"] {
     border: 2px solid $black;
     box-shadow: 4px 4px $black;
     border-radius: 5px;
-    width: 100%;
     max-width: 15rem;
 
     .card-img {
@@ -257,9 +256,10 @@ body[data-theme="dark"] {
         }
     }
 
-    @media #{$mobile} {
+    @media #{$below} {
         max-width: 100%;
-        .card-img { 
+
+        .card-img {
             img {
                 min-height: 300px;
                 max-height: 400px;

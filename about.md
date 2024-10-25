@@ -1,14 +1,25 @@
 ---
-title: Colophon
+title: Seeing the unseen
 permalink: /about/
 layout: page
 excerpt: blah blah blah
 comments: false
 ---
 
-Welcome to our knowledge-sharing hub, a platform dedicated to fostering the exchange of ideas, expertise, and insights across various fields. Whether you're passionate about learning something new or eager to share your own experiences, this blog is a space where curiosity thrives. We believe that knowledge grows when it's shared, and our goal is to create a vibrant community of learners and experts, where meaningful discussions can spark innovation and personal growth. Explore diverse topics, join the conversation, and be part of a collaborative journey toward continuous learning.
+Plato believed that what we perceive through our senses is just a shadow of true reality. In his famous *Allegory of the Cave*<sup id="plato-says">[[1]](#ref-1)</sup>, he argued that we live in a world of illusions, and only through reason can we access the "Forms"—eternal truths that lie beyond what we see. Similarly, in Buddhism, the "Three Wise Monkeys" teach mindfulness and ethical conduct, encouraging us to be mindful instead of what we see 🙈 , hear 🙉, and say 🙊.
 
-**may u needs ✨**
+Like a prism, this site refracts the ordinary into a spectrum of availability stuff, revealing what has been hidden in plain sight. We see the invisible stuff through the prism of science to understand how our brain works and makes decisions; we'll focus on psychology, cognitive load theory<sup id="cognitive-load">[[2]](#ref-2)</sup>, the social impact on us, and so on.
 
-- {{ site.author.email }}
-- github.com/{{ site.author.github }}
+<figure>
+<img src="/assets/img/stuff/prism.png" alt="Seeing the unseen">
+<figcaption>A spectrum of rainbow colors cast by a prism. Made by Microsoft Designer (AI).</figcaption>
+</figure>
+
+---
+
+> The seen is the changing, the unseen is the unchanging--Plato.
+
+##### Notes
+
+- <small id="ref-1"><sup>[[1]](#plato-says)</sup> Allegory of the Cave. From top to bottom: The Sun, Natural things, Reflections of natural things, Fire, Artificial objects, Shadows of artificial objects, allegory (image, illusion, analogy of the Sun, and of the divided line). See more at [Wiki](https://en.wikipedia.org/wiki/Allegory_of_the_cave).</small>
+- <small id="ref-2"><sup>[[2]](#cognitive-load)</sup> Cognitive load theory provides a general framework and has broad implications for instructional design, by allowing instructional designers to control the conditions of learning within an environment or, more generally, within most instructional materials.. See more at [Wiki](https://en.wikipedia.org/wiki/Cognitive_load).</small>

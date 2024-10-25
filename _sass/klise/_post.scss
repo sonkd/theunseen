@@ -311,7 +311,12 @@
 @media #{$mobile} {
   .related-posts {
     width: 100%;
+
+    .stuff {
+      width: auto !important;
+    }
   }
+
   .navbar {
     .menu {
       #category {

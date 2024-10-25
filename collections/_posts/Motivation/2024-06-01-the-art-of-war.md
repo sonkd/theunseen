@@ -1,8 +1,8 @@
 ---
-title: Simplicity
+title: War
 date: 2024-06-01 09:45:47
 modified: 2024-06-01 09:24:47
-tags: [design principle 2]
+tags: [design]
 
 categories: [Philosophy, Motivation]
 

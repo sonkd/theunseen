@@ -1,12 +1,15 @@
 ---
 title: What is a shell? 🐚 adalah kerang ajaib?
-date: 2020-01-25 11:58:47 +07:00
-modified: 2020-02-02 16:49:47 +07:00
+date: 2024-06-01 09:45:47
+modified: 2024-06-01 09:24:47
 tags: [unix/linux, cli]
-description: Shell adalah sebuah command-line interpreter; program yang berperan sebagai penerjemah perintah yang diinputkan oleh User yang melalui terminal, sehingga perintah tersebut bisa dimengerti oleh si Kernel.
-image: "/apa-itu-shell/shell_evolution.png"
 
-hidden: true
+categories: [Philosophy, Motivation]
+
+image: /apa-itu-shell/shell_evolution.png
+discussing_link:
+
+hidden: false
 ---
 
 <a href="http://www.youtube.com/watch?v=tc4ROCJYbm0&t=70" target="_blank" rel="noopener">Dulu</a> Sebelum adanya <abbr title="Graphical User Interface">GUI</abbr> cara user berinteraksi dengan komputer menggunakan <abbr title="Command Line Interface">CLI</abbr> yaitu mengetik baris perintah pada sebuah antarmuka dalam bentuk baris teks seperti 👇.
