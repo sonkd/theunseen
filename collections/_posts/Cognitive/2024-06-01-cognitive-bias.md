@@ -12,5 +12,13 @@ discussing_link:
 hidden: false
 ---
 
-A list of the most relevant biases in behavioral economics.
+A list of the most relevant biases.
+...
+# Social bias
+...
+
+# Motivation bias
+...
+
+# Perceptual bias
 ...

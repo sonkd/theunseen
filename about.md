@@ -17,10 +17,10 @@ Like a prism, this site refracts the ordinary into a spectrum of availability st
 
 ---
 
-##### The format
-This site aims to share [everystuff]({{site.baseurl}}/category/) as fire🔥, a metaphor for sharing knowledge that can ignite new perspectives and understanding. We strive to present complex ideas simply and concisely, hoping they may challenge and change your beliefs and perceptions.
+##### Flames 🔥
+This site aims to share [stuff]({{site.baseurl}}/category/) as flames, a metaphor for sharing knowledge that can ignite new perspectives and understanding. We strive to present complex ideas simply and concisely, hoping they may challenge and change your beliefs and perceptions.
 <figure>
-<img src="/assets/img/the-format.png" alt="The format">
+<img src="/assets/img/the-flame.png" alt="The flame">
 <figcaption>The seen is the changing, the unseen is the unchanging-Plato.</figcaption>
 </figure>
 
