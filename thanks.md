@@ -6,15 +6,22 @@ excerpt: Thanks to amazing people that i met, who help me out from follishness, 
 comments: false
 ---
 
-#### Referenced and Additional Resources
-The list resources for understanding brain works and decision-making processes.
-- [Thinking, Fast and Slow](https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555) by Daniel Kahneman
+#### Referenced and additional Resources
+This site focuses on a systematic and scientifically based knowledge framework. The list below is a resource for understanding the brain's workings and decision-making processes.
+- [The Nine Consciousness](https://en.wikipedia.org/wiki/The_Nine_Consciousness)
+- [Tree of Knowledge System](https://en.wikipedia.org/wiki/Tree_of_knowledge_system) by Gregg Henriques
+- [Behaviour Investment Theory](https://www.unifiedtheoryofknowledge.org/8-key-ideas/behavioral-investment-theory)
+- [Thinking, Fast and Slow](https://a.co/d/0Ae6N3B) by Daniel Kahneman
+<iframe type="text/html" sandbox="allow-scripts allow-same-origin allow-popups" width="212" height="362" frameborder="0" allowfullscreen style="max-width:100%" src="https://read.amazon.com/kp/card?asin=B005MJFA2W&preview=newtab&linkCode=kpe&ref_=kip_embed_taf_preview_JT82MD9FQW501DEKDQ66&hideBuy=true" ></iframe>
+- [The Psychology of Cognition: An Introduction to Cognitive Neuroscience](https://a.co/d/8HKArfT) by Durk TalsmaDurk Talsma
+- [The Cognitive Bias Codex](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg) by Buster Benson
 - <https://thedecisionlab.com/>
 - <https://www.verywellmind.com/>
+- <https://psychologytoday.com/>
 - <https://www.moneythor.com/analysis-opinions/behavioural-science/>
 
 
 #### Colophon
-This site was designed using [Figma](https://www.figma.com/) and built with the [Klisé theme](https://github.com/piharpi/jekyll-klise) on [Jekyll](https://jekyllrb.com). [GitHub](https://github.com/) was used for asset management and automatic deployment, with [Netlify](https://www.netlify.com/) providing the domain backups. All most content will managed by [Gitbook](https://www.gitbook.com/).
+This site was designed using [Figma](https://www.figma.com/) and built with the [Klisé theme](https://github.com/piharpi/jekyll-klise) on [Jekyll](https://jekyllrb.com). [GitHub](https://github.com/) was used for asset management and automatic deployment, with [Netlify](https://www.netlify.com/) providing the backups. All most content will managed by [Gitbook](https://www.gitbook.com/).
 
 Illustrations are primarily sourced from the [Openmoji library](https://openmoji.org/) for its simplicity and visual appeal.

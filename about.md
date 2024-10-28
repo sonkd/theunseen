@@ -18,7 +18,7 @@ Like a prism, this site refracts the ordinary into a spectrum of availability st
 ---
 
 ##### Flames 🔥
-This site aims to share [stuff]({{site.baseurl}}/category/) as flames, a metaphor for sharing knowledge that can ignite new perspectives and understanding. We strive to present complex ideas simply and concisely, hoping they may challenge and change your beliefs and perceptions.
+This site aims to share [stuff]({{site.baseurl}}/category/) as fire, a metaphor for sharing knowledge that can ignite new perspectives and understanding. We strive to present complex ideas simply and concisely in a way that is easy to understand and digest, hoping they may challenge and change your beliefs and perceptions.
 <figure>
 <img src="/assets/img/the-flame.png" alt="The flame">
 <figcaption>The seen is the changing, the unseen is the unchanging-Plato.</figcaption>
