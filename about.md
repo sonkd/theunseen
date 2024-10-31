@@ -2,7 +2,7 @@
 title: Seeing the unseen
 permalink: /about/
 layout: page
-excerpt: blah blah blah
+excerpt: 
 comments: false
 ---
 
@@ -18,7 +18,7 @@ Like a prism, this site refracts the ordinary into a spectrum of availability st
 ---
 
 ##### Flames 🔥
-This site aims to share [stuff]({{site.baseurl}}/category/) as fire, a metaphor for sharing knowledge that can ignite new perspectives and understanding. We try to present theoretical, abstract, and complex content simply and concisely that is easy to understand and absorb in the hope that it can challenge and change your beliefs and perceptions.
+This site aims to share [stuff]({{site.baseurl}}/category/) as flames, a metaphor for sharing knowledge that can ignite new perspectives and understanding. We try to present theoretical, abstract, and complex content simply and concisely that is easy to understand and absorb in the hope that it can challenge and change your beliefs and perceptions.
 <figure>
 <img src="/assets/img/the-flame.png" alt="The flame">
 <figcaption>The seen is the changing, the unseen is the unchanging-Plato.</figcaption>
@@ -26,6 +26,6 @@ This site aims to share [stuff]({{site.baseurl}}/category/) as fire, a metaphor 
 
 ##### Notes
 
-- <small id="ref-1"><sup>[[1]](#plato-says)</sup> Allegory of the Cave. From top to bottom: The Sun, Natural things, Reflections of natural things, Fire, Artificial objects, Shadows of artificial objects, allegory (image, illusion, analogy of the Sun, and of the divided line). [Wiki](https://en.wikipedia.org/wiki/Allegory_of_the_cave).</small>
-- <small id="ref-2"><sup>[[2]](#3-monkeys)</sup> Three Wise Monkeys: "does not see", "does not hear", "does not speak". [Wiki](https://en.wikipedia.org/wiki/Three_wise_monkeys).</small>
-- <small id="ref-3"><sup>[[3]](#cognitive-load)</sup> Cognitive load theory provides a general framework and has broad implications for instructional design, by allowing instructional designers to control the conditions of learning within an environment or, more generally, within most instructional materials. [Wiki](https://en.wikipedia.org/wiki/Cognitive_load).</small>
+- <small id="ref-1"><sup>[[1]](#plato-says)</sup> Allegory of the Cave. From top to bottom: The Sun, Natural things, Reflections of natural things, Fire, Artificial objects, Shadows of artificial objects, allegory (image, illusion, analogy of the Sun, and of the divided line). [Wiki](https://en.wikipedia.org/wiki/Allegory_of_the_cave){:target="_blank"}.</small>
+- <small id="ref-2"><sup>[[2]](#3-monkeys)</sup> Three Wise Monkeys: "does not see", "does not hear", "does not speak". [Wiki](https://en.wikipedia.org/wiki/Three_wise_monkeys){:target="_blank"}.</small>
+- <small id="ref-3"><sup>[[3]](#cognitive-load)</sup> Cognitive load theory provides a general framework and has broad implications for instructional design, by allowing instructional designers to control the conditions of learning within an environment or, more generally, within most instructional materials. [Wiki](https://en.wikipedia.org/wiki/Cognitive_load){:target="_blank"}.</small>
