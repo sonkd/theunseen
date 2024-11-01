@@ -10,7 +10,6 @@ comments: false
 This site focuses on a systematic and scientifically based knowledge framework. The list below is a resource for understanding the brain's workings and decision-making processes.
 - [Tree of Knowledge System](https://en.wikipedia.org/wiki/Tree_of_knowledge_system){:target="_blank"} by Gregg Henriques
 - [Thinking, Fast and Slow](https://a.co/d/0Ae6N3B){:target="_blank"} by Daniel Kahneman
-<iframe type="text/html" sandbox="allow-scripts allow-same-origin allow-popups" width="212" height="362" frameborder="0" allowfullscreen style="max-width:100%" src="https://read.amazon.com/kp/card?asin=B005MJFA2W&preview=newtab&linkCode=kpe&ref_=kip_embed_taf_preview_JT82MD9FQW501DEKDQ66&hideBuy=true" ></iframe>
 - [The Psychology of Cognition: An Introduction to Cognitive Neuroscience](https://a.co/d/8HKArfT){:target="_blank"} by Durk TalsmaDurk Talsma
 - [The Cognitive Bias Codex](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg){:target="_blank"} by Buster Benson
 - <https://thedecisionlab.com/>{:target="_blank"}

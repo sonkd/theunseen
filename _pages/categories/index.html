@@ -27,7 +27,7 @@ excerpt: Sorted article by categories.
   {%- for category in site.categories -%}
     {% capture cat %}{{ category | first }}{% endcapture %}
     {% assign posts_list = site.categories[cat] %}
-    <h2 id="{{ cat }}">{{ cat | upcase }}</h2>
+    <h3 id="{{ cat }}">{{ cat | upcase }}</h3>
     <ul class="posts">
       {% for post in posts_list limit:9 %}
       <li>
