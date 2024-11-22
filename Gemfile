@@ -23,6 +23,7 @@ group :jekyll_plugins do
   gem 'jekyll-compose', '~> 0.12.0'
   gem 'jekyll-postfiles', '~> 3.1'
   gem 'jekyll-archives'
+  gem 'jekyll-admin'
   gem 'jekyll-seo-tag'
   gem 'jekyll-paginate-v2', '~> 3.0'
 end
