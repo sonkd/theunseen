@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/fundamental-attribution-error.md %}
+We judge others on their personality or fundamental character, but we judge ourselves on the situation.

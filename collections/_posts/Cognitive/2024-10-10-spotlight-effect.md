@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/spotlight-effect.md %}
+We overestimate how much people are paying attention to our behavior and appearance.

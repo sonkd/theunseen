@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/moral-luck.md %}
+Better moral standing happens due to a positive outcome; worse moral standing happens due to a negative outcome.

@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/self-serving-bias.md %}
+Our failures are situational, but our successes are our responsibility.

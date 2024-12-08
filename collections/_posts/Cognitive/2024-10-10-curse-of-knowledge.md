@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/curse-of-knowledge.md %}
+Once we know something, we assume everyone else knows it, too.

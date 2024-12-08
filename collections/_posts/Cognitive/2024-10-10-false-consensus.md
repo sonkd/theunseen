@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/false-consensus.md %}
+We favor people who are in our in-group as opposed to an out-group.

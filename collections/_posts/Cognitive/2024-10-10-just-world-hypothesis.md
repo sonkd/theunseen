@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/just-world-hypothesis.md %}
+We tend to believe the world is just; therefore, we assume acts of injustice are deserved.

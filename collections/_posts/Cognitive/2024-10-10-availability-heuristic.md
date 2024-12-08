@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/availability-heuristic.md %}
+We rely on immediate examples that come to mind while making judgments

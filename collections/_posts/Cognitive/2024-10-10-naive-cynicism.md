@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/naive-cynicism.md %}
+We believe that we observe objective reality and that other people have a higher egocentric bias than they actually do in their intentions/actions.

@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/bandwagon-effect.md %}
+Ideas, fads, and beliefs grow as more people adopt them.

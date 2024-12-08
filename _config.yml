@@ -129,7 +129,6 @@ pagination:
 # Plugins
 plugins:
   - jekyll-feed
-  - jekyll-admin
   - jekyll-sitemap
   - jekyll-postfiles
   - jekyll-archives

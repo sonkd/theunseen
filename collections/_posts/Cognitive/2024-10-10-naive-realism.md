@@ -15,4 +15,4 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/naive-realism.md %}
+We believe that we observe objective reality and that other people are irrational, uninformed, or biased.
