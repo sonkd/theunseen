@@ -15,4 +15,3 @@ discussing_link:
 hidden: false
 ---
 
-{% include cms/cognitive/perception/spotlight-effect.md %}

@@ -15,9 +15,14 @@
     }
   };
 
-  lamp.addEventListener("click", () =>
-    toggleTheme(localStorage.getItem("theme"))
-  );
+  // Add event listener to #mode
+  lamp.addEventListener("click", (e) => {
+    const currentTheme = localStorage.getItem("theme") || "light"; // Default to light
+    toggleTheme(currentTheme);
+
+    // Prevent the event from propagating further (if needed)
+    e.preventDefault();
+  });
 
   // Blur the content when the menu is open
   const cbox = document.getElementById("menu-trigger");
@@ -27,15 +32,15 @@
       const menu_icon = document.querySelector(".menu-icon");
       const close_icon = document.querySelector(".close-icon");
 
-      this.checked
-        ? (area.classList.add("blurry"), close_icon.removeAttribute("hidden"),
-          menu_icon.setAttribute("hidden", ""))
-        : (area.classList.remove("blurry"), menu_icon.removeAttribute("hidden"),
+      this.checked ?
+        (area.classList.add("blurry"), close_icon.removeAttribute("hidden"),
+          menu_icon.setAttribute("hidden", "")) :
+        (area.classList.remove("blurry"), menu_icon.removeAttribute("hidden"),
           close_icon.setAttribute("hidden", ""));
     });
   };
-  
-  $('#modal-container').click(function(){
+
+  $('#modal-container').click(function () {
     $(this).addClass('out');
     $('body').removeClass('modal-active');
   });
