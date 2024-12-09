@@ -334,6 +334,7 @@
 
 #navpost {
   transition: bottom 0.5s;
+  z-index: 10;
 
   .post-nav {
     margin-top: 0rem;
