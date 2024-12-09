@@ -4,6 +4,7 @@ $mono-family: Consolas, monospace;
 $base-font-size: 16px;
 $medium-font-size: $base-font-size * 0.938;
 $small-font-size: $base-font-size * 0.875;
+$tiny-font-size: $base-font-size * 0.5;
 $base-line-height: 1.85;
 
 // Font weight
@@ -45,8 +46,8 @@ $spacing-full: 30px;
 $spacing-half: calc($spacing-full / 2);
 
 // State of devices
-$on-mobile: 768px;
-$on-tablet: 769px;
+$on-mobile: 576px;
+$on-tablet: 768px;
 $on-desktop: 1024px;
 $on-widescreen: 1152px;
 
@@ -54,6 +55,9 @@ $on-widescreen: 1152px;
 $mobile: "only screen and (max-width: 768px)";
 $tablet: "only screen and (min-width: 768px) and (max-width: 1024px)";
 $desktop: "only screen and (min-width: 1024px)";
+
+$above: "only screen and (min-width: 768px)";
+$below: "only screen and (max-width: 768px)";
 
 @mixin media-query($device) {
   @media screen and (max-width: $device) {

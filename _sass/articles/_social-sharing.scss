@@ -118,14 +118,12 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: auto;
-    height: auto;
     transform-origin: top right;
     transform: scale(0);
     background: $dark-white;
     color: $white;
     transition: .5s;
-    transition-delay: .5s;
+    transition-delay: .25s;
 
     .quote {
         margin: unset !important;

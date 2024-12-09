@@ -7,10 +7,12 @@ layout: default
 </header>
 
 <div class="archive-tags text-center">
-  <a class="tag-item" href="/tags/">all</a>
+  <a class="tag-item" href="/tags/">all tags</a>
   {%- for tag in site.tags -%} 
     {% capture name %}{{ tag | first }}{% endcapture %}
-    <a class="tag-item" href="/tag/{{name | downcase | slugify}}">{{ name }}</a> 
+    {% if page.title !=  name %}
+    <a class="tag-item" href="/tag/{{name | downcase | slugify}}">{{ name }}</a>
+    {% endif %}
   {%- endfor -%}
 </div>
 
@@ -30,3 +32,5 @@ layout: default
     {% endif %}
   </div>
 </section>
+
+{% include pagination.html %}

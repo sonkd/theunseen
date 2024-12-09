@@ -22,10 +22,15 @@ body[data-theme="dark"] {
             background-color: $dark-light;
             border: 2px solid $dark-gray;
             box-shadow: 4px 4px $dark-gray;
+
+            h4 {
+                color: $dark-text-base-color
+            }
         }
 
         .card-explaination {
             .buy--btn {
+                border-color: $dark-white;
                 box-shadow: 3px 5px 0px $dark-gray;
             }
         }
@@ -55,7 +60,7 @@ body[data-theme="dark"] {
         box-shadow: 4px 4px $dark-gray;
         .post-item-title {  
             a {
-                color: $text-base-color;
+                color: $dark-text-base-color;
     
                 &:hover,
                 &focus {
@@ -77,14 +82,14 @@ body[data-theme="dark"] {
         grid-template-rows: 1fr;
         background: $white;
         border: 2px solid $black;
-        box-shadow: 4px 4px $black;
+        box-shadow: 4px 8px $black;
         border-radius: 5px;
         min-width: 300px;
         max-width: 600px;
-        /*
-        background-color: $white;
-        box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
-        */
+        
+        h4 {
+            color: $text-base-color
+        }
     }
 
     .photo-main {
@@ -169,6 +174,10 @@ body[data-theme="dark"] {
     @media #{$mobile} {
         flex-direction: column;
 
+        .card-container {
+            height: 500px !important;
+        }
+
         .connected {
             img {
                 width: 1.5rem !important;
@@ -223,7 +232,6 @@ body[data-theme="dark"] {
     border: 2px solid $black;
     box-shadow: 4px 4px $black;
     border-radius: 5px;
-    width: 100%;
     max-width: 15rem;
 
     .card-img {
@@ -248,7 +256,14 @@ body[data-theme="dark"] {
         }
     }
 
-    @media #{$mobile} {
+    @media #{$below} {
         max-width: 100%;
+
+        .card-img {
+            img {
+                min-height: 300px;
+                max-height: 400px;
+            }
+        }
     }
 }

@@ -194,7 +194,7 @@ body[data-theme="dark"] {
       display: block;
       opacity: 0.8;
       box-sizing: border-box;
-      font-size: 1.1em;
+      font-size: 2em;
 
       &:not(:last-child) {
         margin: 0;
@@ -344,18 +344,27 @@ body[data-theme="dark"] {
 }
 
 .not-found {
-  text-align: center;
+  //text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 75vh;
+  //height: 75vh;
+
+  .container {
+    min-height: 80vh;
+    background: url("/assets/img/flame.png"), $light;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: difference;
+  }
 
   .title {
     font-size: 5em;
     font-weight: $bold-weight;
     line-height: 1.1;
-    color: $black;
-    text-shadow: 1px 0px 0px $text-link-blue;
+    color: $text-base-color;
+    text-shadow: 1px 0px 0px $dark-smoke;
   }
 
   .phrase {
@@ -363,19 +372,35 @@ body[data-theme="dark"] {
   }
 
   .solution {
-    color: $text-link-blue;
+    color: $dark-text-link-blue;
     letter-spacing: 0.5px;
   }
 
   .solution:hover {
-    color: $text-link-blue-active;
+    color: $dark-text-link-blue-active;
+  }
+
+  .search-article {
+    input {
+      color: $dark-text-base-color;
+      &::-webkit-input-placeholder {
+        color: $dark-text-base-color;
+      }
+    }
+
+    #search-results {
+      a {
+        color: $dark-text-base-color;
+      }
+    }
+
   }
 }
 
 
 .search-article {
   position: relative;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
 
   label[for="search-input"] {
     position: relative;

@@ -1,10 +1,10 @@
 # Site settings
 title: The Stuff Unseen # site title
-description: >- # site description
+description: >
   See the unseen things in mind and everything in the universe.
 lang: en-US # default lang
 timezone: Asia/Jakarta # set your timezone
-image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+image: assets/img/avatar.png # This image used for Open Graph more info https://ogp.me/
 repo: # site repo [optional]
 mode: light # default theme "dark" | "light"
 
@@ -18,7 +18,7 @@ author:
   github: sonkd # github username
   twitter: # twitter username
   facebook: # facebook username
-  email:  # email adress
+  email:  sonkdbk@gmail.com
   avatar: /assets/img/avatar.png # change with your own avatar
 
 # URL settings
@@ -35,7 +35,6 @@ collections:
     output: true
   category:
     output: true
-    permalink: /categories/:name
 
 # Markdown settings
 markdown: kramdown
@@ -67,24 +66,24 @@ jekyll_compose:
     description:
 
 # Homepage limit posts
-number_of_posts: 6
+number_of_posts: 9
 
 # Show category
 jekyll-archives:
   enabled:
-    - categories
+    #- categories
     - year
     - tags
   layouts:
     year: year-archive
-    category: category-archive
+    #category: category-archive
     tag: tag-archive
   permalinks:
     year: '/:year/'
     month: '/:year/:month/'
     day: '/:year/:month/:day/'
     tag: '/tag/:name/'
-    category: '/category/:name/'
+    #category: '/category/:name/'
 
 # Build settings
 # theme: klise
@@ -95,6 +94,9 @@ include:
   - _redirects
   - .htaccess
   - _pages
+
+gems:
+  - jekyll-paginate-v2
 
 exclude:
   - CNAME
@@ -110,6 +112,20 @@ exclude:
   - klise-*.gem
   - klise.gemspec
 
+# Produces a cleaner folder structure when using categories
+# permalink: /:year/:month/:title.html
+
+# Pagination Settings
+pagination:
+  enabled: true
+  per_page: 12
+  offset: 0
+  permalink: '/page/:num/'
+  title: ':title - page :num of :max'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+
 # Plugins
 plugins:
   - jekyll-feed
@@ -117,3 +133,4 @@ plugins:
   - jekyll-postfiles
   - jekyll-archives
   - jekyll-seo-tag
+  - jekyll-paginate-v2

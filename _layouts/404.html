@@ -30,14 +30,15 @@ layout: compress
   {% include navbar.html %}
   <div class="wrapper">
     <main aria-label="Content">
-      <div class="not-found">
+      <div class="not-found pt-28">
         <div class="container">
-          <div class="title">404</div>
-          <p class="phrase">😕 Hmm... Seems you lost from my journey.</p>
-          <a class="solution" href="{{ site.url }}">back home</a>
+          <div class="title text-center">404</div>
+          <p class="phrase text-center">💬 Seems like you are in nowhere.</p>
+          {% include search_box.html %}
+          <div class="text-center"><a class="solution" href="{{ site.url }}">back home</a></div>
         </div>
       </div>
-    </main>  
+    </main>
     {% include footer.html %}
   </div>
     

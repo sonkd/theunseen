@@ -3,208 +3,101 @@
     <input type="checkbox" id="menu-trigger" class="menu-trigger" />
     {% if page.id %}
     {% assign post = page %}
-      <div class="logo w-[250px]">
+    <div class="logo w-[250px]">
       {% if post.image %}
-        <a href="{{ post.url }}">
-          <img class="object-cover rounded-xl" src="{{ post.image }}" alt="{{ post.title }}" title="{{ post.title }}"/>
-        </a> 
+      <a href="{{ post.url }}">
+        <img class="object-cover rounded-xl" src="{{ post.image }}" alt="{{ post.title }}" title="{{ post.title }}" />
+      </a>
       {% else %}
-        <a href="{{ post.url }}">
-          <img class="object-cover rounded-xl" src="{{ site.author.avatar }}" alt="{{ post.title }}" title="{{ post.title }}"/>
-        </a>
+      <a href="{{ post.url }}">
+        <img class="object-cover rounded-xl" src="{{ site.author.avatar }}" alt="{{ post.title }}"
+          title="{{ post.title }}" />
+      </a>
       {% endif %}
-      </div>
-      {% if post.categories %}
-      <div id="category" class="flex:grow-1 flex:shrink-1">
-        {% assign cats = post.categories %}
-        {% for cat in cats %}
-        <a class="font-bold not-underline" href="/category/{{cat | downcase | slugify}}">{{cat | upcase }}</a>{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      </div>
-      {% endif %}
-    {% else %}
-      <div class="logo w-full">
-        {% if page.isImpact %}
-        {% assign impact = site.data.impacts | where_exp: "item", "item.title == page.title" %}
-        <a href="{{ page.url }}">
-          <img class="object-cover rounded-xl" src="{{ impact[0].image }}" alt="{{ page.title }}" title="{{ page.title }}"/>
-        </a>
-        {% else %}
-        <a href="{{ site.url }}">
-          <img class="rounded-full object-cover" src="{{ site.author.avatar }}" alt="{{ site.author.username }}"/>
-        </a>
-        {% endif %}
-      </div>
+    </div>
+    {% if post.categories %}
+    <div id="category" class="flex:grow-1 flex:shrink-1">
+      {% assign cats = post.categories %}
+      {% for cat in cats %}
+      <a class="font-bold not-underline" href="/category/{{cat | downcase | slugify}}">{{cat | upcase }}</a>{% unless
+      forloop.last %},{% endunless %}
+      {% endfor %}
+    </div>
     {% endif %}
-    
+    {% else %}
+    <div class="logo w-full">
+      {% if page.image %}
+      <a href="{{ page.url }}">
+        <img class="object-cover rounded-xl" src="{{ page.image }}" alt="{{ page.title }}" title="{{ page.title }}" />
+      </a>
+      {% else %}
+      <a href="{{ page.url }}">
+        <img class="rounded-full object-cover" src="{{ site.author.avatar }}" alt="{{ site.author.username }}" />
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+
     <div class="trigger flex:shrink-0 w-[250px]">
       <div class="trigger-container flex justify-end items-center gap-2">
         {%- assign url = page.url -%}
         {%- assign menus = site.data.menus -%}
         {%- if menus %}
-          {%- for menu in menus -%} 
-            {%- if url == menu.url -%}
-              <a class="menu-link active" href="{{ menu.url }}">{{ menu.title }}</a>
-            {%- else -%} 
-              {%- if menu.external -%}
-                <a
-                  class="menu-link"
-                  href="{{ menu.url }}"
-                  target="_blank"
-                  rel="noopener"
-                  >{{ menu.title }}</a
-                >
-              {%- else -%}
-                <a class="menu-link" href="{{ menu.url }}">{{ menu.title }}</a>
-              {%- endif -%} 
-            {%- endif -%} 
-          {%- endfor -%}
+        {%- for menu in menus -%}
+        {%- if url == menu.url -%}
+        <a class="menu-link active" href="{{ menu.url }}">{{ menu.title }}</a>
         {%- else -%}
-          <a class="menu-link {% if url == '/' %}active{% endif %}" href="/">home</a>
-          <a class="menu-link {% if url == '/about/' %}active{% endif %}" href="/about">about</a>
+        {%- if menu.external -%}
+        <a class="menu-link" href="{{ menu.url }}" target="_blank" rel="noopener">{{ menu.title }}</a>
+        {%- else -%}
+        <a class="menu-link" href="{{ menu.url }}">{{ menu.title }}</a>
+        {%- endif -%}
+        {%- endif -%}
+        {%- endfor -%}
+        {%- else -%}
+        <a class="menu-link {% if url == '/' %}active{% endif %}" href="/">Home</a>
+        <a class="menu-link {% if url == '/about/' %}active{% endif %}" href="/about">About</a>
         {%- endif -%}
         <a id="mode" class="menu-link items-center">
-          <svg
-            class="mode-sunny"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 512 512"
-          >
+          <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
             <title>LIGHT</title>
-            <line
-              x1="256"
-              y1="48"
-              x2="256"
-              y2="96"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="256"
-              y1="416"
-              x2="256"
-              y2="464"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="403.08"
-              y1="108.92"
-              x2="369.14"
-              y2="142.86"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="142.86"
-              y1="369.14"
-              x2="108.92"
-              y2="403.08"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="464"
-              y1="256"
-              x2="416"
-              y2="256"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="96"
-              y1="256"
-              x2="48"
-              y2="256"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="403.08"
-              y1="403.08"
-              x2="369.14"
-              y2="369.14"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="142.86"
-              y1="142.86"
-              x2="108.92"
-              y2="108.92"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <circle
-              cx="256"
-              cy="256"
-              r="80"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
+            <line x1="256" y1="48" x2="256" y2="96"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="256" y1="416" x2="256" y2="464"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="403.08" y1="108.92" x2="369.14" y2="142.86"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="142.86" y1="369.14" x2="108.92" y2="403.08"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="464" y1="256" x2="416" y2="256"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="96" y1="256" x2="48" y2="256"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="403.08" y1="403.08" x2="369.14" y2="369.14"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="142.86" y1="142.86" x2="108.92" y2="108.92"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
           </svg>
-          <svg
-            class="mode-moon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 512 512"
-          >
+          <svg class="mode-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
             <title>DARK</title>
-            <line
-              x1="256"
-              y1="48"
-              x2="256"
-              y2="96"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="256"
-              y1="416"
-              x2="256"
-              y2="464"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="403.08"
-              y1="108.92"
-              x2="369.14"
-              y2="142.86"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="142.86"
-              y1="369.14"
-              x2="108.92"
-              y2="403.08"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="464"
-              y1="256"
-              x2="416"
-              y2="256"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="96"
-              y1="256"
-              x2="48"
-              y2="256"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="403.08"
-              y1="403.08"
-              x2="369.14"
-              y2="369.14"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <line
-              x1="142.86"
-              y1="142.86"
-              x2="108.92"
-              y2="108.92"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
-            <circle
-              cx="256"
-              cy="256"
-              r="80"
-              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-            />
+            <line x1="256" y1="48" x2="256" y2="96"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="256" y1="416" x2="256" y2="464"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="403.08" y1="108.92" x2="369.14" y2="142.86"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="142.86" y1="369.14" x2="108.92" y2="403.08"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="464" y1="256" x2="416" y2="256"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="96" y1="256" x2="48" y2="256"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="403.08" y1="403.08" x2="369.14" y2="369.14"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <line x1="142.86" y1="142.86" x2="108.92" y2="108.92"
+              style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
+            <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" />
           </svg>
         </a>
       </div>
@@ -217,8 +110,9 @@
       </span>
       <span class="close-icon" hidden>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M11.9999 13.4149L6.34312 19.0716L4.92913 17.6576L10.5859 12.0009L4.92908 6.34406L6.34307 4.93007L11.9999 10.5869L17.6571 4.92969L19.071 6.34368L13.4139 12.0009L19.071 17.658L17.657 19.072L11.9999 13.4149Z"/>
-        </svg>                 
+          <path
+            d="M11.9999 13.4149L6.34312 19.0716L4.92913 17.6576L10.5859 12.0009L4.92908 6.34406L6.34307 4.93007L11.9999 10.5869L17.6571 4.92969L19.071 6.34368L13.4139 12.0009L19.071 17.658L17.657 19.072L11.9999 13.4149Z" />
+        </svg>
       </span>
     </label>
   </nav>

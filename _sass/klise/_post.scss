@@ -77,7 +77,7 @@
 
     &[target="_blank"]::after {
       content: " \2197";
-      font-size: $small-font-size;
+      font-size: $tiny-font-size;
       line-height: 0;
       position: relative;
       bottom: 5px;
@@ -311,7 +311,12 @@
 @media #{$mobile} {
   .related-posts {
     width: 100%;
+
+    .stuff {
+      width: auto !important;
+    }
   }
+
   .navbar {
     .menu {
       #category {

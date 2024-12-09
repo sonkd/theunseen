@@ -234,6 +234,13 @@ body[data-theme="dark"] {
     .solution:hover {
       color: $dark-text-link-blue-active;
     }
+    .container {
+      background: url("/assets/img/flame.png"), $dark-black;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-blend-mode: difference;
+    }
   }  
 
   .search-article {

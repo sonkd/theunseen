@@ -7,11 +7,11 @@ home: true
   {% include author.html %}
 </section>
 <section class="py-4">
-  <h3 class="posts-item-note text-center" aria-label="Recent Stuff">Recent Stuff</h3>
-  {% assign posts_list = site.posts | limit: site.number_of_posts %}
+  <h3 class="posts-item-note text-center" aria-label="Recent Stuff">Recent</h3>
+  {% assign posts_list = site.posts %}
 
   <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
-    {%- for post in posts_list -%}
+    {%- for post in posts_list limit:site.number_of_posts -%}
       {% unless post.hidden %}
         {% include stuff.html %}
       {% endunless %}
@@ -21,14 +21,15 @@ home: true
 
 <section class="py-4">
   <h3 class="posts-item-note" aria-label="Featured">Featured</h3>
-  {% assign stuff_list = site.posts | limit: site.number_of_posts %}
-
   <ul class="posts">
-    {%- for post in site.data.featured -%}
+    {%- for post in site.data.featured limit:site.number_of_posts -%}
+      {% assign title_of_post = post.title %}
+      {% assign stuff = site.posts | | where_exp: "item", "item.title == title_of_post" %}
       <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-          <a class="post-link not-underline" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <img class="object-cover rounded-md w-6 h-6" src="{{ post.image }}" alt="{{ post.title }}">
+          <a class="post-link not-underline flex-wrap items-center" href="{{ stuff[0].url | relative_url }}">
+            {{ title_of_post }}
+            <img class="object-cover rounded-md w-6 h-6" src="{{ stuff[0].image }}" alt="{{ title_of_post }}">
+          </a>
       </li>
     {%- endfor -%}
   </ul>
@@ -37,19 +38,12 @@ home: true
 <section class="py-4">
   <h3 class="posts-item-note" aria-label="Categories">Categories</h3>
   {%- for category in site.categories -%}
+  {% capture cat %}{{ category | first }}{% endcapture %}
   <article class="post-item">
     <h4 class="post-item-title">
       {% capture name %}{{ category | first }}{% endcapture %}
-      <a href="/category/{{ name | slugify }}">{{ name }}</a>
+      <a href="/category/{{ name | slugify }}">{{ name }} ({{ site.categories[cat].size }})</a>
     </h4>
   </article>
   {%- endfor -%}
-  {%- for impact in site.data.impacts -%}
-  <article class="post-item">
-    <h4 class="post-item-title">
-      {% capture name %}{{ impact.title | first }}{% endcapture %}
-      <a href="/category/{{ impact.title | slugify }}">{{ impact.title }}</a>
-    </h4>
-  </article>
-  {% endfor %}
 </section>

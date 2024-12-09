@@ -1,21 +1,16 @@
 <!-- NOTE: unused file, but u can use if necessary -->
-<!-- <div class="pagination">
+{% if paginator.total_pages > 1 %}
+<div class="pagination mt-10 text-center">
   {% if paginator.previous_page %}
-  <a
-    class="page-previous"
-    href="{{ paginator.previous_page_path }}"
-    class="previous"
-  >
-    <span aria-hidden="true">←</span> NEWER POSTS
+  <a class="page-previous" href="{{ paginator.previous_page_path }}" class="previous">
+    <span aria-hidden="true">←</span> Prev
   </a>
   {% endif %}
-  <span class="page_number"
-    >PAGE {{ paginator.page }} OF {{ paginator.total_pages }}</span
-  >
+  <span class="page_number m-4 text-gray-400">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
   {% if paginator.next_page %}
-  <a class="page-next" href="{{ paginator.next_page_path }}" class="next"
-    >OLDER POSTS
+  <a class="page-next" href="{{ paginator.next_page_path }}" class="next">Next
     <span aria-hidden="true">→</span>
   </a>
   {% endif %}
-</div> -->
+</div>
+{% endif %}

@@ -1,12 +1,22 @@
 ---
 layout: page
 title: Categories
-permalink: /categories/
+permalink: /category/
 excerpt: Sorted article by categories.
 ---
 
+<div class="my-4">
+  <div class="search-article mb-6">
+    <label for="search-input" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(128,128,128,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </label>
+    <input type="search" id="search-input" placeholder="Are you looking for some stuff ?" aria-label="Search">
+  </div>
+  
+  <ul id="search-results"></ul>
+</div>
+
 <div class="flex flex:wrap gap-2 items-center archive-tags text-center">
-  <a class="tag-item" href="/categories/">all</a>
   {%- for category in site.categories -%} 
     {% capture name %}{{ category | first }}{% endcapture %}
     <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a> 
@@ -16,16 +26,21 @@ excerpt: Sorted article by categories.
 <section class="categories">
   {%- for category in site.categories -%}
     {% capture cat %}{{ category | first }}{% endcapture %}
-      {% assign posts_list = site.categories[cat] %}
-      <h2 id="{{ cat }}">{{ cat | upcase }}</h2>
-      <ul class="posts">
-        {% for post in posts_list %}
-        <li>
-          <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    {% assign posts_list = site.categories[cat] %}
+    <h3 id="{{ cat }}">{{ cat | upcase }}</h3>
+    <ul class="posts">
+      {% for post in posts_list limit:9 %}
+      <li>
+        <a class="post-link" style="color: #6b7886 !important" href="{{ post.url | relative_url }}">
+          {{ post.title }}
           <img class="object-cover rounded-md w-6 h-6" src="{{ post.image }}" alt="{{ post.title }}">
-        </li>
-        {% endfor %}
-      </ul>
-    {%- endfor -%}
+        </a>
+        {% if post.modified %}
+        <span class="post-updated-at"> ({{ post.modified | date: "%b %-d, %Y" }})</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+      <a class="post-link uppercase" href="/category/{{ cat | slugify }}">See all ({{posts_list.size}})</a>
+    </ul>
+  {%- endfor -%}
 </section>
