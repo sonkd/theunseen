@@ -318,6 +318,8 @@
   }
 
   .navbar {
+    z-index: 100;
+
     .menu {
       #category {
         display: none
