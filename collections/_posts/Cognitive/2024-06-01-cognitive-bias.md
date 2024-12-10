@@ -8,7 +8,7 @@ pagination:
   enabled: true
   sort_field: 'is_stuff:date'
 
-categories: [Cognitive, Decision]
+categories: [Cognitive, Memory]
 
 image: \assets\img\design-principles\simplicity.png
 discussing_link:

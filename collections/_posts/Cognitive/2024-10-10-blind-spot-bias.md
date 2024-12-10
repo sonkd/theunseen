@@ -1,5 +1,5 @@
 ---
-title: Groupthink
+title: Blind Spot Bias
 date: 2024-10-10 09:45:47 +07:00
 modified: 
 is_stuff: true
@@ -8,11 +8,10 @@ connected:
   - Limited Access
   - Limited Choice
 categories:
+  - Belief
   - Cognitive
-  - Social
-image: \assets\img\stuff\group-think.png
+image: \assets\img\stuff\barnum-effect.png
 discussing_link: 
 hidden: false
 ---
 
-Due to a desire for conformity and harmony in the group, we make irrational decisions, often to minimize conflict.

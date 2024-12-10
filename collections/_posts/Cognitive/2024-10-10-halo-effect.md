@@ -4,14 +4,13 @@ date: 2024-10-10 09:45:47 +07:00
 modified: 
 is_stuff: true
 visibility: 2
-
-connected: [Limited Access, Limited Choice]
-
-categories: [Cognitive, Decision]
-
+connected:
+  - Anchoring Bias
+categories:
+  - Social
+  - Memory
 image: \assets\img\stuff\halo-effect.png
 discussing_link: 
-
 hidden: false
 ---
 

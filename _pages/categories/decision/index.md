@@ -1,11 +1,11 @@
 ---
 layout: category-archive
-title: Decision
-image: \assets\img\impacts\decision.png
-permalink: /category/decision/
+title: Memory
+image: \assets\img\impacts\cognitive.png
+permalink: /category/memory/
 pagination: 
   enabled: true
-  category: decision
+  category: memory
   permalink: /:num/
 ---
 

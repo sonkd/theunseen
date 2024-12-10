@@ -4,14 +4,14 @@ date: 2024-10-10 09:45:47 +07:00
 modified: 
 is_stuff: true
 visibility: 2
-
-connected: [Limited Access, Limited Choice]
-
-categories: [Cognitive, Decision]
-
+connected:
+  - Illusion of Control
+  - Cognitive Dissonance
+categories:
+  - Cognitive
+  - Memory
 image: \assets\img\stuff\just-world-hypothesis.png
 discussing_link: 
-
 hidden: false
 ---
 

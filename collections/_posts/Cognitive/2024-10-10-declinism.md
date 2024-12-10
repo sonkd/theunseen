@@ -1,14 +1,11 @@
 ---
-title: Anchoring
+title: Declinism
 date: 2024-10-10 09:45:47 +07:00
 modified: 
 is_stuff: true
 visibility: 2
 connected:
-  - Attentional Bias
-  - Availability Heuristic
-  - Bandwagon Effect
-  - Base Rate Fallacy
+  - Pessimism bias
 categories:
   - Memory
   - Cognitive
