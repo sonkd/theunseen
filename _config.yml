@@ -25,9 +25,11 @@ author:
 url: "https://stuffunseen.com" #
 baseurl:
 permalink: /:title/
+# permalink: /:year/:month/:title.html
 google_analytics: # leave it blank if not wish
 fb_appid:
 
+# Produces a cleaner folder structure when using categories
 # Collection setting
 collections_dir: collections
 collections:
@@ -41,6 +43,7 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   syntax_highlighter: rouge
+  input: GFM
 
 # Default front matter
 defaults:
@@ -98,23 +101,6 @@ include:
 gems:
   - jekyll-paginate-v2
 
-exclude:
-  - CNAME
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - CHANGELOG.md
-  - README.md
-  - node_modules
-  - CODE_OF_CONDUCT.md
-  - CONTRIBUTING.md
-  - lighthouse.png
-  - klise-*.gem
-  - klise.gemspec
-
-# Produces a cleaner folder structure when using categories
-# permalink: /:year/:month/:title.html
-
 # Pagination Settings
 pagination:
   enabled: true
@@ -135,3 +121,17 @@ plugins:
   - jekyll-archives
   - jekyll-seo-tag
   - jekyll-paginate-v2
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - README.md
+  - node_modules
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - lighthouse.png
+  - klise-*.gem
+  - klise.gemspec
