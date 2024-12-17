@@ -1,10 +1,9 @@
 ---
-title: Barnum Effect / Forer Effect
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
+title: Sunk Cost Fallacy
+published: true
 visibility: 2
-connected: []
+connected:
+  - Commitment Bias
 categories:
   - Belief
   - Cognitive

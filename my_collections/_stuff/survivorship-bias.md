@@ -1,10 +1,9 @@
 ---
-title: Barnum Effect / Forer Effect
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
+title: Survivorship Bia
+published: true
 visibility: 2
-connected: []
+connected:
+  - Fundamental Attribution Error
 categories:
   - Belief
   - Cognitive
