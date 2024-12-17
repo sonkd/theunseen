@@ -25,22 +25,27 @@ author:
 url: "https://stuffunseen.com" #
 baseurl:
 permalink: /:title/
+# permalink: /:year/:month/:title.html
 google_analytics: # leave it blank if not wish
 fb_appid:
 
+# Homepage limit posts
+number_of_posts: 9
+
+# Produces a cleaner folder structure when using categories
 # Collection setting
-collections_dir: collections
+collections_dir: my_collections
 collections:
-  posts:
+  stuff:
     output: true
-  category:
-    output: true
+    name: Stuff
 
 # Markdown settings
 markdown: kramdown
 highlighter: rouge
 kramdown:
   syntax_highlighter: rouge
+  input: GFM
 
 # Default front matter
 defaults:
@@ -53,6 +58,18 @@ defaults:
       path: '_pages'
     values:
       permalink: /:basename:output_ext
+      layout: "category-archive"
+      categories: []
+      pagination:
+        enabled: true
+  - scope:
+      path: "_stuff"
+      type: "stuff"
+    values:
+      permalink: /:name/
+      layout: stuff-page
+      pagination:
+        enabled: true
   
 # Jekyll Compose default front matter
 jekyll_compose:
@@ -64,9 +81,6 @@ jekyll_compose:
     modified:
     tags: []
     description:
-
-# Homepage limit posts
-number_of_posts: 9
 
 # Show category
 jekyll-archives:
@@ -88,6 +102,7 @@ jekyll-archives:
 # Build settings
 # theme: klise
 sass:
+  sass_dir: _sass
   style: compressed
 
 include:
@@ -96,6 +111,27 @@ include:
   - _pages
 
 gems:
+  - jekyll-paginate-v2
+
+# Pagination Settings
+pagination:
+  enabled: true
+  per_page: 12
+  offset: 0
+  permalink: '/page/:num/'
+  title: ':title - page :num of :max'
+  limit: 0
+  # sort_field: 'date'
+  sort_field: 'title'
+  sort_reverse: true
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-postfiles
+  - jekyll-archives
+  - jekyll-seo-tag
   - jekyll-paginate-v2
 
 exclude:
@@ -111,26 +147,3 @@ exclude:
   - lighthouse.png
   - klise-*.gem
   - klise.gemspec
-
-# Produces a cleaner folder structure when using categories
-# permalink: /:year/:month/:title.html
-
-# Pagination Settings
-pagination:
-  enabled: true
-  per_page: 12
-  offset: 0
-  permalink: '/page/:num/'
-  title: ':title - page :num of :max'
-  limit: 0
-  sort_field: 'date'
-  sort_reverse: true
-
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-postfiles
-  - jekyll-archives
-  - jekyll-seo-tag
-  - jekyll-paginate-v2

@@ -6,6 +6,8 @@ home: true
 <section class="mt-30">
   {% include author.html %}
 </section>
+
+<!-- Recent -->
 <section class="py-4">
   <h3 class="posts-item-note text-center" aria-label="Recent Stuff">Recent</h3>
   {% assign posts_list = site.posts %}
@@ -19,22 +21,50 @@ home: true
   </div>
 </section>
 
+<!-- Featured -->
 <section class="py-4">
   <h3 class="posts-item-note" aria-label="Featured">Featured</h3>
   <ul class="posts">
+    {% assign all_items = site.posts %}
+    {% for collection in site.collections %}
+      {% assign all_items = all_items | concat: collection.docs %}
+    {% endfor %}
     {%- for post in site.data.featured limit:site.number_of_posts -%}
-      {% assign title_of_post = post.title %}
-      {% assign stuff = site.posts | | where_exp: "item", "item.title == title_of_post" %}
+      {% assign stuff = all_items | where_exp: "item", "item.title == post.title" | first %}
       <li>
-          <a class="post-link not-underline flex-wrap items-center" href="{{ stuff[0].url | relative_url }}">
-            {{ title_of_post }}
-            <img class="object-cover rounded-md w-6 h-6" src="{{ stuff[0].image }}" alt="{{ title_of_post }}">
+          <a class="post-link not-underline flex-wrap items-center" href="{{ stuff.url | relative_url }}">
+            {{ stuff.title }}
+            {% if stuff.image %}
+            <img class="object-cover rounded-md w-6 h-6" src="{{ stuff.image }}" alt="{{ title_of_post }}">
+            {% endif %}
           </a>
       </li>
     {%- endfor -%}
   </ul>
 </section>
 
+<!-- Collections -->
+<section class="py-4">
+  {% for collection in site.collections %}
+  {% unless collection.label == "posts" %}
+  <h3 class="posts-item-note" aria-label="Stuff">{{collection.name}}</h3>
+  <ul class="posts">
+    {% for file in site[collection.label] limit:site.number_of_posts %}
+      <li>
+          <a class="post-link not-underline flex-wrap items-center" href="{{ file.url | relative_url }}">
+            {{ file.title }}
+            {% if file.image %}
+            <img class="object-cover rounded-md w-6 h-6" src="{{ file.image }}" alt="{{ file.title }}">
+            {% endif %}
+          </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+  {% endunless %}
+  {% endfor %}
+</section>
+
+<!-- Categories -->
 <section class="py-4">
   <h3 class="posts-item-note" aria-label="Categories">Categories</h3>
   {%- for category in site.categories -%}

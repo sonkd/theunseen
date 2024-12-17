@@ -1,0 +1,75 @@
+---
+layout: compress
+---
+
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en " }}">
+
+{% include header.html %}
+
+<body data-theme="{{ site.mode }}" class="notransition">
+
+  <script>
+    const body = document.body;
+    const data = body.getAttribute("data-theme");
+
+    const initTheme = (state) => {
+      if (state === "dark") {
+        body.setAttribute("data-theme", "dark");
+      } else if (state === "light") {
+        body.removeAttribute("data-theme");
+      } else {
+        localStorage.setItem("theme", data);
+      }
+    };
+
+    initTheme(localStorage.getItem("theme"));
+
+    setTimeout(() => body.classList.remove("notransition"), 75);
+  </script>
+
+  {% include navbar.html %}
+  <div class="wrapper post p-4">
+    <main class="flex justify-center mt-20" aria-label="Content">
+      {% include popastuff.html %}
+    </main>
+    <!-- Connects -->
+    {% if post.connected.size > 0 %}
+    <div class="py-4 mt-4">
+      <h3>Connects</h3>
+      <div class="impact">
+        {% for stuff_name in post.connected %}
+        {% assign this_stuff = site.posts | where_exp: "item", "item.title == stuff_name" %}
+        <article class="post-item">
+          <h4 class="post-item-title">
+            <a href="{{ site.url }}/{{ stuff_name | slugify }}" class="post-link flex items-center gap-2">
+              {% if this_stuff[0].image %}
+              <img class="object-cover rounded-xl h-12 w-12" src="{{ this_stuff[0].image }}" alt="{{ stuff_name }}"
+                title="{{ stuff_name }}" />
+              {% else %}
+              <img class="object-cover rounded-xl h-12 w-12" src="{{ site.author.avatar }}" alt="{{ stuff_name }}"
+                title="{{ stuff_name }}" />
+              {% endif %}
+              {{ stuff_name }}
+            </a>
+          </h4>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if page.next or page.previous %}
+    <div class="py-4 mt-4">
+      <h3 class="posts-item-note" aria-label="Other Stuff">Other Stuff</h3>
+      <div class="related-posts flex md:flex-col lg:flex-row gap-4 w-full py-2">
+        {% include navigation-card.html %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  {% include footer.html %}
+  <script src="/assets/js/share.js"></script>
+</body>
+
+</html>
