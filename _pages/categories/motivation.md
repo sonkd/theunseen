@@ -1,5 +1,4 @@
 ---
-layout: category-archive
 title: Motivation
 image: \assets\img\impacts\motivation.png
 permalink: /category/motivation/

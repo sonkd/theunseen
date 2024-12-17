@@ -1,5 +1,4 @@
 ---
-layout: category-archive
 title: Habit Forming
 image: \assets\img\impacts\habit.png
 permalink: /category/habit/
