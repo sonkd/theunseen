@@ -1,8 +1,8 @@
-{% if page.previous and page.previous.is_stuff and page.previous.hidden == false %}
+{% if page.previous and page.previous.hidden == false %}
 {% assign post = page.previous %}
 {% include stuff.html %}
 {% endif %}
-{% if page.next and page.next.is_stuff and page.next.hidden == false %}
+{% if page.next and page.next.hidden == false %}
 {% assign post = page.next %}
 {% include stuff.html %}
 {% endif %}

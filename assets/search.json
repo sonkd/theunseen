@@ -3,7 +3,7 @@ layout: none
 ---
 
 [
-  {% assign all_items = site.posts %}
+  {% assign all_items = nil %}
   {% for collection in site.collections %}
     {% assign all_items = all_items | concat: collection.docs %}
   {% endfor %}

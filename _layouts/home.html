@@ -21,14 +21,15 @@ home: true
   </div>
 </section>
 
+{% assign all_items = nil %}
+{% for collection in site.collections %}
+  {% assign all_items = all_items | concat: collection.docs %}
+{% endfor %}
+
 <!-- Featured -->
 <section class="py-4">
   <h3 class="posts-item-note" aria-label="Featured">Featured</h3>
-  <ul class="posts">
-    {% assign all_items = site.posts %}
-    {% for collection in site.collections %}
-      {% assign all_items = all_items | concat: collection.docs %}
-    {% endfor %}
+  <ul class="posts"> 
     {%- for post in site.data.featured limit:site.number_of_posts -%}
       {% assign stuff = all_items | where_exp: "item", "item.title == post.title" | first %}
       <li>
@@ -43,7 +44,7 @@ home: true
   </ul>
 </section>
 
-<!-- Collections -->
+<!-- Collections
 <section class="py-4">
   {% for collection in site.collections %}
   {% unless collection.label == "posts" %}
@@ -63,6 +64,7 @@ home: true
   {% endunless %}
   {% endfor %}
 </section>
+-->
 
 <!-- Categories -->
 <section class="py-4">

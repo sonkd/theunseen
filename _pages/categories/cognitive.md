@@ -5,5 +5,6 @@ permalink: /category/cognitive/
 pagination: 
   enabled: true
   category: cognitive
+  collection: posts
   permalink: /:num/
 ---

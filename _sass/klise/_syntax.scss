@@ -25,13 +25,6 @@ pre.highlight,
 pre {
   margin: 0 -27px;
 
-  @media #{$mobile} {
-    margin: 0 calc(51% - 51vw);
-    padding-left: 20px;
-    border-radius: 2px;
-    display: block
-  }
-
   border: 1px solid rgba(128, 128, 128, 0.1);
   background-color: #1a1b21;
   border-radius: 2px;
@@ -47,6 +40,13 @@ pre {
     line-height: 1.5;
     display: block;
     border: 0;
+  }
+
+  @media #{$mobile} {
+    margin: 0 calc(51% - 51vw);
+    padding-left: 20px;
+    border-radius: 2px;
+    display: block
   }
 }
 

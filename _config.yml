@@ -62,6 +62,7 @@ defaults:
       categories: []
       pagination:
         enabled: true
+        collection: posts_and_pages
   - scope:
       path: "_stuff"
       type: "stuff"
@@ -118,6 +119,7 @@ pagination:
   enabled: true
   per_page: 12
   offset: 0
+  collection: posts_and_pages
   permalink: '/page/:num/'
   title: ':title - page :num of :max'
   limit: 0
