@@ -57,12 +57,11 @@ defaults:
   - scope:
       path: '_pages'
     values:
-      permalink: /:basename:output_ext
       layout: "category-archive"
-      categories: []
       pagination:
         enabled: true
-        collection: posts_and_pages
+        permalink: /:num/
+        sort_reverse: true
   - scope:
       path: "_stuff"
       type: "stuff"

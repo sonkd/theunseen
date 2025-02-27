@@ -5,6 +5,5 @@ permalink: /category/memory/
 pagination: 
   enabled: true
   category: memory
-  permalink: /:num/
 ---
 

@@ -19,21 +19,27 @@ layout: default
   {% endif %}
   {%- endfor -%}
 </div>
-
+<br>
 <section class="categories">
-    {% capture cat %}{{ category | first }}{% endcapture %}
-    <h2 id="{{ cat }}">{{ cat | upcase }}</h2>
-    <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
-      {% if cat == null or cat == "" %}
-        {%- for post in paginator.posts -%}
-        {% unless post.hidden %}
+  {% capture cat %}{{ page.title }}{% endcapture %}
+  <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
+    {% if cat != null or cat != "" %}
+      {% assign current_letter = "" %}
+      {% for post in site.categories[cat] %}
+        {% assign first_letter = post.title | slice: 0, 1 | upcase %}
+        {% if first_letter != current_letter %}
+          {% if current_letter != "" %}{% endif %}
+          <h3 class="w-full text-left">
+            <div class="wrapper">{{ first_letter }}</div>
+          </h3>
+          {% assign current_letter = first_letter %}
+        {% endif %}
+        {% unless post.hidden or post.not_stuff %}
           {% include stuff.html %}
         {% endunless %}
-        {%- endfor -%}
-      {% else %}
-      <span>Nothing to show</span>
-      {% endif %}
-    </div>
+      {% endfor %}
+    {% else %}
+    <span>Nothing to show</span>
+    {% endif %}
+  </div>
 </section>
-
-{% include pagination.html %}

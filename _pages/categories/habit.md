@@ -5,5 +5,4 @@ permalink: /category/habit/
 pagination: 
   enabled: true
   category: habit
-  permalink: /:num/
 ---
