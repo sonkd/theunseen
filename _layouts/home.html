@@ -10,10 +10,10 @@ home: true
 <!-- Recent -->
 <section class="py-4">
   <h3 class="posts-item-note text-center" aria-label="Recent Stuff">Recent</h3>
-  {% assign posts_list = site.posts | concat: site.stuff %}
+  {% assign posts_list = site.posts | concat: site.stuff | sort: "date" %}
 
   <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
-    {%- for post in posts_list | sort: "date" | reverse | limit:site.number_of_posts -%}
+    {%- for post in posts_list limit: site.number_of_posts -%}
       {% unless post.hidden %}
         {% include stuff.html %}
       {% endunless %}

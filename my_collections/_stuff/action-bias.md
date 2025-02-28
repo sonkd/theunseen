@@ -1,15 +1,17 @@
 ---
-title: IKEA Effect
+title: Action Bias
 date: 2024-10-10 09:45:47 +07:00
 published: true
 visibility: 2
 connected:
-  - Rosy Retrospection
-  - Self-serving Bias
+  - Attentional Bias
+  - Bandwagon Effect
+  - Choice Overload
+  - Cognitive Dissonance
 categories:
-  - Belief
+  - Memory
   - Cognitive
-image: \assets\img\stuff\barnum-effect.png
+image: 
 discussing_link: 
 hidden: false
 ---

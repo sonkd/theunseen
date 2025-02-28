@@ -1,5 +1,6 @@
 ---
 title: Google Effect / Digital Amnesia
+date: 2024-10-10 09:45:47 +07:00
 published: true
 visibility: 2
 impacts:
