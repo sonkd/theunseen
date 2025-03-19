@@ -18,3 +18,4 @@ hidden: false
 We rely heavily on the first piece of information introduced when making decisions.
 
 Source: Tversky & Kahneman (1974) demonstrated that initial numeric "anchors" bias subsequent estimates.
+[10.1126/science.185.4157.1124](https://doi.org/10.1126/science.185.4157.1124)

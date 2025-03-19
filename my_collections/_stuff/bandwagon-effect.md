@@ -13,5 +13,7 @@ image: \assets\img\stuff\bandwagon-effect.png
 discussing_link: 
 hidden: false
 ---
+Tendency to do or believe things because many other people do.
 
-Ideas, fads, and beliefs grow as more people adopt them.
+Example: Observed in voting behavior—people often shift support to the candidate leading in polls.
+[10.1093/poq/nfs023](https://doi.org/10.1093/poq/nfs023) (Sinclair, 2012)

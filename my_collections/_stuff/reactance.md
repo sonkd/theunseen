@@ -15,4 +15,7 @@ discussing_link:
 hidden: false
 ---
 
-As a witness who secretly fears being vulnerable to a severe mishap, we will blame the victim less and the attacker more if we relate to the victim.
+People react strongly emotionally against rules or regulations that threaten their freedom.
+
+Source: Brehm (1966) introduced that banning a product often increases its desirability.
+[10.1037/h0023560](https://doi.org/10.1037/h0023560)

@@ -13,4 +13,7 @@ discussing_link:
 hidden: false
 ---
 
-We favor people who are in our in-group as opposed to an out-group
+Favoring members of one's own group over those in other groups.
+
+Source: Tajfel's (1970) "minimal group" experiments showed even arbitrary group assignments led to favoritism toward the in-group.
+[10.1002/ejsp.2420010202](https://doi.org/10.1002/ejsp.2420010202)

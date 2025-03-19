@@ -14,4 +14,7 @@ discussing_link:
 hidden: false
 ---
 
-As a witness who secretly fears being vulnerable to a severe mishap, we will blame the victim less and the attacker more if we relate to the victim.
+Belief that past random events influence the probability of future random events.
+
+Source: Monte Carlo Casino (1913) roulette incident, where black came up 26 times in a row, and gamblers lost millions expecting a red "due."
+[10.2307/2326316](https://doi.org/10.2307/2326316)

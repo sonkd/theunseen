@@ -13,4 +13,7 @@ discussing_link:
 hidden: false
 ---
 
-We judge others on their personality or fundamental character, but we judge ourselves on the situation.
+Overemphasizing personality-based explanations for others' behavior.
+
+Source: Ross's (1977) "quiz game" study found observers attributed questioners' knowledge to intelligence rather than the situation.
+[10.1037/0022-3514.35.7.485](https://doi.org/10.1037/0022-3514.35.7.485)

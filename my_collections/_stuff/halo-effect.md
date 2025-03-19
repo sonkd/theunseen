@@ -13,4 +13,7 @@ discussing_link:
 hidden: false
 ---
 
-If you see a person as having a positive trait, that positive impression will spill over into their other characteristics. (This also works for negative traits).
+The overall impression of a person influences how we feel about that person's character.
+
+Source: Thorndike (1920) observed that higher ratings in one area (e.g., attractiveness) led to higher ratings in others.
+[10.1037/h0071694](https://doi.org/10.1037/h0071694)

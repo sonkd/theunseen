@@ -14,4 +14,7 @@ image: \assets\img\stuff\barnum-effect.png
 discussing_link: 
 hidden: false
 ---
+Believing that we are less likely to experience negative events.
 
+Source: Weinstein (1980) found students believed they were more likely to experience positive life events than their peers.
+[10.1037/0022-3514.39.5.806](https://doi.org/10.1037/0022-3514.39.5.806)

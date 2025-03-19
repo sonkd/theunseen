@@ -15,4 +15,7 @@ discussing_link:
 hidden: false
 ---
 
-Once we know something, we assume everyone else knows it, too.
+Once we know something, we assume everyone else also knows it.
+
+Source: In the "tapping study" by Elizabeth Newton (1990), tappers overestimated how often listeners would identify the tune.
+[10.1037/0022-3514.50.2.315](https://doi.org/10.1037/0022-3514.50.2.315)

@@ -11,4 +11,7 @@ discussing_link:
 hidden: false
 ---
 
-We believe that we observe objective reality and that other people have a higher egocentric bias than they actually do in their intentions/actions.
+Belief that we see the world precisely as it is.
+
+Source: Ross & Ward (1996) studied how people assume their perceptions are objective, leading to conflict in social issues.
+[10.1017/CBO9780511597984.003](https://doi.org/10.1017/CBO9780511597984.003)

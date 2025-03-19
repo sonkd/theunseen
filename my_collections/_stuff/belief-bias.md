@@ -15,5 +15,7 @@ image:
 discussing_link: 
 hidden: false
 ---
+Judging an argument's validity based on whether its conclusion is believable.
 
-As a witness who secretly fears being vulnerable to a severe mishap, we will blame the victim less and the attacker more if we relate to the victim.
+Source: Evans, Barston & Pollard (1983) showed people accept invalid conclusions if they match prior beliefs.
+[10.3758/BF03197671](https://doi.org/10.3758/BF03197671)

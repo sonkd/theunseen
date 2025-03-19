@@ -15,5 +15,7 @@ image:
 discussing_link: 
 hidden: false
 ---
+People may hold their original view more strongly when presented with evidence.
 
-As a witness who secretly fears being vulnerable to a severe mishap, we will blame the victim less and the attacker more if we relate to the victim.
+Source: Nyhan & Reifler (2010) found that corrections in political misinformation sometimes strengthened misperceptions.
+[10.1007/s11109-010-9112-2](https://doi.org/10.1007/s11109-010-9112-2)

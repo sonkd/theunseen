@@ -14,5 +14,4 @@ image: \assets\img\stuff\false-consensus.png
 discussing_link: 
 hidden: false
 ---
-
 We favor people who are in our in-group as opposed to an out-group.

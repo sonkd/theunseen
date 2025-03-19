@@ -16,4 +16,7 @@ discussing_link:
 hidden: false
 ---
 
-As a witness who secretly fears being vulnerable to a severe mishap, we will blame the victim less and the attacker more if we relate to the victim.
+Blaming victims for their misfortune, attributing causes to protect one's own sense of invulnerability.
+
+Source: Lerner & Simmons (1966) "Just-world" experiments also relate to how people justify or blame victims.
+[10.1037/h0023560](https://doi.org/10.1037/h0023560)

@@ -10,7 +10,7 @@ connected:
 categories:
   - Memory
   - Cognitive
-image: \assets\img\stuff\anchoring.png
+image: 
 discussing_link: 
 hidden: false
 ---

@@ -22,4 +22,7 @@ image: \assets\img\stuff\dunning-kruger-effect.png
 discussing_link: 
 hidden: false
 ---
+Incompetent people overestimate their own skills; experts may underestimate their competence.
 
+Source: Dunning & Kruger (1999) showed that low-skill participants in humor, grammar, and logic tests greatly overestimated their performance.
+[10.1037/0022-3514.77.6.1121](https://doi.org/10.1037/0022-3514.77.6.1121)

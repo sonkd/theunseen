@@ -13,5 +13,7 @@ image:
 discussing_link: 
 hidden: false
 ---
+Seeking, interpreting, and remembering information that confirms preconceptions.
 
-As a witness who secretly fears being vulnerable to a severe mishap, we will blame the victim less and the attacker more if we relate to the victim.
+Source: Wason's (1960) "2-4-6" experiment showed people rarely tried to falsify their own hypotheses.
+[10.1037/h0047609](https://doi.org/10.1037/h0047609)

@@ -13,4 +13,7 @@ image: \assets\img\stuff\barnum-effect.png
 discussing_link: 
 hidden: false
 ---
+People place higher value on items they partially created themselves.
 
+Source: Norton, Mochon & Ariely (2012) found participants were willing to pay more for self-assembled IKEA boxes.
+[10.1086/665204](https://doi.org/10.1086/665204)
