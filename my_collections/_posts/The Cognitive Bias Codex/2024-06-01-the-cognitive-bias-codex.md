@@ -20,11 +20,11 @@ Our brains filter and prioritize information, often leading to biases.
 |                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                              |
 | **b. Bizarre, funny, or visually striking details stick out more**<br>![Bizarre, funny, or visually striking details stick out more](1b.png) | 1. Bizarreness effect<br>2. Humor effect<br>3. Von Restorff effect<br>4. Picture superiority effect<br>5. Self–relevance effect<br>6. Negativity bias                                                                                                                                                                                                        |
 |                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                              |
-| **c. We notice when something has changed**<br>![We notice when something has changed](1c.png)                        | 1. Anchoring<br>2. Conservatism<br>3. Contrast effect<br>4. Distinction bias<br>5. Focusing effect<br>6. Framing effect<br>7. Money illusion<br>8. Weber–Fechner law                                                                                                                                                                                         |
+| **c. We notice when something has changed**<br>![We notice when something has changed](1c.png)                                               | 1. Anchoring<br>2. Conservatism<br>3. Contrast effect<br>4. Distinction bias<br>5. Focusing effect<br>6. Framing effect<br>7. Money illusion<br>8. Weber–Fechner law                                                                                                                                                                                         |
 |                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                              |
-| **d. We are drawn to details that confirm our existing beliefs**<br>![We are drawn to details that confirm our existing beliefs](1d.png)   | 1. Confirmation bias<br>2. Congruence bias<br>3. Post–purchase rationalization<br>4. Choice–supportive bias<br>5. Selective perception<br>6. Observer–expectancy effect<br>7. Experimenter's bias<br>8. Observer effect<br>9. Expectation bias<br>10. Ostrich effect<br>11. Subjective validation<br>12. Continued influence effect<br>13. Semmelweis reflex |
+| **d. We are drawn to details that confirm our existing beliefs**<br>![We are drawn to details that confirm our existing beliefs](1d.png)     | 1. Confirmation bias<br>2. Congruence bias<br>3. Post–purchase rationalization<br>4. Choice–supportive bias<br>5. Selective perception<br>6. Observer–expectancy effect<br>7. Experimenter's bias<br>8. Observer effect<br>9. Expectation bias<br>10. Ostrich effect<br>11. Subjective validation<br>12. Continued influence effect<br>13. Semmelweis reflex |
 |                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                              |
-| **e. We notice flaws in others more than in ourselves**<br>![We notice flaws in others more than in ourselves](1e.png)            | 1. Bias blind spot<br>2. Naïve cynicism<br>3. Naïve realism                                                                                                                                                                                                                                                                                                  |
+| **e. We notice flaws in others more than in ourselves**<br>![We notice flaws in others more than in ourselves](1e.png)                       | 1. Bias blind spot<br>2. Naïve cynicism<br>3. Naïve realism                                                                                                                                                                                                                                                                                                  |
 
 ---
 
@@ -76,3 +76,20 @@ Our memories are selective and often reconstructed inaccurately.
 | **d. We store memories differently based on how they were experienced**<br>![We store memories differently based on how they were experienced](4d.png) | 1. Levels–of–processing effect<br>2. Absent–mindedness<br>3. Testing effect<br>4. Next–in–line effect<br>5. Google effect<br>6. Tip of the tongue phenomenon                                                                                                                                                                    |
 
 This codex helps us recognize and mitigate biases in decision-making and perception, improving critical thinking and rationality.
+
+
+{% for group in site.data.cognitive-bias-codex %}
+### {{ group.title }}
+{{ group.code }}
+
+  {% for part in group.parts %}
+  #### {{ part.title }}
+  {{ part.code }}
+
+    {% for bias in part.biases %}
+    - {{ bias.title }}
+    {{ bias.code }}
+    {% endfor %}
+
+  {% endfor %}
+{% endfor %}

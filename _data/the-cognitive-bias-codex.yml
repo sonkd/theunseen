@@ -1,0 +1,53 @@
+- title: How our brain works
+  code: I
+  image: /assets/img/how-our-brain-works.png
+  parts:
+    - title: We notice things already primed in memory or repeated often
+      code: a
+      image: /assets/img/avatar.png
+      biases:
+        - title: Availability heuristic
+          code: 1
+        - title: Attentional bias
+          code: 2
+        - title: Illusory truth effect
+          code: 3
+        - title: Mere–exposure effect
+          code: 4
+        - title: Context effect
+          code: 5
+        - title: Cue–dependent forgetting
+          code: 6
+        - title: Mood–congruent memory bias
+          code: 7
+        - title: Frequency illusion
+          code: 8
+          description: "The tendency to notice something more frequently after learning about it (also known as Baader–Meinhof Phenomenon)."
+        - title: Empathy gap
+          code: 9
+        - title: Omission bias
+          code: 10
+        - title: Base rate fallacy
+          code: 11
+    - title: Bizarre, funny, or visually striking details stick out more
+      code: b
+      image: /assets/img/avatar.png
+      biases:
+        - title: Bizarreness effect
+          code: 1
+          description: "The tendency to remember bizarre or unusual information more easily than common information."
+        - title: Humor effect
+          code: 2
+          description: "The tendency to remember humorous information better than non-humorous information."
+        - title: Von Restorff effect
+          code: 3
+          description: "The tendency to remember distinctive or unique items in a list."
+        - title: Picture superiority effect
+          code: 4
+          description: "The tendency to remember images better than words."
+        - title: Self–relevance effect
+          code: 5
+          description: "The tendency to remember information that is personally relevant."
+        - title: Negativity bias
+          code: 6
+          description: "The tendency to focus on and remember negative information more than positive information."
