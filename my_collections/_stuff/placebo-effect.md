@@ -1,16 +1,15 @@
 ---
-title: Placebo Effect
-date: 2024-10-10 09:45:47 +07:00
+title: "Placebo effect"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-connected:
-  - Fundamental Attribution Error
-  - Regret Aversion
-categories:
-  - Belief
-  - Cognitive
-image: \assets\img\stuff\barnum-effect.png
-discussing_link: 
-hidden: false
+image: 
 ---
+
+If we think something is going to help us, we tend to report feeling better even if the treatment had no direct effect.
+
+[More information](https://en.wikipedia.org/wiki/Placebo)
+
 

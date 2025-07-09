@@ -1,17 +1,15 @@
 ---
-title: Cryptomnesia
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
-visibility: 2
-connected:
-  - Limited Access
-  - Limited Choice
-categories:
-  - Belief
-  - Cognitive
-image: \assets\img\stuff\barnum-effect.png
-discussing_link: 
-hidden: false
+title: "Cryptomnesia"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
+published: true
+image: 
 ---
+
+We sometimes think we've come up with something new and original when really it was a forgotten memory that returned without it being recognized.
+
+[More information](https://en.wikipedia.org/wiki/Cryptomnesia)
+
 

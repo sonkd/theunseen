@@ -1,21 +1,15 @@
 ---
-title: Curse of Knowledge
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
-visibility: 2
-
-connected: [Limited Access, Limited Choice]
-
-categories: [Cognitive, Social, Politics, Belief]
-
-image: \assets\img\stuff\curse-of-knowldege.png
-discussing_link: 
-
-hidden: false
+title: "Curse of knowledge"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
+published: true
+image: 
 ---
 
-Once we know something, we assume everyone else also knows it.
+When you assume that everyone you're talking to has the same understanding of things that you do.
 
-Source: In the "tapping study" by Elizabeth Newton (1990), tappers overestimated how often listeners would identify the tune.
-[10.1037/0022-3514.50.2.315](https://doi.org/10.1037/0022-3514.50.2.315)
+[More information](https://en.wikipedia.org/wiki/Curse_of_knowledge)
+
+

@@ -1,20 +1,15 @@
 ---
-title: Choice-supportive Bias
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
-visibility: 2
-connected:
-  - Limited Access
-  - Limited Choice
-categories:
-  - Belief
-  - Cognitive
+title: "Choice-supportive bias"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
+published: true
 image: 
-discussing_link: 
-hidden: false
 ---
-Remembering one's choices as better than they were.
 
-Source: Mather et al. (2000) found people recall more positive features of chosen options.
-[10.1111/1467-9280.00271](https://doi.org/10.1111/1467-9280.00271)
+When we do something, we like to stay loyal to those choices and come up with reasons why they were the right choice after-the-fact. Choice-supportive bias is the general tendency here, and post-purchase rationalization is a more specific version that applies to things we buy.
+
+[More information](https://en.wikipedia.org/wiki/Choice-supportive_bias)
+
+

@@ -1,3 +1,4 @@
+@use "../variables" as *;
 // Reset some basic elements
 * {
   -webkit-transition: background-color 75ms ease-in, border-color 75ms ease-in;
@@ -72,10 +73,14 @@ pre,
 ul,
 ol,
 dl,
-figure,
+figure {
+  margin-top: calc(#{$spacing-full} - 20px);
+  margin-bottom: calc(#{$spacing-full} - 20px);
+}
+
 %vertical-rhythm {
-  margin-top: $spacing-full - 20;
-  margin-bottom: $spacing-full - 20;
+  margin-top: calc(#{$spacing-full} - 20px);
+  margin-bottom: calc(#{$spacing-full} - 20px);
 }
 
 // strong | bold
@@ -287,8 +292,8 @@ blockquote {
   @media #{$mobile} {
     max-width: -webkit-calc(#{$narrow-size} - (#{$spacing-full}));
     max-width: calc(#{$narrow-size} - (#{$spacing-full}));
-    padding-right: $spacing-full - 10;
-    padding-left: $spacing-full - 10;
+    padding-right: calc(#{$spacing-full} - 10px);
+    padding-left: calc(#{$spacing-full} - 10px);
 
     &.blurry {
       animation: 0.2s ease-in forwards blur;

@@ -1,21 +1,15 @@
 ---
-title: Availability Heuristic
-date: 2024-10-10 09:45:47 +07:00
+title: "Availability heuristic"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 1
-connected:
-  - Framing Effect
-  - Mental Accounting
-  - Cognitive Dissonance
-  - Suggestibility
-categories:
-  - Cognitive
-  - Memory
-image: \assets\img\stuff\availability-heuristic.png
-discussing_link: 
-hidden: false
+image: 
 ---
-Judging the likelihood of events based on how easily examples come to mind.
 
-Source: Tversky & Kahneman (1973) asked participants about words starting with "K" vs. words with "K" as the third letter; participants incorrectly judged the former as more frequent.
-[10.1007/BF01078551](https://doi.org/10.1007/BF01078551)
+We use the things that come to mind easily when coming up with options for a decision. Things that don’t come easily to mind, therefore, aren’t considered and are at a severe disadvantage.
+
+[More information](https://en.wikipedia.org/wiki/Availability_heuristic)
+
+

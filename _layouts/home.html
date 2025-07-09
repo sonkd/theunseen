@@ -3,16 +3,12 @@ layout: default
 home: true
 ---
 
-<section class="mt-30">
-  {% include author.html %}
-</section>
-
-<!-- Recent -->
-<section class="py-4">
-  <h3 class="posts-item-note text-center" aria-label="Recent Stuff">Recent</h3>
+<!-- Top 3 Today -->
+<section class="py-4 sm:py-8">
+  <h1 class="posts-item-note text-center" aria-label="Recent Stuff">Today's stuff</h1>
   {% assign posts_list = site.posts | concat: site.stuff | sort: "date" %}
 
-  <div class="flex flex:wrap gap-6 w-[fit-to-screen] justify-center py-2">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto py-4">
     {%- for post in posts_list limit: site.number_of_posts -%}
       {% unless post.hidden %}
         {% include stuff.html %}
@@ -21,32 +17,9 @@ home: true
   </div>
 </section>
 
-{% assign all_items = nil %}
-{% for collection in site.collections %}
-  {% assign all_items = all_items | concat: collection.docs %}
-{% endfor %}
-
-<!-- Featured -->
+<!-- Popular categories -->
 <section class="py-4">
-  <h3 class="posts-item-note" aria-label="Featured">Featured</h3>
-  <ul class="posts"> 
-    {%- for post in site.data.featured limit:site.number_of_posts -%}
-      {% assign stuff = all_items | where_exp: "item", "item.title == post.title" | first %}
-      <li>
-          <a class="post-link not-underline flex-wrap items-center" href="{{ stuff.url | relative_url }}">
-            {{ stuff.title }}
-            {% if stuff.image %}
-            <img class="object-cover rounded-md w-6 h-6" src="{{ stuff.image }}" alt="{{ title_of_post }}">
-            {% endif %}
-          </a>
-      </li>
-    {%- endfor -%}
-  </ul>
-</section>
-
-<!-- Categories -->
-<section class="py-4">
-  <h3 class="posts-item-note" aria-label="Categories">Categories</h3>
+  <h1 class="posts-item-note" aria-label="Categories">Popular</h1>
   <div class="archive-tags flex flex:wrap gap-2 text-center">
     {%- for category in site.categories -%}
       {% capture cat %}{{ category | first }}{% endcapture %}
@@ -54,4 +27,45 @@ home: true
       <a class="tag-item p-2" href="/category/{{ name | slugify }}">{{ name }} ({{ site.categories[cat].size }})</a>
     {%- endfor -%}
   </div>
+</section>
+
+<!-- Top 3 from articles and research -->
+{% assign articles = site.articles.docs | default: site.articles | default: empty %}
+{% assign researches = site.researches.docs | default: site.researches | default: empty %}
+{% assign all_items = articles | concat: researches | sort: "date" | reverse %}
+<section class="py-4">
+  <h1 class="posts-item-note" aria-label="Top 3">Tips and Lessons</h1>
+  <ul class="posts">
+    {%- for post in all_items limit:3 -%}
+      <li>
+        <a class="post-link not-underline flex-wrap items-center" href="{{ post.url | relative_url }}">
+          {{ post.title }}
+          {% if post.image %}
+          <img class="object-cover rounded-md w-6 h-6" src="{{ post.image }}" alt="{{ post.title }}">
+          {% endif %}
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+<!-- Quote of the day -->
+<section class="py-4">
+  <h1 class="posts-item-note" aria-label="Top 3">Quote of the day</h1>
+  {% assign quotes = site.quotes.docs | default: site.quotes | default: empty %}
+  {% assign quotes_size = quotes | size %}
+  {% if quotes_size > 0 %}
+    {% assign random_index = "now" | date: "%s" | modulo: quotes_size %}
+    {% assign quote = quotes[random_index] %}
+    <div>
+      <blockquote>
+        {{ quote.content }}
+        {% if quote.author %}
+          <footer>— {{ quote.author }}</footer>
+        {% endif %}
+      </blockquote>
+    </div>
+  {% else %}
+    <div>No quotes available.</div>
+  {% endif %}
 </section>

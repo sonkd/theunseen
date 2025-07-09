@@ -1,15 +1,15 @@
 ---
-title: Sunk Cost Fallacy
-date: 2024-10-10 09:45:47 +07:00
+title: "Sunk cost fallacy"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-connected:
-  - Commitment Bias
-categories:
-  - Belief
-  - Cognitive
-image: \assets\img\stuff\barnum-effect.png
-discussing_link: 
-hidden: false
+image: 
 ---
+
+Our decisions are tainted by the emotional investments we accumulate, and the more we invest in something the harder it becomes to abandon it.
+
+[More information](https://en.wikipedia.org/wiki/Sunk_costs)
+
 

@@ -1,0 +1,54 @@
+<!-- show a <post> -->
+<article class="card-stuff flex gap-6 w-full">
+    <div class="card-container flex w-full h-[450px] overflow-hidden rounded-lg ">
+        <div class="photo-main relative w-full">
+            <div class="controls z-[1] absolute top-0 flex items-center justify-end w-full">
+                <button class="share-btn bg-white p-2 m-2 rounded-sm" title="share" type="button" onclick="sharePopup()">{% include icons/share-icon.svg %}</button>
+                <button class="close_share-btn bg-white p-2 m-2 rounded-sm" title="close" type="button" onclick="closePopup()" hidden>{% include icons/close-icon.svg %}</button>
+            </div>
+            {% include /archive/share-popup.html %}
+            {% if post.image %}
+            <img class="object-cover h-full" src="{{ post.image }}" alt="{{ post.title }}">
+            {% else %}
+            <img class="object-cover h-full" src="{{ site.author.avatar }}" alt="{{ post.title }}">
+            {% endif %}
+        </div>
+        <div class="card-detail m-4">
+            <div class="flex justify-between items-center">
+                <!-- Impacted -->
+                <div class="connected flex gap-2 items-center">
+                    {% for impact in post.categories %}
+                        {% assign impact_link = site.pages | where_exp: "item", "item.title == impact" %}
+                        <a href="{{ site.url }}/category/{{ impact | slugify }}">
+                            {% if impact_link[0].image %}
+                            <img class="object-cover rounded-lg h-8 w-8" src="{{ impact_link[0].image }}" alt="{{ impact }}"
+                                title="{{ impact }}" />
+                            {% else %}
+                            <img class="object-cover rounded-lg h-8 w-8" src="{{ site.author.avatar }}" alt="{{ impact }}"
+                                title="{{ impact }}" />
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+
+                <!-- Visibility -->
+                <div class="visibility flex justify-between items-center">
+                    {% for i in (1..post.visibility) %}
+                    {% include icons/star.svg %}
+                    {% endfor %}
+                </div>   
+            </div>
+            <h4>{{ post.title }}</h4>
+        </div>
+    </div>
+
+    <div class="card-explaination">
+        <div class="description">
+            {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=1
+            h_max=4 %}
+        </div>
+        {% if post.discussing_link %}
+        <button class="buy--btn" onclick="{{ post.discussing_link }}" type="button">Join Community to Discuss</button>
+        {% endif %}
+    </div>
+</article>

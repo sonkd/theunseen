@@ -1,12 +1,12 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
 // Navbar
 .navbar {
   z-index: 10;
   height: auto;
   /* max-width: calc(#{$wide-size} - (#{$spacing-full} * 2));
   max-width: -webkit-calc(#{$wide-size} - (#{$spacing-full} * 2)); */
-  position: relative;
-  margin-right: auto;
-  margin-left: auto;
   border-bottom: 1px solid $light;
   text-align: center;
   background-color: $white;

@@ -1,3 +1,6 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
 // Post wrapper
 .wrapper, #post {
   @media #{$mobile} {
@@ -95,8 +98,8 @@
 
   >p {
     margin: 0;
-    padding-top: $spacing-full - 15;
-    padding-bottom: $spacing-full - 15;
+    padding-top: ($spacing-full - 15);
+    padding-bottom: ($spacing-full - 15);
   }
 
   ul.task-list {
@@ -182,7 +185,7 @@
 
   .category {
     font-weight: $bold-weight;
-    font-size: $small-font-size - 2;
+    font-size: ($small-font-size - 2);
     color: $gray;
     
     &:hover {
@@ -199,7 +202,7 @@
   @media #{$mobile} {
     visibility: visible;
     font-weight: $bold-weight;
-    font-size: $small-font-size - 2;
+    font-size: ($small-font-size - 2);
 
     a {
       color: $gray;
@@ -215,7 +218,7 @@
 
   .tag {
     font-weight: $bold-weight;
-    font-size: $small-font-size - 2;
+    font-size: ($small-font-size - 2);
     color: $primary-color;
 
     &:hover {

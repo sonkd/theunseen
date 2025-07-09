@@ -1,21 +1,15 @@
 ---
-title: Anchoring
-date: 2024-10-10 09:45:47 +07:00
+title: "Anchoring"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-connected:
-  - Attentional Bias
-  - Availability Heuristic
-  - Bandwagon Effect
-  - Base Rate Fallacy
-categories:
-  - Memory
-  - Cognitive
-image: \assets\img\stuff\anchoring.png
-discussing_link: 
-hidden: false
+image: 
 ---
-We rely heavily on the first piece of information introduced when making decisions.
 
-Source: Tversky & Kahneman (1974) demonstrated that initial numeric "anchors" bias subsequent estimates.
-[10.1126/science.185.4157.1124](https://doi.org/10.1126/science.185.4157.1124)
+We rely too heavily on an initial piece of information offered (considered to be the "anchor") when making decisions.
+
+[More information](https://en.wikipedia.org/wiki/Anchoring)
+
+

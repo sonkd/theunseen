@@ -31,7 +31,7 @@ layout: compress
   {% if post.is_stuff %}
   <div class="wrapper post p-4">
     <main class="flex justify-center mt-20" aria-label="Content">
-      {% include popastuff.html %}
+      {% include /archive/popastuff.html %}
     </main>
     <!-- Connects -->
     {% if post.connected.size > 0 %}
@@ -63,7 +63,7 @@ layout: compress
     <div class="py-4 mt-4">
       <h3 class="posts-item-note" aria-label="Other Stuff">Other Stuff</h3>
       <div class="related-posts flex md:flex-col lg:flex-row gap-4 w-full py-2">
-          {% include navigation-card.html %}
+          {% include /archive/navigation-card.html %}
       </div>
     </div>
     {% endif %}
@@ -72,7 +72,7 @@ layout: compress
   {% else %}
   <div class="wrapper post">
     <main class="page-content pb-20" aria-label="Content">
-      {% include seeastuff.html %}
+      {% include /archive/seeastuff.html %}
     </main>
   </div>
   {% if page.next or page.previous %}

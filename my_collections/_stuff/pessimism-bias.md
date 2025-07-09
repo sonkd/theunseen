@@ -1,21 +1,15 @@
 ---
-title: Pessimism Bias
-date: 2024-10-10 09:45:47 +07:00
+title: "Pessimism bias"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-connected:
-  - Regret Aversion
-categories:
-  - Belief
-  - Cognitive
-image: \assets\img\stuff\barnum-effect.png
-discussing_link: 
-hidden: false
-
-pagination: 
-  enabled: true
-  categoory: 
-    - Belief
-    - Cognitive
+image: 
 ---
+
+We exaggerate the probability that negative things will happen to us.
+
+[More information](https://en.wikipedia.org/wiki/Optimism_bias#Pessimism_bias)
+
 

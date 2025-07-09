@@ -1,19 +1,15 @@
 ---
-title: Status Quo Bias
-date: 2024-10-10 09:45:47 +07:00
+title: "Status quo bias"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-connected:
-  - Anchoring Bias
-  - Loss Aversion
-categories:
-  - Memory
-  - Cognitive
-image: \assets\img\stuff\anchoring.png
-discussing_link: 
-hidden: false
+image: 
 ---
-Preferring things to remain the same by doing nothing or sticking with a previous decision.
 
-Source: Samuelson & Zeckhauser (1988) found that employees stick with default retirement plans rather than actively choose new ones.
-[10.1086/261775](https://doi.org/10.1086/261775)
+We prefer that things stay the way they are rather than change, even if change would be for the better.
+
+[More information](https://en.wikipedia.org/wiki/Status_quo_bias)
+
+

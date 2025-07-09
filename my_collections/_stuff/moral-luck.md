@@ -1,17 +1,15 @@
 ---
-title: Moral Luck
-date: 2024-10-10 09:45:47 +07:00
+title: "Moral luck"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-
-connected: [Limited Access, Limited Choice]
-
-categories: [Cognitive]
-
-image: \assets\img\stuff\moral-luck.png
-discussing_link: 
-
-hidden: false
+image: 
 ---
 
-Better moral standing happens due to a positive outcome; worse moral standing happens due to a negative outcome.
+We will assign more moral responsibility to a someone who happens to cause a good or bad outcome by some amount of chance than someone who does the same thing but where the good or bad outcome doesn't happen (also by luck).
+
+[More information](https://en.wikipedia.org/wiki/Moral_luck)
+
+

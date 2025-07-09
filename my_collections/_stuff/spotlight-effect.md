@@ -1,17 +1,15 @@
 ---
-title: Spotlight Effect
-date: 2024-10-10 09:45:47 +07:00
+title: "Spotlight effect"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-
-connected: [Limited Access, Limited Choice]
-
-categories: [Cognitive]
-
-image: \assets\img\stuff\spotlight-effect.png
-discussing_link: 
-
-hidden: false
+image: 
 ---
 
-We overestimate how much people are paying attention to our behavior and appearance.
+We think people are paying more attention to us than they really are.
+
+[More information](https://en.wikipedia.org/wiki/Spotlight_effect)
+
+

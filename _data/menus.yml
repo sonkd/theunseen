@@ -1,5 +1,9 @@
-- title: Home
+- title: Day
   url: /
+  external: false
+
+- title: Categories
+  url: /categories/
   external: false
 
 - title: Archive

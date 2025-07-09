@@ -5,9 +5,9 @@ layout: compress
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: " en " }}">
 
-{% include header.html %}
-
 <body data-theme="{{ site.mode }}" class="notransition">
+
+  {% include header.html %}
 
   <script>
     const body = document.body;
@@ -31,7 +31,7 @@ layout: compress
   {% include navbar.html %}
   <div class="wrapper post p-4">
     <main class="flex justify-center mt-20" aria-label="Content">
-      {% include popastuff.html %}
+      {% include /archive/popastuff.html %}
     </main>
     <!-- Connects -->
     {% if post.connected.size > 0 %}
@@ -63,7 +63,7 @@ layout: compress
     <div class="py-4 mt-4">
       <h3 class="posts-item-note" aria-label="Other Stuff">Other Stuff</h3>
       <div class="related-posts flex md:flex-col lg:flex-row gap-4 w-full py-2">
-        {% include navigation-card.html %}
+        {% include /archive/navigation-card.html %}
       </div>
     </div>
     {% endif %}

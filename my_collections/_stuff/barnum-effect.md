@@ -1,18 +1,15 @@
 ---
-title: Barnum Effect / Forer Effect
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
-visibility: 2
+title: "Barnum effect"
+conundrum: ""
+strategy: ""
 connected: []
-categories:
-  - Belief
-  - Cognitive
-image: \assets\img\stuff\barnum-effect.png
-discussing_link: 
-hidden: false
+categories: ['Mental Models']
+published: true
+image: 
 ---
-People see vague, general statements as uniquely applicable to themselves.
 
-Source: Forer (1948) gave students a generic personality description that they rated as highly accurate.
-[10.1037/h0053730](https://doi.org/10.1037/h0053730)
+When someone tells us something vague about ourselves that's supposedly tailored for us, we give it high ratings on accuracy. This can provide a partial explanation for the widespread acceptance of some paranormal beliefs and practices like astrology, fortune telling, aura reading, and some types of personality tests. Also known as Forer effect.
+
+[More information](https://en.wikipedia.org/wiki/Barnum_effect)
+
+

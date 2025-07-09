@@ -24,7 +24,7 @@ layout: default
     {% if tag == null or tag == "" %}
       {%- for post in posts_list -%}
       {% unless post.hidden %}
-        {% include stuff.html %}
+        {% include /archive/stuff.html %}
       {% endunless %}
       {%- endfor -%}
     {% else %}

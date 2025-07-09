@@ -1,21 +1,15 @@
 ---
-title: Reactance
-date: 2024-10-10 09:45:47 +07:00
+title: "Reactance"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-impacts:
-  - Decision Making
-connected:
-  - Limited Access
-  - Limited Choice
-categories:
-  - Cognitive
 image: 
-discussing_link: 
-hidden: false
 ---
 
-People react strongly emotionally against rules or regulations that threaten their freedom.
+A negative reaction we feel when we perceive that someone is taking away our choices or limiting the range of alternatives. Leads some to use reverse psychology to take advantage of this effect.
 
-Source: Brehm (1966) introduced that banning a product often increases its desirability.
-[10.1037/h0023560](https://doi.org/10.1037/h0023560)
+[More information](https://en.wikipedia.org/wiki/Reactance_%28psychology%29)
+
+

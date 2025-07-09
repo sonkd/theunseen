@@ -1,21 +1,15 @@
 ---
-title: Backfire Effect / Belief Perseverance
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
-visibility: 2
-impacts:
-  - Decision Making
-connected:
-  - Cognitive Dissonance
-  - Confirmation Bias
-categories:
-  - Cognitive
+title: "Backfire effect"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
+published: true
 image: 
-discussing_link: 
-hidden: false
 ---
-People may hold their original view more strongly when presented with evidence.
 
-Source: Nyhan & Reifler (2010) found that corrections in political misinformation sometimes strengthened misperceptions.
-[10.1007/s11109-010-9112-2](https://doi.org/10.1007/s11109-010-9112-2)
+When confronted with information that challenges our beliefs, sometimes we reject the information and decide to believe even more strongly.
+
+[More information](https://en.wikipedia.org/wiki/Confirmation_bias#backfire_effect)
+
+

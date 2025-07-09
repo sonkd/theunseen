@@ -1,0 +1,12 @@
+<h3 class="text-base font-semibold mb-2">Tag Cloud</h3>
+<div class="flex flex-wrap gap-2 text-sm">
+    {% assign tags_list = site.tags | sort %}
+    {% for tag in tags_list %}
+    {% assign count = tag[1].size %}
+    {% assign font_size = count | times: 0.08 | plus: 0.8 %}
+    <a href="/tag/{{ tag[0] | slugify }}/" class="hover:underline"
+        style="font-size: {{ font_size | replace: ',', '.' | default: '1.0' }}rem">
+        #{{ tag[0] }}
+    </a>
+    {% endfor %}
+</div>

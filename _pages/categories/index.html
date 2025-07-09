@@ -1,48 +1,39 @@
 ---
 layout: page
 title: Categories
-permalink: /category/
+permalink: /categories/
 excerpt: Sorted article by categories.
 ---
 
-<div class="my-4">
-  <div class="search-article mb-6">
-    <label for="search-input" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(128,128,128,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-    </label>
-    <input type="search" id="search-input" placeholder="Are you looking for some stuff ?" aria-label="Search">
-  </div>
-  
-  <ul id="search-results"></ul>
-</div>
-
-<div class="flex flex:wrap gap-2 items-center archive-tags text-center">
-  {%- for category in site.categories -%} 
-    {% capture name %}{{ category | first }}{% endcapture %}
-    <a class="tag-item" href="/category/{{ name | slugify }}">{{ name }}</a> 
-  {%- endfor -%}
-</div>
-
-<section class="categories">
-  {%- for category in site.categories -%}
-    {% capture cat %}{{ category | first }}{% endcapture %}
-    {% assign posts_list = site.categories[cat] %}
-    <h3 id="{{ cat }}">{{ cat | upcase }}</h3>
-    <ul class="posts">
-      {% for post in posts_list limit:9 %}
-      <li>
-        <a class="post-link" style="color: #6b7886 !important" href="{{ post.url | relative_url }}">
-          {{ post.title }}
-          {% if post.image %}
-          <img class="object-cover rounded-md w-6 h-6" src="{{ post.image }}" alt="{{ post.title }}">
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {% if site.data.categories %}
+    {% for category in site.data.categories %}
+      <div class="bg-white rounded-2xl shadow p-4">
+        <h2 class="text-xl font-bold">{{ category.name }}</h2>
+        <p>{{ category.description }}</p>
+        <ul class="mt-2 text-sm">
+          {% assign posts_list = site.posts | concat: site.stuff | where_exp: "post", "post.categories contains category.name" | sort: "date" %}
+          {% assign short_list = posts_list | slice: 0, 6 %}
+          {% for post in short_list %}
+        <li class="my-1">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          <span class="text-gray-400 text-xs">{{ post.date | date_to_relative }}</span>
+        </li>
+          {% endfor %}
+        </ul>
+        <a 
+          {% if posts_list.size > 0 %}
+            href="/categories/{{ category.slug }}/"
+          {% else %}
+            href="#"
+            onclick="return false;"
+            class="pointer-events-none text-gray-400"
           {% endif %}
-        </a>
-        {% if post.modified %}
-        <span class="post-updated-at"> ({{ post.modified | date: "%b %-d, %Y" }})</span>
-        {% endif %}
-      </li>
-      {% endfor %}
-      <a class="post-link uppercase" href="/category/{{ cat | slugify }}">See all ({{posts_list.size}})</a>
-    </ul>
-  {%- endfor -%}
+          class="text-blue-500 mt-2 inline-block"
+        >See all ({{ posts_list.size }}) →</a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No categories found.</p>
+  {% endif %}
 </section>

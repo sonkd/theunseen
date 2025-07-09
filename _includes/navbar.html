@@ -1,53 +1,46 @@
-<div class="navbar z-50 top-0 py-2 sticky-top w-full" role="navigation">
-  <nav class="menu flex justify-between items-start items-center px-4">
+<div class="navbar z-50 top-0 py-2 p-4 sticky-top w-full bg-white relative" role="navigation">
+  <nav class="menu flex justify-between items-center w-full lg:max-w-7xl mx-auto">
     <input type="checkbox" id="menu-trigger" class="menu-trigger" />
     {% if page.id %}
     {% assign post = page %}
-    <div class="logo w-[250px]">
+    <div class="logo w-fit">
       {% if post.image %}
       <a href="{{ post.url }}">
         <img class="object-cover rounded-xl" src="{{ post.image }}" alt="{{ post.title }}" title="{{ post.title }}" />
       </a>
       {% else %}
       <a href="{{ post.url }}">
-        <img class="object-cover rounded-xl" src="{{ site.author.avatar }}" alt="{{ post.title }}"
+        <img class="object-cover rounded-xl" src="{{ site.logo }}" alt="{{ post.title }}"
           title="{{ post.title }}" />
       </a>
       {% endif %}
     </div>
-    {% if post.categories %}
+
+    {% if post.categories and post.tags %}
     <div id="category" class="flex:grow-1 flex:shrink-1">
       {% for tag in post.tags %}
       <a class="font-bold not-underline" href="/tag/{{tag | downcase | slugify}}">{{tag | upcase }}</a>{% unless
       forloop.last %},{% endunless %}
       {% endfor %}
     </div>
-    <!--
-    <div id="category" class="flex:grow-1 flex:shrink-1">
-      {% assign cats = post.categories %}
-      {% for cat in cats %}
-      <a class="font-bold not-underline" href="/category/{{cat | downcase | slugify}}">{{cat | upcase }}</a>{% unless
-      forloop.last %},{% endunless %}
-      {% endfor %}
-    </div>
-    -->
     {% endif %}
+
     {% else %}
-    <div class="logo w-full">
+    <div class="logo w-fit">
       {% if page.image %}
       <a href="{{ page.url }}">
         <img class="object-cover rounded-xl" src="{{ page.image }}" alt="{{ page.title }}" title="{{ page.title }}" />
       </a>
       {% else %}
       <a href="{{ page.url }}">
-        <img class="rounded-full object-cover" src="{{ site.author.avatar }}" alt="{{ site.author.username }}" />
+        <img class="rounded-full object-cover" src="{{ site.logo }}" alt="{{ site.author.username }}" />
       </a>
       {% endif %}
     </div>
     {% endif %}
 
-    <div class="trigger flex:shrink-0 w-[250px]">
-      <div class="trigger-container flex justify-end items-center gap-2">
+    <div class="trigger flex:shrink-0 w-full">
+      <div class="trigger-container flex justify-end items-center gap-2 w-full">
         {%- assign url = page.url -%}
         {%- assign menus = site.data.menus -%}
         {%- if menus %}

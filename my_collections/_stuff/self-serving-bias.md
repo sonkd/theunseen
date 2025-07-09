@@ -1,17 +1,15 @@
 ---
-title: Self-Serving Bias
-date: 2024-10-10 09:45:47 +07:00
+title: "Self-serving bias"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-
-connected: [Limited Access, Limited Choice]
-
-categories: [Cognitive, Money, Social]
-
-image: \assets\img\stuff\self-serving-bias.png
-discussing_link: 
-
-hidden: false
+image: 
 ---
 
-Our failures are situational, but our successes are our responsibility.
+This is a label for any bias that has the effect of maintaining or enhancing our own self-esteem.
+
+[More information](https://en.wikipedia.org/wiki/Self-serving_bias)
+
+

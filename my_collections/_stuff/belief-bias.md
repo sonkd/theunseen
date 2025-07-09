@@ -1,21 +1,15 @@
 ---
-title: Belief Bias
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
-visibility: 2
-impacts:
-  - Decision Making
-connected:
-  - Limited Access
-  - Limited Choice
-categories:
-  - Cognitive
+title: "Belief bias"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
+published: true
 image: 
-discussing_link: 
-hidden: false
 ---
-Judging an argument's validity based on whether its conclusion is believable.
 
-Source: Evans, Barston & Pollard (1983) showed people accept invalid conclusions if they match prior beliefs.
-[10.3758/BF03197671](https://doi.org/10.3758/BF03197671)
+The tendency to judge the strength of an argument based on the believability of the conclusion rather than the strength of the argument to support that conclusion. Especially when the conclusion supports existing beliefs.
+
+[More information](https://en.wikipedia.org/wiki/Belief_bias)
+
+

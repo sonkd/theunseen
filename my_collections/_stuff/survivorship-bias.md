@@ -1,15 +1,15 @@
 ---
-title: Survivorship Bias
-date: 2024-10-10 09:45:47 +07:00
+title: "Survivorship bias"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-connected:
-  - Fundamental Attribution Error
-categories:
-  - Belief
-  - Cognitive
-image: \assets\img\stuff\barnum-effect.png
-discussing_link: 
-hidden: false
+image: 
 ---
+
+When we try to figure out the cause of success, we look at things that have succeeded, but forget to consider the things that didn't succeed. They could have had many of the same qualities of the survivors, thus invalidating some of the conclusions you'd draw about their effectiveness if you only looked at survivors.
+
+[More information](https://en.wikipedia.org/wiki/Survivorship_bias)
+
 

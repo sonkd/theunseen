@@ -1,17 +1,15 @@
 ---
-title: Just-World Hypothesis
-date: 2024-10-10 09:45:47 +07:00
+title: "Just-world hypothesis"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-connected:
-  - Illusion of Control
-  - Cognitive Dissonance
-categories:
-  - Cognitive
-  - Memory
-image: \assets\img\stuff\just-world-hypothesis.png
-discussing_link: 
-hidden: false
+image: 
 ---
 
-We tend to believe the world is just; therefore, we assume acts of injustice are deserved.
+We believe all good actions will be rewarded and all evil actions will be punished, which leads to the inverse as well: if someone is being punished, they must be evil.
+
+[More information](https://en.wikipedia.org/wiki/Just-world_hypothesis)
+
+

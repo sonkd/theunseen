@@ -1,16 +1,15 @@
 ---
-title: Declinism
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
-visibility: 2
-connected:
-  - Pessimism bias
-categories:
-  - Memory
-  - Cognitive
-image: \assets\img\stuff\anchoring.png
-discussing_link: 
-hidden: false
+title: "Declinism"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
+published: true
+image: 
 ---
+
+A tendency to generally view the past more favorably and the future more negatively. Every generation thinks the next generation is ruining everything.
+
+[More information](https://en.wikipedia.org/wiki/Declinism)
+
 

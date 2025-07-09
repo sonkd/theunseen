@@ -1,7 +1,7 @@
 ---
 title: Seeing the unseen
 permalink: /about/
-layout: page
+layout: post
 excerpt: 
 comments: false
 ---

@@ -1,19 +1,15 @@
 ---
-title: Confirmation Bias
-date: 2024-10-10 09:45:47 +07:00
-modified: 
-is_stuff: true
-visibility: 2
-impacts:
-  - Decision Making
+title: "Confirmation bias"
+conundrum: ""
+strategy: ""
 connected: []
-categories:
-  - Cognitive
+categories: ['Mental Models']
+published: true
 image: 
-discussing_link: 
-hidden: false
 ---
-Seeking, interpreting, and remembering information that confirms preconceptions.
 
-Source: Wason's (1960) "2-4-6" experiment showed people rarely tried to falsify their own hypotheses.
-[10.1037/h0047609](https://doi.org/10.1037/h0047609)
+Our tendency to search for, interpret, favor, and recall information in a way that confirms our preexisting beliefs or hypotheses.
+
+[More information](https://en.wikipedia.org/wiki/Confirmation_bias)
+
+

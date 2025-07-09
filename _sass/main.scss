@@ -1,9 +1,14 @@
-@import "variables";
-@import "mixins";
+@use "variables" as *;
+@use "mixins" as *;
 
-// Import sass files
-@import "klise/fonts", "klise/base", "klise/layout", "klise/post",
-  "klise/miscellaneous", "klise/syntax", "klise/dark", "klise/styles";
+@use "klise/fonts";
+@use "klise/base" as *;
+@use "klise/layout" as *;
+@use "klise/post" as *;
+@use "klise/miscellaneous" as *;
+@use "klise/syntax" as *;
+@use "klise/dark" as *;
 
-@import "articles/card-styles";
-@import "articles/social-sharing";
+@use "articles/card-styles" as *;
+@use "articles/social-sharing" as *;
+@use "articles/post-view" as *;

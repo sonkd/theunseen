@@ -1,16 +1,15 @@
 ---
-title: Law of Triviality
-date: 2024-10-10 09:45:47 +07:00
+title: "Law of triviality"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-connected:
-  - Limited Access
-  - Limited Choice
-categories:
-  - Belief
-  - Cognitive
-image: \assets\img\stuff\barnum-effect.png
-discussing_link: 
-hidden: false
+image: 
 ---
+
+When we're discussing options within a group context, we give disproportionate weight to trivial issues. Also known as Parkinson's law of triviality and bike-shedding effect. 
+
+[More information](https://en.wikipedia.org/wiki/Law_of_triviality)
+
 

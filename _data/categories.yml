@@ -1,0 +1,15 @@
+- name: Concepts
+  slug: concepts
+  description: "Foundational ideas and theories"
+- name: Tools
+  slug: tools
+  description: "Practical tools and apps"
+- name: Frameworks
+  slug: frameworks
+  description: "Structured models for thinking"
+- name: Mental Models
+  slug: mental-models
+  description: "Lenses to see the world"
+- name: People / Thinkers
+  slug: thinkers
+  description: "Influential minds and authors"

@@ -1,17 +1,15 @@
 ---
-title: Zero Risk Bias
-date: 2024-10-10 09:45:47 +07:00
+title: "Zero-risk bias"
+conundrum: ""
+strategy: ""
+connected: []
+categories: ['Mental Models']
 published: true
-visibility: 2
-impacts:
-  - Decision Making
-connected:
-  - Regret Aversion
-categories:
-  - Cognitive
 image: 
-discussing_link: 
-hidden: false
 ---
 
-As a witness who secretly fears being vulnerable to a severe mishap, we will blame the victim less and the attacker more if we relate to the victim.
+We tend to prefer the complete elimination of a risk even when alternative options produce a greater reduction in risk.
+
+[More information](https://en.wikipedia.org/wiki/Zero-risk_bias)
+
+
