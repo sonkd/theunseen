@@ -1,7 +1,7 @@
 <article
-    class="stuff card-stuff-02 p-4 mb-4 flex flex-col w-full h-fit transition-transform duration-500 group hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer bg-white dark:bg-gray-900">
+    class="stuff card-stuff-02 p-2 flex flex-col w-full h-fit transition-transform duration-500 group hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer bg-white dark:bg-gray-900">
 
-    <div class="relative mb-3 w-full aspect-[16/9] rounded-lg overflow-hidden">
+    <div class="relative mb-3 w-full aspect-[4/3] rounded-lg overflow-hidden">
         {% if post.image %}
             <img
                 class="w-full h-full object-cover transition-transform duration-500 rounded-lg"
@@ -26,10 +26,10 @@
         </a>
     </div>
 
-    <h4 class="post-item-title w-full mt-2 text-lg font-semibold">
+    <h6 class="post-item-title w-full mt-2 text-sm font-semibold">
         <a href="{{ post.url | prepend: site.baseurl }}"
             class="block group-hover:text-black dark:group-hover:text-white transition-colors duration-200">
             {{ post.title | escape }}
         </a>
-    </h4>
+    </h6>
 </article>

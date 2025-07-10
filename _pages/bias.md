@@ -1,7 +1,7 @@
 ---
 layout: category-archive
-title: Frameworks
-permalink: /categories/frameworks
+title: Bias
+permalink: /categories/bias
 excerpt: Stuff for your life
 
 pagination:
@@ -9,5 +9,3 @@ pagination:
   per_page: 11
   collection: stuff
 ---
-
-

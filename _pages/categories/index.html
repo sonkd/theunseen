@@ -17,7 +17,7 @@ excerpt: Sorted article by categories.
           {% for post in short_list %}
         <li class="my-1">
           <a href="{{ post.url }}">{{ post.title }}</a>
-          <span class="text-gray-400 text-xs">{{ post.date | date_to_relative }}</span>
+          <span class="text-gray-400 text-xs">{{ post.date | date: "%b %d, %Y" }}</span>
         </li>
           {% endfor %}
         </ul>

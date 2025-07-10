@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<header class="header mt-30">
+<header class="header pt-20">
   <h1 class="header-title center" itemprop="headline">{{ page.title | escape }}.</h1>
 </header>
 
@@ -10,37 +10,12 @@ layout: default
   {% include search_box.html %}
 </div>
 
-<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-  {% assign stuff_posts = site.stuff | sort: 'date' | reverse %}
-  {% assign per_page = 20 %}
-  {% assign page_num = paginator.page %}
-  {% assign start = per_page | times: page_num | minus: per_page %}
-  {% assign end = per_page | times: page_num %}
-  {% assign paged_stuff = stuff_posts | slice: start, per_page %}
-
-  {% for post in paged_stuff %}
-    <div class="bg-white shadow rounded-xl overflow-hidden">
-      <a href="{{ post.url }}">
-        <img src="{{ post.image }}" class="w-full h-32 object-cover" />
-        <div class="p-4">
-          <h3 class="text-sm font-semibold">{{ post.title }}</h3>
-        </div>
-      </a>
-    </div>
-  {% endfor %}</div>
-</div>
-
-<!-- Pagination -->
-{% if paginator %}
-<div class="mt-6 flex justify-center space-x-2">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}" class="btn">←</a>
-  {% endif %}
-  {% for page in (1..paginator.total_pages) %}
-    <a href="{{ paginator.paginate_path | replace: ':num', page }}" class="{% if page == paginator.page %}font-bold{% endif %}">{{ page }}</a>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {% for post in paginator.posts %}
+  {% unless post.hidden %}
+  {% include stuff.html %}
+  {% endunless %}
   {% endfor %}
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="btn">→</a>
-  {% endif %}
 </div>
-{% endif %}
+
+{% include pagination.html %}

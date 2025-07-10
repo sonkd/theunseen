@@ -21,10 +21,24 @@ home: true
 <section class="py-4">
   <h1 class="posts-item-note" aria-label="Categories">Popular</h1>
   <div class="archive-tags flex flex:wrap gap-2 text-center">
-    {%- for category in site.categories -%}
-      {% capture cat %}{{ category | first }}{% endcapture %}
-      {% capture name %}{{ category | first }}{% endcapture %}
-      <a class="tag-item p-2" href="/category/{{ name | slugify }}">{{ name }} ({{ site.categories[cat].size }})</a>
+    {%- assign all_categories = "" | split: "" -%}
+    {%- for post in site.posts -%}
+      {%- assign all_categories = all_categories | concat: post.categories -%}
+    {%- endfor -%}
+    {%- for item in site.stuff -%}
+      {%- assign all_categories = all_categories | concat: item.categories -%}
+    {%- endfor -%}
+    {%- assign articles = site.articles.docs | default: site.articles | default: empty -%}
+    {%- for item in articles -%}
+      {%- assign all_categories = all_categories | concat: item.categories -%}
+    {%- endfor -%}
+    {%- assign researches = site.researches.docs | default: site.researches | default: empty -%}
+    {%- for item in researches -%}
+      {%- assign all_categories = all_categories | concat: item.categories -%}
+    {%- endfor -%}
+    {%- assign all_categories = all_categories | uniq | sort -%}
+    {%- for name in all_categories -%}
+      <a class="tag-item p-2" href="/categories/{{ name | slugify }}">{{ name }}</a>
     {%- endfor -%}
   </div>
 </section>
@@ -34,11 +48,11 @@ home: true
 {% assign researches = site.researches.docs | default: site.researches | default: empty %}
 {% assign all_items = articles | concat: researches | sort: "date" | reverse %}
 <section class="py-4">
-  <h1 class="posts-item-note" aria-label="Top 3">Tips and Lessons</h1>
+  <h1 class="posts-item-note" aria-label="Top 3">Recommendations</h1>
   <ul class="posts">
     {%- for post in all_items limit:3 -%}
-      <li>
-        <a class="post-link not-underline flex-wrap items-center" href="{{ post.url | relative_url }}">
+      <li class="flex flex-row">
+        <a class="post-link not-underline flex flex-wrap gap-4 items-center" href="{{ post.url | relative_url }}">
           {{ post.title }}
           {% if post.image %}
           <img class="object-cover rounded-md w-6 h-6" src="{{ post.image }}" alt="{{ post.title }}">
