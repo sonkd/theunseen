@@ -102,3 +102,13 @@ researcher bổ sung facts từ refs có sẵn, writer mở rộng body lên 300
 - [ ] `links` ≥ 2 slug tồn tại và liên quan thật
 - [ ] `refs` ≥ 1 URL đáng tin
 - [ ] Human đã đọc và approve qua PR
+
+## 7. Phase 2 sessions (Map & Fog-of-war)
+
+Phase 2 chạy song song 3 session độc lập, xem chi tiết quyết định + contract tích hợp trong `docs/phase2-session-prompts.md`:
+
+- **S5a — Map engine**: canvas 2D, movement, fog-of-war. Ranh giới: `src/components/map/MapCanvas.astro`, `src/pages/index.astro`.
+- **S5b — Map data + overlay**: sinh `public/map-data.json` từ `content/stuff`, `StuffOverlay.astro`, header. Ranh giới: `scripts/build-map-data.mjs`, `src/components/map/StuffOverlay.astro`, `src/lib/map/path.ts`, `src/pages/stuff-data/`, `src/pages/about.astro`, `src/layouts/Base.astro`.
+- **S5c — Progression & docs**: `src/lib/progress.ts`, đồng bộ `docs/build-plan.md`, `maps/README.md`, `CLAUDE.md`.
+
+Thứ tự merge: S5c → S5b → S5a (xem `docs/phase2-session-prompts.md` mục "Thứ tự merge").

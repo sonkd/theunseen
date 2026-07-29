@@ -109,7 +109,33 @@ image: "..."
 Đoạn giới thiệu 300–500 từ...
 ```
 
-Thay đổi so với template gốc: thêm `slug` làm khoá tham chiếu; `links` dùng slug thay vì title; `level` theo rubric 1–4; thêm `map_position` (optional); `approaches` thành object. Build script sẽ generate `graph.json` (nodes + edges) và `map-data.json` cho Kaplay từ toàn bộ frontmatter.
+Thay đổi so với template gốc: thêm `slug` làm khoá tham chiếu; `links` dùng slug thay vì title; `level` theo rubric 1–4; thêm `map_position` (optional); `approaches` thành object. Build script sẽ generate `graph.json` (nodes + edges) và `map-data.json` cho map renderer từ toàn bộ frontmatter.
+
+## Phase 2
+
+- Canvas tự render thay vì dùng Tiled/Kaplay.
+- Sử dụng 4 map chính + 1 map Sun độc lập.
+- Header loại bỏ Daily/Favorites; chỉ giữ điều hướng chính và `OPTIONS`.
+- Map renderer đọc dữ liệu từ `public/map-data.json`; không đọc map content trực tiếp.
+- Fog-of-war có trạng thái; tiến trình lưu `localStorage` key `unseen:lit`.
+
+## Map pipeline
+
+- `src/components/map/` chịu trách nhiệm render canvas, palette, overlay, fog-of-war và seeded corridor placement.
+- `public/map-data.json` (sinh bởi `npm run mapdata`) chứa seed, path map, corridor placement, palette và metadata map.
+- `src/lib/progress.ts` quản lý trạng thái khám phá, dedupe slug và tính phần trăm khám phá.
+
+## Definition of Done - Phase 2
+
+- `src/lib/progress.ts` hỗ trợ `getExploredPct(level, total)`.
+- `src/lib/progress.ts` lưu localStorage key `unseen:lit` dưới dạng mảng slug và dedupe.
+- `src/lib/progress.ts` tự lắng nghe sự kiện `stuff:open` trong module init và gọi `markLit` nếu cần.
+- `maps/README.md` mô tả rõ luồng dữ liệu map: `map-data.json`, seeded path và corridor placement.
+- `CLAUDE.md` cập nhật cấu trúc `src/components/map/` và `src/lib/progress.ts`.
+- `docs/agent-workflow-guide.md` thêm mục Phase 2 sessions và ranh giới file.
+- `npm run test:progress` chạy thành công.
+- `npm run build` chạy thành công.
+` cho Kaplay từ toàn bộ frontmatter.
 
 ### 2.4 Cấu trúc repo
 
@@ -130,7 +156,7 @@ theunseen/                    # branch "new" — đã scaffold
 │   ├── pages/                # index (map Phase 2), library, stuff/[slug]
 │   ├── components/           # FlipCard.astro; MapCanvas Phase 2
 │   └── lib/icons.ts          # icon theo category — không random
-├── maps/                     # Tiled JSON: imagining, belief, thinking, knowledge, sun (Phase 2)
+├── maps/                     # README.md mô tả map pipeline (Phase 2); data thật ở public/map-data.json
 ├── docs/                     # build-plan.md, agent-workflow-guide.md
 ├── Dockerfile                # build Astro → nginx:alpine
 ├── docker-compose.yml        # web + umami + umami-db
@@ -159,7 +185,7 @@ Checkpoint Jekyll vào git history; migrate **181 stuff cards** sang schema mớ
 181 cards migrate có body ngắn (warning < 100 từ). Dùng `/batch-cards` enrich dần lên 300–500 từ, ưu tiên cards có nhiều links.
 *DoD: 0 warning word-count; mỗi card ≥ 1 ref thật.*
 
-**Phase 1 — Card & Library (tuần 2–3)**
+**Phase 2 — Card & Library (tuần 2–3)**
 FlipCard component (flip 2 mặt, refs, approaches, related links), library view + filter category/level, Pagefind search, layout theo wireframe 2 của bạn.
 *DoD: đủ luồng đọc hoàn chỉnh trên mobile + desktop không cần map; Lighthouse ≥ 90.*
 
@@ -181,7 +207,7 @@ Daily flame, favorites, Umami events (card_flip, map_explore_pct, search_no_resu
 
 ---
 
-## Definition of Done (toàn dự án, giai đoạn 1)
+## Definition of DoneX (toàn dự án, giai đoạn 1)
 
 - [ ] 40–60 stuff published, phủ đều 4 level
 - [ ] Dual-mode hoạt động: map (explore) + library (search/SEO)

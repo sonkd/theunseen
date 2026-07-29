@@ -4,7 +4,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test:progress": "node --experimental-strip-types scripts/test-progress.mjs",
+    "mapdata": "node --experimental-strip-types ./scripts/build-map-data.mjs",
     "dev": "astro dev",
+    "prebuild": "npm run mapdata",
     "build": "astro build",
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",

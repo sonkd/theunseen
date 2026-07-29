@@ -7,7 +7,13 @@ Website chia sẻ kiến thức (bias, cognitive behavior, psychology): mỗi co
 - `content/stuff/` — 1 file .md = 1 card. **Filename = slug = khoá tham chiếu.** Không đổi tên file tùy tiện (gãy links).
 - `content/approaches/` — bài case study/ứng dụng.
 - `scripts/content-pipeline/` — pipeline 3 vai (researcher/writer/verifier), backlog, prompts.
-- `src/` — Astro. `maps/` — Tiled JSON (Phase 2). `docs/` — plan + guides.
+- `src/` — Astro. `src/components/map/` — map engine (canvas 2D) + stuff overlay (Phase 2). `src/lib/progress.ts` — fog-of-war progression (localStorage). `maps/` — README mô tả map pipeline (Phase 2). `docs/` — plan + guides.
+
+## Phase 2 — Map & fog-of-war
+
+- Map đọc dữ liệu từ `public/map-data.json` (sinh bởi `npm run mapdata` từ `content/stuff`) — **không đọc content trực tiếp**.
+- 4 map + The Sun, khớp `level` 1–4 trong frontmatter. Canvas 2D tự render, không Tiled/Kaplay.
+- Tiến trình khám phá (fog-of-war) qua `src/lib/progress.ts` — contract: `getLit/markLit/isLit/litCountByLevel`.
 
 ## Schema stuff card (bắt buộc)
 
