@@ -1,5 +1,9 @@
 ---
 title: "Confabulation"
+front: "'Confabulation' là gì, và nó tác động thế nào đến cách bạn nghĩ hoặc ra quyết định?"
+back: "We spontaneously create fabricated, distorted, or misinterpreted memories about ourselves and the world without intending to, mostly to fill in gaps in justification and reasoning. Sometimes known as false memory as well."
+source: "https://en.wikipedia.org/wiki/Confabulation"
+difficulty: 2
 conundrum: ""
 strategy: ""
 connected: []

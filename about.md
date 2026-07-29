@@ -8,7 +8,7 @@ comments: false
 
 Plato believed that what we perceive through our senses is just a shadow of true reality. In his famous *Allegory of the Cave*<sup id="plato-says">[[1]](#ref-1)</sup>, he argued that we live in a world of illusions, and only through reason can we access the "Forms"—eternal truths that lie beyond what we see. Similarly, in Buddhism, the "Three Wise Monkeys"<sup id="3-monkeys">[[2]](#ref-2)</sup> teach mindfulness and ethical conduct, encouraging us to be mindful instead of what we see 🙈 , hear 🙉, and say 🙊.
 
-Like a prism, this site refracts the ordinary into a spectrum of availability stuff, revealing what has been hidden in plain sight. We see the invisible stuff through the prism of science to understand how our brain works and makes decisions; we'll focus on psychology, cognitive load theory<sup id="cognitive-load">[[3]](#ref-2)</sup>, our faith, the social impact on us, and so on.
+Like a prism, this site refracts the ordinary into a spectrum of availability stuff, revealing what has been hidden in plain sight. We see the invisible stuff through the prism of science to understand how our brain works and makes decisions; we'll focus on psychology, cognitive load theory<sup id="cognitive-load">[[3]](#ref-3)</sup>, our faith, the social impact on us, and so on.
 
 <figure>
 <img src="/assets/img/stuff/prism.png" alt="Seeing the unseen">

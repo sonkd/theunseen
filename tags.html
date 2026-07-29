@@ -1,27 +1,37 @@
 ---
 title: Tags
 permalink: /tags/
-layout: page
+layout: default
 excerpt: Sorted article by tags.
 ---
 
-<div class="archive-tags text-center">
-  {%- for tag in site.tags -%} 
+<header class="header mt-20">
+  <h1 class="header-title center" itemprop="headline">{{ page.title | escape }}.</h1>
+</header>
+
+<div class="archive-tags text-center my-4">
+  {%- for tag in site.data.all_tags -%} 
     {% capture name %}{{ tag | first }}{% endcapture %}
     <a class="tag-item" href="/tag/{{name | downcase | slugify}}">{{ name }}</a> 
   {%- endfor -%}
 </div>
 
-{%- for tag in site.tags -%}
+{%- for tag in site.data.all_tags -%}
   {%- capture name -%}{{ tag | first }}{%- endcapture -%}
-  <h2 id="{{ name }}">{{ name | upcase }}</h2>
-  {%- for post in site.tags[name] limit:12 -%}
+  <div class="my-4">
+    <h2 id="{{ name }}">{{ name | upcase }}</h2>
+    {% assign posts_list = site.data.all_tags[name] %}
+    {%- for post in posts_list limit:12 -%}
     <article class="post-item" id="results-container">
       <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
       <h3 class="post-item-title">
         <a href="{{ post.url }}">{{ post.title | escape }}</a>
       </h3> 
     </article>
-  {%- endfor -%}
-  <a class="post-link" href="/tag/{{name | downcase | slugify}}">See all</a>
+    {%- endfor -%}
+    {% if posts_list.size > 8 %}
+    <a href="/tag/{{name | downcase | slugify}}" class="text-blue-500 mt-2 inline-block">See all ({{ posts_list.size }}) →</a>
+    {% endif %}
+  </div>
+  <hr class="my-4">
 {%- endfor -%}

@@ -2,6 +2,14 @@
   url: /
   external: false
 
+- title: Study
+  url: /study/
+  external: false
+
+- title: Stats
+  url: /stats/
+  external: false
+
 - title: Categories
   url: /categories/
   external: false

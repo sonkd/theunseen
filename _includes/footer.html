@@ -7,11 +7,11 @@
 </footer>
 <a class="menu-link rss" href="/feed.xml">
 
-  <script src="/assets/js/main.js" defer="defer"></script>
-  {%- if site.google_analytics -%}
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-  <script>
+<script src="/assets/js/main.js" defer="defer"></script>
+{%- if site.google_analytics -%}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -19,15 +19,21 @@
     gtag("js", new Date());
 
     gtag("config", "{{ site.google_analytics }}");
-  </script>
-  {%- endif -%}
-  {%- if page.url == '/archive/' or page.url contains '/category/' or page.url contains '/404.html' -%}
-  <script src="/assets/js/search.min.js"></script>
-  <script>
+</script>
+{%- endif -%}
+{%- if page.url == '/archive/' or page.url contains '/categories/' or page.url contains '/404.html' -%}
+<script src="/assets/js/search.min.js"></script>
+<script>
+    {% if page.url contains '/categories/' %}
+    var searchInputId = 'search-stuff-input';
+    {% else %}
+    var searchInputId = 'search-input';
+    {% endif %}
+    var searchJson = '{{ site.baseurl }}/assets/search.json';
     var sjs = SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
+      searchInput: document.getElementById(searchInputId),
       resultsContainer: document.getElementById('search-results'),
-      json: '/assets/search.json',
+      json: searchJson,
     });
-  </script>
-  {%- endif -%}
+</script>
+{%- endif -%}

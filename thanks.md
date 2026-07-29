@@ -1,7 +1,7 @@
 ---
 title: Acknowledgment
 permalink: /thanks/
-layout: page
+layout: post
 excerpt: Thanks to amazing people that i met, who help me out from follishness, connecting me with another good person, giving some advice when i'm at a bad things, pulling me from ordinary to be great.
 comments: false
 ---
@@ -24,6 +24,6 @@ Although beyond the scope of this site, the fields of metaphysics world or specu
 - [Chakra - Hinduism](https://en.wikipedia.org/wiki/Chakra){:target="_blank"}
 
 #### Colophon
-This site was designed using [Figma](https://www.figma.com/) and built with the [Klisé theme](https://github.com/piharpi/jekyll-klise) on [Jekyll](https://jekyllrb.com). [GitHub](https://github.com/) was used for asset management and automatic deployment, with [Netlify](https://www.netlify.com/) providing the backups. All most content will managed by [Obsidian](https://obsidian.md/).
+This site was designed using [Figma](https://www.figma.com/) and built with the [Klisé theme](https://github.com/piharpi/jekyll-klise) on [Jekyll](https://jekyllrb.com). [GitHub](https://github.com/) was used for asset management and automatic deployment, with [Netlify](https://www.netlify.com/) providing the backups. All most content will managed by [Notion](https://www.notion.com/).
 
 Illustrations are primarily sourced from the [Openmoji library](https://openmoji.org/) for its simplicity and visual appeal.

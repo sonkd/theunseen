@@ -11,7 +11,7 @@ comments: false
 </section>
 
 <!-- FILTER NAV -->
-<nav class="mb-6 flex gap-4 text-sm font-medium mx-auto">
+<nav class="archive-tags mb-6 flex gap-2 text-sm font-medium mx-auto">
   {% assign current_type = page.archive_type | default: 'researches' %}
   {% assign filters = "all,quotes,researches,articles" | split: "," %}
   {% for filter in filters %}
@@ -20,9 +20,7 @@ comments: false
     {% else %}
       {% assign is_active = false %}
     {% endif %}
-    <a href="/archive/{% unless filter == 'all' %}{{ filter }}{% endunless %}/"
-       class="px-3 py-1 rounded-full border 
-              {% if is_active %}bg-blue-600 text-white border-blue-600 hover:bg-blue-700{% else %}text-gray-600 border-gray-300 hover:bg-gray-100{% endif %}">
+    <a href="/archive/{% unless filter == 'all' %}{{ filter }}{% endunless %}/" class="{% if is_active %}tag-item-selected{% else %}tag-item{% endif %}">
       {{ filter | capitalize }}
     </a>
   {% endfor %}

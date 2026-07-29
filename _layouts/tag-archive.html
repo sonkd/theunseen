@@ -2,13 +2,13 @@
 layout: default
 ---
 
-<header class="header mt-30">
+<header class="header mt-20">
   <h1 class="header-title center" itemprop="headline">{{ page.title | escape }}.</h1>
 </header>
 
 <div class="archive-tags text-center">
   <a class="tag-item" href="/tags/">all tags</a>
-  {%- for tag in site.tags -%} 
+  {%- for tag in site.data.all_tags -%} 
     {% capture name %}{{ tag | first }}{% endcapture %}
     {% if page.title !=  name %}
     <a class="tag-item" href="/tag/{{name | downcase | slugify}}">{{ name }}</a>
@@ -24,7 +24,7 @@ layout: default
     {% if tag == null or tag == "" %}
       {%- for post in posts_list -%}
       {% unless post.hidden %}
-        {% include /archive/stuff.html %}
+        {% include stuff.html %}
       {% endunless %}
       {%- endfor -%}
     {% else %}

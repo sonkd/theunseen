@@ -5,7 +5,7 @@ modified:
 tags: [habit, principle]
 archive_type: "quotes"
 author: Unknown
-categories: [Mental Models]
+categories: [Life]
 
 image: \assets\img\design-principles\simplicity.png
 discussing_link:

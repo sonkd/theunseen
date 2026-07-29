@@ -6,13 +6,16 @@ excerpt: Sorted article by categories.
 ---
 
 <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {% if site.data.categories %}
-    {% for category in site.data.categories %}
+
+  {% assign all_cats = site.data.categories %}
+  {% if all_cats %}
+    {% for category in all_cats %}
+      {% assign posts_list = site.posts | concat: site.stuff | where_exp: "post", "post.categories contains category.name" | sort: "date" %}
+      {% if posts_list.size > 0 %}
       <div class="bg-white rounded-2xl shadow p-4">
         <h2 class="text-xl font-bold">{{ category.name }}</h2>
         <p>{{ category.description }}</p>
         <ul class="mt-2 text-sm">
-          {% assign posts_list = site.posts | concat: site.stuff | where_exp: "post", "post.categories contains category.name" | sort: "date" %}
           {% assign short_list = posts_list | slice: 0, 6 %}
           {% for post in short_list %}
         <li class="my-1">
@@ -21,17 +24,11 @@ excerpt: Sorted article by categories.
         </li>
           {% endfor %}
         </ul>
-        <a 
-          {% if posts_list.size > 0 %}
-            href="/categories/{{ category.slug }}/"
-          {% else %}
-            href="#"
-            onclick="return false;"
-            class="pointer-events-none text-gray-400"
-          {% endif %}
-          class="text-blue-500 mt-2 inline-block"
-        >See all ({{ posts_list.size }}) →</a>
+        {% if posts_list.size > 6 %}
+        <a href="/categories/{{ category.slug }}/" class="text-blue-500 mt-2 inline-block">See all ({{ posts_list.size }}) →</a>
+        {% endif %}
       </div>
+      {% endif %}
     {% endfor %}
   {% else %}
     <p>No categories found.</p>

@@ -1,5 +1,9 @@
 ---
 title: "Change blindness"
+front: "'Change blindness' là gì, và nó tác động thế nào đến cách bạn nghĩ hoặc ra quyết định?"
+back: "We have some ability to control what our brain is paying attention to, or watching for. However, it can only handle a couple tasks at a time, and becomes blind to other things that would otherwise grab our attention. A good example of this is that video that asks us to count how many times the players in white pass a basketball between each other, and we completely miss a gorilla walking through the group."
+source: "https://en.wikipedia.org/wiki/Change_blindness"
+difficulty: 2
 conundrum: ""
 strategy: ""
 connected: []

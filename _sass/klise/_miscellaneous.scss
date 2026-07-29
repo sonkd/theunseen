@@ -9,6 +9,17 @@
   }
 }
 
+// Animation fade-in to full opacity (opaque overlays, e.g. mobile menu)
+@keyframes fadein-opaque {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 // Animation blur
 @keyframes blur {
   0% {

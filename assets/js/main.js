@@ -16,13 +16,15 @@
   };
 
   // Add event listener to #mode
-  lamp.addEventListener("click", (e) => {
-    const currentTheme = localStorage.getItem("theme") || "light"; // Default to light
-    toggleTheme(currentTheme);
+  if (lamp) {
+    lamp.addEventListener("click", (e) => {
+      const currentTheme = localStorage.getItem("theme") || "light"; // Default to light
+      toggleTheme(currentTheme);
 
-    // Prevent the event from propagating further (if needed)
-    e.preventDefault();
-  });
+      // Prevent the event from propagating further (if needed)
+      e.preventDefault();
+    });
+  }
 
   // Blur the content when the menu is open
   const cbox = document.getElementById("menu-trigger");
@@ -40,10 +42,12 @@
     });
   };
 
-  $('#modal-container').click(function () {
-    $(this).addClass('out');
-    $('body').removeClass('modal-active');
-  });
+  if (window.jQuery && $('#modal-container').length) {
+    $('#modal-container').click(function () {
+      $(this).addClass('out');
+      $('body').removeClass('modal-active');
+    });
+  }
 
 
   // Check isReading state
