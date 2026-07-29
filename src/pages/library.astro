@@ -1,31 +1,240 @@
 ---
 import Base from '../layouts/Base.astro';
+import StuffOverlay from '../components/map/StuffOverlay.astro';
 import { getCollection } from 'astro:content';
 import { iconFor, LEVEL_MAPS } from '../lib/icons';
 const stuff = (await getCollection('stuff', ({ data }) => data.published))
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
 const levels = [1, 2, 3, 4];
+const categories = ['bias', 'mental-models', 'fallacy', 'memory', 'perception', 'theory', 'heuristic', 'social'];
+const CATEGORY_LABELS = {
+  'bias': 'Bias',
+  'mental-models': 'Mental models',
+  'fallacy': 'Fallacy',
+  'memory': 'Memory',
+  'perception': 'Perception',
+  'theory': 'Theory',
+  'heuristic': 'Heuristic',
+  'social': 'Social',
+};
+const cardCount = stuff.length;
+const PAGE_SIZE = 50;
 ---
 <Base title="Library">
-  <h1>Library</h1>
-  {levels.map((l) => (
-    <section>
-      <h2>Map {l} — {LEVEL_MAPS[l]}</h2>
-      <ul class="grid">
-        {stuff.filter((s) => s.data.level === l).map((s) => (
-          <li>
-            <a href={`/stuff/${s.id}/`}>
-              <span class="icon">{iconFor(s.id, s.data.categories, s.data.icon)}</span> {s.data.title}
-            </a>
-          </li>
+  <div class="filters">
+    <div class="filter-header">
+      <div>
+        <h1>Library</h1>
+        <p class="filter-copy">Filter by category and level, then share the URL.</p>
+      </div>
+      <div class="result-count" id="resultCount">Showing {cardCount} cards</div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-label">Category</div>
+      <div class="chips" id="categoryChips">
+        {categories.map((cat) => (
+          <button type="button" class="chip" data-filter-type="category" data-filter-value={cat} aria-pressed="false">
+            {CATEGORY_LABELS[cat]}
+          </button>
         ))}
-      </ul>
-    </section>
-  ))}
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-label">Level</div>
+      <div class="chips" id="levelChips">
+        {levels.map((l) => (
+          <button type="button" class="chip" data-filter-type="level" data-filter-value={l.toString()} aria-pressed="false">
+            {l}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <button type="button" class="clear-button" id="clearFilters">Clear filters</button>
+  </div>
+
+  <ul class="grid" id="cardGrid" data-page-size={PAGE_SIZE}>
+    {stuff.map((s) => (
+      <li class="card" data-slug={s.id} data-level={s.data.level.toString()} data-categories={s.data.categories.join(' ')}>
+        <a href={`/stuff/${s.id}/`} data-slug={s.id}>
+          <span class="icon">{iconFor(s.id, s.data.categories, s.data.icon)}</span>
+          <span>{s.data.title}</span>
+          <span class="meta">{CATEGORY_LABELS[s.data.categories[0]] ?? s.data.categories[0]} · Map {s.data.level} — {LEVEL_MAPS[s.data.level]}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <nav class="pagination hidden" id="pagination" aria-label="Library pagination">
+    <button type="button" id="pagePrev" class="page-nav">‹ Prev</button>
+    <div class="page-numbers" id="pageNumbers"></div>
+    <button type="button" id="pageNext" class="page-nav">Next ›</button>
+  </nav>
+
+  <StuffOverlay />
 </Base>
 <style>
-  .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .5rem; }
-  .grid a { text-decoration: none; color: var(--text); display: block; padding: .5rem .75rem; border: 1px solid var(--border); border-radius: 8px; }
+  .filters { border: 1px solid var(--border); background: var(--surface); padding: 1rem 1.25rem; border-radius: 18px; margin-bottom: 1.5rem; }
+  .filter-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
+  .filter-copy { margin: 0.35rem 0 0; color: var(--muted); }
+  .filter-group { margin-top: 1rem; }
+  .filter-label { text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; color: var(--muted); margin-bottom: .4rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chip { appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text); border-radius: 999px; padding: .55rem .85rem; cursor: pointer; transition: transform .15s ease, background .15s ease, border-color .15s ease; }
+  .chip:hover { transform: translateY(-1px); border-color: var(--flame); }
+  .chip.active { background: rgba(240,163,67,.15); border-color: var(--flame); color: var(--flame); }
+  .clear-button { margin-top: 1rem; appearance: none; border: 1px solid var(--border); background: transparent; color: var(--text); border-radius: 999px; padding: .7rem 1rem; cursor: pointer; }
+  .clear-button:hover { border-color: var(--flame); color: var(--flame); }
+  .result-count { color: var(--muted); font-size: .95rem; }
+  .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .75rem; margin: 0; }
+  .grid a { text-decoration: none; color: var(--text); display: grid; grid-template-columns: auto 1fr; gap: .75rem; padding: .85rem 1rem; border: 1px solid var(--border); border-radius: 16px; align-items: center; }
   .grid a:hover { border-color: var(--flame); }
-  .icon { color: var(--flame); }
+  .card { transition: opacity .2s ease, transform .2s ease; }
+  .card[hidden] { display: none !important; }
+  .icon { color: var(--flame); font-size: 1.1rem; line-height: 1; }
+  .meta { color: var(--muted); font-size: .85rem; display: block; grid-column: 2; }
+  .pagination { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: 2rem; }
+  .pagination.hidden { display: none; }
+  .page-nav {
+    appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text);
+    border-radius: 999px; padding: .55rem 1rem; cursor: pointer; font-size: .9rem;
+  }
+  .page-nav:hover:not(:disabled) { border-color: var(--flame); color: var(--flame); }
+  .page-nav:disabled { opacity: .4; cursor: default; }
+  .page-numbers { display: flex; gap: .35rem; }
+  .page-numbers button {
+    appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text);
+    border-radius: 999px; width: 2.2rem; height: 2.2rem; cursor: pointer; font-size: .85rem;
+  }
+  .page-numbers button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .page-numbers button:hover:not(.active) { border-color: var(--flame); color: var(--flame); }
 </style>
+<script>
+  const categoryButtons = Array.from(document.querySelectorAll('[data-filter-type="category"]'));
+  const levelButtons = Array.from(document.querySelectorAll('[data-filter-type="level"]'));
+  const clearButton = document.getElementById('clearFilters');
+  const resultCount = document.getElementById('resultCount');
+  const cardGrid = document.getElementById('cardGrid');
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const cardLinks = Array.from(document.querySelectorAll('.card a[data-slug]'));
+  const pagination = document.getElementById('pagination');
+  const pagePrev = document.getElementById('pagePrev');
+  const pageNext = document.getElementById('pageNext');
+  const pageNumbers = document.getElementById('pageNumbers');
+  const PAGE_SIZE = Number(cardGrid.dataset.pageSize) || 50;
+
+  const parseValues = (value) => value ? value.split(',').map((item) => item.trim()).filter(Boolean) : [];
+
+  const getState = () => {
+    const params = new URLSearchParams(window.location.search);
+    const page = Math.max(1, parseInt(params.get('page'), 10) || 1);
+    return {
+      categories: parseValues(params.get('cat')),
+      levels: parseValues(params.get('level')),
+      page,
+    };
+  };
+
+  const setChipState = (buttons, activeValues) => {
+    buttons.forEach((button) => {
+      const value = button.dataset.filterValue;
+      const active = activeValues.includes(value);
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+  };
+
+  const updateUrl = (state) => {
+    const params = new URLSearchParams();
+    if (state.categories.length) params.set('cat', state.categories.join(','));
+    if (state.levels.length) params.set('level', state.levels.join(','));
+    if (state.page > 1) params.set('page', String(state.page));
+    const query = params.toString();
+    const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+    window.history.replaceState({}, '', nextUrl);
+  };
+
+  const renderPageNumbers = (page, totalPages) => {
+    pageNumbers.innerHTML = '';
+    for (let i = 1; i <= totalPages; i += 1) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = String(i);
+      if (i === page) button.classList.add('active');
+      button.addEventListener('click', () => applyFilters({ ...getState(), page: i }));
+      pageNumbers.appendChild(button);
+    }
+  };
+
+  const applyFilters = (state) => {
+    setChipState(categoryButtons, state.categories);
+    setChipState(levelButtons, state.levels);
+
+    const categorySet = new Set(state.categories);
+    const levelSet = new Set(state.levels);
+
+    const matches = cards.filter((card) => {
+      const cardCategories = card.dataset.categories.split(' ').filter(Boolean);
+      const cardLevel = card.dataset.level;
+      const categoryMatch = categorySet.size === 0 || cardCategories.some((cat) => categorySet.has(cat));
+      const levelMatch = levelSet.size === 0 || levelSet.has(cardLevel);
+      return categoryMatch && levelMatch;
+    });
+
+    const totalPages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
+    const page = Math.min(Math.max(1, state.page), totalPages);
+    const pageStart = (page - 1) * PAGE_SIZE;
+    const pageEnd = pageStart + PAGE_SIZE;
+    const matchSet = new Set(matches);
+
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const matchIndex = matches.indexOf(card);
+      const inPage = matchSet.has(card) && matchIndex >= pageStart && matchIndex < pageEnd;
+      card.hidden = !inPage;
+      if (inPage) visibleCount += 1;
+    });
+
+    resultCount.textContent = `Showing ${visibleCount} / ${matches.length} cards (page ${page} of ${totalPages})`;
+    pagination.classList.toggle('hidden', totalPages <= 1);
+    pagePrev.disabled = page <= 1;
+    pageNext.disabled = page >= totalPages;
+    renderPageNumbers(page, totalPages);
+
+    updateUrl({ ...state, page });
+  };
+
+  const toggleValue = (list, value) => {
+    const index = list.indexOf(value);
+    if (index === -1) list.push(value);
+    else list.splice(index, 1);
+  };
+
+  const handleChipClick = (event) => {
+    const button = event.currentTarget;
+    const type = button.dataset.filterType;
+    const value = button.dataset.filterValue;
+    const state = getState();
+    if (type === 'category') toggleValue(state.categories, value);
+    if (type === 'level') toggleValue(state.levels, value);
+    applyFilters({ ...state, page: 1 });
+  };
+
+  categoryButtons.forEach((button) => button.addEventListener('click', handleChipClick));
+  levelButtons.forEach((button) => button.addEventListener('click', handleChipClick));
+  clearButton.addEventListener('click', () => applyFilters({ categories: [], levels: [], page: 1 }));
+  pagePrev.addEventListener('click', () => applyFilters({ ...getState(), page: getState().page - 1 }));
+  pageNext.addEventListener('click', () => applyFilters({ ...getState(), page: getState().page + 1 }));
+
+  cardLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: link.dataset.slug } }));
+    });
+  });
+
+  applyFilters(getState());
+</script>

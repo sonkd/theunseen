@@ -1,15 +1,14 @@
 ---
+import Base from '../layouts/Base.astro';
 ---
-<html lang="en">
-  <head>
-    <title>About</title>
-  </head>
-  <body>
-    <main style="max-width:720px;margin:0 auto;padding:40px 20px;">
-      <h1>About</h1>
-      <p>This project is built like a hidden map made of stories. Each piece of content is a waypoint, a question, or a strategy inside a larger landscape.</p>
-      <p>Instead of a linear library, the site lets you move through levels and zones. The map, graph, and library are three ways to explore the same world.</p>
-      <p>The metaphor is simple: ideas travel through corridors, and the site is a space where connections become visible, not just listed.</p>
-    </main>
-  </body>
-</html>
+<Base title="About" description="What Seeing the Unseen is and how the map metaphor works.">
+  <article class="about">
+    <h1>About</h1>
+    <p>This project is built like a hidden map made of stories. Each piece of content is a waypoint, a question, or a strategy inside a larger landscape.</p>
+    <p>Instead of a linear library, the site lets you move through levels and zones. The map, graph, and library are three ways to explore the same world.</p>
+    <p>The metaphor is simple: ideas travel through corridors, and the site is a space where connections become visible, not just listed.</p>
+  </article>
+</Base>
+<style>
+  .about p { color: var(--text); }
+</style>

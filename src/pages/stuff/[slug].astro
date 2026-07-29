@@ -15,7 +15,10 @@ const related = s.data.links
   .filter(Boolean);
 ---
 <Base title={s.data.title} description={s.data.back}>
-  <article data-pagefind-body>
+  <article data-pagefind-body data-pagefind-meta>
+    <script type="application/json" data-pagefind-meta>
+      {JSON.stringify({ title: s.data.title })}
+    </script>
     <p class="meta">Map {s.data.level} — {LEVEL_MAPS[s.data.level]} · {s.data.categories.join(', ')}</p>
     <h1>{s.data.title}</h1>
     <FlipCard front={s.data.front} back={s.data.back} icon={iconFor(s.id, s.data.categories, s.data.icon)} />

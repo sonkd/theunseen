@@ -2,64 +2,72 @@
 ---
 <div id="stuff-overlay" class="stuff-overlay hidden" aria-hidden="true">
   <div class="overlay-backdrop" data-close="true"></div>
-  <div class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="stuff-overlay-title">
-    <div class="overlay-header">
-      <h2 id="stuff-overlay-title">Stuff detail</h2>
-      <div class="overlay-actions">
-        <button id="overlay-share" type="button">Share</button>
-        <button id="overlay-close" type="button">Close</button>
+  <aside class="overlay-side overlay-refs">
+    <div class="panel-label">REFS · LIÊN QUAN</div>
+    <ul id="stuff-refs"></ul>
+  </aside>
+  <section
+    class="overlay-card"
+    id="overlay-card"
+    role="button"
+    tabindex="0"
+    aria-label="Lật card · Flip card"
+  >
+    <div class="flip-hint hidden" id="flip-hint">Bấm để lật · Click to flip</div>
+    <div class="card-inner" id="card-inner">
+      <div class="card-face card-front" id="card-front">
+        <div class="card-top">
+          <span class="card-icon" id="stuff-icon-front"></span>
+          <span class="card-name" id="stuff-title-front"></span>
+        </div>
+        <div class="card-cats" id="stuff-cats"></div>
+        <div class="card-stage" id="stuff-stage-front"></div>
+        <p class="card-text" id="stuff-front"></p>
+        <div class="card-footer">
+          <button id="overlay-close" type="button">CLOSE · ĐÓNG</button>
+          <button id="overlay-share" type="button">SHARE · CHIA SẺ</button>
+        </div>
+      </div>
+      <div class="card-face card-back" id="card-back">
+        <div class="back-label">BACK · MẶT SAU</div>
+        <div class="card-top">
+          <span class="card-icon" id="stuff-icon-back"></span>
+          <span class="card-name" id="stuff-title-back"></span>
+        </div>
+        <div class="card-body" id="stuff-body"></div>
+        <div class="card-stage" id="stuff-stage-back"></div>
+        <div class="card-footer">
+          <button id="overlay-close-back" type="button">CLOSE · ĐÓNG</button>
+        </div>
       </div>
     </div>
-    <div class="overlay-grid">
-      <aside class="overlay-side overlay-refs">
-        <h3>Refs</h3>
-        <ul id="stuff-refs"></ul>
-      </aside>
-      <section class="overlay-card">
-        <div class="card-inner" id="card-inner">
-          <div class="card-face card-front" id="card-front">
-            <h3 id="stuff-title"></h3>
-            <div id="stuff-front"></div>
-            <button id="flip-to-back" type="button">FLIP·LẬT</button>
-          </div>
-          <div class="card-face card-back" id="card-back">
-            <button id="flip-to-front" type="button">◂ FLIP</button>
-            <div id="stuff-body"></div>
-          </div>
-        </div>
-      </section>
-      <aside class="overlay-side overlay-links">
-        <h3>Links</h3>
-        <ul id="stuff-links"></ul>
-      </aside>
-    </div>
-    <div class="overlay-footer">
-      <button id="overlay-prev" type="button">◀</button>
-      <button id="overlay-next" type="button">▶</button>
-    </div>
-  </div>
+  </section>
+  <aside class="overlay-side overlay-links">
+    <div class="panel-label">LINKS</div>
+    <ul id="stuff-links"></ul>
+  </aside>
 </div>
 
-<script type="module">
+<script>
   import { markLit } from '../../lib/progress'
+  import { MAPS as PALETTE } from '../../lib/map/palette'
 
   const overlay = document.getElementById('stuff-overlay')
   const refsNode = document.getElementById('stuff-refs')
   const linksNode = document.getElementById('stuff-links')
-  const titleNode = document.getElementById('stuff-title')
-  const frontNode = document.getElementById('stuff-front')
-  const bodyNode = document.getElementById('stuff-body')
+  const overlayCard = document.getElementById('overlay-card')
   const cardInner = document.getElementById('card-inner')
+  const flipHint = document.getElementById('flip-hint')
   const shareButton = document.getElementById('overlay-share')
   const closeButton = document.getElementById('overlay-close')
-  const prevButton = document.getElementById('overlay-prev')
-  const nextButton = document.getElementById('overlay-next')
-  const flipToBack = document.getElementById('flip-to-back')
-  const flipToFront = document.getElementById('flip-to-front')
+  const closeButtonBack = document.getElementById('overlay-close-back')
+
+  const FLIP_HINT_KEY = 'unseen:flip-hint-seen'
+  let hintHoverActive = false
+  let hintTimeout = null
 
   let mapItems = []
   let currentSlug = ''
-  let currentZone = null
   let currentLevel = null
 
   async function fetchMapData() {
@@ -68,34 +76,74 @@
       const response = await fetch('/map-data.json')
       const data = await response.json()
       const maps = Array.isArray(data.maps) ? data.maps : []
-      mapItems = maps.flatMap(map => map.stuff.map(item => ({ ...item, level: map.level })))
+      mapItems = maps.flatMap(map =>
+        map.stuff.map(item => ({ ...item, level: map.level, mapName: map.name, mapGreek: map.greek, mapVn: map.vn }))
+      )
     } catch (error) {
       mapItems = []
     }
     return mapItems
   }
 
+  function setText(id, value) {
+    const node = document.getElementById(id)
+    if (node) node.textContent = value
+  }
+
   function updatePanel(item) {
     currentSlug = item.slug
-    currentZone = item.zone
     currentLevel = item.level
-    titleNode.textContent = item.title || item.slug
-    frontNode.textContent = item.front || item.title || item.slug
-    bodyNode.innerHTML = item.body_html || '<p>No content available.</p>'
-    refsNode.innerHTML = ''
-    linksNode.innerHTML = ''
+    const pal = PALETTE[(item.level || 1) - 1] || PALETTE[0]
 
+    const icon = item.icon || '★'
+    ;['stuff-icon-front', 'stuff-icon-back'].forEach(id => {
+      const node = document.getElementById(id)
+      if (node) {
+        node.textContent = icon
+        node.style.color = pal.icon
+        node.style.textShadow = `0 0 10px ${pal.iconGlow}`
+      }
+    })
+    setText('stuff-title-front', item.title || item.slug)
+    setText('stuff-title-back', item.title || item.slug)
+    setText('stuff-front', item.front || item.title || item.slug)
+
+    const catsNode = document.getElementById('stuff-cats')
+    catsNode.innerHTML = ''
+    const cats = item.categories || []
+    cats.forEach(cat => {
+      const span = document.createElement('span')
+      span.className = 'cat-chip'
+      span.textContent = cat
+      catsNode.appendChild(span)
+    })
+
+    const stage = item.mapGreek && item.mapVn
+      ? `MAP ${item.level} — ${item.mapName} / ${item.mapVn.toUpperCase()}`
+      : ''
+    setText('stuff-stage-front', stage)
+    setText('stuff-stage-back', stage)
+
+    document.getElementById('stuff-body').innerHTML = item.body_html || '<p>No content available.</p>'
+
+    refsNode.innerHTML = ''
     const refs = item.refs || []
     if (refs.length === 0) {
       refsNode.innerHTML = '<li>No refs</li>'
     } else {
       refs.forEach(ref => {
         const li = document.createElement('li')
-        li.textContent = typeof ref === 'string' ? ref : JSON.stringify(ref)
+        const a = document.createElement('a')
+        a.href = typeof ref === 'string' ? ref : ref.url || '#'
+        a.textContent = typeof ref === 'string' ? ref : ref.title || ref.url
+        a.target = '_blank'
+        a.rel = 'noopener nofollow'
+        li.appendChild(a)
         refsNode.appendChild(li)
       })
     }
 
+    linksNode.innerHTML = ''
     const links = item.links || []
     if (links.length === 0) {
       linksNode.innerHTML = '<li>No related links</li>'
@@ -115,15 +163,6 @@
         linksNode.appendChild(li)
       })
     }
-
-    updateNavButtons()
-  }
-
-  function updateNavButtons() {
-    const sameMap = mapItems.filter(item => item.level === currentLevel)
-    const index = sameMap.findIndex(item => item.slug === currentSlug)
-    prevButton.disabled = index <= 0
-    nextButton.disabled = index < 0 || index >= sameMap.length - 1
   }
 
   async function openStuff(slug) {
@@ -133,19 +172,48 @@
     const mapData = await fetchMapData()
     const item = mapData.find(entry => entry.slug === slug) || {}
     updatePanel({ ...item, ...data })
+    cardInner.classList.remove('is-flipped')
     overlay.classList.remove('hidden')
     overlay.setAttribute('aria-hidden', 'false')
-    overlay.querySelector('.overlay-panel')?.focus()
+    overlayCard?.focus()
     markLit(slug)
+    maybeShowFirstTimeHint()
   }
 
   function closeOverlay() {
     overlay.classList.add('hidden')
     overlay.setAttribute('aria-hidden', 'true')
+    window.dispatchEvent(new CustomEvent('stuff:close'))
   }
 
   function flipCard() {
     cardInner.classList.toggle('is-flipped')
+  }
+
+  function showHint() {
+    flipHint.classList.remove('hidden')
+  }
+
+  function hideHint() {
+    if (!hintHoverActive) flipHint.classList.add('hidden')
+  }
+
+  function maybeShowFirstTimeHint() {
+    let seen = false
+    try {
+      seen = sessionStorage.getItem(FLIP_HINT_KEY) === '1'
+    } catch (error) {
+      seen = false
+    }
+    if (seen) return
+    try {
+      sessionStorage.setItem(FLIP_HINT_KEY, '1')
+    } catch (error) {
+      // ignore — sessionStorage unavailable (private mode, etc.)
+    }
+    showHint()
+    clearTimeout(hintTimeout)
+    hintTimeout = setTimeout(hideHint, 2600)
   }
 
   async function shareCurrent() {
@@ -161,29 +229,55 @@
     const sameMap = mapItems.filter(item => item.level === currentLevel)
     const index = sameMap.findIndex(item => item.slug === currentSlug)
     if (index === -1) return
-    const nextIndex = direction === 'next' ? index + 1 : index - 1
+    const nextIndex = index + direction
     if (nextIndex < 0 || nextIndex >= sameMap.length) return
     openStuff(sameMap[nextIndex].slug)
   }
 
   window.addEventListener('stuff:open', event => {
     const slug = event?.detail?.slug
-    if (!slug) return
+    if (!slug || slug === currentSlug) return
     openStuff(slug)
   })
 
+  window.addEventListener('stuff:nav', event => {
+    if (overlay.classList.contains('hidden')) return
+    const direction = event?.detail?.direction
+    if (direction) moveRelative(direction)
+  })
+
+  window.addEventListener('keydown', event => {
+    if (overlay.classList.contains('hidden')) return
+    if (event.key === 'Escape') closeOverlay()
+  })
+
   overlay.addEventListener('click', event => {
-    if (event.target.dataset.close === 'true') {
-      closeOverlay()
-    }
+    if (event.target.dataset.close === 'true') closeOverlay()
   })
 
   closeButton.addEventListener('click', closeOverlay)
+  closeButtonBack.addEventListener('click', closeOverlay)
   shareButton.addEventListener('click', shareCurrent)
-  flipToBack.addEventListener('click', flipCard)
-  flipToFront.addEventListener('click', flipCard)
-  prevButton.addEventListener('click', () => moveRelative('prev'))
-  nextButton.addEventListener('click', () => moveRelative('next'))
+
+  overlayCard.addEventListener('click', event => {
+    if (event.target.closest('button') || event.target.closest('a')) return
+    flipCard()
+  })
+  overlayCard.addEventListener('keydown', event => {
+    if (event.target.closest('button') || event.target.closest('a')) return
+    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+      event.preventDefault()
+      flipCard()
+    }
+  })
+  overlayCard.addEventListener('mouseenter', () => {
+    hintHoverActive = true
+    showHint()
+  })
+  overlayCard.addEventListener('mouseleave', () => {
+    hintHoverActive = false
+    hideHint()
+  })
 </script>
 
 <style>
@@ -191,120 +285,156 @@
   .stuff-overlay {
     position: fixed;
     inset: 0;
-    z-index: 150;
-    display: grid;
-    place-items: center;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    padding: 32px 32px 96px;
   }
   .overlay-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(6, 8, 15, 0.85);
-    backdrop-filter: blur(8px);
-  }
-  .overlay-panel {
-    position: relative;
-    width: min(100%, 1080px);
-    max-height: 90vh;
-    overflow: auto;
-    padding: 24px;
-    background: #07101f;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 22px;
-    box-shadow: 0 32px 90px rgba(0,0,0,0.45);
-  }
-  .overlay-header,
-  .overlay-footer {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 18px;
-  }
-  .overlay-grid {
-    display: grid;
-    grid-template-columns: 220px minmax(320px, 1fr) 220px;
-    gap: 18px;
-    margin-bottom: 18px;
+    background: rgba(8, 6, 2, .82);
   }
   .overlay-side {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
-    padding: 18px;
-  }
-  .overlay-card {
-    perspective: 1200px;
-  }
-  .card-inner {
     position: relative;
-    width: 100%;
-    min-height: 360px;
-    transition: transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 190px;
+    flex: none;
+  }
+  .panel-label {
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    color: #fff;
+    opacity: .7;
+  }
+  .overlay-side ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  /* refs/links <li>/<a> được tạo runtime (document.createElement) → không có
+     data-astro-cid-* nên CSS scoped thường không match. Dùng :global() giới
+     hạn trong .overlay-side/.overlay-refs/.overlay-links (class tĩnh, SSR) để
+     không rò rỉ ra ngoài component. */
+  .overlay-side :global(li) { display: block; }
+  .overlay-refs :global(a),
+  .overlay-links :global(a) {
+    display: block;
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    color: var(--ink);
+  }
+  .overlay-refs :global(a):hover,
+  .overlay-links :global(a):hover { background: var(--surface); text-decoration: none; }
+
+  .overlay-card {
+    position: relative;
+    width: 620px;
+    max-width: 54vw;
+    height: 490px;
+    perspective: 1600px;
+    flex: none;
+    cursor: pointer;
+  }
+  .overlay-card:focus-visible {
+    outline: 3px solid var(--flame);
+    outline-offset: 4px;
+  }
+  .flip-hint {
+    position: absolute;
+    left: 50%;
+    top: -18px;
+    transform: translate(-50%, -100%);
+    z-index: 8;
+    pointer-events: none;
+    background: var(--ink);
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    padding: 6px 8px;
+    white-space: nowrap;
+    transition: opacity .15s ease;
+  }
+  .flip-hint.hidden { display: none; }
+  .card-inner {
+    position: absolute;
+    inset: 0;
     transform-style: preserve-3d;
+    transition: transform .6s ease;
   }
-  .card-inner.is-flipped {
-    transform: rotateY(180deg);
-  }
+  .card-inner.is-flipped { transform: rotateY(180deg); }
   .card-face {
     position: absolute;
     inset: 0;
     backface-visibility: hidden;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 22px;
-    padding: 22px;
-    overflow: auto;
+    border-radius: 10px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow: hidden;
+  }
+  .card-front {
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    color: var(--text);
   }
   .card-back {
     transform: rotateY(180deg);
-    background: #0f1728;
+    background: var(--dark-bg);
+    color: #eee;
+    border: 2px solid var(--bg);
   }
-  .overlay-actions button,
-  .overlay-footer button,
-  .overlay-card button,
-  .overlay-side button {
-    border: none;
-    background: #0f1728;
-    color: white;
-    padding: 10px 14px;
-    border-radius: 12px;
+  .back-label { font-family: var(--font-pixel); font-size: 8px; opacity: .65; }
+  .card-top { display: flex; align-items: center; gap: 10px; }
+  .card-icon { font-size: 22px; }
+  .card-name { font-size: 15px; font-weight: 700; letter-spacing: .04em; }
+  .card-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+  /* .cat-chip cũng được tạo runtime — cùng lý do :global() như trên. */
+  .card-cats :global(.cat-chip) {
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+  }
+  .card-stage { font-size: 10px; letter-spacing: .08em; color: var(--muted); }
+  .card-back .card-stage { color: var(--muted-2); }
+  .card-text { margin: 0; font-size: 14px; line-height: 1.55; }
+  .card-body { flex: 1; overflow: auto; font-size: 14px; line-height: 1.6; }
+  .card-body :global(p) { margin: 0 0 .75em; }
+  .card-footer {
+    border-top: 1.5px solid var(--border);
+    padding-top: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .card-back .card-footer { border-top-color: rgba(255,255,255,.3); }
+  .card-footer button {
+    border-radius: 7px;
+    padding: 10px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
     cursor: pointer;
   }
-  .overlay-actions button:hover,
-  .overlay-footer button:hover,
-  .overlay-card button:hover {
-    background: #1f2a3c;
-  }
-  .overlay-links a {
-    color: #9cc3ff;
-    text-decoration: none;
-  }
-  .overlay-links a:hover {
-    text-decoration: underline;
-  }
-  .overlay-refs ul,
-  .overlay-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 10px;
-  }
-  .overlay-refs li,
-  .overlay-links li {
-    color: #cfd8ff;
-  }
-  .overlay-panel h2,
-  .overlay-panel h3 {
-    margin: 0 0 10px;
-  }
-  .overlay-panel p {
-    color: #cdd6f4;
-    line-height: 1.6;
-  }
+  #overlay-close { background: var(--ink); color: #fff; border: 2px solid var(--ink); }
+  #overlay-share { background: #fff; color: var(--ink); border: 2px solid var(--ink); }
+  #overlay-share:hover { background: var(--surface); }
+  #overlay-close-back { background: none; color: var(--bg); border: 2px solid var(--bg); }
+  #overlay-close-back:hover { background: rgba(255,255,255,.12); }
+
   @media (max-width: 960px) {
-    .overlay-grid {
-      grid-template-columns: 1fr;
-    }
+    .stuff-overlay { flex-direction: column; padding: 16px; overflow: auto; }
+    .overlay-side { width: 100%; flex-direction: row; flex-wrap: wrap; }
+    .overlay-card { width: 100%; max-width: 100%; }
   }
 </style>

@@ -38,15 +38,16 @@ Body: 300-500 từ tự viết. Legacy cards (migrate từ Jekyll) đang ngắn 
 3. `links` dùng slug, không dùng title. Verifier bắt link gãy.
 4. Giọng văn: `front` tiếng Việt gợi tò mò (mẫu: `content/stuff/anchoring.md`); `back` ngắn gọn; không học thuật khô.
 5. Icon không random — derive theo category trong `src/lib/icons.ts`.
-6. Không commit thẳng vào `master`; làm việc trên branch, mở PR.
+6. Không commit thẳng vào `master`; làm việc trên branch, mở PR. **Ngoại lệ:** job `daily-content` (scheduled) được phép commit thẳng vào `new` sau khi `verify + graph + mapdata + build` đều PASS — vẫn không được push hay merge sang `master`.
 
 ## Content pipeline (phương án B — model-tiered)
 
 - Researcher = subagent `researcher` (Haiku): refs + level/categories/links.
 - Writer = subagent `writer` (Sonnet): viết card.
 - Verifier = `npm run verify` (code, $0) — chạy trước mọi LLM judge.
-- Commands: `/new-card <concept>`, `/batch-cards <n>` (hard cap 10/run).
-- Human review qua PR — pipeline không tự merge.
+- Commands: `/new-card <concept>`, `/batch-cards <n>` (hard cap 10/run), `/enrich-cards <n>`, `/daily-content` (job hàng ngày, 15 card).
+- `npm run backlog` — sync `backlog.csv` với thực tế `content/stuff/` (todo / needs-enrich / done). Chạy trước và sau mỗi batch để chống trùng lặp.
+- Human review qua PR — pipeline không tự merge sang `master`.
 
 ## Lệnh thường dùng
 

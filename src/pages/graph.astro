@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import StuffOverlay from '../components/map/StuffOverlay.astro';
 import { onMount } from 'astro:client';
 import { readFileSync } from 'fs';
 const graph = JSON.parse(readFileSync(new URL('../../public/graph.json', import.meta.url), 'utf-8'));
@@ -10,14 +11,15 @@ const nodeRadius = (degree) => Math.min(28, 8 + Math.sqrt(degree) * 4);
   <h1>Graph</h1>
   <p class="intro">Explore the network of ideas in an Obsidian-style graph. Hover a node for its title, and click to open the card.</p>
   <div id="graphContainer" class="graph-container" aria-label="Graph of connected stuff"></div>
+  <StuffOverlay />
 </Base>
 <style>
   .intro { margin-top: 0; color: var(--muted); }
-  .graph-container { width: 100%; min-height: 80vh; border: 1px solid rgba(255,255,255,.08); border-radius: 24px; background: radial-gradient(circle at top, rgba(240,163,67,.08), transparent 38%), linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); overflow: hidden; position: relative; }
-  .graph-tooltip { position: absolute; pointer-events: none; background: rgba(16,18,27,.96); color: var(--text); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 0.6rem 0.85rem; font-size: 0.95rem; z-index: 10; white-space: nowrap; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+  .graph-container { width: 100%; min-height: 80vh; border: 1px solid var(--border); border-radius: 24px; background: radial-gradient(circle at top, rgba(240,163,67,.1), transparent 38%), var(--surface); overflow: hidden; position: relative; }
+  .graph-tooltip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; border: 2px solid #fff; border-radius: 12px; padding: 0.6rem 0.85rem; font-family: var(--font-pixel); font-size: 8px; z-index: 10; white-space: nowrap; box-shadow: 0 12px 40px rgba(0,0,0,.25); }
   .graph-link { display: inline-block; margin-top: 1.25rem; color: var(--flame); text-decoration: none; }
 </style>
-<script type="module" define:vars={{ graph, colors }}>
+<script define:vars={{ graph, colors }}>
   const nodeRadius = (degree) => Math.min(28, 8 + Math.sqrt(degree) * 4);
 
   const container = document.getElementById('graphContainer');
@@ -57,7 +59,7 @@ const nodeRadius = (degree) => Math.min(28, 8 + Math.sqrt(degree) * 4);
 
   const linkElements = links.map(() => {
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('stroke', 'rgba(255,255,255,0.08)');
+    line.setAttribute('stroke', 'rgba(58,55,47,0.18)');
     line.setAttribute('stroke-width', '1');
     svg.appendChild(line);
     return line;
@@ -72,7 +74,7 @@ const nodeRadius = (degree) => Math.min(28, 8 + Math.sqrt(degree) * 4);
 
     circle.addEventListener('pointerover', (event) => {
       circle.setAttribute('stroke-width', '2');
-      circle.setAttribute('stroke', '#ffffff');
+      circle.setAttribute('stroke', '#111114');
       tooltip.textContent = node.title;
       tooltip.style.opacity = '1';
     });
@@ -84,12 +86,12 @@ const nodeRadius = (degree) => Math.min(28, 8 + Math.sqrt(degree) * 4);
 
     circle.addEventListener('pointerout', () => {
       circle.setAttribute('stroke-width', '1');
-      circle.setAttribute('stroke', '#111111');
+      circle.setAttribute('stroke', '#111114');
       tooltip.style.opacity = '0';
     });
 
     circle.addEventListener('click', () => {
-      window.location.href = `/stuff/${node.id}/`;
+      window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: node.id } }));
     });
 
     return circle;

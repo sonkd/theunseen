@@ -1,6 +1,6 @@
 ---
-interface Props { title: string; description?: string }
-const { title, description = 'Seeing the Unseen — flames of knowledge in Plato\'s cave.' } = Astro.props;
+interface Props { title: string; description?: string; fullBleed?: boolean }
+const { title, description = 'Seeing the Unseen — flames of knowledge in Plato\'s cave.', fullBleed = false } = Astro.props;
 ---
 <!doctype html>
 <html lang="vi">
@@ -9,36 +9,49 @@ const { title, description = 'Seeing the Unseen — flames of knowledge in Plato
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
   <title>{title} · Seeing the Unseen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style is:global>
     :root {
-      --bg: #0d0e12; --surface: #16181f; --text: #e8e6e1; --muted: #9a978f;
-      --flame: #f0a343; --accent: #c9563c; --border: #2a2d38;
+      /* Chrome — docs/design-spec.md mục 3, trích nguyên văn từ prototype */
+      --bg: #fbfaf7; --surface: #f6f3ea; --text: #3a372f; --ink: #111114;
+      --muted: #8a8577; --muted-2: #9a958a; --border: #d9d4c6; --border-soft: #eee9dc;
+      --flame: #f0a343; --accent: #c9563c;
+      --dark-bg: #0a0910; --dark-bg-2: #141310;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-mono: ui-monospace, Menlo, monospace;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, sans-serif; }
-    a { color: var(--flame); }
-    main { max-width: 880px; margin: 0 auto; padding: 2rem 1rem 4rem; }
-    header.site { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; padding: 1rem; max-width: 880px; margin: 0 auto; }
-    header.site a { text-decoration: none; color: var(--muted); }
-    header.site a.brand { color: var(--flame); font-weight: 700; }
-    .search-shell { display: flex; flex-direction: column; gap: 0.75rem; flex: 1 1 320px; min-width: 220px; max-width: 420px; }
+    html, body { height: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    main { flex: 1 1 auto; max-width: 880px; margin: 0 auto; padding: 2rem 1rem 4rem; width: 100%; }
+    main.full-bleed { max-width: none; margin: 0; padding: 0; display: flex; overflow: hidden; }
+    header.site { flex: none; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; padding: 0 20px; height: 56px; background: var(--bg); border-bottom: 2px solid var(--ink); position: relative; z-index: 10; }
+    header.site a { text-decoration: none; color: var(--text); font-family: var(--font-pixel); font-size: 9px; letter-spacing: .1em; }
+    header.site a.brand { color: var(--ink); font-weight: 700; font-size: 16px; letter-spacing: -0.01em; font-family: system-ui, sans-serif; }
+    .search-shell { display: flex; flex-direction: column; gap: 0.5rem; flex: 1 1 270px; min-width: 220px; max-width: 340px; }
     .search-fallback { width: 100%; }
     .search-fallback input,
     [data-pagefind-ui] input {
       width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      color: white;
+      height: 32px;
+      padding: 0 12px;
+      border: 2px solid var(--ink);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--ink);
       outline: none;
+      font-size: 11px;
+      letter-spacing: .08em;
     }
     .search-fallback input::placeholder,
     [data-pagefind-ui] input::placeholder {
-      color: rgba(255,255,255,0.5);
+      color: var(--muted);
     }
     [data-pagefind-ui] { width: 100%; }
-    .search-unavailable { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; }
     .site-nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
   </style>
 </head>
@@ -46,30 +59,27 @@ const { title, description = 'Seeing the Unseen — flames of knowledge in Plato
   <header class="site">
     <a class="brand" href="/">🔥 the unseen</a>
     <div class="search-shell" data-pagefind-ui-wrapper>
-      <div data-pagefind-ui></div>
-      <div class="search-unavailable" data-pagefind-unavailable hidden>
-        Search available after build.
-        <form action="/library" method="get" style="margin-top:0.75rem;">
-          <input name="q" type="search" placeholder="Search library" aria-label="Search library" />
-        </form>
-      </div>
+      <div data-pagefind-ui hidden></div>
+      <form class="search-fallback" action="/library" method="get">
+        <input name="q" type="search" placeholder="SEARCH / TÌM KIẾM ⏎" aria-label="Search" />
+      </form>
     </div>
+    <div style="flex:1"></div>
     <a href="/library/">Library</a>
     <a href="/graph/">Graph</a>
     <a href="/about/">About</a>
   </header>
-  <main><slot /></main>
-  <script type="module">
+  <main class={fullBleed ? 'full-bleed' : ''}><slot /></main>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const wrapper = document.querySelector('[data-pagefind-ui-wrapper]');
       if (!wrapper) return;
       const target = wrapper.querySelector('[data-pagefind-ui]');
-      const unavailable = wrapper.querySelector('[data-pagefind-unavailable]');
-      const hideSearch = () => {
-        if (target) target.hidden = true;
-        if (unavailable) unavailable.hidden = false;
-      };
+      const fallback = wrapper.querySelector('.search-fallback');
 
+      // Mặc định: form thường (hoạt động ngay, kể cả dev mode). Nếu Pagefind
+      // (chỉ có sau `npm run build`) nạp được, thay bằng PagefindUI — không
+      // bao giờ hiện thông báo lỗi/unavailable cho người dùng.
       const loadAsset = (tagName, attrs) => new Promise((resolve, reject) => {
         const el = document.createElement(tagName);
         Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
@@ -83,22 +93,13 @@ const { title, description = 'Seeing the Unseen — flames of knowledge in Plato
         loadAsset('script', { src: '/pagefind/pagefind-ui.js', type: 'text/javascript', async: 'false' }),
       ])
         .then(() => {
-          if (typeof window.PagefindUI !== 'function') {
-            hideSearch();
-            return;
-          }
-          try {
-            new window.PagefindUI({ element: target, bundlePath: '/pagefind/' });
-            const fallback = document.querySelector('.search-fallback')
-            if (fallback) fallback.hidden = true
-          } catch (error) {
-            console.warn('Pagefind initialization failed:', error);
-            hideSearch();
-          }
+          if (typeof window.PagefindUI !== 'function') return;
+          new window.PagefindUI({ element: target, bundlePath: '/pagefind/' });
+          if (target) target.hidden = false;
+          if (fallback) fallback.hidden = true;
         })
-        .catch((error) => {
-          console.warn('Pagefind assets unavailable:', error);
-          hideSearch();
+        .catch(() => {
+          // Dev mode / chưa build: giữ nguyên form thường, không báo lỗi.
         });
     });
   </script>

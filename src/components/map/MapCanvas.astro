@@ -1,198 +1,288 @@
 ---
+import { MAPS as PALETTE_SSR, ROMANS as ROMANS_SSR } from '../../lib/map/palette';
+const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).toLowerCase());
 ---
 <div class="map-shell">
-  <canvas id="mapCanvas" aria-label="Map exploration canvas"></canvas>
-  <div class="hud">
-    <div class="hud-top">
-      <div id="mapBadge" class="badge">Map 1 · Imagining · Eikasia</div>
-      <div id="zoneBadge" class="badge">Zone 1 / 3</div>
+  <div class="map-viewport" id="mapViewport">
+    <canvas id="mapCanvas" aria-label="Map exploration canvas" tabindex="0" autofocus></canvas>
+    <div class="map-badge-group">
+      <div id="mapBadge" class="map-badge"></div>
+      <div id="mapBadgeSub" class="map-badge-sub"></div>
     </div>
-    <div class="hud-bottom">
-      <div class="move-panel">
-        <span class="move-label">MOVE</span>
-        <button id="zonePrev" class="control-button">◀</button>
-        <button id="zoneNext" class="control-button">▶</button>
-      </div>
-      <button id="optionsButton" class="options-button">OPTIONS</button>
-    </div>
-    <div id="optionsPanel" class="options-panel hidden" role="dialog" aria-modal="true">
-      <div class="options-header">Map options</div>
-      <div class="options-row">
-        <label for="radiusRange">Torch radius</label>
-        <input id="radiusRange" type="range" min="500" max="900" step="25" value="500" />
-        <span id="radiusValue">500</span>
-      </div>
-      <div class="options-row toggle-row">
-        <label for="revealAll">Reveal all</label>
-        <input id="revealAll" type="checkbox" />
-      </div>
-      <div class="options-row quick-nav">
-        <button data-map="0">Map 1</button>
-        <button data-map="1">Map 2</button>
-        <button data-map="2">Map 3</button>
-        <button data-map="3">Map 4</button>
-        <button data-map="sun">The Sun</button>
-      </div>
-    </div>
+    <div id="fireBadge" class="fire-badge hidden">A FIRE</div>
     <div id="tooltip" class="map-tooltip hidden"></div>
+    <div id="finalePanel" class="finale-panel hidden">
+      <div class="finale-title">V · KNOWLEDGE</div>
+      <div id="finaleCount" class="finale-count"></div>
+      <div class="finale-links">
+        <a href="/library/">LIBRARY · THƯ VIỆN</a>
+        <a href="/graph/">GRAPH · SƠ ĐỒ</a>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bottom">
+    <div class="breadcrumb" id="breadcrumb">
+      {mapLabelsSSR.map((label, index) => (
+        <>
+          <button type="button" class="breadcrumb-btn" data-map-index={index}>{label.toUpperCase()}</button>
+          {index < mapLabelsSSR.length - 1 && <span class="sep">›</span>}
+        </>
+      ))}
+    </div>
+    <div class="chrome-spacer"></div>
+    <div class="hint">PHÍM ← → ĐỂ ĐI BỘ · &lt; &gt; NHẢY VÙNG · ARROWS TO WALK</div>
+  </div>
+</div>
+<div class="hud-corner">
+  <div id="optionsPanel" class="options-panel hidden" role="dialog" aria-modal="true">
+    <div class="options-header">OPTIONS · TUỲ CHỌN</div>
+    <div class="options-row">
+      <span>TORCH · BÁN KÍNH ĐUỐC</span><span id="radiusValue">500PX</span>
+    </div>
+    <input id="radiusRange" type="range" min="500" max="900" step="10" value="500" />
+    <label class="toggle-row">
+      <input id="revealAll" type="checkbox" /> REVEAL MAP · HIỆN BẢN ĐỒ
+    </label>
+    <div class="options-row-label">JUMP TO MAP · NHẢY MAP</div>
+    <div class="quick-nav" id="quickNav">
+      {ROMANS_SSR.map((roman, index) => (
+        <button type="button" class="quick-nav-btn" data-map-index={index}>{roman}</button>
+      ))}
+    </div>
+  </div>
+  <button id="optionsButton" class="options-button">OPTIONS ▴</button>
+  <div class="move-row">
+    <button id="zonePrev" class="control-button" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 26 26"><polygon points="19,3 6,13 19,23" fill="#111"></polygon></svg>
+    </button>
+    <div class="move-label">MOVE</div>
+    <button id="zoneNext" class="control-button" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 26 26"><polygon points="7,3 20,13 7,23" fill="#111"></polygon></svg>
+    </button>
   </div>
 </div>
 <style>
   .map-shell {
     position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    min-height: calc(100vh - 96px);
     overflow: hidden;
-    background: #060708;
+    background: var(--dark-bg);
+  }
+  .map-viewport {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
   }
   canvas {
     width: 100%;
     height: 100%;
     display: block;
     image-rendering: pixelated;
-    background: #060708;
+    outline: none;
   }
-  .hud {
+  .map-badge-group {
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .hud-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  .badge {
-    display: inline-flex;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    background: rgba(4, 7, 12, 0.72);
-    color: #f7f2e8;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    pointer-events: auto;
-  }
-  .hud-bottom {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+    left: 20px;
+    top: 16px;
+    z-index: 6;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 0.85rem;
+    gap: 7px;
     pointer-events: none;
   }
-  .move-panel,
-  .options-button {
-    pointer-events: auto;
-  }
-  .move-panel {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.45rem 0.55rem;
-    border-radius: 999px;
-    background: rgba(10, 15, 24, 0.78);
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .move-label {
-    color: #f0c88a;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-  }
-  .control-button,
-  .options-button,
-  .options-panel button {
-    border: none;
+  .map-badge {
+    background: var(--ink);
+    border: 2px solid #fff;
     color: #fff;
-    background: rgba(255,255,255,0.08);
-    min-width: 42px;
-    min-height: 42px;
-    border-radius: 999px;
-    cursor: pointer;
-    transition: transform 120ms ease, background 120ms ease;
-    font-size: 1rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    font-family: var(--font-pixel);
+    font-size: 11px;
+    padding: 9px 11px;
+    width: max-content;
   }
-  .control-button:hover,
-  .options-button:hover,
-  .options-panel button:hover {
-    transform: translateY(-1px);
-    background: rgba(255,255,255,0.16);
+  .map-badge-sub {
+    background: rgba(17, 17, 17, .8);
+    color: #ddd;
+    font-family: var(--font-pixel);
+    font-size: 7px;
+    padding: 6px 8px;
+    width: max-content;
+    letter-spacing: .05em;
   }
-  .options-button {
-    padding: 0.7rem 1rem;
-    border-radius: 999px;
-    background: linear-gradient(135deg, rgba(224, 132, 36, 0.95), rgba(241, 186, 62, 0.92));
-    box-shadow: 0 14px 40px rgba(0,0,0,0.18);
-  }
-  .options-panel {
+  .fire-badge {
     position: absolute;
-    right: 1rem;
-    bottom: 5.5rem;
-    width: min(320px, calc(100vw - 2rem));
-    border-radius: 22px;
-    padding: 1rem;
-    background: rgba(8, 12, 18, 0.96);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    pointer-events: auto;
     z-index: 5;
+    pointer-events: none;
+    background: var(--ink);
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: 7px;
+    padding: 5px 7px;
+    white-space: nowrap;
+    transform: translate(-50%, 6px);
   }
-  .options-panel.hidden { display: none; }
-  .options-header {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 0.9rem;
-    letter-spacing: 0.05em;
-  }
-  .options-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.8rem;
-    margin-bottom: 0.85rem;
-  }
-  .options-row label { color: #e6e1d6; font-size: 0.92rem; }
-  .options-row input[type=range] { width: 100%; }
-  .toggle-row input { transform: scale(1.1); }
-  .quick-nav {
-    flex-wrap: wrap;
-    gap: 0.55rem;
-    justify-content: flex-start;
-  }
-  .quick-nav button {
-    flex: 1 1 48%;
-    min-width: 100px;
-    border-radius: 16px;
-    padding: 0.75rem 0.85rem;
-    background: rgba(255,255,255,0.06);
-    font-size: 0.92rem;
-    text-align: center;
-  }
+  .fire-badge.hidden { display: none; }
   .map-tooltip {
     position: absolute;
     left: 0;
     top: 0;
     pointer-events: none;
-    padding: 0.55rem 0.75rem;
-    border-radius: 12px;
-    background: rgba(12, 18, 28, 0.94);
-    color: #f9f6f1;
-    font-size: 0.95rem;
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--ink);
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    padding: 6px 8px;
     white-space: nowrap;
-    z-index: 6;
+    z-index: 9;
   }
   .map-tooltip.hidden { display: none; }
+
+  .chrome-bottom {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    height: 46px;
+    background: var(--bg);
+    border-top: 2px solid var(--ink);
+    position: relative;
+    z-index: 10;
+  }
+  .breadcrumb { display: flex; align-items: center; gap: 10px; }
+  .breadcrumb button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: .1em;
+    color: var(--muted);
+  }
+  .breadcrumb button.current {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .breadcrumb span.sep { color: var(--muted); font-family: var(--font-pixel); font-size: 9px; }
+  .chrome-spacer { flex: 1; }
+  .hint { font-size: 10px; letter-spacing: .06em; color: var(--muted); white-space: nowrap; }
+
+  .finale-panel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    background: rgba(251, 250, 247, .96);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 28px 34px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    pointer-events: auto;
+  }
+  .finale-panel.hidden { display: none; }
+  .finale-title { font-family: var(--font-pixel); font-size: 12px; color: var(--ink); }
+  .finale-count { font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+  .finale-links { display: flex; gap: 12px; }
+  .finale-links a {
+    background: var(--ink);
+    color: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 7px;
+    padding: 8px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+  .finale-links a:hover { text-decoration: none; opacity: .85; }
+
+  .hud-corner {
+    position: fixed;
+    right: 24px;
+    bottom: 70px;
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .options-panel {
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    padding: 16px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  }
+  .options-panel.hidden { display: none; }
+  .options-header { font-family: var(--font-pixel); font-size: 8px; color: var(--ink); }
+  .options-row { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .08em; font-weight: 700; color: var(--ink); }
+  .options-row-label { font-size: 10px; letter-spacing: .08em; font-weight: 700; color: var(--ink); }
+  .options-panel input[type=range] { width: 100%; accent-color: var(--ink); }
+  .toggle-row { display: flex; align-items: center; gap: 9px; font-size: 10px; letter-spacing: .08em; font-weight: 700; cursor: pointer; color: var(--ink); }
+  .toggle-row input { accent-color: var(--ink); width: 14px; height: 14px; margin: 0; }
+  .quick-nav { display: flex; gap: 6px; }
+  .quick-nav button {
+    flex: 1;
+    background: #fff;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 5px;
+    padding: 7px 0;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .quick-nav button.current { background: var(--ink); color: #fff; }
+  .options-button {
+    background: rgba(251, 250, 247, .94);
+    border: 2px solid var(--ink);
+    border-radius: 9px;
+    padding: 10px 16px;
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: .1em;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .options-button:hover { transform: scale(1.05); }
+  .move-row { display: flex; align-items: center; gap: 14px; }
+  .control-button {
+    background: rgba(251, 250, 247, .94);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    width: 56px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .control-button:hover { transform: scale(1.07); }
+  .move-label {
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    color: #fff;
+    text-shadow: 0 2px 0 #000;
+  }
 </style>
-<script type="module" lang="ts">
-  import { buildPath, withSeed } from '../../lib/map/path';
+<script>
+  import { buildZigzagPath, withSeed, CELL } from '../../lib/map/path';
   import { isLit, primeMapData } from '../../lib/progress';
+  import { MAPS as PALETTE, ROMANS } from '../../lib/map/palette';
 
   type Stuff = {
     slug: string;
@@ -202,39 +292,46 @@
     x: number;
     y: number;
   };
-  type MapData = {
-    maps: Array<{
-      level: number;
-      name: string;
-      greek: string;
-      zones: number;
-      stuff: Stuff[];
-    }>;
+  type MapEntry = {
+    level: number;
+    name: string;
+    greek: string;
+    vn: string;
+    zones: number;
+    stuff: Stuff[];
   };
+  type MapData = { maps: MapEntry[] };
 
   const emptyMapData: MapData = { maps: [] };
+  const TILE = 32;
 
-  const mapPalettes = [
-    { sky: '#0f1f24', grass: '#223b2d', rock: '#2f4a3d', accent: '#8cb69d' },
-    { sky: '#221a2f', grass: '#4c3862', rock: '#503d5b', accent: '#b89dd0' },
-    { sky: '#2a2115', grass: '#6a5931', rock: '#7b6a44', accent: '#d9b56d' },
-    { sky: '#3a290e', grass: '#7f6223', rock: '#8f7445', accent: '#f1c56c' },
-  ];
-  const sunPalette = { sky: '#fff7c9', glow: '#ffd376', text: '#3d2318' };
-
-  const mapNames = ['Imagining', 'Belief', 'Thinking', 'Knowledge'];
-  const mapGreek = ['Eikasia', 'Pistis', 'Dianoia', 'Noesis'];
+  // Chấm lưới dùng màu --ink token (mục 1: rgba(ink, .06)) — đọc 1 lần từ CSS.
+  function resolveInkRgbaDot(): string {
+    const hex = getComputedStyle(document.documentElement).getPropertyValue('--ink').trim();
+    const match = /^#([0-9a-f]{6})/i.exec(hex);
+    if (!match) return 'rgba(17,17,20,0.06)';
+    const value = match[1];
+    const r = parseInt(value.slice(0, 2), 16);
+    const g = parseInt(value.slice(2, 4), 16);
+    const b = parseInt(value.slice(4, 6), 16);
+    return `rgba(${r},${g},${b},0.06)`;
+  }
+  const inkRgbaDot = resolveInkRgbaDot();
 
   const canvas = document.getElementById('mapCanvas') as HTMLCanvasElement | null;
   const tooltip = document.getElementById('tooltip') as HTMLElement | null;
   const mapBadge = document.getElementById('mapBadge');
-  const zoneBadge = document.getElementById('zoneBadge');
+  const mapBadgeSub = document.getElementById('mapBadgeSub');
+  const fireBadge = document.getElementById('fireBadge');
+  const breadcrumb = document.getElementById('breadcrumb');
+  const finalePanel = document.getElementById('finalePanel');
+  const finaleCount = document.getElementById('finaleCount');
   const optionsButton = document.getElementById('optionsButton');
   const optionsPanel = document.getElementById('optionsPanel');
   const radiusRange = document.getElementById('radiusRange') as HTMLInputElement | null;
   const radiusValue = document.getElementById('radiusValue');
   const revealAllToggle = document.getElementById('revealAll') as HTMLInputElement | null;
-  const mapButtons = document.querySelectorAll('[data-map]');
+  const quickNav = document.getElementById('quickNav');
   const zonePrev = document.getElementById('zonePrev');
   const zoneNext = document.getElementById('zoneNext');
 
@@ -243,20 +340,21 @@
     currentMapIndex: 0,
     currentZone: 0,
     position: 0,
-    pathSamples: [] as Array<{ x: number; y: number; dist: number }> ,
+    pathSamples: [] as Array<{ x: number; y: number; dist: number }>,
     pathLength: 0,
     zoneCenters: [0, 0, 0] as number[],
+    decor: null as ReturnType<typeof genDecor> | null,
     moveDirection: 0,
     radius: 500,
     revealAll: false,
     hoverStuff: null as Stuff | null,
+    focusStuff: null as Stuff | null,
     lastFrame: performance.now(),
-    isSun: false,
+    isFinale: false,
+    overlayOpen: false,
     viewWidth: 0,
     viewHeight: 0,
-    progress: {
-      isLit: (_slug: string) => false,
-    },
+    progress: { isLit },
   };
 
   function clamp(value: number, min: number, max: number) {
@@ -265,6 +363,23 @@
 
   function stuffPixel(stuff: Stuff) {
     return { x: stuff.x * state.viewWidth, y: stuff.y * state.viewHeight };
+  }
+
+  function yAtX(x: number): number {
+    const samples = state.pathSamples;
+    if (!samples.length) return 0;
+    if (x <= samples[0].x) return samples[0].y;
+    const last = samples[samples.length - 1];
+    if (x >= last.x) return last.y;
+    for (let i = 1; i < samples.length; i += 1) {
+      if (samples[i].x >= x) {
+        const a = samples[i - 1];
+        const b = samples[i];
+        const t = (x - a.x) / Math.max(1e-6, b.x - a.x);
+        return a.y + (b.y - a.y) * t;
+      }
+    }
+    return last.y;
   }
 
   function getPointAt(distance: number) {
@@ -292,7 +407,7 @@
       const response = await fetch('/map-data.json');
       if (!response.ok) throw new Error('No map-data');
       const data = await response.json();
-      if (data?.maps && Array.isArray(data.maps) && data.maps.length === 4) {
+      if (data?.maps && Array.isArray(data.maps) && data.maps.length === 5) {
         state.mapData = data;
         primeMapData(data);
       }
@@ -305,112 +420,267 @@
     state.progress = { isLit };
   }
 
-  function updateCanvasSize() {
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const { width, height } = rect;
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    const ctx = canvas.getContext('2d');
-    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const map = getMapState();
-    state.viewWidth = width;
-    state.viewHeight = height;
-    state.radius = Math.max(500, window.innerWidth < 640 ? window.innerWidth : 500);
-    state.pathSamples = buildPath(map.level, width, height).samples;
-    state.pathLength = buildPath(map.level, width, height).length;
-    state.zoneCenters = buildPath(map.level, width, height).zoneCenters;
-    state.position = clamp(state.position, 0, state.pathLength);
+  // --- Seeded decor (trees/bushes/flowers/rocks/stumps), 1 lần / map ---
+  // Port trực tiếp từ design/The Unseen.dc.html _genDecor + _drawMap.
+  function genDecor(level: number, cols: number, rows: number) {
+    const rng = withSeed(level, 'decor');
+    const clusters: Array<{ cx: number; cy: number; r: number }> = [];
+    for (let i = 0; i < 9; i += 1) {
+      let picked: { cx: number; cy: number; r: number } | null = null;
+      for (let k = 0; k < 25; k += 1) {
+        const candidate = { cx: 5 + rng() * (cols - 10), cy: 3 + rng() * (rows - 6), r: 1.2 + rng() * 2 };
+        if (Math.abs(candidate.cy - yAtX(candidate.cx * TILE) / TILE) >= candidate.r + 2.4) {
+          picked = candidate;
+          break;
+        }
+      }
+      if (picked) clusters.push(picked);
+    }
+    const spot = () => ({ x: 3 + Math.floor(rng() * (cols - 6)), y: 2 + Math.floor(rng() * (rows - 4)) });
+    const pick = <T,>(n: number, f: () => T) => Array.from({ length: n }, f);
+    return {
+      clusters,
+      rocks: pick(9, spot),
+      stumps: pick(6, spot),
+      flowers: pick(16, spot),
+      bushes: pick(7, () => ({
+        x: 3 + Math.floor(rng() * (cols - 12)),
+        y: 2 + Math.floor(rng() * (rows - 7)),
+        w: 3 + Math.floor(rng() * 5),
+        h: 2 + Math.floor(rng() * 3),
+      })),
+    };
   }
 
-  function renderTerrain(ctx: CanvasRenderingContext2D, palette: { sky: string; grass: string; rock: string; accent: string }, width: number, height: number) {
-    ctx.fillStyle = palette.sky;
-    ctx.fillRect(0, 0, width, height);
-    const tile = 16;
-    const random = withSeed(getMapState().level, 'terrain');
-    for (let ty = 0; ty < height; ty += tile) {
-      for (let tx = 0; tx < width; tx += tile) {
-        const noise = random();
-        const x = Math.floor(tx / tile);
-        const y = Math.floor(ty / tile);
-        const detail = withSeed(getMapState().level, `tile-${x}-${y}`)();
-        const base = noise < 0.12 ? palette.grass : noise < 0.22 ? palette.rock : palette.accent;
-        ctx.fillStyle = base;
-        ctx.fillRect(tx, ty, tile, tile);
-        if (detail < 0.08) {
-          ctx.fillStyle = 'rgba(22,22,22,0.15)';
-          ctx.fillRect(tx + 4, ty + 8, 8, 6);
-        } else if (detail < 0.14) {
-          ctx.fillStyle = 'rgba(255,255,255,0.18)';
-          ctx.fillRect(tx + 3, ty + 4, 4, 4);
-          ctx.fillRect(tx + 9, ty + 6, 4, 4);
+  function cc(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, color: string) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawTree(ctx: CanvasRenderingContext2D, px: number, py: number, pal: (typeof PALETTE)[number]) {
+    cc(ctx, px + 16, py + 24, 15, pal.treeD);
+    cc(ctx, px + 16, py + 12, 13, pal.treeL);
+    cc(ctx, px + 11, py + 7, 5, pal.treeHi);
+  }
+
+  function drawTuft(ctx: CanvasRenderingContext2D, px: number, py: number, pal: (typeof PALETTE)[number]) {
+    ctx.fillStyle = pal.bush;
+    ctx.beginPath();
+    ctx.arc(px + 9, py + 20, 8, 0, Math.PI * 2);
+    ctx.arc(px + 20, py + 16, 9, 0, Math.PI * 2);
+    ctx.arc(px + 26, py + 24, 7, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawFlower(ctx: CanvasRenderingContext2D, px: number, py: number, pal: (typeof PALETTE)[number]) {
+    ctx.fillStyle = pal.flower;
+    for (let i = 0; i < 4; i += 1) {
+      ctx.fillRect(px + 6 + ((i * 11) % 20), py + 6 + ((i * 7) % 18), 4, 4);
+    }
+  }
+
+  function drawRock(ctx: CanvasRenderingContext2D, px: number, py: number, pal: (typeof PALETTE)[number]) {
+    cc(ctx, px + 16, py + 18, 11, pal.rock);
+    cc(ctx, px + 12, py + 14, 4, 'rgba(255,255,255,.28)');
+  }
+
+  function drawStump(ctx: CanvasRenderingContext2D, px: number, py: number) {
+    cc(ctx, px + 16, py + 16, 10, '#c9b087');
+    cc(ctx, px + 16, py + 16, 6, '#a98f66');
+    cc(ctx, px + 16, py + 16, 3, '#c9b087');
+  }
+
+  function renderTerrain(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number], width: number, height: number, level: number, decor: ReturnType<typeof genDecor>) {
+    const cols = Math.ceil(width / TILE);
+    const rows = Math.ceil(height / TILE);
+    const rng = withSeed(level, 'terrain');
+    for (let y = 0; y < rows; y += 1) {
+      for (let x = 0; x < cols; x += 1) {
+        ctx.fillStyle = (x + y) % 2 ? pal.gA : pal.gB;
+        ctx.fillRect(x * TILE, y * TILE, TILE, TILE);
+        if (rng() < 0.05) {
+          ctx.fillStyle = pal.bush;
+          ctx.fillRect(x * TILE + 7, y * TILE + 13, 3, 3);
+          ctx.fillRect(x * TILE + 19, y * TILE + 22, 3, 3);
         }
       }
     }
+    for (const b of decor.bushes) {
+      for (let y = b.y; y < b.y + b.h; y += 1) {
+        for (let x = b.x; x < b.x + b.w; x += 1) drawTuft(ctx, x * TILE, y * TILE, pal);
+      }
+    }
+    for (const f of decor.flowers) drawFlower(ctx, f.x * TILE, f.y * TILE, pal);
   }
 
-  function renderPath(ctx: CanvasRenderingContext2D, width: number, height: number) {
-    if (!state.pathSamples.length) return;
+  // Polyline gấp khúc thật (chevron sắc nét, không bo cong) — docs/map-layout-spec.md mục 2.
+  function renderPathBand(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number], level: number) {
+    const vertices = state.pathSamples;
+    if (vertices.length < 2) return;
+
     ctx.save();
-    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
-    ctx.lineWidth = 3;
-    ctx.lineCap = 'round';
+    ctx.strokeStyle = pal.path;
+    ctx.lineWidth = CELL * 0.9;
+    ctx.lineJoin = 'miter';
+    ctx.lineCap = 'butt';
     ctx.beginPath();
-    ctx.moveTo(state.pathSamples[0].x, state.pathSamples[0].y);
-    for (let i = 1; i < state.pathSamples.length; i += 1) {
-      ctx.lineTo(state.pathSamples[i].x, state.pathSamples[i].y);
-    }
+    ctx.moveTo(vertices[0].x, vertices[0].y);
+    for (let i = 1; i < vertices.length; i += 1) ctx.lineTo(vertices[i].x, vertices[i].y);
     ctx.stroke();
+    ctx.restore();
+
+    const rng = withSeed(level, 'path-dots');
+    ctx.fillStyle = pal.pathDot;
+    for (let i = 0; i < 140; i += 1) {
+      const point = getPointAt(rng() * state.pathLength);
+      const jitterX = (rng() - 0.5) * CELL * 0.8;
+      const jitterY = (rng() - 0.5) * CELL * 0.6;
+      ctx.fillRect(point.x + jitterX - 1.5, point.y + jitterY - 1.5, 3, 3);
+    }
+  }
+
+  // Chấm lưới mờ tại giao điểm CELL, chỉ trong bán kính đuốc — mục 1.
+  function renderGridDots(ctx: CanvasRenderingContext2D, width: number, height: number, flameX: number, flameY: number) {
+    const radius = state.revealAll ? Math.hypot(width, height) : state.radius;
+    ctx.save();
+    ctx.fillStyle = inkRgbaDot;
+    for (let gy = 0; gy <= height; gy += CELL) {
+      const dy = gy - flameY;
+      for (let gx = 0; gx <= width; gx += CELL) {
+        const dx = gx - flameX;
+        if (dx * dx + dy * dy <= radius * radius) {
+          ctx.fillRect(gx - 1, gy - 1, 2, 2);
+        }
+      }
+    }
     ctx.restore();
   }
 
-  function renderStuff(ctx: CanvasRenderingContext2D, width: number, height: number) {
-    const current = getMapState();
-    for (const stuff of current.stuff) {
+  function renderRocksAndTrees(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number], width: number, height: number, level: number, decor: ReturnType<typeof genDecor>) {
+    for (const r of decor.rocks) {
+      if (Math.abs(r.y - yAtX(r.x * TILE) / TILE) > 2) drawRock(ctx, r.x * TILE, r.y * TILE, pal);
+    }
+    for (const s of decor.stumps) {
+      if (Math.abs(s.y - yAtX(s.x * TILE) / TILE) > 2) drawStump(ctx, s.x * TILE, s.y * TILE);
+    }
+
+    const cols = Math.ceil(width / TILE);
+    const rows = Math.ceil(height / TILE);
+    const rng = withSeed(level, 'trees');
+    const depth = (x: number, y: number) => Math.min(x, y, cols - 1 - x, rows - 1 - y);
+    const tiles: Array<{ x: number; y: number }> = [];
+    for (let y = 0; y < rows; y += 1) {
+      for (let x = 0; x < cols; x += 1) {
+        const rowAtX = yAtX(x * TILE) / TILE;
+        const gate = Math.abs(y - rowAtX) <= 1.4 && (x < 4 || x > cols - 5);
+        if (gate) continue;
+        const d = depth(x, y);
+        if (d < 2 || (d === 2 && rng() < 0.4)) tiles.push({ x, y });
+      }
+    }
+    for (const c of decor.clusters) {
+      const r = Math.ceil(c.r);
+      for (let y = Math.floor(c.cy - r); y <= c.cy + r; y += 1) {
+        for (let x = Math.floor(c.cx - r); x <= c.cx + r; x += 1) {
+          const dx = x - c.cx;
+          const dy = y - c.cy;
+          if (dx * dx + dy * dy <= c.r * c.r && x > 1 && y > 1 && x < cols - 2 && y < rows - 2 && Math.abs(y - yAtX(x * TILE) / TILE) > 1.6) {
+            tiles.push({ x, y });
+          }
+        }
+      }
+    }
+    tiles.sort((a, b) => a.y - b.y || a.x - b.x);
+    for (const t of tiles) drawTree(ctx, t.x * TILE + (t.y % 2) * 10, t.y * TILE, pal);
+  }
+
+  const FOCUS_RADIUS = 90;
+
+  function renderStuff(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number]) {
+    const map = getMapState();
+    for (const stuff of map.stuff) {
       const lit = state.progress.isLit(stuff.slug);
+      const hovered = state.hoverStuff === stuff;
+      const focused = state.focusStuff === stuff;
       const { x, y } = stuffPixel(stuff);
-      const radius = 18;
-      const alpha = lit ? 1 : 0.7;
       ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.fillStyle = lit ? 'rgba(255,230,180,0.96)' : 'rgba(240,240,240,0.85)';
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = '#0f1220';
-      ctx.font = 'bold 18px system-ui, sans-serif';
+      ctx.font = `${hovered || focused ? 34 : 28}px system-ui, sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
+      ctx.shadowColor = pal.iconGlow;
+      ctx.shadowBlur = focused ? 24 : lit ? 18 : 10;
+      ctx.globalAlpha = lit ? 1 : 0.85;
+      ctx.fillStyle = pal.icon;
       ctx.fillText(stuff.icon || '★', x, y);
       ctx.restore();
     }
   }
 
-  function renderFog(ctx: CanvasRenderingContext2D, width: number, height: number, centerX: number, centerY: number) {
-    if (state.isSun) return;
+  // B5: khi ngọn lửa vào bán kính FOCUS_RADIUS của một stuff, stuff đó được
+  // focus (icon phóng to + glow mạnh hơn) và hiện tooltip tên — không mở overlay.
+  function updateFocusStuff(flameX: number, flameY: number) {
+    const map = getMapState();
+    if (!map || state.overlayOpen) {
+      state.focusStuff = null;
+      return;
+    }
+    let nearest: Stuff | null = null;
+    let nearestDist = FOCUS_RADIUS;
+    for (const stuff of map.stuff) {
+      const { x, y } = stuffPixel(stuff);
+      const dx = flameX - x;
+      const dy = flameY - y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < nearestDist) {
+        nearest = stuff;
+        nearestDist = dist;
+      }
+    }
+    state.focusStuff = nearest;
+  }
+
+  function renderFog(ctx: CanvasRenderingContext2D, width: number, height: number, centerX: number, centerY: number, pal: (typeof PALETTE)[number]) {
     const radius = state.revealAll ? Math.max(width, height) * 2 : state.radius;
+    const alpha = state.revealAll ? 0 : pal.alpha;
+    const dk = (a: number) => `rgba(${pal.dk},${a.toFixed(3)})`;
     ctx.save();
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = 'rgba(0,0,0,0.92)';
+    const halo = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius * 0.55);
+    halo.addColorStop(0, 'rgba(255,170,70,.16)');
+    halo.addColorStop(0.6, 'rgba(255,150,50,.05)');
+    halo.addColorStop(1, 'transparent');
+    ctx.fillStyle = halo;
     ctx.fillRect(0, 0, width, height);
-    const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.2, centerX, centerY, radius);
+    const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
     gradient.addColorStop(0, 'rgba(0,0,0,0)');
-    gradient.addColorStop(0.55, 'rgba(0,0,0,0.3)');
-    gradient.addColorStop(1, 'rgba(0,0,0,0.96)');
-    ctx.globalCompositeOperation = 'destination-out';
+    gradient.addColorStop(0.3, 'rgba(0,0,0,0)');
+    gradient.addColorStop(0.62, dk(alpha * 0.35));
+    gradient.addColorStop(0.82, dk(alpha * 0.85));
+    gradient.addColorStop(1, dk(alpha));
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
     ctx.restore();
   }
 
-  function renderFlame(ctx: CanvasRenderingContext2D, x: number, y: number, frame: number) {
+  // Góc nghiêng đoạn polyline đang đi, để sprite lửa hướng theo dốc lên/xuống.
+  function segmentAngleAt(distance: number): number {
+    const vertices = state.pathSamples;
+    if (vertices.length < 2) return 0;
+    let index = vertices.findIndex((v) => v.dist >= distance);
+    if (index <= 0) index = 1;
+    if (index >= vertices.length) index = vertices.length - 1;
+    const a = vertices[index - 1];
+    const b = vertices[index];
+    return Math.atan2(b.y - a.y, b.x - a.x);
+  }
+
+  function renderFlame(ctx: CanvasRenderingContext2D, x: number, y: number, frame: number, angle: number) {
     const flameRadius = 22;
     const pulse = 1 + Math.sin(frame / 160) * 0.07;
+    const lean = clamp(angle, -0.6, 0.6) * 0.4; // giảm biên độ, tránh nghiêng quá gắt
     const points = [
-      { x: x, y: y - flameRadius * pulse },
+      { x, y: y - flameRadius * pulse },
       { x: x + flameRadius * 0.5, y: y - flameRadius * 0.2 * pulse },
       { x: x + flameRadius * 0.2, y: y + flameRadius * 0.7 * pulse },
       { x: x - flameRadius * 0.2, y: y + flameRadius * 0.6 * pulse },
@@ -422,14 +692,15 @@
     gradient.addColorStop(0.5, '#ff9c33');
     gradient.addColorStop(1, 'rgba(252, 120, 28, 0.0)');
     ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(lean);
+    ctx.translate(-x, -y);
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
-    for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+    for (let i = 1; i < points.length; i += 1) ctx.lineTo(points[i].x, points[i].y);
     ctx.closePath();
     ctx.fill();
-    ctx.restore();
-    ctx.save();
     ctx.beginPath();
     ctx.fillStyle = '#fff';
     ctx.arc(x, y - flameRadius * 0.25, 6, 0, Math.PI * 2);
@@ -437,32 +708,16 @@
     ctx.restore();
   }
 
-  function renderSunScene(ctx: CanvasRenderingContext2D, width: number, height: number) {
-    ctx.fillStyle = sunPalette.sky;
-    ctx.fillRect(0, 0, width, height);
-    const glow = ctx.createRadialGradient(width / 2, height / 2, 10, width / 2, height / 2, width * 0.55);
-    glow.addColorStop(0, sunPalette.glow);
-    glow.addColorStop(1, 'rgba(255, 235, 180, 0)');
-    ctx.fillStyle = glow;
-    ctx.fillRect(0, 0, width, height);
-    ctx.fillStyle = sunPalette.text;
-    ctx.font = '700 46px system-ui, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('The Sun', width / 2, height * 0.23);
-    ctx.font = '520 18px system-ui, sans-serif';
-    ctx.fillText('A final light after the four maps.', width / 2, height * 0.31);
-    const total = state.mapData.maps.reduce((sum, map) => sum + map.stuff.length, 0);
-    const lit = state.mapData.maps.reduce((sum, map) => sum + map.stuff.filter((stuff) => state.progress.isLit(stuff.slug)).length, 0);
-    ctx.font = '600 24px system-ui, sans-serif';
-    ctx.fillText(`${lit} / ${total} flames lit`, width / 2, height * 0.43);
-    ctx.font = '500 16px system-ui, sans-serif';
-    ctx.fillText('Continue your journey or revisit the Library and Graph.', width / 2, height * 0.49);
-    ctx.fillStyle = 'rgba(61, 35, 24, 0.8)';
-    ctx.fillRect(width / 2 - 120, height * 0.55, 240, 96);
-    ctx.fillStyle = sunPalette.text;
-    ctx.font = '600 16px system-ui, sans-serif';
-    ctx.fillText('Library', width / 2, height * 0.62);
-    ctx.fillText('Graph', width / 2, height * 0.72);
+  function updateFinalePanel() {
+    if (!finalePanel || !finaleCount) return;
+    if (!state.isFinale) {
+      finalePanel.classList.add('hidden');
+      return;
+    }
+    const total = state.mapData.maps.reduce((sum, m) => sum + m.stuff.length, 0);
+    const lit = state.mapData.maps.reduce((sum, m) => sum + m.stuff.filter((s) => state.progress.isLit(s.slug)).length, 0);
+    finaleCount.textContent = `${lit} / ${total} flames lit`;
+    finalePanel.classList.remove('hidden');
   }
 
   function renderFrame(timestamp: number) {
@@ -476,82 +731,169 @@
     const delta = Math.min(0.05, (timestamp - state.lastFrame) / 1000);
     state.lastFrame = timestamp;
 
-    if (state.moveDirection !== 0 && !state.isSun) {
+    // Đi bộ liên tục (phím ←/→) chỉ trong phạm vi map hiện tại — băng qua map
+    // chỉ xảy ra khi nhảy vùng (setZone) vượt quá vùng 0/2, giống prototype gốc.
+    if (state.moveDirection !== 0 && !state.overlayOpen) {
       state.position = clamp(state.position + state.moveDirection * speed * delta, 0, state.pathLength);
-      if (state.position >= state.pathLength && state.currentMapIndex < state.mapData.maps.length - 1) {
-        state.currentMapIndex += 1;
-        state.currentZone = 0;
-        setupMap();
-      }
     }
 
     const map = getMapState();
-    const palette = state.isSun ? sunPalette : mapPalettes[map.level - 1] || mapPalettes[0];
-    if (!state.isSun) {
-      renderTerrain(ctx, palette, width, height);
-      renderPath(ctx, width, height);
+    const pal = PALETTE[state.currentMapIndex] || PALETTE[0];
+    if (map && state.decor) {
+      renderTerrain(ctx, pal, width, height, map.level, state.decor);
+      renderPathBand(ctx, pal, map.level);
+      renderRocksAndTrees(ctx, pal, width, height, map.level, state.decor);
 
       const flame = getPointAt(state.position);
-      renderStuff(ctx, width, height);
-      renderFog(ctx, width, height, flame.x, flame.y);
-      renderFlame(ctx, flame.x, flame.y, timestamp);
-    } else {
-      renderSunScene(ctx, width, height);
+      updateFocusStuff(flame.x, flame.y);
+      renderStuff(ctx, pal);
+      renderGridDots(ctx, width, height, flame.x, flame.y);
+      renderFog(ctx, width, height, flame.x, flame.y, pal);
+      renderFlame(ctx, flame.x, flame.y, timestamp, segmentAngleAt(state.position));
+
+      if (fireBadge) {
+        fireBadge.style.left = `${flame.x}px`;
+        fireBadge.style.top = `${flame.y + 4}px`;
+        fireBadge.classList.remove('hidden');
+      }
+
+      // B6: cập nhật currentZone theo vị trí thực tế trên path (kể cả khi đi bộ
+      // liên tục bằng phím ←/→) để setZone luôn nhảy đúng vùng kế tiếp.
+      if (state.pathLength > 0) {
+        const zoneLen = state.pathLength / 3;
+        const nextZone = clamp(Math.floor(state.position / zoneLen), 0, 2);
+        if (nextZone !== state.currentZone) {
+          state.currentZone = nextZone;
+          updateBadges();
+        }
+      }
     }
 
-    if (state.hoverStuff && tooltip) {
-      tooltip.style.left = `${state.hoverStuff.x + 26}px`;
-      tooltip.style.top = `${state.hoverStuff.y - 22}px`;
+    const tooltipStuff = state.hoverStuff || state.focusStuff;
+    if (tooltipStuff && tooltip) {
+      const { x, y } = stuffPixel(tooltipStuff);
+      tooltip.textContent = tooltipStuff.title;
+      tooltip.classList.remove('hidden');
+      tooltip.style.left = `${x + 26}px`;
+      tooltip.style.top = `${y - 22}px`;
+    } else if (tooltip) {
+      tooltip.classList.add('hidden');
     }
 
     requestAnimationFrame(renderFrame);
   }
 
-  function setupMap() {
-    state.isSun = state.currentMapIndex >= state.mapData.maps.length;
-    const mapIndex = Math.min(state.currentMapIndex, state.mapData.maps.length - 1);
-    state.currentZone = 0;
-    state.position = 0;
-    if (canvas) {
-      const rect = canvas.getBoundingClientRect();
-      const { width, height } = rect;
-      const route = buildPath(state.mapData.maps[mapIndex].level, width, height);
-      state.pathSamples = route.samples;
+  function updateBadges() {
+    const map = getMapState();
+    if (!map) return;
+    if (mapBadge) mapBadge.textContent = `${ROMANS[state.currentMapIndex]} · ${map.name.toUpperCase()}`;
+    if (mapBadgeSub) {
+      mapBadgeSub.textContent = `${map.greek.toUpperCase()} — ${map.vn.toUpperCase()} · VÙNG ${state.currentZone + 1}/3`;
+    }
+  }
+
+  // Breadcrumb + quick-nav được render sẵn trong markup .astro (SSR, 5 map cố
+  // định) — chỉ toggle .current ở đây. KHÔNG tạo <button>/<span> bằng
+  // document.createElement: element tạo runtime không mang data-astro-cid-*
+  // nên CSS scoped của Astro không match (render ra style mặc định trình
+  // duyệt). Listener click cũng gắn 1 lần trong initControls(), không lặp lại.
+  function updateBreadcrumb() {
+    if (!breadcrumb) return;
+    breadcrumb.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      const index = Number(button.dataset.mapIndex);
+      button.classList.toggle('current', index === state.currentMapIndex);
+    });
+  }
+
+  function updateQuickNav() {
+    if (!quickNav) return;
+    quickNav.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      const index = Number(button.dataset.mapIndex);
+      button.classList.toggle('current', index === state.currentMapIndex);
+    });
+  }
+
+  function updateCanvasSize() {
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const { width, height } = rect;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    const ctx = canvas.getContext('2d');
+    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    state.viewWidth = width;
+    state.viewHeight = height;
+    state.radius = Math.max(500, window.innerWidth < 640 ? window.innerWidth : 500);
+    const map = getMapState();
+    if (map) {
+      const route = buildZigzagPath(map.level, width, height);
+      state.pathSamples = route.vertices;
       state.pathLength = route.length;
       state.zoneCenters = route.zoneCenters;
-    }
-    if (mapBadge) {
-      const mapName = state.isSun ? 'The Sun' : `${getMapState().level} · ${getMapState().name} · ${getMapState().greek}`;
-      mapBadge.textContent = mapName;
-    }
-    if (zoneBadge) {
-      zoneBadge.textContent = state.isSun ? 'Final light' : `Zone ${state.currentZone + 1} / 3`;
+      state.decor = genDecor(map.level, Math.ceil(width / TILE), Math.ceil(height / TILE));
+      state.position = clamp(state.position, 0, state.pathLength);
     }
   }
 
+  function setupMap() {
+    state.currentZone = 0;
+    state.position = 0;
+    const map = getMapState();
+    state.isFinale = state.currentMapIndex === state.mapData.maps.length - 1 && !!map && map.stuff.length === 0;
+    if (canvas && map) {
+      const rect = canvas.getBoundingClientRect();
+      const { width, height } = rect;
+      const route = buildZigzagPath(map.level, width, height);
+      state.pathSamples = route.vertices;
+      state.pathLength = route.length;
+      state.zoneCenters = route.zoneCenters;
+      state.decor = genDecor(map.level, Math.ceil(width / TILE), Math.ceil(height / TILE));
+    }
+    updateBadges();
+    updateBreadcrumb();
+    updateQuickNav();
+    updateFinalePanel();
+  }
+
+  // Nhảy vùng (MOVE ◀▶ hoặc phím < >) — vượt quá vùng 0/2 thì băng sang map
+  // trước/sau (vùng cuối/đầu), giống move() trong prototype gốc.
   function setZone(delta: number) {
-    if (state.isSun) return;
-    state.currentZone = clamp(state.currentZone + delta, 0, 2);
-    state.position = state.zoneCenters[state.currentZone] ?? state.position;
-    if (zoneBadge) zoneBadge.textContent = `Zone ${state.currentZone + 1} / 3`;
+    const nextZone = state.currentZone + delta;
+    if (nextZone < 0) {
+      if (state.currentMapIndex > 0) jumpToMap(state.currentMapIndex - 1, 2);
+      return;
+    }
+    if (nextZone > 2) {
+      if (state.currentMapIndex < state.mapData.maps.length - 1) jumpToMap(state.currentMapIndex + 1, 0);
+      return;
+    }
+    state.currentZone = nextZone;
+    state.position = state.zoneCenters[nextZone] ?? state.position;
+    updateBadges();
   }
 
-  function swipeToMap(index: number | 'sun') {
-    if (index === 'sun') {
-      state.currentMapIndex = state.mapData.maps.length;
-    } else {
-      state.currentMapIndex = clamp(index, 0, state.mapData.maps.length - 1);
-    }
+  function jumpToMap(index: number, zone: number) {
+    state.currentMapIndex = clamp(index, 0, state.mapData.maps.length - 1);
     setupMap();
+    state.currentZone = zone;
+    state.position = state.zoneCenters[zone] ?? 0;
+    updateBadges();
+  }
+
+  function swipeToMap(index: number) {
+    jumpToMap(index, 0);
   }
 
   function handleCanvasPointer(event: MouseEvent) {
-    if (!canvas || state.isSun) return;
+    if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     const current = getMapState();
-    const hit = current.stuff.find((item) => {
+    const hit = current?.stuff.find((item) => {
       const { x: itemX, y: itemY } = stuffPixel(item);
       const dx = x - itemX;
       const dy = y - itemY;
@@ -576,33 +918,70 @@
     window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: state.hoverStuff.slug } }));
   }
 
+  // Hàm chung cho nút MOVE ◀▶ và phím </>: khi overlay mở thì duyệt prev/next
+  // stuff, ngược lại nhảy vùng (setZone), băng map nếu vượt quá vùng 0/2.
+  function moveOrNavigate(direction: number) {
+    if (state.overlayOpen) {
+      window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction } }));
+      return;
+    }
+    setZone(direction);
+  }
+
+  function isAtPathEnd(direction: number) {
+    const eps = 1;
+    return direction > 0 ? state.position >= state.pathLength - eps : state.position <= eps;
+  }
+
   function initControls() {
-    if (zonePrev) zonePrev.addEventListener('click', () => setZone(-1));
-    if (zoneNext) zoneNext.addEventListener('click', () => setZone(1));
+    if (zonePrev) zonePrev.addEventListener('click', () => moveOrNavigate(-1));
+    if (zoneNext) zoneNext.addEventListener('click', () => moveOrNavigate(1));
+    breadcrumb?.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      const index = Number(button.dataset.mapIndex);
+      button.addEventListener('click', () => swipeToMap(index));
+    });
+    quickNav?.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      const index = Number(button.dataset.mapIndex);
+      button.addEventListener('click', () => {
+        swipeToMap(index);
+        optionsPanel?.classList.add('hidden');
+      });
+    });
     if (optionsButton) optionsButton.addEventListener('click', () => {
       optionsPanel?.classList.toggle('hidden');
     });
     radiusRange?.addEventListener('input', () => {
       const val = Number(radiusRange.value);
       state.radius = val;
-      if (radiusValue) radiusValue.textContent = `${val}`;
+      if (radiusValue) radiusValue.textContent = `${val}PX`;
     });
     revealAllToggle?.addEventListener('change', () => {
       state.revealAll = revealAllToggle.checked;
     });
-    mapButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const value = button.getAttribute('data-map');
-        if (value === 'sun') swipeToMap('sun');
-        else swipeToMap(Number(value));
-        optionsPanel?.classList.add('hidden');
-      });
-    });
     window.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft') {
-        state.moveDirection = -1;
-      } else if (event.key === 'ArrowRight') {
-        state.moveDirection = 1;
+      const tag = (event.target as HTMLElement | null)?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (event.key === 'Escape') optionsPanel?.classList.add('hidden');
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        if (state.overlayOpen) {
+          window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction: 1 } }));
+        } else if (isAtPathEnd(1)) {
+          state.moveDirection = 0;
+          moveOrNavigate(1);
+        } else {
+          state.moveDirection = 1;
+        }
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        if (state.overlayOpen) {
+          window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction: -1 } }));
+        } else if (isAtPathEnd(-1)) {
+          state.moveDirection = 0;
+          moveOrNavigate(-1);
+        } else {
+          state.moveDirection = -1;
+        }
       } else if (event.key === '<') {
         setZone(-1);
       } else if (event.key === '>') {
@@ -620,6 +999,12 @@
       if (tooltip) tooltip.classList.add('hidden');
     });
     canvas?.addEventListener('click', handleCanvasClick);
+    window.addEventListener('stuff:open', () => {
+      state.overlayOpen = true;
+    });
+    window.addEventListener('stuff:close', () => {
+      state.overlayOpen = false;
+    });
   }
 
   function init() {
@@ -630,10 +1015,14 @@
       setupMap();
       initControls();
       requestAnimationFrame(renderFrame);
+      // R2-3: đảm bảo canvas giữ focus ngay khi vừa load — window vẫn là nơi
+      // gắn keydown (không phải canvas), nhưng focus() tránh việc phím
+      // ←/→ bị input/textarea khác trên trang "nuốt" mất trước.
+      canvas?.focus({ preventScroll: true });
     });
     window.addEventListener('resize', () => {
       updateCanvasSize();
-      setupMap();
+      updateFinalePanel();
     });
   }
 

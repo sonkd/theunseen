@@ -78,6 +78,7 @@ export async function GET({ params }) {
       title: data.title || slug,
       front: data.front || data.title || '',
       back: data.back || '',
+      categories: Array.isArray(data.categories) ? data.categories : [],
       refs: Array.isArray(data.refs) ? data.refs : [],
       links: Array.isArray(data.links) ? data.links : [],
       strategy: data.strategy || '',

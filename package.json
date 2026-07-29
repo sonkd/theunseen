@@ -12,7 +12,8 @@
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
     "verify": "node scripts/content-pipeline/verify.mjs",
-    "graph": "node scripts/build-graph.mjs"
+    "graph": "node scripts/build-graph.mjs",
+    "backlog": "node scripts/content-pipeline/sync-backlog.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
