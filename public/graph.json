@@ -1,0 +1,1582 @@
+{
+  "nodes": [
+    {
+      "id": "abilene-paradox",
+      "title": "Abilene paradox",
+      "level": 2,
+      "categories": [
+        "mental-models",
+        "bias"
+      ]
+    },
+    {
+      "id": "affective-forecasting",
+      "title": "Affective forecasting",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "ambiguity-effect",
+      "title": "Ambiguity effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "anchoring",
+      "title": "Anchoring",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "anthropomorphism",
+      "title": "Anthropomorphism",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "appeal-to-novelty",
+      "title": "Appeal to novelty",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "appeal-to-probability-fallacy",
+      "title": "Appeal to probability fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "argument-from-fallacy",
+      "title": "Argument from fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "armchair-fallacy",
+      "title": "Armchair fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "attentional-bias",
+      "title": "Attentional bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "attribute-substitution",
+      "title": "Attribute substitution",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "authority-bias",
+      "title": "Authority bias",
+      "level": 2,
+      "categories": [
+        "bias",
+        "social"
+      ]
+    },
+    {
+      "id": "automation-bias",
+      "title": "Automation bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "availability-heuristic",
+      "title": "Availability heuristic",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "backfire-effect",
+      "title": "Backfire effect",
+      "level": 2,
+      "categories": [
+        "bias",
+        "social"
+      ]
+    },
+    {
+      "id": "bandwagon-effect",
+      "title": "Bandwagon effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "barnum-effect",
+      "title": "Barnum effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "base-rate-fallacy",
+      "title": "Base rate fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "belief-bias",
+      "title": "Belief bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "bias-blind-spot",
+      "title": "Bias blind spot",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "bizarreness-effect",
+      "title": "Bizarreness effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "bucket-error",
+      "title": "Bucket error",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "cathedral-effect",
+      "title": "Cathedral effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "change-blindness",
+      "title": "Change blindness",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "cheerleader-effect",
+      "title": "Cheerleader effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "chestertons-fence",
+      "title": "Chesterton's fence",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "choice-supportive-bias",
+      "title": "Choice-supportive bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "clustering-illusion",
+      "title": "Clustering illusion",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "cognitive-load-theory",
+      "title": "Cognitive Load Theory",
+      "level": 3,
+      "categories": [
+        "theory"
+      ]
+    },
+    {
+      "id": "confabulation",
+      "title": "Confabulation",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "confirmation-bias",
+      "title": "Confirmation bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "congruence-bias",
+      "title": "Congruence bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "conjunction-fallacy",
+      "title": "Conjunction fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "conservatism",
+      "title": "Conservatism",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "continued-influence-effect",
+      "title": "Continued influence effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "contrast-effect",
+      "title": "Contrast effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "cross-race-effect",
+      "title": "Cross-race effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "cryptomnesia",
+      "title": "Cryptomnesia",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "cue-dependent-forgetting",
+      "title": "Cue-dependent forgetting",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "curse-of-knowledge",
+      "title": "Curse of knowledge",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "declinism",
+      "title": "Declinism",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "decoy-effect",
+      "title": "Decoy effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "defensive-attribution-hypothesis",
+      "title": "Defensive attribution hypothesis",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "denomination-effect",
+      "title": "Denomination effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "disposition-effect",
+      "title": "Disposition effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "distinction-bias",
+      "title": "Distinction bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "dual-process-theory",
+      "title": "Dual Process Theory",
+      "level": 4,
+      "categories": [
+        "theory"
+      ]
+    },
+    {
+      "id": "dunning-kruger-effect",
+      "title": "Dunning-Kruger effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "duration-neglect",
+      "title": "Duration neglect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "effort-justification",
+      "title": "Effort justification",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "egocentric-bias",
+      "title": "Egocentric bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "empathy-gap",
+      "title": "Empathy gap",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "endowment-effect",
+      "title": "Endowment effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "escalation-of-commitment",
+      "title": "Escalation of commitment",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "essentialism",
+      "title": "Essentialism",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "extension-neglect",
+      "title": "Extension neglect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "extrinsic-incentive-error",
+      "title": "Extrinsic incentive error",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "fading-affect-bias",
+      "title": "Fading affect bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "false-consensus-effect",
+      "title": "False consensus effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "focalism",
+      "title": "Focalism",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "framing-effect",
+      "title": "Framing effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "frequency-illusion",
+      "title": "Frequency illusion",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "functional-fixedness",
+      "title": "Functional fixedness",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "fundamental-attribution-error",
+      "title": "Fundamental attribution error",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "gamblers-fallacy",
+      "title": "Gambler’s fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "generation-effect",
+      "title": "Generation effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "goodharts-law",
+      "title": "Goodhart's law",
+      "level": 2,
+      "categories": [
+        "theory",
+        "heuristic"
+      ]
+    },
+    {
+      "id": "group-attribution-error",
+      "title": "Group attribution error",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "halo-effect",
+      "title": "Halo effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "hard-easy-effect",
+      "title": "Hard-easy effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "hindsight-bias",
+      "title": "Hindsight bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "hot-hand-fallacy",
+      "title": "Hot-hand fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "hyperbolic-discounting",
+      "title": "Hyperbolic discounting",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "identifiable-victim-effect",
+      "title": "Identifiable victim effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "ikea-effect",
+      "title": "IKEA effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "illusion-of-asymmetric-insight",
+      "title": "Illusion of asymmetric insight",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "illusion-of-control",
+      "title": "Illusion of control",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "illusion-of-external-agency",
+      "title": "Illusion of external agency",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "illusion-of-transparency",
+      "title": "Illusion of transparency",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "illusion-of-validity",
+      "title": "Illusion of validity",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "illusory-correlation",
+      "title": "Illusory correlation",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "illusory-superiority",
+      "title": "Illusory superiority",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "illusory-truth-effect",
+      "title": "Illusory truth effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "immune-neglect",
+      "title": "Immune neglect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "impact-bias",
+      "title": "Impact bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "implicit-stereotypes",
+      "title": "Implicit stereotypes",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "in-group-bias",
+      "title": "In-group bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "information-bias",
+      "title": "Information bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "insensitivity-to-sample-size",
+      "title": "Insensitivity to sample size",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "inversion",
+      "title": "Inversion",
+      "level": 3,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "just-world-hypothesis",
+      "title": "Just-world hypothesis",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "lake-wobegone-effect",
+      "title": "Lake Wobegone effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "law-of-narrative-gravity",
+      "title": "Law of narrative gravity",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "law-of-the-instrument",
+      "title": "Law of the instrument",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "law-of-triviality",
+      "title": "Law of triviality",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "less-is-better-effect",
+      "title": "Less-is-better effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "leveling-and-sharpening",
+      "title": "Leveling and sharpening",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "levels-of-processing-effect",
+      "title": "Levels of processing effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "loss-aversion",
+      "title": "Loss aversion",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "magic-number-7-2",
+      "title": "Magic number 7+-2",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "masked-man-fallacy",
+      "title": "Masked man fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "memory-inhibition",
+      "title": "Memory inhibition",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "mental-accounting",
+      "title": "Mental accounting",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "mere-exposure-effect",
+      "title": "Mere exposure effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "misattribution-of-memory",
+      "title": "Misattribution of memory",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "misinformation-effect",
+      "title": "Misinformation effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "modality-effect",
+      "title": "Modality effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "money-illusion",
+      "title": "Money illusion",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "moral-luck",
+      "title": "Moral luck",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "murphys-law",
+      "title": "Murphy’s Law",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "naive-cynicism",
+      "title": "Naïve cynicism",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "naive-realism",
+      "title": "Naïve realism",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "negativity-bias",
+      "title": "Negativity bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "neglect-of-probability",
+      "title": "Neglect of probability",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "next-in-line-effect",
+      "title": "Next-in-line effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "normalcy-bias",
+      "title": "Normalcy bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "not-invented-here",
+      "title": "Not invented here",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "observer-expectancy-effect",
+      "title": "Observer-expectancy effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "occams-razor",
+      "title": "Occam’s razor",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "omission-bias",
+      "title": "Omission bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "optimism-bias",
+      "title": "Optimism bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "ostrich-effect",
+      "title": "Ostrich effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "out-group-homogeneity-bias",
+      "title": "Out-group homogeneity bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "outcome-bias",
+      "title": "Outcome bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "overconfidence-effect",
+      "title": "Overconfidence effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "pareidolia",
+      "title": "Pareidolia",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "part-list-cueing-effect",
+      "title": "Part-list cueing effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "peak-end-rule",
+      "title": "Peak–end rule",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "pessimism-bias",
+      "title": "Pessimism bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "picture-superiority-effect",
+      "title": "Picture superiority effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "placebo-effect",
+      "title": "Placebo effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "planning-fallacy",
+      "title": "Planning fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "positivity-effect",
+      "title": "Positivity effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "post-purchase-rationalization",
+      "title": "Post-purchase rationalization",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "prejudice",
+      "title": "Prejudice",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "primacy-effect",
+      "title": "Primacy effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "pro-innovation-bias",
+      "title": "Pro-innovation bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "projection-bias",
+      "title": "Projection bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "pseudocertainty-effect",
+      "title": "Pseudocertainty effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "publication-bias",
+      "title": "Publication bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "reactance",
+      "title": "Reactance",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "reactive-devaluation",
+      "title": "Reactive devaluation",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "recency-effect",
+      "title": "Recency effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "recency-illusion",
+      "title": "Recency illusion",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "restraint-bias",
+      "title": "Restraint bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "rhyme-as-reason-effect",
+      "title": "Rhyme as reason effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "risk-compensation",
+      "title": "Risk compensation",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "rosy-retrospection",
+      "title": "Rosy retrospection",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "sapir-whorf-korzybski-hypothesis",
+      "title": "Sapir Whorf Korzybski hypothesis",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "second-order-thinking",
+      "title": "Second-order Thinking",
+      "level": 3,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "selective-perception",
+      "title": "Selective perception",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "self-consistency-bias",
+      "title": "Self-consistency bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "self-licensing",
+      "title": "Self-licensing",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "self-relevance-effect",
+      "title": "Self-relevance effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "self-serving-bias",
+      "title": "Self-serving bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "semmelweis-reflex",
+      "title": "Semmelweis reflex",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "serial-position-effect",
+      "title": "Serial position effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "serial-recall-effect",
+      "title": "Serial recall effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "social-comparison-bias",
+      "title": "Social comparison bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "social-desirability-bias",
+      "title": "Social desirability bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "source-confusion",
+      "title": "Source confusion",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "spacing-effect",
+      "title": "Spacing effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "spotlight-effect",
+      "title": "Spotlight effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "status-quo-bias",
+      "title": "Status quo bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "stereotyping",
+      "title": "Stereotyping",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "subadditivity-effect",
+      "title": "Subadditivity effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "subjective-validation",
+      "title": "Subjective validation",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "suggestibility",
+      "title": "Suggestibility",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "sunk-cost-fallacy",
+      "title": "Sunk cost fallacy",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "survivorship-bias",
+      "title": "Survivorship bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "swimmers-body-illusion",
+      "title": "Swimmer's body illusion",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "system-justification",
+      "title": "System justification",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "telescoping-effect",
+      "title": "Telescoping effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "testing-effect",
+      "title": "Testing effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "third-person-effect",
+      "title": "Third-person effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "time-discounting",
+      "title": "Time discounting",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "time-saving-bias",
+      "title": "Time-saving bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "tip-of-the-tongue-phenomenon",
+      "title": "Tip of the tongue phenomenon",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "trait-ascription-bias",
+      "title": "Trait ascription bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "ultimate-attribution-error",
+      "title": "Ultimate attribution error",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "unit-bias",
+      "title": "Unit bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "von-restorff-effect",
+      "title": "Von Restorff effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "weber-fechner-law",
+      "title": "Weber–Fechner law",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "well-traveled-road-effect",
+      "title": "Well-traveled road effect",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "zero-risk-bias",
+      "title": "Zero-risk bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
+      "id": "zero-sum-bias",
+      "title": "Zero sum bias",
+      "level": 2,
+      "categories": [
+        "mental-models"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "anchoring",
+      "target": "contrast-effect"
+    },
+    {
+      "source": "anchoring",
+      "target": "framing-effect"
+    },
+    {
+      "source": "authority-bias",
+      "target": "confirmation-bias"
+    },
+    {
+      "source": "authority-bias",
+      "target": "halo-effect"
+    },
+    {
+      "source": "authority-bias",
+      "target": "automation-bias"
+    },
+    {
+      "source": "backfire-effect",
+      "target": "confirmation-bias"
+    },
+    {
+      "source": "backfire-effect",
+      "target": "continued-influence-effect"
+    },
+    {
+      "source": "backfire-effect",
+      "target": "misinformation-effect"
+    },
+    {
+      "source": "backfire-effect",
+      "target": "semmelweis-reflex"
+    },
+    {
+      "source": "cognitive-load-theory",
+      "target": "magic-number-7-2"
+    },
+    {
+      "source": "cognitive-load-theory",
+      "target": "modality-effect"
+    },
+    {
+      "source": "anchoring",
+      "target": "dual-process-theory"
+    },
+    {
+      "source": "dual-process-theory",
+      "target": "framing-effect"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "dual-process-theory"
+    },
+    {
+      "source": "goodharts-law",
+      "target": "law-of-the-instrument"
+    },
+    {
+      "source": "extrinsic-incentive-error",
+      "target": "goodharts-law"
+    },
+    {
+      "source": "goodharts-law",
+      "target": "information-bias"
+    },
+    {
+      "source": "automation-bias",
+      "target": "goodharts-law"
+    },
+    {
+      "source": "inversion",
+      "target": "second-order-thinking"
+    },
+    {
+      "source": "inversion",
+      "target": "planning-fallacy"
+    },
+    {
+      "source": "goodharts-law",
+      "target": "second-order-thinking"
+    }
+  ]
+}

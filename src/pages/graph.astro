@@ -1,0 +1,196 @@
+---
+import Base from '../layouts/Base.astro';
+import { onMount } from 'astro:client';
+import { readFileSync } from 'fs';
+const graph = JSON.parse(readFileSync(new URL('../../public/graph.json', import.meta.url), 'utf-8'));
+const colors = ['#f0a343', '#bcb7ff', '#53c6d2', '#8dcc6b'];
+const nodeRadius = (degree) => Math.min(28, 8 + Math.sqrt(degree) * 4);
+---
+<Base title="Graph">
+  <h1>Graph</h1>
+  <p class="intro">Explore the network of ideas in an Obsidian-style graph. Hover a node for its title, and click to open the card.</p>
+  <div id="graphContainer" class="graph-container" aria-label="Graph of connected stuff"></div>
+</Base>
+<style>
+  .intro { margin-top: 0; color: var(--muted); }
+  .graph-container { width: 100%; min-height: 80vh; border: 1px solid rgba(255,255,255,.08); border-radius: 24px; background: radial-gradient(circle at top, rgba(240,163,67,.08), transparent 38%), linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); overflow: hidden; position: relative; }
+  .graph-tooltip { position: absolute; pointer-events: none; background: rgba(16,18,27,.96); color: var(--text); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 0.6rem 0.85rem; font-size: 0.95rem; z-index: 10; white-space: nowrap; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+  .graph-link { display: inline-block; margin-top: 1.25rem; color: var(--flame); text-decoration: none; }
+</style>
+<script type="module" define:vars={{ graph, colors }}>
+  const nodeRadius = (degree) => Math.min(28, 8 + Math.sqrt(degree) * 4);
+
+  const container = document.getElementById('graphContainer');
+  if (!container) throw new Error('Graph container missing');
+
+  const width = container.clientWidth;
+  const height = Math.max(window.innerHeight * 0.85, 640);
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('width', width);
+  svg.setAttribute('height', height);
+  svg.style.display = 'block';
+  container.appendChild(svg);
+
+  const tooltip = document.createElement('div');
+  tooltip.className = 'graph-tooltip';
+  tooltip.style.opacity = '0';
+  container.appendChild(tooltip);
+
+  const degree = new Map(graph.nodes.map((node) => [node.id, 0]));
+  graph.edges.forEach((edge) => {
+    degree.set(edge.source, (degree.get(edge.source) || 0) + 1);
+    degree.set(edge.target, (degree.get(edge.target) || 0) + 1);
+  });
+
+  const nodes = graph.nodes.map((node) => ({
+    ...node,
+    degree: degree.get(node.id) || 0,
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: 0,
+    vy: 0,
+  }));
+  const links = graph.edges.map((edge) => ({
+    source: nodes.find((node) => node.id === edge.source),
+    target: nodes.find((node) => node.id === edge.target),
+  }));
+
+  const linkElements = links.map(() => {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('stroke', 'rgba(255,255,255,0.08)');
+    line.setAttribute('stroke-width', '1');
+    svg.appendChild(line);
+    return line;
+  });
+
+  const nodeElements = nodes.map((node) => {
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('r', String(nodeRadius(node.degree)));
+    circle.setAttribute('fill', colors[(node.level - 1) % colors.length]);
+    circle.setAttribute('cursor', 'pointer');
+    svg.appendChild(circle);
+
+    circle.addEventListener('pointerover', (event) => {
+      circle.setAttribute('stroke-width', '2');
+      circle.setAttribute('stroke', '#ffffff');
+      tooltip.textContent = node.title;
+      tooltip.style.opacity = '1';
+    });
+
+    circle.addEventListener('pointermove', (event) => {
+      tooltip.style.left = `${event.offsetX + 16}px`;
+      tooltip.style.top = `${event.offsetY + 16}px`;
+    });
+
+    circle.addEventListener('pointerout', () => {
+      circle.setAttribute('stroke-width', '1');
+      circle.setAttribute('stroke', '#111111');
+      tooltip.style.opacity = '0';
+    });
+
+    circle.addEventListener('click', () => {
+      window.location.href = `/stuff/${node.id}/`;
+    });
+
+    return circle;
+  });
+
+  const applyForces = () => {
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const repulsion = 3000;
+    const springLength = 110;
+    const springStrength = 0.01;
+    const damping = 0.85;
+
+    nodes.forEach((node) => {
+      node.vx *= damping;
+      node.vy *= damping;
+      const dx = centerX - node.x;
+      const dy = centerY - node.y;
+      node.vx += dx * 0.0002;
+      node.vy += dy * 0.0002;
+    });
+
+    for (let i = 0; i < nodes.length; i += 1) {
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        let distance = Math.sqrt(dx * dx + dy * dy) || 1;
+        const minDist = nodeRadius(a.degree) + nodeRadius(b.degree) + 12;
+        const force = (repulsion / (distance * distance)) * 0.5;
+        const fx = (dx / distance) * force;
+        const fy = (dy / distance) * force;
+        a.vx += fx;
+        a.vy += fy;
+        b.vx -= fx;
+        b.vy -= fy;
+
+        if (distance < minDist) {
+          const overlap = (minDist - distance) / distance * 0.5;
+          a.vx += dx * overlap;
+          a.vy += dy * overlap;
+          b.vx -= dx * overlap;
+          b.vy -= dy * overlap;
+        }
+      }
+    }
+
+    links.forEach((link, index) => {
+      const dx = link.target.x - link.source.x;
+      const dy = link.target.y - link.source.y;
+      const distance = Math.sqrt(dx * dx + dy * dy) || 1;
+      const diff = distance - springLength;
+      const force = springStrength * diff;
+      const fx = (dx / distance) * force;
+      const fy = (dy / distance) * force;
+      link.source.vx += fx;
+      link.source.vy += fy;
+      link.target.vx -= fx;
+      link.target.vy -= fy;
+    });
+
+    nodes.forEach((node) => {
+      node.x += node.vx;
+      node.y += node.vy;
+      const radius = nodeRadius(node.degree);
+      node.x = Math.max(radius, Math.min(width - radius, node.x));
+      node.y = Math.max(radius, Math.min(height - radius, node.y));
+    });
+  };
+
+  const render = () => {
+    links.forEach((link, index) => {
+      linkElements[index].setAttribute('x1', String(link.source.x));
+      linkElements[index].setAttribute('y1', String(link.source.y));
+      linkElements[index].setAttribute('x2', String(link.target.x));
+      linkElements[index].setAttribute('y2', String(link.target.y));
+    });
+    nodes.forEach((node, index) => {
+      const radius = nodeRadius(node.degree);
+      nodeElements[index].setAttribute('cx', String(node.x));
+      nodeElements[index].setAttribute('cy', String(node.y));
+      nodeElements[index].setAttribute('r', String(radius));
+    });
+  };
+
+  let alpha = 1;
+  const animate = () => {
+    if (alpha <= 0.01) return;
+    applyForces();
+    render();
+    alpha *= 0.98;
+    requestAnimationFrame(animate);
+  };
+
+  render();
+  requestAnimationFrame(animate);
+
+  const resize = () => {
+    const w = container.clientWidth;
+    svg.setAttribute('width', String(w));
+  };
+  window.addEventListener('resize', resize);
+</script>
