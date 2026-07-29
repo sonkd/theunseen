@@ -36,11 +36,11 @@ Các file đã có sẵn trong repo — VS Code Agent Sessions tự nhận:
 
 - `.claude/agents/researcher.md` — subagent Researcher, `model: haiku`, chỉ có tools đọc + web. Xuất hiện trong tab **Agents** của panel Customizations.
 - `.claude/agents/writer.md` — subagent Writer, `model: sonnet`, có quyền Write + Bash (để chạy verify).
-- `.claude/commands/new-card.md` — slash command `/new-card <concept>`.
-- `.claude/commands/batch-cards.md` — slash command `/batch-cards <n>`.
+- `.claude/skills/new-card/SKILL.md` — skill, gọi bằng `/new-card <concept>`.
+- `.claude/skills/batch-cards/SKILL.md` — skill, gọi bằng `/batch-cards <n>`.
 - `CLAUDE.md` — quy tắc chung, mọi session tự động load.
 
-Kiểm tra: mở session mới trong folder `theunseen`, gõ `/` — thấy `new-card` và `batch-cards`; panel Agents hiển thị `researcher`, `writer`.
+Kiểm tra: mở session mới trong folder `theunseen`, gõ `/` — thấy `new-card` và `batch-cards` (tab **Skills**); panel Agents hiển thị `researcher`, `writer`.
 
 ## 3. Vận hành
 
@@ -69,7 +69,7 @@ Cards migrate từ Jekyll có body ngắn (verify hiện báo warning `< 100 t�
 researcher bổ sung facts từ refs có sẵn, writer mở rộng body lên 300-500 từ, giữ nguyên front/back.
 ```
 
-(Có thể lưu thành command riêng `.claude/commands/enrich-cards.md` khi quy trình ổn định.)
+(Có thể lưu thành command riêng `.claude/skills/enrich-cards/SKILL.md` khi quy trình ổn định.)
 
 ### Review & merge
 
