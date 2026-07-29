@@ -1,8 +1,5 @@
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-_drafts
-.obsidian
-klise-*.gem
-Gemfile.lock
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log

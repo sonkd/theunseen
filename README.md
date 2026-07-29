@@ -1,43 +1,24 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/28704be5-e764-4674-ba56-032d388220dc/deploy-status)](https://app.netlify.com/sites/theunseen/deploys)
+# Seeing the Unseen 🔥
 
----
+Every piece of knowledge is a flame in Plato's cave. A knowledge-sharing site about cognitive biases, mental models, and psychology — structured as a journey through 4 maps (Imagining → Belief → Thinking → Knowledge), rendered as flip cards linked into a knowledge graph.
 
-# The Stuff Unseen
-> The seen is the changing, the unseen is the unchanging. Plato.
-
-### 1. Install Postcss and Tailwind
+## Quickstart
 
 ```bash
-$ npm install tailwindcss @tailwindcss/typography cssnano postcss postcss-import autoprefixer --save-dev
+npm install
+npm run dev        # http://localhost:4321
+npm run verify     # validate content schema + link integrity
+npm run build      # static build → dist/ (+ pagefind index)
 ```
 
-Only postcss:
-```bash
-npm install tailwindcss @tailwindcss/postcss postcss
-```
+## Docs
 
-#### Import Tailwind CSS**
-Add an @import to your CSS file that imports Tailwind CSS.
-```css
-@import "tailwindcss";
-```
+- `docs/build-plan.md` — kiến trúc, roadmap, Definition of Done
+- `docs/agent-workflow-guide.md` — content pipeline 3-agent (researcher/writer/verifier)
+- `CLAUDE.md` — quy tắc dự án cho AI agents
 
-#### Start your build process
-Run your build process with npm run dev or whatever command is configured in your package.json file.
-```bash
-npm run dev
-```
-
-
-### 2. Build Jekyll site
-To build and serve your Jekyll site locally with live reload, use the following command:
+## Deploy
 
 ```bash
-bundle exec jekyll serve --livereload
-```
-
-### 3. Sync stuff from Notion
-
-```bash
-python3 theunseen_notion_sync.py
+docker compose up -d --build   # web (nginx) + umami analytics
 ```

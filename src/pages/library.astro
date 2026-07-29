@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { iconFor, LEVEL_MAPS } from '../lib/icons';
+const stuff = (await getCollection('stuff', ({ data }) => data.published))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+const levels = [1, 2, 3, 4];
+---
+<Base title="Library">
+  <h1>Library</h1>
+  {levels.map((l) => (
+    <section>
+      <h2>Map {l} — {LEVEL_MAPS[l]}</h2>
+      <ul class="grid">
+        {stuff.filter((s) => s.data.level === l).map((s) => (
+          <li>
+            <a href={`/stuff/${s.id}/`}>
+              <span class="icon">{iconFor(s.id, s.data.categories, s.data.icon)}</span> {s.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Base>
+<style>
+  .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .5rem; }
+  .grid a { text-decoration: none; color: var(--text); display: block; padding: .5rem .75rem; border: 1px solid var(--border); border-radius: 8px; }
+  .grid a:hover { border-color: var(--flame); }
+  .icon { color: var(--flame); }
+</style>

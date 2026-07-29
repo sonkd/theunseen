@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import FlipCard from '../../components/FlipCard.astro';
+import { getCollection, render } from 'astro:content';
+import { iconFor, LEVEL_MAPS } from '../../lib/icons';
+
+export async function getStaticPaths() {
+  const all = await getCollection('stuff', ({ data }) => data.published);
+  return all.map((s) => ({ params: { slug: s.id }, props: { s, all } }));
+}
+const { s, all } = Astro.props;
+const { Content } = await render(s);
+const related = s.data.links
+  .map((slug) => all.find((x) => x.id === slug))
+  .filter(Boolean);
+---
+<Base title={s.data.title} description={s.data.back}>
+  <article data-pagefind-body>
+    <p class="meta">Map {s.data.level} — {LEVEL_MAPS[s.data.level]} · {s.data.categories.join(', ')}</p>
+    <h1>{s.data.title}</h1>
+    <FlipCard front={s.data.front} back={s.data.back} icon={iconFor(s.id, s.data.categories, s.data.icon)} />
+    {s.data.strategy && <p><strong>Strategy:</strong> {s.data.strategy}</p>}
+    <Content />
+    {s.data.approaches.length > 0 && (
+      <section><h2>Approaches</h2>
+        <ul>{s.data.approaches.map((a) => <li><a href={a.url}>{a.title}</a></li>)}</ul>
+      </section>
+    )}
+    {related.length > 0 && (
+      <section><h2>Connected flames</h2>
+        <ul>{related.map((r) => r && <li><a href={`/stuff/${r.id}/`}>{r.data.title}</a></li>)}</ul>
+      </section>
+    )}
+    {s.data.refs.length > 0 && (
+      <section><h2>References</h2>
+        <ul>{s.data.refs.map((r) => <li><a href={r} rel="nofollow noopener">{r}</a></li>)}</ul>
+      </section>
+    )}
+  </article>
+</Base>
+<style>
+  .meta { color: var(--muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; }
+</style>

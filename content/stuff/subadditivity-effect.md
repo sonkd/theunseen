@@ -1,0 +1,14 @@
+---
+title: Subadditivity effect
+front: '''Subadditivity effect'' là gì, và nó tác động thế nào đến cách bạn nghĩ hoặc ra quyết định?'
+back: We think things are more probable when considered individually than the sum of them would be considered as a whole. For example if we estimated the chances of dying via each of the natural causes separately, that would add up to more than if we just estimated the chances of dying from any natural cause.
+level: 2
+categories: [mental-models]
+links: []
+refs: ['https://en.wikipedia.org/wiki/Subadditivity_effect']
+published: true
+---
+
+We think things are more probable when considered individually than the sum of them would be considered as a whole. For example if we estimated the chances of dying via each of the natural causes separately, that would add up to more than if we just estimated the chances of dying from any natural cause.
+
+[More information](https://en.wikipedia.org/wiki/Subadditivity_effect)

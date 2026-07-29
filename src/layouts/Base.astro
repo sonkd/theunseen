@@ -1,0 +1,33 @@
+---
+interface Props { title: string; description?: string }
+const { title, description = 'Seeing the Unseen — flames of knowledge in Plato\'s cave.' } = Astro.props;
+---
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <title>{title} · Seeing the Unseen</title>
+  <style is:global>
+    :root {
+      --bg: #0d0e12; --surface: #16181f; --text: #e8e6e1; --muted: #9a978f;
+      --flame: #f0a343; --accent: #c9563c; --border: #2a2d38;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, sans-serif; }
+    a { color: var(--flame); }
+    main { max-width: 880px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    header.site { display: flex; gap: 1.5rem; align-items: baseline; padding: 1rem; max-width: 880px; margin: 0 auto; }
+    header.site a { text-decoration: none; color: var(--muted); }
+    header.site a.brand { color: var(--flame); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <a class="brand" href="/">🔥 the unseen</a>
+    <a href="/library/">Library</a>
+  </header>
+  <main><slot /></main>
+</body>
+</html>
