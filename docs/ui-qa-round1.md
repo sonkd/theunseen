@@ -17,7 +17,7 @@ Nguồn: test thủ công của Núi sau khi merge Phase 2 + align design.
 | B1 | Home | Header hiện "Search available after build." | Dev mode: input search bình thường, Enter → `/library?q=`. Không bao giờ hiện thông báo lỗi cho người dùng | `src/layouts/Base.astro` |
 | B2 | Home | Overlay có nút `FLIP · LẬT` | Bỏ nút; click bất kỳ đâu trên card để lật; tooltip hint lần đầu + on hover | `src/components/map/StuffOverlay.astro` |
 | B3 | Home | Font breadcrumb 5 map + nav header chưa đúng design system | Cả hai dùng `--font-pixel` ('Press Start 2P') theo design-spec mục 3 | `MapCanvas.astro` (breadcrumb), `Base.astro` (nav) |
-| B4 | Home | Stuff co cụm (vị trí theo hash slug) | Chia đều theo arc-length trong mỗi zone | `scripts/build-map-data.mjs`, `src/lib/map/path.ts` |
+| B4 | Home | Stuff co cụm (vị trí theo hash slug) | Zig-zag path + grid placement — xem `docs/map-layout-spec.md` | `scripts/build-map-data.mjs`, `src/lib/map/path.ts` |
 | B5 | Home | Đi qua stuff không có phản hồi | Ngọn lửa vào bán kính stuff → auto focus + tooltip tên (không mở overlay) | `MapCanvas.astro` |
 | B6 | Home | Cuối map, phím ←/→ không nhảy vùng | Ở cuối/đầu map, phím ←/→ hành xử như nút MOVE ◀ ▶ (nhảy zone/map) | `MapCanvas.astro` |
 | B7 | Library | Click card → điều hướng `/stuff/<slug>/` | Mở overlay như Home | `library.astro` |
