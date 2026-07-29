@@ -1,20 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCollection } from 'astro:content';
-import { LEVEL_MAPS } from '../lib/icons';
-const stuff = await getCollection('stuff', ({ data }) => data.published);
-const byLevel = [1, 2, 3, 4].map((l) => ({ level: l, map: LEVEL_MAPS[l], count: stuff.filter((s) => s.data.level === l).length }));
+import MapCanvas from '../components/map/MapCanvas.astro';
+import StuffOverlay from '../components/map/StuffOverlay.astro';
 ---
 <Base title="Home">
-  <h1>Seeing the Unseen</h1>
-  <p>
-    Mỗi mẩu kiến thức là một đốm lửa trong hang động của Plato. Bản đồ tương tác (explore mode)
-    sẽ ra mắt ở Phase 2 — hiện tại hãy khám phá qua <a href="/library/">Library</a>.
-  </p>
-  <ul>
-    {byLevel.map(({ level, map, count }) => (
-      <li><strong>Map {level} — {map}:</strong> {count} flames</li>
-    ))}
-  </ul>
-  <p><em>{stuff.length} flames đang cháy.</em></p>
+  <MapCanvas />
+  <StuffOverlay />
 </Base>

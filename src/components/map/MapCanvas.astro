@@ -1,0 +1,645 @@
+---
+---
+<div class="map-shell">
+  <canvas id="mapCanvas" aria-label="Map exploration canvas"></canvas>
+  <div class="hud">
+    <div class="hud-top">
+      <div id="mapBadge" class="badge">Map 1 · Imagining · Eikasia</div>
+      <div id="zoneBadge" class="badge">Zone 1 / 3</div>
+    </div>
+    <div class="hud-bottom">
+      <div class="move-panel">
+        <span class="move-label">MOVE</span>
+        <button id="zonePrev" class="control-button">◀</button>
+        <button id="zoneNext" class="control-button">▶</button>
+      </div>
+      <button id="optionsButton" class="options-button">OPTIONS</button>
+    </div>
+    <div id="optionsPanel" class="options-panel hidden" role="dialog" aria-modal="true">
+      <div class="options-header">Map options</div>
+      <div class="options-row">
+        <label for="radiusRange">Torch radius</label>
+        <input id="radiusRange" type="range" min="500" max="900" step="25" value="500" />
+        <span id="radiusValue">500</span>
+      </div>
+      <div class="options-row toggle-row">
+        <label for="revealAll">Reveal all</label>
+        <input id="revealAll" type="checkbox" />
+      </div>
+      <div class="options-row quick-nav">
+        <button data-map="0">Map 1</button>
+        <button data-map="1">Map 2</button>
+        <button data-map="2">Map 3</button>
+        <button data-map="3">Map 4</button>
+        <button data-map="sun">The Sun</button>
+      </div>
+    </div>
+    <div id="tooltip" class="map-tooltip hidden"></div>
+  </div>
+</div>
+<style>
+  .map-shell {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 96px);
+    overflow: hidden;
+    background: #060708;
+  }
+  canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    image-rendering: pixelated;
+    background: #060708;
+  }
+  .hud {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .hud-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .badge {
+    display: inline-flex;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(4, 7, 12, 0.72);
+    color: #f7f2e8;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    pointer-events: auto;
+  }
+  .hud-bottom {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.85rem;
+    pointer-events: none;
+  }
+  .move-panel,
+  .options-button {
+    pointer-events: auto;
+  }
+  .move-panel {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.78);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .move-label {
+    color: #f0c88a;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .control-button,
+  .options-button,
+  .options-panel button {
+    border: none;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    min-width: 42px;
+    min-height: 42px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 120ms ease, background 120ms ease;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .control-button:hover,
+  .options-button:hover,
+  .options-panel button:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.16);
+  }
+  .options-button {
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(224, 132, 36, 0.95), rgba(241, 186, 62, 0.92));
+    box-shadow: 0 14px 40px rgba(0,0,0,0.18);
+  }
+  .options-panel {
+    position: absolute;
+    right: 1rem;
+    bottom: 5.5rem;
+    width: min(320px, calc(100vw - 2rem));
+    border-radius: 22px;
+    padding: 1rem;
+    background: rgba(8, 12, 18, 0.96);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    pointer-events: auto;
+    z-index: 5;
+  }
+  .options-panel.hidden { display: none; }
+  .options-header {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+  .options-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-bottom: 0.85rem;
+  }
+  .options-row label { color: #e6e1d6; font-size: 0.92rem; }
+  .options-row input[type=range] { width: 100%; }
+  .toggle-row input { transform: scale(1.1); }
+  .quick-nav {
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    justify-content: flex-start;
+  }
+  .quick-nav button {
+    flex: 1 1 48%;
+    min-width: 100px;
+    border-radius: 16px;
+    padding: 0.75rem 0.85rem;
+    background: rgba(255,255,255,0.06);
+    font-size: 0.92rem;
+    text-align: center;
+  }
+  .map-tooltip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    padding: 0.55rem 0.75rem;
+    border-radius: 12px;
+    background: rgba(12, 18, 28, 0.94);
+    color: #f9f6f1;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+    z-index: 6;
+  }
+  .map-tooltip.hidden { display: none; }
+</style>
+<script type="module" lang="ts">
+  import { buildPath, withSeed } from '../../lib/map/path';
+  import { isLit, primeMapData } from '../../lib/progress';
+
+  type Stuff = {
+    slug: string;
+    title: string;
+    icon: string;
+    zone: number;
+    x: number;
+    y: number;
+  };
+  type MapData = {
+    maps: Array<{
+      level: number;
+      name: string;
+      greek: string;
+      zones: number;
+      stuff: Stuff[];
+    }>;
+  };
+
+  const emptyMapData: MapData = { maps: [] };
+
+  const mapPalettes = [
+    { sky: '#0f1f24', grass: '#223b2d', rock: '#2f4a3d', accent: '#8cb69d' },
+    { sky: '#221a2f', grass: '#4c3862', rock: '#503d5b', accent: '#b89dd0' },
+    { sky: '#2a2115', grass: '#6a5931', rock: '#7b6a44', accent: '#d9b56d' },
+    { sky: '#3a290e', grass: '#7f6223', rock: '#8f7445', accent: '#f1c56c' },
+  ];
+  const sunPalette = { sky: '#fff7c9', glow: '#ffd376', text: '#3d2318' };
+
+  const mapNames = ['Imagining', 'Belief', 'Thinking', 'Knowledge'];
+  const mapGreek = ['Eikasia', 'Pistis', 'Dianoia', 'Noesis'];
+
+  const canvas = document.getElementById('mapCanvas') as HTMLCanvasElement | null;
+  const tooltip = document.getElementById('tooltip') as HTMLElement | null;
+  const mapBadge = document.getElementById('mapBadge');
+  const zoneBadge = document.getElementById('zoneBadge');
+  const optionsButton = document.getElementById('optionsButton');
+  const optionsPanel = document.getElementById('optionsPanel');
+  const radiusRange = document.getElementById('radiusRange') as HTMLInputElement | null;
+  const radiusValue = document.getElementById('radiusValue');
+  const revealAllToggle = document.getElementById('revealAll') as HTMLInputElement | null;
+  const mapButtons = document.querySelectorAll('[data-map]');
+  const zonePrev = document.getElementById('zonePrev');
+  const zoneNext = document.getElementById('zoneNext');
+
+  const state = {
+    mapData: emptyMapData,
+    currentMapIndex: 0,
+    currentZone: 0,
+    position: 0,
+    pathSamples: [] as Array<{ x: number; y: number; dist: number }> ,
+    pathLength: 0,
+    zoneCenters: [0, 0, 0] as number[],
+    moveDirection: 0,
+    radius: 500,
+    revealAll: false,
+    hoverStuff: null as Stuff | null,
+    lastFrame: performance.now(),
+    isSun: false,
+    viewWidth: 0,
+    viewHeight: 0,
+    progress: {
+      isLit: (_slug: string) => false,
+    },
+  };
+
+  function clamp(value: number, min: number, max: number) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function stuffPixel(stuff: Stuff) {
+    return { x: stuff.x * state.viewWidth, y: stuff.y * state.viewHeight };
+  }
+
+  function getPointAt(distance: number) {
+    const samples = state.pathSamples;
+    if (!samples.length) return { x: 0, y: 0 };
+    distance = clamp(distance, 0, state.pathLength);
+    let index = samples.findIndex((p) => p.dist >= distance);
+    if (index === -1) index = samples.length - 1;
+    if (index === 0) return samples[0];
+    const prev = samples[index - 1];
+    const current = samples[index];
+    const t = (distance - prev.dist) / Math.max(1, current.dist - prev.dist);
+    return {
+      x: prev.x + (current.x - prev.x) * t,
+      y: prev.y + (current.y - prev.y) * t,
+    };
+  }
+
+  function getMapState() {
+    return state.mapData.maps[state.currentMapIndex];
+  }
+
+  async function loadMapData() {
+    try {
+      const response = await fetch('/map-data.json');
+      if (!response.ok) throw new Error('No map-data');
+      const data = await response.json();
+      if (data?.maps && Array.isArray(data.maps) && data.maps.length === 4) {
+        state.mapData = data;
+        primeMapData(data);
+      }
+    } catch {
+      state.mapData = emptyMapData;
+    }
+  }
+
+  function setupProgress() {
+    state.progress = { isLit };
+  }
+
+  function updateCanvasSize() {
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const { width, height } = rect;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    const ctx = canvas.getContext('2d');
+    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const map = getMapState();
+    state.viewWidth = width;
+    state.viewHeight = height;
+    state.radius = Math.max(500, window.innerWidth < 640 ? window.innerWidth : 500);
+    state.pathSamples = buildPath(map.level, width, height).samples;
+    state.pathLength = buildPath(map.level, width, height).length;
+    state.zoneCenters = buildPath(map.level, width, height).zoneCenters;
+    state.position = clamp(state.position, 0, state.pathLength);
+  }
+
+  function renderTerrain(ctx: CanvasRenderingContext2D, palette: { sky: string; grass: string; rock: string; accent: string }, width: number, height: number) {
+    ctx.fillStyle = palette.sky;
+    ctx.fillRect(0, 0, width, height);
+    const tile = 16;
+    const random = withSeed(getMapState().level, 'terrain');
+    for (let ty = 0; ty < height; ty += tile) {
+      for (let tx = 0; tx < width; tx += tile) {
+        const noise = random();
+        const x = Math.floor(tx / tile);
+        const y = Math.floor(ty / tile);
+        const detail = withSeed(getMapState().level, `tile-${x}-${y}`)();
+        const base = noise < 0.12 ? palette.grass : noise < 0.22 ? palette.rock : palette.accent;
+        ctx.fillStyle = base;
+        ctx.fillRect(tx, ty, tile, tile);
+        if (detail < 0.08) {
+          ctx.fillStyle = 'rgba(22,22,22,0.15)';
+          ctx.fillRect(tx + 4, ty + 8, 8, 6);
+        } else if (detail < 0.14) {
+          ctx.fillStyle = 'rgba(255,255,255,0.18)';
+          ctx.fillRect(tx + 3, ty + 4, 4, 4);
+          ctx.fillRect(tx + 9, ty + 6, 4, 4);
+        }
+      }
+    }
+  }
+
+  function renderPath(ctx: CanvasRenderingContext2D, width: number, height: number) {
+    if (!state.pathSamples.length) return;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(state.pathSamples[0].x, state.pathSamples[0].y);
+    for (let i = 1; i < state.pathSamples.length; i += 1) {
+      ctx.lineTo(state.pathSamples[i].x, state.pathSamples[i].y);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function renderStuff(ctx: CanvasRenderingContext2D, width: number, height: number) {
+    const current = getMapState();
+    for (const stuff of current.stuff) {
+      const lit = state.progress.isLit(stuff.slug);
+      const { x, y } = stuffPixel(stuff);
+      const radius = 18;
+      const alpha = lit ? 1 : 0.7;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = lit ? 'rgba(255,230,180,0.96)' : 'rgba(240,240,240,0.85)';
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#0f1220';
+      ctx.font = 'bold 18px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(stuff.icon || '★', x, y);
+      ctx.restore();
+    }
+  }
+
+  function renderFog(ctx: CanvasRenderingContext2D, width: number, height: number, centerX: number, centerY: number) {
+    if (state.isSun) return;
+    const radius = state.revealAll ? Math.max(width, height) * 2 : state.radius;
+    ctx.save();
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(0,0,0,0.92)';
+    ctx.fillRect(0, 0, width, height);
+    const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.2, centerX, centerY, radius);
+    gradient.addColorStop(0, 'rgba(0,0,0,0)');
+    gradient.addColorStop(0.55, 'rgba(0,0,0,0.3)');
+    gradient.addColorStop(1, 'rgba(0,0,0,0.96)');
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+    ctx.restore();
+  }
+
+  function renderFlame(ctx: CanvasRenderingContext2D, x: number, y: number, frame: number) {
+    const flameRadius = 22;
+    const pulse = 1 + Math.sin(frame / 160) * 0.07;
+    const points = [
+      { x: x, y: y - flameRadius * pulse },
+      { x: x + flameRadius * 0.5, y: y - flameRadius * 0.2 * pulse },
+      { x: x + flameRadius * 0.2, y: y + flameRadius * 0.7 * pulse },
+      { x: x - flameRadius * 0.2, y: y + flameRadius * 0.6 * pulse },
+      { x: x - flameRadius * 0.5, y: y - flameRadius * 0.2 * pulse },
+    ];
+    const gradient = ctx.createRadialGradient(x, y - 6, 4, x, y, flameRadius);
+    gradient.addColorStop(0, '#fff7cc');
+    gradient.addColorStop(0.2, '#ffd77f');
+    gradient.addColorStop(0.5, '#ff9c33');
+    gradient.addColorStop(1, 'rgba(252, 120, 28, 0.0)');
+    ctx.save();
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+    ctx.save();
+    ctx.beginPath();
+    ctx.fillStyle = '#fff';
+    ctx.arc(x, y - flameRadius * 0.25, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function renderSunScene(ctx: CanvasRenderingContext2D, width: number, height: number) {
+    ctx.fillStyle = sunPalette.sky;
+    ctx.fillRect(0, 0, width, height);
+    const glow = ctx.createRadialGradient(width / 2, height / 2, 10, width / 2, height / 2, width * 0.55);
+    glow.addColorStop(0, sunPalette.glow);
+    glow.addColorStop(1, 'rgba(255, 235, 180, 0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = sunPalette.text;
+    ctx.font = '700 46px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('The Sun', width / 2, height * 0.23);
+    ctx.font = '520 18px system-ui, sans-serif';
+    ctx.fillText('A final light after the four maps.', width / 2, height * 0.31);
+    const total = state.mapData.maps.reduce((sum, map) => sum + map.stuff.length, 0);
+    const lit = state.mapData.maps.reduce((sum, map) => sum + map.stuff.filter((stuff) => state.progress.isLit(stuff.slug)).length, 0);
+    ctx.font = '600 24px system-ui, sans-serif';
+    ctx.fillText(`${lit} / ${total} flames lit`, width / 2, height * 0.43);
+    ctx.font = '500 16px system-ui, sans-serif';
+    ctx.fillText('Continue your journey or revisit the Library and Graph.', width / 2, height * 0.49);
+    ctx.fillStyle = 'rgba(61, 35, 24, 0.8)';
+    ctx.fillRect(width / 2 - 120, height * 0.55, 240, 96);
+    ctx.fillStyle = sunPalette.text;
+    ctx.font = '600 16px system-ui, sans-serif';
+    ctx.fillText('Library', width / 2, height * 0.62);
+    ctx.fillText('Graph', width / 2, height * 0.72);
+  }
+
+  function renderFrame(timestamp: number) {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const speed = 280;
+    const delta = Math.min(0.05, (timestamp - state.lastFrame) / 1000);
+    state.lastFrame = timestamp;
+
+    if (state.moveDirection !== 0 && !state.isSun) {
+      state.position = clamp(state.position + state.moveDirection * speed * delta, 0, state.pathLength);
+      if (state.position >= state.pathLength && state.currentMapIndex < state.mapData.maps.length - 1) {
+        state.currentMapIndex += 1;
+        state.currentZone = 0;
+        setupMap();
+      }
+    }
+
+    const map = getMapState();
+    const palette = state.isSun ? sunPalette : mapPalettes[map.level - 1] || mapPalettes[0];
+    if (!state.isSun) {
+      renderTerrain(ctx, palette, width, height);
+      renderPath(ctx, width, height);
+
+      const flame = getPointAt(state.position);
+      renderStuff(ctx, width, height);
+      renderFog(ctx, width, height, flame.x, flame.y);
+      renderFlame(ctx, flame.x, flame.y, timestamp);
+    } else {
+      renderSunScene(ctx, width, height);
+    }
+
+    if (state.hoverStuff && tooltip) {
+      tooltip.style.left = `${state.hoverStuff.x + 26}px`;
+      tooltip.style.top = `${state.hoverStuff.y - 22}px`;
+    }
+
+    requestAnimationFrame(renderFrame);
+  }
+
+  function setupMap() {
+    state.isSun = state.currentMapIndex >= state.mapData.maps.length;
+    const mapIndex = Math.min(state.currentMapIndex, state.mapData.maps.length - 1);
+    state.currentZone = 0;
+    state.position = 0;
+    if (canvas) {
+      const rect = canvas.getBoundingClientRect();
+      const { width, height } = rect;
+      const route = buildPath(state.mapData.maps[mapIndex].level, width, height);
+      state.pathSamples = route.samples;
+      state.pathLength = route.length;
+      state.zoneCenters = route.zoneCenters;
+    }
+    if (mapBadge) {
+      const mapName = state.isSun ? 'The Sun' : `${getMapState().level} · ${getMapState().name} · ${getMapState().greek}`;
+      mapBadge.textContent = mapName;
+    }
+    if (zoneBadge) {
+      zoneBadge.textContent = state.isSun ? 'Final light' : `Zone ${state.currentZone + 1} / 3`;
+    }
+  }
+
+  function setZone(delta: number) {
+    if (state.isSun) return;
+    state.currentZone = clamp(state.currentZone + delta, 0, 2);
+    state.position = state.zoneCenters[state.currentZone] ?? state.position;
+    if (zoneBadge) zoneBadge.textContent = `Zone ${state.currentZone + 1} / 3`;
+  }
+
+  function swipeToMap(index: number | 'sun') {
+    if (index === 'sun') {
+      state.currentMapIndex = state.mapData.maps.length;
+    } else {
+      state.currentMapIndex = clamp(index, 0, state.mapData.maps.length - 1);
+    }
+    setupMap();
+  }
+
+  function handleCanvasPointer(event: MouseEvent) {
+    if (!canvas || state.isSun) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const current = getMapState();
+    const hit = current.stuff.find((item) => {
+      const { x: itemX, y: itemY } = stuffPixel(item);
+      const dx = x - itemX;
+      const dy = y - itemY;
+      return Math.sqrt(dx * dx + dy * dy) < 22;
+    });
+    if (hit) {
+      state.hoverStuff = hit;
+      if (tooltip) {
+        tooltip.textContent = hit.title;
+        tooltip.classList.remove('hidden');
+      }
+      canvas.style.cursor = 'pointer';
+    } else {
+      state.hoverStuff = null;
+      if (tooltip) tooltip.classList.add('hidden');
+      canvas.style.cursor = 'default';
+    }
+  }
+
+  function handleCanvasClick() {
+    if (!state.hoverStuff) return;
+    window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: state.hoverStuff.slug } }));
+  }
+
+  function initControls() {
+    if (zonePrev) zonePrev.addEventListener('click', () => setZone(-1));
+    if (zoneNext) zoneNext.addEventListener('click', () => setZone(1));
+    if (optionsButton) optionsButton.addEventListener('click', () => {
+      optionsPanel?.classList.toggle('hidden');
+    });
+    radiusRange?.addEventListener('input', () => {
+      const val = Number(radiusRange.value);
+      state.radius = val;
+      if (radiusValue) radiusValue.textContent = `${val}`;
+    });
+    revealAllToggle?.addEventListener('change', () => {
+      state.revealAll = revealAllToggle.checked;
+    });
+    mapButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const value = button.getAttribute('data-map');
+        if (value === 'sun') swipeToMap('sun');
+        else swipeToMap(Number(value));
+        optionsPanel?.classList.add('hidden');
+      });
+    });
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        state.moveDirection = -1;
+      } else if (event.key === 'ArrowRight') {
+        state.moveDirection = 1;
+      } else if (event.key === '<') {
+        setZone(-1);
+      } else if (event.key === '>') {
+        setZone(1);
+      }
+    });
+    window.addEventListener('keyup', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        state.moveDirection = 0;
+      }
+    });
+    canvas?.addEventListener('mousemove', handleCanvasPointer);
+    canvas?.addEventListener('mouseleave', () => {
+      state.hoverStuff = null;
+      if (tooltip) tooltip.classList.add('hidden');
+    });
+    canvas?.addEventListener('click', handleCanvasClick);
+  }
+
+  function init() {
+    if (!canvas) return;
+    setupProgress();
+    loadMapData().then(() => {
+      updateCanvasSize();
+      setupMap();
+      initControls();
+      requestAnimationFrame(renderFrame);
+    });
+    window.addEventListener('resize', () => {
+      updateCanvasSize();
+      setupMap();
+    });
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    init();
+  } else {
+    window.addEventListener('DOMContentLoaded', init);
+  }
+</script>
