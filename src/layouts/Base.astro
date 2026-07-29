@@ -18,16 +18,89 @@ const { title, description = 'Seeing the Unseen — flames of knowledge in Plato
     body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, sans-serif; }
     a { color: var(--flame); }
     main { max-width: 880px; margin: 0 auto; padding: 2rem 1rem 4rem; }
-    header.site { display: flex; gap: 1.5rem; align-items: baseline; padding: 1rem; max-width: 880px; margin: 0 auto; }
+    header.site { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; padding: 1rem; max-width: 880px; margin: 0 auto; }
     header.site a { text-decoration: none; color: var(--muted); }
     header.site a.brand { color: var(--flame); font-weight: 700; }
+    .search-shell { display: flex; flex-direction: column; gap: 0.75rem; flex: 1 1 320px; min-width: 220px; max-width: 420px; }
+    .search-fallback { width: 100%; }
+    .search-fallback input,
+    [data-pagefind-ui] input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: white;
+      outline: none;
+    }
+    .search-fallback input::placeholder,
+    [data-pagefind-ui] input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    [data-pagefind-ui] { width: 100%; }
+    .search-unavailable { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; }
+    .site-nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
   </style>
 </head>
 <body>
   <header class="site">
     <a class="brand" href="/">🔥 the unseen</a>
+    <div class="search-shell" data-pagefind-ui-wrapper>
+      <div data-pagefind-ui></div>
+      <div class="search-unavailable" data-pagefind-unavailable hidden>
+        Search available after build.
+        <form action="/library" method="get" style="margin-top:0.75rem;">
+          <input name="q" type="search" placeholder="Search library" aria-label="Search library" />
+        </form>
+      </div>
+    </div>
     <a href="/library/">Library</a>
+    <a href="/graph/">Graph</a>
+    <a href="/about/">About</a>
   </header>
   <main><slot /></main>
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.querySelector('[data-pagefind-ui-wrapper]');
+      if (!wrapper) return;
+      const target = wrapper.querySelector('[data-pagefind-ui]');
+      const unavailable = wrapper.querySelector('[data-pagefind-unavailable]');
+      const hideSearch = () => {
+        if (target) target.hidden = true;
+        if (unavailable) unavailable.hidden = false;
+      };
+
+      const loadAsset = (tagName, attrs) => new Promise((resolve, reject) => {
+        const el = document.createElement(tagName);
+        Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+        el.onload = () => resolve(el);
+        el.onerror = () => reject(new Error(`Failed to load ${attrs.href || attrs.src}`));
+        document.head.appendChild(el);
+      });
+
+      Promise.all([
+        loadAsset('link', { rel: 'stylesheet', href: '/pagefind/pagefind-ui.css' }),
+        loadAsset('script', { src: '/pagefind/pagefind-ui.js', type: 'text/javascript', async: 'false' }),
+      ])
+        .then(() => {
+          if (typeof window.PagefindUI !== 'function') {
+            hideSearch();
+            return;
+          }
+          try {
+            new window.PagefindUI({ element: target, bundlePath: '/pagefind/' });
+            const fallback = document.querySelector('.search-fallback')
+            if (fallback) fallback.hidden = true
+          } catch (error) {
+            console.warn('Pagefind initialization failed:', error);
+            hideSearch();
+          }
+        })
+        .catch((error) => {
+          console.warn('Pagefind assets unavailable:', error);
+          hideSearch();
+        });
+    });
+  </script>
 </body>
 </html>

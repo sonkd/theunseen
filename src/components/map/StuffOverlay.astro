@@ -1,0 +1,310 @@
+---
+---
+<div id="stuff-overlay" class="stuff-overlay hidden" aria-hidden="true">
+  <div class="overlay-backdrop" data-close="true"></div>
+  <div class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="stuff-overlay-title">
+    <div class="overlay-header">
+      <h2 id="stuff-overlay-title">Stuff detail</h2>
+      <div class="overlay-actions">
+        <button id="overlay-share" type="button">Share</button>
+        <button id="overlay-close" type="button">Close</button>
+      </div>
+    </div>
+    <div class="overlay-grid">
+      <aside class="overlay-side overlay-refs">
+        <h3>Refs</h3>
+        <ul id="stuff-refs"></ul>
+      </aside>
+      <section class="overlay-card">
+        <div class="card-inner" id="card-inner">
+          <div class="card-face card-front" id="card-front">
+            <h3 id="stuff-title"></h3>
+            <div id="stuff-front"></div>
+            <button id="flip-to-back" type="button">FLIP·LẬT</button>
+          </div>
+          <div class="card-face card-back" id="card-back">
+            <button id="flip-to-front" type="button">◂ FLIP</button>
+            <div id="stuff-body"></div>
+          </div>
+        </div>
+      </section>
+      <aside class="overlay-side overlay-links">
+        <h3>Links</h3>
+        <ul id="stuff-links"></ul>
+      </aside>
+    </div>
+    <div class="overlay-footer">
+      <button id="overlay-prev" type="button">◀</button>
+      <button id="overlay-next" type="button">▶</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { markLit } from '../../lib/progress'
+
+  const overlay = document.getElementById('stuff-overlay')
+  const refsNode = document.getElementById('stuff-refs')
+  const linksNode = document.getElementById('stuff-links')
+  const titleNode = document.getElementById('stuff-title')
+  const frontNode = document.getElementById('stuff-front')
+  const bodyNode = document.getElementById('stuff-body')
+  const cardInner = document.getElementById('card-inner')
+  const shareButton = document.getElementById('overlay-share')
+  const closeButton = document.getElementById('overlay-close')
+  const prevButton = document.getElementById('overlay-prev')
+  const nextButton = document.getElementById('overlay-next')
+  const flipToBack = document.getElementById('flip-to-back')
+  const flipToFront = document.getElementById('flip-to-front')
+
+  let mapItems = []
+  let currentSlug = ''
+  let currentZone = null
+  let currentLevel = null
+
+  async function fetchMapData() {
+    if (mapItems.length) return mapItems
+    try {
+      const response = await fetch('/map-data.json')
+      const data = await response.json()
+      const maps = Array.isArray(data.maps) ? data.maps : []
+      mapItems = maps.flatMap(map => map.stuff.map(item => ({ ...item, level: map.level })))
+    } catch (error) {
+      mapItems = []
+    }
+    return mapItems
+  }
+
+  function updatePanel(item) {
+    currentSlug = item.slug
+    currentZone = item.zone
+    currentLevel = item.level
+    titleNode.textContent = item.title || item.slug
+    frontNode.textContent = item.front || item.title || item.slug
+    bodyNode.innerHTML = item.body_html || '<p>No content available.</p>'
+    refsNode.innerHTML = ''
+    linksNode.innerHTML = ''
+
+    const refs = item.refs || []
+    if (refs.length === 0) {
+      refsNode.innerHTML = '<li>No refs</li>'
+    } else {
+      refs.forEach(ref => {
+        const li = document.createElement('li')
+        li.textContent = typeof ref === 'string' ? ref : JSON.stringify(ref)
+        refsNode.appendChild(li)
+      })
+    }
+
+    const links = item.links || []
+    if (links.length === 0) {
+      linksNode.innerHTML = '<li>No related links</li>'
+    } else {
+      links.forEach(link => {
+        const slug = typeof link === 'string' ? link : link.slug || ''
+        const label = typeof link === 'string' ? link : link.title || slug
+        const li = document.createElement('li')
+        const a = document.createElement('a')
+        a.href = `/stuff/${slug}`
+        a.textContent = label
+        a.addEventListener('click', event => {
+          event.preventDefault()
+          openStuff(slug)
+        })
+        li.appendChild(a)
+        linksNode.appendChild(li)
+      })
+    }
+
+    updateNavButtons()
+  }
+
+  function updateNavButtons() {
+    const sameMap = mapItems.filter(item => item.level === currentLevel)
+    const index = sameMap.findIndex(item => item.slug === currentSlug)
+    prevButton.disabled = index <= 0
+    nextButton.disabled = index < 0 || index >= sameMap.length - 1
+  }
+
+  async function openStuff(slug) {
+    const response = await fetch(`/stuff-data/${slug}.json`)
+    if (!response.ok) return
+    const data = await response.json()
+    const mapData = await fetchMapData()
+    const item = mapData.find(entry => entry.slug === slug) || {}
+    updatePanel({ ...item, ...data })
+    overlay.classList.remove('hidden')
+    overlay.setAttribute('aria-hidden', 'false')
+    overlay.querySelector('.overlay-panel')?.focus()
+    markLit(slug)
+  }
+
+  function closeOverlay() {
+    overlay.classList.add('hidden')
+    overlay.setAttribute('aria-hidden', 'true')
+  }
+
+  function flipCard() {
+    cardInner.classList.toggle('is-flipped')
+  }
+
+  async function shareCurrent() {
+    const url = `${window.location.origin}/stuff/${currentSlug}`
+    try {
+      await navigator.clipboard.writeText(url)
+    } catch (error) {
+      console.warn('Unable to copy share URL', error)
+    }
+  }
+
+  function moveRelative(direction) {
+    const sameMap = mapItems.filter(item => item.level === currentLevel)
+    const index = sameMap.findIndex(item => item.slug === currentSlug)
+    if (index === -1) return
+    const nextIndex = direction === 'next' ? index + 1 : index - 1
+    if (nextIndex < 0 || nextIndex >= sameMap.length) return
+    openStuff(sameMap[nextIndex].slug)
+  }
+
+  window.addEventListener('stuff:open', event => {
+    const slug = event?.detail?.slug
+    if (!slug) return
+    openStuff(slug)
+  })
+
+  overlay.addEventListener('click', event => {
+    if (event.target.dataset.close === 'true') {
+      closeOverlay()
+    }
+  })
+
+  closeButton.addEventListener('click', closeOverlay)
+  shareButton.addEventListener('click', shareCurrent)
+  flipToBack.addEventListener('click', flipCard)
+  flipToFront.addEventListener('click', flipCard)
+  prevButton.addEventListener('click', () => moveRelative('prev'))
+  nextButton.addEventListener('click', () => moveRelative('next'))
+</script>
+
+<style>
+  .stuff-overlay.hidden { display: none; }
+  .stuff-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    display: grid;
+    place-items: center;
+  }
+  .overlay-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 8, 15, 0.85);
+    backdrop-filter: blur(8px);
+  }
+  .overlay-panel {
+    position: relative;
+    width: min(100%, 1080px);
+    max-height: 90vh;
+    overflow: auto;
+    padding: 24px;
+    background: #07101f;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    box-shadow: 0 32px 90px rgba(0,0,0,0.45);
+  }
+  .overlay-header,
+  .overlay-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .overlay-grid {
+    display: grid;
+    grid-template-columns: 220px minmax(320px, 1fr) 220px;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .overlay-side {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 18px;
+  }
+  .overlay-card {
+    perspective: 1200px;
+  }
+  .card-inner {
+    position: relative;
+    width: 100%;
+    min-height: 360px;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+  }
+  .card-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    padding: 22px;
+    overflow: auto;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+    background: #0f1728;
+  }
+  .overlay-actions button,
+  .overlay-footer button,
+  .overlay-card button,
+  .overlay-side button {
+    border: none;
+    background: #0f1728;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  .overlay-actions button:hover,
+  .overlay-footer button:hover,
+  .overlay-card button:hover {
+    background: #1f2a3c;
+  }
+  .overlay-links a {
+    color: #9cc3ff;
+    text-decoration: none;
+  }
+  .overlay-links a:hover {
+    text-decoration: underline;
+  }
+  .overlay-refs ul,
+  .overlay-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .overlay-refs li,
+  .overlay-links li {
+    color: #cfd8ff;
+  }
+  .overlay-panel h2,
+  .overlay-panel h3 {
+    margin: 0 0 10px;
+  }
+  .overlay-panel p {
+    color: #cdd6f4;
+    line-height: 1.6;
+  }
+  @media (max-width: 960px) {
+    .overlay-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
