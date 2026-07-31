@@ -5,7 +5,7 @@
       "title": "Abilene paradox",
       "level": 2,
       "categories": [
-        "mental-models",
+        "social",
         "bias"
       ]
     },
@@ -14,7 +14,7 @@
       "title": "Affective forecasting",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -22,7 +22,8 @@
       "title": "Ambiguity effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "heuristic"
       ]
     },
     {
@@ -38,7 +39,8 @@
       "title": "Anthropomorphism",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "perception"
       ]
     },
     {
@@ -46,7 +48,7 @@
       "title": "Appeal to novelty",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -54,7 +56,7 @@
       "title": "Appeal to probability fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -62,7 +64,7 @@
       "title": "Argument from fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -70,7 +72,7 @@
       "title": "Armchair fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -78,7 +80,8 @@
       "title": "Attentional bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "perception"
       ]
     },
     {
@@ -86,7 +89,8 @@
       "title": "Attribute substitution",
       "level": 2,
       "categories": [
-        "mental-models"
+        "heuristic",
+        "bias"
       ]
     },
     {
@@ -103,7 +107,7 @@
       "title": "Automation bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -111,7 +115,7 @@
       "title": "Availability heuristic",
       "level": 2,
       "categories": [
-        "mental-models"
+        "heuristic"
       ]
     },
     {
@@ -128,7 +132,8 @@
       "title": "Bandwagon effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -136,7 +141,8 @@
       "title": "Barnum effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1495,12 +1501,136 @@
   ],
   "edges": [
     {
+      "source": "abilene-paradox",
+      "target": "bandwagon-effect"
+    },
+    {
+      "source": "abilene-paradox",
+      "target": "false-consensus-effect"
+    },
+    {
+      "source": "abilene-paradox",
+      "target": "social-desirability-bias"
+    },
+    {
+      "source": "affective-forecasting",
+      "target": "impact-bias"
+    },
+    {
+      "source": "affective-forecasting",
+      "target": "focalism"
+    },
+    {
+      "source": "affective-forecasting",
+      "target": "projection-bias"
+    },
+    {
+      "source": "ambiguity-effect",
+      "target": "zero-risk-bias"
+    },
+    {
+      "source": "ambiguity-effect",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "ambiguity-effect",
+      "target": "loss-aversion"
+    },
+    {
       "source": "anchoring",
       "target": "contrast-effect"
     },
     {
       "source": "anchoring",
       "target": "framing-effect"
+    },
+    {
+      "source": "anchoring",
+      "target": "primacy-effect"
+    },
+    {
+      "source": "anthropomorphism",
+      "target": "pareidolia"
+    },
+    {
+      "source": "anthropomorphism",
+      "target": "essentialism"
+    },
+    {
+      "source": "anthropomorphism",
+      "target": "illusion-of-control"
+    },
+    {
+      "source": "appeal-to-novelty",
+      "target": "pro-innovation-bias"
+    },
+    {
+      "source": "appeal-to-novelty",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "appeal-to-novelty",
+      "target": "bandwagon-effect"
+    },
+    {
+      "source": "appeal-to-probability-fallacy",
+      "target": "base-rate-fallacy"
+    },
+    {
+      "source": "appeal-to-probability-fallacy",
+      "target": "neglect-of-probability"
+    },
+    {
+      "source": "appeal-to-probability-fallacy",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "argument-from-fallacy",
+      "target": "belief-bias"
+    },
+    {
+      "source": "argument-from-fallacy",
+      "target": "confirmation-bias"
+    },
+    {
+      "source": "argument-from-fallacy",
+      "target": "armchair-fallacy"
+    },
+    {
+      "source": "armchair-fallacy",
+      "target": "dunning-kruger-effect"
+    },
+    {
+      "source": "armchair-fallacy",
+      "target": "illusion-of-asymmetric-insight"
+    },
+    {
+      "source": "armchair-fallacy",
+      "target": "illusory-superiority"
+    },
+    {
+      "source": "attentional-bias",
+      "target": "frequency-illusion"
+    },
+    {
+      "source": "attentional-bias",
+      "target": "selective-perception"
+    },
+    {
+      "source": "attentional-bias",
+      "target": "confirmation-bias"
+    },
+    {
+      "source": "attribute-substitution",
+      "target": "availability-heuristic"
+    },
+    {
+      "source": "attribute-substitution",
+      "target": "halo-effect"
+    },
+    {
+      "source": "attribute-substitution",
+      "target": "illusion-of-validity"
     },
     {
       "source": "authority-bias",
@@ -1513,6 +1643,30 @@
     {
       "source": "authority-bias",
       "target": "automation-bias"
+    },
+    {
+      "source": "automation-bias",
+      "target": "confirmation-bias"
+    },
+    {
+      "source": "automation-bias",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "automation-bias",
+      "target": "illusion-of-control"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "base-rate-fallacy"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "frequency-illusion"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "illusory-correlation"
     },
     {
       "source": "backfire-effect",
@@ -1529,6 +1683,30 @@
     {
       "source": "backfire-effect",
       "target": "semmelweis-reflex"
+    },
+    {
+      "source": "bandwagon-effect",
+      "target": "social-desirability-bias"
+    },
+    {
+      "source": "bandwagon-effect",
+      "target": "false-consensus-effect"
+    },
+    {
+      "source": "bandwagon-effect",
+      "target": "in-group-bias"
+    },
+    {
+      "source": "barnum-effect",
+      "target": "subjective-validation"
+    },
+    {
+      "source": "barnum-effect",
+      "target": "confirmation-bias"
+    },
+    {
+      "source": "barnum-effect",
+      "target": "illusory-truth-effect"
     },
     {
       "source": "cognitive-load-theory",
