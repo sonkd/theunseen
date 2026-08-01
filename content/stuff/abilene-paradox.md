@@ -8,7 +8,6 @@ links: [bandwagon-effect, false-consensus-effect, social-desirability-bias]
 refs: ['https://en.wikipedia.org/wiki/Abilene_paradox']
 strategy: 'Trước khi chốt quyết định nhóm, hỏi riêng từng người một câu: ''nếu chỉ có một mình bạn quyết, bạn chọn gì?'' — rồi mới gộp ý kiến.'
 published: true
-image: https://www.notion.so/images/page-cover/nasa_buzz_aldrin_on_the_moon.jpg
 ---
 
 Một nhóm người cùng đồng ý làm một việc mà thật ra chẳng ai trong nhóm muốn làm — đó là nghịch lý Abilene. Nó khác groupthink ở chỗ không cần áp lực rõ ràng nào cả: không ai ép ai, không ai tranh luận gay gắt. Vấn đề nằm ở chỗ mỗi người đều ngầm đoán rằng người khác thích phương án đó, nên im lặng đồng thuận thay vì nói ra sự nghi ngờ của chính mình.

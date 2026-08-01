@@ -1,0 +1,32 @@
+{
+  "$ref": "#/definitions/approaches",
+  "definitions": {
+    "approaches": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "stuff": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "published": {
+          "type": "boolean",
+          "default": true
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

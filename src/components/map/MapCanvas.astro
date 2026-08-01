@@ -318,6 +318,76 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
   }
   const inkRgbaDot = resolveInkRgbaDot();
 
+  // --- R3-1: easing thủ công cho canvas (không CSS transition) ---
+  // LUT parametric cubic-bezier: sample đều theo t tham số, x đơn điệu tăng
+  // nên tra ngược "tiến độ thời gian" (x) -> y bằng nội suy tuyến tính.
+  function cubicBezierEase(x1: number, y1: number, x2: number, y2: number) {
+    const SAMPLES = 32;
+    const xs: number[] = [];
+    const ys: number[] = [];
+    for (let i = 0; i <= SAMPLES; i += 1) {
+      const t = i / SAMPLES;
+      const mt = 1 - t;
+      const x = 3 * mt * mt * t * x1 + 3 * mt * t * t * x2 + t * t * t;
+      const y = 3 * mt * mt * t * y1 + 3 * mt * t * t * y2 + t * t * t;
+      xs.push(x);
+      ys.push(y);
+    }
+    return (time: number) => {
+      const tt = clamp(time, 0, 1);
+      let i = 1;
+      while (i < xs.length && xs[i] < tt) i += 1;
+      const x0 = xs[i - 1];
+      const x1s = xs[i];
+      const span = x1s - x0;
+      const frac = span > 1e-6 ? (tt - x0) / span : 0;
+      return ys[i - 1] + (ys[i] - ys[i - 1]) * frac;
+    };
+  }
+  // docs/refine-round3.md — bảng easing R3-1.
+  const EASE_REVEAL = cubicBezierEase(0.16, 1, 0.3, 1); // stuff hiện ra, 320ms
+  const EASE_FADE = cubicBezierEase(0.4, 0, 1, 1); // stuff mờ đi, 220ms
+  const EASE_FOCUS = cubicBezierEase(0.34, 1.56, 0.64, 1); // focus nảy nhẹ, 240ms
+  const LINEAR = (t: number) => clamp(t, 0, 1);
+
+  function resolveCssRgb(varName: string, fallback: [number, number, number]): [number, number, number] {
+    const raw = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    const hexMatch = /^#([0-9a-f]{6})/i.exec(raw);
+    if (hexMatch) {
+      const v = hexMatch[1];
+      return [parseInt(v.slice(0, 2), 16), parseInt(v.slice(2, 4), 16), parseInt(v.slice(4, 6), 16)];
+    }
+    const rgbMatch = /^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)/i.exec(raw);
+    if (rgbMatch) return [Number(rgbMatch[1]), Number(rgbMatch[2]), Number(rgbMatch[3])];
+    return fallback;
+  }
+  const flameRgb = resolveCssRgb('--flame', [240, 163, 67]);
+  const flameRgba = (a: number) => `rgba(${flameRgb[0]},${flameRgb[1]},${flameRgb[2]},${a})`;
+
+  // Fade một màu iconGlow (đã ở dạng "rgba(r,g,b,a)") về alpha bất kỳ.
+  function fadeIconGlow(iconGlow: string, alpha: number): string {
+    const m = /rgba\(([^)]+)\)/i.exec(iconGlow);
+    if (!m) return iconGlow;
+    const parts = m[1].split(',').map((s) => s.trim());
+    return `rgba(${parts[0]},${parts[1]},${parts[2]},${alpha})`;
+  }
+
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  type StuffAnim = {
+    scale: number;
+    opacity: number;
+    fromScale: number;
+    fromOpacity: number;
+    toScale: number;
+    toOpacity: number;
+    elapsed: number;
+    duration: number;
+    ease: (t: number) => number;
+    delay: number;
+    targetKey: string;
+  };
+
   const canvas = document.getElementById('mapCanvas') as HTMLCanvasElement | null;
   const tooltip = document.getElementById('tooltip') as HTMLElement | null;
   const mapBadge = document.getElementById('mapBadge');
@@ -355,7 +425,12 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     viewWidth: 0,
     viewHeight: 0,
     progress: { isLit },
+    stuffAnim: new Map<string, StuffAnim>(),
+    reducedMotion: reducedMotionQuery.matches,
   };
+  reducedMotionQuery.addEventListener('change', (event) => {
+    state.reducedMotion = event.matches;
+  });
 
   function clamp(value: number, min: number, max: number) {
     return Math.max(min, Math.min(max, value));
@@ -515,21 +590,29 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     for (const f of decor.flowers) drawFlower(ctx, f.x * TILE, f.y * TILE, pal);
   }
 
-  // Polyline gấp khúc thật (chevron sắc nét, không bo cong) — docs/map-layout-spec.md mục 2.
+  // Đường mòn 2 lớp (docs/refine-round3.md R3-1): lớp dưới rộng màu `path`,
+  // lớp trên hẹp màu `pathDot` → cảm giác có chiều sâu. Vertices đã là spline
+  // Catmull-Rom mẫu dày (path.ts) nên join/cap 'round' là đủ để bo góc mềm,
+  // không còn góc nhọn, mà vẫn giữ nhịp lên-xuống của khung control point.
   function renderPathBand(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number], level: number) {
     const vertices = state.pathSamples;
     if (vertices.length < 2) return;
 
-    ctx.save();
-    ctx.strokeStyle = pal.path;
-    ctx.lineWidth = CELL * 0.9;
-    ctx.lineJoin = 'miter';
-    ctx.lineCap = 'butt';
-    ctx.beginPath();
-    ctx.moveTo(vertices[0].x, vertices[0].y);
-    for (let i = 1; i < vertices.length; i += 1) ctx.lineTo(vertices[i].x, vertices[i].y);
-    ctx.stroke();
-    ctx.restore();
+    const strokePath = (color: string, width: number) => {
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(vertices[0].x, vertices[0].y);
+      for (let i = 1; i < vertices.length; i += 1) ctx.lineTo(vertices[i].x, vertices[i].y);
+      ctx.stroke();
+      ctx.restore();
+    };
+
+    strokePath(pal.path, CELL * 0.9);
+    strokePath(pal.pathDot, CELL * 0.34);
 
     const rng = withSeed(level, 'path-dots');
     ctx.fillStyle = pal.pathDot;
@@ -597,21 +680,117 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
   }
 
   const FOCUS_RADIUS = 90;
+  // Stagger tối đa (ms) giữa stuff xa nhất và gần nhất mép đuốc khi cùng lộ ra.
+  const REVEAL_STAGGER_MS = 160;
+
+  function createStuffAnim(): StuffAnim {
+    return {
+      scale: 0.4,
+      opacity: 0,
+      fromScale: 0.4,
+      fromOpacity: 0,
+      toScale: 0.4,
+      toOpacity: 0,
+      elapsed: 0,
+      duration: 1,
+      ease: LINEAR,
+      delay: 0,
+      targetKey: 'hidden',
+    };
+  }
+
+  // docs/refine-round3.md R3-1 — bảng 4 trạng thái (hidden/revealed/focused/lit).
+  // Canvas không có CSS transition: lưu t (0..1) mỗi stuff, cập nhật theo
+  // deltaTime, áp easing thủ công (cubic-bezier LUT) khi vẽ ở renderStuff().
+  function updateStuffAnimations(deltaMs: number, flameX: number, flameY: number) {
+    const map = getMapState();
+    if (!map) return;
+    const radius = state.revealAll ? Infinity : state.radius;
+    const reduced = state.reducedMotion;
+
+    for (const stuff of map.stuff) {
+      let anim = state.stuffAnim.get(stuff.slug);
+      if (!anim) {
+        anim = createStuffAnim();
+        state.stuffAnim.set(stuff.slug, anim);
+      }
+
+      const { x, y } = stuffPixel(stuff);
+      const dist = Math.hypot(flameX - x, flameY - y);
+      const lit = state.progress.isLit(stuff.slug);
+      const isFocused = state.focusStuff === stuff;
+
+      let key: string;
+      let toScale: number;
+      let toOpacity: number;
+      let duration: number;
+      let ease: (t: number) => number;
+      let delay = 0;
+
+      if (isFocused) {
+        key = 'focused'; toScale = 1.15; toOpacity = 1; duration = 240; ease = EASE_FOCUS;
+      } else if (lit) {
+        key = 'lit'; toScale = 1; toOpacity = 1; duration = 320; ease = EASE_REVEAL;
+      } else if (dist <= radius) {
+        key = 'revealed'; toScale = 1; toOpacity = 0.85; duration = 320; ease = EASE_REVEAL;
+        const wasVisible = anim.targetKey === 'revealed' || anim.targetKey === 'lit' || anim.targetKey === 'focused';
+        if (!wasVisible) delay = clamp(dist / (Number.isFinite(radius) ? radius : 1), 0, 1) * REVEAL_STAGGER_MS;
+      } else {
+        // Chuyển revealed → hidden: KHÔNG scale hẳn về 0.4 (dừng ở 0.85) để
+        // tránh giật khi lửa đi qua đi lại (R3-1).
+        key = 'exit'; toScale = 0.85; toOpacity = 0; duration = 220; ease = EASE_FADE;
+      }
+
+      if (reduced) {
+        // prefers-reduced-motion: bỏ scale + stagger, chỉ đổi opacity.
+        toScale = 1;
+        delay = 0;
+      }
+
+      if (anim.targetKey !== key || anim.toScale !== toScale || anim.toOpacity !== toOpacity) {
+        anim.fromScale = anim.scale;
+        anim.fromOpacity = anim.opacity;
+        anim.toScale = toScale;
+        anim.toOpacity = toOpacity;
+        anim.duration = duration;
+        anim.ease = ease;
+        anim.elapsed = 0;
+        anim.delay = delay;
+        anim.targetKey = key;
+      }
+
+      if (anim.delay > 0) {
+        anim.delay -= deltaMs;
+        if (anim.delay > 0) continue;
+        anim.elapsed = -anim.delay;
+        anim.delay = 0;
+      }
+
+      anim.elapsed += deltaMs;
+      const progress = clamp(anim.elapsed / anim.duration, 0, 1);
+      const eased = anim.ease(progress);
+      anim.scale = anim.fromScale + (anim.toScale - anim.fromScale) * eased;
+      anim.opacity = anim.fromOpacity + (anim.toOpacity - anim.fromOpacity) * eased;
+    }
+  }
 
   function renderStuff(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number]) {
     const map = getMapState();
     for (const stuff of map.stuff) {
+      const anim = state.stuffAnim.get(stuff.slug);
+      if (!anim || anim.opacity <= 0.002) continue;
       const lit = state.progress.isLit(stuff.slug);
       const hovered = state.hoverStuff === stuff;
       const focused = state.focusStuff === stuff;
       const { x, y } = stuffPixel(stuff);
+      const baseSize = hovered ? 34 : 28;
       ctx.save();
-      ctx.font = `${hovered || focused ? 34 : 28}px system-ui, sans-serif`;
+      ctx.font = `${baseSize * anim.scale}px system-ui, sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.shadowColor = pal.iconGlow;
-      ctx.shadowBlur = focused ? 24 : lit ? 18 : 10;
-      ctx.globalAlpha = lit ? 1 : 0.85;
+      ctx.shadowBlur = focused ? 26 : lit ? 18 : 10;
+      ctx.globalAlpha = anim.opacity;
       ctx.fillStyle = pal.icon;
       ctx.fillText(stuff.icon || '★', x, y);
       ctx.restore();
@@ -675,16 +854,57 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     return Math.atan2(b.y - a.y, b.x - a.x);
   }
 
-  function renderFlame(ctx: CanvasRenderingContext2D, x: number, y: number, frame: number, angle: number) {
-    const flameRadius = 22;
-    const pulse = 1 + Math.sin(frame / 160) * 0.07;
+  const FLAME_BASE_RADIUS = 22 * 1.4; // R3-1: sprite to hơn ~1.4×
+  const FLAME_FLICKER_PERIOD_MS = 1800; // ±6%, ease-in-out, chu kỳ ~1.8s
+
+  // Quầng sáng 3 lớp (lõi trắng ấm → --flame → tắt dần) quanh sprite lửa,
+  // bán kính ≈ 2.5× chiều cao sprite. Vẽ TRƯỚC thân lửa nên nằm dưới.
+  function renderFlameHalo(ctx: CanvasRenderingContext2D, x: number, y: number, spriteHeight: number, flicker: number, pal: (typeof PALETTE)[number]) {
+    const haloRadius = spriteHeight * 2.5 * flicker;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+
+    const outer = ctx.createRadialGradient(x, y, 0, x, y, haloRadius);
+    outer.addColorStop(0, fadeIconGlow(pal.iconGlow, 0.22));
+    outer.addColorStop(0.55, fadeIconGlow(pal.iconGlow, 0.1));
+    outer.addColorStop(1, fadeIconGlow(pal.iconGlow, 0));
+    ctx.fillStyle = outer;
+    ctx.beginPath();
+    ctx.arc(x, y, haloRadius, 0, Math.PI * 2);
+    ctx.fill();
+
+    const mid = ctx.createRadialGradient(x, y, 0, x, y, haloRadius * 0.5);
+    mid.addColorStop(0, flameRgba(0.45));
+    mid.addColorStop(1, flameRgba(0));
+    ctx.fillStyle = mid;
+    ctx.beginPath();
+    ctx.arc(x, y, haloRadius * 0.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    const core = ctx.createRadialGradient(x, y, 0, x, y, haloRadius * 0.22);
+    core.addColorStop(0, 'rgba(255,250,235,0.85)');
+    core.addColorStop(1, 'rgba(255,250,235,0)');
+    ctx.fillStyle = core;
+    ctx.beginPath();
+    ctx.arc(x, y, haloRadius * 0.22, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function renderFlame(ctx: CanvasRenderingContext2D, x: number, y: number, frame: number, angle: number, pal: (typeof PALETTE)[number]) {
+    // Dao động ±6%, ease-in-out (sóng sine tự nhiên mượt cả 2 đầu chu kỳ).
+    const flicker = 1 + Math.sin((frame / FLAME_FLICKER_PERIOD_MS) * Math.PI * 2) * 0.06;
+    const flameRadius = FLAME_BASE_RADIUS * flicker;
+    const spriteHeight = flameRadius * 1.9; // đỉnh(-r) tới đáy(+.7r) xấp xỉ
+    renderFlameHalo(ctx, x, y, spriteHeight, flicker, pal);
+
     const lean = clamp(angle, -0.6, 0.6) * 0.4; // giảm biên độ, tránh nghiêng quá gắt
     const points = [
-      { x, y: y - flameRadius * pulse },
-      { x: x + flameRadius * 0.5, y: y - flameRadius * 0.2 * pulse },
-      { x: x + flameRadius * 0.2, y: y + flameRadius * 0.7 * pulse },
-      { x: x - flameRadius * 0.2, y: y + flameRadius * 0.6 * pulse },
-      { x: x - flameRadius * 0.5, y: y - flameRadius * 0.2 * pulse },
+      { x, y: y - flameRadius },
+      { x: x + flameRadius * 0.5, y: y - flameRadius * 0.2 },
+      { x: x + flameRadius * 0.2, y: y + flameRadius * 0.7 },
+      { x: x - flameRadius * 0.2, y: y + flameRadius * 0.6 },
+      { x: x - flameRadius * 0.5, y: y - flameRadius * 0.2 },
     ];
     const gradient = ctx.createRadialGradient(x, y - 6, 4, x, y, flameRadius);
     gradient.addColorStop(0, '#fff7cc');
@@ -695,12 +915,16 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     ctx.translate(x, y);
     ctx.rotate(lean);
     ctx.translate(-x, -y);
+    // Bóng mềm màu iconGlow của map hiện tại thay cho viền cứng.
+    ctx.shadowColor = pal.iconGlow;
+    ctx.shadowBlur = 18;
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
     for (let i = 1; i < points.length; i += 1) ctx.lineTo(points[i].x, points[i].y);
     ctx.closePath();
     ctx.fill();
+    ctx.shadowBlur = 0;
     ctx.beginPath();
     ctx.fillStyle = '#fff';
     ctx.arc(x, y - flameRadius * 0.25, 6, 0, Math.PI * 2);
@@ -746,10 +970,11 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
 
       const flame = getPointAt(state.position);
       updateFocusStuff(flame.x, flame.y);
+      updateStuffAnimations(delta * 1000, flame.x, flame.y);
       renderStuff(ctx, pal);
       renderGridDots(ctx, width, height, flame.x, flame.y);
       renderFog(ctx, width, height, flame.x, flame.y, pal);
-      renderFlame(ctx, flame.x, flame.y, timestamp, segmentAngleAt(state.position));
+      renderFlame(ctx, flame.x, flame.y, timestamp, segmentAngleAt(state.position), pal);
 
       if (fireBadge) {
         fireBadge.style.left = `${flame.x}px`;

@@ -8,7 +8,6 @@ links: [zero-risk-bias, status-quo-bias, loss-aversion]
 refs: ['https://en.wikipedia.org/wiki/Ambiguity_effect', 'https://en.wikipedia.org/wiki/Ellsberg_paradox']
 strategy: 'Khi so sánh hai lựa chọn, viết ra khoảng xác suất cụ thể của từng bên thay vì để cảm giác ''biết rõ'' hay ''mù mờ'' quyết định thay.'
 published: true
-image: https://www.notion.so/images/page-cover/gradients_10.jpg
 ---
 
 Ambiguity effect là xu hướng chọn phương án có xác suất rõ ràng hơn là phương án có xác suất mù mờ, kể cả khi phương án mù mờ đó, về mặt kỳ vọng toán học, có thể tốt hơn. Điểm mấu chốt: đây không phải là sợ rủi ro (risk aversion) thông thường, mà là sợ chính sự không biết — hai thứ nghe giống nhau nhưng khác nhau ở gốc rễ.

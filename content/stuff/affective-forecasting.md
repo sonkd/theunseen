@@ -8,7 +8,6 @@ links: [impact-bias, focalism, projection-bias]
 refs: ['https://en.wikipedia.org/wiki/Affective_forecasting#Projection_bias']
 strategy: 'Trước khi quyết định dựa trên cảm giác dự đoán, tự hỏi: ''lần trước chuyện tương tự xảy ra, một tháng sau mình cảm thấy thế nào?'''
 published: true
-image: https://www.notion.so/images/page-cover/gradients_10.jpg
 ---
 
 Affective forecasting là khả năng — và thường là khả năng kém — của con người trong việc đoán trước mình sẽ cảm thấy ra sao về một sự kiện chưa xảy ra. Không chỉ đoán sai chiều cảm xúc (vui hay buồn), người ta còn đoán sai cả cường độ và thời gian nó kéo dài. Hai nhà tâm lý học Daniel Gilbert và Timothy Wilson dành cả sự nghiệp nghiên cứu hiện tượng này và chỉ ra ba lỗi lặp lại: impact bias (phóng đại mức độ ảnh hưởng của sự kiện), focalism (chỉ tập trung vào sự kiện đó mà quên mọi thứ khác trong đời vẫn tiếp diễn), và immune neglect (đánh giá thấp khả năng bản thân sẽ thích nghi).

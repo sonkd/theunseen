@@ -27,7 +27,14 @@ links: [slug]          # CHỈ slug tồn tại trong content/stuff/ — không 
 refs: [url]            # nguồn tham khảo — bắt buộc có ít nhất 1
 strategy: string       # optional — 1 câu actionable
 published: true
+image: string          # optional — path nội bộ /assets/stuff/<slug>.png (không dùng URL ngoài)
 ```
+
+### Quy ước `image` (thumbnail 64×64)
+
+- `image` (nếu có) phải là path nội bộ `/assets/stuff/<slug>.png`, đặt file vào `public/assets/stuff/`.
+- Nguồn ảnh 128×128, hiển thị 64×64 (nét trên Retina).
+- Không có `image` → render fallback tự động (glyph từ `src/lib/icons.ts`, màu theo level từ `src/lib/map/palette.ts`) qua `src/components/StuffThumb.astro`. Không tự bịa URL ảnh ngoài (vd. notion.so) — luôn để trống nếu chưa có ảnh nội bộ.
 
 Body: 300-500 từ tự viết. Legacy cards (migrate từ Jekyll) đang ngắn — enrich dần qua pipeline.
 

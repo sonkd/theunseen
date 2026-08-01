@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import StuffOverlay from '../components/map/StuffOverlay.astro';
+import StuffThumb from '../components/StuffThumb.astro';
 import { getCollection } from 'astro:content';
 import { iconFor, LEVEL_MAPS } from '../lib/icons';
 const stuff = (await getCollection('stuff', ({ data }) => data.published))
@@ -23,15 +24,11 @@ const PAGE_SIZE = 50;
 <Base title="Library">
   <div class="filters">
     <div class="filter-header">
-      <div>
-        <h1>Library</h1>
-        <p class="filter-copy">Filter by category and level, then share the URL.</p>
-      </div>
+      <h1>Library</h1>
       <div class="result-count" id="resultCount">Showing {cardCount} cards</div>
     </div>
 
-    <div class="filter-group">
-      <div class="filter-label">Category</div>
+    <div class="filter-row">
       <div class="chips" id="categoryChips">
         {categories.map((cat) => (
           <button type="button" class="chip" data-filter-type="category" data-filter-value={cat} aria-pressed="false">
@@ -39,74 +36,117 @@ const PAGE_SIZE = 50;
           </button>
         ))}
       </div>
-    </div>
-
-    <div class="filter-group">
-      <div class="filter-label">Level</div>
+      <span class="filter-divider">|</span>
       <div class="chips" id="levelChips">
         {levels.map((l) => (
           <button type="button" class="chip" data-filter-type="level" data-filter-value={l.toString()} aria-pressed="false">
-            {l}
+            {l} · {LEVEL_MAPS[l]}
           </button>
         ))}
       </div>
+      <button type="button" class="clear-button" id="clearFilters">Clear</button>
     </div>
-
-    <button type="button" class="clear-button" id="clearFilters">Clear filters</button>
   </div>
 
   <ul class="grid" id="cardGrid" data-page-size={PAGE_SIZE}>
     {stuff.map((s) => (
       <li class="card" data-slug={s.id} data-level={s.data.level.toString()} data-categories={s.data.categories.join(' ')}>
         <a href={`/stuff/${s.id}/`} data-slug={s.id}>
-          <span class="icon">{iconFor(s.id, s.data.categories, s.data.icon)}</span>
-          <span>{s.data.title}</span>
-          <span class="meta">{CATEGORY_LABELS[s.data.categories[0]] ?? s.data.categories[0]} · Map {s.data.level} — {LEVEL_MAPS[s.data.level]}</span>
+          <StuffThumb slug={s.id} title={s.data.title} image={s.data.image} categories={s.data.categories} level={s.data.level} icon={s.data.icon} />
+          <span class="card-body">
+            <span class="title">{s.data.title}</span>
+            <span class="meta">{s.data.level} · {LEVEL_MAPS[s.data.level]}</span>
+          </span>
         </a>
       </li>
     ))}
   </ul>
 
+  <div class="empty-state hidden" id="emptyState">
+    <p id="emptyStateCopy">Không có card khớp bộ lọc.</p>
+    <button type="button" class="clear-button" id="clearFiltersEmpty">Bỏ lọc</button>
+  </div>
+
   <nav class="pagination hidden" id="pagination" aria-label="Library pagination">
     <button type="button" id="pagePrev" class="page-nav">‹ Prev</button>
-    <div class="page-numbers" id="pageNumbers"></div>
+    <div class="page-numbers" id="pageNumbers">
+      {Array.from({ length: Math.max(1, Math.ceil(cardCount / PAGE_SIZE)) }).map((_, i) => (
+        <button type="button" data-page={i + 1} hidden>{i + 1}</button>
+      ))}
+    </div>
     <button type="button" id="pageNext" class="page-nav">Next ›</button>
   </nav>
 
   <StuffOverlay />
 </Base>
 <style>
-  .filters { border: 1px solid var(--border); background: var(--surface); padding: 1rem 1.25rem; border-radius: 18px; margin-bottom: 1.5rem; }
-  .filter-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
-  .filter-copy { margin: 0.35rem 0 0; color: var(--muted); }
-  .filter-group { margin-top: 1rem; }
-  .filter-label { text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; color: var(--muted); margin-bottom: .4rem; }
-  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
-  .chip { appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text); border-radius: 999px; padding: .55rem .85rem; cursor: pointer; transition: transform .15s ease, background .15s ease, border-color .15s ease; }
+  .filters {
+    border: 1px solid var(--border); background: var(--surface);
+    padding: .75rem 1rem; border-radius: 12px; margin-bottom: 1.5rem;
+    max-height: 120px; overflow: hidden;
+  }
+  .filter-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; align-items: baseline; }
+  .filters h1 { font-size: 24px; margin: 0; }
+  .result-count { color: var(--muted); font-size: 12px; }
+  .filter-row {
+    display: flex; align-items: center; gap: .4rem; margin-top: .5rem;
+    overflow-x: auto; scrollbar-width: thin; padding-bottom: .2rem;
+  }
+  .chips { display: flex; flex-wrap: nowrap; gap: .3rem; flex-shrink: 0; }
+  .filter-divider { color: var(--border); flex-shrink: 0; }
+  .chip {
+    appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text);
+    border-radius: 999px; padding: .3rem .5rem; cursor: pointer; white-space: nowrap;
+    font-size: 9px; font-family: var(--font-pixel, inherit);
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  }
   .chip:hover { transform: translateY(-1px); border-color: var(--flame); }
   .chip.active { background: rgba(240,163,67,.15); border-color: var(--flame); color: var(--flame); }
-  .clear-button { margin-top: 1rem; appearance: none; border: 1px solid var(--border); background: transparent; color: var(--text); border-radius: 999px; padding: .7rem 1rem; cursor: pointer; }
+  .clear-button {
+    appearance: none; border: 1px solid var(--border); background: transparent; color: var(--text);
+    border-radius: 999px; padding: .35rem .6rem; cursor: pointer; white-space: nowrap; font-size: 12px; flex-shrink: 0;
+  }
   .clear-button:hover { border-color: var(--flame); color: var(--flame); }
-  .result-count { color: var(--muted); font-size: .95rem; }
-  .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .75rem; margin: 0; }
-  .grid a { text-decoration: none; color: var(--text); display: grid; grid-template-columns: auto 1fr; gap: .75rem; padding: .85rem 1rem; border: 1px solid var(--border); border-radius: 16px; align-items: center; }
-  .grid a:hover { border-color: var(--flame); }
+  .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin: 0; }
+  .grid.hidden { display: none; }
+  .grid a {
+    text-decoration: none; color: var(--text); display: flex; gap: 16px;
+    min-height: 112px; padding: 16px; border: 1px solid var(--border); border-radius: 12px; align-items: start;
+    transition: transform .15s ease-out, background .15s ease-out, border-color .15s ease-out;
+  }
+  .grid a:hover { border-color: var(--flame); background: rgba(240,163,67,.06); transform: translateY(-1px); }
   .card { transition: opacity .2s ease, transform .2s ease; }
   .card[hidden] { display: none !important; }
-  .icon { color: var(--flame); font-size: 1.1rem; line-height: 1; }
-  .meta { color: var(--muted); font-size: .85rem; display: block; grid-column: 2; }
+  .card-body { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .title {
+    font-size: 16px; font-weight: 600; line-height: 1.3;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .meta {
+    color: var(--muted); font-size: 12px; font-family: var(--font-pixel, inherit);
+    border: 1px solid var(--border); border-radius: 999px; padding: .2rem .6rem; white-space: nowrap;
+    align-self: start;
+  }
+  .empty-state {
+    text-align: center; padding: 3rem 1rem; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 12px; margin-top: 1rem;
+  }
+  .empty-state.hidden { display: none; }
+  .empty-state p { margin: 0 0 1rem; font-size: 16px; }
   .pagination { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: 2rem; }
   .pagination.hidden { display: none; }
   .page-nav {
     appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text);
-    border-radius: 999px; padding: .55rem 1rem; cursor: pointer; font-size: .9rem;
+    border-radius: 999px; padding: .55rem 1rem; cursor: pointer; font-size: 14px;
   }
   .page-nav:hover:not(:disabled) { border-color: var(--flame); color: var(--flame); }
   .page-nav:disabled { opacity: .4; cursor: default; }
   .page-numbers { display: flex; gap: .35rem; }
+</style>
+<style is:global>
   .page-numbers button {
     appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text);
-    border-radius: 999px; width: 2.2rem; height: 2.2rem; cursor: pointer; font-size: .85rem;
+    border-radius: 999px; width: 2.2rem; height: 2.2rem; cursor: pointer; font-size: 14px;
   }
   .page-numbers button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
   .page-numbers button:hover:not(.active) { border-color: var(--flame); color: var(--flame); }
@@ -123,7 +163,14 @@ const PAGE_SIZE = 50;
   const pagePrev = document.getElementById('pagePrev');
   const pageNext = document.getElementById('pageNext');
   const pageNumbers = document.getElementById('pageNumbers');
+  const pageNumberButtons = Array.from(pageNumbers.querySelectorAll('button'));
+  const emptyState = document.getElementById('emptyState');
+  const emptyStateCopy = document.getElementById('emptyStateCopy');
+  const clearFiltersEmpty = document.getElementById('clearFiltersEmpty');
   const PAGE_SIZE = Number(cardGrid.dataset.pageSize) || 50;
+  const CATEGORY_LABELS = {};
+  categoryButtons.forEach((button) => { CATEGORY_LABELS[button.dataset.filterValue] = button.textContent.trim(); });
+  const LEVEL_MAPS = ['', 'Imagining', 'Belief', 'Thinking', 'Knowledge'];
 
   const parseValues = (value) => value ? value.split(',').map((item) => item.trim()).filter(Boolean) : [];
 
@@ -157,15 +204,11 @@ const PAGE_SIZE = 50;
   };
 
   const renderPageNumbers = (page, totalPages) => {
-    pageNumbers.innerHTML = '';
-    for (let i = 1; i <= totalPages; i += 1) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.textContent = String(i);
-      if (i === page) button.classList.add('active');
-      button.addEventListener('click', () => applyFilters({ ...getState(), page: i }));
-      pageNumbers.appendChild(button);
-    }
+    pageNumberButtons.forEach((button) => {
+      const n = Number(button.dataset.page);
+      button.hidden = n > totalPages;
+      button.classList.toggle('active', n === page);
+    });
   };
 
   const applyFilters = (state) => {
@@ -198,12 +241,31 @@ const PAGE_SIZE = 50;
     });
 
     resultCount.textContent = `Showing ${visibleCount} / ${matches.length} cards (page ${page} of ${totalPages})`;
+
+    const isEmpty = matches.length === 0;
+    cardGrid.classList.toggle('hidden', isEmpty);
+    emptyState.classList.toggle('hidden', !isEmpty);
+    if (isEmpty) {
+      const activeLabels = [
+        ...state.categories.map((c) => CATEGORY_LABELS[c] ?? c),
+        ...state.levels.map((l) => `${l} · ${LEVEL_MAPS[Number(l)]}`),
+      ];
+      emptyStateCopy.textContent = activeLabels.length
+        ? `Không có card khớp bộ lọc: ${activeLabels.join(', ')}.`
+        : 'Không có card nào.';
+    }
+
     pagination.classList.toggle('hidden', totalPages <= 1);
     pagePrev.disabled = page <= 1;
     pageNext.disabled = page >= totalPages;
     renderPageNumbers(page, totalPages);
 
     updateUrl({ ...state, page });
+  };
+
+  const goToPage = (page) => {
+    applyFilters({ ...getState(), page });
+    cardGrid.scrollIntoView({ block: 'start' });
   };
 
   const toggleValue = (list, value) => {
@@ -224,9 +286,14 @@ const PAGE_SIZE = 50;
 
   categoryButtons.forEach((button) => button.addEventListener('click', handleChipClick));
   levelButtons.forEach((button) => button.addEventListener('click', handleChipClick));
-  clearButton.addEventListener('click', () => applyFilters({ categories: [], levels: [], page: 1 }));
-  pagePrev.addEventListener('click', () => applyFilters({ ...getState(), page: getState().page - 1 }));
-  pageNext.addEventListener('click', () => applyFilters({ ...getState(), page: getState().page + 1 }));
+  const clearAll = () => applyFilters({ categories: [], levels: [], page: 1 });
+  clearButton.addEventListener('click', clearAll);
+  clearFiltersEmpty.addEventListener('click', clearAll);
+  pageNumberButtons.forEach((button) => {
+    button.addEventListener('click', () => goToPage(Number(button.dataset.page)));
+  });
+  pagePrev.addEventListener('click', () => goToPage(getState().page - 1));
+  pageNext.addEventListener('click', () => goToPage(getState().page + 1));
 
   cardLinks.forEach((link) => {
     link.addEventListener('click', (event) => {

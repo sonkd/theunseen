@@ -1,0 +1,72 @@
+---
+// Thumbnail 64×64 dùng chung: /stuff/<slug> và StuffOverlay. KHÔNG dùng ở map/graph.
+// image = path nội bộ /assets/stuff/<slug>.png. Không có image → fallback glyph (icons.ts) màu theo level (palette.ts).
+import { iconFor } from '../lib/icons';
+import { MAPS as PALETTE } from '../lib/map/palette';
+
+interface Props {
+  slug: string;
+  title: string;
+  image?: string | null;
+  categories?: string[];
+  level?: number;
+  icon?: string;
+  id?: string;
+}
+
+const { slug, title, image, categories = [], level = 1, icon, id } = Astro.props;
+const glyph = iconFor(slug, categories, icon);
+const pal = PALETTE[(level || 1) - 1] || PALETTE[0];
+const hasImage = !!image;
+const wrapId = id ? `${id}-thumb` : undefined;
+const imgId = id ? `${id}-thumb-img` : undefined;
+const fallbackId = id ? `${id}-thumb-fallback` : undefined;
+---
+
+<div class="stuff-thumb" id={wrapId} data-slug={slug}>
+  <img
+    class="stuff-thumb-img"
+    id={imgId}
+    loading="lazy"
+    width="64"
+    height="64"
+    alt={title}
+    src={image || ''}
+    style={hasImage ? undefined : 'display:none'}
+  />
+  <span
+    class="stuff-thumb-fallback"
+    id={fallbackId}
+    aria-hidden="true"
+    style={`${hasImage ? 'display:none;' : ''}color:${pal.icon}`}
+  >{glyph}</span>
+</div>
+
+<style>
+  .stuff-thumb {
+    width: 64px;
+    height: 64px;
+    flex: none;
+    position: relative;
+  }
+  .stuff-thumb-img {
+    display: block;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .stuff-thumb-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 26px;
+    line-height: 1;
+  }
+</style>

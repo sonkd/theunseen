@@ -88,18 +88,36 @@ const { title, description = 'Seeing the Unseen — flames of knowledge in Plato
         document.head.appendChild(el);
       });
 
+      const showFallback = () => {
+        if (target) target.hidden = true;
+        if (fallback) fallback.hidden = false;
+      };
+
+      // Script tải được không có nghĩa là index dùng được: pagefind.js còn
+      // phải fetch /pagefind/pagefind-entry.json trong Worker riêng. Nếu file
+      // đó thiếu/hỏng (vd. binary build sai kiến trúc), PagefindUI vẫn khởi
+      // tạo "thành công" nhưng search treo vĩnh viễn — nên phải tự kiểm tra
+      // metadata và đặt timeout, không dựa vào onload/onerror của thẻ script.
+      const metadataCheck = fetch('/pagefind/pagefind-entry.json', { cache: 'no-store' }).then((res) => {
+        if (!res.ok) throw new Error(`pagefind-entry.json responded ${res.status}`);
+      });
+      const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('pagefind metadata timeout')), 2500));
+
       Promise.all([
         loadAsset('link', { rel: 'stylesheet', href: '/pagefind/pagefind-ui.css' }),
         loadAsset('script', { src: '/pagefind/pagefind-ui.js', type: 'text/javascript', async: 'false' }),
+        Promise.race([metadataCheck, timeout]),
       ])
         .then(() => {
-          if (typeof window.PagefindUI !== 'function') return;
+          if (typeof window.PagefindUI !== 'function') throw new Error('PagefindUI unavailable');
           new window.PagefindUI({ element: target, bundlePath: '/pagefind/' });
           if (target) target.hidden = false;
           if (fallback) fallback.hidden = true;
         })
         .catch(() => {
-          // Dev mode / chưa build: giữ nguyên form thường, không báo lỗi.
+          // Dev mode / chưa build / index hỏng: giữ (hoặc quay lại) form thường,
+          // không bao giờ để lộ spinner/lỗi Pagefind cho người dùng.
+          showFallback();
         });
     });
   </script>

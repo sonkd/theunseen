@@ -1,0 +1,1535 @@
+{
+  "maps": [
+    {
+      "level": 1,
+      "name": "Imagining",
+      "greek": "Eikasia",
+      "vn": "Tưởng tượng",
+      "zones": 3,
+      "stuff": []
+    },
+    {
+      "level": 2,
+      "name": "Belief",
+      "greek": "Pistis",
+      "vn": "Niềm tin",
+      "zones": 3,
+      "stuff": [
+        {
+          "slug": "abilene-paradox",
+          "title": "Abilene paradox",
+          "icon": "☯︎",
+          "zone": 0,
+          "x": 0.005376344086021506,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "anchoring",
+          "title": "Anchoring",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.010752688172043012,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "appeal-to-probability-fallacy",
+          "title": "Appeal to probability fallacy",
+          "icon": "✱",
+          "zone": 0,
+          "x": 0.016129032258064516,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "attentional-bias",
+          "title": "Attentional bias",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.021505376344086023,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "automation-bias",
+          "title": "Automation bias",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.026881720430107527,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "bandwagon-effect",
+          "title": "Bandwagon effect",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.03225806451612903,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "belief-bias",
+          "title": "Belief bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.03763440860215054,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "bucket-error",
+          "title": "Bucket error",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.043010752688172046,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "cheerleader-effect",
+          "title": "Cheerleader effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.04838709677419355,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "clustering-illusion",
+          "title": "Clustering illusion",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.053763440860215055,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "congruence-bias",
+          "title": "Congruence bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.05913978494623656,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "continued-influence-effect",
+          "title": "Continued influence effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.06451612903225806,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "cryptomnesia",
+          "title": "Cryptomnesia",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.06989247311827956,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "declinism",
+          "title": "Declinism",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.07526881720430108,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "denomination-effect",
+          "title": "Denomination effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.08064516129032258,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "dunning-kruger-effect",
+          "title": "Dunning-Kruger effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.08602150537634409,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "egocentric-bias",
+          "title": "Egocentric bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.0913978494623656,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "escalation-of-commitment",
+          "title": "Escalation of commitment",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.0967741935483871,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "extrinsic-incentive-error",
+          "title": "Extrinsic incentive error",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.10215053763440861,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "focalism",
+          "title": "Focalism",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.10752688172043011,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "functional-fixedness",
+          "title": "Functional fixedness",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.11290322580645161,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "generation-effect",
+          "title": "Generation effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.11827956989247312,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "halo-effect",
+          "title": "Halo effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.12365591397849462,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "hot-hand-fallacy",
+          "title": "Hot-hand fallacy",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.12903225806451613,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "ikea-effect",
+          "title": "IKEA effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.13440860215053763,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "illusion-of-external-agency",
+          "title": "Illusion of external agency",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.13978494623655913,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "illusory-correlation",
+          "title": "Illusory correlation",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.14516129032258066,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "immune-neglect",
+          "title": "Immune neglect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.15053763440860216,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "in-group-bias",
+          "title": "In-group bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.15591397849462366,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "just-world-hypothesis",
+          "title": "Just-world hypothesis",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.16129032258064516,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "law-of-the-instrument",
+          "title": "Law of the instrument",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.16666666666666666,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "leveling-and-sharpening",
+          "title": "Leveling and sharpening",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.17204301075268819,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "magic-number-7-2",
+          "title": "Magic number 7+-2",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.1774193548387097,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "mental-accounting",
+          "title": "Mental accounting",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.1827956989247312,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "misinformation-effect",
+          "title": "Misinformation effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.1881720430107527,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "moral-luck",
+          "title": "Moral luck",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.1935483870967742,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "naive-realism",
+          "title": "Naïve realism",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.1989247311827957,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "next-in-line-effect",
+          "title": "Next-in-line effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.20430107526881722,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "observer-expectancy-effect",
+          "title": "Observer-expectancy effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.20967741935483872,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "optimism-bias",
+          "title": "Optimism bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.21505376344086022,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "outcome-bias",
+          "title": "Outcome bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.22043010752688172,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "part-list-cueing-effect",
+          "title": "Part-list cueing effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.22580645161290322,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "picture-superiority-effect",
+          "title": "Picture superiority effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.23118279569892472,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "positivity-effect",
+          "title": "Positivity effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.23655913978494625,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "primacy-effect",
+          "title": "Primacy effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.24193548387096775,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "pseudocertainty-effect",
+          "title": "Pseudocertainty effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.24731182795698925,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "reactive-devaluation",
+          "title": "Reactive devaluation",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.25268817204301075,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "restraint-bias",
+          "title": "Restraint bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.25806451612903225,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "rosy-retrospection",
+          "title": "Rosy retrospection",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.26344086021505375,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "self-consistency-bias",
+          "title": "Self-consistency bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.26881720430107525,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "self-serving-bias",
+          "title": "Self-serving bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.27419354838709675,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "serial-recall-effect",
+          "title": "Serial recall effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.27956989247311825,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "source-confusion",
+          "title": "Source confusion",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.2849462365591398,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "status-quo-bias",
+          "title": "Status quo bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.2903225806451613,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "subjective-validation",
+          "title": "Subjective validation",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.2956989247311828,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "survivorship-bias",
+          "title": "Survivorship bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.3010752688172043,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "telescoping-effect",
+          "title": "Telescoping effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.3064516129032258,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "time-discounting",
+          "title": "Time discounting",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.3118279569892473,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "trait-ascription-bias",
+          "title": "Trait ascription bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.3172043010752688,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "von-restorff-effect",
+          "title": "Von Restorff effect",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.3225806451612903,
+          "y": 0.7272727272727273
+        },
+        {
+          "slug": "zero-risk-bias",
+          "title": "Zero-risk bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.3279569892473118,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "affective-forecasting",
+          "title": "Affective forecasting",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.3387096774193548,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "anthropomorphism",
+          "title": "Anthropomorphism",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.34408602150537637,
+          "y": 0.7272727272727273
+        },
+        {
+          "slug": "argument-from-fallacy",
+          "title": "Argument from fallacy",
+          "icon": "✱",
+          "zone": 1,
+          "x": 0.34946236559139787,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "attribute-substitution",
+          "title": "Attribute substitution",
+          "icon": "◆",
+          "zone": 1,
+          "x": 0.3548387096774194,
+          "y": 0.7272727272727273
+        },
+        {
+          "slug": "availability-heuristic",
+          "title": "Availability heuristic",
+          "icon": "◆",
+          "zone": 1,
+          "x": 0.3602150537634409,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "barnum-effect",
+          "title": "Barnum effect",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.3655913978494624,
+          "y": 0.7272727272727273
+        },
+        {
+          "slug": "bias-blind-spot",
+          "title": "Bias blind spot",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.3709677419354839,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "cathedral-effect",
+          "title": "Cathedral effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.3763440860215054,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "chestertons-fence",
+          "title": "Chesterton's fence",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.3817204301075269,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "confabulation",
+          "title": "Confabulation",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.3870967741935484,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "conjunction-fallacy",
+          "title": "Conjunction fallacy",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.3924731182795699,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "contrast-effect",
+          "title": "Contrast effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.3978494623655914,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "cue-dependent-forgetting",
+          "title": "Cue-dependent forgetting",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.4032258064516129,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "decoy-effect",
+          "title": "Decoy effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.40860215053763443,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "disposition-effect",
+          "title": "Disposition effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.41397849462365593,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "duration-neglect",
+          "title": "Duration neglect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.41935483870967744,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "empathy-gap",
+          "title": "Empathy gap",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.42473118279569894,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "essentialism",
+          "title": "Essentialism",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.43010752688172044,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "fading-affect-bias",
+          "title": "Fading affect bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.43548387096774194,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "framing-effect",
+          "title": "Framing effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.44086021505376344,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "fundamental-attribution-error",
+          "title": "Fundamental attribution error",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.44623655913978494,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "goodharts-law",
+          "title": "Goodhart's law",
+          "icon": "✦",
+          "zone": 1,
+          "x": 0.45161290322580644,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "hard-easy-effect",
+          "title": "Hard-easy effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.45698924731182794,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "hyperbolic-discounting",
+          "title": "Hyperbolic discounting",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.46236559139784944,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "illusion-of-asymmetric-insight",
+          "title": "Illusion of asymmetric insight",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.46774193548387094,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "illusion-of-transparency",
+          "title": "Illusion of transparency",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.4731182795698925,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "illusory-superiority",
+          "title": "Illusory superiority",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.478494623655914,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "impact-bias",
+          "title": "Impact bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.4838709677419355,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "information-bias",
+          "title": "Information bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.489247311827957,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "lake-wobegone-effect",
+          "title": "Lake Wobegone effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.4946236559139785,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "law-of-triviality",
+          "title": "Law of triviality",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "levels-of-processing-effect",
+          "title": "Levels of processing effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5053763440860215,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "masked-man-fallacy",
+          "title": "Masked man fallacy",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.510752688172043,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "mere-exposure-effect",
+          "title": "Mere exposure effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5161290322580645,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "modality-effect",
+          "title": "Modality effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.521505376344086,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "murphys-law",
+          "title": "Murphy’s Law",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5268817204301075,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "negativity-bias",
+          "title": "Negativity bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.532258064516129,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "normalcy-bias",
+          "title": "Normalcy bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5376344086021505,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "occams-razor",
+          "title": "Occam’s razor",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.543010752688172,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "ostrich-effect",
+          "title": "Ostrich effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5483870967741935,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "overconfidence-effect",
+          "title": "Overconfidence effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.553763440860215,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "peak-end-rule",
+          "title": "Peak–end rule",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5591397849462365,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "placebo-effect",
+          "title": "Placebo effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5645161290322581,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "post-purchase-rationalization",
+          "title": "Post-purchase rationalization",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5698924731182796,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "pro-innovation-bias",
+          "title": "Pro-innovation bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5752688172043011,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "publication-bias",
+          "title": "Publication bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5806451612903226,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "recency-effect",
+          "title": "Recency effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5860215053763441,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "rhyme-as-reason-effect",
+          "title": "Rhyme as reason effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5913978494623656,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "sapir-whorf-korzybski-hypothesis",
+          "title": "Sapir Whorf Korzybski hypothesis",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.5967741935483871,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "self-licensing",
+          "title": "Self-licensing",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6021505376344086,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "semmelweis-reflex",
+          "title": "Semmelweis reflex",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6075268817204301,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "social-comparison-bias",
+          "title": "Social comparison bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6129032258064516,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "spacing-effect",
+          "title": "Spacing effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6182795698924731,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "stereotyping",
+          "title": "Stereotyping",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6236559139784946,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "suggestibility",
+          "title": "Suggestibility",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6290322580645161,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "swimmers-body-illusion",
+          "title": "Swimmer's body illusion",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6344086021505376,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "testing-effect",
+          "title": "Testing effect",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6397849462365591,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "time-saving-bias",
+          "title": "Time-saving bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6451612903225806,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "ultimate-attribution-error",
+          "title": "Ultimate attribution error",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6505376344086021,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "weber-fechner-law",
+          "title": "Weber–Fechner law",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6559139784946236,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "zero-sum-bias",
+          "title": "Zero sum bias",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6612903225806451,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "ambiguity-effect",
+          "title": "Ambiguity effect",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.6720430107526881,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "appeal-to-novelty",
+          "title": "Appeal to novelty",
+          "icon": "✱",
+          "zone": 2,
+          "x": 0.6774193548387096,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "armchair-fallacy",
+          "title": "Armchair fallacy",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.6827956989247311,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "authority-bias",
+          "title": "Authority bias",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.6881720430107527,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "backfire-effect",
+          "title": "Backfire effect",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.6935483870967742,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "base-rate-fallacy",
+          "title": "Base rate fallacy",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.6989247311827957,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "bizarreness-effect",
+          "title": "Bizarreness effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7043010752688172,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "change-blindness",
+          "title": "Change blindness",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7096774193548387,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "choice-supportive-bias",
+          "title": "Choice-supportive bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7150537634408602,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "confirmation-bias",
+          "title": "Confirmation bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7204301075268817,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "conservatism",
+          "title": "Conservatism",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7258064516129032,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "cross-race-effect",
+          "title": "Cross-race effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7311827956989247,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "curse-of-knowledge",
+          "title": "Curse of knowledge",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7365591397849462,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "defensive-attribution-hypothesis",
+          "title": "Defensive attribution hypothesis",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7419354838709677,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "distinction-bias",
+          "title": "Distinction bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7473118279569892,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "effort-justification",
+          "title": "Effort justification",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7526881720430108,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "endowment-effect",
+          "title": "Endowment effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7580645161290323,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "extension-neglect",
+          "title": "Extension neglect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7634408602150538,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "false-consensus-effect",
+          "title": "False consensus effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7688172043010753,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "frequency-illusion",
+          "title": "Frequency illusion",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7741935483870968,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "gamblers-fallacy",
+          "title": "Gambler’s fallacy",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7795698924731183,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "group-attribution-error",
+          "title": "Group attribution error",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7849462365591398,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "hindsight-bias",
+          "title": "Hindsight bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7903225806451613,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "identifiable-victim-effect",
+          "title": "Identifiable victim effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7956989247311828,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "illusion-of-control",
+          "title": "Illusion of control",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8010752688172043,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "illusion-of-validity",
+          "title": "Illusion of validity",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8064516129032258,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "illusory-truth-effect",
+          "title": "Illusory truth effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8118279569892473,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "implicit-stereotypes",
+          "title": "Implicit stereotypes",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8172043010752689,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "insensitivity-to-sample-size",
+          "title": "Insensitivity to sample size",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8225806451612904,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "law-of-narrative-gravity",
+          "title": "Law of narrative gravity",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8279569892473119,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "less-is-better-effect",
+          "title": "Less-is-better effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8333333333333334,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "loss-aversion",
+          "title": "Loss aversion",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8387096774193549,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "memory-inhibition",
+          "title": "Memory inhibition",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8440860215053764,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "misattribution-of-memory",
+          "title": "Misattribution of memory",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8494623655913979,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "money-illusion",
+          "title": "Money illusion",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8548387096774194,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "naive-cynicism",
+          "title": "Naïve cynicism",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8602150537634409,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "neglect-of-probability",
+          "title": "Neglect of probability",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8655913978494624,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "not-invented-here",
+          "title": "Not invented here",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8709677419354839,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "omission-bias",
+          "title": "Omission bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8763440860215054,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "out-group-homogeneity-bias",
+          "title": "Out-group homogeneity bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8817204301075269,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "pareidolia",
+          "title": "Pareidolia",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8870967741935484,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "pessimism-bias",
+          "title": "Pessimism bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8924731182795699,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "planning-fallacy",
+          "title": "Planning fallacy",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8978494623655914,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "prejudice",
+          "title": "Prejudice",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9032258064516129,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "projection-bias",
+          "title": "Projection bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9086021505376344,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "reactance",
+          "title": "Reactance",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9139784946236559,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "recency-illusion",
+          "title": "Recency illusion",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9193548387096774,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "risk-compensation",
+          "title": "Risk compensation",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9247311827956989,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "selective-perception",
+          "title": "Selective perception",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9301075268817204,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "self-relevance-effect",
+          "title": "Self-relevance effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9354838709677419,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "serial-position-effect",
+          "title": "Serial position effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9408602150537635,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "social-desirability-bias",
+          "title": "Social desirability bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.946236559139785,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "spotlight-effect",
+          "title": "Spotlight effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9516129032258065,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "subadditivity-effect",
+          "title": "Subadditivity effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.956989247311828,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "sunk-cost-fallacy",
+          "title": "Sunk cost fallacy",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9623655913978495,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "system-justification",
+          "title": "System justification",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.967741935483871,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "third-person-effect",
+          "title": "Third-person effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9731182795698925,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "tip-of-the-tongue-phenomenon",
+          "title": "Tip of the tongue phenomenon",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.978494623655914,
+          "y": 0.7272727272727273
+        },
+        {
+          "slug": "unit-bias",
+          "title": "Unit bias",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9838709677419355,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "well-traveled-road-effect",
+          "title": "Well-traveled road effect",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.989247311827957,
+          "y": 0.7272727272727273
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "name": "Thinking",
+      "greek": "Dianoia",
+      "vn": "Tư duy",
+      "zones": 3,
+      "stuff": [
+        {
+          "slug": "cognitive-load-theory",
+          "title": "Cognitive Load Theory",
+          "icon": "✦",
+          "zone": 0,
+          "x": 0.12,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "inversion",
+          "title": "Inversion",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.44,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "second-order-thinking",
+          "title": "Second-order Thinking",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.8,
+          "y": 0.2727272727272727
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "name": "Intelligence",
+      "greek": "Noesis",
+      "vn": "Lý tính",
+      "zones": 3,
+      "stuff": [
+        {
+          "slug": "dual-process-theory",
+          "title": "Dual Process Theory",
+          "icon": "✦",
+          "zone": 0,
+          "x": 0.12,
+          "y": 0.2727272727272727
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "name": "Knowledge",
+      "greek": "Episteme",
+      "vn": "Tri thức",
+      "zones": 3,
+      "stuff": []
+    }
+  ]
+}

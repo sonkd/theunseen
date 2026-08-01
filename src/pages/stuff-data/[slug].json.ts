@@ -82,6 +82,7 @@ export async function GET({ params }) {
       refs: Array.isArray(data.refs) ? data.refs : [],
       links: Array.isArray(data.links) ? data.links : [],
       strategy: data.strategy || '',
+      image: data.image || null,
       body_html,
     }
     return new Response(JSON.stringify(payload), {
