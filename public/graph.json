@@ -150,7 +150,7 @@
       "title": "Base rate fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -158,7 +158,7 @@
       "title": "Belief bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -166,7 +166,7 @@
       "title": "Bias blind spot",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -174,7 +174,7 @@
       "title": "Bizarreness effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -198,7 +198,7 @@
       "title": "Change blindness",
       "level": 2,
       "categories": [
-        "mental-models"
+        "perception"
       ]
     },
     {
@@ -206,7 +206,7 @@
       "title": "Cheerleader effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "perception"
       ]
     },
     {
@@ -222,7 +222,7 @@
       "title": "Choice-supportive bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -230,7 +230,7 @@
       "title": "Clustering illusion",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -246,7 +246,7 @@
       "title": "Confabulation",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -254,7 +254,7 @@
       "title": "Confirmation bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -270,7 +270,7 @@
       "title": "Conjunction fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -278,7 +278,7 @@
       "title": "Conservatism",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1709,12 +1709,156 @@
       "target": "illusory-truth-effect"
     },
     {
+      "source": "base-rate-fallacy",
+      "target": "conjunction-fallacy"
+    },
+    {
+      "source": "base-rate-fallacy",
+      "target": "insensitivity-to-sample-size"
+    },
+    {
+      "source": "belief-bias",
+      "target": "confirmation-bias"
+    },
+    {
+      "source": "belief-bias",
+      "target": "conjunction-fallacy"
+    },
+    {
+      "source": "belief-bias",
+      "target": "congruence-bias"
+    },
+    {
+      "source": "bias-blind-spot",
+      "target": "naive-realism"
+    },
+    {
+      "source": "bias-blind-spot",
+      "target": "illusory-superiority"
+    },
+    {
+      "source": "bias-blind-spot",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "bias-blind-spot",
+      "target": "fundamental-attribution-error"
+    },
+    {
+      "source": "bizarreness-effect",
+      "target": "von-restorff-effect"
+    },
+    {
+      "source": "bizarreness-effect",
+      "target": "picture-superiority-effect"
+    },
+    {
+      "source": "bizarreness-effect",
+      "target": "spacing-effect"
+    },
+    {
+      "source": "bucket-error",
+      "target": "chestertons-fence"
+    },
+    {
+      "source": "bucket-error",
+      "target": "confirmation-bias"
+    },
+    {
+      "source": "bucket-error",
+      "target": "self-consistency-bias"
+    },
+    {
+      "source": "cathedral-effect",
+      "target": "functional-fixedness"
+    },
+    {
+      "source": "cathedral-effect",
+      "target": "framing-effect"
+    },
+    {
+      "source": "attentional-bias",
+      "target": "change-blindness"
+    },
+    {
+      "source": "change-blindness",
+      "target": "selective-perception"
+    },
+    {
+      "source": "cheerleader-effect",
+      "target": "halo-effect"
+    },
+    {
+      "source": "cheerleader-effect",
+      "target": "cross-race-effect"
+    },
+    {
+      "source": "chestertons-fence",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "choice-supportive-bias",
+      "target": "post-purchase-rationalization"
+    },
+    {
+      "source": "choice-supportive-bias",
+      "target": "escalation-of-commitment"
+    },
+    {
+      "source": "choice-supportive-bias",
+      "target": "effort-justification"
+    },
+    {
+      "source": "clustering-illusion",
+      "target": "gamblers-fallacy"
+    },
+    {
+      "source": "clustering-illusion",
+      "target": "hot-hand-fallacy"
+    },
+    {
+      "source": "clustering-illusion",
+      "target": "illusory-correlation"
+    },
+    {
       "source": "cognitive-load-theory",
       "target": "magic-number-7-2"
     },
     {
       "source": "cognitive-load-theory",
       "target": "modality-effect"
+    },
+    {
+      "source": "confabulation",
+      "target": "misattribution-of-memory"
+    },
+    {
+      "source": "confabulation",
+      "target": "source-confusion"
+    },
+    {
+      "source": "confabulation",
+      "target": "misinformation-effect"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "congruence-bias"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "conjunction-fallacy"
+    },
+    {
+      "source": "conservatism",
+      "target": "continued-influence-effect"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "conservatism"
+    },
+    {
+      "source": "backfire-effect",
+      "target": "conservatism"
     },
     {
       "source": "anchoring",

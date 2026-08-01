@@ -66,7 +66,7 @@
         {
           "slug": "belief-bias",
           "title": "Belief bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.03763440860215054,
           "y": 0.45454545454545453
@@ -82,7 +82,7 @@
         {
           "slug": "cheerleader-effect",
           "title": "Cheerleader effect",
-          "icon": "●",
+          "icon": "☀︎",
           "zone": 0,
           "x": 0.04838709677419355,
           "y": 0.36363636363636365
@@ -90,7 +90,7 @@
         {
           "slug": "clustering-illusion",
           "title": "Clustering illusion",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.053763440860215055,
           "y": 0.6363636363636364
@@ -554,7 +554,7 @@
         {
           "slug": "bias-blind-spot",
           "title": "Bias blind spot",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.3709677419354839,
           "y": 0.5454545454545454
@@ -578,7 +578,7 @@
         {
           "slug": "confabulation",
           "title": "Confabulation",
-          "icon": "●",
+          "icon": "☾",
           "zone": 1,
           "x": 0.3870967741935484,
           "y": 0.6363636363636364
@@ -586,7 +586,7 @@
         {
           "slug": "conjunction-fallacy",
           "title": "Conjunction fallacy",
-          "icon": "●",
+          "icon": "✱",
           "zone": 1,
           "x": 0.3924731182795699,
           "y": 0.45454545454545453
@@ -1034,7 +1034,7 @@
         {
           "slug": "base-rate-fallacy",
           "title": "Base rate fallacy",
-          "icon": "●",
+          "icon": "✱",
           "zone": 2,
           "x": 0.6989247311827957,
           "y": 0.6363636363636364
@@ -1042,7 +1042,7 @@
         {
           "slug": "bizarreness-effect",
           "title": "Bizarreness effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 2,
           "x": 0.7043010752688172,
           "y": 0.45454545454545453
@@ -1050,7 +1050,7 @@
         {
           "slug": "change-blindness",
           "title": "Change blindness",
-          "icon": "●",
+          "icon": "☀︎",
           "zone": 2,
           "x": 0.7096774193548387,
           "y": 0.6363636363636364
@@ -1058,7 +1058,7 @@
         {
           "slug": "choice-supportive-bias",
           "title": "Choice-supportive bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7150537634408602,
           "y": 0.36363636363636365
@@ -1066,7 +1066,7 @@
         {
           "slug": "confirmation-bias",
           "title": "Confirmation bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7204301075268817,
           "y": 0.6363636363636364
@@ -1074,7 +1074,7 @@
         {
           "slug": "conservatism",
           "title": "Conservatism",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7258064516129032,
           "y": 0.45454545454545453
