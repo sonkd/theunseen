@@ -162,7 +162,7 @@
         {
           "slug": "extrinsic-incentive-error",
           "title": "Extrinsic incentive error",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.10215053763440861,
           "y": 0.36363636363636365
@@ -170,7 +170,7 @@
         {
           "slug": "focalism",
           "title": "Focalism",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.10752688172043011,
           "y": 0.5454545454545454
@@ -650,7 +650,7 @@
         {
           "slug": "fading-affect-bias",
           "title": "Fading affect bias",
-          "icon": "●",
+          "icon": "☾",
           "zone": 1,
           "x": 0.43548387096774194,
           "y": 0.36363636363636365
@@ -658,7 +658,7 @@
         {
           "slug": "framing-effect",
           "title": "Framing effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.44086021505376344,
           "y": 0.5454545454545454
@@ -666,7 +666,7 @@
         {
           "slug": "fundamental-attribution-error",
           "title": "Fundamental attribution error",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.44623655913978494,
           "y": 0.2727272727272727
@@ -1130,7 +1130,7 @@
         {
           "slug": "extension-neglect",
           "title": "Extension neglect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7634408602150538,
           "y": 0.5454545454545454
@@ -1138,7 +1138,7 @@
         {
           "slug": "false-consensus-effect",
           "title": "False consensus effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7688172043010753,
           "y": 0.2727272727272727
@@ -1146,15 +1146,15 @@
         {
           "slug": "frequency-illusion",
           "title": "Frequency illusion",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7741935483870968,
           "y": 0.45454545454545453
         },
         {
           "slug": "gamblers-fallacy",
-          "title": "Gambler’s fallacy",
-          "icon": "●",
+          "title": "Gambler's fallacy",
+          "icon": "✱",
           "zone": 2,
           "x": 0.7795698924731183,
           "y": 0.2727272727272727

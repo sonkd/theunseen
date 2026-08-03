@@ -463,7 +463,7 @@
       "title": "Extension neglect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -471,7 +471,8 @@
       "title": "Extrinsic incentive error",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -479,7 +480,8 @@
       "title": "Fading affect bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory",
+        "bias"
       ]
     },
     {
@@ -487,7 +489,8 @@
       "title": "False consensus effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -495,7 +498,7 @@
       "title": "Focalism",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -503,7 +506,7 @@
       "title": "Framing effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -511,7 +514,8 @@
       "title": "Frequency illusion",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "perception"
       ]
     },
     {
@@ -527,15 +531,16 @@
       "title": "Fundamental attribution error",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
       "id": "gamblers-fallacy",
-      "title": "Gambler’s fallacy",
+      "title": "Gambler's fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -2064,6 +2069,178 @@
     {
       "source": "effort-justification",
       "target": "escalation-of-commitment"
+    },
+    {
+      "source": "egocentric-bias",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "egocentric-bias",
+      "target": "false-consensus-effect"
+    },
+    {
+      "source": "curse-of-knowledge",
+      "target": "egocentric-bias"
+    },
+    {
+      "source": "egocentric-bias",
+      "target": "spotlight-effect"
+    },
+    {
+      "source": "affective-forecasting",
+      "target": "empathy-gap"
+    },
+    {
+      "source": "empathy-gap",
+      "target": "projection-bias"
+    },
+    {
+      "source": "empathy-gap",
+      "target": "immune-neglect"
+    },
+    {
+      "source": "empathy-gap",
+      "target": "impact-bias"
+    },
+    {
+      "source": "endowment-effect",
+      "target": "loss-aversion"
+    },
+    {
+      "source": "endowment-effect",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "endowment-effect",
+      "target": "ikea-effect"
+    },
+    {
+      "source": "endowment-effect",
+      "target": "mental-accounting"
+    },
+    {
+      "source": "escalation-of-commitment",
+      "target": "sunk-cost-fallacy"
+    },
+    {
+      "source": "backfire-effect",
+      "target": "escalation-of-commitment"
+    },
+    {
+      "source": "escalation-of-commitment",
+      "target": "self-consistency-bias"
+    },
+    {
+      "source": "essentialism",
+      "target": "stereotyping"
+    },
+    {
+      "source": "essentialism",
+      "target": "group-attribution-error"
+    },
+    {
+      "source": "essentialism",
+      "target": "naive-realism"
+    },
+    {
+      "source": "essentialism",
+      "target": "out-group-homogeneity-bias"
+    },
+    {
+      "source": "base-rate-fallacy",
+      "target": "extension-neglect"
+    },
+    {
+      "source": "extension-neglect",
+      "target": "insensitivity-to-sample-size"
+    },
+    {
+      "source": "duration-neglect",
+      "target": "extension-neglect"
+    },
+    {
+      "source": "conjunction-fallacy",
+      "target": "extension-neglect"
+    },
+    {
+      "source": "extrinsic-incentive-error",
+      "target": "fundamental-attribution-error"
+    },
+    {
+      "source": "extrinsic-incentive-error",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "egocentric-bias",
+      "target": "extrinsic-incentive-error"
+    },
+    {
+      "source": "fading-affect-bias",
+      "target": "rosy-retrospection"
+    },
+    {
+      "source": "declinism",
+      "target": "fading-affect-bias"
+    },
+    {
+      "source": "fading-affect-bias",
+      "target": "negativity-bias"
+    },
+    {
+      "source": "false-consensus-effect",
+      "target": "naive-realism"
+    },
+    {
+      "source": "focalism",
+      "target": "impact-bias"
+    },
+    {
+      "source": "focalism",
+      "target": "immune-neglect"
+    },
+    {
+      "source": "framing-effect",
+      "target": "loss-aversion"
+    },
+    {
+      "source": "frequency-illusion",
+      "target": "selective-perception"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "frequency-illusion"
+    },
+    {
+      "source": "functional-fixedness",
+      "target": "law-of-the-instrument"
+    },
+    {
+      "source": "essentialism",
+      "target": "functional-fixedness"
+    },
+    {
+      "source": "functional-fixedness",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "ultimate-attribution-error"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "naive-realism"
+    },
+    {
+      "source": "gamblers-fallacy",
+      "target": "hot-hand-fallacy"
+    },
+    {
+      "source": "gamblers-fallacy",
+      "target": "insensitivity-to-sample-size"
     },
     {
       "source": "goodharts-law",
