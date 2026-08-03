@@ -1,8 +1,9 @@
-name: Docker build
+# Preview local only — Netlify là platform deploy production (xem netlify.toml).
+# Workflow này KHÔNG chạy tự động; bấm "Run workflow" trên GitHub Actions khi cần
+# kiểm tra Dockerfile còn build được (dùng cho docker compose preview).
+name: Docker build (manual)
 
 on:
-  push:
-    branches: [new, master]
   workflow_dispatch:
 
 jobs:
