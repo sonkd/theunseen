@@ -286,7 +286,8 @@
       "title": "Continued influence effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory",
+        "bias"
       ]
     },
     {
@@ -294,7 +295,8 @@
       "title": "Contrast effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "perception",
+        "bias"
       ]
     },
     {
@@ -302,7 +304,9 @@
       "title": "Cross-race effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "perception",
+        "memory",
+        "social"
       ]
     },
     {
@@ -310,7 +314,7 @@
       "title": "Cryptomnesia",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -318,7 +322,7 @@
       "title": "Cue-dependent forgetting",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -326,7 +330,8 @@
       "title": "Curse of knowledge",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -334,7 +339,7 @@
       "title": "Declinism",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -342,7 +347,8 @@
       "title": "Decoy effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "heuristic"
       ]
     },
     {
@@ -350,7 +356,8 @@
       "title": "Defensive attribution hypothesis",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -358,7 +365,7 @@
       "title": "Denomination effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -366,7 +373,7 @@
       "title": "Disposition effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -374,7 +381,8 @@
       "title": "Distinction bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "perception"
       ]
     },
     {
@@ -390,7 +398,7 @@
       "title": "Dunning-Kruger effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -398,7 +406,8 @@
       "title": "Duration neglect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory",
+        "bias"
       ]
     },
     {
@@ -406,7 +415,7 @@
       "title": "Effort justification",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1861,6 +1870,158 @@
       "target": "conservatism"
     },
     {
+      "source": "continued-influence-effect",
+      "target": "misinformation-effect"
+    },
+    {
+      "source": "continued-influence-effect",
+      "target": "illusory-truth-effect"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "continued-influence-effect"
+    },
+    {
+      "source": "contrast-effect",
+      "target": "decoy-effect"
+    },
+    {
+      "source": "contrast-effect",
+      "target": "distinction-bias"
+    },
+    {
+      "source": "contrast-effect",
+      "target": "framing-effect"
+    },
+    {
+      "source": "cross-race-effect",
+      "target": "mere-exposure-effect"
+    },
+    {
+      "source": "cross-race-effect",
+      "target": "in-group-bias"
+    },
+    {
+      "source": "cross-race-effect",
+      "target": "out-group-homogeneity-bias"
+    },
+    {
+      "source": "cross-race-effect",
+      "target": "stereotyping"
+    },
+    {
+      "source": "cryptomnesia",
+      "target": "misattribution-of-memory"
+    },
+    {
+      "source": "cryptomnesia",
+      "target": "source-confusion"
+    },
+    {
+      "source": "confabulation",
+      "target": "cryptomnesia"
+    },
+    {
+      "source": "cue-dependent-forgetting",
+      "target": "tip-of-the-tongue-phenomenon"
+    },
+    {
+      "source": "cue-dependent-forgetting",
+      "target": "levels-of-processing-effect"
+    },
+    {
+      "source": "cue-dependent-forgetting",
+      "target": "memory-inhibition"
+    },
+    {
+      "source": "cue-dependent-forgetting",
+      "target": "spacing-effect"
+    },
+    {
+      "source": "curse-of-knowledge",
+      "target": "illusion-of-transparency"
+    },
+    {
+      "source": "curse-of-knowledge",
+      "target": "hindsight-bias"
+    },
+    {
+      "source": "curse-of-knowledge",
+      "target": "illusion-of-asymmetric-insight"
+    },
+    {
+      "source": "declinism",
+      "target": "rosy-retrospection"
+    },
+    {
+      "source": "declinism",
+      "target": "negativity-bias"
+    },
+    {
+      "source": "declinism",
+      "target": "optimism-bias"
+    },
+    {
+      "source": "anchoring",
+      "target": "decoy-effect"
+    },
+    {
+      "source": "decoy-effect",
+      "target": "framing-effect"
+    },
+    {
+      "source": "decoy-effect",
+      "target": "less-is-better-effect"
+    },
+    {
+      "source": "defensive-attribution-hypothesis",
+      "target": "just-world-hypothesis"
+    },
+    {
+      "source": "defensive-attribution-hypothesis",
+      "target": "fundamental-attribution-error"
+    },
+    {
+      "source": "defensive-attribution-hypothesis",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "denomination-effect",
+      "target": "mental-accounting"
+    },
+    {
+      "source": "denomination-effect",
+      "target": "money-illusion"
+    },
+    {
+      "source": "denomination-effect",
+      "target": "unit-bias"
+    },
+    {
+      "source": "disposition-effect",
+      "target": "loss-aversion"
+    },
+    {
+      "source": "disposition-effect",
+      "target": "sunk-cost-fallacy"
+    },
+    {
+      "source": "disposition-effect",
+      "target": "endowment-effect"
+    },
+    {
+      "source": "disposition-effect",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "distinction-bias",
+      "target": "focalism"
+    },
+    {
+      "source": "distinction-bias",
+      "target": "framing-effect"
+    },
+    {
       "source": "anchoring",
       "target": "dual-process-theory"
     },
@@ -1871,6 +2032,38 @@
     {
       "source": "confirmation-bias",
       "target": "dual-process-theory"
+    },
+    {
+      "source": "dunning-kruger-effect",
+      "target": "illusory-superiority"
+    },
+    {
+      "source": "dunning-kruger-effect",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "dunning-kruger-effect",
+      "target": "hard-easy-effect"
+    },
+    {
+      "source": "duration-neglect",
+      "target": "peak-end-rule"
+    },
+    {
+      "source": "duration-neglect",
+      "target": "telescoping-effect"
+    },
+    {
+      "source": "effort-justification",
+      "target": "ikea-effect"
+    },
+    {
+      "source": "effort-justification",
+      "target": "sunk-cost-fallacy"
+    },
+    {
+      "source": "effort-justification",
+      "target": "escalation-of-commitment"
     },
     {
       "source": "goodharts-law",

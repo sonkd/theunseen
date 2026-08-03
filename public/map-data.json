@@ -106,7 +106,7 @@
         {
           "slug": "continued-influence-effect",
           "title": "Continued influence effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.06451612903225806,
           "y": 0.6363636363636364
@@ -114,7 +114,7 @@
         {
           "slug": "cryptomnesia",
           "title": "Cryptomnesia",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.06989247311827956,
           "y": 0.36363636363636365
@@ -122,7 +122,7 @@
         {
           "slug": "declinism",
           "title": "Declinism",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.07526881720430108,
           "y": 0.5454545454545454
@@ -130,7 +130,7 @@
         {
           "slug": "denomination-effect",
           "title": "Denomination effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.08064516129032258,
           "y": 0.36363636363636365
@@ -138,7 +138,7 @@
         {
           "slug": "dunning-kruger-effect",
           "title": "Dunning-Kruger effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.08602150537634409,
           "y": 0.5454545454545454
@@ -594,7 +594,7 @@
         {
           "slug": "contrast-effect",
           "title": "Contrast effect",
-          "icon": "●",
+          "icon": "☀︎",
           "zone": 1,
           "x": 0.3978494623655914,
           "y": 0.6363636363636364
@@ -602,7 +602,7 @@
         {
           "slug": "cue-dependent-forgetting",
           "title": "Cue-dependent forgetting",
-          "icon": "●",
+          "icon": "☾",
           "zone": 1,
           "x": 0.4032258064516129,
           "y": 0.36363636363636365
@@ -610,7 +610,7 @@
         {
           "slug": "decoy-effect",
           "title": "Decoy effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.40860215053763443,
           "y": 0.6363636363636364
@@ -618,7 +618,7 @@
         {
           "slug": "disposition-effect",
           "title": "Disposition effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.41397849462365593,
           "y": 0.36363636363636365
@@ -626,7 +626,7 @@
         {
           "slug": "duration-neglect",
           "title": "Duration neglect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 1,
           "x": 0.41935483870967744,
           "y": 0.5454545454545454
@@ -1082,7 +1082,7 @@
         {
           "slug": "cross-race-effect",
           "title": "Cross-race effect",
-          "icon": "●",
+          "icon": "☀︎",
           "zone": 2,
           "x": 0.7311827956989247,
           "y": 0.5454545454545454
@@ -1090,7 +1090,7 @@
         {
           "slug": "curse-of-knowledge",
           "title": "Curse of knowledge",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7365591397849462,
           "y": 0.36363636363636365
@@ -1098,7 +1098,7 @@
         {
           "slug": "defensive-attribution-hypothesis",
           "title": "Defensive attribution hypothesis",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7419354838709677,
           "y": 0.5454545454545454
@@ -1106,7 +1106,7 @@
         {
           "slug": "distinction-bias",
           "title": "Distinction bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7473118279569892,
           "y": 0.36363636363636365
@@ -1114,7 +1114,7 @@
         {
           "slug": "effort-justification",
           "title": "Effort justification",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7526881720430108,
           "y": 0.5454545454545454
