@@ -60,10 +60,12 @@ Commit vào branch `new` (đã được duyệt cho job tự động — xem CLA
 
 ## Bước 6 — Build
 
-Docker **không có** trong môi trường sandbox → không build image tại đây.
-Thay vào đó: `npm run build` ở bước 3 đã xác nhận site build được; image Docker do CI dựng
-(`.github/workflows/docker.yml`) khi branch `new` được push.
-Nếu Docker khả dụng (chạy trên máy Núi), có thể chạy thêm: `docker compose build web`.
+**Netlify là platform deploy production duy nhất** — tự chạy khi branch được push
+(cấu hình trong `netlify.toml`). Job này KHÔNG push, nên nhắc trong báo cáo rằng cần push
+để Netlify deploy.
+
+Docker không có trong môi trường sandbox và cũng không phải đường deploy production
+(chỉ dùng preview local) → không build image tại đây. `npm run build` ở bước 3 là smoke test đủ.
 
 ## Báo cáo cuối
 
