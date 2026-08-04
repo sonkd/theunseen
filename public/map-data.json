@@ -186,7 +186,7 @@
         {
           "slug": "generation-effect",
           "title": "Generation effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.11827956989247312,
           "y": 0.5454545454545454
@@ -194,7 +194,7 @@
         {
           "slug": "halo-effect",
           "title": "Halo effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.12365591397849462,
           "y": 0.36363636363636365
@@ -202,7 +202,7 @@
         {
           "slug": "hot-hand-fallacy",
           "title": "Hot-hand fallacy",
-          "icon": "●",
+          "icon": "✱",
           "zone": 0,
           "x": 0.12903225806451613,
           "y": 0.5454545454545454
@@ -210,7 +210,7 @@
         {
           "slug": "ikea-effect",
           "title": "IKEA effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.13440860215053763,
           "y": 0.2727272727272727
@@ -218,7 +218,7 @@
         {
           "slug": "illusion-of-external-agency",
           "title": "Illusion of external agency",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.13978494623655913,
           "y": 0.5454545454545454
@@ -226,7 +226,7 @@
         {
           "slug": "illusory-correlation",
           "title": "Illusory correlation",
-          "icon": "●",
+          "icon": "✱",
           "zone": 0,
           "x": 0.14516129032258066,
           "y": 0.36363636363636365
@@ -682,7 +682,7 @@
         {
           "slug": "hard-easy-effect",
           "title": "Hard-easy effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.45698924731182794,
           "y": 0.2727272727272727
@@ -690,7 +690,7 @@
         {
           "slug": "hyperbolic-discounting",
           "title": "Hyperbolic discounting",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.46236559139784944,
           "y": 0.45454545454545453
@@ -698,7 +698,7 @@
         {
           "slug": "illusion-of-asymmetric-insight",
           "title": "Illusion of asymmetric insight",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.46774193548387094,
           "y": 0.2727272727272727
@@ -706,7 +706,7 @@
         {
           "slug": "illusion-of-transparency",
           "title": "Illusion of transparency",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.4731182795698925,
           "y": 0.45454545454545453
@@ -1162,7 +1162,7 @@
         {
           "slug": "group-attribution-error",
           "title": "Group attribution error",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7849462365591398,
           "y": 0.45454545454545453
@@ -1170,7 +1170,7 @@
         {
           "slug": "hindsight-bias",
           "title": "Hindsight bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7903225806451613,
           "y": 0.2727272727272727
@@ -1178,7 +1178,7 @@
         {
           "slug": "identifiable-victim-effect",
           "title": "Identifiable victim effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.7956989247311828,
           "y": 0.45454545454545453
@@ -1186,7 +1186,7 @@
         {
           "slug": "illusion-of-control",
           "title": "Illusion of control",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8010752688172043,
           "y": 0.2727272727272727
@@ -1194,7 +1194,7 @@
         {
           "slug": "illusion-of-validity",
           "title": "Illusion of validity",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8064516129032258,
           "y": 0.45454545454545453

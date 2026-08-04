@@ -548,7 +548,7 @@
       "title": "Generation effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -565,7 +565,8 @@
       "title": "Group attribution error",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -573,7 +574,8 @@
       "title": "Halo effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -581,7 +583,7 @@
       "title": "Hard-easy effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -589,7 +591,8 @@
       "title": "Hindsight bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "memory"
       ]
     },
     {
@@ -597,7 +600,7 @@
       "title": "Hot-hand fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -605,7 +608,7 @@
       "title": "Hyperbolic discounting",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -613,7 +616,8 @@
       "title": "Identifiable victim effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -621,7 +625,7 @@
       "title": "IKEA effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -629,7 +633,8 @@
       "title": "Illusion of asymmetric insight",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -637,7 +642,7 @@
       "title": "Illusion of control",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -645,7 +650,7 @@
       "title": "Illusion of external agency",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -653,7 +658,8 @@
       "title": "Illusion of transparency",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -661,7 +667,7 @@
       "title": "Illusion of validity",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -669,7 +675,7 @@
       "title": "Illusory correlation",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -2257,6 +2263,118 @@
     {
       "source": "automation-bias",
       "target": "goodharts-law"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "group-attribution-error"
+    },
+    {
+      "source": "group-attribution-error",
+      "target": "ultimate-attribution-error"
+    },
+    {
+      "source": "group-attribution-error",
+      "target": "in-group-bias"
+    },
+    {
+      "source": "group-attribution-error",
+      "target": "stereotyping"
+    },
+    {
+      "source": "halo-effect",
+      "target": "stereotyping"
+    },
+    {
+      "source": "halo-effect",
+      "target": "primacy-effect"
+    },
+    {
+      "source": "halo-effect",
+      "target": "implicit-stereotypes"
+    },
+    {
+      "source": "hard-easy-effect",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "hindsight-bias",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "hot-hand-fallacy",
+      "target": "illusory-correlation"
+    },
+    {
+      "source": "hyperbolic-discounting",
+      "target": "time-discounting"
+    },
+    {
+      "source": "hyperbolic-discounting",
+      "target": "loss-aversion"
+    },
+    {
+      "source": "empathy-gap",
+      "target": "identifiable-victim-effect"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "identifiable-victim-effect"
+    },
+    {
+      "source": "ikea-effect",
+      "target": "sunk-cost-fallacy"
+    },
+    {
+      "source": "egocentric-bias",
+      "target": "illusion-of-asymmetric-insight"
+    },
+    {
+      "source": "illusion-of-asymmetric-insight",
+      "target": "illusion-of-transparency"
+    },
+    {
+      "source": "illusion-of-asymmetric-insight",
+      "target": "spotlight-effect"
+    },
+    {
+      "source": "illusion-of-control",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "illusion-of-control",
+      "target": "optimism-bias"
+    },
+    {
+      "source": "choice-supportive-bias",
+      "target": "illusion-of-external-agency"
+    },
+    {
+      "source": "illusion-of-control",
+      "target": "illusion-of-external-agency"
+    },
+    {
+      "source": "illusion-of-transparency",
+      "target": "spotlight-effect"
+    },
+    {
+      "source": "egocentric-bias",
+      "target": "illusion-of-transparency"
+    },
+    {
+      "source": "illusion-of-validity",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "base-rate-fallacy",
+      "target": "illusion-of-validity"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "illusion-of-validity"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "illusory-correlation"
     },
     {
       "source": "inversion",
