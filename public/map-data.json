@@ -266,7 +266,7 @@
         {
           "slug": "leveling-and-sharpening",
           "title": "Leveling and sharpening",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.17204301075268819,
           "y": 0.45454545454545453
@@ -714,7 +714,7 @@
         {
           "slug": "illusory-superiority",
           "title": "Illusory superiority",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.478494623655914,
           "y": 0.2727272727272727
@@ -1234,7 +1234,7 @@
         {
           "slug": "less-is-better-effect",
           "title": "Less-is-better effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8333333333333334,
           "y": 0.2727272727272727

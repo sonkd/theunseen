@@ -683,7 +683,7 @@
       "title": "Illusory superiority",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -787,7 +787,8 @@
       "title": "Law of triviality",
       "level": 2,
       "categories": [
-        "mental-models"
+        "mental-models",
+        "social"
       ]
     },
     {
@@ -795,7 +796,8 @@
       "title": "Less-is-better effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "perception"
       ]
     },
     {
@@ -803,7 +805,7 @@
       "title": "Leveling and sharpening",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -2377,12 +2379,180 @@
       "target": "illusory-correlation"
     },
     {
+      "source": "illusory-superiority",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "illusory-superiority",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "illusory-superiority",
+      "target": "lake-wobegone-effect"
+    },
+    {
+      "source": "illusory-truth-effect",
+      "target": "mere-exposure-effect"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "illusory-truth-effect"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "illusory-truth-effect"
+    },
+    {
+      "source": "affective-forecasting",
+      "target": "immune-neglect"
+    },
+    {
+      "source": "immune-neglect",
+      "target": "impact-bias"
+    },
+    {
+      "source": "immune-neglect",
+      "target": "projection-bias"
+    },
+    {
+      "source": "impact-bias",
+      "target": "projection-bias"
+    },
+    {
+      "source": "impact-bias",
+      "target": "optimism-bias"
+    },
+    {
+      "source": "implicit-stereotypes",
+      "target": "stereotyping"
+    },
+    {
+      "source": "implicit-stereotypes",
+      "target": "in-group-bias"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "implicit-stereotypes"
+    },
+    {
+      "source": "in-group-bias",
+      "target": "out-group-homogeneity-bias"
+    },
+    {
+      "source": "in-group-bias",
+      "target": "ultimate-attribution-error"
+    },
+    {
+      "source": "in-group-bias",
+      "target": "stereotyping"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "information-bias"
+    },
+    {
+      "source": "information-bias",
+      "target": "zero-risk-bias"
+    },
+    {
+      "source": "information-bias",
+      "target": "neglect-of-probability"
+    },
+    {
+      "source": "hot-hand-fallacy",
+      "target": "insensitivity-to-sample-size"
+    },
+    {
+      "source": "clustering-illusion",
+      "target": "insensitivity-to-sample-size"
+    },
+    {
       "source": "inversion",
       "target": "second-order-thinking"
     },
     {
       "source": "inversion",
       "target": "planning-fallacy"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "just-world-hypothesis"
+    },
+    {
+      "source": "just-world-hypothesis",
+      "target": "system-justification"
+    },
+    {
+      "source": "lake-wobegone-effect",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "lake-wobegone-effect",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "law-of-narrative-gravity"
+    },
+    {
+      "source": "bandwagon-effect",
+      "target": "law-of-narrative-gravity"
+    },
+    {
+      "source": "illusory-truth-effect",
+      "target": "law-of-narrative-gravity"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "law-of-narrative-gravity"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "law-of-the-instrument"
+    },
+    {
+      "source": "law-of-the-instrument",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "attribute-substitution",
+      "target": "law-of-triviality"
+    },
+    {
+      "source": "dunning-kruger-effect",
+      "target": "law-of-triviality"
+    },
+    {
+      "source": "law-of-the-instrument",
+      "target": "law-of-triviality"
+    },
+    {
+      "source": "distinction-bias",
+      "target": "less-is-better-effect"
+    },
+    {
+      "source": "contrast-effect",
+      "target": "less-is-better-effect"
+    },
+    {
+      "source": "framing-effect",
+      "target": "less-is-better-effect"
+    },
+    {
+      "source": "leveling-and-sharpening",
+      "target": "misinformation-effect"
+    },
+    {
+      "source": "confabulation",
+      "target": "leveling-and-sharpening"
+    },
+    {
+      "source": "leveling-and-sharpening",
+      "target": "memory-inhibition"
+    },
+    {
+      "source": "leveling-and-sharpening",
+      "target": "misattribution-of-memory"
     },
     {
       "source": "goodharts-law",
