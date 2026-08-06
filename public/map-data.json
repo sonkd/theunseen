@@ -274,7 +274,7 @@
         {
           "slug": "magic-number-7-2",
           "title": "Magic number 7+-2",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.1774193548387097,
           "y": 0.2727272727272727
@@ -282,7 +282,7 @@
         {
           "slug": "mental-accounting",
           "title": "Mental accounting",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.1827956989247312,
           "y": 0.45454545454545453
@@ -290,7 +290,7 @@
         {
           "slug": "misinformation-effect",
           "title": "Misinformation effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.1881720430107527,
           "y": 0.2727272727272727
@@ -298,7 +298,7 @@
         {
           "slug": "moral-luck",
           "title": "Moral luck",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.1935483870967742,
           "y": 0.5454545454545454
@@ -306,7 +306,7 @@
         {
           "slug": "naive-realism",
           "title": "Naïve realism",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.1989247311827957,
           "y": 0.2727272727272727
@@ -754,7 +754,7 @@
         {
           "slug": "levels-of-processing-effect",
           "title": "Levels of processing effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 1,
           "x": 0.5053763440860215,
           "y": 0.45454545454545453
@@ -762,7 +762,7 @@
         {
           "slug": "masked-man-fallacy",
           "title": "Masked man fallacy",
-          "icon": "●",
+          "icon": "✱",
           "zone": 1,
           "x": 0.510752688172043,
           "y": 0.2727272727272727
@@ -770,7 +770,7 @@
         {
           "slug": "mere-exposure-effect",
           "title": "Mere exposure effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.5161290322580645,
           "y": 0.45454545454545453
@@ -778,15 +778,15 @@
         {
           "slug": "modality-effect",
           "title": "Modality effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 1,
           "x": 0.521505376344086,
           "y": 0.36363636363636365
         },
         {
           "slug": "murphys-law",
-          "title": "Murphy’s Law",
-          "icon": "●",
+          "title": "Murphy's Law",
+          "icon": "◆",
           "zone": 1,
           "x": 0.5268817204301075,
           "y": 0.5454545454545454
@@ -1242,7 +1242,7 @@
         {
           "slug": "loss-aversion",
           "title": "Loss aversion",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8387096774193549,
           "y": 0.45454545454545453
@@ -1250,7 +1250,7 @@
         {
           "slug": "memory-inhibition",
           "title": "Memory inhibition",
-          "icon": "●",
+          "icon": "☾",
           "zone": 2,
           "x": 0.8440860215053764,
           "y": 0.2727272727272727
@@ -1258,7 +1258,7 @@
         {
           "slug": "misattribution-of-memory",
           "title": "Misattribution of memory",
-          "icon": "●",
+          "icon": "☾",
           "zone": 2,
           "x": 0.8494623655913979,
           "y": 0.5454545454545454
@@ -1266,7 +1266,7 @@
         {
           "slug": "money-illusion",
           "title": "Money illusion",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8548387096774194,
           "y": 0.36363636363636365
@@ -1274,7 +1274,7 @@
         {
           "slug": "naive-cynicism",
           "title": "Naïve cynicism",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8602150537634409,
           "y": 0.5454545454545454

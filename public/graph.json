@@ -813,7 +813,7 @@
       "title": "Levels of processing effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -821,7 +821,7 @@
       "title": "Loss aversion",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -829,7 +829,7 @@
       "title": "Magic number 7+-2",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -837,7 +837,7 @@
       "title": "Masked man fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "fallacy"
       ]
     },
     {
@@ -845,7 +845,7 @@
       "title": "Memory inhibition",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -853,7 +853,7 @@
       "title": "Mental accounting",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -861,7 +861,8 @@
       "title": "Mere exposure effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -869,7 +870,7 @@
       "title": "Misattribution of memory",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -877,7 +878,7 @@
       "title": "Misinformation effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -885,7 +886,8 @@
       "title": "Modality effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory",
+        "perception"
       ]
     },
     {
@@ -893,7 +895,7 @@
       "title": "Money illusion",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -901,15 +903,16 @@
       "title": "Moral luck",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
       "id": "murphys-law",
-      "title": "Murphy’s Law",
+      "title": "Murphy's Law",
       "level": 2,
       "categories": [
-        "mental-models"
+        "heuristic"
       ]
     },
     {
@@ -917,7 +920,8 @@
       "title": "Naïve cynicism",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -925,7 +929,8 @@
       "title": "Naïve realism",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -2553,6 +2558,138 @@
     {
       "source": "leveling-and-sharpening",
       "target": "misattribution-of-memory"
+    },
+    {
+      "source": "generation-effect",
+      "target": "levels-of-processing-effect"
+    },
+    {
+      "source": "levels-of-processing-effect",
+      "target": "spacing-effect"
+    },
+    {
+      "source": "levels-of-processing-effect",
+      "target": "testing-effect"
+    },
+    {
+      "source": "levels-of-processing-effect",
+      "target": "picture-superiority-effect"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "sunk-cost-fallacy"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "mental-accounting"
+    },
+    {
+      "source": "magic-number-7-2",
+      "target": "serial-position-effect"
+    },
+    {
+      "source": "magic-number-7-2",
+      "target": "spacing-effect"
+    },
+    {
+      "source": "argument-from-fallacy",
+      "target": "masked-man-fallacy"
+    },
+    {
+      "source": "belief-bias",
+      "target": "masked-man-fallacy"
+    },
+    {
+      "source": "memory-inhibition",
+      "target": "misinformation-effect"
+    },
+    {
+      "source": "memory-inhibition",
+      "target": "misattribution-of-memory"
+    },
+    {
+      "source": "mental-accounting",
+      "target": "sunk-cost-fallacy"
+    },
+    {
+      "source": "mental-accounting",
+      "target": "money-illusion"
+    },
+    {
+      "source": "halo-effect",
+      "target": "mere-exposure-effect"
+    },
+    {
+      "source": "frequency-illusion",
+      "target": "mere-exposure-effect"
+    },
+    {
+      "source": "misattribution-of-memory",
+      "target": "misinformation-effect"
+    },
+    {
+      "source": "cue-dependent-forgetting",
+      "target": "misattribution-of-memory"
+    },
+    {
+      "source": "levels-of-processing-effect",
+      "target": "modality-effect"
+    },
+    {
+      "source": "modality-effect",
+      "target": "picture-superiority-effect"
+    },
+    {
+      "source": "modality-effect",
+      "target": "serial-position-effect"
+    },
+    {
+      "source": "anchoring",
+      "target": "money-illusion"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "money-illusion"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "moral-luck"
+    },
+    {
+      "source": "moral-luck",
+      "target": "outcome-bias"
+    },
+    {
+      "source": "hindsight-bias",
+      "target": "moral-luck"
+    },
+    {
+      "source": "illusion-of-control",
+      "target": "murphys-law"
+    },
+    {
+      "source": "murphys-law",
+      "target": "pessimism-bias"
+    },
+    {
+      "source": "hindsight-bias",
+      "target": "murphys-law"
+    },
+    {
+      "source": "naive-cynicism",
+      "target": "naive-realism"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "naive-cynicism"
+    },
+    {
+      "source": "naive-cynicism",
+      "target": "self-serving-bias"
     },
     {
       "source": "goodharts-law",
