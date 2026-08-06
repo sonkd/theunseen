@@ -16,14 +16,11 @@ const related = s.data.links
   .filter(Boolean);
 ---
 <Base title={s.data.title} description={s.data.back}>
-  <article data-pagefind-body data-pagefind-meta>
-    <script type="application/json" data-pagefind-meta>
-      {JSON.stringify({ title: s.data.title })}
-    </script>
+  <article data-pagefind-body>
     <p class="meta">Map {s.data.level} — {LEVEL_MAPS[s.data.level]} · {s.data.categories.join(', ')}</p>
     <div class="title-row">
       <StuffThumb slug={s.id} title={s.data.title} image={s.data.image} categories={s.data.categories} level={s.data.level} icon={s.data.icon} />
-      <h1>{s.data.title}</h1>
+      <h1 data-pagefind-meta="title">{s.data.title}</h1>
     </div>
     <FlipCard front={s.data.front} back={s.data.back} icon={iconFor(s.id, s.data.categories, s.data.icon)} />
     {s.data.strategy && <p><strong>Strategy:</strong> {s.data.strategy}</p>}

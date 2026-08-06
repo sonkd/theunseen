@@ -3,10 +3,6 @@ import StuffThumb from '../StuffThumb.astro';
 ---
 <div id="stuff-overlay" class="stuff-overlay hidden" aria-hidden="true">
   <div class="overlay-backdrop" data-close="true"></div>
-  <aside class="overlay-side overlay-refs">
-    <div class="panel-label">REFS · LIÊN QUAN</div>
-    <ul id="stuff-refs"></ul>
-  </aside>
   <section
     class="overlay-card"
     id="overlay-card"
@@ -17,38 +13,54 @@ import StuffThumb from '../StuffThumb.astro';
     <div class="flip-hint hidden" id="flip-hint">Bấm để lật · Click to flip</div>
     <div class="card-inner" id="card-inner">
       <div class="card-face card-front" id="card-front">
-        <div class="card-top">
-          <StuffThumb slug="" title="" id="front" />
-          <span class="card-icon" id="stuff-icon-front"></span>
-          <span class="card-name" id="stuff-title-front"></span>
+        <div class="card-band" id="card-band">
+          <span class="band-cat" id="stuff-cat"></span>
+          <span class="band-map" id="stuff-map-front"></span>
         </div>
-        <div class="card-cats" id="stuff-cats"></div>
-        <div class="card-stage" id="stuff-stage-front"></div>
-        <p class="card-text" id="stuff-front"></p>
+        <div class="card-scroll">
+          <div class="card-illustration" id="card-illustration">
+            <StuffThumb slug="" title="" id="front" />
+          </div>
+          <h2 class="card-title" id="stuff-title-front"></h2>
+          <p class="card-front-q" id="stuff-front"></p>
+          <div class="card-definition">
+            <span class="field-label">ĐỊNH NGHĨA</span>
+            <p id="stuff-back"></p>
+          </div>
+          <div class="card-loop-in" id="card-loop-in">
+            <span class="field-label">LOOP IN</span>
+            <ul id="stuff-links"></ul>
+          </div>
+        </div>
         <div class="card-footer">
+          <span class="footer-map" id="stuff-map-footer-front"></span>
+          <span class="footer-spacer"></span>
           <button id="overlay-close" type="button">CLOSE · ĐÓNG</button>
           <button id="overlay-share" type="button">SHARE · CHIA SẺ</button>
         </div>
       </div>
       <div class="card-face card-back" id="card-back">
-        <div class="back-label">BACK · MẶT SAU</div>
-        <div class="card-top">
-          <StuffThumb slug="" title="" id="back" />
-          <span class="card-icon" id="stuff-icon-back"></span>
-          <span class="card-name" id="stuff-title-back"></span>
+        <h2 class="card-title back-title" id="stuff-title-back"></h2>
+        <div class="card-scroll">
+          <div class="card-body" id="stuff-body"></div>
+          <div class="card-strategy hidden" id="card-strategy">
+            <span class="field-label">STRATEGY</span>
+            <p id="stuff-strategy"></p>
+          </div>
+          <div class="card-refs" id="card-refs">
+            <span class="field-label">READ MORE</span>
+            <ul id="stuff-refs"></ul>
+          </div>
         </div>
-        <div class="card-body" id="stuff-body"></div>
-        <div class="card-stage" id="stuff-stage-back"></div>
         <div class="card-footer">
+          <span class="footer-site">THE UNSEEN</span>
+          <span class="footer-map" id="stuff-map-footer-back"></span>
+          <span class="footer-spacer"></span>
           <button id="overlay-close-back" type="button">CLOSE · ĐÓNG</button>
         </div>
       </div>
     </div>
   </section>
-  <aside class="overlay-side overlay-links">
-    <div class="panel-label">LINKS</div>
-    <ul id="stuff-links"></ul>
-  </aside>
 </div>
 
 <script>
@@ -64,6 +76,7 @@ import StuffThumb from '../StuffThumb.astro';
   const shareButton = document.getElementById('overlay-share')
   const closeButton = document.getElementById('overlay-close')
   const closeButtonBack = document.getElementById('overlay-close-back')
+  const strategyBlock = document.getElementById('card-strategy')
 
   const FLIP_HINT_KEY = 'unseen:flip-hint-seen'
   let hintHoverActive = false
@@ -93,63 +106,70 @@ import StuffThumb from '../StuffThumb.astro';
     if (node) node.textContent = value
   }
 
+  // Chọn màu chữ tương phản với màu nền băng đầu thẻ (pal.icon dao động từ
+  // pastel sáng tới nâu đậm tuỳ map) — tính luminance thay vì hard-code.
+  function contrastTextColor(hex) {
+    const value = (hex || '').replace('#', '')
+    if (value.length !== 6) return '#111114'
+    const r = parseInt(value.slice(0, 2), 16)
+    const g = parseInt(value.slice(2, 4), 16)
+    const b = parseInt(value.slice(4, 6), 16)
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+    return luminance > 0.6 ? '#111114' : '#fdfbf5'
+  }
+
   function updatePanel(item) {
     currentSlug = item.slug
     currentLevel = item.level
     const pal = PALETTE[(item.level || 1) - 1] || PALETTE[0]
-
     const icon = item.icon || '★'
-    ;['stuff-icon-front', 'stuff-icon-back'].forEach(id => {
-      const node = document.getElementById(id)
-      if (node) {
-        node.textContent = icon
-        node.style.color = pal.icon
-        node.style.textShadow = `0 0 10px ${pal.iconGlow}`
-      }
-    })
+
+    overlayCard.style.setProperty('--card-map-color', pal.icon)
+    overlayCard.style.setProperty('--card-map-text', contrastTextColor(pal.icon))
+    overlayCard.style.setProperty('--card-map-glow', pal.iconGlow)
+
     setText('stuff-title-front', item.title || item.slug)
-    setText('stuff-title-back', item.title || item.slug)
-    setText('stuff-front', item.front || item.title || item.slug)
+    setText('stuff-title-back', `Strategy: ${item.title || item.slug}`)
+    setText('stuff-front', item.front || '')
+    setText('stuff-back', item.back || '')
 
-    ;['front', 'back'].forEach(side => {
-      const img = document.getElementById(`${side}-thumb-img`)
-      const fallback = document.getElementById(`${side}-thumb-fallback`)
-      const wrap = document.getElementById(`${side}-thumb`)
-      if (wrap) wrap.dataset.slug = item.slug || ''
-      if (item.image) {
-        if (img) {
-          img.src = item.image
-          img.alt = item.title || item.slug || ''
-          img.style.display = ''
-        }
-        if (fallback) fallback.style.display = 'none'
-      } else {
-        if (img) img.style.display = 'none'
-        if (fallback) {
-          fallback.textContent = icon
-          fallback.style.color = pal.icon
-          fallback.style.display = ''
-        }
+    const wrap = document.getElementById('front-thumb')
+    if (wrap) wrap.dataset.slug = item.slug || ''
+    const img = document.getElementById('front-thumb-img')
+    const fallback = document.getElementById('front-thumb-fallback')
+    if (item.image) {
+      if (img) {
+        img.src = item.image
+        img.alt = item.title || item.slug || ''
+        img.style.display = ''
       }
-    })
+      if (fallback) fallback.style.display = 'none'
+    } else {
+      if (img) img.style.display = 'none'
+      if (fallback) {
+        fallback.textContent = icon
+        fallback.style.color = pal.icon
+        fallback.style.display = ''
+      }
+    }
 
-    const catsNode = document.getElementById('stuff-cats')
-    catsNode.innerHTML = ''
-    const cats = item.categories || []
-    cats.forEach(cat => {
-      const span = document.createElement('span')
-      span.className = 'cat-chip'
-      span.textContent = cat
-      catsNode.appendChild(span)
-    })
+    const categories = item.categories || []
+    setText('stuff-cat', (categories[0] || '').toUpperCase())
 
-    const stage = item.mapGreek && item.mapVn
-      ? `MAP ${item.level} — ${item.mapName} / ${item.mapVn.toUpperCase()}`
-      : ''
-    setText('stuff-stage-front', stage)
-    setText('stuff-stage-back', stage)
+    const mapLabel = `Map ${item.level} · ${item.mapVn || item.mapName || ''}`
+    setText('stuff-map-front', mapLabel)
+    const footerMap = `Map ${item.level}`
+    setText('stuff-map-footer-front', footerMap)
+    setText('stuff-map-footer-back', footerMap)
 
     document.getElementById('stuff-body').innerHTML = item.body_html || '<p>No content available.</p>'
+
+    if (item.strategy) {
+      setText('stuff-strategy', item.strategy)
+      strategyBlock.classList.remove('hidden')
+    } else {
+      strategyBlock.classList.add('hidden')
+    }
 
     refsNode.innerHTML = ''
     const refs = item.refs || []
@@ -314,57 +334,26 @@ import StuffThumb from '../StuffThumb.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 26px;
-    padding: 32px 32px 96px;
+    padding: 32px 16px;
   }
   .overlay-backdrop {
     position: absolute;
     inset: 0;
     background: rgba(8, 6, 2, .82);
   }
-  .overlay-side {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 190px;
-    flex: none;
-  }
-  .panel-label {
-    font-family: var(--font-pixel);
-    font-size: 8px;
-    color: #fff;
-    opacity: .7;
-  }
-  .overlay-side ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  /* refs/links <li>/<a> được tạo runtime (document.createElement) → không có
-     data-astro-cid-* nên CSS scoped thường không match. Dùng :global() giới
-     hạn trong .overlay-side/.overlay-refs/.overlay-links (class tĩnh, SSR) để
-     không rò rỉ ra ngoài component. */
-  .overlay-side :global(li) { display: block; }
-  .overlay-refs :global(a),
-  .overlay-links :global(a) {
-    display: block;
-    background: #fff;
-    border: 2px solid var(--ink);
-    border-radius: 6px;
-    padding: 12px 14px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .05em;
-    color: var(--ink);
-  }
-  .overlay-refs :global(a):hover,
-  .overlay-links :global(a):hover { background: var(--surface); text-decoration: none; }
 
+  /* Thẻ đơn khối 9:16, ~420px rộng, cao tối đa 82vh — không còn 3 cột rời. */
   .overlay-card {
     position: relative;
-    width: 620px;
-    max-width: 54vw;
-    height: 490px;
-    perspective: 1600px;
+    width: min(420px, 92vw);
+    aspect-ratio: 9 / 16;
+    max-height: 82vh;
+    perspective: 1800px;
     flex: none;
     cursor: pointer;
+    --card-map-color: var(--flame);
+    --card-map-text: var(--ink);
+    --card-map-glow: rgba(240, 163, 67, .6);
   }
   .overlay-card:focus-visible {
     outline: 3px solid var(--flame);
@@ -392,17 +381,17 @@ import StuffThumb from '../StuffThumb.astro';
     inset: 0;
     transform-style: preserve-3d;
     transition: transform .6s ease;
+    border-radius: 24px;
+    box-shadow: 0 30px 70px rgba(10, 8, 4, .45), 0 6px 18px rgba(10, 8, 4, .25);
   }
   .card-inner.is-flipped { transform: rotateY(180deg); }
   .card-face {
     position: absolute;
     inset: 0;
     backface-visibility: hidden;
-    border-radius: 10px;
-    padding: 24px;
+    border-radius: 24px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
     overflow: hidden;
   }
   .card-front {
@@ -412,54 +401,171 @@ import StuffThumb from '../StuffThumb.astro';
   }
   .card-back {
     transform: rotateY(180deg);
-    background: var(--dark-bg);
+    background: var(--dark-bg-2);
     color: #eee;
-    border: 2px solid var(--bg);
-  }
-  .back-label { font-family: var(--font-pixel); font-size: 8px; opacity: .65; }
-  .card-top { display: flex; align-items: center; gap: 10px; }
-  .card-icon { font-size: 22px; }
-  .card-name { font-size: 15px; font-weight: 700; letter-spacing: .04em; }
-  .card-cats { display: flex; flex-wrap: wrap; gap: 8px; }
-  /* .cat-chip cũng được tạo runtime — cùng lý do :global() như trên. */
-  .card-cats :global(.cat-chip) {
-    border: 1.5px solid var(--ink);
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .06em;
-  }
-  .card-stage { font-size: 10px; letter-spacing: .08em; color: var(--muted); }
-  .card-back .card-stage { color: var(--muted-2); }
-  .card-text { margin: 0; font-size: 14px; line-height: 1.55; }
-  .card-body { flex: 1; overflow: auto; font-size: 14px; line-height: 1.6; }
-  .card-body :global(p) { margin: 0 0 .75em; }
-  .card-footer {
-    border-top: 1.5px solid var(--border);
-    padding-top: 14px;
-    display: flex;
+    border: 2px solid var(--ink);
+    padding: 24px;
     gap: 12px;
+  }
+
+  .card-band {
+    flex: none;
+    background: var(--card-map-color);
+    color: var(--card-map-text);
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    letter-spacing: .08em;
+  }
+  .band-cat { font-weight: 700; }
+  .band-map { opacity: .85; }
+
+  .card-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .card-back > .card-scroll { padding: 0; }
+
+  .card-illustration {
+    align-self: center;
+    width: 128px;
+    height: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card-map-color) 16%, #fff);
+    border: 1px solid var(--border);
+  }
+  .card-illustration :global(.stuff-thumb),
+  .card-illustration :global(.stuff-thumb-img),
+  .card-illustration :global(.stuff-thumb-fallback) {
+    width: 128px;
+    height: 128px;
+  }
+  .card-illustration :global(.stuff-thumb-fallback) { font-size: 52px; background: transparent; border: none; }
+
+  .card-title { margin: 0; font-size: 28px; font-weight: 700; line-height: 1.15; text-align: left; }
+  .back-title {
+    flex: none;
+    font-size: 20px;
+    padding: 20px 24px 0;
+    color: #fff;
+  }
+  .card-front-q { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4; }
+
+  .field-label {
+    display: block;
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .card-back .field-label { color: var(--muted-2); }
+
+  .card-definition p { margin: 0; font-size: 13px; line-height: 1.5; }
+
+  .card-loop-in ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  /* <li>/<a> tạo runtime (document.createElement) → không có data-astro-cid-*,
+     CSS scoped thường không match — dùng :global() giới hạn trong khối tĩnh này. */
+  .card-loop-in :global(a) {
+    display: block;
+    background: #fff;
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .card-loop-in :global(a):hover { background: var(--surface); text-decoration: none; }
+
+  .card-body { font-size: 14px; line-height: 1.6; padding: 16px 24px 0; }
+  .card-body :global(p) { margin: 0 0 .75em; }
+  .card-body :global(h1),
+  .card-body :global(h2),
+  .card-body :global(h3) { font-size: 15px; margin: 0 0 .5em; }
+  .card-body :global(ul) { margin: 0 0 .75em; padding-left: 1.2em; }
+
+  .card-strategy {
+    margin: 16px 24px 0;
+    padding: 14px 16px;
+    background: rgba(240, 163, 67, .14);
+    border: 1.5px solid var(--flame);
+    border-radius: 10px;
+  }
+  .card-strategy.hidden { display: none; }
+  .card-strategy p { margin: 0; font-size: 13px; line-height: 1.5; color: #fff; }
+
+  .card-refs { padding: 16px 24px 20px; }
+  .card-refs ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .card-refs :global(a) {
+    font-size: 11px;
+    color: var(--muted-2);
+    word-break: break-all;
+  }
+  .card-refs :global(a):hover { color: #fff; }
+
+  .card-footer {
+    flex: none;
+    border-top: 1.5px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    gap: 10px;
     align-items: center;
   }
-  .card-back .card-footer { border-top-color: rgba(255,255,255,.3); }
+  .card-back .card-footer { border-top-color: rgba(255,255,255,.3); padding: 14px 24px; }
+  .footer-map { font-size: 10px; color: var(--muted); font-family: var(--font-pixel); }
+  .footer-site { font-size: 10px; color: var(--muted-2); font-family: var(--font-pixel); letter-spacing: .06em; }
+  .card-back .footer-map { color: var(--muted-2); }
+  .footer-spacer { flex: 1; }
   .card-footer button {
     border-radius: 7px;
-    padding: 10px 18px;
+    padding: 9px 16px;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: .08em;
+    letter-spacing: .06em;
     cursor: pointer;
+    flex: none;
   }
   #overlay-close { background: var(--ink); color: #fff; border: 2px solid var(--ink); }
   #overlay-share { background: #fff; color: var(--ink); border: 2px solid var(--ink); }
   #overlay-share:hover { background: var(--surface); }
-  #overlay-close-back { background: none; color: var(--bg); border: 2px solid var(--bg); }
+  #overlay-close-back { background: none; color: #fff; border: 2px solid #fff; }
   #overlay-close-back:hover { background: rgba(255,255,255,.12); }
 
-  @media (max-width: 960px) {
-    .stuff-overlay { flex-direction: column; padding: 16px; overflow: auto; }
-    .overlay-side { width: 100%; flex-direction: row; flex-wrap: wrap; }
-    .overlay-card { width: 100%; max-width: 100%; }
+  /* Tôn trọng prefers-reduced-motion: bỏ lật 3D, chuyển sang fade. */
+  @media (prefers-reduced-motion: reduce) {
+    .card-inner { transition: none; transform: none !important; }
+    .card-face {
+      transition: opacity .25s ease;
+      backface-visibility: visible;
+    }
+    .card-back { transform: none; opacity: 0; pointer-events: none; }
+    .card-front { opacity: 1; }
+    .card-inner.is-flipped .card-front { opacity: 0; pointer-events: none; }
+    .card-inner.is-flipped .card-back { opacity: 1; pointer-events: auto; }
+  }
+
+  @media (max-width: 640px) {
+    .stuff-overlay { padding: 0; }
+    .overlay-card {
+      width: 100vw;
+      max-height: 100vh;
+      height: 100vh;
+      aspect-ratio: auto;
+    }
+    .card-inner, .card-face { border-radius: 0; }
   }
 </style>

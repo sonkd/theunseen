@@ -1243,7 +1243,14 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
       // R2-3: đảm bảo canvas giữ focus ngay khi vừa load — window vẫn là nơi
       // gắn keydown (không phải canvas), nhưng focus() tránh việc phím
       // ←/→ bị input/textarea khác trên trang "nuốt" mất trước.
-      canvas?.focus({ preventScroll: true });
+      // Guard: loadMapData() là async — nếu người dùng đã bấm vào search box
+      // (hoặc field khác) trong lúc chờ, không được cướp focus lại, nếu không
+      // gõ chữ vào ô search sẽ rơi vào canvas thay vì input (bug thực tế).
+      const active = document.activeElement;
+      const activeTag = active?.tagName;
+      if (!active || active === document.body || (activeTag !== 'INPUT' && activeTag !== 'TEXTAREA')) {
+        canvas?.focus({ preventScroll: true });
+      }
     });
     window.addEventListener('resize', () => {
       updateCanvasSize();

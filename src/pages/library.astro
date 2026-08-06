@@ -4,6 +4,7 @@ import StuffOverlay from '../components/map/StuffOverlay.astro';
 import StuffThumb from '../components/StuffThumb.astro';
 import { getCollection } from 'astro:content';
 import { iconFor, LEVEL_MAPS } from '../lib/icons';
+import { MAPS as PALETTE } from '../lib/map/palette';
 const stuff = (await getCollection('stuff', ({ data }) => data.published))
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
 const levels = [1, 2, 3, 4];
@@ -46,16 +47,24 @@ const PAGE_SIZE = 50;
       </div>
       <button type="button" class="clear-button" id="clearFilters">Clear</button>
     </div>
+
+    <div class="chips" id="searchChips">
+      <button type="button" class="chip chip-search hidden" id="searchChip" data-filter-type="search">
+        <span id="searchChipLabel">Từ khoá: </span><span aria-hidden="true">✕</span>
+      </button>
+    </div>
   </div>
 
   <ul class="grid" id="cardGrid" data-page-size={PAGE_SIZE}>
     {stuff.map((s) => (
-      <li class="card" data-slug={s.id} data-level={s.data.level.toString()} data-categories={s.data.categories.join(' ')}>
+      <li class="card" data-slug={s.id} data-level={s.data.level.toString()} data-categories={s.data.categories.join(' ')} data-title={s.data.title} data-front={s.data.front}>
         <a href={`/stuff/${s.id}/`} data-slug={s.id}>
           <StuffThumb slug={s.id} title={s.data.title} image={s.data.image} categories={s.data.categories} level={s.data.level} icon={s.data.icon} />
           <span class="card-body">
             <span class="title">{s.data.title}</span>
-            <span class="meta">{s.data.level} · {LEVEL_MAPS[s.data.level]}</span>
+            <span class="meta" style={`--level-color:${PALETTE[s.data.level - 1]?.icon ?? PALETTE[0].icon}`}>
+              <span class="meta-dot" aria-hidden="true"></span>{LEVEL_MAPS[s.data.level]}
+            </span>
           </span>
         </a>
       </li>
@@ -83,16 +92,15 @@ const PAGE_SIZE = 50;
   .filters {
     border: 1px solid var(--border); background: var(--surface);
     padding: .75rem 1rem; border-radius: 12px; margin-bottom: 1.5rem;
-    max-height: 120px; overflow: hidden;
   }
   .filter-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; align-items: baseline; }
   .filters h1 { font-size: 24px; margin: 0; }
   .result-count { color: var(--muted); font-size: 12px; }
   .filter-row {
-    display: flex; align-items: center; gap: .4rem; margin-top: .5rem;
-    overflow-x: auto; scrollbar-width: thin; padding-bottom: .2rem;
+    display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-top: .5rem;
+    padding-bottom: .2rem;
   }
-  .chips { display: flex; flex-wrap: nowrap; gap: .3rem; flex-shrink: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .filter-divider { color: var(--border); flex-shrink: 0; }
   .chip {
     appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text);
@@ -102,6 +110,12 @@ const PAGE_SIZE = 50;
   }
   .chip:hover { transform: translateY(-1px); border-color: var(--flame); }
   .chip.active { background: rgba(240,163,67,.15); border-color: var(--flame); color: var(--flame); }
+  .chip.hidden { display: none; }
+  .chip-search {
+    background: rgba(240,163,67,.15); border-color: var(--flame); color: var(--accent);
+    display: flex; align-items: center; gap: .4rem;
+  }
+  #searchChips:has(.chip-search.hidden) { display: none; }
   .clear-button {
     appearance: none; border: 1px solid var(--border); background: transparent; color: var(--text);
     border-radius: 999px; padding: .35rem .6rem; cursor: pointer; white-space: nowrap; font-size: 12px; flex-shrink: 0;
@@ -123,9 +137,14 @@ const PAGE_SIZE = 50;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
   .meta {
-    color: var(--muted); font-size: 12px; font-family: var(--font-pixel, inherit);
-    border: 1px solid var(--border); border-radius: 999px; padding: .2rem .6rem; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .35rem;
+    color: var(--muted); font-size: 10px; letter-spacing: .08em; font-family: var(--font-pixel, inherit);
+    border: 1px solid var(--border-soft); border-radius: 999px; padding: .2rem .55rem; white-space: nowrap;
     align-self: start;
+  }
+  .meta-dot {
+    width: 6px; height: 6px; border-radius: 50%; flex: none;
+    background: var(--level-color, var(--muted));
   }
   .empty-state {
     text-align: center; padding: 3rem 1rem; color: var(--muted);
@@ -172,6 +191,10 @@ const PAGE_SIZE = 50;
   categoryButtons.forEach((button) => { CATEGORY_LABELS[button.dataset.filterValue] = button.textContent.trim(); });
   const LEVEL_MAPS = ['', 'Imagining', 'Belief', 'Thinking', 'Knowledge'];
 
+  const searchChip = document.getElementById('searchChip');
+  const searchChipLabel = document.getElementById('searchChipLabel');
+  const searchInputs = Array.from(document.querySelectorAll('input[name="q"]'));
+
   const parseValues = (value) => value ? value.split(',').map((item) => item.trim()).filter(Boolean) : [];
 
   const getState = () => {
@@ -180,6 +203,7 @@ const PAGE_SIZE = 50;
     return {
       categories: parseValues(params.get('cat')),
       levels: parseValues(params.get('level')),
+      q: params.get('q') || '',
       page,
     };
   };
@@ -193,11 +217,18 @@ const PAGE_SIZE = 50;
     });
   };
 
+  // Chỉ set/xoá các tham số mà trang này quản lý (cat/level/page/q) — mọi tham số
+  // khác đã có trên URL được giữ nguyên, không dựng lại query từ đầu.
   const updateUrl = (state) => {
-    const params = new URLSearchParams();
-    if (state.categories.length) params.set('cat', state.categories.join(','));
-    if (state.levels.length) params.set('level', state.levels.join(','));
-    if (state.page > 1) params.set('page', String(state.page));
+    const params = new URLSearchParams(window.location.search);
+    const setOrDelete = (key, value) => {
+      if (value) params.set(key, value);
+      else params.delete(key);
+    };
+    setOrDelete('cat', state.categories.length ? state.categories.join(',') : '');
+    setOrDelete('level', state.levels.length ? state.levels.join(',') : '');
+    setOrDelete('q', state.q || '');
+    setOrDelete('page', state.page > 1 ? String(state.page) : '');
     const query = params.toString();
     const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
     window.history.replaceState({}, '', nextUrl);
@@ -215,6 +246,12 @@ const PAGE_SIZE = 50;
     setChipState(categoryButtons, state.categories);
     setChipState(levelButtons, state.levels);
 
+    const q = (state.q || '').trim();
+    const qLower = q.toLowerCase();
+    searchChip.classList.toggle('hidden', !q);
+    searchChipLabel.textContent = `Từ khoá: ${q} `;
+    searchInputs.forEach((input) => { input.value = q; });
+
     const categorySet = new Set(state.categories);
     const levelSet = new Set(state.levels);
 
@@ -223,7 +260,9 @@ const PAGE_SIZE = 50;
       const cardLevel = card.dataset.level;
       const categoryMatch = categorySet.size === 0 || cardCategories.some((cat) => categorySet.has(cat));
       const levelMatch = levelSet.size === 0 || levelSet.has(cardLevel);
-      return categoryMatch && levelMatch;
+      const haystack = `${card.dataset.title} ${card.dataset.front}`.toLowerCase();
+      const searchMatch = !qLower || haystack.includes(qLower);
+      return categoryMatch && levelMatch && searchMatch;
     });
 
     const totalPages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
@@ -240,13 +279,15 @@ const PAGE_SIZE = 50;
       if (inPage) visibleCount += 1;
     });
 
-    resultCount.textContent = `Showing ${visibleCount} / ${matches.length} cards (page ${page} of ${totalPages})`;
+    const searchSuffix = q ? ` matching "${q}"` : '';
+    resultCount.textContent = `Showing ${visibleCount} / ${matches.length} cards${searchSuffix} (page ${page} of ${totalPages})`;
 
     const isEmpty = matches.length === 0;
     cardGrid.classList.toggle('hidden', isEmpty);
     emptyState.classList.toggle('hidden', !isEmpty);
     if (isEmpty) {
       const activeLabels = [
+        ...(q ? [`từ khoá "${q}"`] : []),
         ...state.categories.map((c) => CATEGORY_LABELS[c] ?? c),
         ...state.levels.map((l) => `${l} · ${LEVEL_MAPS[Number(l)]}`),
       ];
@@ -286,7 +327,8 @@ const PAGE_SIZE = 50;
 
   categoryButtons.forEach((button) => button.addEventListener('click', handleChipClick));
   levelButtons.forEach((button) => button.addEventListener('click', handleChipClick));
-  const clearAll = () => applyFilters({ categories: [], levels: [], page: 1 });
+  searchChip.addEventListener('click', () => applyFilters({ ...getState(), q: '', page: 1 }));
+  const clearAll = () => applyFilters({ categories: [], levels: [], q: '', page: 1 });
   clearButton.addEventListener('click', clearAll);
   clearFiltersEmpty.addEventListener('click', clearAll);
   pageNumberButtons.forEach((button) => {
