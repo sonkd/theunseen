@@ -314,7 +314,7 @@
         {
           "slug": "next-in-line-effect",
           "title": "Next-in-line effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.20430107526881722,
           "y": 0.5454545454545454
@@ -322,7 +322,7 @@
         {
           "slug": "observer-expectancy-effect",
           "title": "Observer-expectancy effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.20967741935483872,
           "y": 0.36363636363636365
@@ -330,7 +330,7 @@
         {
           "slug": "optimism-bias",
           "title": "Optimism bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.21505376344086022,
           "y": 0.5454545454545454
@@ -338,7 +338,7 @@
         {
           "slug": "outcome-bias",
           "title": "Outcome bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.22043010752688172,
           "y": 0.2727272727272727
@@ -346,7 +346,7 @@
         {
           "slug": "part-list-cueing-effect",
           "title": "Part-list cueing effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.22580645161290322,
           "y": 0.5454545454545454
@@ -794,7 +794,7 @@
         {
           "slug": "negativity-bias",
           "title": "Negativity bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.532258064516129,
           "y": 0.2727272727272727
@@ -802,7 +802,7 @@
         {
           "slug": "normalcy-bias",
           "title": "Normalcy bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.5376344086021505,
           "y": 0.5454545454545454
@@ -810,7 +810,7 @@
         {
           "slug": "occams-razor",
           "title": "Occam’s razor",
-          "icon": "●",
+          "icon": "◆",
           "zone": 1,
           "x": 0.543010752688172,
           "y": 0.36363636363636365
@@ -818,7 +818,7 @@
         {
           "slug": "ostrich-effect",
           "title": "Ostrich effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.5483870967741935,
           "y": 0.5454545454545454
@@ -826,7 +826,7 @@
         {
           "slug": "overconfidence-effect",
           "title": "Overconfidence effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.553763440860215,
           "y": 0.2727272727272727
@@ -1282,7 +1282,7 @@
         {
           "slug": "neglect-of-probability",
           "title": "Neglect of probability",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8655913978494624,
           "y": 0.2727272727272727
@@ -1290,7 +1290,7 @@
         {
           "slug": "not-invented-here",
           "title": "Not invented here",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8709677419354839,
           "y": 0.5454545454545454
@@ -1298,7 +1298,7 @@
         {
           "slug": "omission-bias",
           "title": "Omission bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8763440860215054,
           "y": 0.36363636363636365
@@ -1306,7 +1306,7 @@
         {
           "slug": "out-group-homogeneity-bias",
           "title": "Out-group homogeneity bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8817204301075269,
           "y": 0.5454545454545454
@@ -1314,7 +1314,7 @@
         {
           "slug": "pareidolia",
           "title": "Pareidolia",
-          "icon": "●",
+          "icon": "☀︎",
           "zone": 2,
           "x": 0.8870967741935484,
           "y": 0.36363636363636365

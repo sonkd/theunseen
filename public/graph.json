@@ -938,7 +938,7 @@
       "title": "Negativity bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -946,7 +946,7 @@
       "title": "Neglect of probability",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -954,7 +954,7 @@
       "title": "Next-in-line effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -962,7 +962,7 @@
       "title": "Normalcy bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -970,7 +970,7 @@
       "title": "Not invented here",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -978,7 +978,7 @@
       "title": "Observer-expectancy effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -986,6 +986,7 @@
       "title": "Occam’s razor",
       "level": 2,
       "categories": [
+        "heuristic",
         "mental-models"
       ]
     },
@@ -994,7 +995,7 @@
       "title": "Omission bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1002,7 +1003,7 @@
       "title": "Optimism bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1010,7 +1011,7 @@
       "title": "Ostrich effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1018,7 +1019,8 @@
       "title": "Out-group homogeneity bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1026,7 +1028,7 @@
       "title": "Outcome bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1034,7 +1036,7 @@
       "title": "Overconfidence effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1042,7 +1044,7 @@
       "title": "Pareidolia",
       "level": 2,
       "categories": [
-        "mental-models"
+        "perception"
       ]
     },
     {
@@ -1050,7 +1052,7 @@
       "title": "Part-list cueing effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -2690,6 +2692,154 @@
     {
       "source": "naive-cynicism",
       "target": "self-serving-bias"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "negativity-bias"
+    },
+    {
+      "source": "negativity-bias",
+      "target": "positivity-effect"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "negativity-bias"
+    },
+    {
+      "source": "neglect-of-probability",
+      "target": "zero-risk-bias"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "neglect-of-probability"
+    },
+    {
+      "source": "base-rate-fallacy",
+      "target": "neglect-of-probability"
+    },
+    {
+      "source": "next-in-line-effect",
+      "target": "tip-of-the-tongue-phenomenon"
+    },
+    {
+      "source": "next-in-line-effect",
+      "target": "spotlight-effect"
+    },
+    {
+      "source": "cue-dependent-forgetting",
+      "target": "next-in-line-effect"
+    },
+    {
+      "source": "normalcy-bias",
+      "target": "optimism-bias"
+    },
+    {
+      "source": "normalcy-bias",
+      "target": "ostrich-effect"
+    },
+    {
+      "source": "normalcy-bias",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "ikea-effect",
+      "target": "not-invented-here"
+    },
+    {
+      "source": "not-invented-here",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "endowment-effect",
+      "target": "not-invented-here"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "observer-expectancy-effect"
+    },
+    {
+      "source": "illusory-correlation",
+      "target": "observer-expectancy-effect"
+    },
+    {
+      "source": "observer-expectancy-effect",
+      "target": "subjective-validation"
+    },
+    {
+      "source": "inversion",
+      "target": "occams-razor"
+    },
+    {
+      "source": "occams-razor",
+      "target": "second-order-thinking"
+    },
+    {
+      "source": "law-of-the-instrument",
+      "target": "occams-razor"
+    },
+    {
+      "source": "omission-bias",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "omission-bias"
+    },
+    {
+      "source": "framing-effect",
+      "target": "omission-bias"
+    },
+    {
+      "source": "optimism-bias",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "optimism-bias",
+      "target": "planning-fallacy"
+    },
+    {
+      "source": "ostrich-effect",
+      "target": "zero-risk-bias"
+    },
+    {
+      "source": "ostrich-effect",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "out-group-homogeneity-bias",
+      "target": "stereotyping"
+    },
+    {
+      "source": "hindsight-bias",
+      "target": "outcome-bias"
+    },
+    {
+      "source": "outcome-bias",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "overconfidence-effect",
+      "target": "planning-fallacy"
+    },
+    {
+      "source": "clustering-illusion",
+      "target": "pareidolia"
+    },
+    {
+      "source": "illusory-correlation",
+      "target": "pareidolia"
+    },
+    {
+      "source": "cue-dependent-forgetting",
+      "target": "part-list-cueing-effect"
+    },
+    {
+      "source": "memory-inhibition",
+      "target": "part-list-cueing-effect"
+    },
+    {
+      "source": "part-list-cueing-effect",
+      "target": "serial-recall-effect"
     },
     {
       "source": "goodharts-law",
