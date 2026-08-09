@@ -354,7 +354,7 @@
         {
           "slug": "picture-superiority-effect",
           "title": "Picture superiority effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.23118279569892472,
           "y": 0.36363636363636365
@@ -362,7 +362,7 @@
         {
           "slug": "positivity-effect",
           "title": "Positivity effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.23655913978494625,
           "y": 0.5454545454545454
@@ -842,7 +842,7 @@
         {
           "slug": "placebo-effect",
           "title": "Placebo effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.5645161290322581,
           "y": 0.36363636363636365
@@ -850,7 +850,7 @@
         {
           "slug": "post-purchase-rationalization",
           "title": "Post-purchase rationalization",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.5698924731182796,
           "y": 0.5454545454545454
@@ -858,7 +858,7 @@
         {
           "slug": "pro-innovation-bias",
           "title": "Pro-innovation bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.5752688172043011,
           "y": 0.36363636363636365
@@ -866,7 +866,7 @@
         {
           "slug": "publication-bias",
           "title": "Publication bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.5806451612903226,
           "y": 0.5454545454545454
@@ -1322,7 +1322,7 @@
         {
           "slug": "pessimism-bias",
           "title": "Pessimism bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.8924731182795699,
           "y": 0.5454545454545454
@@ -1338,7 +1338,7 @@
         {
           "slug": "prejudice",
           "title": "Prejudice",
-          "icon": "●",
+          "icon": "☯︎",
           "zone": 2,
           "x": 0.9032258064516129,
           "y": 0.5454545454545454
@@ -1346,7 +1346,7 @@
         {
           "slug": "projection-bias",
           "title": "Projection bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.9086021505376344,
           "y": 0.36363636363636365

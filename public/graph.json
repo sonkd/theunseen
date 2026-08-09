@@ -1068,7 +1068,7 @@
       "title": "Pessimism bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1076,7 +1076,7 @@
       "title": "Picture superiority effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -1084,7 +1084,7 @@
       "title": "Placebo effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1100,7 +1100,8 @@
       "title": "Positivity effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1108,7 +1109,7 @@
       "title": "Post-purchase rationalization",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1116,7 +1117,7 @@
       "title": "Prejudice",
       "level": 2,
       "categories": [
-        "mental-models"
+        "social"
       ]
     },
     {
@@ -1132,7 +1133,7 @@
       "title": "Pro-innovation bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1140,7 +1141,7 @@
       "title": "Projection bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1156,7 +1157,7 @@
       "title": "Publication bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1172,7 +1173,8 @@
       "title": "Reactive devaluation",
       "level": 2,
       "categories": [
-        "mental-models"
+        "mental-models",
+        "social"
       ]
     },
     {
@@ -2840,6 +2842,146 @@
     {
       "source": "part-list-cueing-effect",
       "target": "serial-recall-effect"
+    },
+    {
+      "source": "peak-end-rule",
+      "target": "recency-effect"
+    },
+    {
+      "source": "peak-end-rule",
+      "target": "rosy-retrospection"
+    },
+    {
+      "source": "optimism-bias",
+      "target": "pessimism-bias"
+    },
+    {
+      "source": "negativity-bias",
+      "target": "pessimism-bias"
+    },
+    {
+      "source": "declinism",
+      "target": "pessimism-bias"
+    },
+    {
+      "source": "generation-effect",
+      "target": "picture-superiority-effect"
+    },
+    {
+      "source": "picture-superiority-effect",
+      "target": "von-restorff-effect"
+    },
+    {
+      "source": "observer-expectancy-effect",
+      "target": "placebo-effect"
+    },
+    {
+      "source": "placebo-effect",
+      "target": "suggestibility"
+    },
+    {
+      "source": "placebo-effect",
+      "target": "subjective-validation"
+    },
+    {
+      "source": "illusion-of-control",
+      "target": "planning-fallacy"
+    },
+    {
+      "source": "halo-effect",
+      "target": "positivity-effect"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "positivity-effect"
+    },
+    {
+      "source": "positivity-effect",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "effort-justification",
+      "target": "post-purchase-rationalization"
+    },
+    {
+      "source": "endowment-effect",
+      "target": "post-purchase-rationalization"
+    },
+    {
+      "source": "in-group-bias",
+      "target": "prejudice"
+    },
+    {
+      "source": "out-group-homogeneity-bias",
+      "target": "prejudice"
+    },
+    {
+      "source": "prejudice",
+      "target": "stereotyping"
+    },
+    {
+      "source": "implicit-stereotypes",
+      "target": "prejudice"
+    },
+    {
+      "source": "primacy-effect",
+      "target": "recency-effect"
+    },
+    {
+      "source": "primacy-effect",
+      "target": "serial-position-effect"
+    },
+    {
+      "source": "pro-innovation-bias",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "bandwagon-effect",
+      "target": "pro-innovation-bias"
+    },
+    {
+      "source": "not-invented-here",
+      "target": "pro-innovation-bias"
+    },
+    {
+      "source": "framing-effect",
+      "target": "pseudocertainty-effect"
+    },
+    {
+      "source": "pseudocertainty-effect",
+      "target": "zero-risk-bias"
+    },
+    {
+      "source": "ambiguity-effect",
+      "target": "pseudocertainty-effect"
+    },
+    {
+      "source": "publication-bias",
+      "target": "survivorship-bias"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "publication-bias"
+    },
+    {
+      "source": "reactance",
+      "target": "reactive-devaluation"
+    },
+    {
+      "source": "illusion-of-control",
+      "target": "reactance"
+    },
+    {
+      "source": "endowment-effect",
+      "target": "reactance"
+    },
+    {
+      "source": "in-group-bias",
+      "target": "reactive-devaluation"
+    },
+    {
+      "source": "naive-realism",
+      "target": "reactive-devaluation"
     },
     {
       "source": "goodharts-law",
