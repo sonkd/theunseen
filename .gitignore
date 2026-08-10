@@ -1,5 +1,11 @@
 node_modules/
 dist/
+dist.*
+dist-*
 .astro/
+.astro.stale*
+.astro.stale2*
+.unlink-trash-tmp/
+*.unused
 .DS_Store
 *.log

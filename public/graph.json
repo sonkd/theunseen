@@ -1182,7 +1182,7 @@
       "title": "Recency effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -1190,7 +1190,8 @@
       "title": "Recency illusion",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "perception"
       ]
     },
     {
@@ -1198,7 +1199,7 @@
       "title": "Restraint bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1206,7 +1207,8 @@
       "title": "Rhyme as reason effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "heuristic",
+        "bias"
       ]
     },
     {
@@ -1214,7 +1216,7 @@
       "title": "Risk compensation",
       "level": 2,
       "categories": [
-        "mental-models"
+        "theory"
       ]
     },
     {
@@ -1222,7 +1224,8 @@
       "title": "Rosy retrospection",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "memory"
       ]
     },
     {
@@ -1230,7 +1233,7 @@
       "title": "Sapir Whorf Korzybski hypothesis",
       "level": 2,
       "categories": [
-        "mental-models"
+        "theory"
       ]
     },
     {
@@ -1246,7 +1249,8 @@
       "title": "Selective perception",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "perception"
       ]
     },
     {
@@ -1254,7 +1258,8 @@
       "title": "Self-consistency bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "memory"
       ]
     },
     {
@@ -1262,7 +1267,8 @@
       "title": "Self-licensing",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1270,7 +1276,7 @@
       "title": "Self-relevance effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -1278,7 +1284,8 @@
       "title": "Self-serving bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1286,7 +1293,7 @@
       "title": "Semmelweis reflex",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1294,7 +1301,7 @@
       "title": "Serial position effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -1302,7 +1309,7 @@
       "title": "Serial recall effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -2984,8 +2991,156 @@
       "target": "reactive-devaluation"
     },
     {
+      "source": "recency-effect",
+      "target": "serial-position-effect"
+    },
+    {
+      "source": "frequency-illusion",
+      "target": "recency-illusion"
+    },
+    {
+      "source": "recency-illusion",
+      "target": "selective-perception"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "recency-illusion"
+    },
+    {
+      "source": "restraint-bias",
+      "target": "self-licensing"
+    },
+    {
+      "source": "overconfidence-effect",
+      "target": "restraint-bias"
+    },
+    {
+      "source": "optimism-bias",
+      "target": "restraint-bias"
+    },
+    {
+      "source": "illusory-truth-effect",
+      "target": "rhyme-as-reason-effect"
+    },
+    {
+      "source": "halo-effect",
+      "target": "rhyme-as-reason-effect"
+    },
+    {
+      "source": "mere-exposure-effect",
+      "target": "rhyme-as-reason-effect"
+    },
+    {
+      "source": "risk-compensation",
+      "target": "zero-risk-bias"
+    },
+    {
+      "source": "risk-compensation",
+      "target": "self-licensing"
+    },
+    {
+      "source": "optimism-bias",
+      "target": "risk-compensation"
+    },
+    {
+      "source": "choice-supportive-bias",
+      "target": "rosy-retrospection"
+    },
+    {
+      "source": "framing-effect",
+      "target": "sapir-whorf-korzybski-hypothesis"
+    },
+    {
+      "source": "curse-of-knowledge",
+      "target": "sapir-whorf-korzybski-hypothesis"
+    },
+    {
+      "source": "essentialism",
+      "target": "sapir-whorf-korzybski-hypothesis"
+    },
+    {
       "source": "goodharts-law",
       "target": "second-order-thinking"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "selective-perception"
+    },
+    {
+      "source": "congruence-bias",
+      "target": "selective-perception"
+    },
+    {
+      "source": "hindsight-bias",
+      "target": "self-consistency-bias"
+    },
+    {
+      "source": "choice-supportive-bias",
+      "target": "self-consistency-bias"
+    },
+    {
+      "source": "misattribution-of-memory",
+      "target": "self-consistency-bias"
+    },
+    {
+      "source": "halo-effect",
+      "target": "self-licensing"
+    },
+    {
+      "source": "self-licensing",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "effort-justification",
+      "target": "self-licensing"
+    },
+    {
+      "source": "egocentric-bias",
+      "target": "self-relevance-effect"
+    },
+    {
+      "source": "self-relevance-effect",
+      "target": "spotlight-effect"
+    },
+    {
+      "source": "levels-of-processing-effect",
+      "target": "self-relevance-effect"
+    },
+    {
+      "source": "self-relevance-effect",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "choice-supportive-bias",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "ostrich-effect",
+      "target": "semmelweis-reflex"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "semmelweis-reflex"
+    },
+    {
+      "source": "semmelweis-reflex",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "serial-position-effect",
+      "target": "von-restorff-effect"
+    },
+    {
+      "source": "serial-position-effect",
+      "target": "serial-recall-effect"
+    },
+    {
+      "source": "serial-recall-effect",
+      "target": "spacing-effect"
+    },
+    {
+      "source": "serial-recall-effect",
+      "target": "testing-effect"
     }
   ]
 }

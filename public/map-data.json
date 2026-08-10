@@ -394,7 +394,7 @@
         {
           "slug": "restraint-bias",
           "title": "Restraint bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.25806451612903225,
           "y": 0.5454545454545454
@@ -402,7 +402,7 @@
         {
           "slug": "rosy-retrospection",
           "title": "Rosy retrospection",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.26344086021505375,
           "y": 0.36363636363636365
@@ -410,7 +410,7 @@
         {
           "slug": "self-consistency-bias",
           "title": "Self-consistency bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.26881720430107525,
           "y": 0.6363636363636364
@@ -418,7 +418,7 @@
         {
           "slug": "self-serving-bias",
           "title": "Self-serving bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.27419354838709675,
           "y": 0.45454545454545453
@@ -426,7 +426,7 @@
         {
           "slug": "serial-recall-effect",
           "title": "Serial recall effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 0,
           "x": 0.27956989247311825,
           "y": 0.6363636363636364
@@ -874,7 +874,7 @@
         {
           "slug": "recency-effect",
           "title": "Recency effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 1,
           "x": 0.5860215053763441,
           "y": 0.36363636363636365
@@ -882,7 +882,7 @@
         {
           "slug": "rhyme-as-reason-effect",
           "title": "Rhyme as reason effect",
-          "icon": "●",
+          "icon": "◆",
           "zone": 1,
           "x": 0.5913978494623656,
           "y": 0.6363636363636364
@@ -890,7 +890,7 @@
         {
           "slug": "sapir-whorf-korzybski-hypothesis",
           "title": "Sapir Whorf Korzybski hypothesis",
-          "icon": "●",
+          "icon": "✦",
           "zone": 1,
           "x": 0.5967741935483871,
           "y": 0.36363636363636365
@@ -898,7 +898,7 @@
         {
           "slug": "self-licensing",
           "title": "Self-licensing",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.6021505376344086,
           "y": 0.6363636363636364
@@ -906,7 +906,7 @@
         {
           "slug": "semmelweis-reflex",
           "title": "Semmelweis reflex",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.6075268817204301,
           "y": 0.45454545454545453
@@ -1362,7 +1362,7 @@
         {
           "slug": "recency-illusion",
           "title": "Recency illusion",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.9193548387096774,
           "y": 0.36363636363636365
@@ -1370,7 +1370,7 @@
         {
           "slug": "risk-compensation",
           "title": "Risk compensation",
-          "icon": "●",
+          "icon": "✦",
           "zone": 2,
           "x": 0.9247311827956989,
           "y": 0.6363636363636364
@@ -1378,7 +1378,7 @@
         {
           "slug": "selective-perception",
           "title": "Selective perception",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.9301075268817204,
           "y": 0.36363636363636365
@@ -1386,7 +1386,7 @@
         {
           "slug": "self-relevance-effect",
           "title": "Self-relevance effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 2,
           "x": 0.9354838709677419,
           "y": 0.6363636363636364
@@ -1394,7 +1394,7 @@
         {
           "slug": "serial-position-effect",
           "title": "Serial position effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 2,
           "x": 0.9408602150537635,
           "y": 0.45454545454545453
