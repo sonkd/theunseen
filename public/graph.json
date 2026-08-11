@@ -1317,7 +1317,8 @@
       "title": "Social comparison bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1325,7 +1326,8 @@
       "title": "Social desirability bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1333,7 +1335,7 @@
       "title": "Source confusion",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -1341,7 +1343,7 @@
       "title": "Spacing effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -1349,7 +1351,8 @@
       "title": "Spotlight effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1357,7 +1360,7 @@
       "title": "Status quo bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1365,7 +1368,8 @@
       "title": "Stereotyping",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1373,7 +1377,7 @@
       "title": "Subadditivity effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1381,7 +1385,7 @@
       "title": "Subjective validation",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1389,7 +1393,7 @@
       "title": "Suggestibility",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory"
       ]
     },
     {
@@ -1397,7 +1401,8 @@
       "title": "Sunk cost fallacy",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "fallacy"
       ]
     },
     {
@@ -1405,7 +1410,7 @@
       "title": "Survivorship bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias"
       ]
     },
     {
@@ -1413,7 +1418,8 @@
       "title": "Swimmer's body illusion",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "fallacy"
       ]
     },
     {
@@ -1421,7 +1427,8 @@
       "title": "System justification",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1429,7 +1436,8 @@
       "title": "Telescoping effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory",
+        "bias"
       ]
     },
     {
@@ -3141,6 +3149,146 @@
     {
       "source": "serial-recall-effect",
       "target": "testing-effect"
+    },
+    {
+      "source": "contrast-effect",
+      "target": "social-comparison-bias"
+    },
+    {
+      "source": "self-serving-bias",
+      "target": "social-comparison-bias"
+    },
+    {
+      "source": "egocentric-bias",
+      "target": "social-comparison-bias"
+    },
+    {
+      "source": "self-serving-bias",
+      "target": "social-desirability-bias"
+    },
+    {
+      "source": "illusory-superiority",
+      "target": "social-desirability-bias"
+    },
+    {
+      "source": "halo-effect",
+      "target": "social-desirability-bias"
+    },
+    {
+      "source": "misattribution-of-memory",
+      "target": "source-confusion"
+    },
+    {
+      "source": "misinformation-effect",
+      "target": "source-confusion"
+    },
+    {
+      "source": "spacing-effect",
+      "target": "testing-effect"
+    },
+    {
+      "source": "generation-effect",
+      "target": "spacing-effect"
+    },
+    {
+      "source": "false-consensus-effect",
+      "target": "spotlight-effect"
+    },
+    {
+      "source": "spotlight-effect",
+      "target": "third-person-effect"
+    },
+    {
+      "source": "status-quo-bias",
+      "target": "sunk-cost-fallacy"
+    },
+    {
+      "source": "illusory-correlation",
+      "target": "stereotyping"
+    },
+    {
+      "source": "base-rate-fallacy",
+      "target": "subadditivity-effect"
+    },
+    {
+      "source": "conjunction-fallacy",
+      "target": "subadditivity-effect"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "subadditivity-effect"
+    },
+    {
+      "source": "extension-neglect",
+      "target": "subadditivity-effect"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "subjective-validation"
+    },
+    {
+      "source": "illusory-truth-effect",
+      "target": "subjective-validation"
+    },
+    {
+      "source": "misinformation-effect",
+      "target": "suggestibility"
+    },
+    {
+      "source": "misattribution-of-memory",
+      "target": "suggestibility"
+    },
+    {
+      "source": "confabulation",
+      "target": "suggestibility"
+    },
+    {
+      "source": "source-confusion",
+      "target": "suggestibility"
+    },
+    {
+      "source": "survivorship-bias",
+      "target": "swimmers-body-illusion"
+    },
+    {
+      "source": "outcome-bias",
+      "target": "survivorship-bias"
+    },
+    {
+      "source": "hindsight-bias",
+      "target": "survivorship-bias"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "survivorship-bias"
+    },
+    {
+      "source": "illusory-correlation",
+      "target": "swimmers-body-illusion"
+    },
+    {
+      "source": "base-rate-fallacy",
+      "target": "swimmers-body-illusion"
+    },
+    {
+      "source": "status-quo-bias",
+      "target": "system-justification"
+    },
+    {
+      "source": "in-group-bias",
+      "target": "system-justification"
+    },
+    {
+      "source": "hindsight-bias",
+      "target": "telescoping-effect"
+    },
+    {
+      "source": "misattribution-of-memory",
+      "target": "telescoping-effect"
+    },
+    {
+      "source": "recency-effect",
+      "target": "telescoping-effect"
     }
   ]
 }
