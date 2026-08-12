@@ -262,7 +262,8 @@
       "title": "Congruence bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "fallacy"
       ]
     },
     {
@@ -830,6 +831,15 @@
       "level": 2,
       "categories": [
         "memory"
+      ]
+    },
+    {
+      "id": "map-is-not-the-territory",
+      "title": "Map is not the territory",
+      "level": 4,
+      "categories": [
+        "theory",
+        "mental-models"
       ]
     },
     {
@@ -1445,6 +1455,7 @@
       "title": "Testing effect",
       "level": 2,
       "categories": [
+        "memory",
         "mental-models"
       ]
     },
@@ -1453,7 +1464,8 @@
       "title": "Third-person effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1461,6 +1473,7 @@
       "title": "Time discounting",
       "level": 2,
       "categories": [
+        "bias",
         "mental-models"
       ]
     },
@@ -1469,7 +1482,8 @@
       "title": "Time-saving bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "heuristic"
       ]
     },
     {
@@ -1477,7 +1491,8 @@
       "title": "Tip of the tongue phenomenon",
       "level": 2,
       "categories": [
-        "mental-models"
+        "memory",
+        "perception"
       ]
     },
     {
@@ -1485,7 +1500,8 @@
       "title": "Trait ascription bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1493,7 +1509,8 @@
       "title": "Ultimate attribution error",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     },
     {
@@ -1501,6 +1518,7 @@
       "title": "Unit bias",
       "level": 2,
       "categories": [
+        "heuristic",
         "mental-models"
       ]
     },
@@ -1509,7 +1527,8 @@
       "title": "Von Restorff effect",
       "level": 2,
       "categories": [
-        "mental-models"
+        "perception",
+        "memory"
       ]
     },
     {
@@ -1517,7 +1536,8 @@
       "title": "Weber–Fechner law",
       "level": 2,
       "categories": [
-        "mental-models"
+        "perception",
+        "theory"
       ]
     },
     {
@@ -1525,6 +1545,7 @@
       "title": "Well-traveled road effect",
       "level": 2,
       "categories": [
+        "heuristic",
         "mental-models"
       ]
     },
@@ -1533,7 +1554,8 @@
       "title": "Zero-risk bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "heuristic"
       ]
     },
     {
@@ -1541,7 +1563,8 @@
       "title": "Zero sum bias",
       "level": 2,
       "categories": [
-        "mental-models"
+        "bias",
+        "social"
       ]
     }
   ],
@@ -1889,6 +1912,10 @@
     {
       "source": "confirmation-bias",
       "target": "congruence-bias"
+    },
+    {
+      "source": "congruence-bias",
+      "target": "testing-effect"
     },
     {
       "source": "availability-heuristic",
@@ -2615,6 +2642,22 @@
       "target": "spacing-effect"
     },
     {
+      "source": "map-is-not-the-territory",
+      "target": "sapir-whorf-korzybski-hypothesis"
+    },
+    {
+      "source": "framing-effect",
+      "target": "map-is-not-the-territory"
+    },
+    {
+      "source": "curse-of-knowledge",
+      "target": "map-is-not-the-territory"
+    },
+    {
+      "source": "essentialism",
+      "target": "map-is-not-the-territory"
+    },
+    {
       "source": "argument-from-fallacy",
       "target": "masked-man-fallacy"
     },
@@ -3289,6 +3332,154 @@
     {
       "source": "recency-effect",
       "target": "telescoping-effect"
+    },
+    {
+      "source": "generation-effect",
+      "target": "testing-effect"
+    },
+    {
+      "source": "illusory-superiority",
+      "target": "third-person-effect"
+    },
+    {
+      "source": "optimism-bias",
+      "target": "third-person-effect"
+    },
+    {
+      "source": "false-consensus-effect",
+      "target": "third-person-effect"
+    },
+    {
+      "source": "bias-blind-spot",
+      "target": "third-person-effect"
+    },
+    {
+      "source": "affective-forecasting",
+      "target": "time-discounting"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "time-discounting"
+    },
+    {
+      "source": "planning-fallacy",
+      "target": "time-discounting"
+    },
+    {
+      "source": "time-saving-bias",
+      "target": "unit-bias"
+    },
+    {
+      "source": "framing-effect",
+      "target": "time-saving-bias"
+    },
+    {
+      "source": "anchoring",
+      "target": "time-saving-bias"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "time-saving-bias"
+    },
+    {
+      "source": "memory-inhibition",
+      "target": "tip-of-the-tongue-phenomenon"
+    },
+    {
+      "source": "confabulation",
+      "target": "tip-of-the-tongue-phenomenon"
+    },
+    {
+      "source": "cryptomnesia",
+      "target": "tip-of-the-tongue-phenomenon"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "trait-ascription-bias"
+    },
+    {
+      "source": "false-consensus-effect",
+      "target": "trait-ascription-bias"
+    },
+    {
+      "source": "self-serving-bias",
+      "target": "trait-ascription-bias"
+    },
+    {
+      "source": "out-group-homogeneity-bias",
+      "target": "ultimate-attribution-error"
+    },
+    {
+      "source": "sunk-cost-fallacy",
+      "target": "unit-bias"
+    },
+    {
+      "source": "effort-justification",
+      "target": "unit-bias"
+    },
+    {
+      "source": "escalation-of-commitment",
+      "target": "unit-bias"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "unit-bias"
+    },
+    {
+      "source": "selective-perception",
+      "target": "von-restorff-effect"
+    },
+    {
+      "source": "contrast-effect",
+      "target": "von-restorff-effect"
+    },
+    {
+      "source": "anchoring",
+      "target": "weber-fechner-law"
+    },
+    {
+      "source": "contrast-effect",
+      "target": "weber-fechner-law"
+    },
+    {
+      "source": "denomination-effect",
+      "target": "weber-fechner-law"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "weber-fechner-law"
+    },
+    {
+      "source": "planning-fallacy",
+      "target": "well-traveled-road-effect"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "well-traveled-road-effect"
+    },
+    {
+      "source": "optimism-bias",
+      "target": "well-traveled-road-effect"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "zero-risk-bias"
+    },
+    {
+      "source": "status-quo-bias",
+      "target": "zero-risk-bias"
+    },
+    {
+      "source": "in-group-bias",
+      "target": "zero-sum-bias"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "zero-sum-bias"
+    },
+    {
+      "source": "framing-effect",
+      "target": "zero-sum-bias"
     }
   ]
 }

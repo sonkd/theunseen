@@ -98,7 +98,7 @@
         {
           "slug": "congruence-bias",
           "title": "Congruence bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.05913978494623656,
           "y": 0.45454545454545453
@@ -474,7 +474,7 @@
         {
           "slug": "time-discounting",
           "title": "Time discounting",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.3118279569892473,
           "y": 0.6363636363636364
@@ -482,7 +482,7 @@
         {
           "slug": "trait-ascription-bias",
           "title": "Trait ascription bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.3172043010752688,
           "y": 0.5454545454545454
@@ -490,7 +490,7 @@
         {
           "slug": "von-restorff-effect",
           "title": "Von Restorff effect",
-          "icon": "●",
+          "icon": "☀︎",
           "zone": 0,
           "x": 0.3225806451612903,
           "y": 0.7272727272727273
@@ -498,7 +498,7 @@
         {
           "slug": "zero-risk-bias",
           "title": "Zero-risk bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 0,
           "x": 0.3279569892473118,
           "y": 0.45454545454545453
@@ -954,7 +954,7 @@
         {
           "slug": "testing-effect",
           "title": "Testing effect",
-          "icon": "●",
+          "icon": "☾",
           "zone": 1,
           "x": 0.6397849462365591,
           "y": 0.45454545454545453
@@ -962,7 +962,7 @@
         {
           "slug": "time-saving-bias",
           "title": "Time-saving bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.6451612903225806,
           "y": 0.6363636363636364
@@ -970,7 +970,7 @@
         {
           "slug": "ultimate-attribution-error",
           "title": "Ultimate attribution error",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.6505376344086021,
           "y": 0.45454545454545453
@@ -978,7 +978,7 @@
         {
           "slug": "weber-fechner-law",
           "title": "Weber–Fechner law",
-          "icon": "●",
+          "icon": "☀︎",
           "zone": 1,
           "x": 0.6559139784946236,
           "y": 0.6363636363636364
@@ -986,7 +986,7 @@
         {
           "slug": "zero-sum-bias",
           "title": "Zero sum bias",
-          "icon": "●",
+          "icon": "▲",
           "zone": 1,
           "x": 0.6612903225806451,
           "y": 0.45454545454545453
@@ -1442,7 +1442,7 @@
         {
           "slug": "third-person-effect",
           "title": "Third-person effect",
-          "icon": "●",
+          "icon": "▲",
           "zone": 2,
           "x": 0.9731182795698925,
           "y": 0.45454545454545453
@@ -1450,7 +1450,7 @@
         {
           "slug": "tip-of-the-tongue-phenomenon",
           "title": "Tip of the tongue phenomenon",
-          "icon": "●",
+          "icon": "☾",
           "zone": 2,
           "x": 0.978494623655914,
           "y": 0.7272727272727273
@@ -1458,7 +1458,7 @@
         {
           "slug": "unit-bias",
           "title": "Unit bias",
-          "icon": "●",
+          "icon": "◆",
           "zone": 2,
           "x": 0.9838709677419355,
           "y": 0.5454545454545454
@@ -1466,7 +1466,7 @@
         {
           "slug": "well-traveled-road-effect",
           "title": "Well-traveled road effect",
-          "icon": "●",
+          "icon": "◆",
           "zone": 2,
           "x": 0.989247311827957,
           "y": 0.7272727272727273
@@ -1519,6 +1519,14 @@
           "icon": "✦",
           "zone": 0,
           "x": 0.12,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "map-is-not-the-territory",
+          "title": "Map is not the territory",
+          "icon": "✦",
+          "zone": 1,
+          "x": 0.44,
           "y": 0.2727272727272727
         }
       ]
