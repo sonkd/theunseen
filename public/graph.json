@@ -226,6 +226,14 @@
       ]
     },
     {
+      "id": "circle-of-competence",
+      "title": "Circle of Competence",
+      "level": 3,
+      "categories": [
+        "mental-models"
+      ]
+    },
+    {
       "id": "clustering-illusion",
       "title": "Clustering illusion",
       "level": 2,
@@ -495,6 +503,15 @@
       ]
     },
     {
+      "id": "first-principles-thinking",
+      "title": "First-Principles Thinking",
+      "level": 3,
+      "categories": [
+        "mental-models",
+        "theory"
+      ]
+    },
+    {
       "id": "focalism",
       "title": "Focalism",
       "level": 2,
@@ -576,6 +593,15 @@
       "level": 2,
       "categories": [
         "bias",
+        "social"
+      ]
+    },
+    {
+      "id": "hanlons-razor",
+      "title": "Hanlon's Razor",
+      "level": 2,
+      "categories": [
+        "heuristic",
         "social"
       ]
     },
@@ -1055,6 +1081,15 @@
       "level": 2,
       "categories": [
         "perception"
+      ]
+    },
+    {
+      "id": "parkinsons-law",
+      "title": "Parkinson's Law",
+      "level": 2,
+      "categories": [
+        "mental-models",
+        "heuristic"
       ]
     },
     {
@@ -1878,6 +1913,18 @@
       "target": "effort-justification"
     },
     {
+      "source": "circle-of-competence",
+      "target": "dunning-kruger-effect"
+    },
+    {
+      "source": "circle-of-competence",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "circle-of-competence",
+      "target": "first-principles-thinking"
+    },
+    {
       "source": "clustering-illusion",
       "target": "gamblers-fallacy"
     },
@@ -2250,6 +2297,10 @@
       "target": "naive-realism"
     },
     {
+      "source": "first-principles-thinking",
+      "target": "occams-razor"
+    },
+    {
       "source": "focalism",
       "target": "impact-bias"
     },
@@ -2344,6 +2395,18 @@
     {
       "source": "halo-effect",
       "target": "implicit-stereotypes"
+    },
+    {
+      "source": "fundamental-attribution-error",
+      "target": "hanlons-razor"
+    },
+    {
+      "source": "hanlons-razor",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "hanlons-razor",
+      "target": "naive-realism"
     },
     {
       "source": "hard-easy-effect",
@@ -2888,6 +2951,18 @@
     {
       "source": "illusory-correlation",
       "target": "pareidolia"
+    },
+    {
+      "source": "parkinsons-law",
+      "target": "planning-fallacy"
+    },
+    {
+      "source": "optimism-bias",
+      "target": "parkinsons-law"
+    },
+    {
+      "source": "illusion-of-control",
+      "target": "parkinsons-law"
     },
     {
       "source": "cue-dependent-forgetting",
