@@ -1,0 +1,24 @@
+---
+interface Props { front: string; back: string; icon: string }
+const { front, back, icon } = Astro.props;
+---
+<button class="flip" aria-label="Flip card">
+  <span class="face front"><span class="icon">{icon}</span><span>{front}</span></span>
+  <span class="face back">{back}</span>
+</button>
+<style>
+  .flip { position: relative; display: block; width: 100%; min-height: 220px; perspective: 1200px;
+    background: none; border: 0; padding: 0; cursor: pointer; color: inherit; font: inherit; text-align: left; }
+  .face { position: absolute; inset: 0; display: flex; flex-direction: column; gap: .75rem; justify-content: center;
+    padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+    backface-visibility: hidden; transition: transform .6s cubic-bezier(.2,.7,.3,1); }
+  .front { transform: rotateY(0deg); }
+  .back { transform: rotateY(180deg); color: var(--flame); }
+  .flip.flipped .front { transform: rotateY(-180deg); }
+  .flip.flipped .back { transform: rotateY(0deg); }
+  .icon { font-size: 1.6rem; color: var(--flame); }
+</style>
+<script>
+  document.querySelectorAll('.flip').forEach((el) =>
+    el.addEventListener('click', () => el.classList.toggle('flipped')));
+</script>

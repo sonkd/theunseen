@@ -1,0 +1,29 @@
+{
+  "name": "seeing-the-unseen",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test:progress": "node --experimental-strip-types scripts/test-progress.mjs",
+    "mapdata": "node --experimental-strip-types ./scripts/build-map-data.mjs",
+    "dev": "astro dev",
+    "prebuild": "npm run mapdata",
+    "build": "astro build",
+    "postbuild": "pagefind --site dist && test -s dist/pagefind/pagefind-entry.json || (echo 'postbuild: dist/pagefind/pagefind-entry.json missing or empty — search index did not build, failing build' >&2 && exit 1)",
+    "preview": "astro preview",
+    "verify": "node scripts/content-pipeline/verify.mjs",
+    "graph": "node scripts/build-graph.mjs",
+    "backlog": "node scripts/content-pipeline/sync-backlog.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.0",
+    "astro": "^5.12.0"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "pagefind": "^1.3.0"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}

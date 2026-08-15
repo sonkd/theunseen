@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#0a0910;font-family:Helvetica,Arial,sans-serif;color:#111}
+a{color:#111;text-decoration:none}
+a:hover{color:#000;text-decoration:underline}
+@keyframes fl1{from{transform:translateX(-50%) scaleY(1) scaleX(1)}to{transform:translateX(-50%) scaleY(.84) scaleX(1.12)}}
+@keyframes fl2{from{transform:translateX(-50%) scaleY(1)}to{transform:translateX(-50%) scaleY(.78) translateY(2px)}}
+@keyframes glowP{0%{opacity:.75}50%{opacity:1}100%{opacity:.75}}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;height:100vh;background:#0a0910">
+  <div style="display:flex;align-items:center;gap:18px;padding:0 20px;height:56px;background:#fbfaf7;border-bottom:2px solid #111;position:relative;z-index:10;flex:none">
+    <div style="display:flex;align-items:center;gap:9px">
+      <div style="width:13px;height:13px;border:2px solid #111;flex:none"></div>
+      <div style="font-weight:700;font-size:16px;letter-spacing:-0.01em;white-space:nowrap">the unseen</div>
+    </div>
+    <input placeholder="SEARCH / TÌM KIẾM ⏎" onKeyDown="{{ onSearch }}" style="width:270px;height:32px;border:2px solid #111;border-radius:7px;padding:0 12px;font-size:11px;letter-spacing:.08em;background:#fff;outline:none;font-family:inherit;color:#111">
+    <div style="flex:1"></div>
+    <div style="display:flex;gap:22px;font-size:11px;letter-spacing:.12em;font-weight:600">
+      <a href="#" style="text-decoration:underline;text-underline-offset:3px">DAILY</a>
+      <a href="#">FAVORITES</a>
+      <a href="#">ABOUT</a>
+    </div>
+  </div>
+  <div ref="{{ viewRef }}" data-screen-label="{{ mapTitle }}" style="position:relative;flex:1;overflow:hidden;background:#0a0910">
+    <div style="{{ worldStyle }}">
+      <canvas ref="{{ canvasRef }}" width="3936" height="704" style="position:absolute;left:0;top:0;image-rendering:pixelated"></canvas>
+      <sc-for list="{{ stuffList }}" as="s" hint-placeholder-count="6">
+        <button onClick="{{ s.open }}" onMouseEnter="{{ s.enter }}" onMouseLeave="{{ s.leave }}" style="{{ s.posStyle }}">{{ s.icon }}<div style="{{ s.tipStyle }}">{{ s.title }}</div></button>
+      </sc-for>
+    </div>
+    <div style="{{ darknessStyle }}"></div>
+    <div style="{{ fireStyle }}">{{ flame }}<div style="margin-top:5px;background:#111;border:2px solid #fff;color:#fff;font-family:'Press Start 2P',monospace;font-size:7px;padding:5px 7px;white-space:nowrap">A FIRE</div></div>
+    <div style="position:absolute;left:20px;top:16px;z-index:6;display:flex;flex-direction:column;gap:7px;pointer-events:none">
+      <div style="background:#111;border:2px solid #fff;color:#fff;font-family:'Press Start 2P',monospace;font-size:11px;padding:9px 11px;width:max-content">{{ mapTitle }}</div>
+      <div style="background:rgba(17,17,17,.8);color:#ddd;font-family:'Press Start 2P',monospace;font-size:7px;padding:6px 8px;width:max-content;letter-spacing:.05em">{{ badgeSub }}</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;padding:0 20px;height:46px;background:#fbfaf7;border-top:2px solid #111;position:relative;z-index:10;flex:none">
+    <sc-for list="{{ crumbs }}" as="c" hint-placeholder-count="5">
+      <button onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button><span style="{{ c.sepStyle }}">›</span>
+    </sc-for>
+    <div style="flex:1"></div>
+    <div style="font-size:10px;letter-spacing:.06em;color:#8a8577">PHÍM ← → ĐỂ ĐI BỘ · &lt; &gt; NHẢY VÙNG · ARROWS TO WALK</div>
+  </div>
+</div>
+<sc-if value="{{ selOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:40;background:rgba(8,6,2,.82);display:flex;align-items:center;justify-content:center;gap:26px;padding:32px 32px 96px">
+    <div style="display:flex;flex-direction:column;gap:12px;width:200px;flex:none">
+      <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:#fff;opacity:.7">REFS · LIÊN QUAN</div>
+      <sc-for list="{{ selRefs }}" as="r" hint-placeholder-count="3">
+        <button onClick="{{ r.go }}" style="background:#fff;border:2px solid #111;border-radius:6px;padding:12px 14px;font-size:11px;font-weight:600;letter-spacing:.05em;text-align:left;cursor:pointer;font-family:inherit;color:#111" style-hover="background:#f0ede2">{{ r.title }}</button>
+      </sc-for>
+    </div>
+    <div style="width:620px;max-width:54vw;height:490px;perspective:1600px;position:relative;flex:none">
+      <div style="{{ flipStyle }}">
+        <div style="position:absolute;inset:0;backface-visibility:hidden;background:#fbfaf7;border:2px solid #111;border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:15px;overflow:hidden">
+          <div style="display:flex;gap:20px">
+            <div style="width:270px;height:150px;flex:none;border:1.5px solid #111;background:repeating-linear-gradient(45deg,#eee9dc 0 10px,#f6f3ea 10px 20px);display:flex;align-items:center;justify-content:center"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#888">essay cover — drop image / ảnh bìa</span></div>
+            <div style="display:flex;flex-direction:column;gap:11px;flex:1;min-width:0">
+              <div style="display:flex;align-items:center;gap:10px"><span style="{{ selIconStyle }}">{{ selIcon }}</span><span style="font-size:15px;font-weight:700;letter-spacing:.04em">{{ selName }}</span></div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ selCats }}" as="cat" hint-placeholder-count="3"><span style="border:1.5px solid #111;border-radius:4px;padding:4px 8px;font-size:10px;font-weight:700;letter-spacing:.08em">{{ cat.label }}</span></sc-for>
+              </div>
+              <div style="font-size:10px;letter-spacing:.08em;color:#8a8577">{{ selStage }}</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="height:10px;background:#111;width:100%"></div><div style="height:8px;background:#d9d4c6;width:86%"></div><div style="height:8px;background:#d9d4c6;width:38%"></div></div>
+          <p style="margin:0;font-size:13px;line-height:1.5;color:#3a372f;text-wrap:pretty">{{ selDesc }}</p>
+          <div style="flex:1"></div>
+          <div style="border-top:1.5px solid #111;padding-top:14px;display:flex;gap:12px">
+            <button onClick="{{ closeSel }}" style="background:#111;color:#fff;border:2px solid #111;border-radius:7px;padding:10px 18px;font-size:11px;font-weight:700;letter-spacing:.1em;cursor:pointer;font-family:inherit">CLOSE · ĐÓNG</button>
+            <button style="background:#fff;color:#111;border:2px solid #111;border-radius:7px;padding:10px 18px;font-size:11px;font-weight:700;letter-spacing:.1em;cursor:pointer;font-family:inherit" style-hover="background:#f0ede2">SHARE · CHIA SẺ</button>
+            <div style="flex:1"></div>
+            <button onClick="{{ flipCard }}" style="background:#d9d4c6;color:#111;border:2px solid #111;border-radius:7px;padding:10px 18px;font-size:11px;font-weight:700;letter-spacing:.1em;cursor:pointer;font-family:inherit" style-hover="background:#cfc8b4">FLIP · LẬT ▸</button>
+          </div>
+        </div>
+        <div style="position:absolute;inset:0;backface-visibility:hidden;transform:rotateY(180deg);background:#141310;color:#eee;border:2px solid #fbfaf7;border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:14px;overflow:hidden">
+          <div style="font-family:'Press Start 2P',monospace;font-size:8px;opacity:.65">BACK · MẶT SAU</div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="{{ selIconStyle }}">{{ selIcon }}</span><span style="font-size:15px;font-weight:700;letter-spacing:.04em;color:#fbfaf7">{{ selName }}</span></div>
+          <div style="flex:1;border:1.5px dashed rgba(255,255,255,.35);background:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 10px,rgba(255,255,255,0) 10px 20px);display:flex;align-items:center;justify-content:center"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#9a958a;text-align:center;padding:0 24px">full essay text — drop content here / toàn văn bài viết sẽ nằm ở đây</span></div>
+          <div style="font-size:10px;letter-spacing:.08em;color:#9a958a">{{ selStage }}</div>
+          <div style="border-top:1.5px solid rgba(255,255,255,.3);padding-top:14px;display:flex;gap:12px">
+            <button onClick="{{ flipCard }}" style="background:#fbfaf7;color:#111;border:2px solid #fbfaf7;border-radius:7px;padding:10px 18px;font-size:11px;font-weight:700;letter-spacing:.1em;cursor:pointer;font-family:inherit">◂ FLIP · LẬT LẠI</button>
+            <button onClick="{{ closeSel }}" style="background:none;color:#fbfaf7;border:2px solid #fbfaf7;border-radius:7px;padding:10px 18px;font-size:11px;font-weight:700;letter-spacing:.1em;cursor:pointer;font-family:inherit" style-hover="background:rgba(255,255,255,.12)">CLOSE · ĐÓNG</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;width:170px;flex:none">
+      <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:#fff;opacity:.7">LINKS</div>
+      <div style="background:#fff;border:2px solid #111;border-radius:6px;padding:12px 14px;font-size:11px;font-weight:600;letter-spacing:.08em">LINK 1</div>
+      <div style="background:#fff;border:2px solid #111;border-radius:6px;padding:12px 14px;font-size:11px;font-weight:600;letter-spacing:.08em">LINK 2</div>
+      <div style="background:#fff;border:2px solid #111;border-radius:6px;padding:12px 14px;font-size:11px;font-weight:600;letter-spacing:.08em">LINK 3</div>
+      <div style="background:#fff;border:2px solid #111;border-radius:6px;padding:12px 14px;font-size:11px;font-weight:600;letter-spacing:.08em">LINK 4</div>
+      <button style="background:#d9d4c6;border:2px solid #111;border-radius:5px;padding:8px 12px;font-size:10px;font-weight:700;letter-spacing:.1em;cursor:pointer;font-family:inherit;width:max-content">SEE ALL</button>
+    </div>
+  </div>
+</sc-if>
+<div style="position:fixed;right:24px;bottom:70px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+  <sc-if value="{{ optOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#fbfaf7;border:2px solid #111;border-radius:10px;padding:16px;width:250px;display:flex;flex-direction:column;gap:14px;box-shadow:0 10px 28px rgba(0,0,0,.55)">
+      <div style="font-family:'Press Start 2P',monospace;font-size:8px">OPTIONS · TUỲ CHỌN</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;font-size:10px;letter-spacing:.08em;font-weight:700"><span>TORCH · BÁN KÍNH ĐUỐC</span><span>{{ torchLabel }}</span></div>
+        <input type="range" min="500" max="900" step="10" value="{{ torchVal }}" onChange="{{ onTorch }}" style="width:100%;accent-color:#111">
+      </div>
+      <label style="display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.08em;font-weight:700;cursor:pointer"><input type="checkbox" checked="{{ revealVal }}" onChange="{{ onReveal }}" style="accent-color:#111;width:14px;height:14px;margin:0">REVEAL MAP · HIỆN BẢN ĐỒ</label>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="font-size:10px;letter-spacing:.08em;font-weight:700">JUMP TO MAP · NHẢY MAP</div>
+        <div style="display:flex;gap:6px">
+          <sc-for list="{{ mapBtns }}" as="b" hint-placeholder-count="5"><button onClick="{{ b.go }}" style="{{ b.style }}">{{ b.n }}</button></sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <button onClick="{{ toggleOpts }}" style="background:rgba(251,250,247,.94);border:2px solid #111;border-radius:9px;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:.12em;cursor:pointer;font-family:inherit" style-hover="transform:scale(1.05)">OPTIONS ▴</button>
+  <div style="display:flex;align-items:center;gap:14px">
+    <button onClick="{{ movePrev }}" style="background:rgba(251,250,247,.94);border:2px solid #111;border-radius:10px;width:64px;height:56px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0" style-hover="transform:scale(1.07)">
+      <svg width="26" height="26" viewBox="0 0 26 26"><polygon points="19,3 6,13 19,23" fill="#111"></polygon></svg>
+    </button>
+    <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:#fff;text-shadow:0 2px 0 #000">MOVE</div>
+    <button onClick="{{ moveNext }}" style="background:rgba(251,250,247,.94);border:2px solid #111;border-radius:10px;width:64px;height:56px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0" style-hover="transform:scale(1.07)">
+      <svg width="26" height="26" viewBox="0 0 26 26"><polygon points="7,3 20,13 7,23" fill="#111"></polygon></svg>
+    </button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;torchRadius&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:500,&quot;min&quot;:500,&quot;max&quot;:900,&quot;step&quot;:10,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ngọn đuốc / Torch&quot;},&quot;revealAll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ngọn đuốc / Torch&quot;},&quot;startMap&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Imagining&quot;,&quot;Belief&quot;,&quot;Thinking&quot;,&quot;Intelligence&quot;,&quot;Knowledge&quot;],&quot;default&quot;:&quot;Imagining&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Map&quot;}}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.T=32;this.worldW=3936;this.worldH=704;this.regionW=1312;
+    this.MAPS=[
+      {name:'IMAGINING',vn:'Tưởng tượng',sub:'EIKASIA',cats:['SHADOW','IMAGE','ECHO'],gA:'#1e1c3a',gB:'#1a1834',treeD:'#100e24',treeL:'#2a2750',treeHi:'#3a366b',bush:'#232048',path:'#4c4680',pathDot:'#3d3868',flower:'#8f7fe0',rock:'#4a4670',icon:'#cfc2ff',iconGlow:'rgba(160,130,255,.85)',dk:'5,4,16',alpha:.97},
+      {name:'BELIEF',vn:'Niềm tin',sub:'PISTIS',cats:['OBJECT','SENSE','HABIT'],gA:'#17414b',gB:'#143a43',treeD:'#0c2830',treeL:'#20565f',treeHi:'#2f6f78',bush:'#123640',path:'#7e9a94',pathDot:'#6b8781',flower:'#d8b46a',rock:'#4f6a6b',icon:'#aef0dd',iconGlow:'rgba(90,220,180,.85)',dk:'4,16,18',alpha:.93},
+      {name:'THINKING',vn:'Tư duy',sub:'DIANOIA',cats:['MATH','LOGIC','HYPOTHESIS'],gA:'#8ed3ac',gB:'#85cba3',treeD:'#47927e',treeL:'#68b199',treeHi:'#83c7ae',bush:'#57ad83',path:'#f2ecd9',pathDot:'#e0d7bd',flower:'#f2d24d',rock:'#b9c4bb',icon:'#0f5140',iconGlow:'rgba(255,240,170,.9)',dk:'8,32,24',alpha:.88},
+      {name:'INTELLIGENCE',vn:'Lý tính',sub:'NOESIS',cats:['FORM','DIALECTIC','ESSENCE'],gA:'#cfe0a4',gB:'#c7d899',treeD:'#7c9a54',treeL:'#9cba70',treeHi:'#b4d086',bush:'#a4c476',path:'#f7f0da',pathDot:'#e7dec2',flower:'#e08a4a',rock:'#bdb694',icon:'#5a4a10',iconGlow:'rgba(255,220,120,.9)',dk:'40,30,6',alpha:.8},
+      {name:'KNOWLEDGE',vn:'Tri thức',sub:'EPISTEME',cats:['SUN','TRUTH','GOOD'],gA:'#f0e2b2',gB:'#ecdca6',treeD:'#c49f55',treeL:'#dcbd74',treeHi:'#ecd694',bush:'#dfc98a',path:'#fcf7e6',pathDot:'#efe6cb',flower:'#dd6440',rock:'#d3c7a8',icon:'#7a4408',iconGlow:'rgba(255,200,90,.95)',dk:'70,48,4',alpha:.5}
+    ];
+    this.ICONS=['★','▲','◼︎','●','✱','◆','☀︎','✦','☯︎','☾'];
+    const TITLES=[
+      ['Shadows on the Wall','The Flicker Test','Notes on Illusion','A Catalogue of Echoes','The Puppet Handbook','Dreaming in Grayscale','Mirror Without Glass','The Art of Guessing','Silhouette Grammar','Second-hand Light','The Rumor Engine','Watching the Watchers','Faint Copies','The Comfort of Chains','Projection Room'],
+      ['Things You Can Touch','A Field Guide to Objects','Trusting the Eye','The Weight of Stones','Common Sense, Revisited','Habit as Evidence','The Believer\u2019s Toolkit','Naming the Animals','Everyday Certainty','The Furniture of the World','Seeing Is Believing?','Craft Before Theory','The Reliable Sundial','Maps of the Familiar','Custom and Costume'],
+      ['The Hypothesis Ladder','Geometry Without Diagrams','On Divided Lines','Proof as a Path','The Triangle in the Mind','Axioms and Anchors','Thinking in Steps','The Mathematician\u2019s Cave','Abstraction Exercises','From Many, One','The If-Then Garden','Numbers Cast No Shadows','Diagram of a Diagram','The Logic of Light','Toward First Principles'],
+      ['The Form of the Circle','Dialectic Notebook','Beyond Hypothesis','The Idea of Ideas','Conversations Upward','Unwritten Doctrines','The Shape of Justice','Essence, Roughly','First Principles, Finally','The Ladder Kicked Away','Noesis Field Notes','What the Eye Can\u2019t See','On Pure Intelligibles','The Grammar of Being','Almost the Sun'],
+      ['Staring at the Sun','The Good Itself','Light Without Source','Return to the Cave','The Philosopher\u2019s Debt','Truth, Unshadowed','The Sun Also Teaches','Knowledge as Vision','The Brightest Habit','Teaching the Chained','After the Ascent','The Source of Forms','Clarity: A Memoir','The Last Metaphor','Daylight Economics']
+    ];
+    this.paths=this.MAPS.map((m,mi)=>this._genPath(mi));
+    this.decor=this.MAPS.map((m,mi)=>this._genDecor(mi));
+    this.stuff=TITLES.map((arr,mi)=>this._genStuff(arr,mi));
+    const si=this.MAPS.findIndex(m=>m.name===String(props.startMap||'').toUpperCase());
+    this.state={mapIdx:si<0?0:si,fireX:656,vw:1280,vh:660,hover:null,selId:null,flip:false,optOpen:false,optTorch:null,optReveal:null};
+    this.viewRef=React.createRef();this.canvasRef=React.createRef();
+    this._target=null;this._raf=null;this._last=0;
+    this._flame=this._makeFlame();
+  }
+  _rng(seed){let a=seed>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  _genPath(mi){
+    const rng=this._rng(mi*61+29);const pts=[];let y=8+rng()*8;
+    for(let x=0;x<=126;x+=6){pts.push({x,y});y=Math.max(4.5,Math.min(17.5,y+(rng()*2-1)*4.5));}
+    const rows=[];
+    for(let c=0;c<123;c++){const i=Math.floor(c/6);const a=pts[i],b=pts[Math.min(pts.length-1,i+1)];const f=(c-a.x)/6;const t=f*f*(3-2*f);rows.push(a.y+(b.y-a.y)*t);}
+    return rows;
+  }
+  _pathRowAt(mi,col){const p=this.paths[mi];const c=Math.max(0,Math.min(122.999,col));const i=Math.floor(c),f=c-i;return p[i]+(p[Math.min(122,i+1)]-p[i])*f;}
+  _pathPx(mi,x){return this._pathRowAt(mi,x/32)*32+26;}
+  _genDecor(mi){
+    const rng=this._rng(mi*997+11),cols=123,rows=22;
+    const clusters=[];
+    for(let i=0;i<9;i++){let c=null;for(let k=0;k<25;k++){const t={cx:5+rng()*(cols-10),cy:3+rng()*(rows-6),r:1.2+rng()*2};if(Math.abs(t.cy-this._pathRowAt(mi,t.cx))>=t.r+2.4){c=t;break;}}if(c)clusters.push(c);}
+    const spot=()=>({x:3+Math.floor(rng()*(cols-6)),y:2+Math.floor(rng()*(rows-4))});
+    const pick=(n,f)=>{const a=[];for(let i=0;i<n;i++)a.push(f());return a;};
+    return{clusters,rocks:pick(9,spot),stumps:pick(6,spot),flowers:pick(16,spot),bushes:pick(7,()=>({x:3+Math.floor(rng()*(cols-12)),y:2+Math.floor(rng()*(rows-7)),w:3+Math.floor(rng()*5),h:2+Math.floor(rng()*3)}))};
+  }
+  _genStuff(arr,mi){
+    const rng=this._rng(mi*7+3),dec=this.decor[mi],M=this.MAPS[mi];
+    return arr.map((t,i)=>{
+      const region=Math.floor(i/5);let x=0,y=0;
+      for(let k=0;k<30;k++){
+        x=region*this.regionW+150+rng()*(this.regionW-300);
+        const pp=this._pathPx(mi,x);
+        let dy=(rng()*2-1)*380;
+        if(Math.abs(dy)<80)dy=dy<0?-90:90;
+        y=Math.max(110,Math.min(645,pp+dy));
+        const tx=x/32,ty=y/32;
+        const bad=dec.clusters.some(c=>{const dx=tx-c.cx,dy2=ty-c.cy;return dx*dx+dy2*dy2<(c.r+1)*(c.r+1);});
+        if(!bad)break;
+      }
+      return{id:mi+'-'+i,mi,idx:i,title:t.toUpperCase(),icon:this.ICONS[Math.floor(rng()*this.ICONS.length)],x,y,region,
+        cats:[{label:M.cats[i%3]},{label:'ESSAY'},{label:M.cats[(i+1)%3]}],
+        desc:'Một mảnh “stuff” tìm thấy ở chặng '+M.vn+' — nội dung mẫu, sẽ thay bằng bài viết thật. Sample essay picked up on the '+M.name.toLowerCase()+' stage of the ascent; replace with real content.'};
+    });
+  }
+  _makeFlame(){
+    const h=React.createElement;
+    return h('div',{style:{position:'relative',width:'36px',height:'50px'}},
+      h('div',{style:{position:'absolute',left:'50%',top:'62%',width:'150px',height:'150px',transform:'translate(-50%,-50%)',borderRadius:'50%',background:'radial-gradient(circle,rgba(255,170,60,.4),rgba(255,140,40,.13) 55%,transparent 72%)',animation:'glowP 1.6s ease-in-out infinite'}}),
+      h('div',{style:{position:'absolute',bottom:'0',left:'50%',transform:'translateX(-50%)',width:'30px',height:'42px',background:'linear-gradient(#ffdd55,#ff9a2a 55%,#e5601e)',borderRadius:'50% 50% 46% 46%/62% 62% 40% 40%',animation:'fl1 .45s ease-in-out infinite alternate',boxShadow:'0 0 18px rgba(255,160,60,.9)'}}),
+      h('div',{style:{position:'absolute',bottom:'2px',left:'50%',transform:'translateX(-50%)',width:'16px',height:'25px',background:'linear-gradient(#fff8d8,#ffd34d)',borderRadius:'50% 50% 46% 46%/60% 60% 42% 42%',animation:'fl2 .38s ease-in-out infinite alternate'}}));
+  }
+  componentDidMount(){
+    this._measure();
+    window.addEventListener('resize',this._measure);
+    window.addEventListener('keydown',this._key);
+    this._drawMap();
+  }
+  componentWillUnmount(){
+    window.removeEventListener('resize',this._measure);
+    window.removeEventListener('keydown',this._key);
+    if(this._raf)cancelAnimationFrame(this._raf);
+  }
+  componentDidUpdate(pp,ps){
+    if(ps&&ps.mapIdx!==this.state.mapIdx)this._drawMap();
+    if(pp&&pp.startMap!==this.props.startMap){
+      const i=this.MAPS.findIndex(m=>m.name===String(this.props.startMap||'').toUpperCase());
+      if(i>=0&&i!==this.state.mapIdx){this._stop();this.setState({mapIdx:i,fireX:656,selId:null});}
+    }
+  }
+  _measure=()=>{const el=this.viewRef.current;if(el){const r=el.getBoundingClientRect();this.setState({vw:r.width,vh:r.height});}}
+  _key=(e)=>{
+    const tag=e.target&&e.target.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA')return;
+    if(this.state.selId){
+      if(e.key==='Escape')this.setState({selId:null,flip:false});
+      if(e.key==='ArrowRight'){e.preventDefault();this._selStep(1);}
+      if(e.key==='ArrowLeft'){e.preventDefault();this._selStep(-1);}
+      return;
+    }
+    if(e.key==='Escape')this.setState({optOpen:false});
+    if(e.key==='ArrowRight'){e.preventDefault();this._go((this._target!=null?this._target:this.state.fireX)+150);}
+    if(e.key==='ArrowLeft'){e.preventDefault();this._go((this._target!=null?this._target:this.state.fireX)-150);}
+  }
+  _go(t){
+    this._target=Math.max(70,Math.min(this.worldW-70,t));
+    if(this._raf==null){this._last=performance.now();this._raf=requestAnimationFrame(this._step);}
+  }
+  _step=(now)=>{
+    const dt=Math.min(0.05,(now-this._last)/1000);this._last=now;
+    const sp=280;let x=this.state.fireX;const d=this._target-x;
+    if(Math.abs(d)<=sp*dt){x=this._target;this._raf=null;}
+    else{x+=Math.sign(d)*sp*dt;this._raf=requestAnimationFrame(this._step);}
+    this.setState({fireX:x});
+  }
+  _stop(){if(this._raf){cancelAnimationFrame(this._raf);this._raf=null;}this._target=null;}
+  move(dir){
+    if(this.state.selId){this._selStep(dir);return;}
+    const {mapIdx,fireX}=this.state;
+    const r=Math.max(0,Math.min(2,Math.floor(fireX/this.regionW)));
+    const nr=r+dir;
+    if(nr<0){if(mapIdx>0)this._jumpMap(mapIdx-1,2);}
+    else if(nr>2){if(mapIdx<4)this._jumpMap(mapIdx+1,0);}
+    else this._go(nr*this.regionW+this.regionW/2);
+  }
+  _jumpMap(mi,region){
+    this._stop();
+    const startX=region===0?90:this.worldW-90;
+    this.setState({mapIdx:mi,fireX:startX,hover:null},()=>{this._go(region*this.regionW+this.regionW/2);});
+  }
+  _selStep(d){
+    const {mapIdx,selId}=this.state,list=this.stuff[mapIdx];
+    const i=list.findIndex(s=>s.id===selId);if(i<0)return;
+    const n=(i+d+list.length)%list.length;
+    this._stop();
+    this.setState({selId:list[n].id,flip:false,fireX:Math.max(70,Math.min(this.worldW-70,list[n].x))});
+  }
+  onSearch=(e)=>{
+    if(e.key!=='Enter')return;
+    const q=e.target.value.trim().toLowerCase();if(!q)return;
+    for(let mi=0;mi<5;mi++){
+      const hit=this.stuff[mi].find(s=>s.title.toLowerCase().includes(q));
+      if(hit){this._stop();this.setState({mapIdx:mi,selId:hit.id,flip:false,fireX:Math.max(70,Math.min(this.worldW-70,hit.x))});return;}
+    }
+  }
+  _drawMap(){
+    const cv=this.canvasRef.current;if(!cv)return;
+    const ctx=cv.getContext('2d'),mi=this.state.mapIdx,M=this.MAPS[mi],dec=this.decor[mi],P=this.paths[mi];
+    const T=32,cols=123,rows=22,rng=this._rng(mi*131+7);
+    ctx.clearRect(0,0,this.worldW,this.worldH);
+    for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
+      ctx.fillStyle=(x+y)%2?M.gA:M.gB;ctx.fillRect(x*T,y*T,T,T);
+      if(rng()<0.05){ctx.fillStyle=M.bush;ctx.fillRect(x*T+7,y*T+13,3,3);ctx.fillRect(x*T+19,y*T+22,3,3);}
+    }
+    for(const b of dec.bushes)for(let y=b.y;y<b.y+b.h;y++)for(let x=b.x;x<b.x+b.w;x++)this._tuft(ctx,x*T,y*T,M);
+    for(const f of dec.flowers)this._flower(ctx,f.x*T,f.y*T,M);
+    for(let x=0;x<cols;x++){const j1=((x*37)%3)*4,j2=((x*53)%3)*4;ctx.fillStyle=M.path;ctx.fillRect(x*T,P[x]*T-16-j1,T,58+j1+j2);}
+    ctx.fillStyle=M.pathDot;
+    for(let i=0;i<170;i++){const c=Math.floor(rng()*cols);ctx.fillRect(c*T+rng()*T,P[c]*T-6+rng()*36,3,3);}
+    for(const r of dec.rocks)if(Math.abs(r.y-P[r.x])>2)this._rock(ctx,r.x*T,r.y*T,M);
+    for(const s of dec.stumps)if(Math.abs(s.y-P[s.x])>2)this._stump(ctx,s.x*T,s.y*T);
+    const tiles=[],depth=(x,y)=>Math.min(x,y,cols-1-x,rows-1-y);
+    for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
+      const gate=Math.abs(y-P[Math.max(0,Math.min(122,x))])<=1.4&&(x<4||x>cols-5);
+      if(gate)continue;
+      const d=depth(x,y);
+      if(d<2||(d===2&&rng()<0.4))tiles.push({x,y});
+    }
+    for(const c of dec.clusters){
+      const r=Math.ceil(c.r);
+      for(let y=Math.floor(c.cy-r);y<=c.cy+r;y++)for(let x=Math.floor(c.cx-r);x<=c.cx+r;x++){
+        const dx=x-c.cx,dy=y-c.cy;
+        if(dx*dx+dy*dy<=c.r*c.r&&x>1&&y>1&&x<cols-2&&y<rows-2&&Math.abs(y-P[x])>1.6)tiles.push({x,y});
+      }
+    }
+    tiles.sort((a,b)=>a.y-b.y||a.x-b.x);
+    for(const t of tiles)this._tree(ctx,t.x*T+(t.y%2)*10,t.y*T,M);
+  }
+  _cc(ctx,x,y,r,col){ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill();}
+  _tree(ctx,px,py,M){this._cc(ctx,px+16,py+24,15,M.treeD);this._cc(ctx,px+16,py+12,13,M.treeL);this._cc(ctx,px+11,py+7,5,M.treeHi);}
+  _tuft(ctx,px,py,M){ctx.fillStyle=M.bush;ctx.beginPath();ctx.arc(px+9,py+20,8,0,7);ctx.arc(px+20,py+16,9,0,7);ctx.arc(px+26,py+24,7,0,7);ctx.fill();}
+  _flower(ctx,px,py,M){ctx.fillStyle=M.flower;for(let i=0;i<4;i++)ctx.fillRect(px+6+((i*11)%20),py+6+((i*7)%18),4,4);}
+  _rock(ctx,px,py,M){this._cc(ctx,px+16,py+18,11,M.rock);this._cc(ctx,px+12,py+14,4,'rgba(255,255,255,.28)');}
+  _stump(ctx,px,py){this._cc(ctx,px+16,py+16,10,'#c9b087');this._cc(ctx,px+16,py+16,6,'#a98f66');this._cc(ctx,px+16,py+16,3,'#c9b087');}
+  renderVals(){
+    const {mapIdx,fireX,vw,vh,hover,selId,flip,optOpen,optTorch,optReveal}=this.state,M=this.MAPS[mapIdx];
+    const s=Math.max(0.2,vh/this.worldH),visW=vw/s;
+    let camX=Math.max(0,Math.min(fireX-visW/2,this.worldW-visW));
+    if(this.worldW<=visW)camX=(this.worldW-visW)/2;
+    const fyWorld=this._pathPx(mapIdx,fireX);
+    const fx=(fireX-camX)*s,fy=fyWorld*s;
+    const base=optTorch!=null?optTorch:(this.props.torchRadius!=null?this.props.torchRadius:500);
+    const minR=vw<=820?vw:500;
+    const R=Math.max(base,minR);
+    const reveal=optReveal!=null?optReveal:!!this.props.revealAll;
+    const A=reveal?0:M.alpha;
+    const dk=a=>'rgba('+M.dk+','+a.toFixed(3)+')';
+    const romans=['I','II','III','IV','V'];
+    const region=Math.max(0,Math.min(2,Math.floor(fireX/this.regionW)));
+    const stuffList=this.stuff[mapIdx].map(it=>({
+      ...it,
+      open:()=>this.setState({selId:it.id,flip:false}),
+      enter:()=>this.setState({hover:it.id}),
+      leave:()=>this.setState(st=>st.hover===it.id?{hover:null}:null),
+      posStyle:{position:'absolute',left:it.x+'px',top:it.y+'px',transform:'translate(-50%,-50%) scale('+(hover===it.id?1.25:1)+')',background:'none',border:'none',cursor:'pointer',padding:'8px',fontSize:'30px',lineHeight:'1',color:M.icon,textShadow:'0 0 14px '+M.iconGlow,zIndex:2,fontFamily:'inherit',transition:'transform .15s ease-out'},
+      tipStyle:{display:hover===it.id?'block':'none',position:'absolute',top:'100%',left:'50%',transform:'translateX(-50%)',marginTop:'2px',background:'#111',border:'2px solid #fff',color:'#fff',fontFamily:"'Press Start 2P',monospace",fontSize:'8px',padding:'6px 8px',whiteSpace:'nowrap',zIndex:9}
+    }));
+    const sel=selId?this.stuff[mapIdx].find(x=>x.id===selId):null;
+    const list=this.stuff[mapIdx];
+    const selRefs=sel?[1,2,3].map(k=>{const o=list[(sel.idx+k)%list.length];return{title:o.title,go:()=>this.setState({selId:o.id,flip:false})};}):[];
+    const crumbs=this.MAPS.map((m,i)=>({
+      label:m.name,
+      go:()=>{if(i!==mapIdx)this._jumpMap(i,0);},
+      style:{background:'none',border:'none',cursor:'pointer',padding:'0',fontFamily:'inherit',fontSize:'11px',letterSpacing:'.12em',fontWeight:i===mapIdx?'700':'500',textDecoration:i===mapIdx?'underline':'none',textUnderlineOffset:'3px',color:i===mapIdx?'#111':'#8a8577'},
+      sepStyle:{display:i<4?'inline':'none',color:'#b5ae9c',fontSize:'12px'}
+    }));
+    const mapBtns=this.MAPS.map((m,i)=>({
+      n:romans[i],
+      go:()=>{if(i!==mapIdx)this._jumpMap(i,0);},
+      style:{flex:'1',background:i===mapIdx?'#111':'#fff',color:i===mapIdx?'#fff':'#111',border:'2px solid #111',borderRadius:'5px',padding:'7px 0',fontSize:'10px',fontWeight:'700',cursor:'pointer',fontFamily:'inherit'}
+    }));
+    return{
+      onSearch:this.onSearch,
+      viewRef:this.viewRef,canvasRef:this.canvasRef,
+      worldStyle:{position:'absolute',left:'0',top:'0',width:this.worldW+'px',height:this.worldH+'px',transform:'translateX('+(-camX*s)+'px) scale('+s+')',transformOrigin:'0 0'},
+      stuffList,
+      darknessStyle:{position:'absolute',inset:'0',pointerEvents:'none',zIndex:4,background:'radial-gradient(circle '+(R*0.55)+'px at '+fx+'px '+fy+'px, rgba(255,170,70,.16), rgba(255,150,50,.05) 60%, transparent 75%), radial-gradient(circle '+R+'px at '+fx+'px '+fy+'px, rgba(0,0,0,0) 30%, '+dk(A*0.35)+' 62%, '+dk(A*0.85)+' 82%, '+dk(A)+' 100%)'},
+      fireStyle:{position:'absolute',left:fx+'px',top:fy+'px',transform:'translate(-50%,-94%) scale('+Math.max(0.6,s)+')',zIndex:5,pointerEvents:'none',display:'flex',flexDirection:'column',alignItems:'center'},
+      flame:this._flame,
+      mapTitle:romans[mapIdx]+' · '+M.name,
+      badgeSub:M.sub+' — '+M.vn.toUpperCase()+' · VÙNG '+(region+1)+'/3',
+      movePrev:()=>this.move(-1),
+      moveNext:()=>this.move(1),
+      crumbs,mapBtns,
+      optOpen,
+      toggleOpts:()=>this.setState(st=>({optOpen:!st.optOpen})),
+      torchVal:Math.max(500,Math.min(900,base)),
+      torchLabel:Math.round(R)+'PX',
+      onTorch:(e)=>this.setState({optTorch:+e.target.value}),
+      revealVal:reveal,
+      onReveal:()=>this.setState({optReveal:!reveal}),
+      selOpen:!!sel,
+      flipStyle:{position:'absolute',inset:'0',transformStyle:'preserve-3d',transition:'transform .6s ease',transform:flip?'rotateY(180deg)':'none'},
+      flipCard:()=>this.setState(st=>({flip:!st.flip})),
+      selName:sel?sel.title:'',
+      selIcon:sel?sel.icon:'',
+      selDesc:sel?sel.desc:'',
+      selCats:sel?sel.cats:[],
+      selRefs,
+      selStage:sel?('MAP '+romans[mapIdx]+' — '+M.name+' / '+M.vn.toUpperCase()):'',
+      selIconStyle:{fontSize:'22px',color:M.icon,textShadow:'0 0 10px '+M.iconGlow},
+      closeSel:()=>this.setState({selId:null,flip:false}),
+      selPrev:()=>this._selStep(-1),
+      selNext:()=>this._selStep(1)
+    };
+  }
+}
+</script>
+</body>
+</html>

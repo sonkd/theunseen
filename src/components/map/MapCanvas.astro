@@ -1,0 +1,1266 @@
+---
+import { MAPS as PALETTE_SSR, ROMANS as ROMANS_SSR } from '../../lib/map/palette';
+const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).toLowerCase());
+---
+<div class="map-shell">
+  <div class="map-viewport" id="mapViewport">
+    <canvas id="mapCanvas" aria-label="Map exploration canvas" tabindex="0" autofocus></canvas>
+    <div class="map-badge-group">
+      <div id="mapBadge" class="map-badge"></div>
+      <div id="mapBadgeSub" class="map-badge-sub"></div>
+    </div>
+    <div id="fireBadge" class="fire-badge hidden">A FIRE</div>
+    <div id="tooltip" class="map-tooltip hidden"></div>
+    <div id="finalePanel" class="finale-panel hidden">
+      <div class="finale-title">V · KNOWLEDGE</div>
+      <div id="finaleCount" class="finale-count"></div>
+      <div class="finale-links">
+        <a href="/library/">LIBRARY · THƯ VIỆN</a>
+        <a href="/graph/">GRAPH · SƠ ĐỒ</a>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bottom">
+    <div class="breadcrumb" id="breadcrumb">
+      {mapLabelsSSR.map((label, index) => (
+        <>
+          <button type="button" class="breadcrumb-btn" data-map-index={index}>{label.toUpperCase()}</button>
+          {index < mapLabelsSSR.length - 1 && <span class="sep">›</span>}
+        </>
+      ))}
+    </div>
+    <div class="chrome-spacer"></div>
+    <div class="hint">PHÍM ← → ĐỂ ĐI BỘ · &lt; &gt; NHẢY VÙNG · ARROWS TO WALK</div>
+  </div>
+</div>
+<div class="hud-corner">
+  <div id="optionsPanel" class="options-panel hidden" role="dialog" aria-modal="true">
+    <div class="options-header">OPTIONS · TUỲ CHỌN</div>
+    <div class="options-row">
+      <span>TORCH · BÁN KÍNH ĐUỐC</span><span id="radiusValue">500PX</span>
+    </div>
+    <input id="radiusRange" type="range" min="500" max="900" step="10" value="500" />
+    <label class="toggle-row">
+      <input id="revealAll" type="checkbox" /> REVEAL MAP · HIỆN BẢN ĐỒ
+    </label>
+    <div class="options-row-label">JUMP TO MAP · NHẢY MAP</div>
+    <div class="quick-nav" id="quickNav">
+      {ROMANS_SSR.map((roman, index) => (
+        <button type="button" class="quick-nav-btn" data-map-index={index}>{roman}</button>
+      ))}
+    </div>
+  </div>
+  <button id="optionsButton" class="options-button">OPTIONS ▴</button>
+  <div class="move-row">
+    <button id="zonePrev" class="control-button" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 26 26"><polygon points="19,3 6,13 19,23" fill="#111"></polygon></svg>
+    </button>
+    <div class="move-label">MOVE</div>
+    <button id="zoneNext" class="control-button" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 26 26"><polygon points="7,3 20,13 7,23" fill="#111"></polygon></svg>
+    </button>
+  </div>
+</div>
+<style>
+  .map-shell {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    background: var(--dark-bg);
+  }
+  .map-viewport {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+  }
+  canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    image-rendering: pixelated;
+    outline: none;
+  }
+  .map-badge-group {
+    position: absolute;
+    left: 20px;
+    top: 16px;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    pointer-events: none;
+  }
+  .map-badge {
+    background: var(--ink);
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: 11px;
+    padding: 9px 11px;
+    width: max-content;
+  }
+  .map-badge-sub {
+    background: rgba(17, 17, 17, .8);
+    color: #ddd;
+    font-family: var(--font-pixel);
+    font-size: 7px;
+    padding: 6px 8px;
+    width: max-content;
+    letter-spacing: .05em;
+  }
+  .fire-badge {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    background: var(--ink);
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: 7px;
+    padding: 5px 7px;
+    white-space: nowrap;
+    transform: translate(-50%, 6px);
+  }
+  .fire-badge.hidden { display: none; }
+  .map-tooltip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    background: var(--ink);
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    padding: 6px 8px;
+    white-space: nowrap;
+    z-index: 9;
+  }
+  .map-tooltip.hidden { display: none; }
+
+  .chrome-bottom {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    height: 46px;
+    background: var(--bg);
+    border-top: 2px solid var(--ink);
+    position: relative;
+    z-index: 10;
+  }
+  .breadcrumb { display: flex; align-items: center; gap: 10px; }
+  .breadcrumb button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: .1em;
+    color: var(--muted);
+  }
+  .breadcrumb button.current {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .breadcrumb span.sep { color: var(--muted); font-family: var(--font-pixel); font-size: 9px; }
+  .chrome-spacer { flex: 1; }
+  .hint { font-size: 10px; letter-spacing: .06em; color: var(--muted); white-space: nowrap; }
+
+  .finale-panel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    background: rgba(251, 250, 247, .96);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 28px 34px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    pointer-events: auto;
+  }
+  .finale-panel.hidden { display: none; }
+  .finale-title { font-family: var(--font-pixel); font-size: 12px; color: var(--ink); }
+  .finale-count { font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+  .finale-links { display: flex; gap: 12px; }
+  .finale-links a {
+    background: var(--ink);
+    color: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 7px;
+    padding: 8px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+  .finale-links a:hover { text-decoration: none; opacity: .85; }
+
+  .hud-corner {
+    position: fixed;
+    right: 24px;
+    bottom: 70px;
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .options-panel {
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    padding: 16px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  }
+  .options-panel.hidden { display: none; }
+  .options-header { font-family: var(--font-pixel); font-size: 8px; color: var(--ink); }
+  .options-row { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .08em; font-weight: 700; color: var(--ink); }
+  .options-row-label { font-size: 10px; letter-spacing: .08em; font-weight: 700; color: var(--ink); }
+  .options-panel input[type=range] { width: 100%; accent-color: var(--ink); }
+  .toggle-row { display: flex; align-items: center; gap: 9px; font-size: 10px; letter-spacing: .08em; font-weight: 700; cursor: pointer; color: var(--ink); }
+  .toggle-row input { accent-color: var(--ink); width: 14px; height: 14px; margin: 0; }
+  .quick-nav { display: flex; gap: 6px; }
+  .quick-nav button {
+    flex: 1;
+    background: #fff;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 5px;
+    padding: 7px 0;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .quick-nav button.current { background: var(--ink); color: #fff; }
+  .options-button {
+    background: rgba(251, 250, 247, .94);
+    border: 2px solid var(--ink);
+    border-radius: 9px;
+    padding: 10px 16px;
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: .1em;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .options-button:hover { transform: scale(1.05); }
+  .move-row { display: flex; align-items: center; gap: 14px; }
+  .control-button {
+    background: rgba(251, 250, 247, .94);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    width: 56px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .control-button:hover { transform: scale(1.07); }
+  .move-label {
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    color: #fff;
+    text-shadow: 0 2px 0 #000;
+  }
+</style>
+<script>
+  import { buildZigzagPath, withSeed, CELL } from '../../lib/map/path';
+  import { isLit, primeMapData } from '../../lib/progress';
+  import { MAPS as PALETTE, ROMANS } from '../../lib/map/palette';
+
+  type Stuff = {
+    slug: string;
+    title: string;
+    icon: string;
+    zone: number;
+    x: number;
+    y: number;
+  };
+  type MapEntry = {
+    level: number;
+    name: string;
+    greek: string;
+    vn: string;
+    zones: number;
+    stuff: Stuff[];
+  };
+  type MapData = { maps: MapEntry[] };
+
+  const emptyMapData: MapData = { maps: [] };
+  const TILE = 32;
+
+  // Chấm lưới dùng màu --ink token (mục 1: rgba(ink, .06)) — đọc 1 lần từ CSS.
+  function resolveInkRgbaDot(): string {
+    const hex = getComputedStyle(document.documentElement).getPropertyValue('--ink').trim();
+    const match = /^#([0-9a-f]{6})/i.exec(hex);
+    if (!match) return 'rgba(17,17,20,0.06)';
+    const value = match[1];
+    const r = parseInt(value.slice(0, 2), 16);
+    const g = parseInt(value.slice(2, 4), 16);
+    const b = parseInt(value.slice(4, 6), 16);
+    return `rgba(${r},${g},${b},0.06)`;
+  }
+  const inkRgbaDot = resolveInkRgbaDot();
+
+  // --- R3-1: easing thủ công cho canvas (không CSS transition) ---
+  // LUT parametric cubic-bezier: sample đều theo t tham số, x đơn điệu tăng
+  // nên tra ngược "tiến độ thời gian" (x) -> y bằng nội suy tuyến tính.
+  function cubicBezierEase(x1: number, y1: number, x2: number, y2: number) {
+    const SAMPLES = 32;
+    const xs: number[] = [];
+    const ys: number[] = [];
+    for (let i = 0; i <= SAMPLES; i += 1) {
+      const t = i / SAMPLES;
+      const mt = 1 - t;
+      const x = 3 * mt * mt * t * x1 + 3 * mt * t * t * x2 + t * t * t;
+      const y = 3 * mt * mt * t * y1 + 3 * mt * t * t * y2 + t * t * t;
+      xs.push(x);
+      ys.push(y);
+    }
+    return (time: number) => {
+      const tt = clamp(time, 0, 1);
+      let i = 1;
+      while (i < xs.length && xs[i] < tt) i += 1;
+      const x0 = xs[i - 1];
+      const x1s = xs[i];
+      const span = x1s - x0;
+      const frac = span > 1e-6 ? (tt - x0) / span : 0;
+      return ys[i - 1] + (ys[i] - ys[i - 1]) * frac;
+    };
+  }
+  // docs/refine-round3.md — bảng easing R3-1.
+  const EASE_REVEAL = cubicBezierEase(0.16, 1, 0.3, 1); // stuff hiện ra, 320ms
+  const EASE_FADE = cubicBezierEase(0.4, 0, 1, 1); // stuff mờ đi, 220ms
+  const EASE_FOCUS = cubicBezierEase(0.34, 1.56, 0.64, 1); // focus nảy nhẹ, 240ms
+  const LINEAR = (t: number) => clamp(t, 0, 1);
+
+  function resolveCssRgb(varName: string, fallback: [number, number, number]): [number, number, number] {
+    const raw = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    const hexMatch = /^#([0-9a-f]{6})/i.exec(raw);
+    if (hexMatch) {
+      const v = hexMatch[1];
+      return [parseInt(v.slice(0, 2), 16), parseInt(v.slice(2, 4), 16), parseInt(v.slice(4, 6), 16)];
+    }
+    const rgbMatch = /^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)/i.exec(raw);
+    if (rgbMatch) return [Number(rgbMatch[1]), Number(rgbMatch[2]), Number(rgbMatch[3])];
+    return fallback;
+  }
+  const flameRgb = resolveCssRgb('--flame', [240, 163, 67]);
+  const flameRgba = (a: number) => `rgba(${flameRgb[0]},${flameRgb[1]},${flameRgb[2]},${a})`;
+
+  // Fade một màu iconGlow (đã ở dạng "rgba(r,g,b,a)") về alpha bất kỳ.
+  function fadeIconGlow(iconGlow: string, alpha: number): string {
+    const m = /rgba\(([^)]+)\)/i.exec(iconGlow);
+    if (!m) return iconGlow;
+    const parts = m[1].split(',').map((s) => s.trim());
+    return `rgba(${parts[0]},${parts[1]},${parts[2]},${alpha})`;
+  }
+
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  type StuffAnim = {
+    scale: number;
+    opacity: number;
+    fromScale: number;
+    fromOpacity: number;
+    toScale: number;
+    toOpacity: number;
+    elapsed: number;
+    duration: number;
+    ease: (t: number) => number;
+    delay: number;
+    targetKey: string;
+  };
+
+  const canvas = document.getElementById('mapCanvas') as HTMLCanvasElement | null;
+  const tooltip = document.getElementById('tooltip') as HTMLElement | null;
+  const mapBadge = document.getElementById('mapBadge');
+  const mapBadgeSub = document.getElementById('mapBadgeSub');
+  const fireBadge = document.getElementById('fireBadge');
+  const breadcrumb = document.getElementById('breadcrumb');
+  const finalePanel = document.getElementById('finalePanel');
+  const finaleCount = document.getElementById('finaleCount');
+  const optionsButton = document.getElementById('optionsButton');
+  const optionsPanel = document.getElementById('optionsPanel');
+  const radiusRange = document.getElementById('radiusRange') as HTMLInputElement | null;
+  const radiusValue = document.getElementById('radiusValue');
+  const revealAllToggle = document.getElementById('revealAll') as HTMLInputElement | null;
+  const quickNav = document.getElementById('quickNav');
+  const zonePrev = document.getElementById('zonePrev');
+  const zoneNext = document.getElementById('zoneNext');
+
+  const state = {
+    mapData: emptyMapData,
+    currentMapIndex: 0,
+    currentZone: 0,
+    position: 0,
+    pathSamples: [] as Array<{ x: number; y: number; dist: number }>,
+    pathLength: 0,
+    zoneCenters: [0, 0, 0] as number[],
+    decor: null as ReturnType<typeof genDecor> | null,
+    moveDirection: 0,
+    radius: 500,
+    revealAll: false,
+    hoverStuff: null as Stuff | null,
+    focusStuff: null as Stuff | null,
+    lastFrame: performance.now(),
+    isFinale: false,
+    overlayOpen: false,
+    viewWidth: 0,
+    viewHeight: 0,
+    progress: { isLit },
+    stuffAnim: new Map<string, StuffAnim>(),
+    reducedMotion: reducedMotionQuery.matches,
+  };
+  reducedMotionQuery.addEventListener('change', (event) => {
+    state.reducedMotion = event.matches;
+  });
+
+  function clamp(value: number, min: number, max: number) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function stuffPixel(stuff: Stuff) {
+    return { x: stuff.x * state.viewWidth, y: stuff.y * state.viewHeight };
+  }
+
+  function yAtX(x: number): number {
+    const samples = state.pathSamples;
+    if (!samples.length) return 0;
+    if (x <= samples[0].x) return samples[0].y;
+    const last = samples[samples.length - 1];
+    if (x >= last.x) return last.y;
+    for (let i = 1; i < samples.length; i += 1) {
+      if (samples[i].x >= x) {
+        const a = samples[i - 1];
+        const b = samples[i];
+        const t = (x - a.x) / Math.max(1e-6, b.x - a.x);
+        return a.y + (b.y - a.y) * t;
+      }
+    }
+    return last.y;
+  }
+
+  function getPointAt(distance: number) {
+    const samples = state.pathSamples;
+    if (!samples.length) return { x: 0, y: 0 };
+    distance = clamp(distance, 0, state.pathLength);
+    let index = samples.findIndex((p) => p.dist >= distance);
+    if (index === -1) index = samples.length - 1;
+    if (index === 0) return samples[0];
+    const prev = samples[index - 1];
+    const current = samples[index];
+    const t = (distance - prev.dist) / Math.max(1, current.dist - prev.dist);
+    return {
+      x: prev.x + (current.x - prev.x) * t,
+      y: prev.y + (current.y - prev.y) * t,
+    };
+  }
+
+  function getMapState() {
+    return state.mapData.maps[state.currentMapIndex];
+  }
+
+  async function loadMapData() {
+    try {
+      const response = await fetch('/map-data.json');
+      if (!response.ok) throw new Error('No map-data');
+      const data = await response.json();
+      if (data?.maps && Array.isArray(data.maps) && data.maps.length === 5) {
+        state.mapData = data;
+        primeMapData(data);
+      }
+    } catch {
+      state.mapData = emptyMapData;
+    }
+  }
+
+  function setupProgress() {
+    state.progress = { isLit };
+  }
+
+  // --- Seeded decor (trees/bushes/flowers/rocks/stumps), 1 lần / map ---
+  // Port trực tiếp từ design/The Unseen.dc.html _genDecor + _drawMap.
+  function genDecor(level: number, cols: number, rows: number) {
+    const rng = withSeed(level, 'decor');
+    const clusters: Array<{ cx: number; cy: number; r: number }> = [];
+    for (let i = 0; i < 9; i += 1) {
+      let picked: { cx: number; cy: number; r: number } | null = null;
+      for (let k = 0; k < 25; k += 1) {
+        const candidate = { cx: 5 + rng() * (cols - 10), cy: 3 + rng() * (rows - 6), r: 1.2 + rng() * 2 };
+        if (Math.abs(candidate.cy - yAtX(candidate.cx * TILE) / TILE) >= candidate.r + 2.4) {
+          picked = candidate;
+          break;
+        }
+      }
+      if (picked) clusters.push(picked);
+    }
+    const spot = () => ({ x: 3 + Math.floor(rng() * (cols - 6)), y: 2 + Math.floor(rng() * (rows - 4)) });
+    const pick = <T,>(n: number, f: () => T) => Array.from({ length: n }, f);
+    return {
+      clusters,
+      rocks: pick(9, spot),
+      stumps: pick(6, spot),
+      flowers: pick(16, spot),
+      bushes: pick(7, () => ({
+        x: 3 + Math.floor(rng() * (cols - 12)),
+        y: 2 + Math.floor(rng() * (rows - 7)),
+        w: 3 + Math.floor(rng() * 5),
+        h: 2 + Math.floor(rng() * 3),
+      })),
+    };
+  }
+
+  function cc(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, color: string) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawTree(ctx: CanvasRenderingContext2D, px: number, py: number, pal: (typeof PALETTE)[number]) {
+    cc(ctx, px + 16, py + 24, 15, pal.treeD);
+    cc(ctx, px + 16, py + 12, 13, pal.treeL);
+    cc(ctx, px + 11, py + 7, 5, pal.treeHi);
+  }
+
+  function drawTuft(ctx: CanvasRenderingContext2D, px: number, py: number, pal: (typeof PALETTE)[number]) {
+    ctx.fillStyle = pal.bush;
+    ctx.beginPath();
+    ctx.arc(px + 9, py + 20, 8, 0, Math.PI * 2);
+    ctx.arc(px + 20, py + 16, 9, 0, Math.PI * 2);
+    ctx.arc(px + 26, py + 24, 7, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawFlower(ctx: CanvasRenderingContext2D, px: number, py: number, pal: (typeof PALETTE)[number]) {
+    ctx.fillStyle = pal.flower;
+    for (let i = 0; i < 4; i += 1) {
+      ctx.fillRect(px + 6 + ((i * 11) % 20), py + 6 + ((i * 7) % 18), 4, 4);
+    }
+  }
+
+  function drawRock(ctx: CanvasRenderingContext2D, px: number, py: number, pal: (typeof PALETTE)[number]) {
+    cc(ctx, px + 16, py + 18, 11, pal.rock);
+    cc(ctx, px + 12, py + 14, 4, 'rgba(255,255,255,.28)');
+  }
+
+  function drawStump(ctx: CanvasRenderingContext2D, px: number, py: number) {
+    cc(ctx, px + 16, py + 16, 10, '#c9b087');
+    cc(ctx, px + 16, py + 16, 6, '#a98f66');
+    cc(ctx, px + 16, py + 16, 3, '#c9b087');
+  }
+
+  function renderTerrain(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number], width: number, height: number, level: number, decor: ReturnType<typeof genDecor>) {
+    const cols = Math.ceil(width / TILE);
+    const rows = Math.ceil(height / TILE);
+    const rng = withSeed(level, 'terrain');
+    for (let y = 0; y < rows; y += 1) {
+      for (let x = 0; x < cols; x += 1) {
+        ctx.fillStyle = (x + y) % 2 ? pal.gA : pal.gB;
+        ctx.fillRect(x * TILE, y * TILE, TILE, TILE);
+        if (rng() < 0.05) {
+          ctx.fillStyle = pal.bush;
+          ctx.fillRect(x * TILE + 7, y * TILE + 13, 3, 3);
+          ctx.fillRect(x * TILE + 19, y * TILE + 22, 3, 3);
+        }
+      }
+    }
+    for (const b of decor.bushes) {
+      for (let y = b.y; y < b.y + b.h; y += 1) {
+        for (let x = b.x; x < b.x + b.w; x += 1) drawTuft(ctx, x * TILE, y * TILE, pal);
+      }
+    }
+    for (const f of decor.flowers) drawFlower(ctx, f.x * TILE, f.y * TILE, pal);
+  }
+
+  // Đường mòn 2 lớp (docs/refine-round3.md R3-1): lớp dưới rộng màu `path`,
+  // lớp trên hẹp màu `pathDot` → cảm giác có chiều sâu. Vertices đã là spline
+  // Catmull-Rom mẫu dày (path.ts) nên join/cap 'round' là đủ để bo góc mềm,
+  // không còn góc nhọn, mà vẫn giữ nhịp lên-xuống của khung control point.
+  function renderPathBand(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number], level: number) {
+    const vertices = state.pathSamples;
+    if (vertices.length < 2) return;
+
+    const strokePath = (color: string, width: number) => {
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(vertices[0].x, vertices[0].y);
+      for (let i = 1; i < vertices.length; i += 1) ctx.lineTo(vertices[i].x, vertices[i].y);
+      ctx.stroke();
+      ctx.restore();
+    };
+
+    strokePath(pal.path, CELL * 0.9);
+    strokePath(pal.pathDot, CELL * 0.34);
+
+    const rng = withSeed(level, 'path-dots');
+    ctx.fillStyle = pal.pathDot;
+    for (let i = 0; i < 140; i += 1) {
+      const point = getPointAt(rng() * state.pathLength);
+      const jitterX = (rng() - 0.5) * CELL * 0.8;
+      const jitterY = (rng() - 0.5) * CELL * 0.6;
+      ctx.fillRect(point.x + jitterX - 1.5, point.y + jitterY - 1.5, 3, 3);
+    }
+  }
+
+  // Chấm lưới mờ tại giao điểm CELL, chỉ trong bán kính đuốc — mục 1.
+  function renderGridDots(ctx: CanvasRenderingContext2D, width: number, height: number, flameX: number, flameY: number) {
+    const radius = state.revealAll ? Math.hypot(width, height) : state.radius;
+    ctx.save();
+    ctx.fillStyle = inkRgbaDot;
+    for (let gy = 0; gy <= height; gy += CELL) {
+      const dy = gy - flameY;
+      for (let gx = 0; gx <= width; gx += CELL) {
+        const dx = gx - flameX;
+        if (dx * dx + dy * dy <= radius * radius) {
+          ctx.fillRect(gx - 1, gy - 1, 2, 2);
+        }
+      }
+    }
+    ctx.restore();
+  }
+
+  function renderRocksAndTrees(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number], width: number, height: number, level: number, decor: ReturnType<typeof genDecor>) {
+    for (const r of decor.rocks) {
+      if (Math.abs(r.y - yAtX(r.x * TILE) / TILE) > 2) drawRock(ctx, r.x * TILE, r.y * TILE, pal);
+    }
+    for (const s of decor.stumps) {
+      if (Math.abs(s.y - yAtX(s.x * TILE) / TILE) > 2) drawStump(ctx, s.x * TILE, s.y * TILE);
+    }
+
+    const cols = Math.ceil(width / TILE);
+    const rows = Math.ceil(height / TILE);
+    const rng = withSeed(level, 'trees');
+    const depth = (x: number, y: number) => Math.min(x, y, cols - 1 - x, rows - 1 - y);
+    const tiles: Array<{ x: number; y: number }> = [];
+    for (let y = 0; y < rows; y += 1) {
+      for (let x = 0; x < cols; x += 1) {
+        const rowAtX = yAtX(x * TILE) / TILE;
+        const gate = Math.abs(y - rowAtX) <= 1.4 && (x < 4 || x > cols - 5);
+        if (gate) continue;
+        const d = depth(x, y);
+        if (d < 2 || (d === 2 && rng() < 0.4)) tiles.push({ x, y });
+      }
+    }
+    for (const c of decor.clusters) {
+      const r = Math.ceil(c.r);
+      for (let y = Math.floor(c.cy - r); y <= c.cy + r; y += 1) {
+        for (let x = Math.floor(c.cx - r); x <= c.cx + r; x += 1) {
+          const dx = x - c.cx;
+          const dy = y - c.cy;
+          if (dx * dx + dy * dy <= c.r * c.r && x > 1 && y > 1 && x < cols - 2 && y < rows - 2 && Math.abs(y - yAtX(x * TILE) / TILE) > 1.6) {
+            tiles.push({ x, y });
+          }
+        }
+      }
+    }
+    tiles.sort((a, b) => a.y - b.y || a.x - b.x);
+    for (const t of tiles) drawTree(ctx, t.x * TILE + (t.y % 2) * 10, t.y * TILE, pal);
+  }
+
+  const FOCUS_RADIUS = 90;
+  // Stagger tối đa (ms) giữa stuff xa nhất và gần nhất mép đuốc khi cùng lộ ra.
+  const REVEAL_STAGGER_MS = 160;
+
+  function createStuffAnim(): StuffAnim {
+    return {
+      scale: 0.4,
+      opacity: 0,
+      fromScale: 0.4,
+      fromOpacity: 0,
+      toScale: 0.4,
+      toOpacity: 0,
+      elapsed: 0,
+      duration: 1,
+      ease: LINEAR,
+      delay: 0,
+      targetKey: 'hidden',
+    };
+  }
+
+  // docs/refine-round3.md R3-1 — bảng 4 trạng thái (hidden/revealed/focused/lit).
+  // Canvas không có CSS transition: lưu t (0..1) mỗi stuff, cập nhật theo
+  // deltaTime, áp easing thủ công (cubic-bezier LUT) khi vẽ ở renderStuff().
+  function updateStuffAnimations(deltaMs: number, flameX: number, flameY: number) {
+    const map = getMapState();
+    if (!map) return;
+    const radius = state.revealAll ? Infinity : state.radius;
+    const reduced = state.reducedMotion;
+
+    for (const stuff of map.stuff) {
+      let anim = state.stuffAnim.get(stuff.slug);
+      if (!anim) {
+        anim = createStuffAnim();
+        state.stuffAnim.set(stuff.slug, anim);
+      }
+
+      const { x, y } = stuffPixel(stuff);
+      const dist = Math.hypot(flameX - x, flameY - y);
+      const lit = state.progress.isLit(stuff.slug);
+      const isFocused = state.focusStuff === stuff;
+
+      let key: string;
+      let toScale: number;
+      let toOpacity: number;
+      let duration: number;
+      let ease: (t: number) => number;
+      let delay = 0;
+
+      if (isFocused) {
+        key = 'focused'; toScale = 1.15; toOpacity = 1; duration = 240; ease = EASE_FOCUS;
+      } else if (lit) {
+        key = 'lit'; toScale = 1; toOpacity = 1; duration = 320; ease = EASE_REVEAL;
+      } else if (dist <= radius) {
+        key = 'revealed'; toScale = 1; toOpacity = 0.85; duration = 320; ease = EASE_REVEAL;
+        const wasVisible = anim.targetKey === 'revealed' || anim.targetKey === 'lit' || anim.targetKey === 'focused';
+        if (!wasVisible) delay = clamp(dist / (Number.isFinite(radius) ? radius : 1), 0, 1) * REVEAL_STAGGER_MS;
+      } else {
+        // Chuyển revealed → hidden: KHÔNG scale hẳn về 0.4 (dừng ở 0.85) để
+        // tránh giật khi lửa đi qua đi lại (R3-1).
+        key = 'exit'; toScale = 0.85; toOpacity = 0; duration = 220; ease = EASE_FADE;
+      }
+
+      if (reduced) {
+        // prefers-reduced-motion: bỏ scale + stagger, chỉ đổi opacity.
+        toScale = 1;
+        delay = 0;
+      }
+
+      if (anim.targetKey !== key || anim.toScale !== toScale || anim.toOpacity !== toOpacity) {
+        anim.fromScale = anim.scale;
+        anim.fromOpacity = anim.opacity;
+        anim.toScale = toScale;
+        anim.toOpacity = toOpacity;
+        anim.duration = duration;
+        anim.ease = ease;
+        anim.elapsed = 0;
+        anim.delay = delay;
+        anim.targetKey = key;
+      }
+
+      if (anim.delay > 0) {
+        anim.delay -= deltaMs;
+        if (anim.delay > 0) continue;
+        anim.elapsed = -anim.delay;
+        anim.delay = 0;
+      }
+
+      anim.elapsed += deltaMs;
+      const progress = clamp(anim.elapsed / anim.duration, 0, 1);
+      const eased = anim.ease(progress);
+      anim.scale = anim.fromScale + (anim.toScale - anim.fromScale) * eased;
+      anim.opacity = anim.fromOpacity + (anim.toOpacity - anim.fromOpacity) * eased;
+    }
+  }
+
+  function renderStuff(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number]) {
+    const map = getMapState();
+    for (const stuff of map.stuff) {
+      const anim = state.stuffAnim.get(stuff.slug);
+      if (!anim || anim.opacity <= 0.002) continue;
+      const lit = state.progress.isLit(stuff.slug);
+      const hovered = state.hoverStuff === stuff;
+      const focused = state.focusStuff === stuff;
+      const { x, y } = stuffPixel(stuff);
+      const baseSize = hovered ? 34 : 28;
+      ctx.save();
+      ctx.font = `${baseSize * anim.scale}px system-ui, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = pal.iconGlow;
+      ctx.shadowBlur = focused ? 26 : lit ? 18 : 10;
+      ctx.globalAlpha = anim.opacity;
+      ctx.fillStyle = pal.icon;
+      ctx.fillText(stuff.icon || '★', x, y);
+      ctx.restore();
+    }
+  }
+
+  // B5: khi ngọn lửa vào bán kính FOCUS_RADIUS của một stuff, stuff đó được
+  // focus (icon phóng to + glow mạnh hơn) và hiện tooltip tên — không mở overlay.
+  function updateFocusStuff(flameX: number, flameY: number) {
+    const map = getMapState();
+    if (!map || state.overlayOpen) {
+      state.focusStuff = null;
+      return;
+    }
+    let nearest: Stuff | null = null;
+    let nearestDist = FOCUS_RADIUS;
+    for (const stuff of map.stuff) {
+      const { x, y } = stuffPixel(stuff);
+      const dx = flameX - x;
+      const dy = flameY - y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < nearestDist) {
+        nearest = stuff;
+        nearestDist = dist;
+      }
+    }
+    state.focusStuff = nearest;
+  }
+
+  function renderFog(ctx: CanvasRenderingContext2D, width: number, height: number, centerX: number, centerY: number, pal: (typeof PALETTE)[number]) {
+    const radius = state.revealAll ? Math.max(width, height) * 2 : state.radius;
+    const alpha = state.revealAll ? 0 : pal.alpha;
+    const dk = (a: number) => `rgba(${pal.dk},${a.toFixed(3)})`;
+    ctx.save();
+    const halo = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius * 0.55);
+    halo.addColorStop(0, 'rgba(255,170,70,.16)');
+    halo.addColorStop(0.6, 'rgba(255,150,50,.05)');
+    halo.addColorStop(1, 'transparent');
+    ctx.fillStyle = halo;
+    ctx.fillRect(0, 0, width, height);
+    const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+    gradient.addColorStop(0, 'rgba(0,0,0,0)');
+    gradient.addColorStop(0.3, 'rgba(0,0,0,0)');
+    gradient.addColorStop(0.62, dk(alpha * 0.35));
+    gradient.addColorStop(0.82, dk(alpha * 0.85));
+    gradient.addColorStop(1, dk(alpha));
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+    ctx.restore();
+  }
+
+  // Góc nghiêng đoạn polyline đang đi, để sprite lửa hướng theo dốc lên/xuống.
+  function segmentAngleAt(distance: number): number {
+    const vertices = state.pathSamples;
+    if (vertices.length < 2) return 0;
+    let index = vertices.findIndex((v) => v.dist >= distance);
+    if (index <= 0) index = 1;
+    if (index >= vertices.length) index = vertices.length - 1;
+    const a = vertices[index - 1];
+    const b = vertices[index];
+    return Math.atan2(b.y - a.y, b.x - a.x);
+  }
+
+  const FLAME_BASE_RADIUS = 22 * 1.4; // R3-1: sprite to hơn ~1.4×
+  const FLAME_FLICKER_PERIOD_MS = 1800; // ±6%, ease-in-out, chu kỳ ~1.8s
+
+  // Quầng sáng 3 lớp (lõi trắng ấm → --flame → tắt dần) quanh sprite lửa,
+  // bán kính ≈ 2.5× chiều cao sprite. Vẽ TRƯỚC thân lửa nên nằm dưới.
+  function renderFlameHalo(ctx: CanvasRenderingContext2D, x: number, y: number, spriteHeight: number, flicker: number, pal: (typeof PALETTE)[number]) {
+    const haloRadius = spriteHeight * 2.5 * flicker;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+
+    const outer = ctx.createRadialGradient(x, y, 0, x, y, haloRadius);
+    outer.addColorStop(0, fadeIconGlow(pal.iconGlow, 0.22));
+    outer.addColorStop(0.55, fadeIconGlow(pal.iconGlow, 0.1));
+    outer.addColorStop(1, fadeIconGlow(pal.iconGlow, 0));
+    ctx.fillStyle = outer;
+    ctx.beginPath();
+    ctx.arc(x, y, haloRadius, 0, Math.PI * 2);
+    ctx.fill();
+
+    const mid = ctx.createRadialGradient(x, y, 0, x, y, haloRadius * 0.5);
+    mid.addColorStop(0, flameRgba(0.45));
+    mid.addColorStop(1, flameRgba(0));
+    ctx.fillStyle = mid;
+    ctx.beginPath();
+    ctx.arc(x, y, haloRadius * 0.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    const core = ctx.createRadialGradient(x, y, 0, x, y, haloRadius * 0.22);
+    core.addColorStop(0, 'rgba(255,250,235,0.85)');
+    core.addColorStop(1, 'rgba(255,250,235,0)');
+    ctx.fillStyle = core;
+    ctx.beginPath();
+    ctx.arc(x, y, haloRadius * 0.22, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function renderFlame(ctx: CanvasRenderingContext2D, x: number, y: number, frame: number, angle: number, pal: (typeof PALETTE)[number]) {
+    // Dao động ±6%, ease-in-out (sóng sine tự nhiên mượt cả 2 đầu chu kỳ).
+    const flicker = 1 + Math.sin((frame / FLAME_FLICKER_PERIOD_MS) * Math.PI * 2) * 0.06;
+    const flameRadius = FLAME_BASE_RADIUS * flicker;
+    const spriteHeight = flameRadius * 1.9; // đỉnh(-r) tới đáy(+.7r) xấp xỉ
+    renderFlameHalo(ctx, x, y, spriteHeight, flicker, pal);
+
+    const lean = clamp(angle, -0.6, 0.6) * 0.4; // giảm biên độ, tránh nghiêng quá gắt
+    const points = [
+      { x, y: y - flameRadius },
+      { x: x + flameRadius * 0.5, y: y - flameRadius * 0.2 },
+      { x: x + flameRadius * 0.2, y: y + flameRadius * 0.7 },
+      { x: x - flameRadius * 0.2, y: y + flameRadius * 0.6 },
+      { x: x - flameRadius * 0.5, y: y - flameRadius * 0.2 },
+    ];
+    const gradient = ctx.createRadialGradient(x, y - 6, 4, x, y, flameRadius);
+    gradient.addColorStop(0, '#fff7cc');
+    gradient.addColorStop(0.2, '#ffd77f');
+    gradient.addColorStop(0.5, '#ff9c33');
+    gradient.addColorStop(1, 'rgba(252, 120, 28, 0.0)');
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(lean);
+    ctx.translate(-x, -y);
+    // Bóng mềm màu iconGlow của map hiện tại thay cho viền cứng.
+    ctx.shadowColor = pal.iconGlow;
+    ctx.shadowBlur = 18;
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i < points.length; i += 1) ctx.lineTo(points[i].x, points[i].y);
+    ctx.closePath();
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.beginPath();
+    ctx.fillStyle = '#fff';
+    ctx.arc(x, y - flameRadius * 0.25, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function updateFinalePanel() {
+    if (!finalePanel || !finaleCount) return;
+    if (!state.isFinale) {
+      finalePanel.classList.add('hidden');
+      return;
+    }
+    const total = state.mapData.maps.reduce((sum, m) => sum + m.stuff.length, 0);
+    const lit = state.mapData.maps.reduce((sum, m) => sum + m.stuff.filter((s) => state.progress.isLit(s.slug)).length, 0);
+    finaleCount.textContent = `${lit} / ${total} flames lit`;
+    finalePanel.classList.remove('hidden');
+  }
+
+  function renderFrame(timestamp: number) {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const speed = 280;
+    const delta = Math.min(0.05, (timestamp - state.lastFrame) / 1000);
+    state.lastFrame = timestamp;
+
+    // Đi bộ liên tục (phím ←/→) chỉ trong phạm vi map hiện tại — băng qua map
+    // chỉ xảy ra khi nhảy vùng (setZone) vượt quá vùng 0/2, giống prototype gốc.
+    if (state.moveDirection !== 0 && !state.overlayOpen) {
+      state.position = clamp(state.position + state.moveDirection * speed * delta, 0, state.pathLength);
+    }
+
+    const map = getMapState();
+    const pal = PALETTE[state.currentMapIndex] || PALETTE[0];
+    if (map && state.decor) {
+      renderTerrain(ctx, pal, width, height, map.level, state.decor);
+      renderPathBand(ctx, pal, map.level);
+      renderRocksAndTrees(ctx, pal, width, height, map.level, state.decor);
+
+      const flame = getPointAt(state.position);
+      updateFocusStuff(flame.x, flame.y);
+      updateStuffAnimations(delta * 1000, flame.x, flame.y);
+      renderStuff(ctx, pal);
+      renderGridDots(ctx, width, height, flame.x, flame.y);
+      renderFog(ctx, width, height, flame.x, flame.y, pal);
+      renderFlame(ctx, flame.x, flame.y, timestamp, segmentAngleAt(state.position), pal);
+
+      if (fireBadge) {
+        fireBadge.style.left = `${flame.x}px`;
+        fireBadge.style.top = `${flame.y + 4}px`;
+        fireBadge.classList.remove('hidden');
+      }
+
+      // B6: cập nhật currentZone theo vị trí thực tế trên path (kể cả khi đi bộ
+      // liên tục bằng phím ←/→) để setZone luôn nhảy đúng vùng kế tiếp.
+      if (state.pathLength > 0) {
+        const zoneLen = state.pathLength / 3;
+        const nextZone = clamp(Math.floor(state.position / zoneLen), 0, 2);
+        if (nextZone !== state.currentZone) {
+          state.currentZone = nextZone;
+          updateBadges();
+        }
+      }
+    }
+
+    const tooltipStuff = state.hoverStuff || state.focusStuff;
+    if (tooltipStuff && tooltip) {
+      const { x, y } = stuffPixel(tooltipStuff);
+      tooltip.textContent = tooltipStuff.title;
+      tooltip.classList.remove('hidden');
+      tooltip.style.left = `${x + 26}px`;
+      tooltip.style.top = `${y - 22}px`;
+    } else if (tooltip) {
+      tooltip.classList.add('hidden');
+    }
+
+    requestAnimationFrame(renderFrame);
+  }
+
+  function updateBadges() {
+    const map = getMapState();
+    if (!map) return;
+    if (mapBadge) mapBadge.textContent = `${ROMANS[state.currentMapIndex]} · ${map.name.toUpperCase()}`;
+    if (mapBadgeSub) {
+      mapBadgeSub.textContent = `${map.greek.toUpperCase()} — ${map.vn.toUpperCase()} · VÙNG ${state.currentZone + 1}/3`;
+    }
+  }
+
+  // Breadcrumb + quick-nav được render sẵn trong markup .astro (SSR, 5 map cố
+  // định) — chỉ toggle .current ở đây. KHÔNG tạo <button>/<span> bằng
+  // document.createElement: element tạo runtime không mang data-astro-cid-*
+  // nên CSS scoped của Astro không match (render ra style mặc định trình
+  // duyệt). Listener click cũng gắn 1 lần trong initControls(), không lặp lại.
+  function updateBreadcrumb() {
+    if (!breadcrumb) return;
+    breadcrumb.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      const index = Number(button.dataset.mapIndex);
+      button.classList.toggle('current', index === state.currentMapIndex);
+    });
+  }
+
+  function updateQuickNav() {
+    if (!quickNav) return;
+    quickNav.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      const index = Number(button.dataset.mapIndex);
+      button.classList.toggle('current', index === state.currentMapIndex);
+    });
+  }
+
+  function updateCanvasSize() {
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const { width, height } = rect;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    const ctx = canvas.getContext('2d');
+    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    state.viewWidth = width;
+    state.viewHeight = height;
+    state.radius = Math.max(500, window.innerWidth < 640 ? window.innerWidth : 500);
+    const map = getMapState();
+    if (map) {
+      const route = buildZigzagPath(map.level, width, height);
+      state.pathSamples = route.vertices;
+      state.pathLength = route.length;
+      state.zoneCenters = route.zoneCenters;
+      state.decor = genDecor(map.level, Math.ceil(width / TILE), Math.ceil(height / TILE));
+      state.position = clamp(state.position, 0, state.pathLength);
+    }
+  }
+
+  function setupMap() {
+    state.currentZone = 0;
+    state.position = 0;
+    const map = getMapState();
+    state.isFinale = state.currentMapIndex === state.mapData.maps.length - 1 && !!map && map.stuff.length === 0;
+    if (canvas && map) {
+      const rect = canvas.getBoundingClientRect();
+      const { width, height } = rect;
+      const route = buildZigzagPath(map.level, width, height);
+      state.pathSamples = route.vertices;
+      state.pathLength = route.length;
+      state.zoneCenters = route.zoneCenters;
+      state.decor = genDecor(map.level, Math.ceil(width / TILE), Math.ceil(height / TILE));
+    }
+    updateBadges();
+    updateBreadcrumb();
+    updateQuickNav();
+    updateFinalePanel();
+  }
+
+  // Nhảy vùng (MOVE ◀▶ hoặc phím < >) — vượt quá vùng 0/2 thì băng sang map
+  // trước/sau (vùng cuối/đầu), giống move() trong prototype gốc.
+  function setZone(delta: number) {
+    const nextZone = state.currentZone + delta;
+    if (nextZone < 0) {
+      if (state.currentMapIndex > 0) jumpToMap(state.currentMapIndex - 1, 2);
+      return;
+    }
+    if (nextZone > 2) {
+      if (state.currentMapIndex < state.mapData.maps.length - 1) jumpToMap(state.currentMapIndex + 1, 0);
+      return;
+    }
+    state.currentZone = nextZone;
+    state.position = state.zoneCenters[nextZone] ?? state.position;
+    updateBadges();
+  }
+
+  function jumpToMap(index: number, zone: number) {
+    state.currentMapIndex = clamp(index, 0, state.mapData.maps.length - 1);
+    setupMap();
+    state.currentZone = zone;
+    state.position = state.zoneCenters[zone] ?? 0;
+    updateBadges();
+  }
+
+  function swipeToMap(index: number) {
+    jumpToMap(index, 0);
+  }
+
+  function handleCanvasPointer(event: MouseEvent) {
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const current = getMapState();
+    const hit = current?.stuff.find((item) => {
+      const { x: itemX, y: itemY } = stuffPixel(item);
+      const dx = x - itemX;
+      const dy = y - itemY;
+      return Math.sqrt(dx * dx + dy * dy) < 22;
+    });
+    if (hit) {
+      state.hoverStuff = hit;
+      if (tooltip) {
+        tooltip.textContent = hit.title;
+        tooltip.classList.remove('hidden');
+      }
+      canvas.style.cursor = 'pointer';
+    } else {
+      state.hoverStuff = null;
+      if (tooltip) tooltip.classList.add('hidden');
+      canvas.style.cursor = 'default';
+    }
+  }
+
+  function handleCanvasClick() {
+    if (!state.hoverStuff) return;
+    window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: state.hoverStuff.slug } }));
+  }
+
+  // Hàm chung cho nút MOVE ◀▶ và phím </>: khi overlay mở thì duyệt prev/next
+  // stuff, ngược lại nhảy vùng (setZone), băng map nếu vượt quá vùng 0/2.
+  function moveOrNavigate(direction: number) {
+    if (state.overlayOpen) {
+      window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction } }));
+      return;
+    }
+    setZone(direction);
+  }
+
+  function isAtPathEnd(direction: number) {
+    const eps = 1;
+    return direction > 0 ? state.position >= state.pathLength - eps : state.position <= eps;
+  }
+
+  function initControls() {
+    if (zonePrev) zonePrev.addEventListener('click', () => moveOrNavigate(-1));
+    if (zoneNext) zoneNext.addEventListener('click', () => moveOrNavigate(1));
+    breadcrumb?.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      const index = Number(button.dataset.mapIndex);
+      button.addEventListener('click', () => swipeToMap(index));
+    });
+    quickNav?.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      const index = Number(button.dataset.mapIndex);
+      button.addEventListener('click', () => {
+        swipeToMap(index);
+        optionsPanel?.classList.add('hidden');
+      });
+    });
+    if (optionsButton) optionsButton.addEventListener('click', () => {
+      optionsPanel?.classList.toggle('hidden');
+    });
+    radiusRange?.addEventListener('input', () => {
+      const val = Number(radiusRange.value);
+      state.radius = val;
+      if (radiusValue) radiusValue.textContent = `${val}PX`;
+    });
+    revealAllToggle?.addEventListener('change', () => {
+      state.revealAll = revealAllToggle.checked;
+    });
+    window.addEventListener('keydown', (event) => {
+      const tag = (event.target as HTMLElement | null)?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (event.key === 'Escape') optionsPanel?.classList.add('hidden');
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        if (state.overlayOpen) {
+          window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction: 1 } }));
+        } else if (isAtPathEnd(1)) {
+          state.moveDirection = 0;
+          moveOrNavigate(1);
+        } else {
+          state.moveDirection = 1;
+        }
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        if (state.overlayOpen) {
+          window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction: -1 } }));
+        } else if (isAtPathEnd(-1)) {
+          state.moveDirection = 0;
+          moveOrNavigate(-1);
+        } else {
+          state.moveDirection = -1;
+        }
+      } else if (event.key === '<') {
+        setZone(-1);
+      } else if (event.key === '>') {
+        setZone(1);
+      }
+    });
+    window.addEventListener('keyup', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        state.moveDirection = 0;
+      }
+    });
+    canvas?.addEventListener('mousemove', handleCanvasPointer);
+    canvas?.addEventListener('mouseleave', () => {
+      state.hoverStuff = null;
+      if (tooltip) tooltip.classList.add('hidden');
+    });
+    canvas?.addEventListener('click', handleCanvasClick);
+    window.addEventListener('stuff:open', () => {
+      state.overlayOpen = true;
+    });
+    window.addEventListener('stuff:close', () => {
+      state.overlayOpen = false;
+    });
+  }
+
+  function init() {
+    if (!canvas) return;
+    setupProgress();
+    loadMapData().then(() => {
+      updateCanvasSize();
+      setupMap();
+      initControls();
+      requestAnimationFrame(renderFrame);
+      // R2-3: đảm bảo canvas giữ focus ngay khi vừa load — window vẫn là nơi
+      // gắn keydown (không phải canvas), nhưng focus() tránh việc phím
+      // ←/→ bị input/textarea khác trên trang "nuốt" mất trước.
+      // Guard: loadMapData() là async — nếu người dùng đã bấm vào search box
+      // (hoặc field khác) trong lúc chờ, không được cướp focus lại, nếu không
+      // gõ chữ vào ô search sẽ rơi vào canvas thay vì input (bug thực tế).
+      const active = document.activeElement;
+      const activeTag = active?.tagName;
+      if (!active || active === document.body || (activeTag !== 'INPUT' && activeTag !== 'TEXTAREA')) {
+        canvas?.focus({ preventScroll: true });
+      }
+    });
+    window.addEventListener('resize', () => {
+      updateCanvasSize();
+      updateFinalePanel();
+    });
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    init();
+  } else {
+    window.addEventListener('DOMContentLoaded', init);
+  }
+</script>

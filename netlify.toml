@@ -1,6 +1,20 @@
+# Netlify build config — file này GHI ĐÈ mọi thiết lập trong Netlify UI.
+# Astro build ra dist/ (không phải _site/ như thời Jekyll).
+
 [build]
-  command = "jekyll build"
-  publish = "_site"
+  command = "npm run build"
+  publish = "dist"
 
 [build.environment]
-  JEKYLL_ENV = "production"
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--include=dev"   # pagefind nằm ở devDependencies, cần cho postbuild
+
+# Deploy preview / branch deploy dùng chung cấu hình
+[context.production]
+  command = "npm run build"
+
+[context.deploy-preview]
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build"
