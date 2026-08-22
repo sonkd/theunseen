@@ -9,3 +9,6 @@ dist-*
 *.unused
 .DS_Store
 *.log
+test-unlink*
+__test_unlink*
+node_modules.stale*
