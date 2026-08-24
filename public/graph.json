@@ -69,6 +69,15 @@
       ]
     },
     {
+      "id": "antifragility",
+      "title": "Antifragility",
+      "level": 3,
+      "categories": [
+        "mental-models",
+        "theory"
+      ]
+    },
+    {
       "id": "apophenia",
       "title": "Apophenia",
       "level": 2,
@@ -217,6 +226,15 @@
       "level": 2,
       "categories": [
         "memory"
+      ]
+    },
+    {
+      "id": "black-swan-theory",
+      "title": "Black Swan Theory",
+      "level": 3,
+      "categories": [
+        "theory",
+        "mental-models"
       ]
     },
     {
@@ -759,6 +777,15 @@
       ]
     },
     {
+      "id": "horn-effect",
+      "title": "Horn Effect",
+      "level": 2,
+      "categories": [
+        "bias",
+        "social"
+      ]
+    },
+    {
       "id": "hot-hand-fallacy",
       "title": "Hot-hand fallacy",
       "level": 2,
@@ -803,6 +830,14 @@
     {
       "id": "illusion-of-control",
       "title": "Illusion of control",
+      "level": 2,
+      "categories": [
+        "bias"
+      ]
+    },
+    {
+      "id": "illusion-of-explanatory-depth",
+      "title": "Illusion of Explanatory Depth",
       "level": 2,
       "categories": [
         "bias"
@@ -993,6 +1028,15 @@
       "level": 2,
       "categories": [
         "memory"
+      ]
+    },
+    {
+      "id": "lindy-effect",
+      "title": "Lindy Effect",
+      "level": 3,
+      "categories": [
+        "mental-models",
+        "theory"
       ]
     },
     {
@@ -1268,6 +1312,15 @@
       ]
     },
     {
+      "id": "pareto-principle",
+      "title": "Pareto Principle",
+      "level": 2,
+      "categories": [
+        "mental-models",
+        "heuristic"
+      ]
+    },
+    {
       "id": "parkinsons-law",
       "title": "Parkinson's Law",
       "level": 2,
@@ -1298,6 +1351,15 @@
       "level": 2,
       "categories": [
         "bias"
+      ]
+    },
+    {
+      "id": "peter-principle",
+      "title": "Peter Principle",
+      "level": 2,
+      "categories": [
+        "theory",
+        "heuristic"
       ]
     },
     {
@@ -1544,6 +1606,15 @@
       ]
     },
     {
+      "id": "self-fulfilling-prophecy",
+      "title": "Self-Fulfilling Prophecy",
+      "level": 2,
+      "categories": [
+        "social",
+        "bias"
+      ]
+    },
+    {
       "id": "self-licensing",
       "title": "Self-licensing",
       "level": 2,
@@ -1609,6 +1680,15 @@
       "categories": [
         "bias",
         "social"
+      ]
+    },
+    {
+      "id": "social-loafing",
+      "title": "Social Loafing",
+      "level": 2,
+      "categories": [
+        "social",
+        "bias"
       ]
     },
     {
@@ -1953,6 +2033,18 @@
       "target": "illusion-of-control"
     },
     {
+      "source": "antifragility",
+      "target": "black-swan-theory"
+    },
+    {
+      "source": "antifragility",
+      "target": "lindy-effect"
+    },
+    {
+      "source": "antifragility",
+      "target": "survivorship-bias"
+    },
+    {
       "source": "apophenia",
       "target": "pareidolia"
     },
@@ -2171,6 +2263,14 @@
     {
       "source": "bizarreness-effect",
       "target": "spacing-effect"
+    },
+    {
+      "source": "black-swan-theory",
+      "target": "survivorship-bias"
+    },
+    {
+      "source": "black-swan-theory",
+      "target": "hindsight-bias"
     },
     {
       "source": "bucket-error",
@@ -2849,6 +2949,18 @@
       "target": "self-serving-bias"
     },
     {
+      "source": "halo-effect",
+      "target": "horn-effect"
+    },
+    {
+      "source": "horn-effect",
+      "target": "negativity-bias"
+    },
+    {
+      "source": "horn-effect",
+      "target": "stereotyping"
+    },
+    {
       "source": "hot-hand-fallacy",
       "target": "illusory-correlation"
     },
@@ -2891,6 +3003,18 @@
     {
       "source": "illusion-of-control",
       "target": "optimism-bias"
+    },
+    {
+      "source": "dunning-kruger-effect",
+      "target": "illusion-of-explanatory-depth"
+    },
+    {
+      "source": "illusion-of-explanatory-depth",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "illusion-of-explanatory-depth",
+      "target": "illusory-superiority"
     },
     {
       "source": "choice-supportive-bias",
@@ -3139,6 +3263,14 @@
     {
       "source": "levels-of-processing-effect",
       "target": "picture-superiority-effect"
+    },
+    {
+      "source": "black-swan-theory",
+      "target": "lindy-effect"
+    },
+    {
+      "source": "lindy-effect",
+      "target": "survivorship-bias"
     },
     {
       "source": "loss-aversion",
@@ -3449,6 +3581,18 @@
       "target": "pareidolia"
     },
     {
+      "source": "law-of-triviality",
+      "target": "pareto-principle"
+    },
+    {
+      "source": "pareto-principle",
+      "target": "parkinsons-law"
+    },
+    {
+      "source": "goodharts-law",
+      "target": "pareto-principle"
+    },
+    {
       "source": "parkinsons-law",
       "target": "planning-fallacy"
     },
@@ -3491,6 +3635,18 @@
     {
       "source": "declinism",
       "target": "pessimism-bias"
+    },
+    {
+      "source": "dunning-kruger-effect",
+      "target": "peter-principle"
+    },
+    {
+      "source": "halo-effect",
+      "target": "peter-principle"
+    },
+    {
+      "source": "goodharts-law",
+      "target": "peter-principle"
     },
     {
       "source": "generation-effect",
@@ -3773,6 +3929,18 @@
       "target": "self-consistency-bias"
     },
     {
+      "source": "pygmalion-effect",
+      "target": "self-fulfilling-prophecy"
+    },
+    {
+      "source": "observer-expectancy-effect",
+      "target": "self-fulfilling-prophecy"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "self-fulfilling-prophecy"
+    },
+    {
       "source": "halo-effect",
       "target": "self-licensing"
     },
@@ -3855,6 +4023,18 @@
     {
       "source": "halo-effect",
       "target": "social-desirability-bias"
+    },
+    {
+      "source": "bystander-effect",
+      "target": "social-loafing"
+    },
+    {
+      "source": "diffusion-of-responsibility",
+      "target": "social-loafing"
+    },
+    {
+      "source": "groupthink",
+      "target": "social-loafing"
     },
     {
       "source": "misattribution-of-memory",
