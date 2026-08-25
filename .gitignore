@@ -12,3 +12,4 @@ dist-*
 test-unlink*
 __test_unlink*
 node_modules.stale*
+/content/.obsidian
