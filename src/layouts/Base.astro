@@ -54,6 +54,53 @@ const q = Astro.url.searchParams.get('q') ?? '';
     }
     [data-pagefind-ui] { width: 100%; }
     .site-nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 2px;
+      background: var(--ink);
+      position: relative;
+    }
+    .nav-toggle span::before { position: absolute; top: -5px; }
+    .nav-toggle span::after { position: absolute; top: 5px; }
+    @media (max-width: 640px) {
+      header.site { flex-wrap: nowrap; }
+      .search-shell { order: 1; }
+      .nav-toggle { display: flex; order: 2; }
+      header.site > div[style] { display: none; }
+      .site-nav {
+        display: none;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--bg);
+        border-bottom: 2px solid var(--ink);
+        padding: 0.5rem 20px;
+      }
+      .site-nav.is-open { display: flex; }
+      .site-nav a { padding: 0.6rem 0; border-bottom: 1px solid var(--border-soft); }
+      .site-nav a:last-child { border-bottom: none; }
+    }
   </style>
 </head>
 <body>
@@ -66,13 +113,39 @@ const q = Astro.url.searchParams.get('q') ?? '';
       </form>
     </div>
     <div style="flex:1"></div>
-    <a href="/library/">Library</a>
-    <a href="/graph/">Graph</a>
-    <a href="/about/">About</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <a href="/library/">Library</a>
+      <a href="/graph/">Graph</a>
+      <a href="/about/">About</a>
+    </nav>
   </header>
   <main class={fullBleed ? 'full-bleed' : ''}><slot /></main>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.getElementById('navToggle');
+      const siteNav = document.getElementById('siteNav');
+      if (navToggle && siteNav) {
+        const closeNav = () => {
+          siteNav.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        };
+        navToggle.addEventListener('click', () => {
+          const open = siteNav.classList.toggle('is-open');
+          navToggle.setAttribute('aria-expanded', String(open));
+        });
+        siteNav.addEventListener('click', (event) => {
+          if (event.target instanceof HTMLElement && event.target.tagName === 'A') closeNav();
+        });
+        document.addEventListener('click', (event) => {
+          if (!siteNav.classList.contains('is-open')) return;
+          if (event.target instanceof Node && (siteNav.contains(event.target) || navToggle.contains(event.target))) return;
+          closeNav();
+        });
+      }
+
       const wrapper = document.querySelector('[data-pagefind-ui-wrapper]');
       if (!wrapper) return;
       const target = wrapper.querySelector('[data-pagefind-ui]');

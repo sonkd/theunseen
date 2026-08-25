@@ -10,6 +10,31 @@
       ]
     },
     {
+      "id": "actor-observer-bias",
+      "title": "Actor-Observer Bias",
+      "level": 2,
+      "categories": [
+        "bias",
+        "social"
+      ]
+    },
+    {
+      "id": "adverse-selection",
+      "title": "Adverse Selection",
+      "level": 3,
+      "categories": [
+        "theory"
+      ]
+    },
+    {
+      "id": "affect-heuristic",
+      "title": "Affect Heuristic",
+      "level": 2,
+      "categories": [
+        "heuristic"
+      ]
+    },
+    {
       "id": "affective-forecasting",
       "title": "Affective forecasting",
       "level": 2,
@@ -40,6 +65,23 @@
       "level": 2,
       "categories": [
         "bias",
+        "perception"
+      ]
+    },
+    {
+      "id": "antifragility",
+      "title": "Antifragility",
+      "level": 3,
+      "categories": [
+        "mental-models",
+        "theory"
+      ]
+    },
+    {
+      "id": "apophenia",
+      "title": "Apophenia",
+      "level": 2,
+      "categories": [
         "perception"
       ]
     },
@@ -111,6 +153,15 @@
       ]
     },
     {
+      "id": "availability-cascade",
+      "title": "Availability Cascade",
+      "level": 2,
+      "categories": [
+        "bias",
+        "social"
+      ]
+    },
+    {
       "id": "availability-heuristic",
       "title": "Availability heuristic",
       "level": 2,
@@ -178,11 +229,29 @@
       ]
     },
     {
+      "id": "black-swan-theory",
+      "title": "Black Swan Theory",
+      "level": 3,
+      "categories": [
+        "theory",
+        "mental-models"
+      ]
+    },
+    {
       "id": "bucket-error",
       "title": "Bucket error",
       "level": 2,
       "categories": [
         "mental-models"
+      ]
+    },
+    {
+      "id": "bystander-effect",
+      "title": "Bystander Effect",
+      "level": 2,
+      "categories": [
+        "social",
+        "bias"
       ]
     },
     {
@@ -218,6 +287,14 @@
       ]
     },
     {
+      "id": "choice-overload",
+      "title": "Choice Overload",
+      "level": 2,
+      "categories": [
+        "bias"
+      ]
+    },
+    {
       "id": "choice-supportive-bias",
       "title": "Choice-supportive bias",
       "level": 2,
@@ -239,6 +316,14 @@
       "level": 2,
       "categories": [
         "bias"
+      ]
+    },
+    {
+      "id": "cognitive-dissonance",
+      "title": "Cognitive Dissonance",
+      "level": 3,
+      "categories": [
+        "theory"
       ]
     },
     {
@@ -344,6 +429,14 @@
       ]
     },
     {
+      "id": "decision-fatigue",
+      "title": "Decision Fatigue",
+      "level": 2,
+      "categories": [
+        "bias"
+      ]
+    },
+    {
       "id": "declinism",
       "title": "Declinism",
       "level": 2,
@@ -358,6 +451,14 @@
       "categories": [
         "bias",
         "heuristic"
+      ]
+    },
+    {
+      "id": "default-effect",
+      "title": "Default Effect",
+      "level": 2,
+      "categories": [
+        "bias"
       ]
     },
     {
@@ -378,6 +479,15 @@
       ]
     },
     {
+      "id": "diffusion-of-responsibility",
+      "title": "Diffusion of Responsibility",
+      "level": 2,
+      "categories": [
+        "social",
+        "bias"
+      ]
+    },
+    {
       "id": "disposition-effect",
       "title": "Disposition effect",
       "level": 2,
@@ -392,6 +502,15 @@
       "categories": [
         "bias",
         "perception"
+      ]
+    },
+    {
+      "id": "door-in-the-face-technique",
+      "title": "Door-in-the-Face Technique",
+      "level": 2,
+      "categories": [
+        "social",
+        "heuristic"
       ]
     },
     {
@@ -520,6 +639,15 @@
       ]
     },
     {
+      "id": "foot-in-the-door-technique",
+      "title": "Foot-in-the-Door Technique",
+      "level": 2,
+      "categories": [
+        "social",
+        "heuristic"
+      ]
+    },
+    {
       "id": "framing-effect",
       "title": "Framing effect",
       "level": 2,
@@ -588,6 +716,15 @@
       ]
     },
     {
+      "id": "groupthink",
+      "title": "Groupthink",
+      "level": 2,
+      "categories": [
+        "social",
+        "bias"
+      ]
+    },
+    {
       "id": "halo-effect",
       "title": "Halo effect",
       "level": 2,
@@ -614,12 +751,38 @@
       ]
     },
     {
+      "id": "hawthorne-effect",
+      "title": "Hawthorne Effect",
+      "level": 2,
+      "categories": [
+        "bias",
+        "social"
+      ]
+    },
+    {
+      "id": "hedonic-treadmill",
+      "title": "Hedonic Treadmill",
+      "level": 3,
+      "categories": [
+        "theory"
+      ]
+    },
+    {
       "id": "hindsight-bias",
       "title": "Hindsight bias",
       "level": 2,
       "categories": [
         "bias",
         "memory"
+      ]
+    },
+    {
+      "id": "horn-effect",
+      "title": "Horn Effect",
+      "level": 2,
+      "categories": [
+        "bias",
+        "social"
       ]
     },
     {
@@ -667,6 +830,14 @@
     {
       "id": "illusion-of-control",
       "title": "Illusion of control",
+      "level": 2,
+      "categories": [
+        "bias"
+      ]
+    },
+    {
+      "id": "illusion-of-explanatory-depth",
+      "title": "Illusion of Explanatory Depth",
       "level": 2,
       "categories": [
         "bias"
@@ -754,6 +925,14 @@
       ]
     },
     {
+      "id": "inattentional-blindness",
+      "title": "Inattentional Blindness",
+      "level": 2,
+      "categories": [
+        "perception"
+      ]
+    },
+    {
       "id": "information-bias",
       "title": "Information bias",
       "level": 2,
@@ -819,6 +998,14 @@
       ]
     },
     {
+      "id": "learned-helplessness",
+      "title": "Learned Helplessness",
+      "level": 3,
+      "categories": [
+        "theory"
+      ]
+    },
+    {
       "id": "less-is-better-effect",
       "title": "Less-is-better effect",
       "level": 2,
@@ -841,6 +1028,15 @@
       "level": 2,
       "categories": [
         "memory"
+      ]
+    },
+    {
+      "id": "lindy-effect",
+      "title": "Lindy Effect",
+      "level": 3,
+      "categories": [
+        "mental-models",
+        "theory"
       ]
     },
     {
@@ -935,6 +1131,14 @@
       ]
     },
     {
+      "id": "moral-hazard",
+      "title": "Moral Hazard",
+      "level": 3,
+      "categories": [
+        "theory"
+      ]
+    },
+    {
       "id": "moral-luck",
       "title": "Moral luck",
       "level": 2,
@@ -1010,6 +1214,14 @@
       ]
     },
     {
+      "id": "nudge-theory",
+      "title": "Nudge Theory",
+      "level": 3,
+      "categories": [
+        "theory"
+      ]
+    },
+    {
       "id": "observer-expectancy-effect",
       "title": "Observer-expectancy effect",
       "level": 2,
@@ -1032,6 +1244,14 @@
       "level": 2,
       "categories": [
         "bias"
+      ]
+    },
+    {
+      "id": "opportunity-cost",
+      "title": "Opportunity Cost",
+      "level": 3,
+      "categories": [
+        "mental-models"
       ]
     },
     {
@@ -1076,11 +1296,28 @@
       ]
     },
     {
+      "id": "overjustification-effect",
+      "title": "Overjustification Effect",
+      "level": 2,
+      "categories": [
+        "bias"
+      ]
+    },
+    {
       "id": "pareidolia",
       "title": "Pareidolia",
       "level": 2,
       "categories": [
         "perception"
+      ]
+    },
+    {
+      "id": "pareto-principle",
+      "title": "Pareto Principle",
+      "level": 2,
+      "categories": [
+        "mental-models",
+        "heuristic"
       ]
     },
     {
@@ -1117,6 +1354,15 @@
       ]
     },
     {
+      "id": "peter-principle",
+      "title": "Peter Principle",
+      "level": 2,
+      "categories": [
+        "theory",
+        "heuristic"
+      ]
+    },
+    {
       "id": "picture-superiority-effect",
       "title": "Picture superiority effect",
       "level": 2,
@@ -1138,6 +1384,15 @@
       "level": 2,
       "categories": [
         "mental-models"
+      ]
+    },
+    {
+      "id": "pluralistic-ignorance",
+      "title": "Pluralistic Ignorance",
+      "level": 2,
+      "categories": [
+        "social",
+        "bias"
       ]
     },
     {
@@ -1182,11 +1437,28 @@
       ]
     },
     {
+      "id": "processing-fluency",
+      "title": "Processing Fluency",
+      "level": 2,
+      "categories": [
+        "heuristic",
+        "perception"
+      ]
+    },
+    {
       "id": "projection-bias",
       "title": "Projection bias",
       "level": 2,
       "categories": [
         "bias"
+      ]
+    },
+    {
+      "id": "prospect-theory",
+      "title": "Prospect Theory",
+      "level": 4,
+      "categories": [
+        "theory"
       ]
     },
     {
@@ -1202,6 +1474,15 @@
       "title": "Publication bias",
       "level": 2,
       "categories": [
+        "bias"
+      ]
+    },
+    {
+      "id": "pygmalion-effect",
+      "title": "Pygmalion Effect",
+      "level": 2,
+      "categories": [
+        "social",
         "bias"
       ]
     },
@@ -1237,6 +1518,23 @@
       "categories": [
         "bias",
         "perception"
+      ]
+    },
+    {
+      "id": "regression-to-the-mean",
+      "title": "Regression to the Mean",
+      "level": 2,
+      "categories": [
+        "fallacy",
+        "theory"
+      ]
+    },
+    {
+      "id": "representativeness-heuristic",
+      "title": "Representativeness Heuristic",
+      "level": 2,
+      "categories": [
+        "heuristic"
       ]
     },
     {
@@ -1308,6 +1606,15 @@
       ]
     },
     {
+      "id": "self-fulfilling-prophecy",
+      "title": "Self-Fulfilling Prophecy",
+      "level": 2,
+      "categories": [
+        "social",
+        "bias"
+      ]
+    },
+    {
       "id": "self-licensing",
       "title": "Self-licensing",
       "level": 2,
@@ -1376,6 +1683,15 @@
       ]
     },
     {
+      "id": "social-loafing",
+      "title": "Social Loafing",
+      "level": 2,
+      "categories": [
+        "social",
+        "bias"
+      ]
+    },
+    {
       "id": "source-confusion",
       "title": "Source confusion",
       "level": 2,
@@ -1414,6 +1730,14 @@
       "level": 2,
       "categories": [
         "bias",
+        "social"
+      ]
+    },
+    {
+      "id": "streisand-effect",
+      "title": "Streisand Effect",
+      "level": 2,
+      "categories": [
         "social"
       ]
     },
@@ -1585,6 +1909,14 @@
       ]
     },
     {
+      "id": "zeigarnik-effect",
+      "title": "Zeigarnik Effect",
+      "level": 2,
+      "categories": [
+        "memory"
+      ]
+    },
+    {
       "id": "zero-risk-bias",
       "title": "Zero-risk bias",
       "level": 2,
@@ -1615,6 +1947,42 @@
     {
       "source": "abilene-paradox",
       "target": "social-desirability-bias"
+    },
+    {
+      "source": "actor-observer-bias",
+      "target": "fundamental-attribution-error"
+    },
+    {
+      "source": "actor-observer-bias",
+      "target": "self-serving-bias"
+    },
+    {
+      "source": "actor-observer-bias",
+      "target": "empathy-gap"
+    },
+    {
+      "source": "adverse-selection",
+      "target": "moral-hazard"
+    },
+    {
+      "source": "adverse-selection",
+      "target": "survivorship-bias"
+    },
+    {
+      "source": "adverse-selection",
+      "target": "risk-compensation"
+    },
+    {
+      "source": "affect-heuristic",
+      "target": "halo-effect"
+    },
+    {
+      "source": "affect-heuristic",
+      "target": "framing-effect"
+    },
+    {
+      "source": "affect-heuristic",
+      "target": "availability-heuristic"
     },
     {
       "source": "affective-forecasting",
@@ -1663,6 +2031,30 @@
     {
       "source": "anthropomorphism",
       "target": "illusion-of-control"
+    },
+    {
+      "source": "antifragility",
+      "target": "black-swan-theory"
+    },
+    {
+      "source": "antifragility",
+      "target": "lindy-effect"
+    },
+    {
+      "source": "antifragility",
+      "target": "survivorship-bias"
+    },
+    {
+      "source": "apophenia",
+      "target": "pareidolia"
+    },
+    {
+      "source": "apophenia",
+      "target": "clustering-illusion"
+    },
+    {
+      "source": "apophenia",
+      "target": "illusory-correlation"
     },
     {
       "source": "appeal-to-novelty",
@@ -1759,6 +2151,18 @@
     {
       "source": "automation-bias",
       "target": "illusion-of-control"
+    },
+    {
+      "source": "availability-cascade",
+      "target": "availability-heuristic"
+    },
+    {
+      "source": "availability-cascade",
+      "target": "bandwagon-effect"
+    },
+    {
+      "source": "availability-cascade",
+      "target": "illusory-truth-effect"
     },
     {
       "source": "availability-heuristic",
@@ -1861,6 +2265,14 @@
       "target": "spacing-effect"
     },
     {
+      "source": "black-swan-theory",
+      "target": "survivorship-bias"
+    },
+    {
+      "source": "black-swan-theory",
+      "target": "hindsight-bias"
+    },
+    {
       "source": "bucket-error",
       "target": "chestertons-fence"
     },
@@ -1871,6 +2283,18 @@
     {
       "source": "bucket-error",
       "target": "self-consistency-bias"
+    },
+    {
+      "source": "bystander-effect",
+      "target": "groupthink"
+    },
+    {
+      "source": "bystander-effect",
+      "target": "system-justification"
+    },
+    {
+      "source": "bystander-effect",
+      "target": "third-person-effect"
     },
     {
       "source": "cathedral-effect",
@@ -1899,6 +2323,18 @@
     {
       "source": "chestertons-fence",
       "target": "status-quo-bias"
+    },
+    {
+      "source": "choice-overload",
+      "target": "decision-fatigue"
+    },
+    {
+      "source": "choice-overload",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "choice-overload",
+      "target": "default-effect"
     },
     {
       "source": "choice-supportive-bias",
@@ -1935,6 +2371,22 @@
     {
       "source": "clustering-illusion",
       "target": "illusory-correlation"
+    },
+    {
+      "source": "cognitive-dissonance",
+      "target": "effort-justification"
+    },
+    {
+      "source": "cognitive-dissonance",
+      "target": "post-purchase-rationalization"
+    },
+    {
+      "source": "cognitive-dissonance",
+      "target": "self-licensing"
+    },
+    {
+      "source": "cognitive-dissonance",
+      "target": "confirmation-bias"
     },
     {
       "source": "cognitive-load-theory",
@@ -2061,6 +2513,14 @@
       "target": "illusion-of-asymmetric-insight"
     },
     {
+      "source": "cognitive-load-theory",
+      "target": "decision-fatigue"
+    },
+    {
+      "source": "decision-fatigue",
+      "target": "status-quo-bias"
+    },
+    {
       "source": "declinism",
       "target": "rosy-retrospection"
     },
@@ -2083,6 +2543,14 @@
     {
       "source": "decoy-effect",
       "target": "less-is-better-effect"
+    },
+    {
+      "source": "default-effect",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "default-effect",
+      "target": "nudge-theory"
     },
     {
       "source": "defensive-attribution-hypothesis",
@@ -2109,6 +2577,18 @@
       "target": "unit-bias"
     },
     {
+      "source": "bystander-effect",
+      "target": "diffusion-of-responsibility"
+    },
+    {
+      "source": "diffusion-of-responsibility",
+      "target": "pluralistic-ignorance"
+    },
+    {
+      "source": "diffusion-of-responsibility",
+      "target": "groupthink"
+    },
+    {
       "source": "disposition-effect",
       "target": "loss-aversion"
     },
@@ -2131,6 +2611,18 @@
     {
       "source": "distinction-bias",
       "target": "framing-effect"
+    },
+    {
+      "source": "door-in-the-face-technique",
+      "target": "foot-in-the-door-technique"
+    },
+    {
+      "source": "contrast-effect",
+      "target": "door-in-the-face-technique"
+    },
+    {
+      "source": "door-in-the-face-technique",
+      "target": "reactance"
     },
     {
       "source": "anchoring",
@@ -2309,6 +2801,14 @@
       "target": "immune-neglect"
     },
     {
+      "source": "foot-in-the-door-technique",
+      "target": "self-consistency-bias"
+    },
+    {
+      "source": "escalation-of-commitment",
+      "target": "foot-in-the-door-technique"
+    },
+    {
       "source": "framing-effect",
       "target": "loss-aversion"
     },
@@ -2385,6 +2885,14 @@
       "target": "stereotyping"
     },
     {
+      "source": "groupthink",
+      "target": "system-justification"
+    },
+    {
+      "source": "bandwagon-effect",
+      "target": "groupthink"
+    },
+    {
       "source": "halo-effect",
       "target": "stereotyping"
     },
@@ -2413,8 +2921,44 @@
       "target": "overconfidence-effect"
     },
     {
+      "source": "hawthorne-effect",
+      "target": "observer-expectancy-effect"
+    },
+    {
+      "source": "hawthorne-effect",
+      "target": "pygmalion-effect"
+    },
+    {
+      "source": "hawthorne-effect",
+      "target": "social-desirability-bias"
+    },
+    {
+      "source": "affective-forecasting",
+      "target": "hedonic-treadmill"
+    },
+    {
+      "source": "hedonic-treadmill",
+      "target": "impact-bias"
+    },
+    {
+      "source": "focalism",
+      "target": "hedonic-treadmill"
+    },
+    {
       "source": "hindsight-bias",
       "target": "self-serving-bias"
+    },
+    {
+      "source": "halo-effect",
+      "target": "horn-effect"
+    },
+    {
+      "source": "horn-effect",
+      "target": "negativity-bias"
+    },
+    {
+      "source": "horn-effect",
+      "target": "stereotyping"
     },
     {
       "source": "hot-hand-fallacy",
@@ -2459,6 +3003,18 @@
     {
       "source": "illusion-of-control",
       "target": "optimism-bias"
+    },
+    {
+      "source": "dunning-kruger-effect",
+      "target": "illusion-of-explanatory-depth"
+    },
+    {
+      "source": "illusion-of-explanatory-depth",
+      "target": "overconfidence-effect"
+    },
+    {
+      "source": "illusion-of-explanatory-depth",
+      "target": "illusory-superiority"
     },
     {
       "source": "choice-supportive-bias",
@@ -2561,6 +3117,18 @@
       "target": "stereotyping"
     },
     {
+      "source": "change-blindness",
+      "target": "inattentional-blindness"
+    },
+    {
+      "source": "inattentional-blindness",
+      "target": "selective-perception"
+    },
+    {
+      "source": "attentional-bias",
+      "target": "inattentional-blindness"
+    },
+    {
       "source": "confirmation-bias",
       "target": "information-bias"
     },
@@ -2641,6 +3209,18 @@
       "target": "law-of-triviality"
     },
     {
+      "source": "learned-helplessness",
+      "target": "optimism-bias"
+    },
+    {
+      "source": "learned-helplessness",
+      "target": "normalcy-bias"
+    },
+    {
+      "source": "illusion-of-control",
+      "target": "learned-helplessness"
+    },
+    {
       "source": "distinction-bias",
       "target": "less-is-better-effect"
     },
@@ -2683,6 +3263,14 @@
     {
       "source": "levels-of-processing-effect",
       "target": "picture-superiority-effect"
+    },
+    {
+      "source": "black-swan-theory",
+      "target": "lindy-effect"
+    },
+    {
+      "source": "lindy-effect",
+      "target": "survivorship-bias"
     },
     {
       "source": "loss-aversion",
@@ -2781,6 +3369,14 @@
       "target": "money-illusion"
     },
     {
+      "source": "moral-hazard",
+      "target": "risk-compensation"
+    },
+    {
+      "source": "moral-hazard",
+      "target": "self-serving-bias"
+    },
+    {
       "source": "fundamental-attribution-error",
       "target": "moral-luck"
     },
@@ -2877,6 +3473,14 @@
       "target": "not-invented-here"
     },
     {
+      "source": "nudge-theory",
+      "target": "status-quo-bias"
+    },
+    {
+      "source": "dual-process-theory",
+      "target": "nudge-theory"
+    },
+    {
       "source": "confirmation-bias",
       "target": "observer-expectancy-effect"
     },
@@ -2913,6 +3517,18 @@
       "target": "omission-bias"
     },
     {
+      "source": "opportunity-cost",
+      "target": "sunk-cost-fallacy"
+    },
+    {
+      "source": "mental-accounting",
+      "target": "opportunity-cost"
+    },
+    {
+      "source": "opportunity-cost",
+      "target": "status-quo-bias"
+    },
+    {
       "source": "optimism-bias",
       "target": "overconfidence-effect"
     },
@@ -2945,12 +3561,36 @@
       "target": "planning-fallacy"
     },
     {
+      "source": "extrinsic-incentive-error",
+      "target": "overjustification-effect"
+    },
+    {
+      "source": "ikea-effect",
+      "target": "overjustification-effect"
+    },
+    {
+      "source": "effort-justification",
+      "target": "overjustification-effect"
+    },
+    {
       "source": "clustering-illusion",
       "target": "pareidolia"
     },
     {
       "source": "illusory-correlation",
       "target": "pareidolia"
+    },
+    {
+      "source": "law-of-triviality",
+      "target": "pareto-principle"
+    },
+    {
+      "source": "pareto-principle",
+      "target": "parkinsons-law"
+    },
+    {
+      "source": "goodharts-law",
+      "target": "pareto-principle"
     },
     {
       "source": "parkinsons-law",
@@ -2997,6 +3637,18 @@
       "target": "pessimism-bias"
     },
     {
+      "source": "dunning-kruger-effect",
+      "target": "peter-principle"
+    },
+    {
+      "source": "halo-effect",
+      "target": "peter-principle"
+    },
+    {
+      "source": "goodharts-law",
+      "target": "peter-principle"
+    },
+    {
       "source": "generation-effect",
       "target": "picture-superiority-effect"
     },
@@ -3019,6 +3671,14 @@
     {
       "source": "illusion-of-control",
       "target": "planning-fallacy"
+    },
+    {
+      "source": "bystander-effect",
+      "target": "pluralistic-ignorance"
+    },
+    {
+      "source": "false-consensus-effect",
+      "target": "pluralistic-ignorance"
     },
     {
       "source": "halo-effect",
@@ -3077,6 +3737,30 @@
       "target": "pro-innovation-bias"
     },
     {
+      "source": "illusory-truth-effect",
+      "target": "processing-fluency"
+    },
+    {
+      "source": "mere-exposure-effect",
+      "target": "processing-fluency"
+    },
+    {
+      "source": "processing-fluency",
+      "target": "rhyme-as-reason-effect"
+    },
+    {
+      "source": "loss-aversion",
+      "target": "prospect-theory"
+    },
+    {
+      "source": "framing-effect",
+      "target": "prospect-theory"
+    },
+    {
+      "source": "endowment-effect",
+      "target": "prospect-theory"
+    },
+    {
       "source": "framing-effect",
       "target": "pseudocertainty-effect"
     },
@@ -3095,6 +3779,18 @@
     {
       "source": "confirmation-bias",
       "target": "publication-bias"
+    },
+    {
+      "source": "observer-expectancy-effect",
+      "target": "pygmalion-effect"
+    },
+    {
+      "source": "placebo-effect",
+      "target": "pygmalion-effect"
+    },
+    {
+      "source": "halo-effect",
+      "target": "pygmalion-effect"
     },
     {
       "source": "reactance",
@@ -3131,6 +3827,30 @@
     {
       "source": "availability-heuristic",
       "target": "recency-illusion"
+    },
+    {
+      "source": "gamblers-fallacy",
+      "target": "regression-to-the-mean"
+    },
+    {
+      "source": "hot-hand-fallacy",
+      "target": "regression-to-the-mean"
+    },
+    {
+      "source": "illusory-correlation",
+      "target": "regression-to-the-mean"
+    },
+    {
+      "source": "base-rate-fallacy",
+      "target": "representativeness-heuristic"
+    },
+    {
+      "source": "conjunction-fallacy",
+      "target": "representativeness-heuristic"
+    },
+    {
+      "source": "availability-heuristic",
+      "target": "representativeness-heuristic"
     },
     {
       "source": "restraint-bias",
@@ -3207,6 +3927,18 @@
     {
       "source": "misattribution-of-memory",
       "target": "self-consistency-bias"
+    },
+    {
+      "source": "pygmalion-effect",
+      "target": "self-fulfilling-prophecy"
+    },
+    {
+      "source": "observer-expectancy-effect",
+      "target": "self-fulfilling-prophecy"
+    },
+    {
+      "source": "confirmation-bias",
+      "target": "self-fulfilling-prophecy"
     },
     {
       "source": "halo-effect",
@@ -3293,6 +4025,18 @@
       "target": "social-desirability-bias"
     },
     {
+      "source": "bystander-effect",
+      "target": "social-loafing"
+    },
+    {
+      "source": "diffusion-of-responsibility",
+      "target": "social-loafing"
+    },
+    {
+      "source": "groupthink",
+      "target": "social-loafing"
+    },
+    {
       "source": "misattribution-of-memory",
       "target": "source-confusion"
     },
@@ -3323,6 +4067,18 @@
     {
       "source": "illusory-correlation",
       "target": "stereotyping"
+    },
+    {
+      "source": "reactance",
+      "target": "streisand-effect"
+    },
+    {
+      "source": "bandwagon-effect",
+      "target": "streisand-effect"
+    },
+    {
+      "source": "streisand-effect",
+      "target": "third-person-effect"
     },
     {
       "source": "base-rate-fallacy",
@@ -3535,6 +4291,18 @@
     {
       "source": "optimism-bias",
       "target": "well-traveled-road-effect"
+    },
+    {
+      "source": "serial-position-effect",
+      "target": "zeigarnik-effect"
+    },
+    {
+      "source": "spacing-effect",
+      "target": "zeigarnik-effect"
+    },
+    {
+      "source": "testing-effect",
+      "target": "zeigarnik-effect"
     },
     {
       "source": "loss-aversion",
