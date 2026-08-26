@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/28704be5-e764-4674-ba56-032d388220dc/deploy-status)](https://app.netlify.com/projects/theunseen/deploys)
+
 # Seeing the Unseen 🔥
 
 Every piece of knowledge is a flame in Plato's cave. A knowledge-sharing site about cognitive biases, mental models, and psychology — structured as a journey through 4 maps (Imagining → Belief → Thinking → Knowledge), rendered as flip cards linked into a knowledge graph.
