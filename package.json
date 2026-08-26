@@ -7,18 +7,26 @@
     "test:progress": "node --experimental-strip-types scripts/test-progress.mjs",
     "mapdata": "node --experimental-strip-types ./scripts/build-map-data.mjs",
     "dev": "astro dev",
-    "prebuild": "npm run mapdata",
+    "prebuild": "npm run mapdata && npm run graph:build",
     "build": "astro build",
     "postbuild": "pagefind --site dist && test -s dist/pagefind/pagefind-entry.json || (echo 'postbuild: dist/pagefind/pagefind-entry.json missing or empty — search index did not build, failing build' >&2 && exit 1)",
     "preview": "astro preview",
     "verify": "node scripts/content-pipeline/verify.mjs",
-    "graph": "node scripts/build-graph.mjs",
+    "graph": "npm run graph:build",
+    "graph:build": "node scripts/build-graph.mjs",
     "backlog": "node scripts/content-pipeline/sync-backlog.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
+    "3d-force-graph": "^1.80.0",
     "astro": "^5.12.0",
-    "shiki": "^3.23.0"
+    "d3-force-3d": "^3.0.6",
+    "graphology": "^0.26.0",
+    "graphology-communities-louvain": "^2.0.2",
+    "graphology-components": "^1.5.4",
+    "shiki": "^3.23.0",
+    "three": "^0.185.1",
+    "three-spritetext": "^1.10.0"
   },
   "devDependencies": {
     "gray-matter": "^4.0.3",

@@ -1,36 +1,40 @@
 ---
 import Base from '../layouts/Base.astro';
 import StuffOverlay from '../components/map/StuffOverlay.astro';
-import { onMount } from 'astro:client';
 import { readFileSync } from 'fs';
-import { MAPS } from '../lib/map/palette';
 
-let graph = { nodes: [], edges: [] };
+let nodeCount = 0;
 try {
-  graph = JSON.parse(readFileSync(new URL('../../public/graph.json', import.meta.url), 'utf-8'));
+  const graph = JSON.parse(readFileSync(new URL('../../public/graph/graph.json', import.meta.url), 'utf-8'));
+  nodeCount = graph.nodes?.length ?? 0;
 } catch {
-  graph = { nodes: [], edges: [] };
+  nodeCount = 0;
 }
-const isEmpty = !graph.nodes || graph.nodes.length === 0;
-const legend = MAPS.slice(0, 4).map((map, i) => ({ label: `${i + 1} · ${map.name}`, color: map.icon }));
-const mapColors = MAPS.slice(0, 4).map((map) => ({ icon: map.icon, glow: map.iconGlow, name: map.name }));
+const isEmpty = nodeCount === 0;
 ---
 <Base title="Graph" fullBleed>
   <div class="graph-page">
     <div class="graph-title">
       <h1>Graph</h1>
-      <span class="hint">Kéo để sắp xếp lại · Bấm để mở</span>
+      <span class="hint">Kéo để xoay · Cuộn để zoom · Bấm để mở</span>
     </div>
     {isEmpty ? (
-      <div class="graph-empty">Chưa có dữ liệu graph. Chạy <code>npm run graph</code> để tạo <code>public/graph.json</code>.</div>
+      <div class="graph-empty">Chưa có dữ liệu graph. Chạy <code>npm run graph</code> để tạo <code>public/graph/graph.json</code>.</div>
     ) : (
-      <div id="graphContainer" class="graph-container" aria-label="Graph of connected stuff">
-        <div id="graphSkeleton" class="graph-skeleton" aria-hidden="true"></div>
-        <ul class="graph-legend">
-          {legend.map((item) => (
-            <li><span class="dot" style={`background:${item.color}`}></span>{item.label}</li>
-          ))}
-        </ul>
+      <div id="graphContainer" class="graph-container" role="application" aria-label="Đồ thị 3D các stuff đã kết nối">
+        <!-- ForceGraph3D wipes whatever element it mounts into (innerHTML = ''),
+             so it gets its own empty mount point — everything else here is a
+             sibling, never touched by that wipe. -->
+        <div id="graphMount" class="graph-mount"></div>
+        <div id="graphSkeleton" class="graph-skeleton" aria-hidden="true">
+          <svg viewBox="0 0 100 100" class="graph-skeleton-sphere" aria-hidden="true">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5" />
+            <ellipse cx="50" cy="50" rx="42" ry="14" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5" />
+            <ellipse cx="50" cy="50" rx="14" ry="42" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5" />
+          </svg>
+        </div>
+        <div id="graphFallback" class="graph-fallback" hidden></div>
+        <nav id="graphA11yList" class="graph-a11y-list" aria-label="Danh sách đầy đủ các stuff trong graph, nhóm theo cụm"></nav>
       </div>
     )}
   </div>
@@ -43,359 +47,255 @@ const mapColors = MAPS.slice(0, 4).map((map) => ({ icon: map.icon, glow: map.ico
   .graph-title .hint { color: var(--muted); font-size: 12px; }
   .graph-empty { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--muted); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
   .graph-container { flex: 1 1 auto; min-height: 0; width: 100%; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); overflow: hidden; position: relative; }
-  .graph-skeleton { position: absolute; inset: 0; background: var(--surface); z-index: 5; opacity: 0.9; transition: opacity 0.25s ease; pointer-events: none; }
+  .graph-mount { position: absolute; inset: 0; z-index: 1; }
+  .graph-container canvas { display: block; cursor: grab; }
+  .graph-container canvas:active { cursor: grabbing; }
+  .graph-container .clickable canvas,
+  .graph-container canvas.clickable { cursor: pointer; }
+  .graph-skeleton { position: absolute; inset: 0; z-index: 5; opacity: 1; transition: opacity 0.3s ease; pointer-events: none; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--muted); }
   .graph-skeleton.is-hidden { opacity: 0; }
-  .graph-legend { position: absolute; top: 12px; left: 12px; margin: 0; padding: 0.5rem 0.75rem; list-style: none; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; font-size: 11px; color: var(--text); display: flex; flex-direction: column; gap: 0.3rem; z-index: 4; }
-  .graph-legend li { display: flex; align-items: center; gap: 0.4rem; }
-  .graph-legend .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-  .graph-tooltip { position: absolute; left: 0; top: 0; pointer-events: none; background: var(--ink); color: #fff; border: 2px solid #fff; font-family: var(--font-pixel); font-size: 8px; padding: 6px 8px; white-space: nowrap; z-index: 9; }
-  .graph-node-label { font-family: var(--font-pixel); font-size: 7px; fill: var(--ink); pointer-events: none; text-anchor: middle; transition: opacity 0.2s ease; }
+  .graph-skeleton-sphere { width: 140px; height: 140px; animation: graph-skeleton-spin 6s linear infinite; }
+  @keyframes graph-skeleton-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .graph-skeleton-sphere { animation: none; }
+  }
+  .graph-fallback { position: absolute; inset: 0; overflow: auto; background: var(--surface); padding: 1rem 1.25rem; z-index: 3; }
+  .graph-fallback h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 1rem 0 0.5rem; }
+  .graph-fallback ul { list-style: none; margin: 0; padding: 0; }
+  .graph-fallback li a { display: block; padding: 0.35rem 0; border-bottom: 1px solid var(--border-soft); }
+  .graph-a11y-list:not([data-populated]) { display: none; }
+  .graph-a11y-list { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .graph-a11y-list:focus-within { position: static; width: auto; height: auto; clip: auto; white-space: normal; background: var(--surface); padding: 1rem; overflow: auto; }
+  .float-tooltip-kap { background: var(--ink) !important; color: #fff !important; border: 2px solid #fff !important; border-radius: 0 !important; font-family: var(--font-pixel) !important; font-size: 8px !important; padding: 6px 8px !important; box-shadow: none !important; }
   @media (max-width: 480px) {
     .graph-title .hint { display: none; }
   }
 </style>
-<script define:vars={{ graph, mapColors, isEmpty }}>
-  if (!isEmpty) {
-    // Named like Obsidian's graph-view sliders — tune here instead of hunting through the force code.
-    const CONFIG = {
-      nodeSize: 1.0,
-      linkThickness: 1.0,
-      centerForce: 0.55,
-      repelForce: 0.10,
-      linkForce: 1.0,
-      linkDistance: 250,
-      textFadeThreshold: -0.6, // -1 = labels always on, 1 = labels only when zoomed way in
-    };
-    // visibleAtScale: zoom level (matches the pan/zoom `scale`) above which labels fade in
-    const visibleAtScale = 0.05 + ((CONFIG.textFadeThreshold + 1) / 2) * 3.45;
+<script>
+  const PALETTE = ['#c9563c', '#4c8577', '#7a6fb0', '#c9a13c', '#3c7fc9', '#a34c8f', '#5ba34c', '#8a8577'];
 
-    // Obsidian keeps every node the same small dot regardless of link count.
-    const nodeRadius = () => 5 * CONFIG.nodeSize;
-    const hitRadius = () => Math.max(16, nodeRadius());
+  function hasWebGL2() {
+    try {
+      const canvas = document.createElement('canvas');
+      return !!(window.WebGL2RenderingContext && canvas.getContext('webgl2'));
+    } catch {
+      return false;
+    }
+  }
 
+  function renderA11yList(nodes, container) {
+    const byCommunity = new Map();
+    nodes.forEach((n) => {
+      const key = n.communityId ?? 0;
+      if (!byCommunity.has(key)) byCommunity.set(key, []);
+      byCommunity.get(key).push(n);
+    });
+    const frag = document.createDocumentFragment();
+    [...byCommunity.entries()]
+      .sort((a, b) => b[1].length - a[1].length)
+      .forEach(([community, groupNodes], i) => {
+        const h = document.createElement('h2');
+        h.textContent = `Cụm ${i + 1}`;
+        frag.appendChild(h);
+        const ul = document.createElement('ul');
+        groupNodes
+          .slice()
+          .sort((a, b) => (b.degree || 0) - (a.degree || 0))
+          .forEach((n) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = n.url || '#';
+            a.textContent = n.title;
+            li.appendChild(a);
+            ul.appendChild(li);
+          });
+        frag.appendChild(ul);
+      });
+    container.appendChild(frag);
+    container.setAttribute('data-populated', '');
+  }
+
+  function renderFallback(nodes, el) {
+    el.hidden = false;
+    renderA11yList(nodes, el);
+    const h1 = document.createElement('p');
+    h1.textContent = 'Trình duyệt của bạn không hỗ trợ WebGL2 — hiển thị danh sách thay cho graph 3D.';
+    h1.style.cssText = 'color:var(--muted);font-size:12px;margin:0 0 0.5rem;';
+    el.insertBefore(h1, el.firstChild);
+  }
+
+  async function main() {
     const container = document.getElementById('graphContainer');
-    if (!container) throw new Error('Graph container missing');
+    const mount = document.getElementById('graphMount');
+    if (!container || !mount) return;
+    const skeleton = document.getElementById('graphSkeleton');
+    const fallbackEl = document.getElementById('graphFallback');
+    const a11yList = document.getElementById('graphA11yList');
 
-    const width = container.clientWidth;
-    const height = container.clientHeight;
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('width', width);
-    svg.setAttribute('height', height);
-    svg.style.display = 'block';
-    svg.style.cursor = 'grab';
-    container.appendChild(svg);
+    const res = await fetch('/graph/graph.json');
+    const { nodes, edges } = await res.json();
 
-    const viewport = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    svg.appendChild(viewport);
+    if (a11yList) renderA11yList(nodes, a11yList);
 
-    let scale = 1;
-    let panX = 0;
-    let panY = 0;
-    let labelElements = [];
-    const applyViewport = () => {
-      viewport.setAttribute('transform', `translate(${panX},${panY}) scale(${scale})`);
-      const labelsOn = scale >= visibleAtScale;
-      labelElements.forEach((label) => {
-        label.style.opacity = labelsOn ? '1' : '0';
+    if (!hasWebGL2()) {
+      if (skeleton) skeleton.classList.add('is-hidden');
+      if (fallbackEl) renderFallback(nodes, fallbackEl);
+      return;
+    }
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const [{ default: ForceGraph3D }, THREE, { default: SpriteText }] = await Promise.all([
+      import('3d-force-graph'),
+      import('three'),
+      import('three-spritetext'),
+    ]);
+
+    const neighbors = new Map(nodes.map((n) => [n.id, new Set()]));
+    const nodeLinks = new Map(nodes.map((n) => [n.id, new Set()]));
+    edges.forEach((e) => {
+      neighbors.get(e.source)?.add(e.target);
+      neighbors.get(e.target)?.add(e.source);
+      nodeLinks.get(e.source)?.add(e);
+      nodeLinks.get(e.target)?.add(e);
+    });
+
+    const styles = getComputedStyle(document.documentElement);
+    const bg = styles.getPropertyValue('--bg').trim() || '#fbfaf7';
+    const { sphereRadius } = await import('../lib/graph-forces.mjs');
+    const R = sphereRadius(nodes.length || 1);
+
+    const highlightNodeIds = new Set();
+    const highlightLinks = new Set();
+    const NODE_RADIUS = 5;
+    const NODE_OPACITY = 0.92;
+    const DIM_OPACITY = 0.15;
+    const LABEL_OPACITY = 0.85;
+    const LABEL_DIM_OPACITY = 0.12;
+
+    // Dimming mutates each mesh/label's existing material in place (via
+    // nodeObjById) rather than reassigning nodeThreeObject — reassigning it
+    // rebuilds every node mesh, which made the raycaster see a "new" object
+    // under the cursor on every hover tick and starved onNodeClick of a
+    // stable hoverObj.
+    const nodeObjById = new Map();
+    const applyDimming = () => {
+      nodeObjById.forEach(({ mesh, label }, id) => {
+        const dim = highlightNodeIds.size > 0 && !highlightNodeIds.has(id);
+        mesh.material.opacity = dim ? DIM_OPACITY : NODE_OPACITY;
+        label.material.opacity = dim ? LABEL_DIM_OPACITY : LABEL_OPACITY;
       });
     };
 
-    svg.addEventListener('wheel', (event) => {
-      event.preventDefault();
-      const rect = svg.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
-      const zoomFactor = Math.exp(-event.deltaY * 0.001);
-      const newScale = Math.min(4, Math.max(0.25, scale * zoomFactor));
-      panX = mouseX - ((mouseX - panX) / scale) * newScale;
-      panY = mouseY - ((mouseY - panY) / scale) * newScale;
-      scale = newScale;
-      applyViewport();
-    }, { passive: false });
+    const Graph = new ForceGraph3D(mount)
+      .graphData({ nodes, links: edges })
+      .nodeId('id')
+      .backgroundColor(bg)
+      .cooldownTicks(0)
+      .warmupTicks(0)
+      .numDimensions(3)
+      .nodeLabel((n) => n.title)
+      .nodeThreeObject((node) => {
+        const color = PALETTE[(node.communityId ?? PALETTE.length) % PALETTE.length];
+        const geometry = new THREE.SphereGeometry(NODE_RADIUS, 12, 12);
+        const material = new THREE.MeshLambertMaterial({ color, transparent: true, opacity: NODE_OPACITY });
+        const mesh = new THREE.Mesh(geometry, material);
 
-    let panning = false;
-    let panStart = { x: 0, y: 0 };
-    let panOrigin = { x: 0, y: 0 };
-    svg.addEventListener('pointerdown', (event) => {
-      if (event.target !== svg && event.target !== viewport) return;
-      panning = true;
-      panStart = { x: event.clientX, y: event.clientY };
-      panOrigin = { x: panX, y: panY };
-      svg.style.cursor = 'grabbing';
-      svg.setPointerCapture(event.pointerId);
-    });
-    svg.addEventListener('pointermove', (event) => {
-      if (!panning) return;
-      panX = panOrigin.x + (event.clientX - panStart.x);
-      panY = panOrigin.y + (event.clientY - panStart.y);
-      applyViewport();
-    });
-    const endPan = () => { panning = false; svg.style.cursor = 'grab'; };
-    svg.addEventListener('pointerup', endPan);
-    svg.addEventListener('pointerleave', endPan);
+        const label = new SpriteText(node.title);
+        label.textHeight = 3.2;
+        label.color = 'white';
+        label.backgroundColor = 'rgba(17,17,20,0.75)';
+        label.padding = 1;
+        label.borderRadius = 0;
+        label.material.opacity = LABEL_OPACITY;
+        label.material.transparent = true;
+        label.position.set(0, -(NODE_RADIUS + 4), 0);
 
-    const tooltip = document.createElement('div');
-    tooltip.className = 'graph-tooltip';
-    tooltip.style.opacity = '0';
-    container.appendChild(tooltip);
-
-    const degree = new Map(graph.nodes.map((node) => [node.id, 0]));
-    graph.edges.forEach((edge) => {
-      degree.set(edge.source, (degree.get(edge.source) || 0) + 1);
-      degree.set(edge.target, (degree.get(edge.target) || 0) + 1);
-    });
-
-    const orphanBandY = height * 0.85;
-    const nodes = graph.nodes.map((node) => {
-      const d = degree.get(node.id) || 0;
-      const orphan = d === 0;
-      return {
-        ...node,
-        degree: d,
-        orphan,
-        x: orphan ? Math.random() * width : width / 2 + (Math.random() - 0.5) * 200,
-        y: orphan ? orphanBandY + (Math.random() - 0.5) * (height * 0.12) : height / 2 + (Math.random() - 0.5) * 200,
-        vx: 0,
-        vy: 0,
-      };
-    });
-    const links = graph.edges.map((edge) => ({
-      source: nodes.find((node) => node.id === edge.source),
-      target: nodes.find((node) => node.id === edge.target),
-    }));
-
-    const linkElements = links.map(() => {
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('stroke', 'rgba(58,55,47,0.15)');
-      line.setAttribute('stroke-width', String(1 * CONFIG.linkThickness));
-      line.style.transition = 'stroke 0.2s ease, stroke-width 0.2s ease, opacity 0.2s ease';
-      viewport.appendChild(line);
-      return line;
-    });
-
-    const nodeElements = nodes.map((node) => {
-      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      const map = mapColors[(node.level - 1) % mapColors.length];
-
-      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      circle.setAttribute('r', String(nodeRadius()));
-      circle.setAttribute('fill', map.icon);
-      circle.setAttribute('fill-opacity', node.orphan ? '0.35' : '1');
-      circle.setAttribute('stroke', '#111114');
-      circle.setAttribute('stroke-width', '1');
-      circle.setAttribute('pointer-events', 'none');
-      g.appendChild(circle);
-
-      const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      hit.setAttribute('r', String(hitRadius()));
-      hit.setAttribute('fill', 'transparent');
-      hit.setAttribute('cursor', 'pointer');
-      hit.style.touchAction = 'none';
-      g.appendChild(hit);
-      g.style.transition = 'opacity 0.2s ease';
-      circle.style.transition = 'stroke 0.15s ease, stroke-width 0.15s ease, r 0.15s ease';
-
-      const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      label.textContent = node.title;
-      label.setAttribute('class', 'graph-node-label');
-      label.setAttribute('y', String(nodeRadius() + 10));
-      label.setAttribute('pointer-events', 'none');
-      label.style.opacity = '0';
-      g.appendChild(label);
-      labelElements.push(label);
-
-      viewport.appendChild(g);
-
-      const neighborIds = new Set();
-      links.forEach((link) => {
-        if (link.source === node) neighborIds.add(link.target);
-        if (link.target === node) neighborIds.add(link.source);
-      });
-
-      const highlightLinks = (active) => {
-        links.forEach((link, index) => {
-          const isNeighborLink = link.source === node || link.target === node;
-          linkElements[index].setAttribute('stroke', isNeighborLink ? 'rgba(58,55,47,0.75)' : 'rgba(58,55,47,0.15)');
-          linkElements[index].setAttribute('stroke-width', String((isNeighborLink ? 2 : 1) * CONFIG.linkThickness));
-          linkElements[index].style.opacity = active && !isNeighborLink ? '0.15' : '1';
-        });
-        nodeElements.forEach((otherG, otherIndex) => {
-          const otherNode = nodes[otherIndex];
-          const related = otherNode === node || neighborIds.has(otherNode);
-          otherG.style.opacity = active && !related ? '0.2' : '1';
-        });
-      };
-
-      hit.addEventListener('pointerenter', () => {
-        circle.setAttribute('stroke-width', '2');
-        circle.setAttribute('stroke', map.glow);
-        highlightLinks(true);
-        tooltip.textContent = node.title;
-        tooltip.style.opacity = '1';
-      });
-
-      hit.addEventListener('pointermove', (event) => {
-        tooltip.style.left = `${event.offsetX + 16}px`;
-        tooltip.style.top = `${event.offsetY + 16}px`;
-      });
-
-      hit.addEventListener('pointerleave', () => {
-        circle.setAttribute('stroke-width', '1');
-        circle.setAttribute('stroke', '#111114');
-        highlightLinks(false);
-        tooltip.style.opacity = '0';
-      });
-
-      let dragged = false;
-      hit.addEventListener('pointerdown', (event) => {
-        dragged = false;
-        draggingNode = node;
-        hit.setPointerCapture(event.pointerId);
-      });
-      hit.addEventListener('pointermove', () => {
-        if (draggingNode === node) dragged = true;
-      });
-      hit.addEventListener('click', () => {
-        if (dragged) return;
+        const group = new THREE.Group();
+        group.add(mesh);
+        group.add(label);
+        nodeObjById.set(node.id, { mesh, label });
+        return group;
+      })
+      .linkColor((l) => (highlightLinks.has(l) ? '#f0a343' : 'rgba(90,86,74,0.85)'))
+      .linkWidth((l) => (highlightLinks.has(l) ? 1.6 : 0.6))
+      .linkOpacity(0.55)
+      .onNodeHover((node) => {
+        highlightNodeIds.clear();
+        highlightLinks.clear();
+        if (node) {
+          highlightNodeIds.add(node.id);
+          neighbors.get(node.id)?.forEach((id) => highlightNodeIds.add(id));
+          nodeLinks.get(node.id)?.forEach((l) => highlightLinks.add(l));
+        }
+        applyDimming();
+        Graph.linkColor(Graph.linkColor());
+        Graph.linkWidth(Graph.linkWidth());
+        container.style.cursor = node ? 'pointer' : 'grab';
+      })
+      .onNodeClick((node) => {
+        const distance = 80;
+        const ratio = 1 + distance / Math.hypot(node.x, node.y, node.z, 0.001);
+        Graph.cameraPosition(
+          { x: node.x * ratio, y: node.y * ratio, z: node.z * ratio },
+          node,
+          reducedMotion ? 0 : 800,
+        );
         window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: node.id } }));
       });
 
-      g.style.opacity = '0';
-      return g;
-    });
+    // Default distance is proportional to R so the whole baked sphere is
+    // framed on first paint — the library's own default (~1000) sits far
+    // outside the fog, washing every node out to background color.
+    Graph.cameraPosition({ x: 0, y: 0, z: R * 3.4 }, { x: 0, y: 0, z: 0 }, 0);
+    Graph.scene().fog = new THREE.FogExp2(new THREE.Color(bg).getHex(), 0.19 / R);
 
-    nodeElements.forEach((g, index) => {
-      g.style.transition = 'opacity 0.4s ease';
-      setTimeout(() => { g.style.opacity = '1'; }, 15 * index);
-    });
+    if (reducedMotion) {
+      Graph.controls().autoRotate = false;
+    }
 
-    let draggingNode = null;
-    svg.addEventListener('pointermove', (event) => {
-      if (!draggingNode) return;
-      const rect = svg.getBoundingClientRect();
-      draggingNode.x = event.clientX - rect.left;
-      draggingNode.y = event.clientY - rect.top;
-      draggingNode.vx = 0;
-      draggingNode.vy = 0;
-      alpha = 1;
-    });
-    const releaseDrag = () => { draggingNode = null; };
-    svg.addEventListener('pointerup', releaseDrag);
-    svg.addEventListener('pointerleave', releaseDrag);
+    if (skeleton) setTimeout(() => skeleton.classList.add('is-hidden'), 200);
 
-    const applyForces = () => {
-      const centerX = width / 2;
-      const centerY = height / 2;
-      const repulsion = CONFIG.repelForce * 30000;
-      const springLength = CONFIG.linkDistance;
-      const springStrength = 0.01 * CONFIG.linkForce;
-      const centerMultiplier = CONFIG.centerForce / 0.55;
-      const damping = 0.85;
-
-      nodes.forEach((node) => {
-        if (node === draggingNode) return;
-        node.vx *= damping;
-        node.vy *= damping;
-        if (node.orphan) {
-          const dx = centerX - node.x;
-          const dy = orphanBandY - node.y;
-          node.vx += dx * 0.00005 * centerMultiplier;
-          node.vy += dy * 0.0003 * centerMultiplier;
-        } else {
-          const dx = centerX - node.x;
-          const dy = centerY - node.y;
-          node.vx += dx * 0.0002 * centerMultiplier;
-          node.vy += dy * 0.0002 * centerMultiplier;
-        }
-      });
-
-      if (alpha > 0.05) {
-        for (let i = 0; i < nodes.length; i += 1) {
-          for (let j = i + 1; j < nodes.length; j += 1) {
-            const a = nodes[i];
-            const b = nodes[j];
-            const dx = a.x - b.x;
-            const dy = a.y - b.y;
-            let distance = Math.sqrt(dx * dx + dy * dy) || 1;
-            const minDist = nodeRadius() + nodeRadius() + 12;
-            const force = (repulsion / (distance * distance)) * 0.5;
-            const fx = (dx / distance) * force;
-            const fy = (dy / distance) * force;
-            if (a !== draggingNode) { a.vx += fx; a.vy += fy; }
-            if (b !== draggingNode) { b.vx -= fx; b.vy -= fy; }
-
-            if (distance < minDist) {
-              const overlap = (minDist - distance) / distance * 0.5;
-              if (a !== draggingNode) { a.vx += dx * overlap; a.vy += dy * overlap; }
-              if (b !== draggingNode) { b.vx -= dx * overlap; b.vy -= dy * overlap; }
-            }
-          }
-        }
+    // T15 — lifecycle: pause rendering when off-screen or tab hidden, cap DPR.
+    Graph.renderer().setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Ignore the observer's first callback if it reports not-intersecting —
+    // that can fire spuriously before layout settles and would pause the
+    // render/raycast loop forever, since nothing else would un-pause it.
+    let ioSettled = false;
+    const io = new IntersectionObserver(([entry]) => {
+      if (!ioSettled) {
+        ioSettled = true;
+        if (!entry.isIntersecting) return;
       }
+      if (entry.isIntersecting) Graph.resumeAnimation();
+      else Graph.pauseAnimation();
+    });
+    io.observe(container);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) Graph.pauseAnimation();
+      else if (container.getBoundingClientRect().top < window.innerHeight) Graph.resumeAnimation();
+    });
 
-      links.forEach((link) => {
-        if (link.source === draggingNode || link.target === draggingNode) return;
-        const dx = link.target.x - link.source.x;
-        const dy = link.target.y - link.source.y;
-        const distance = Math.sqrt(dx * dx + dy * dy) || 1;
-        const diff = distance - springLength;
-        const force = springStrength * diff;
-        const fx = (dx / distance) * force;
-        const fy = (dy / distance) * force;
-        link.source.vx += fx;
-        link.source.vy += fy;
-        link.target.vx -= fx;
-        link.target.vy -= fy;
-      });
-
-      nodes.forEach((node) => {
-        if (node === draggingNode) return;
-        node.x += node.vx;
-        node.y += node.vy;
-        const radius = nodeRadius();
-        node.x = Math.max(radius, Math.min(width - radius, node.x));
-        node.y = Math.max(radius, Math.min(height - radius, node.y));
-      });
-    };
-
-    const render = () => {
-      links.forEach((link, index) => {
-        linkElements[index].setAttribute('x1', String(link.source.x));
-        linkElements[index].setAttribute('y1', String(link.source.y));
-        linkElements[index].setAttribute('x2', String(link.target.x));
-        linkElements[index].setAttribute('y2', String(link.target.y));
-      });
-      nodes.forEach((node, index) => {
-        nodeElements[index].setAttribute('transform', `translate(${node.x},${node.y})`);
-      });
-    };
-
-    let alpha = 1;
-    const animate = () => {
-      applyForces();
-      render();
-      if (draggingNode) {
-        requestAnimationFrame(animate);
-        return;
+    let savedCamera = null;
+    window.addEventListener('stuff:open', () => {
+      savedCamera = Graph.cameraPosition();
+    });
+    window.addEventListener('stuff:close', () => {
+      if (savedCamera) {
+        Graph.cameraPosition(
+          { x: savedCamera.x, y: savedCamera.y, z: savedCamera.z },
+          savedCamera.lookAt,
+          reducedMotion ? 0 : 500,
+        );
       }
-      alpha *= 0.98;
-      if (alpha <= 0.01) return;
-      requestAnimationFrame(animate);
-    };
-
-    render();
-    applyViewport();
-    requestAnimationFrame(animate);
+    });
 
     const resize = () => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
-      svg.setAttribute('width', String(w));
-      svg.setAttribute('height', String(h));
+      Graph.width(container.clientWidth).height(container.clientHeight);
     };
     window.addEventListener('resize', resize);
-
-    const skeleton = document.getElementById('graphSkeleton');
-    if (skeleton) setTimeout(() => skeleton.classList.add('is-hidden'), 300);
+    resize();
   }
+
+  main();
 </script>
