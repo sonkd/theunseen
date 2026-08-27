@@ -1,9 +1,9 @@
 ---
 name: daily-content
-description: Job nội dung hàng ngày — sync backlog, ưu tiên 2 card map Imagining + 2 card map Thinking mỗi ngày rồi mới lấy đủ 15 theo priority cũ, regenerate graph + map data, cập nhật backlog, commit vào branch new. Dùng cho scheduled task hoặc khi muốn chạy một ngày sản xuất đầy đủ.
+description: Job nội dung hàng ngày — sync backlog, sản xuất ĐÚNG 3 card cho mỗi map trong 5 map (Imagining, Belief, Thinking, Intelligence, Knowledge) = 15 card/ngày, regenerate graph + map data, cập nhật backlog, commit vào branch new. Dùng cho scheduled task hoặc khi muốn chạy một ngày sản xuất đầy đủ.
 ---
 
-# Daily content job (15 cards/ngày — ưu tiên 2 Imagining + 2 Thinking/ngày)
+# Daily content job (15 cards/ngày — hạn ngạch cứng 3 card × 5 map)
 
 Chạy end-to-end. Hard cap 15 card/run. Nếu bất kỳ bước nào fail 2 lần liên tiếp → dừng, báo cáo, KHÔNG commit.
 
@@ -21,23 +21,53 @@ Script `scripts/content-pipeline/sync-backlog.mjs` quét toàn bộ `content/stu
 
 Đây là cơ chế chống trùng lặp: card đã đủ chuẩn tự chuyển `done`, không bao giờ được chọn lại.
 
-## Bước 2 — Sản xuất 15 card
+## Bước 2 — Sản xuất 15 card = 3 card × 5 map
 
-Thứ tự chọn (đã cập nhật để cân bằng 2 map đang thiếu nội dung — Imagining 0 card, Thinking 15 card so với Belief 212 card):
+**Hạn ngạch theo map là RÀNG BUỘC CỨNG, không phải gợi ý.** Mỗi map lấy đúng 3 card, không hơn.
+Tuyệt đối KHÔNG dùng priority toàn cục để chọn card — priority chỉ dùng để sắp thứ tự curated
+*bên trong* một map. Đây là lỗi của phiên bản rule cũ: vì priority của Imagining (41–70) luôn
+nhỏ hơn Thinking (81–110), mọi slot dư đều rơi vào Imagining và batch 2026-08-27 ra 13 Imagining
++ 2 Thinking dù rule tự mô tả là "cân bằng".
 
-1. **Ưu tiên nhóm map trước** — trong các dòng `status=todo`:
-   - Lấy 2 dòng có `notes` chứa `map:imagining`, priority thấp nhất (thứ tự curated 41→70, KHÔNG đảo).
-   - Lấy 2 dòng có `notes` chứa `map:thinking`, priority thấp nhất (thứ tự curated 81→110, KHÔNG đảo).
-   - Nếu một trong hai tag đã hết dòng `todo` (backlog cạn cho nhóm đó), bỏ qua nhóm đó, KHÔNG lấy bù từ nhóm còn lại — để dành slot cho bước 2 dưới.
-2. **Phần còn lại của cap 15** (tối đa 11 slot) theo logic cũ, loại trừ 4 dòng đã lấy ở bước 1:
-   - Lấy `needs-enrich` priority thấp nhất (1 → 2 → 3) trước.
-   - Hết `needs-enrich` thì lấy tiếp `todo` khác (không phân biệt tag) priority thấp nhất cho đủ 15.
-3. Với mỗi card, theo quy trình pipeline 3 vai:
+### 2.1 — Hạn ngạch cơ bản
+
+Với **từng** tag dưới đây, lọc `status=todo` rồi lấy **3 dòng priority thấp nhất trong chính tag đó**
+(thứ tự curated, KHÔNG đảo, KHÔNG trộn giữa các tag):
+
+| Map | tag trong `notes` | level bắt buộc | dải priority curated |
+|---|---|---|---|
+| 1 Imagining | `map:imagining` | `level: 1` | 41–70 |
+| 2 Belief | `map:belief` | `level: 2` | (chưa seed) |
+| 3 Thinking | `map:thinking` | `level: 3` | 81–110 |
+| 4 Intelligence | `map:intelligence` | `level: 4` | 121–150 |
+| 5 Knowledge | `map:knowledge` | `level: 5` | 161–190 |
+
+### 2.2 — Khi một map cạn backlog
+
+Nếu một map có ít hơn 3 dòng `todo`, lấy hết phần còn lại của map đó, rồi **chia lại số slot thiếu
+theo vòng tròn (round-robin)** cho các map vẫn còn `todo`, theo thứ tự map 1 → 2 → 3 → 4 → 5,
+mỗi vòng cấp thêm 1 slot cho một map. Cách này giữ tổng 15 mà không để map nào nuốt hết phần dư.
+
+Nếu tổng số dòng `todo` toàn backlog < 15 thì làm hết số có và báo cáo — KHÔNG bịa concept mới,
+KHÔNG hạ chuẩn để lấp cho đủ 15.
+
+### 2.3 — Enrich
+
+`needs-enrich` (body < 300 từ) KHÔNG còn nằm trong cap 15. Nếu có dòng `needs-enrich`, báo cáo số
+lượng ở cuối và đề xuất chạy `/enrich-cards` riêng — không trộn vào hạn ngạch map, vì trộn vào
+chính là thứ làm hỏng phân bổ trước đây.
+
+### 2.4 — Pipeline cho từng card
+
+Với mỗi card, theo quy trình pipeline 3 vai:
    - subagent **researcher** (Haiku): đọc card hiện tại (nếu enrich) hoặc note gợi ý trong backlog (nếu todo) + refs, bổ sung facts, đề xuất 2-4 links (verify slug tồn tại), bổ sung refs nếu yếu.
    - subagent **writer** (Sonnet): viết/mở rộng body lên 300-500 từ theo `scripts/content-pipeline/prompts/writer.md`.
      - Card enrich: giữ nguyên `front`/`back`/`level` cũ trừ khi sai rõ ràng.
-     - Card todo tag `map:imagining`: đặt `level: 1`, category chính `perception` (kèm category phụ nếu hợp), giọng văn tập trung vào hiện tượng tri giác/ảo giác — không quy thành judgment bias.
-     - Card todo tag `map:thinking`: đặt `level: 3`, category chính `mental-models` (kèm `theory`/`heuristic` nếu hợp), nội dung là framework/mô hình có cấu trúc, có bước áp dụng rõ ràng — không phải một bias đơn lẻ.
+     - Card tag `map:imagining`: `level: 1`, category chính `perception`. Nội dung là hiện tượng tri giác/ảo giác/priming — KHÔNG quy thành judgment bias.
+     - Card tag `map:belief`: `level: 2`, category chính `bias` (kèm `social`/`memory` nếu hợp). Nội dung là thiên lệch ở cấp cá nhân/nhóm.
+     - Card tag `map:thinking`: `level: 3`, category chính `mental-models` (kèm `theory`/`heuristic` nếu hợp). Nội dung là framework/mô hình có cấu trúc, có bước áp dụng rõ ràng — không phải một bias đơn lẻ.
+     - Card tag `map:intelligence`: `level: 4`, category chính `theory` (kèm `mental-models` nếu hợp). Nội dung là **siêu nhận thức và nhận thức luận ứng dụng** — cách kiểm tra, hiệu chỉnh, cập nhật chính tư duy của mình (biết mình biết gì, độ tự tin có khớp thực tế không, bằng chứng nào đủ mạnh). KHÔNG phải một framework ra quyết định (đó là Thinking), cũng KHÔNG phải một lý thuyết nền mô tả cách trí óc vận hành (đó là Knowledge).
+     - Card tag `map:knowledge`: `level: 5`, category chính `theory`. Nội dung là **lý thuyết nền mô tả cơ chế của nhận thức/quyết định** — thứ mà các bias và framework tầng dưới đứng trên (mẫu chuẩn: `dual-process-theory`, `prospect-theory`, `map-is-not-the-territory`). Viết ở tầng giải thích cơ chế, không phải mẹo áp dụng.
    - `npm run verify` sau mỗi card.
 4. Brake: 2 card liên tiếp fail verify sau 2 vòng sửa → dừng vòng lặp, sang bước 3 với những card đã xong.
 
@@ -77,8 +107,13 @@ Docker không có trong môi trường sandbox và cũng không phải đường
 
 ## Báo cáo cuối
 
-Bảng: slug | loại (enrich/new/imagining/thinking) | words trước→sau | links thêm | verify.
-Kèm: tổng số card, phân bố level sau batch, số node/edge của graph, trạng thái backlog
-(todo / needs-enrich / done — tách riêng số dòng todo còn lại theo `map:imagining` /
-`map:thinking` để biết còn bao nhiêu ngày sản xuất nữa trước khi backlog nhóm đó cạn),
-commit hash. Ước tính chi phí nếu có `/cost`.
+Bảng: slug | map (imagining/belief/thinking/intelligence/knowledge) | words | links | verify.
+
+**Bảng kiểm hạn ngạch — bắt buộc có trong mọi báo cáo:** liệt kê số card thực tế sản xuất cho từng
+map trong 5 map. Nếu map nào khác 3, phải nêu rõ lý do (cạn backlog → đã chia lại bao nhiêu slot cho
+map nào). Đây là chốt kiểm để phát hiện ngay lệch phân bổ, thay vì để lệch âm thầm tích lũy.
+
+Kèm: tổng số card, phân bố level 1–5 sau batch, số node/edge của graph, trạng thái backlog
+(todo / needs-enrich / done — **tách riêng số dòng `todo` còn lại theo từng tag map**, kèm ước tính
+số ngày sản xuất còn lại của mỗi map ở nhịp 3 card/ngày, để thấy sớm map nào sắp cạn), commit hash.
+Ước tính chi phí nếu có `/cost`.

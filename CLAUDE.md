@@ -49,7 +49,7 @@ Tất cả script (nguồn: `package.json`):
 ## 3. Kiến trúc dữ liệu (Phase 2 — Map & fog-of-war)
 
 - Map/graph **không đọc `content/` trực tiếp** → đọc `public/map-data.json` + `public/graph.json` (sinh lúc build từ frontmatter). Sửa content xong phải chạy lại `mapdata`/`graph`.
-- 4 map + The Sun, khớp `level` 1–4 trong frontmatter. Canvas 2D tự render (không Tiled/Kaplay).
+- **5 map, khớp `level` 1–5 trong frontmatter:** 1 Imagining · 2 Belief · 3 Thinking · 4 Intelligence · 5 Knowledge. Canvas 2D tự render (không Tiled/Kaplay).
 - Fog-of-war qua `src/lib/progress.ts` — contract ổn định: `getLit / markLit / isLit / litCountByLevel`. Đừng đổi contract này mà không cập nhật cả `test:progress`.
 
 ---
@@ -60,7 +60,7 @@ Tất cả script (nguồn: `package.json`):
 title: string            # bắt buộc
 front: string            # câu hỏi tiếng Việt gợi tò mò — bắt buộc, min 1
 back: string             # định nghĩa 1–2 câu — bắt buộc, min 1
-level: 1-4               # default 2. 1=Imagining 2=Belief 3=Thinking 4=Knowledge
+level: 1-5               # default 2. 1=Imagining 2=Belief 3=Thinking 4=Intelligence 5=Knowledge
 categories: [slug]       # default []. vd: bias | mental-models | fallacy | memory | perception | theory | heuristic | social
 tags: [slug]             # default [] — nhãn tự do phụ trợ
 links: [slug]            # default []. CHỈ slug tồn tại trong content/stuff/ — KHÔNG dùng title
@@ -100,7 +100,7 @@ Body markdown **300–500 từ tự viết** (mẫu chuẩn: `content/stuff/anch
 - **Researcher** = subagent `researcher` (Haiku): tìm `refs`, gợi `level/categories/links`.
 - **Writer** = subagent `writer` (Sonnet): viết body + `front/back/strategy`.
 - **Verifier** = `npm run verify` (code, $0) — chạy TRƯỚC mọi LLM judge.
-- Commands: `/new-card <concept>`, `/batch-cards <n>` (hard cap 10/run), `/enrich-cards <n>`, `/daily-content` (job hàng ngày, 15 card).
+- Commands: `/new-card <concept>`, `/batch-cards <n>` (hard cap 10/run), `/enrich-cards <n>`, `/daily-content` (job hàng ngày, **hạn ngạch cứng 3 card × 5 map = 15**; không dùng priority toàn cục để chọn — xem `.claude/skills/daily-content/SKILL.md`).
 - Chạy `npm run backlog` **trước và sau** mỗi batch để chống trùng lặp (đồng bộ `backlog.csv`: todo / needs-enrich / done).
 - Pipeline **không tự merge** sang `master` — human review qua PR.
 
