@@ -8,6 +8,7 @@ tags: [social, media]
 links: [availability-heuristic, bandwagon-effect, illusory-truth-effect]
 refs: ['https://en.wikipedia.org/wiki/Availability_cascade']
 strategy: 'Trước khi hành động theo một nỗi lo đang lan truyền mạnh, tách riêng câu hỏi "có bao nhiêu người đang nói về điều này" khỏi câu hỏi "có bằng chứng nào cho thấy điều này đúng".'
+image: /assets/stuff/availability-cascade.png
 published: true
 ---
 

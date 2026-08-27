@@ -27,13 +27,14 @@ export function bakeLayout(nodes, edges) {
   fibonacciSphereInit(ordered, radius);
 
   const degreeById = new Map(nodes.map((n) => [n.id, n.degree || 1]));
+  const rankById = new Map(nodes.map((n) => [n.id, n.rank ?? n.degree ?? 0]));
   const links = edges.map((e) => ({ source: e.source, target: e.target }));
 
   const sim = forceSimulation(ordered, 3)
     .alphaDecay(0.01)
     .velocityDecay(0.4)
     .stop();
-  configureForces(sim, { forceLink, forceManyBody, forceRadial, forceCenter }, links, degreeById, radius);
+  configureForces(sim, { forceLink, forceManyBody, forceRadial, forceCenter }, links, degreeById, radius, rankById);
 
   for (let i = 0; i < TICKS; i += 1) sim.tick();
 

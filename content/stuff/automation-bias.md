@@ -7,6 +7,7 @@ categories: [bias]
 links: [confirmation-bias, overconfidence-effect, illusion-of-control]
 refs: ['https://en.wikipedia.org/wiki/Automation_bias']
 strategy: 'Trước khi làm theo gợi ý của một hệ thống tự động, tự hỏi: nếu gợi ý này đến từ một thực tập sinh thay vì máy, mình có tin ngay không?'
+image: /assets/stuff/automation-bias.png
 published: true
 ---
 

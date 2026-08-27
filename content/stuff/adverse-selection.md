@@ -8,6 +8,7 @@ tags: [economics, risk, information]
 links: [moral-hazard, survivorship-bias, risk-compensation]
 refs: ['https://en.wikipedia.org/wiki/Adverse_selection', 'https://en.wikipedia.org/wiki/The_Market_for_Lemons']
 strategy: 'Khi thiết kế sản phẩm bảo hiểm/tín dụng, dùng câu hỏi sàng lọc + dữ liệu hành vi thay vì chỉ dựa vào tự khai báo để giảm khoảng cách thông tin.'
+image: /assets/stuff/adverse-selection.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [mental-models, theory]
 links: [black-swan-theory, lindy-effect, survivorship-bias]
 refs: ['https://en.wikipedia.org/wiki/Antifragility', 'https://en.wikipedia.org/wiki/Antifragile_(book)', 'https://fs.blog/antifragile-a-definition/']
 strategy: 'Trước khi cam kết một khoản đầu tư, thói quen hay sản phẩm, tự hỏi nó sẽ tốt lên hay tệ đi khi có biến động bất ngờ — nếu chỉ "chịu được", hãy thiết kế lại theo kiểu barbell thay vì chọn phương án an toàn vừa phải.'
+image: /assets/stuff/antifragility.png
 published: true
 ---
 

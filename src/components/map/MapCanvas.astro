@@ -1143,24 +1143,43 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: state.hoverStuff.slug } }));
   }
 
-  // Hàm chung cho nút MOVE ◀▶ và phím </>: khi overlay mở thì duyệt prev/next
-  // stuff, ngược lại nhảy vùng (setZone), băng map nếu vượt quá vùng 0/2.
-  function moveOrNavigate(direction: number) {
-    if (state.overlayOpen) {
-      window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction } }));
-      return;
-    }
-    setZone(direction);
-  }
-
   function isAtPathEnd(direction: number) {
     const eps = 1;
     return direction > 0 ? state.position >= state.pathLength - eps : state.position <= eps;
   }
 
+  // Bắt đầu đi bộ theo hướng (giữ phím mũi tên hoặc giữ nút MOVE ◀▶): nếu đã
+  // ở cuối path thì nhảy vùng ngay (băng map nếu vượt quá vùng 0/2), ngược
+  // lại đi từng bước cho tới khi chạm biên zone rồi mới nhảy.
+  function startWalk(direction: number) {
+    if (state.overlayOpen) {
+      window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction } }));
+      return;
+    }
+    if (isAtPathEnd(direction)) {
+      state.moveDirection = 0;
+      setZone(direction);
+    } else {
+      state.moveDirection = direction;
+    }
+  }
+
+  function stopWalk() {
+    state.moveDirection = 0;
+  }
+
   function initControls() {
-    if (zonePrev) zonePrev.addEventListener('click', () => moveOrNavigate(-1));
-    if (zoneNext) zoneNext.addEventListener('click', () => moveOrNavigate(1));
+    if (zonePrev) {
+      zonePrev.addEventListener('mousedown', () => startWalk(-1));
+      zonePrev.addEventListener('touchstart', (e) => { e.preventDefault(); startWalk(-1); }, { passive: false });
+    }
+    if (zoneNext) {
+      zoneNext.addEventListener('mousedown', () => startWalk(1));
+      zoneNext.addEventListener('touchstart', (e) => { e.preventDefault(); startWalk(1); }, { passive: false });
+    }
+    window.addEventListener('mouseup', stopWalk);
+    window.addEventListener('touchend', stopWalk);
+    window.addEventListener('touchcancel', stopWalk);
     breadcrumb?.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
       const index = Number(button.dataset.mapIndex);
       button.addEventListener('click', () => swipeToMap(index));
@@ -1189,24 +1208,10 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
       if (event.key === 'Escape') optionsPanel?.classList.add('hidden');
       if (event.key === 'ArrowRight') {
         event.preventDefault();
-        if (state.overlayOpen) {
-          window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction: 1 } }));
-        } else if (isAtPathEnd(1)) {
-          state.moveDirection = 0;
-          moveOrNavigate(1);
-        } else {
-          state.moveDirection = 1;
-        }
+        startWalk(1);
       } else if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        if (state.overlayOpen) {
-          window.dispatchEvent(new CustomEvent('stuff:nav', { detail: { direction: -1 } }));
-        } else if (isAtPathEnd(-1)) {
-          state.moveDirection = 0;
-          moveOrNavigate(-1);
-        } else {
-          state.moveDirection = -1;
-        }
+        startWalk(-1);
       } else if (event.key === '<') {
         setZone(-1);
       } else if (event.key === '>') {

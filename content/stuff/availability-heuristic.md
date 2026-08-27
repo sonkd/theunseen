@@ -7,6 +7,7 @@ categories: [heuristic]
 links: [base-rate-fallacy, frequency-illusion, illusory-correlation]
 refs: ['https://en.wikipedia.org/wiki/Availability_heuristic']
 strategy: 'Khi ước lượng rủi ro, chủ động tìm số liệu thống kê thay vì tin vào ví dụ đầu tiên bật ra trong đầu.'
+image: /assets/stuff/availability-heuristic.png
 published: true
 ---
 

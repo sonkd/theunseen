@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [belief-bias, confirmation-bias, armchair-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Argument_from_fallacy', 'https://plato.stanford.edu/entries/fallacies/']
 strategy: 'Khi phát hiện một lập luận sai, tách riêng hai câu hỏi: "lập luận này sai ở đâu" và "kết luận nó đưa ra còn đúng không nếu xét bằng lý lẽ khác".'
+image: /assets/stuff/argument-from-fallacy.png
 published: true
 ---
 

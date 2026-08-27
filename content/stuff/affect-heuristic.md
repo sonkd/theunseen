@@ -8,6 +8,7 @@ tags: [emotion, risk, decision]
 links: [halo-effect, framing-effect, availability-heuristic]
 refs: ['https://en.wikipedia.org/wiki/Affect_heuristic']
 strategy: 'Trước quyết định quan trọng, tách riêng câu hỏi "tôi cảm thấy thế nào" và "dữ liệu nói gì" thành hai bước, đừng để bước đầu quyết định bước sau.'
+image: /assets/stuff/affect-heuristic.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [dunning-kruger-effect, illusion-of-asymmetric-insight, illusory-superiority]
 refs: ['http://www.elischiff.com/blog/2015/2/4/criticism-and-the-armchair-fallacy', 'https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect']
 strategy: 'Trước khi chê công việc của người khác, tự hỏi: mình có biết đủ về ràng buộc, dữ liệu và trade-off mà họ đã cân nhắc không?'
+image: /assets/stuff/armchair-fallacy.png
 published: true
 ---
 

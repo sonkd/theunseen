@@ -7,6 +7,7 @@ categories: [bias, perception]
 links: [frequency-illusion, selective-perception, confirmation-bias]
 refs: ['https://en.wikipedia.org/wiki/Attentional_bias', 'https://en.wikipedia.org/wiki/Emotional_Stroop_effect']
 strategy: 'Khi một chủ đề cứ liên tục "đập vào mắt", kiểm tra lại: tần suất thật sự có tăng, hay chỉ là mình đang chú ý nó nhiều hơn bình thường?'
+image: /assets/stuff/attentional-bias.png
 published: true
 ---
 

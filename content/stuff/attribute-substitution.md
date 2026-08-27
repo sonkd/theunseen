@@ -7,6 +7,7 @@ categories: [heuristic, bias]
 links: [availability-heuristic, halo-effect, illusion-of-validity]
 refs: ['https://en.m.wikipedia.org/wiki/Attribute_substitution', 'https://en.wikipedia.org/wiki/Heuristic_(psychology)']
 strategy: 'Nếu bạn trả lời một câu hỏi khó nhanh bất thường, dừng lại hỏi: mình vừa trả lời đúng câu hỏi ban đầu, hay một câu hỏi dễ hơn đã âm thầm thay thế nó?'
+image: /assets/stuff/attribute-substitution.png
 published: true
 ---
 
