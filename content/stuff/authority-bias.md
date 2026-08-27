@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [confirmation-bias, halo-effect, automation-bias]
 refs: ['https://en.wikipedia.org/wiki/Authority_bias', 'https://en.wikipedia.org/wiki/Appeal_to_authority']
 strategy: 'Khi với quyết định quan trọng, chủ động kiểm tra nguồn thông tin và tách nội dung khỏi người nói.'
+image: /assets/stuff/authority-bias.png
 published: true
 ---
 

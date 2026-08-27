@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [base-rate-fallacy, neglect-of-probability, overconfidence-effect]
 refs: ['https://en.wikipedia.org/wiki/Appeal_to_probability', 'https://en.wikipedia.org/wiki/Black_swan_theory']
 strategy: 'Trước khi hành động như thể một kịch bản "chắc chắn xảy ra", tự hỏi: nếu phần trăm còn lại xảy ra, mình có kế hoạch dự phòng nào không?'
+image: /assets/stuff/appeal-to-probability-fallacy.png
 published: true
 ---
 

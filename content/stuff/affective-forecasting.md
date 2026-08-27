@@ -7,6 +7,7 @@ categories: [bias]
 links: [impact-bias, focalism, projection-bias]
 refs: ['https://en.wikipedia.org/wiki/Affective_forecasting#Projection_bias']
 strategy: 'Trước khi quyết định dựa trên cảm giác dự đoán, tự hỏi: ''lần trước chuyện tương tự xảy ra, một tháng sau mình cảm thấy thế nào?'''
+image: /assets/stuff/affective-forecasting.png
 published: true
 ---
 

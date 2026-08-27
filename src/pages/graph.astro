@@ -167,11 +167,13 @@ const isEmpty = nodeCount === 0;
 
     const highlightNodeIds = new Set();
     const highlightLinks = new Set();
-    const NODE_RADIUS = 5;
+    const NODE_RADIUS = 2.5;
     const NODE_OPACITY = 0.92;
     const DIM_OPACITY = 0.15;
     const LABEL_OPACITY = 0.85;
     const LABEL_DIM_OPACITY = 0.12;
+    const LINK_COLOR = 'rgba(90,86,74,0.25)';
+    const LINK_COLOR_HOVER = 'rgba(240,163,67,1)';
 
     // Dimming mutates each mesh/label's existing material in place (via
     // nodeObjById) rather than reassigning nodeThreeObject — reassigning it
@@ -217,9 +219,9 @@ const isEmpty = nodeCount === 0;
         nodeObjById.set(node.id, { mesh, label });
         return group;
       })
-      .linkColor((l) => (highlightLinks.has(l) ? '#f0a343' : 'rgba(90,86,74,0.85)'))
+      .linkColor((l) => (highlightLinks.has(l) ? LINK_COLOR_HOVER : LINK_COLOR))
       .linkWidth((l) => (highlightLinks.has(l) ? 1.6 : 0.6))
-      .linkOpacity(0.55)
+      .linkOpacity(1)
       .onNodeHover((node) => {
         highlightNodeIds.clear();
         highlightLinks.clear();

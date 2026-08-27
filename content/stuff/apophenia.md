@@ -8,6 +8,7 @@ tags: [perception, pattern]
 links: [pareidolia, clustering-illusion, illusory-correlation]
 refs: ['https://en.wikipedia.org/wiki/Apophenia']
 strategy: 'Khi phát hiện một "quy luật" thú vị trong dữ liệu nhỏ hoặc không có giả thuyết đặt ra từ trước, kiểm tra lại trên một tập dữ liệu mới độc lập trước khi tin và hành động theo nó.'
+image: /assets/stuff/apophenia.png
 published: true
 ---
 

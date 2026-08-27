@@ -8,6 +8,7 @@ tags: [attribution, social]
 links: [fundamental-attribution-error, self-serving-bias, empathy-gap]
 refs: ['https://en.wikipedia.org/wiki/Actor%E2%80%93observer_asymmetry']
 strategy: 'Trước khi đánh giá hành vi của người khác, tự hỏi: nếu mình ở đúng hoàn cảnh và thông tin của họ lúc đó, liệu mình có làm khác đi không?'
+image: /assets/stuff/actor-observer-bias.png
 published: true
 ---
 

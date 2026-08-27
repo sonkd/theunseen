@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [pro-innovation-bias, status-quo-bias, bandwagon-effect]
 refs: ['https://en.wikipedia.org/wiki/Appeal_to_novelty']
 strategy: 'Trước khi chuyển sang giải pháp ''mới'', liệt kê bằng chứng cụ thể cho việc nó tốt hơn — nếu lý do duy nhất là ''nó mới'', coi đó là dấu hiệu cảnh báo.'
+image: /assets/stuff/appeal-to-novelty.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias, heuristic]
 links: [zero-risk-bias, status-quo-bias, loss-aversion]
 refs: ['https://en.wikipedia.org/wiki/Ambiguity_effect', 'https://en.wikipedia.org/wiki/Ellsberg_paradox']
 strategy: 'Khi so sánh hai lựa chọn, viết ra khoảng xác suất cụ thể của từng bên thay vì để cảm giác ''biết rõ'' hay ''mù mờ'' quyết định thay.'
+image: /assets/stuff/ambiguity-effect.png
 published: true
 ---
 

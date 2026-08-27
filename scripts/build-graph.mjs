@@ -1,12 +1,28 @@
 // Build public/graph/graph.json: extract nodes/edges from content/stuff frontmatter,
 // compute graph metrics (degree/component/community), bake a deterministic 3D layout.
-import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import matter from 'gray-matter';
 import { computeMetrics } from './lib/graph-metrics.mjs';
 import { bakeLayout } from './lib/bake-layout.mjs';
 
 const DIR = 'content/stuff';
+const OUT_FILE = 'public/graph/graph.json';
 const KEEP_GHOSTS = process.argv.includes('--keep-ghosts');
+
+// Đọc graph.json từ lần build trước để biết node nào vừa được thêm mới, cho
+// phép computeMetrics cập nhật rank đệ quy thay vì tính lại toàn bộ.
+let prevRankById;
+let prevIds;
+if (existsSync(OUT_FILE)) {
+  try {
+    const prev = JSON.parse(readFileSync(OUT_FILE, 'utf8'));
+    prevRankById = new Map((prev.nodes ?? []).map((n) => [n.id, n.rank ?? n.degree ?? 0]));
+    prevIds = new Set(prev.nodes?.map((n) => n.id) ?? []);
+  } catch {
+    prevRankById = undefined;
+    prevIds = undefined;
+  }
+}
 
 const files = readdirSync(DIR).filter((f) => f.endsWith('.md'));
 const ids = new Set(files.map((f) => f.replace(/\.md$/, '')));
@@ -55,12 +71,13 @@ const edges = [...edgeSet].map((e) => {
 
 const orphanCount = rawNodes.filter((n) => !edges.some((e) => e.source === n.id || e.target === n.id)).length;
 
-const withMetrics = computeMetrics(rawNodes, edges);
+const addedIds = prevIds ? rawNodes.map((n) => n.id).filter((id) => !prevIds.has(id)) : undefined;
+const withMetrics = computeMetrics(rawNodes, edges, { prevRankById, addedIds });
 const baked = bakeLayout(withMetrics, edges);
 
 mkdirSync('public/graph', { recursive: true });
 writeFileSync(
-  'public/graph/graph.json',
+  OUT_FILE,
   JSON.stringify({ nodes: baked, edges }),
 );
 

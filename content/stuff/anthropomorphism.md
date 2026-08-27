@@ -7,6 +7,7 @@ categories: [bias, perception]
 links: [pareidolia, essentialism, illusion-of-control]
 refs: ['https://en.wikipedia.org/wiki/Anthropomorphism#Psychology_of_anthropomorphism']
 strategy: 'Khi đánh giá quyết định của một hệ thống tự động hay AI, tách riêng phần ''nó chọn'' ra khỏi cơ chế thật (luật, trọng số) để không tin tưởng hoặc đổ lỗi quá tay.'
+image: /assets/stuff/anthropomorphism.png
 published: true
 ---
 

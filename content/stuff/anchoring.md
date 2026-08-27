@@ -8,6 +8,7 @@ tags: [decision, bias]
 links: [contrast-effect, framing-effect, primacy-effect]
 refs: ['https://en.wikipedia.org/wiki/Anchoring']
 strategy: 'Chủ động đặt lại mốc: hỏi ''nếu không có con số này thì mình ước lượng bao nhiêu?'' trước khi chốt.'
+image: /assets/stuff/anchoring.png
 published: true
 ---
 

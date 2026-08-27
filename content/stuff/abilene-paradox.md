@@ -7,6 +7,7 @@ categories: [social, bias]
 links: [bandwagon-effect, false-consensus-effect, social-desirability-bias]
 refs: ['https://en.wikipedia.org/wiki/Abilene_paradox']
 strategy: 'Trước khi chốt quyết định nhóm, hỏi riêng từng người một câu: ''nếu chỉ có một mình bạn quyết, bạn chọn gì?'' — rồi mới gộp ý kiến.'
+image: /assets/stuff/abilene-paradox.png
 published: true
 ---
 
