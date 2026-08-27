@@ -328,6 +328,13 @@ const PAGE_SIZE = 50;
   categoryButtons.forEach((button) => button.addEventListener('click', handleChipClick));
   levelButtons.forEach((button) => button.addEventListener('click', handleChipClick));
   searchChip.addEventListener('click', () => applyFilters({ ...getState(), q: '', page: 1 }));
+
+  // Ô search ở header (Base.astro) submit khi đang ở /library → lọc tại chỗ,
+  // không reload trang. Base.astro đã cập nhật URL trước khi bắn sự kiện này.
+  window.addEventListener('unseen:search', (event) => {
+    const q = (event.detail && event.detail.q) || '';
+    applyFilters({ ...getState(), q, page: 1 });
+  });
   const clearAll = () => applyFilters({ categories: [], levels: [], q: '', page: 1 });
   clearButton.addEventListener('click', clearAll);
   clearFiltersEmpty.addEventListener('click', clearAll);

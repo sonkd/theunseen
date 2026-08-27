@@ -7,7 +7,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  NPM_FLAGS = "--include=dev"   # pagefind nằm ở devDependencies, cần cho postbuild
+  NPM_FLAGS = "--include=dev"   # gray-matter nằm ở devDependencies, cần cho scripts/ lúc prebuild
 
 # Deploy preview / branch deploy dùng chung cấu hình
 [context.production]

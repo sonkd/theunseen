@@ -13,7 +13,7 @@ nvm use                 # Node 22 (.nvmrc)
 npm ci
 npm run dev             # astro dev → http://localhost:4321
 npm run verify          # BẮT BUỘC pass trước khi commit content/
-npm run build           # prebuild: mapdata + graph:build → build → postbuild: pagefind
+npm run build           # prebuild: mapdata + graph:build → astro build
 ```
 
 Tất cả script (nguồn: `package.json`):
@@ -21,7 +21,7 @@ Tất cả script (nguồn: `package.json`):
 | Lệnh | Việc |
 |---|---|
 | `npm run dev` | Astro dev server |
-| `npm run build` | `mapdata + graph` → `astro build` → `pagefind` (fail nếu thiếu index) |
+| `npm run build` | `mapdata + graph` → `astro build` |
 | `npm run verify` | Validate schema + link integrity toàn bộ `content/` (`scripts/content-pipeline/verify.mjs`) |
 | `npm run graph` | Sinh `public/graph.json` từ frontmatter |
 | `npm run mapdata` | Sinh `public/map-data.json` cho map engine |
@@ -108,7 +108,9 @@ Body markdown **300–500 từ tự viết** (mẫu chuẩn: `content/stuff/anch
 
 ## 7. Build · Deploy · CI
 
-- **Deploy production: Netlify** (`netlify.toml` ghi đè UI). Build `npm run build`, publish `dist/`, Node 22, `NPM_FLAGS=--include=dev` (pagefind ở devDeps).
+- **Deploy production: Netlify** (`netlify.toml` ghi đè UI). Build `npm run build`, publish `dist/`, Node 22, `NPM_FLAGS=--include=dev` (gray-matter ở devDeps, `scripts/` cần lúc prebuild).
+
+**Search:** form GET ở header → `/library?q=…`, Library lọc client-side (category + level + q). Không có search index; bước `postbuild` Pagefind đã gỡ ngày 2026-08-27.
 - **CI (`.github/workflows/ci.yml`)** chạy trên push `new|master|dev` + mọi PR: `npm ci → verify → graph → mapdata → build`.
 - **Docker (`docker.yml`)** chỉ chạy tay (`workflow_dispatch`) để kiểm Dockerfile — không phải kênh deploy.
 
