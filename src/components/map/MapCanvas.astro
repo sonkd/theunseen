@@ -37,9 +37,9 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
   <div id="optionsPanel" class="options-panel hidden" role="dialog" aria-modal="true">
     <div class="options-header">OPTIONS · TUỲ CHỌN</div>
     <div class="options-row">
-      <span>TORCH · BÁN KÍNH ĐUỐC</span><span id="radiusValue">500PX</span>
+      <span>TORCH · BÁN KÍNH ĐUỐC</span><span id="radiusValue">300PX</span>
     </div>
-    <input id="radiusRange" type="range" min="500" max="900" step="10" value="500" />
+    <input id="radiusRange" type="range" min="300" max="900" step="10" value="500" />
     <label class="toggle-row">
       <input id="revealAll" type="checkbox" /> REVEAL MAP · HIỆN BẢN ĐỒ
     </label>
@@ -433,6 +433,9 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     overlayOpen: false,
     viewWidth: 0,
     viewHeight: 0,
+    vertical: false,
+    pathW: 0,
+    pathH: 0,
     progress: { isLit },
     stuffAnim: new Map<string, StuffAnim>(),
     reducedMotion: reducedMotionQuery.matches,
@@ -445,8 +448,17 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     return Math.max(min, Math.min(max, value));
   }
 
+  // Toạ độ "logic": x = dọc theo đường đi, y = ngang qua đường đi — luôn
+  // giống hệt layout desktop. Chỉ chuyển sang toạ độ canvas thật (đảo x/y)
+  // khi màn hình < 640px, để ngọn lửa đi từ trên xuống thay vì trái sang
+  // phải. Đây là ĐIỂM DUY NHẤT hoán trục — mọi hitbox/khoảng cách khác vẫn
+  // tính trong hệ logic (hoán trục là phép đẳng cự nên khoảng cách bất biến).
+  function toScreen(x: number, y: number) {
+    return state.vertical ? { x: y, y: x } : { x, y };
+  }
+
   function stuffPixel(stuff: Stuff) {
-    return { x: stuff.x * state.viewWidth, y: stuff.y * state.viewHeight };
+    return { x: stuff.x * state.pathW, y: stuff.y * state.pathH };
   }
 
   function yAtX(x: number): number {
@@ -582,21 +594,28 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     const rng = withSeed(level, 'terrain');
     for (let y = 0; y < rows; y += 1) {
       for (let x = 0; x < cols; x += 1) {
+        const p = toScreen(x * TILE, y * TILE);
         ctx.fillStyle = (x + y) % 2 ? pal.gA : pal.gB;
-        ctx.fillRect(x * TILE, y * TILE, TILE, TILE);
+        ctx.fillRect(p.x, p.y, TILE, TILE);
         if (rng() < 0.05) {
           ctx.fillStyle = pal.bush;
-          ctx.fillRect(x * TILE + 7, y * TILE + 13, 3, 3);
-          ctx.fillRect(x * TILE + 19, y * TILE + 22, 3, 3);
+          ctx.fillRect(p.x + 7, p.y + 13, 3, 3);
+          ctx.fillRect(p.x + 19, p.y + 22, 3, 3);
         }
       }
     }
     for (const b of decor.bushes) {
       for (let y = b.y; y < b.y + b.h; y += 1) {
-        for (let x = b.x; x < b.x + b.w; x += 1) drawTuft(ctx, x * TILE, y * TILE, pal);
+        for (let x = b.x; x < b.x + b.w; x += 1) {
+          const p = toScreen(x * TILE, y * TILE);
+          drawTuft(ctx, p.x, p.y, pal);
+        }
       }
     }
-    for (const f of decor.flowers) drawFlower(ctx, f.x * TILE, f.y * TILE, pal);
+    for (const f of decor.flowers) {
+      const p = toScreen(f.x * TILE, f.y * TILE);
+      drawFlower(ctx, p.x, p.y, pal);
+    }
   }
 
   // Đường mòn 2 lớp (docs/refine-round3.md R3-1): lớp dưới rộng màu `path`,
@@ -614,8 +633,12 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
       ctx.lineJoin = 'round';
       ctx.lineCap = 'round';
       ctx.beginPath();
-      ctx.moveTo(vertices[0].x, vertices[0].y);
-      for (let i = 1; i < vertices.length; i += 1) ctx.lineTo(vertices[i].x, vertices[i].y);
+      const p0 = toScreen(vertices[0].x, vertices[0].y);
+      ctx.moveTo(p0.x, p0.y);
+      for (let i = 1; i < vertices.length; i += 1) {
+        const p = toScreen(vertices[i].x, vertices[i].y);
+        ctx.lineTo(p.x, p.y);
+      }
       ctx.stroke();
       ctx.restore();
     };
@@ -629,7 +652,8 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
       const point = getPointAt(rng() * state.pathLength);
       const jitterX = (rng() - 0.5) * CELL * 0.8;
       const jitterY = (rng() - 0.5) * CELL * 0.6;
-      ctx.fillRect(point.x + jitterX - 1.5, point.y + jitterY - 1.5, 3, 3);
+      const p = toScreen(point.x + jitterX, point.y + jitterY);
+      ctx.fillRect(p.x - 1.5, p.y - 1.5, 3, 3);
     }
   }
 
@@ -652,10 +676,16 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
 
   function renderRocksAndTrees(ctx: CanvasRenderingContext2D, pal: (typeof PALETTE)[number], width: number, height: number, level: number, decor: ReturnType<typeof genDecor>) {
     for (const r of decor.rocks) {
-      if (Math.abs(r.y - yAtX(r.x * TILE) / TILE) > 2) drawRock(ctx, r.x * TILE, r.y * TILE, pal);
+      if (Math.abs(r.y - yAtX(r.x * TILE) / TILE) > 2) {
+        const p = toScreen(r.x * TILE, r.y * TILE);
+        drawRock(ctx, p.x, p.y, pal);
+      }
     }
     for (const s of decor.stumps) {
-      if (Math.abs(s.y - yAtX(s.x * TILE) / TILE) > 2) drawStump(ctx, s.x * TILE, s.y * TILE);
+      if (Math.abs(s.y - yAtX(s.x * TILE) / TILE) > 2) {
+        const p = toScreen(s.x * TILE, s.y * TILE);
+        drawStump(ctx, p.x, p.y);
+      }
     }
 
     const cols = Math.ceil(width / TILE);
@@ -685,7 +715,10 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
       }
     }
     tiles.sort((a, b) => a.y - b.y || a.x - b.x);
-    for (const t of tiles) drawTree(ctx, t.x * TILE + (t.y % 2) * 10, t.y * TILE, pal);
+    for (const t of tiles) {
+      const p = toScreen(t.x * TILE + (t.y % 2) * 10, t.y * TILE);
+      drawTree(ctx, p.x, p.y, pal);
+    }
   }
 
   const FOCUS_RADIUS = 90;
@@ -791,7 +824,8 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
       const lit = state.progress.isLit(stuff.slug);
       const hovered = state.hoverStuff === stuff;
       const focused = state.focusStuff === stuff;
-      const { x, y } = stuffPixel(stuff);
+      const logical = stuffPixel(stuff);
+      const { x, y } = toScreen(logical.x, logical.y);
       const baseSize = hovered ? 34 : 28;
       ctx.save();
       ctx.font = `${baseSize * anim.scale}px system-ui, sans-serif`;
@@ -957,9 +991,8 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const rect = canvas.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
+    const width = state.viewWidth;
+    const height = state.viewHeight;
     const speed = 280;
     const delta = Math.min(0.05, (timestamp - state.lastFrame) / 1000);
     state.lastFrame = timestamp;
@@ -973,21 +1006,26 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     const map = getMapState();
     const pal = PALETTE[state.currentMapIndex] || PALETTE[0];
     if (map && state.decor) {
-      renderTerrain(ctx, pal, width, height, map.level, state.decor);
+      renderTerrain(ctx, pal, state.pathW, state.pathH, map.level, state.decor);
       renderPathBand(ctx, pal, map.level);
-      renderRocksAndTrees(ctx, pal, width, height, map.level, state.decor);
+      renderRocksAndTrees(ctx, pal, state.pathW, state.pathH, map.level, state.decor);
 
+      // flame = toạ độ logic (dọc theo path); flameScreen = toạ độ canvas
+      // thật sau khi hoán trục nếu vertical — mọi so khoảng cách/hitbox dùng
+      // flame (logic), mọi thứ vẽ lên canvas/DOM dùng flameScreen.
       const flame = getPointAt(state.position);
+      const flameScreen = toScreen(flame.x, flame.y);
       updateFocusStuff(flame.x, flame.y);
       updateStuffAnimations(delta * 1000, flame.x, flame.y);
       renderStuff(ctx, pal);
-      renderGridDots(ctx, width, height, flame.x, flame.y);
-      renderFog(ctx, width, height, flame.x, flame.y, pal);
-      renderFlame(ctx, flame.x, flame.y, timestamp, segmentAngleAt(state.position), pal);
+      renderGridDots(ctx, width, height, flameScreen.x, flameScreen.y);
+      renderFog(ctx, width, height, flameScreen.x, flameScreen.y, pal);
+      const flameAngle = state.vertical ? 0 : segmentAngleAt(state.position);
+      renderFlame(ctx, flameScreen.x, flameScreen.y, timestamp, flameAngle, pal);
 
       if (fireBadge) {
-        fireBadge.style.left = `${flame.x}px`;
-        fireBadge.style.top = `${flame.y + 4}px`;
+        fireBadge.style.left = `${flameScreen.x}px`;
+        fireBadge.style.top = `${flameScreen.y + 4}px`;
         fireBadge.classList.remove('hidden');
       }
 
@@ -1005,7 +1043,8 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
 
     const tooltipStuff = state.hoverStuff || state.focusStuff;
     if (tooltipStuff && tooltip) {
-      const { x, y } = stuffPixel(tooltipStuff);
+      const logical = stuffPixel(tooltipStuff);
+      const { x, y } = toScreen(logical.x, logical.y);
       tooltip.textContent = tooltipStuff.title;
       tooltip.classList.remove('hidden');
       tooltip.style.left = `${x + 26}px`;
@@ -1062,14 +1101,18 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     state.viewWidth = width;
     state.viewHeight = height;
+    // < 640px: đảo trục logic/canvas (xem toScreen) để đường đi chạy dọc.
+    state.vertical = width < 640;
+    state.pathW = state.vertical ? height : width;
+    state.pathH = state.vertical ? width : height;
     state.radius = Math.max(500, window.innerWidth < 640 ? window.innerWidth : 500);
     const map = getMapState();
     if (map) {
-      const route = buildZigzagPath(map.level, width, height);
+      const route = buildZigzagPath(map.level, state.pathW, state.pathH);
       state.pathSamples = route.vertices;
       state.pathLength = route.length;
       state.zoneCenters = route.zoneCenters;
-      state.decor = genDecor(map.level, Math.ceil(width / TILE), Math.ceil(height / TILE));
+      state.decor = genDecor(map.level, Math.ceil(state.pathW / TILE), Math.ceil(state.pathH / TILE));
       state.position = clamp(state.position, 0, state.pathLength);
     }
   }
@@ -1080,13 +1123,11 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     const map = getMapState();
     state.isFinale = state.currentMapIndex === state.mapData.maps.length - 1 && !!map && map.stuff.length === 0;
     if (canvas && map) {
-      const rect = canvas.getBoundingClientRect();
-      const { width, height } = rect;
-      const route = buildZigzagPath(map.level, width, height);
+      const route = buildZigzagPath(map.level, state.pathW, state.pathH);
       state.pathSamples = route.vertices;
       state.pathLength = route.length;
       state.zoneCenters = route.zoneCenters;
-      state.decor = genDecor(map.level, Math.ceil(width / TILE), Math.ceil(height / TILE));
+      state.decor = genDecor(map.level, Math.ceil(state.pathW / TILE), Math.ceil(state.pathH / TILE));
     }
     updateBadges();
     updateBreadcrumb();
@@ -1126,8 +1167,7 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
   function handleCanvasPointer(event: MouseEvent) {
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const { x, y } = toScreen(event.clientX - rect.left, event.clientY - rect.top);
     const current = getMapState();
     const hit = current?.stuff.find((item) => {
       const { x: itemX, y: itemY } = stuffPixel(item);
