@@ -1,0 +1,135 @@
+---
+import Base from '../layouts/Base.astro';
+import FlameTorch from '../components/FlameTorch.astro';
+
+// Trang 404 — "lạc trong hang". Dùng ngôn ngữ thị giác của Home (pixel font,
+// hộp thoại kiểu JRPG) nhưng đảo sang nền tối: người đọc đi ra ngoài bản đồ,
+// chỉ còn một đốm lửa. Toàn bộ nội dung là tĩnh, không cần JS.
+---
+<Base title="404" description="Trang này không tồn tại trên bản đồ." fullBleed>
+  <section class="cave">
+    <div class="cave-inner">
+      <FlameTorch size={300} />
+
+      <p class="code">404</p>
+
+      <!-- Hộp thoại kiểu game: viền dày, con trỏ ▼ nhấp nháy ở góc -->
+      <div class="dialog" role="note">
+        <p class="line">Bạn đã đi ra ngoài vùng có ánh sáng.</p>
+        <p class="line dim">Trang này không nằm trên bản đồ — hoặc ngọn lửa của nó chưa được thắp.</p>
+        <span class="cursor" aria-hidden="true">▼</span>
+      </div>
+
+      <nav class="choices" aria-label="Lối ra">
+        <a class="choice" href="/">
+          <span class="pointer" aria-hidden="true">▶</span>QUAY VỀ BẢN ĐỒ
+        </a>
+        <a class="choice" href="/library/">
+          <span class="pointer" aria-hidden="true">▶</span>MỞ THƯ VIỆN
+        </a>
+        <a class="choice" href="/graph/">
+          <span class="pointer" aria-hidden="true">▶</span>XEM SƠ ĐỒ
+        </a>
+      </nav>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Nền hang: tối dần từ tâm ra, để ngọn lửa là nguồn sáng duy nhất. */
+  .cave {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem 3rem;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 42%, #241f1a 0%, #16130f 55%, #0d0b09 100%);
+    color: #efe7d8;
+    min-height: 0;
+  }
+
+  .cave-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+    max-width: 560px;
+    width: 100%;
+  }
+
+  .code {
+    font-family: var(--font-pixel);
+    font-size: 40px;
+    letter-spacing: .12em;
+    margin: -1.25rem 0 0;
+    color: var(--flame);
+    text-shadow: 0 0 18px rgba(240, 163, 67, .45);
+  }
+
+  /* Hộp thoại JRPG: nền đặc, viền hai lớp, chữ pixel nhỏ. */
+  .dialog {
+    position: relative;
+    width: 100%;
+    padding: 1.1rem 1.25rem 1.35rem;
+    /* background: #1c1815;
+    border: 3px solid #efe7d8;
+    border-radius: 6px;
+    box-shadow: 0 0 0 3px #1c1815, 0 0 26px rgba(240, 163, 67, .16); */
+  }
+  .dialog .line {
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    line-height: 1.95;
+    margin: 0;
+  }
+  .dialog .line.dim { color: #b9b0a1; margin-top: .7rem; }
+
+  .cursor {
+    position: absolute;
+    left: 12px;
+    bottom: 8px;
+    font-size: 11px;
+    color: var(--flame);
+    animation: blink 1s steps(1, end) infinite;
+  }
+  @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+  .choices { display: flex; flex-direction: column; gap: .55rem; width: 100%; }
+  .choice {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    letter-spacing: .06em;
+    color: #efe7d8;
+    padding: .7rem .9rem;
+    border: 2px solid #4a423a;
+    border-radius: 5px;
+    background: rgba(28, 24, 21, .8);
+    transition: border-color .15s, color .15s, transform .15s;
+  }
+  .choice .pointer { color: transparent; transition: color .15s; }
+  .choice:hover,
+  .choice:focus-visible {
+    border-color: var(--flame);
+    color: #fff;
+    transform: translateX(3px);
+    outline: none;
+  }
+  .choice:hover .pointer,
+  .choice:focus-visible .pointer { color: var(--flame); }
+
+  @media (max-width: 520px) {
+    .code { font-size: 30px; }
+    .dialog .line { font-size: 9px; line-height: 1.85; }
+    .choice { font-size: 9px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+    .choice { transition: none; }
+  }
+</style>

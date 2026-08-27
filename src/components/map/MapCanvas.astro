@@ -55,7 +55,7 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     <button id="zonePrev" class="control-button" aria-label="Previous">
       <svg width="20" height="20" viewBox="0 0 26 26"><polygon points="19,3 6,13 19,23" fill="#111"></polygon></svg>
     </button>
-    <div class="move-label">MOVE</div>
+    <button id="focusOk" class="ok-button" type="button" disabled>OK</button>
     <button id="zoneNext" class="control-button" aria-label="Next">
       <svg width="20" height="20" viewBox="0 0 26 26"><polygon points="7,3 20,13 7,23" fill="#111"></polygon></svg>
     </button>
@@ -272,12 +272,20 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
     padding: 0;
   }
   .control-button:hover { transform: scale(1.07); }
-  .move-label {
+  .ok-button {
     font-family: var(--font-pixel);
     font-size: 9px;
-    color: #fff;
-    text-shadow: 0 2px 0 #000;
+    color: var(--ink);
+    background: rgba(251, 250, 247, .94);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    width: 56px;
+    height: 50px;
+    cursor: pointer;
+    letter-spacing: .1em;
   }
+  .ok-button:hover:not(:disabled) { transform: scale(1.07); }
+  .ok-button:disabled { opacity: .4; cursor: default; }
 </style>
 <script>
   import { buildZigzagPath, withSeed, CELL } from '../../lib/map/path';
@@ -404,6 +412,7 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
   const quickNav = document.getElementById('quickNav');
   const zonePrev = document.getElementById('zonePrev');
   const zoneNext = document.getElementById('zoneNext');
+  const focusOk = document.getElementById('focusOk') as HTMLButtonElement | null;
 
   const state = {
     mapData: emptyMapData,
@@ -1005,6 +1014,8 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
       tooltip.classList.add('hidden');
     }
 
+    if (focusOk) focusOk.disabled = !state.focusStuff;
+
     requestAnimationFrame(renderFrame);
   }
 
@@ -1177,6 +1188,10 @@ const mapLabelsSSR = PALETTE_SSR.map((m) => m.name.charAt(0) + m.name.slice(1).t
       zoneNext.addEventListener('mousedown', () => startWalk(1));
       zoneNext.addEventListener('touchstart', (e) => { e.preventDefault(); startWalk(1); }, { passive: false });
     }
+    focusOk?.addEventListener('click', () => {
+      if (!state.focusStuff) return;
+      window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: state.focusStuff.slug } }));
+    });
     window.addEventListener('mouseup', stopWalk);
     window.addEventListener('touchend', stopWalk);
     window.addEventListener('touchcancel', stopWalk);

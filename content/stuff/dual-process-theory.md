@@ -2,7 +2,7 @@
 title: Dual Process Theory
 front: Tại sao nhiều quyết định của bạn được đưa ra bằng trực giác, còn những quyết định khác lại cần suy nghĩ chậm?
 back: "Lý thuyết về hai hệ tư duy: một nhanh, quen thuộc và một chậm, logic."
-level: 4
+level: 5
 categories: [theory]
 links: [anchoring, framing-effect, confirmation-bias]
 refs:

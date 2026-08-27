@@ -1969,6 +1969,14 @@
       "greek": "Noesis",
       "vn": "Lý tính",
       "zones": 3,
+      "stuff": []
+    },
+    {
+      "level": 5,
+      "name": "Knowledge",
+      "greek": "Episteme",
+      "vn": "Tri thức",
+      "zones": 3,
       "stuff": [
         {
           "slug": "dual-process-theory",
@@ -1995,14 +2003,6 @@
           "y": 0.2727272727272727
         }
       ]
-    },
-    {
-      "level": 5,
-      "name": "Knowledge",
-      "greek": "Episteme",
-      "vn": "Tri thức",
-      "zones": 3,
-      "stuff": []
     }
   ]
 }
