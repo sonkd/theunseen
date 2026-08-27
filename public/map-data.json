@@ -6,7 +6,112 @@
       "greek": "Eikasia",
       "vn": "Tưởng tượng",
       "zones": 3,
-      "stuff": []
+      "stuff": [
+        {
+          "slug": "color-constancy",
+          "title": "Color Constancy",
+          "icon": "☀︎",
+          "zone": 0,
+          "x": 0.05555555555555555,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "mcgurk-effect",
+          "title": "McGurk Effect",
+          "icon": "☀︎",
+          "zone": 0,
+          "x": 0.1111111111111111,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "phi-phenomenon",
+          "title": "Phi Phenomenon",
+          "icon": "☀︎",
+          "zone": 0,
+          "x": 0.16666666666666666,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "semantic-priming",
+          "title": "Semantic Priming",
+          "icon": "☀︎",
+          "zone": 0,
+          "x": 0.2222222222222222,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "uncanny-valley",
+          "title": "Uncanny Valley",
+          "icon": "☀︎",
+          "zone": 0,
+          "x": 0.2777777777777778,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "ebbinghaus-illusion",
+          "title": "Ebbinghaus Illusion",
+          "icon": "☀︎",
+          "zone": 1,
+          "x": 0.3888888888888889,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "motion-aftereffect",
+          "title": "Motion Aftereffect",
+          "icon": "☀︎",
+          "zone": 1,
+          "x": 0.4444444444444444,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "ponzo-illusion",
+          "title": "Ponzo Illusion",
+          "icon": "☀︎",
+          "zone": 1,
+          "x": 0.5,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "size-constancy",
+          "title": "Size Constancy",
+          "icon": "☀︎",
+          "zone": 1,
+          "x": 0.5555555555555556,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "kanizsa-triangle",
+          "title": "Kanizsa Triangle",
+          "icon": "☀︎",
+          "zone": 2,
+          "x": 0.7222222222222222,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "muller-lyer-illusion",
+          "title": "Müller-Lyer Illusion",
+          "icon": "☀︎",
+          "zone": 2,
+          "x": 0.7777777777777778,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "rubber-hand-illusion",
+          "title": "Rubber Hand Illusion",
+          "icon": "☀︎",
+          "zone": 2,
+          "x": 0.8333333333333334,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "stroop-effect",
+          "title": "Stroop Effect",
+          "icon": "☀︎",
+          "zone": 2,
+          "x": 0.8888888888888888,
+          "y": 0.5454545454545454
+        }
+      ]
     },
     {
       "level": 2,
@@ -1725,119 +1830,135 @@
           "title": "Adverse Selection",
           "icon": "✦",
           "zone": 0,
-          "x": 0.05555555555555555,
+          "x": 0.047619047619047616,
           "y": 0.36363636363636365
         },
         {
-          "slug": "circle-of-competence",
-          "title": "Circle of Competence",
-          "icon": "●",
+          "slug": "black-swan-theory",
+          "title": "Black Swan Theory",
+          "icon": "✦",
           "zone": 0,
-          "x": 0.1111111111111111,
+          "x": 0.09523809523809523,
           "y": 0.5454545454545454
         },
         {
-          "slug": "first-principles-thinking",
-          "title": "First-Principles Thinking",
-          "icon": "●",
+          "slug": "cognitive-load-theory",
+          "title": "Cognitive Load Theory",
+          "icon": "✦",
           "zone": 0,
-          "x": 0.16666666666666666,
+          "x": 0.14285714285714285,
           "y": 0.2727272727272727
         },
         {
-          "slug": "learned-helplessness",
-          "title": "Learned Helplessness",
-          "icon": "✦",
+          "slug": "inversion",
+          "title": "Inversion",
+          "icon": "●",
           "zone": 0,
-          "x": 0.2222222222222222,
-          "y": 0.5454545454545454
+          "x": 0.19047619047619047,
+          "y": 0.45454545454545453
         },
         {
-          "slug": "nudge-theory",
-          "title": "Nudge Theory",
+          "slug": "moral-hazard",
+          "title": "Moral Hazard",
           "icon": "✦",
           "zone": 0,
-          "x": 0.2777777777777778,
-          "y": 0.36363636363636365
+          "x": 0.23809523809523808,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "prisoners-dilemma",
+          "title": "Prisoner's Dilemma",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.2857142857142857,
+          "y": 0.6363636363636364
         },
         {
           "slug": "antifragility",
           "title": "Antifragility",
           "icon": "●",
           "zone": 1,
-          "x": 0.3888888888888889,
+          "x": 0.38095238095238093,
           "y": 0.36363636363636365
+        },
+        {
+          "slug": "circle-of-competence",
+          "title": "Circle of Competence",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.42857142857142855,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "first-principles-thinking",
+          "title": "First-Principles Thinking",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.47619047619047616,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "learned-helplessness",
+          "title": "Learned Helplessness",
+          "icon": "✦",
+          "zone": 1,
+          "x": 0.5238095238095238,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "nudge-theory",
+          "title": "Nudge Theory",
+          "icon": "✦",
+          "zone": 1,
+          "x": 0.5714285714285714,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "second-order-thinking",
+          "title": "Second-order Thinking",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6190476190476191,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "bayesian-updating",
+          "title": "Bayesian Updating",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.7142857142857143,
+          "y": 0.45454545454545453
         },
         {
           "slug": "cognitive-dissonance",
           "title": "Cognitive Dissonance",
           "icon": "✦",
-          "zone": 1,
-          "x": 0.4444444444444444,
+          "zone": 2,
+          "x": 0.7619047619047619,
           "y": 0.5454545454545454
         },
         {
           "slug": "hedonic-treadmill",
           "title": "Hedonic Treadmill",
           "icon": "✦",
-          "zone": 1,
-          "x": 0.5,
-          "y": 0.2727272727272727
+          "zone": 2,
+          "x": 0.8095238095238095,
+          "y": 0.36363636363636365
         },
         {
           "slug": "lindy-effect",
           "title": "Lindy Effect",
           "icon": "●",
-          "zone": 1,
-          "x": 0.5555555555555556,
+          "zone": 2,
+          "x": 0.8571428571428571,
           "y": 0.5454545454545454
         },
         {
           "slug": "opportunity-cost",
           "title": "Opportunity Cost",
           "icon": "●",
-          "zone": 1,
-          "x": 0.6111111111111112,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "black-swan-theory",
-          "title": "Black Swan Theory",
-          "icon": "✦",
           "zone": 2,
-          "x": 0.7222222222222222,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "cognitive-load-theory",
-          "title": "Cognitive Load Theory",
-          "icon": "✦",
-          "zone": 2,
-          "x": 0.7777777777777778,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "inversion",
-          "title": "Inversion",
-          "icon": "●",
-          "zone": 2,
-          "x": 0.8333333333333334,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "moral-hazard",
-          "title": "Moral Hazard",
-          "icon": "✦",
-          "zone": 2,
-          "x": 0.8888888888888888,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "second-order-thinking",
-          "title": "Second-order Thinking",
-          "icon": "●",
-          "zone": 2,
-          "x": 0.9444444444444444,
+          "x": 0.9047619047619048,
           "y": 0.36363636363636365
         }
       ]
