@@ -192,7 +192,8 @@ import StuffThumb from '../StuffThumb.astro';
     const links = item.links || [];
     links.forEach(link => {
       const slug = typeof link === 'string' ? link : (link.slug || '');
-      const label = typeof link === 'string' ? link : (link.title || slug);
+      const linked = mapItems.find(entry => entry.slug === slug);
+      const label = linked?.title || slug;
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'chip';
