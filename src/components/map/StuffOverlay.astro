@@ -29,7 +29,7 @@ import StuffThumb from '../StuffThumb.astro';
           </div>
           <div class="card-loop-in" id="card-loop-in">
             <span class="field-label">LOOP IN</span>
-            <ul id="stuff-links"></ul>
+            <div class="chips" id="stuff-links"></div>
           </div>
         </div>
         <div class="card-footer">
@@ -129,7 +129,7 @@ import StuffThumb from '../StuffThumb.astro';
     overlayCard.style.setProperty('--card-map-glow', pal.iconGlow)
 
     setText('stuff-title-front', item.title || item.slug)
-    setText('stuff-title-back', `Strategy: ${item.title || item.slug}`)
+    setText('stuff-title-back', `Overview: ${item.title || item.slug}`)
     setText('stuff-front', item.front || '')
     setText('stuff-back', item.back || '')
 
@@ -188,26 +188,18 @@ import StuffThumb from '../StuffThumb.astro';
       })
     }
 
-    linksNode.innerHTML = ''
-    const links = item.links || []
-    if (links.length === 0) {
-      linksNode.innerHTML = '<li>No related links</li>'
-    } else {
-      links.forEach(link => {
-        const slug = typeof link === 'string' ? link : link.slug || ''
-        const label = typeof link === 'string' ? link : link.title || slug
-        const li = document.createElement('li')
-        const a = document.createElement('a')
-        a.href = `/stuff/${slug}`
-        a.textContent = label
-        a.addEventListener('click', event => {
-          event.preventDefault()
-          openStuff(slug)
-        })
-        li.appendChild(a)
-        linksNode.appendChild(li)
-      })
-    }
+    linksNode.innerHTML = '';
+    const links = item.links || [];
+    links.forEach(link => {
+      const slug = typeof link === 'string' ? link : (link.slug || '');
+      const label = typeof link === 'string' ? link : (link.title || slug);
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'chip';
+      button.textContent = label;
+      button.addEventListener('click', () => openStuff(slug));
+      linksNode.appendChild(button);
+    });
   }
 
   async function openStuff(slug) {
@@ -404,7 +396,7 @@ import StuffThumb from '../StuffThumb.astro';
     background: var(--dark-bg-2);
     color: #eee;
     border: 2px solid var(--ink);
-    padding: 24px;
+    padding: 0;
     gap: 12px;
   }
 
@@ -476,20 +468,24 @@ import StuffThumb from '../StuffThumb.astro';
 
   .card-definition p { margin: 0; font-size: 13px; line-height: 1.5; }
 
-  .card-loop-in ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-  /* <li>/<a> tạo runtime (document.createElement) → không có data-astro-cid-*,
-     CSS scoped thường không match — dùng :global() giới hạn trong khối tĩnh này. */
-  .card-loop-in :global(a) {
-    display: block;
+  .card-loop-in .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  /* <button> tạo runtime (document.createElement) → không có data-astro-cid-*,
+     CSS scoped thường không match — dùng :global() giới hạn trong khối tĩnh này.
+     Style đồng bộ .chip ở library.astro (nút bo tròn, viền mảnh, hover nổi nhẹ). */
+  .card-loop-in :global(.chip) {
+    appearance: none;
+    border: 1px solid var(--border);
     background: #fff;
-    border: 1.5px solid var(--ink);
-    border-radius: 6px;
-    padding: 8px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--ink);
+    color: var(--text);
+    border-radius: 999px;
+    padding: .3rem .5rem;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 9px;
+    font-family: var(--font-pixel, inherit);
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
   }
-  .card-loop-in :global(a):hover { background: var(--surface); text-decoration: none; }
+  .card-loop-in :global(.chip):hover { transform: translateY(-1px); border-color: var(--flame); }
 
   .card-body { font-size: 14px; line-height: 1.6; padding: 16px 24px 0; }
   .card-body :global(p) { margin: 0 0 .75em; }
