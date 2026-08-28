@@ -2,6 +2,7 @@
 interface Props { title: string; description?: string; fullBleed?: boolean }
 const { title, description = 'Seeing the Unseen — flames of knowledge in Plato\'s cave.', fullBleed = false } = Astro.props;
 const q = Astro.url.searchParams.get('q') ?? '';
+import Gtag from '../components/Analytics.astro';
 ---
 <!doctype html>
 <html lang="vi">
@@ -104,6 +105,8 @@ const q = Astro.url.searchParams.get('q') ?? '';
       .site-nav a:last-child { border-bottom: none; }
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
+  <Gtag />
 </head>
 <body>
   <header class="site">
@@ -176,5 +179,6 @@ const q = Astro.url.searchParams.get('q') ?? '';
       });
     });
   </script>
+  <script type="module" src="cookieconsent-config.js"></script>
 </body>
 </html>
