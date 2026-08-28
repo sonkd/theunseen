@@ -1,5 +1,5 @@
 // Deterministic verifier — chạy TRƯỚC mọi LLM judge (tối ưu chi phí: máy check được thì không đốt token).
-// Fail (exit 1): schema sai, link gãy, level ngoài 1-4, front/back thiếu.
+// Fail (exit 1): schema sai, link gãy, level ngoài 1-5, front/back thiếu.
 // Warn: body < 100 từ (mục tiêu 300-500), thiếu refs, thiếu categories.
 import { readdirSync, readFileSync } from 'node:fs';
 import matter from 'gray-matter';
@@ -21,7 +21,7 @@ for (const f of files) {
     if (!d[k] || String(d[k]).trim() === '') errors.push(`${id}: thiếu trường bắt buộc "${k}"`);
   }
   const lvl = d.level ?? 2;
-  if (!Number.isInteger(lvl) || lvl < 1 || lvl > 4) errors.push(`${id}: level=${JSON.stringify(d.level)} — phải là số nguyên 1-4`);
+  if (!Number.isInteger(lvl) || lvl < 1 || lvl > 5) errors.push(`${id}: level=${JSON.stringify(d.level)} — phải là số nguyên 1-5`);
   for (const l of d.links ?? []) {
     if (!ids.has(l)) errors.push(`${id}: link gãy → "${l}" không tồn tại trong content/stuff/`);
   }

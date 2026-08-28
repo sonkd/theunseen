@@ -7,7 +7,7 @@ const stuff = defineCollection({
     title: z.string(),
     front: z.string().min(1),
     back: z.string().min(1),
-    level: z.number().int().min(1).max(4).default(2),
+    level: z.number().int().min(1).max(5).default(2),
     icon: z.string().optional(),
     map_position: z.object({ x: z.number(), y: z.number() }).optional(),
     categories: z.array(z.string()).default([]),

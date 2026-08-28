@@ -9,7 +9,6 @@
     "dev": "astro dev",
     "prebuild": "npm run mapdata && npm run graph:build",
     "build": "astro build",
-    "postbuild": "pagefind --site dist && test -s dist/pagefind/pagefind-entry.json || (echo 'postbuild: dist/pagefind/pagefind-entry.json missing or empty — search index did not build, failing build' >&2 && exit 1)",
     "preview": "astro preview",
     "verify": "node scripts/content-pipeline/verify.mjs",
     "graph": "npm run graph:build",
@@ -17,9 +16,9 @@
     "backlog": "node scripts/content-pipeline/sync-backlog.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/mdx": "^7.0.8",
     "3d-force-graph": "^1.80.0",
-    "astro": "^5.12.0",
+    "astro": "^7.2.8",
     "d3-force-3d": "^3.0.6",
     "graphology": "^0.26.0",
     "graphology-communities-louvain": "^2.0.2",
@@ -29,8 +28,7 @@
     "three-spritetext": "^1.10.0"
   },
   "devDependencies": {
-    "gray-matter": "^4.0.3",
-    "pagefind": "^1.3.0"
+    "gray-matter": "^4.0.3"
   },
   "engines": {
     "node": ">=20.11"

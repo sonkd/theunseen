@@ -32,7 +32,7 @@ async function collectFiles(dir) {
 function normalizeLevel(raw) {
   const level = Number(raw)
   if (!Number.isFinite(level) || level < 1) return 1
-  if (level > 4) return 4
+  if (level > 5) return 5
   return Math.floor(level)
 }
 
@@ -129,7 +129,7 @@ async function buildMapData() {
 
   published.sort((a, b) => a.level - b.level || a.slug.localeCompare(b.slug))
 
-  const levelGroups = { 1: [], 2: [], 3: [], 4: [] }
+  const levelGroups = { 1: [], 2: [], 3: [], 4: [], 5: [] }
   for (const item of published) {
     levelGroups[item.level].push(item)
   }
@@ -138,12 +138,12 @@ async function buildMapData() {
   let globalMinGap = Infinity
   let globalMaxGap = -Infinity
 
-  // 5 maps theo docs/design-spec.md: content level 1-4 -> map index 0-3;
-  // map index 4 (KNOWLEDGE · EPISTEME) là màn kết, không chứa stuff.
+  // 5 maps theo docs/design-spec.md: content level 1-5 -> map index 0-4
+  // (Imagining/Belief/Thinking/Intelligence/Knowledge).
   const maps = MAPS.map((palette, index) => {
     const level = index + 1
     const zoneGroups = [[], [], []]
-    if (level <= 4) {
+    if (level <= 5) {
       levelGroups[level].forEach((item, i) => zoneGroups[i % 3].push(item))
     }
 

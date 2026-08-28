@@ -19,4 +19,4 @@ export function iconFor(slug: string, categories: string[], explicit?: string): 
   return FALLBACK[h % FALLBACK.length];
 }
 
-export const LEVEL_MAPS = ['', 'Imagining', 'Belief', 'Thinking', 'Knowledge'] as const;
+export const LEVEL_MAPS = ['', 'Imagining', 'Belief', 'Thinking', 'Intelligence', 'Knowledge'] as const;

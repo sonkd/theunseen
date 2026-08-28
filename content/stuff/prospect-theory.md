@@ -2,7 +2,7 @@
 title: Prospect Theory
 front: Vì sao mất 1 triệu đồng đau hơn hẳn niềm vui khi được thêm 1 triệu đồng, dù con số bằng nhau?
 back: Lý thuyết mô tả cách con người đánh giá được/mất dựa trên một điểm tham chiếu, trong đó cảm giác mất mát luôn mạnh hơn cảm giác được lợi tương đương.
-level: 4
+level: 5
 categories: [theory]
 tags: [behavioral-economics, decision, foundational]
 links: [loss-aversion, framing-effect, endowment-effect]

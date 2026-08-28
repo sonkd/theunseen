@@ -6,7 +6,7 @@ Every piece of knowledge is a flame in Plato's cave. A knowledge-sharing site ab
 
 ## Stack
 
-Astro 5 (static output) + MDX, no UI framework — pages ship vanilla `<script>` (dynamic `import()` where a page needs a heavy client-only lib, e.g. `/graph/`'s 3D renderer). Content lives as Markdown files under `content/`, typed via Astro Content Collections (`src/content.config.ts`, Zod schema). Search is Pagefind, built as a `postbuild` step.
+Astro 5 (static output) + MDX, no UI framework — pages ship vanilla `<script>` (dynamic `import()` where a page needs a heavy client-only lib, e.g. `/graph/`'s 3D renderer). Content lives as Markdown files under `content/`, typed via Astro Content Collections (`src/content.config.ts`, Zod schema). Search is a plain GET form that hands the query to `/library?q=…`, where the existing client-side filter (category + level + q) narrows the list — no separate search index.
 
 ## Quickstart
 
@@ -14,7 +14,7 @@ Astro 5 (static output) + MDX, no UI framework — pages ship vanilla `<script>`
 npm install
 npm run dev        # http://localhost:4321
 npm run verify      # validate content schema + link integrity (content/stuff)
-npm run build       # static build → dist/ (mapdata + graph bake + astro build + pagefind)
+npm run build       # static build → dist/ (mapdata + graph bake + astro build)
 ```
 
 No environment variables are required to run this project — see `.env.example`.
@@ -24,7 +24,7 @@ No environment variables are required to run this project — see `.env.example`
 | Command | What it does |
 |---|---|
 | `npm run dev` | Astro dev server, port 4321. Also rebuilds `public/graph/graph.json` on start and on any `content/stuff/**` change (see `scripts/graph-dev-integration.mjs`). |
-| `npm run build` | `prebuild` (mapdata + graph bake) → `astro build` → `postbuild` (Pagefind index, fails the build if the index is missing/empty). |
+| `npm run build` | `prebuild` (mapdata + graph bake) → `astro build`. |
 | `npm run preview` | Serve the built `dist/` locally. |
 | `npm run verify` | Validates every `content/stuff/*.md`: required frontmatter fields, `level` in 1–4, no broken `links`, `refs` must be URLs. Warns (non-fatal) on short bodies / missing `refs` / missing `categories`. |
 | `npm run graph` / `npm run graph:build` | Same command (`graph` is an alias) — extracts nodes/edges from `content/stuff` frontmatter, computes degree/community/component metrics, bakes a deterministic 3D layout, writes `public/graph/graph.json`. |
@@ -117,7 +117,7 @@ src/
 
 **Netlify is the only production platform.** Config lives in `netlify.toml`
 (overrides any setting in the Netlify UI): build `npm run build`, publish `dist`,
-Node 22, `NPM_FLAGS=--include=dev` (Pagefind is a devDependency, needed at `postbuild`).
+Node 22, `NPM_FLAGS=--include=dev` (`gray-matter` is a devDependency, needed by `scripts/` during `prebuild`).
 
 - `public/_headers` — cache rules, read by Netlify from the publish dir
 - `public/_redirects` — old Jekyll-era URLs → `/library/`

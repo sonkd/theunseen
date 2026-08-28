@@ -2,10 +2,15 @@
 import Base from '../layouts/Base.astro';
 import StuffOverlay from '../components/map/StuffOverlay.astro';
 import { readFileSync } from 'fs';
+import { join } from 'path';
 
+// process.cwd()-relative, not import.meta.url-relative: the latter resolves
+// against wherever Vite/Astro's SSR bundler places this module during build,
+// which is not reliably the source file's own directory, and silently threw
+// so the page always rendered the "no data" state regardless of the file existing.
 let nodeCount = 0;
 try {
-  const graph = JSON.parse(readFileSync(new URL('../../public/graph/graph.json', import.meta.url), 'utf-8'));
+  const graph = JSON.parse(readFileSync(join(process.cwd(), 'public/graph/graph.json'), 'utf-8'));
   nodeCount = graph.nodes?.length ?? 0;
 } catch {
   nodeCount = 0;
@@ -161,18 +166,18 @@ const isEmpty = nodeCount === 0;
     });
 
     const styles = getComputedStyle(document.documentElement);
-    const bg = styles.getPropertyValue('--bg').trim() || '#fbfaf7';
+    const bg = styles.getPropertyValue('--bg').trim() || '#303030';
     const { sphereRadius } = await import('../lib/graph-forces.mjs');
     const R = sphereRadius(nodes.length || 1);
 
     const highlightNodeIds = new Set();
     const highlightLinks = new Set();
-    const NODE_RADIUS = 2.5;
-    const NODE_OPACITY = 0.92;
+    const NODE_RADIUS = 1;
+    const NODE_OPACITY = 1;
     const DIM_OPACITY = 0.15;
-    const LABEL_OPACITY = 0.85;
+    const LABEL_OPACITY = 0.6;
     const LABEL_DIM_OPACITY = 0.12;
-    const LINK_COLOR = 'rgba(90,86,74,0.25)';
+    const LINK_COLOR = 'rgba(137, 135, 133, 0.25)';
     const LINK_COLOR_HOVER = 'rgba(240,163,67,1)';
 
     // Dimming mutates each mesh/label's existing material in place (via
@@ -204,10 +209,9 @@ const isEmpty = nodeCount === 0;
         const mesh = new THREE.Mesh(geometry, material);
 
         const label = new SpriteText(node.title);
-        label.textHeight = 3.2;
-        label.color = 'white';
-        label.backgroundColor = 'rgba(17,17,20,0.75)';
-        label.padding = 1;
+        label.textHeight = 2.2;
+        label.color = 'black';
+        label.padding = 0.8;
         label.borderRadius = 0;
         label.material.opacity = LABEL_OPACITY;
         label.material.transparent = true;
@@ -220,7 +224,7 @@ const isEmpty = nodeCount === 0;
         return group;
       })
       .linkColor((l) => (highlightLinks.has(l) ? LINK_COLOR_HOVER : LINK_COLOR))
-      .linkWidth((l) => (highlightLinks.has(l) ? 1.6 : 0.6))
+      .linkWidth((l) => (highlightLinks.has(l) ? 1.2 : 0.6))
       .linkOpacity(1)
       .onNodeHover((node) => {
         highlightNodeIds.clear();
@@ -236,7 +240,7 @@ const isEmpty = nodeCount === 0;
         container.style.cursor = node ? 'pointer' : 'grab';
       })
       .onNodeClick((node) => {
-        const distance = 80;
+        const distance = 160;
         const ratio = 1 + distance / Math.hypot(node.x, node.y, node.z, 0.001);
         Graph.cameraPosition(
           { x: node.x * ratio, y: node.y * ratio, z: node.z * ratio },

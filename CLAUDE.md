@@ -13,7 +13,7 @@ nvm use                 # Node 22 (.nvmrc)
 npm ci
 npm run dev             # astro dev → http://localhost:4321
 npm run verify          # BẮT BUỘC pass trước khi commit content/
-npm run build           # prebuild: mapdata + graph:build → build → postbuild: pagefind
+npm run build           # prebuild: mapdata + graph:build → astro build
 ```
 
 Tất cả script (nguồn: `package.json`):
@@ -21,7 +21,7 @@ Tất cả script (nguồn: `package.json`):
 | Lệnh | Việc |
 |---|---|
 | `npm run dev` | Astro dev server |
-| `npm run build` | `mapdata + graph` → `astro build` → `pagefind` (fail nếu thiếu index) |
+| `npm run build` | `mapdata + graph` → `astro build` |
 | `npm run verify` | Validate schema + link integrity toàn bộ `content/` (`scripts/content-pipeline/verify.mjs`) |
 | `npm run graph` | Sinh `public/graph.json` từ frontmatter |
 | `npm run mapdata` | Sinh `public/map-data.json` cho map engine |
@@ -49,7 +49,7 @@ Tất cả script (nguồn: `package.json`):
 ## 3. Kiến trúc dữ liệu (Phase 2 — Map & fog-of-war)
 
 - Map/graph **không đọc `content/` trực tiếp** → đọc `public/map-data.json` + `public/graph.json` (sinh lúc build từ frontmatter). Sửa content xong phải chạy lại `mapdata`/`graph`.
-- 4 map + The Sun, khớp `level` 1–4 trong frontmatter. Canvas 2D tự render (không Tiled/Kaplay).
+- **5 map, khớp `level` 1–5 trong frontmatter:** 1 Imagining · 2 Belief · 3 Thinking · 4 Intelligence · 5 Knowledge. Canvas 2D tự render (không Tiled/Kaplay).
 - Fog-of-war qua `src/lib/progress.ts` — contract ổn định: `getLit / markLit / isLit / litCountByLevel`. Đừng đổi contract này mà không cập nhật cả `test:progress`.
 
 ---
@@ -60,7 +60,7 @@ Tất cả script (nguồn: `package.json`):
 title: string            # bắt buộc
 front: string            # câu hỏi tiếng Việt gợi tò mò — bắt buộc, min 1
 back: string             # định nghĩa 1–2 câu — bắt buộc, min 1
-level: 1-4               # default 2. 1=Imagining 2=Belief 3=Thinking 4=Knowledge
+level: 1-5               # default 2. 1=Imagining 2=Belief 3=Thinking 4=Intelligence 5=Knowledge
 categories: [slug]       # default []. vd: bias | mental-models | fallacy | memory | perception | theory | heuristic | social
 tags: [slug]             # default [] — nhãn tự do phụ trợ
 links: [slug]            # default []. CHỈ slug tồn tại trong content/stuff/ — KHÔNG dùng title
@@ -100,7 +100,7 @@ Body markdown **300–500 từ tự viết** (mẫu chuẩn: `content/stuff/anch
 - **Researcher** = subagent `researcher` (Haiku): tìm `refs`, gợi `level/categories/links`.
 - **Writer** = subagent `writer` (Sonnet): viết body + `front/back/strategy`.
 - **Verifier** = `npm run verify` (code, $0) — chạy TRƯỚC mọi LLM judge.
-- Commands: `/new-card <concept>`, `/batch-cards <n>` (hard cap 10/run), `/enrich-cards <n>`, `/daily-content` (job hàng ngày, 15 card).
+- Commands: `/new-card <concept>`, `/batch-cards <n>` (hard cap 10/run), `/enrich-cards <n>`, `/daily-content` (job hàng ngày, **hạn ngạch cứng 3 card × 5 map = 15**; không dùng priority toàn cục để chọn — xem `.claude/skills/daily-content/SKILL.md`).
 - Chạy `npm run backlog` **trước và sau** mỗi batch để chống trùng lặp (đồng bộ `backlog.csv`: todo / needs-enrich / done).
 - Pipeline **không tự merge** sang `master` — human review qua PR.
 
@@ -108,7 +108,9 @@ Body markdown **300–500 từ tự viết** (mẫu chuẩn: `content/stuff/anch
 
 ## 7. Build · Deploy · CI
 
-- **Deploy production: Netlify** (`netlify.toml` ghi đè UI). Build `npm run build`, publish `dist/`, Node 22, `NPM_FLAGS=--include=dev` (pagefind ở devDeps).
+- **Deploy production: Netlify** (`netlify.toml` ghi đè UI). Build `npm run build`, publish `dist/`, Node 22, `NPM_FLAGS=--include=dev` (gray-matter ở devDeps, `scripts/` cần lúc prebuild).
+
+**Search:** form GET ở header → `/library?q=…`, Library lọc client-side (category + level + q). Không có search index; bước `postbuild` Pagefind đã gỡ ngày 2026-08-27.
 - **CI (`.github/workflows/ci.yml`)** chạy trên push `new|master|dev` + mọi PR: `npm ci → verify → graph → mapdata → build`.
 - **Docker (`docker.yml`)** chỉ chạy tay (`workflow_dispatch`) để kiểm Dockerfile — không phải kênh deploy.
 

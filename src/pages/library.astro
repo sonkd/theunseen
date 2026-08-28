@@ -2,12 +2,13 @@
 import Base from '../layouts/Base.astro';
 import StuffOverlay from '../components/map/StuffOverlay.astro';
 import StuffThumb from '../components/StuffThumb.astro';
+import FlameTorch from '../components/FlameTorch.astro';
 import { getCollection } from 'astro:content';
 import { iconFor, LEVEL_MAPS } from '../lib/icons';
 import { MAPS as PALETTE } from '../lib/map/palette';
 const stuff = (await getCollection('stuff', ({ data }) => data.published))
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
-const levels = [1, 2, 3, 4];
+const levels = [1, 2, 3, 4, 5];
 const categories = ['bias', 'mental-models', 'fallacy', 'memory', 'perception', 'theory', 'heuristic', 'social'];
 const CATEGORY_LABELS = {
   'bias': 'Bias',
@@ -72,7 +73,8 @@ const PAGE_SIZE = 50;
   </ul>
 
   <div class="empty-state hidden" id="emptyState">
-    <p id="emptyStateCopy">Không có card khớp bộ lọc.</p>
+    <FlameTorch size={200} />
+    <p id="emptyStateCopy" class="code">Không tìm thấy kết quả phù hợp.</p>
     <button type="button" class="clear-button" id="clearFiltersEmpty">Bỏ lọc</button>
   </div>
 
@@ -147,8 +149,14 @@ const PAGE_SIZE = 50;
     background: var(--level-color, var(--muted));
   }
   .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #efe7d8;
     text-align: center; padding: 3rem 1rem; color: var(--muted);
     border: 1px solid var(--border); border-radius: 12px; margin-top: 1rem;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 42%, #241f1a 0%, #16130f 55%, #0d0b09 100%);
   }
   .empty-state.hidden { display: none; }
   .empty-state p { margin: 0 0 1rem; font-size: 16px; }
@@ -189,7 +197,7 @@ const PAGE_SIZE = 50;
   const PAGE_SIZE = Number(cardGrid.dataset.pageSize) || 50;
   const CATEGORY_LABELS = {};
   categoryButtons.forEach((button) => { CATEGORY_LABELS[button.dataset.filterValue] = button.textContent.trim(); });
-  const LEVEL_MAPS = ['', 'Imagining', 'Belief', 'Thinking', 'Knowledge'];
+  const LEVEL_MAPS = ['', 'Imagining', 'Belief', 'Thinking', 'Intelligence', 'Knowledge'];
 
   const searchChip = document.getElementById('searchChip');
   const searchChipLabel = document.getElementById('searchChipLabel');
@@ -292,8 +300,8 @@ const PAGE_SIZE = 50;
         ...state.levels.map((l) => `${l} · ${LEVEL_MAPS[Number(l)]}`),
       ];
       emptyStateCopy.textContent = activeLabels.length
-        ? `Không có card khớp bộ lọc: ${activeLabels.join(', ')}.`
-        : 'Không có card nào.';
+        ? `Không tìm thấy kết quả phù hợp: ${activeLabels.join(', ')}.`
+        : 'Không có flame nào.';
     }
 
     pagination.classList.toggle('hidden', totalPages <= 1);
@@ -328,6 +336,13 @@ const PAGE_SIZE = 50;
   categoryButtons.forEach((button) => button.addEventListener('click', handleChipClick));
   levelButtons.forEach((button) => button.addEventListener('click', handleChipClick));
   searchChip.addEventListener('click', () => applyFilters({ ...getState(), q: '', page: 1 }));
+
+  // Ô search ở header (Base.astro) submit khi đang ở /library → lọc tại chỗ,
+  // không reload trang. Base.astro đã cập nhật URL trước khi bắn sự kiện này.
+  window.addEventListener('unseen:search', (event) => {
+    const q = (event.detail && event.detail.q) || '';
+    applyFilters({ ...getState(), q, page: 1 });
+  });
   const clearAll = () => applyFilters({ categories: [], levels: [], q: '', page: 1 });
   clearButton.addEventListener('click', clearAll);
   clearFiltersEmpty.addEventListener('click', clearAll);

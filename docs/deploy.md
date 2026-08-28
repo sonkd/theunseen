@@ -12,15 +12,17 @@ setting configured in the Netlify UI:
 
 [build.environment]
   NODE_VERSION = "22"
-  NPM_FLAGS = "--include=dev"   # Pagefind is a devDependency, needed at postbuild
+  NPM_FLAGS = "--include=dev"   # gray-matter is a devDependency, needed by scripts/ at prebuild
 ```
 
 `[context.production]`, `[context.deploy-preview]`, and `[context.branch-deploy]`
 all run the same `npm run build` — no environment-specific build behavior.
 
-`npm run build` is `prebuild` (mapdata + graph bake) → `astro build` →
-`postbuild` (Pagefind indexing; the build **fails** if
-`dist/pagefind/pagefind-entry.json` ends up missing or empty).
+`npm run build` is `prebuild` (mapdata + graph bake) → `astro build`.
+
+Search does not need a build step: the header form submits to `/library?q=…`
+and the Library page filters client-side. The Pagefind `postbuild` step was
+removed on 2026-08-27 — see "Search" in README.
 
 - `public/_headers` — cache rules, read by Netlify straight from the publish dir.
 - `public/_redirects` — old Jekyll-era URLs → `/library/`.

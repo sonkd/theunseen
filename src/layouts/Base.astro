@@ -33,31 +33,33 @@ const q = Astro.url.searchParams.get('q') ?? '';
     header.site { flex: none; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; padding: 0 20px; height: 56px; background: var(--bg); border-bottom: 2px solid var(--ink); position: relative; z-index: 10; }
     header.site a { text-decoration: none; color: var(--text); font-family: var(--font-pixel); font-size: 9px; letter-spacing: .1em; }
     header.site a.brand { color: var(--ink); font-weight: 700; font-size: 16px; letter-spacing: -0.01em; font-family: system-ui, sans-serif; }
-    .search-shell { display: flex; flex-direction: column; gap: 0.5rem; flex: 1 1 270px; min-width: 220px; max-width: 340px; }
+    .search-shell { display: flex; flex-direction: column; gap: 0.5rem; flex: 1 1 200px; min-width: 160px; max-width: 340px; }
     .search-fallback { width: 100%; }
-    .search-fallback input,
-    [data-pagefind-ui] input {
+    .search-fallback input {
       width: 100%;
       height: 32px;
       padding: 0 12px;
-      border: 2px solid var(--ink);
+      border: 2px solid var(--muted-2);
       border-radius: 7px;
       background: #fff;
       color: var(--ink);
       outline: none;
       font-size: 11px;
       letter-spacing: .08em;
+      transition: border-color 0.2s ease;
     }
-    .search-fallback input::placeholder,
-    [data-pagefind-ui] input::placeholder {
+    .search-fallback input::placeholder {
       color: var(--muted);
     }
-    [data-pagefind-ui] { width: 100%; }
+    .search-fallback input:focus {
+      border-color: var(--ink);
+    }
+    .search-shell { width: 100%; }
     .site-nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
     .nav-toggle {
       display: none;
       background: none;
-      border: 2px solid var(--ink);
+      border: 2px solid var(--muted);
       border-radius: 6px;
       width: 32px;
       height: 32px;
@@ -106,8 +108,7 @@ const q = Astro.url.searchParams.get('q') ?? '';
 <body>
   <header class="site">
     <a class="brand" href="/">🔥 the unseen</a>
-    <div class="search-shell" data-pagefind-ui-wrapper>
-      <div data-pagefind-ui hidden></div>
+    <div class="search-shell" data-search-shell>
       <form class="search-fallback" action="/library" method="get">
         <input name="q" type="search" placeholder="SEARCH / TÌM KIẾM ⏎" aria-label="Search" value={q} />
       </form>
@@ -146,53 +147,33 @@ const q = Astro.url.searchParams.get('q') ?? '';
         });
       }
 
-      const wrapper = document.querySelector('[data-pagefind-ui-wrapper]');
+      // Search: LUÔN dùng form thường → điều hướng sang /library?q=… và để
+      // trang Library lọc (nó đã đọc sẵn tham số `q`, xem src/pages/library.astro).
+      //
+      // Trước đây chỗ này nâng cấp lên PagefindUI khi build xong, khiến dev và
+      // production hành xử khác hẳn nhau: dev submit sang /library, production
+      // bung dropdown Pagefind. Thống nhất về một hành vi duy nhất — kết quả
+      // giống nhau ở mọi môi trường, và người dùng ở lại trong hệ filter của
+      // Library (category + level + q) thay vì một danh sách kết quả tách rời.
+      const wrapper = document.querySelector('[data-search-shell]');
       if (!wrapper) return;
-      const target = wrapper.querySelector('[data-pagefind-ui]');
       const fallback = wrapper.querySelector('.search-fallback');
+      const input = fallback && fallback.querySelector('input[name="q"]');
+      if (!fallback || !input) return;
 
-      // Mặc định: form thường (hoạt động ngay, kể cả dev mode). Nếu Pagefind
-      // (chỉ có sau `npm run build`) nạp được, thay bằng PagefindUI — không
-      // bao giờ hiện thông báo lỗi/unavailable cho người dùng.
-      const loadAsset = (tagName, attrs) => new Promise((resolve, reject) => {
-        const el = document.createElement(tagName);
-        Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
-        el.onload = () => resolve(el);
-        el.onerror = () => reject(new Error(`Failed to load ${attrs.href || attrs.src}`));
-        document.head.appendChild(el);
+      // Trên chính trang Library: lọc tại chỗ, không reload cả trang.
+      fallback.addEventListener('submit', (event) => {
+        if (window.location.pathname.replace(/\/+$/, '') !== '/library') return;
+        event.preventDefault();
+        const params = new URLSearchParams(window.location.search);
+        const value = input.value.trim();
+        if (value) params.set('q', value); else params.delete('q');
+        params.delete('page');
+        const query = params.toString();
+        window.history.replaceState({}, '', query ? `/library/?${query}` : '/library/');
+        // Báo cho script filter của Library biết `q` vừa đổi.
+        window.dispatchEvent(new CustomEvent('unseen:search', { detail: { q: value } }));
       });
-
-      const showFallback = () => {
-        if (target) target.hidden = true;
-        if (fallback) fallback.hidden = false;
-      };
-
-      // Script tải được không có nghĩa là index dùng được: pagefind.js còn
-      // phải fetch /pagefind/pagefind-entry.json trong Worker riêng. Nếu file
-      // đó thiếu/hỏng (vd. binary build sai kiến trúc), PagefindUI vẫn khởi
-      // tạo "thành công" nhưng search treo vĩnh viễn — nên phải tự kiểm tra
-      // metadata và đặt timeout, không dựa vào onload/onerror của thẻ script.
-      const metadataCheck = fetch('/pagefind/pagefind-entry.json', { cache: 'no-store' }).then((res) => {
-        if (!res.ok) throw new Error(`pagefind-entry.json responded ${res.status}`);
-      });
-      const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('pagefind metadata timeout')), 2500));
-
-      Promise.all([
-        loadAsset('link', { rel: 'stylesheet', href: '/pagefind/pagefind-ui.css' }),
-        loadAsset('script', { src: '/pagefind/pagefind-ui.js', type: 'text/javascript', async: 'false' }),
-        Promise.race([metadataCheck, timeout]),
-      ])
-        .then(() => {
-          if (typeof window.PagefindUI !== 'function') throw new Error('PagefindUI unavailable');
-          new window.PagefindUI({ element: target, bundlePath: '/pagefind/' });
-          if (target) target.hidden = false;
-          if (fallback) fallback.hidden = true;
-        })
-        .catch(() => {
-          // Dev mode / chưa build / index hỏng: giữ (hoặc quay lại) form thường,
-          // không bao giờ để lộ spinner/lỗi Pagefind cho người dùng.
-          showFallback();
-        });
     });
   </script>
 </body>

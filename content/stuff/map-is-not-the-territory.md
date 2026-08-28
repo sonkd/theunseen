@@ -2,7 +2,7 @@
 title: Map is not the territory
 front: 'Vì sao mô hình tài chính hay bản mô tả người dùng luôn "sai" một chút — dù được xây dựng cẩn thận đến đâu?'
 back: Mọi khái niệm, mô hình, hay ngôn ngữ ta dùng để mô tả thế giới chỉ là một "bản đồ" rút gọn — không bao giờ là chính thực tại ("lãnh thổ") mà nó đại diện.
-level: 4
+level: 5
 categories: [theory, mental-models]
 links: [sapir-whorf-korzybski-hypothesis, framing-effect, curse-of-knowledge, essentialism]
 refs: ['https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation', 'https://en.wikipedia.org/wiki/Alfred_Korzybski']
