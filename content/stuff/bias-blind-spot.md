@@ -7,6 +7,7 @@ categories: [bias]
 links: [naive-realism, illusory-superiority, overconfidence-effect, fundamental-attribution-error]
 refs: ['https://en.wikipedia.org/wiki/Bias_blind_spot']
 strategy: "Khi đánh giá quyết định của người khác là 'thiên vị', tự hỏi ngược lại: nếu một người ngoài cuộc nhìn vào quyết định của chính mình lúc này, họ sẽ chỉ ra thành kiến nào?"
+image: /assets/stuff/bias-blind-spot.png
 published: true
 ---
 

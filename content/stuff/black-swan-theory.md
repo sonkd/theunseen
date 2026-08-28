@@ -7,6 +7,7 @@ categories: [theory, mental-models]
 links: [antifragility, survivorship-bias, hindsight-bias]
 refs: ['https://en.wikipedia.org/wiki/Black_swan_theory', 'https://en.wikipedia.org/wiki/Willem_de_Vlamingh', 'https://theconversation.com/friday-essay-a-rare-bird-how-europeans-got-the-black-swan-so-wrong-161654', 'https://www.investopedia.com/terms/b/blackswan.asp']
 strategy: Đừng cố dự đoán "con thiên nga đen" tiếp theo — thay vào đó xây hệ thống (tài chính, công việc, sức khỏe) đủ dư thừa để sống sót và thậm chí hưởng lợi khi nó xảy ra.
+image: /assets/stuff/black-swan-theory.png
 published: true
 ---
 

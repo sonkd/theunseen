@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [chestertons-fence, confirmation-bias, self-consistency-bias]
 refs: ['https://www.lesswrong.com/posts/EEv9JeuY5xfuDDSgF/flinching-away-from-truth-is-often-about-protecting-the', 'https://www.lesswrong.com/w/bucket-errors']
 strategy: "Khi thấy mình né tránh một sự thật nhỏ, thử tách nó ra thành nhiều 'thùng' riêng: sự thật cụ thể này là gì, và nó thực sự kéo theo hệ quả nào — thường sẽ ít hơn nhiều so với cảm giác ban đầu."
+image: /assets/stuff/bucket-error.png
 published: true
 ---
 

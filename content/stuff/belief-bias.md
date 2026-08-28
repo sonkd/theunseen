@@ -7,6 +7,7 @@ categories: [bias]
 links: [confirmation-bias, conjunction-fallacy, congruence-bias]
 refs: ['https://en.wikipedia.org/wiki/Belief_bias']
 strategy: "Khi đánh giá một lập luận, tách riêng hai câu hỏi: 'Kết luận này có đúng với những gì mình tin không?' và 'Các bước suy luận có thực sự dẫn tới kết luận đó không?' — trả lời câu thứ hai trước."
+image: /assets/stuff/belief-bias.png
 published: true
 ---
 

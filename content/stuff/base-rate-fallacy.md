@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [conjunction-fallacy, availability-heuristic, insensitivity-to-sample-size]
 refs: ['https://en.wikipedia.org/wiki/Base_rate_fallacy']
 strategy: "Trước khi tin vào một kết quả cụ thể (xét nghiệm, cảnh báo gian lận, điểm tín dụng), luôn hỏi: tỷ lệ nền của hiện tượng này trong toàn bộ dân số là bao nhiêu, trước khi diễn giải con số riêng lẻ đó."
+image: /assets/stuff/base-rate-fallacy.png
 published: true
 ---
 

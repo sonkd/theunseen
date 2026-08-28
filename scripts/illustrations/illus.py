@@ -470,9 +470,45 @@ def t_gate(p):
     return "".join(o)
 
 
+def t_rebound(p):
+    # Một tác động đập vào rào cản rồi bật ngược lại — xa hơn và đậm hơn lúc đầu:
+    # kết quả đi NGƯỢC chiều với ý định của người tác động.
+    # Tường là một khối liền, KHÔNG có khe ở giữa — có khe là đọc thành `gate`.
+    return (f'<rect x="96" y="14" width="16" height="100" rx="3" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="72" y="55" width="18" height="18" fill="{p["t3"]}" '
+            f'fill-opacity="0.60" {TS}/>'
+            f'<rect x="16" y="44" width="34" height="34" fill="{p["acc"]}" '
+            f'fill-opacity="0.72" {TS}/>')
+
+
+def t_odd_one_out(p):
+    # Lưới đồng nhất + đúng MỘT ô khác loại. Nền đồng nhất là một phần của nội dung:
+    # bỏ nền đi thì tính phân biệt biến mất (đúng như cơ chế distinctiveness).
+    # 6 ô nhưng đọc thành 2 nhóm thị giác (nền + điểm lệch) nên vẫn giữ luật khổ nhỏ.
+    cells = [(x, y) for y in (36, 70) for x in (18, 55, 92)]
+    o = [f'<rect x="{x}" y="{y}" width="22" height="22" fill="{p["t2"]}" {TS}/>'
+         for i, (x, y) in enumerate(cells) if i != 4]
+    o.append(f'<circle cx="66" cy="81" r="14" fill="{p["acc"]}" '
+             f'fill-opacity="0.85" {TS}/>')
+    return "".join(o)
+
+
+def t_tail_event(p):
+    # Đuôi phân phối: một dãy biến cố thường xuyên nhưng nhỏ, và MỘT biến cố hiếm
+    # có độ lớn áp đảo, nằm tách hẳn ra. Khác `echo` ở chỗ các cột đều nhau và cùng
+    # đứng trên một đường đáy — chính cái gai cao mới là nội dung.
+    o = [f'<rect x="{x}" y="82" width="14" height="22" fill="{p["t2"]}" {TS}/>'
+         for x in (14, 33, 52, 71)]
+    o.append(f'<rect x="98" y="20" width="18" height="84" fill="{p["acc"]}" '
+             f'fill-opacity="0.80" {TS}/>')
+    return "".join(o)
+
+
 CONCEPT_OBJECTS = dict(mirror=t_mirror, in_out_ring=t_in_out_ring, balance=t_balance,
                        beam=t_beam, halo_spill=t_halo_spill, veil=t_veil,
-                       fracture=t_fracture, pull=t_pull, echo=t_echo, gate=t_gate)
+                       fracture=t_fracture, pull=t_pull, echo=t_echo, gate=t_gate,
+                       rebound=t_rebound, odd_one_out=t_odd_one_out,
+                       tail_event=t_tail_event)
 
 # Quan hệ mà mỗi concept object biểu đạt — dùng khi chẩn đoán metaphor cho card.
 CONCEPT_MEANING = {
@@ -486,6 +522,9 @@ CONCEPT_MEANING = {
     "pull":        "một khối nặng kéo lệch toàn bộ phần còn lại",
     "echo":        "lặp lại làm quen thuộc / khuếch đại dần",
     "gate":        "sàng lọc: nhiều thứ tới, ít thứ qua",
+    "rebound":     "tác động bật ngược lại, kết quả đi ngược ý định ban đầu",
+    "odd_one_out": "một phần tử lệch khỏi nền đồng nhất — phân biệt nhờ tương phản với phần còn lại",
+    "tail_event":  "biến cố hiếm nhưng độ lớn áp đảo, nằm ngoài dải quen thuộc (đuôi phân phối)",
 }
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS)

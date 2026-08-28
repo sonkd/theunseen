@@ -7,6 +7,7 @@ categories: [memory]
 links: [von-restorff-effect, picture-superiority-effect, spacing-effect]
 refs: ['https://en.wikipedia.org/wiki/Bizarreness_effect', 'https://link.springer.com/article/10.3758/s13421-013-0335-4']
 strategy: "Khi cần ghi nhớ một danh sách khô khan (mật khẩu gợi ý, quy trình, số liệu), gắn một chi tiết kỳ lạ hoặc phi lý vào — nhưng chỉ hiệu quả nếu phần còn lại của danh sách vẫn bình thường để tạo độ tương phản."
+image: /assets/stuff/bizarreness-effect.png
 published: true
 ---
 

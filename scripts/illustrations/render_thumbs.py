@@ -7,6 +7,7 @@ Idempotent: bỏ qua mọi card đã có public/assets/stuff/<slug>.png.
     python3 scripts/illustrations/render_thumbs.py [--limit 10] [--dry-run]
 """
 import argparse
+import hashlib
 import io
 import os
 import re
@@ -74,9 +75,11 @@ OVERRIDES = {
         "concept object: hai thứ giống hệt nhau, khác biệt duy nhất là tuổi, nhưng cán cân "
         "vẫn nghiêng về phía 'mới' — divergence không diễn được sự thiên lệch này"),
     "appeal-to-probability-fallacy": (
-        "proportion",
-        "khả năng cao bị đọc thành chắc chắn — phải thấy được phần trăm CÒN LẠI bị lờ đi, "
-        "đó chính là lát cắt trong donut"),
+        # sửa ở batch #3: bản proportion trùng byte với base-rate-fallacy (cùng hue amber),
+        # mà base-rate-fallacy mới là card phần/tổng đúng nghĩa. threshold cũng sát nghĩa hơn.
+        "threshold",
+        "một xác suất chưa tới 100% bị làm tròn thành 'chắc chắn' khi vượt qua một ngưỡng chủ "
+        "quan — đúng nghĩa tipping point. amber ở đây phân biệt được với antifragility (mint)"),
     "argument-from-fallacy": (
         "hierarchy",
         "kết luận treo dưới lập luận: cắt nút cha thì nhánh con bị coi là rơi theo. "
@@ -109,6 +112,56 @@ OVERRIDES = {
         "spectrum",
         "trọng số đánh giá giảm dần theo độ khó nhớ lại: thứ dễ bật ra trong đầu được cho là "
         "phổ biến/nguy hiểm hơn thực tế"),
+
+    # ---- batch #3 (2026-08-28) — xlsx gán 5 hierarchy + 4 branching + 1 proportion.
+    # Chỉ 1/10 (base-rate-fallacy) là đúng. Thêm 2 concept object mới: `rebound`, `odd_one_out`
+    # (registry 24 -> 26) vì không hình nào trong 24 hình cũ diễn được hai quan hệ đó.
+    "backfire-effect": (
+        "rebound",
+        "concept object MỚI: đính chính đập vào rào cản bản sắc rồi bật ngược — niềm tin sai "
+        "chẳng những không giảm mà còn đậm hơn. Không hình nào trong registry cũ diễn được "
+        "'kết quả đi ngược ý định'; divergence chỉ nói 'một điểm rẽ nhiều nhánh'"),
+    "bandwagon-effect": (
+        "pull",
+        "concept object: đám đông là một khối có trọng lực — càng đông thì lực hút càng mạnh, "
+        "cá nhân bị kéo vào vì khối lượng chứ không vì bằng chứng. hierarchy của xlsx sai hẳn: "
+        "ở đây không có quan hệ cha-con nào"),
+    "barnum-effect": (
+        "nested_scope",
+        "một mô tả phủ được gần như mọi người nhưng được đọc thành cái lõi riêng của một người: "
+        "vòng ngoài = ai cũng đúng, lõi = 'đúng với riêng tôi'"),
+    "base-rate-fallacy": (
+        "proportion",
+        "giữ nguyên xlsx — ca hiếm mà cột Hero shape đúng: cả bài là quan hệ phần/tổng, "
+        "lát cắt dương tính thật quá nhỏ so với khối dương tính giả"),
+    "belief-bias": (
+        "fracture",
+        "concept object: cấu trúc lập luận và kết luận lẽ ra phải khớp theo logic, nhưng ở đây "
+        "lệch nhau — và ta vẫn chấp nhận vì kết luận nghe đúng. hierarchy đã dùng cho "
+        "argument-from-fallacy với đúng nghĩa cha-con nên không dùng lại ở đây"),
+    "bias-blind-spot": (
+        "balance",
+        "concept object: chuẩn kép — cùng một loại bằng chứng, cân về phía người khác thì nặng "
+        "trịch, về phía mình thì nhẹ tênh. Đã loại 2 phương án trước vì render ra ảnh TRÙNG BYTE "
+        "với card cũ cùng hue amber: veil đụng armchair-fallacy, mirror đụng actor-observer-bias"),
+    "bizarreness-effect": (
+        "odd_one_out",
+        "concept object MỚI: nền đồng nhất là MỘT PHẦN của cơ chế — card nói rõ hiệu ứng biến "
+        "mất nếu cả danh sách đều kỳ lạ. contrast chỉ nói 'hai thứ khác nhau', không có nền"),
+    "black-swan-theory": (
+        "tail_event",
+        "concept object MỚI: đuôi phân phối — chuỗi biến cố thường xuyên nhưng nhỏ, và một biến "
+        "cố hiếm có độ lớn áp đảo nằm tách hẳn. spectrum (thử đầu) bị loại vì đã có ambiguity-effect "
+        "và availability-heuristic dùng, cả ba cùng hue amber sẽ ra ba thumbnail giống hệt nhau; "
+        "threshold thì đụng antifragility — card anh em của Taleb"),
+    "bucket-error": (
+        "overlap_phases",
+        "các mệnh đề lẽ ra độc lập bị chồng vào chung một vùng — chạm vào vùng giao thì cả hai "
+        "cùng bị đụng, nên sửa một mảnh nhỏ bị cảm nhận như phủ nhận cả khối"),
+    "bystander-effect": (
+        "divergence",
+        "khuếch tán trách nhiệm: một tình huống cần giúp bị chia thành nhiều phần cho nhiều "
+        "người, càng nhiều nhánh mỗi nhánh càng loãng cho tới khi không ai hành động"),
 }
 
 
@@ -218,6 +271,21 @@ def main():
         set_frontmatter_image(c["slug"])
 
     print(f"\nremaining after batch = {len(pending) - (0 if args.dry_run else len(batch))}")
+
+    if not args.dry_run:
+        dupes = {}
+        for c in index:
+            f = os.path.join(ASSETS, f"{c['slug']}.png")
+            if os.path.exists(f):
+                dupes.setdefault(hashlib.md5(open(f, "rb").read()).hexdigest(),
+                                 []).append(c["slug"])
+        clashes = [v for v in dupes.values() if len(v) > 1]
+        if clashes:
+            print("\n!! TRÙNG BYTE — các card dưới đây render ra ĐÚNG một ảnh:", file=sys.stderr)
+            for v in clashes:
+                print("   " + " == ".join(v), file=sys.stderr)
+            print("   (đổi metaphor hoặc hue cho một trong hai, xem mục C của "
+                  "docs/scheduled-task-illustrations.md)", file=sys.stderr)
     return 0
 
 

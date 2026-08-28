@@ -14,3 +14,7 @@ __test_unlink*
 node_modules.stale*
 /content/.obsidian
 /docs
+
+# python bytecode
+__pycache__/
+*.pyc

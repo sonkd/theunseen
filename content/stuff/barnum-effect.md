@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [subjective-validation, confirmation-bias, illusory-truth-effect]
 refs: ['https://en.wikipedia.org/wiki/Barnum_effect']
 strategy: 'Khi đọc một mô tả tính cách hay tử vi thấy "đúng ghê", thử đưa cho người khác đọc xem họ có thấy nó đúng với họ không.'
+image: /assets/stuff/barnum-effect.png
 published: true
 ---
 

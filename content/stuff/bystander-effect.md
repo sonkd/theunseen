@@ -8,6 +8,7 @@ tags: [social, group]
 links: [groupthink, system-justification, third-person-effect]
 refs: ['https://en.wikipedia.org/wiki/Bystander_effect']
 strategy: 'Khi cần giúp đỡ giữa đám đông, chỉ đích danh một người cụ thể (ánh mắt, trang phục) thay vì kêu gọi chung chung — điều này phá vỡ sự khuếch tán trách nhiệm.'
+image: /assets/stuff/bystander-effect.png
 published: true
 ---
 

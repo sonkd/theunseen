@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [social-desirability-bias, false-consensus-effect, in-group-bias]
 refs: ['https://en.wikipedia.org/wiki/Bandwagon_effect']
 strategy: 'Trước khi làm theo đám đông, tự hỏi: nếu không ai làm việc này, mình có tự chọn nó không?'
+image: /assets/stuff/bandwagon-effect.png
 published: true
 ---
 

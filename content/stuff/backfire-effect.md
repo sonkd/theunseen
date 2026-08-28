@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [confirmation-bias, continued-influence-effect, misinformation-effect, semmelweis-reflex]
 refs: ['https://doi.org/10.1017/S0022381610000479','https://www.skepticalscience.com/docs/Debunking_Handbook.pdf','https://thedecisionlab.com/biases/backfire-effect/','https://en.wikipedia.org/wiki/Backfire_effect']
 strategy: "Khi đính chính, mở đầu bằng một khẳng định ngắn, nêu lời giải thích thay thế cô đọng, dùng người truyền tải đáng tin cậy và tránh lặp lại cụm từ cốt lõi của tin sai."
+image: /assets/stuff/backfire-effect.png
 published: true
 ---
 

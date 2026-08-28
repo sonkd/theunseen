@@ -3,7 +3,7 @@
 Nguồn dữ liệu: `docs/theunseen_illustration_prompt_library.xlsx` · Skill: `editorial-geometric-illustration`
 · Code: `scripts/illustrations/` (`illus.py` + `render_thumbs.py`).
 
-**Cập nhật 2026-08-26** — đã chạy batch #1 (10 card). Xem mục F: nhật ký chạy.
+**Cập nhật 2026-08-28** — đã chạy batch #3. Tiến độ 30/230. Xem mục F: nhật ký chạy.
 
 ---
 
@@ -140,7 +140,7 @@ Bối cảnh & lý do: `docs/illustration-style-review.md`. Vấn đề gốc: 2
 ô 64px) — nhiệm vụ của nó là **phân biệt & gợi nhớ**. Vì vậy lớp này được dùng *concept object*:
 vật thể ẩn dụ nhưng **dựng bằng đúng bộ primitive hình học**, cùng stroke, một hue.
 
-10 concept object hiện có (`CONCEPT_OBJECTS` trong `illus.py`, `CONCEPT_MEANING` giữ nghĩa từng cái):
+13 concept object hiện có (`CONCEPT_OBJECTS` trong `illus.py`, `CONCEPT_MEANING` giữ nghĩa từng cái):
 
 | key | quan hệ nó biểu đạt |
 |---|---|
@@ -154,6 +154,9 @@ vật thể ẩn dụ nhưng **dựng bằng đúng bộ primitive hình học**
 | `pull` | một khối nặng kéo lệch toàn bộ phần còn lại |
 | `echo` | lặp lại làm quen thuộc / khuếch đại dần |
 | `gate` | sàng lọc: nhiều thứ tới, ít thứ qua |
+| `rebound` | tác động bật ngược lại, kết quả đi ngược ý định ban đầu *(thêm ở batch #3)* |
+| `odd_one_out` | một phần tử lệch khỏi nền đồng nhất — phân biệt nhờ tương phản *(thêm ở batch #3)* |
+| `tail_event` | biến cố hiếm nhưng độ lớn áp đảo, nằm ngoài dải quen thuộc *(thêm ở batch #3)* |
 
 **Ba test bắt buộc trước khi thêm concept object mới** — trượt một là loại:
 
@@ -194,7 +197,8 @@ Repo chưa render hero/section. Khi cần OG image cho `/stuff/<slug>`:
 - [ ] Không hai card nào trong batch dùng cùng một metaphor.
 - [ ] Frontmatter `image` set đúng path nội bộ, không đụng field khác.
 - [ ] Đã render contact sheet ở **cả 128 và 64** và **nhìn bằng mắt**.
-- [ ] `npm run verify` PASS; `graph + mapdata + build` xanh.
+- [ ] `npm run verify` PASS; `graph + mapdata` xanh; `build` xanh ở container/CI (không chạy được trong VM Cowork).
+- [ ] Guard `!! TRÙNG BYTE` không báo cặp mới nào do batch này tạo ra.
 - [ ] PR mở trên branch riêng kèm bảng báo cáo; `master` không bị chạm.
 
 ---
@@ -207,7 +211,44 @@ Repo chưa render hero/section. Khi cần OG image cho `/stuff/<slug>`:
 | #1b | 2026-08-27 | re-render 10 card | — | Áp hướng B: thêm 10 concept object (registry 14 → 24), PNG 128 → **512** (ảnh giờ kiêm ảnh minh hoạ chính). Đổi 2 metaphor: `actor-observer-bias` `contrast`→`mirror`, `anchoring` `divergence`→`pull`. |
 | #2 | 2026-08-27 | `appeal-to-novelty` → `availability-heuristic` (10) | `illustrations/2026-08-27` | **Override 10/10.** xlsx gán 4 `hierarchy` + 5 `divergence` + 1 `cycle` — chỉ 1 ca (`argument-from-fallacy`) thực sự là hierarchy. Dùng 6 concept object + 4 idea shape, không lặp metaphor. Sửa `beam`: viền khép kín ở đáy khiến hình đọc thành **bình thí nghiệm** → bỏ nét đáy, chỉ giữ 2 cạnh xiên. |
 
-**Tiến độ: 20/230 (8.7%) — còn 210 card.**
+| #3 | 2026-08-28 | `backfire-effect` → `bystander-effect` (10) | `illustrations/2026-08-28` | **Override 9/10** (chỉ `base-rate-fallacy` giữ xlsx). Thêm 3 concept object: `rebound`, `odd_one_out`, `tail_event` (registry 24 → 27). Thêm **guard trùng byte** vào `render_thumbs.py`. Sửa 1 card của batch #2: `appeal-to-probability-fallacy` `proportion` → `threshold`. |
+
+**Tiến độ: 30/230 (13.0%) — còn 200 card.**
+
+### Metaphor batch #3
+
+| slug | xlsx shape | dùng | loại |
+|---|---|---|---|
+| backfire-effect | branching | `rebound` | concept object *(mới)* |
+| bandwagon-effect | hierarchy | `pull` | concept object |
+| barnum-effect | branching | `nested_scope` | idea shape |
+| base-rate-fallacy | proportion | `proportion` | idea shape *(ca hiếm xlsx đúng)* |
+| belief-bias | hierarchy | `fracture` | concept object |
+| bias-blind-spot | branching | `balance` | concept object |
+| bizarreness-effect | branching | `odd_one_out` | concept object *(mới)* |
+| black-swan-theory | hierarchy | `tail_event` | concept object *(mới)* |
+| bucket-error | hierarchy | `overlap_phases` | idea shape |
+| bystander-effect | hierarchy | `divergence` | idea shape |
+
+### Vấn đề trùng hình ở cấp corpus — đã đo được, chưa xử lý hết
+
+Contact sheet 30 card ở khổ 64 cho thấy **4 cặp render ra ảnh trùng byte** (cùng metaphor + cùng hue):
+
+| cặp | xử lý |
+|---|---|
+| `bias-blind-spot` == `actor-observer-bias` (mirror/amber) | đã đổi → `balance` |
+| `bias-blind-spot` == `armchair-fallacy` (veil/amber, phương án trước đó) | đã đổi → `balance` |
+| `base-rate-fallacy` == `appeal-to-probability-fallacy` (proportion/amber) | đã đổi card batch #2 → `threshold` |
+| `ambiguity-effect` == `availability-heuristic` (spectrum/amber) | **còn tồn** |
+| `anchoring` == `authority-bias` (pull/mint) | **còn tồn** |
+
+Hue chỉ có 2 giá trị nên nó chỉ chia đôi không gian: với 27 hình, trần lý thuyết là 54 ảnh
+phân biệt cho 230 card. Hai cặp còn tồn không có metaphor thay thế nào đủ sát ở hue tương ứng —
+đây là bằng chứng thực nghiệm cho việc **phải chọn một trong hai hướng ở mục C** (biến thể theo
+slug, hoặc mở rộng primitive) trước khi tới batch ~#8, chứ không thể xử lý từng ca một mãi.
+
+Guard mới trong `render_thumbs.py` in cảnh báo `!! TRÙNG BYTE` sau mỗi lần render — không fail
+build, nhưng không được bỏ qua khi mở PR.
 
 ### Metaphor batch #2
 
@@ -232,10 +273,17 @@ Concept object đã giải đúng bài toán phân biệt: 6/10 card batch này 
 - `--limit 10` đếm theo *card còn thiếu ảnh*, nên nếu render lại một card đã có ảnh thì batch sẽ
   kéo thêm card mới vào cho đủ 10. Muốn sửa metaphor của card đã render → dùng `--only`, đừng dùng `--limit`.
 - Thư mục mount của Cowork có thể chặn `unlink`. File tạm phải ghi ra `/tmp`, không ghi vào `public/`.
-- `npm run build` **không chạy được trong Cowork sandbox**: `EPERM: unlink node_modules/.vite/deps/...`.
-  `verify` + `graph` + `mapdata` chạy bình thường; riêng bước `build` phải làm ở máy thật/CI trước khi mở PR.
+- `npm run build` **không chạy được qua `device_bash` của Cowork**. Nguyên nhân thật (xác định ở
+  batch #3): `device_bash` chạy trong một VM **Linux**, còn `node_modules` trong repo là bản cài
+  trên **macOS** → `Cannot find module '@rolldown/binding-wasm32-wasi'`. Đừng chạy `npm install`
+  trong VM đó để "sửa" — nó sẽ ghi đè `node_modules` của máy thật bằng binary Linux.
+  Cách kiểm tra build đúng: clone repo vào container/CI, `npm ci`, `npm run build`.
+  `verify` + `graph` + `mapdata` chạy bình thường trong VM.
 - **Frontmatter `image:` từng bị revert ngoài phiên** (cả `CLAUDE.md` và docs cũng vậy). Sau mỗi batch
   phải kiểm: `grep -h "^image:" content/stuff/*.md | wc -l` bằng đúng số PNG trong `public/assets/stuff/`.
   Lệch → chạy lại `set_frontmatter_image` cho các slug thiếu.
+- **Trùng byte giữa các card là lỗi im lặng.** Hai card cùng metaphor + cùng hue cho ra ĐÚNG một
+  file PNG. Không nhìn ra được nếu chỉ soi contact sheet của riêng batch — phải chạy guard md5 trên
+  toàn bộ `public/assets/stuff/`. Sửa bằng cách đổi metaphor, không đổi hue (hue do xlsx quy định).
 - Hình khép viền kín dễ bị đọc thành **đồ vật** ngoài ý muốn (`beam` → bình thí nghiệm,
   `funnel` → ly rượu). Khi hình mô tả *luồng/tia*, để hở đầu mở — đừng đóng path bằng `Z` có stroke.
