@@ -1,24 +1,22 @@
 ---
 title: Action Bias
-front: Vì sao thủ môn gần như luôn lao sang một bên, dù đứng yên giữa khung thành lại cản được nhiều quả phạt đền hơn?
-back: Xu hướng ưu tiên hành động hơn là không hành động ngay cả khi không hành động mới là lựa chọn tốt hơn — vì đứng yên và thất bại bị đánh giá nặng hơn nhiều so với ra tay và thất bại.
+front: Vì sao đứng yên và không làm gì lại khó chịu hơn hành động sai, ngay cả khi đứng yên mới là lựa chọn đúng?
+back: Xu hướng thiên về việc làm một điều gì đó thay vì không làm gì, ngay cả khi bằng chứng cho thấy hành động không cải thiện — hoặc làm xấu đi — kết quả.
 level: 2
 categories: [bias]
-tags: [decision, sports, management]
-links: [omission-bias, status-quo-bias, illusion-of-control, escalation-of-commitment]
-refs: ['https://en.wikipedia.org/wiki/Action_bias', 'https://en.wikipedia.org/wiki/Omission_bias']
-strategy: 'Trước khi phê duyệt một can thiệp, buộc phương án "không làm gì" phải được viết ra và so sánh sòng phẳng như một lựa chọn thật, kèm chi phí và kết quả kỳ vọng của nó.'
+tags: [decision, action, sports]
+links: [omission-bias, illusion-of-control, status-quo-bias]
+refs: ['https://en.wikipedia.org/wiki/Action_bias']
+strategy: 'Trước khi can thiệp, hỏi rõ: nếu không làm gì thì kết quả kỳ vọng là bao nhiêu? Chỉ hành động khi con số đó thực sự tệ hơn.'
 published: true
 ---
 
-Action bias là xu hướng chọn làm một điều gì đó thay vì chờ đợi hay giữ nguyên, ngay cả khi bằng chứng cho thấy không hành động mới là lựa chọn có kết quả kỳ vọng cao hơn. Nó không phải sự nhiệt tình đơn thuần: điểm đáng chú ý là ta vẫn hành động khi đã biết hành động không có lợi, chỉ vì đứng yên tạo ra một loại khó chịu riêng.
+Action Bias là xu hướng chọn hành động thay vì đứng yên, ngay cả trong những tình huống mà đứng yên có kết quả kỳ vọng tốt hơn. Nó không phải là ưa thích rủi ro; nó là một sự bất đối xứng về cảm giác — thất bại vì đã làm gì đó có vẻ chấp nhận được hơn thất bại vì đã không làm gì.
 
-Nghiên cứu được trích dẫn nhiều nhất đến từ bóng đá. Một nhóm nghiên cứu do Michael Bar-Eli dẫn đầu đã phân tích hàng trăm quả phạt đền ở giải đấu chuyên nghiệp và phát hiện rằng bóng được sút gần như đều nhau về ba vùng: trái, phải và chính giữa. Thế nhưng thủ môn lao sang một bên trong đại đa số tình huống và gần như không bao giờ đứng yên — dù xác suất cản phá khi giữ nguyên vị trí lại cao hơn. Lời giải thích của nhóm nghiên cứu là chuẩn mực chủ quan: thủ môn bay người và không cản được thì trông như đã cố hết sức; thủ môn đứng yên và bóng vào lưới thì trông như không làm gì. Cùng một bàn thua, hai mức xấu hổ khác hẳn nhau.
+Nghiên cứu được trích dẫn nhiều nhất là của Michael Bar-Eli và cộng sự (2007), phân tích 286 quả phạt đền trong bóng đá chuyên nghiệp. Thống kê hướng sút cho thấy thủ môn đứng yên giữa khung thành có xác suất cản phá cao hơn hẳn so với lao sang trái hoặc phải. Nhưng trong thực tế, thủ môn lao sang một bên trong khoảng 94% số quả. Khi được hỏi, câu trả lời rất nhất quán: đứng yên rồi nhìn bóng bay vào lưới thì *cảm thấy* tệ hơn nhiều so với lao sai hướng — dù kết quả trên bảng tỷ số là như nhau. Nỗi đau không nằm ở bàn thua, nó nằm ở việc trông như đã không cố gắng.
 
-Cơ chế này giải thích rất nhiều thứ ngoài sân bóng. Bác sĩ kê thêm một xét nghiệm chưa cần thiết vì bỏ sót do không làm bị phán xét nặng hơn tác hại do làm thừa. Nhà đầu tư cá nhân giao dịch quá nhiều trong thị trường đi ngang, và chi phí giao dịch cùng thời điểm vào lệnh xấu ăn dần lợi nhuận — trong khi một danh mục để yên thường vượt trội. Đội sản phẩm tung liên tiếp các thay đổi nhỏ lên một luồng đang ổn định vì "phải làm gì đó cho quý này", rồi mất khả năng đọc tín hiệu do quá nhiều biến thay đổi cùng lúc.
+Cùng logic ấy lặp lại ở nhiều nơi có chi phí cao hơn nhiều. Bác sĩ can thiệp khi theo dõi chờ là phác đồ đúng. Nhà đầu tư cá nhân giao dịch quá nhiều và ăn mòn lợi nhuận bằng phí, trong khi danh mục để yên thì tốt hơn. Đội sản phẩm thấy chỉ số tụt một tuần liền tung ngay một thay đổi giao diện, dù dao động đó nằm gọn trong nhiễu thống kê — và rồi không bao giờ biết được điều gì thực sự đã xảy ra, vì đã can thiệp trước khi đo xong.
 
-Đối trọng của nó là omission-bias — xu hướng ngược lại, coi hậu quả do không hành động là nhẹ hơn hậu quả do hành động. Hai thiên lệch này không mâu thuẫn mà bị quyết định bởi bối cảnh trách nhiệm: khi tổ chức trừng phạt sự thụ động, action bias thắng; khi tổ chức trừng phạt sai lầm nhìn thấy được, omission bias thắng. Nhìn ra được tổ chức của mình đang thưởng phạt kiểu nào quan trọng hơn việc thuộc tên hai thiên lệch.
+Điểm nguy hiểm về mặt tổ chức là Action Bias được thưởng công khai. Người bấm nút trong khủng hoảng được ghi nhận là quyết đoán; người phân tích rồi kết luận "chưa cần làm gì" bị đọc là thụ động. Cách chữa rẻ nhất không phải là hô hào bình tĩnh, mà là làm cho phương án "không làm gì" trở thành một phương án có tên, có người bảo vệ, có kết quả kỳ vọng được viết ra — tức là buộc nó phải được so sánh chứ không bị mặc định loại khỏi bàn.
 
-Cách kiểm soát khá cụ thể trong công việc sản phẩm. Đưa "giữ nguyên" vào danh sách phương án chính thức, kèm chi phí và kết quả kỳ vọng, thay vì coi nó là mặc định vô hình. Đặt ngưỡng bằng chứng tối thiểu trước khi can thiệp vào một luồng đang chạy tốt. Và tách rõ trong đánh giá sau việc: quyết định có tốt tại thời điểm ra quyết định không, thay vì chỉ nhìn kết quả cuối.
-
-Action bias liên hệ với illusion-of-control, vì hành động mang lại cảm giác nắm quyền dù ảnh hưởng thật rất nhỏ. Nó nuôi escalation-of-commitment khi mỗi lần can thiệp thêm được biện minh bằng những lần can thiệp trước. Và nó là cực đối lập của status-quo-bias, cho thấy hướng lệch của con người không cố định mà xoay theo cái mà môi trường xung quanh coi là đáng khen.
+Action Bias là mặt đối xứng của omission-bias, nơi người ta lại thiên về không hành động vì hậu quả do mình chủ động gây ra bị chấm nặng hơn; hai thiên lệch này chi phối ở những bối cảnh khác nhau và biết bối cảnh nào áp dụng chính là phần khó. Nó được nuôi bởi illusion-of-control — cảm giác rằng hành động của mình ảnh hưởng tới kết quả nhiều hơn thực tế. Và nó là lời nhắc rằng status-quo-bias, dù có thật, không phải lúc nào cũng là thiên lệch chiếm ưu thế: dưới áp lực và ánh nhìn của người khác, con người nghiêng hẳn về phía làm gì đó.

@@ -1,22 +1,22 @@
 ---
 title: McCollough Effect
-front: Có thứ ảo giác nào bạn nhìn vài phút rồi mang theo suốt nhiều tuần không?
-back: Sau khi xem xen kẽ các vạch kẻ ngang màu này và vạch dọc màu kia, những vạch trắng đen sau đó sẽ hiện lên màu bù trừ — và dư ảnh này bám theo hướng vạch, có thể kéo dài hàng giờ đến hàng tháng.
+front: Vì sao chỉ vài phút nhìn hai tấm hình có màu lại khiến bạn thấy màu ma ở những vạch kẻ đen trắng suốt nhiều ngày sau?
+back: Dư ảnh màu phụ thuộc vào hướng vạch kẻ — sau khi thích nghi với vạch dọc màu này và vạch ngang màu kia, ta thấy màu bù trừ xuất hiện trên vạch kẻ đen trắng, và hiệu ứng có thể kéo dài hàng giờ tới hàng tháng.
 level: 1
 categories: [perception]
-tags: [vision, color, aftereffect]
+tags: [vision, aftereffect, color]
 links: [motion-aftereffect, color-constancy, binocular-rivalry]
-refs: ['https://en.wikipedia.org/wiki/McCollough_effect', 'https://en.wikipedia.org/wiki/Afterimage']
-strategy: 'Trước khi tin vào một cảm nhận "hiển nhiên", hãy hỏi hệ thống quan sát của mình vừa bị hiệu chỉnh bởi cái gì — dư ảnh không chỉ có ở mắt, mà cả ở cách ta đọc dữ liệu sau một giai đoạn tiếp xúc dày đặc.'
+refs: ['https://en.wikipedia.org/wiki/McCollough_effect']
+strategy: 'Nhớ rằng "màu bạn thấy" là kết quả của trạng thái thích nghi gần đây của mắt, không phải thuộc tính cố định của vật — hãy kiểm tra màu thiết kế trên mắt chưa bị mồi màu.'
 published: true
 ---
 
-McCollough effect là một dư ảnh màu phụ thuộc vào hướng. Người quan sát nhìn luân phiên hai ảnh trong vài phút: một tấm gồm các vạch kẻ ngang trên nền đỏ, một tấm gồm các vạch kẻ dọc trên nền lục. Sau đó, khi nhìn một tấm chỉ có vạch trắng đen, các vạch ngang sẽ ánh lên sắc lục nhạt còn các vạch dọc ánh lên sắc hồng — đúng màu bù trừ của cái đã xem. Điểm kỳ lạ là màu không bám vào vị trí trên võng mạc mà bám vào hướng của vạch: nghiêng đầu 90 độ, hiệu ứng đảo ngược theo.
+McCollough Effect là một dư ảnh màu kỳ lạ ở chỗ nó không dán vào một vị trí trên võng mạc, mà dán vào một **hướng đường nét**. Người tham gia nhìn xen kẽ hai tấm hình trong vài phút: các vạch kẻ dọc trên nền đỏ và các vạch kẻ ngang trên nền lục. Sau đó, khi nhìn một tấm hình chỉ có vạch kẻ đen trắng, họ thấy vạch dọc ánh lên màu lục nhạt và vạch ngang ánh lên màu hồng — đúng màu bù trừ của thứ họ vừa thích nghi. Di chuyển mắt sang chỗ khác trên tấm hình, hiệu ứng vẫn đi theo hướng vạch chứ không ở nguyên chỗ cũ.
 
-Celeste McCollough Howard công bố hiện tượng này năm 1965. Nó khác hẳn dư ảnh thông thường — kiểu nhìn chằm chằm vào một mảng màu rồi thấy vệt màu bù trôi theo tầm mắt — ở ba điểm. Thứ nhất, nó có điều kiện: chỉ xuất hiện khi có vạch kẻ đúng hướng đã được huấn luyện. Thứ hai, nó gần như không truyền sang mắt còn lại, gợi ý rằng nơi thích nghi nằm ở tầng rất sớm của vỏ não thị giác, nơi các nơ-ron đã nhạy với hướng nhưng tín hiệu hai mắt chưa hoà vào nhau. Thứ ba, và đáng ngạc nhiên nhất, nó tồn tại rất lâu: vài giờ với thời gian phơi nhiễm ngắn, và có báo cáo kéo dài nhiều ngày tới nhiều tháng nếu phơi nhiễm đủ dài. Thời gian tồn tại tỉ lệ gần như với thời gian nhìn, và hiệu ứng không "chảy mất" khi nhắm mắt nghỉ — nó chờ sẵn ở đó.
+Celeste McCollough Howard công bố hiện tượng này năm 1965 trên *Science*. Điểm khiến nó trở thành một trong những hiệu ứng được nghiên cứu dai dẳng nhất trong thị giác học không phải là bản thân màu ma, mà là **độ bền** của nó. Dư ảnh thông thường tan trong vài giây. McCollough Effect thì tồn tại hàng giờ, và với thời gian thích nghi đủ dài, đã có báo cáo kéo dài nhiều ngày tới vài tháng — nó không mờ theo thời gian trôi mà chủ yếu mờ khi mắt được tiếp xúc lại với các vạch kẻ đó, gần giống một dạng học chứ không phải một dạng mỏi.
 
-Giới nghiên cứu vẫn tranh luận về cơ chế. Cách giải thích cổ điển coi đây là sự mệt mỏi thích nghi của các nơ-ron mã hoá đồng thời màu và hướng. Cách giải thích khác coi nó là một dạng học liên kết ở tầng cảm giác — hệ thị giác ghi nhận rằng trong môi trường vừa rồi, "ngang" đi kèm "đỏ", rồi hiệu chỉnh lại để trừ bớt sắc đỏ khỏi các cạnh ngang. Vì độ bền bất thường của nó, nhiều tài liệu phổ biến kèm luôn lời cảnh báo cho người muốn tự thử.
+Chính độ bền đó khiến cơ chế của nó vẫn còn tranh cãi. Một nhóm giải thích rằng các nơ-ron ở vỏ não thị giác sơ cấp vốn nhạy đồng thời với cả hướng lẫn màu bị thích nghi cục bộ. Nhóm khác cho rằng đây là một dạng hiệu chỉnh dài hạn: hệ thị giác coi việc "vạch dọc luôn đỏ" là một sai lệch của thiết bị quang học và tự bù trừ lại, giống như cách nó bù trừ ánh sáng môi trường.
 
-Bài học rộng hơn khá thẳng: bộ máy tri giác không phải máy đo cố định mà là máy đo tự hiệu chỉnh theo thống kê của môi trường vừa trải qua. Với người làm sản phẩm và phân tích, đây là lời nhắc rằng "cảm giác quen mắt" sau một tuần cắm mặt vào một giao diện, một biểu đồ hay một tập số liệu không phải bằng chứng — nó có thể chỉ là dư ảnh của việc phơi nhiễm.
+Với người làm sản phẩm, bài học không nằm ở mẹo, mà ở giả định nền: màu mà mắt báo cáo không phải một phép đo, mà là một suy luận đã trừ đi trạng thái thích nghi gần nhất. Kiểm tra bảng màu ngay sau khi vừa nhìn chằm chằm một giao diện màu mạnh là đang đo bằng một cây thước đã cong.
 
-Cùng gia đình với nó là motion-aftereffect, cũng là hiện tượng thích nghi có hướng, chỉ khác chiều đo là chuyển động thay vì màu. Nó cũng bổ sung cho color-constancy: cả hai cho thấy màu ta thấy là kết quả một phép trừ nền do não thực hiện, chứ không phải bước sóng đọc thẳng từ võng mạc. Và giống binocular-rivalry, nó là cửa sổ hiếm để tách bạch tín hiệu vật lý đi vào mắt khỏi nội dung thực sự được nhìn thấy.
+Hiệu ứng này họ hàng gần với motion-aftereffect — cũng là dư ảnh sinh ra từ thích nghi có chọn lọc của các nơ-ron chuyên trách, chỉ khác là ở kênh chuyển động thay vì kênh màu-hướng. Nó bổ sung cho color-constancy: cả hai đều cho thấy màu là kết quả của một phép trừ nền chủ động chứ không phải tín hiệu thô. Và nó đứng cạnh binocular-rivalry như bằng chứng rằng tri giác ổn định mà ta trải nghiệm là đầu ra đã qua rất nhiều xử lý, không phải bản ghi trung thực của thế giới.

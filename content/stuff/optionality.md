@@ -1,7 +1,7 @@
 ---
 title: Optionality
 front: Vì sao quyền được chọn — mà không bắt buộc phải chọn — lại có giá trị ngay cả khi bạn không dùng đến nó?
-back: Giá trị của việc giữ quyền hành động mà không có nghĩa vụ hành động: khi kết quả bất định, quyền chọn tạo ra một hồ sơ lời lỗ bất đối xứng, giới hạn thiệt hại và bỏ ngỏ phần lợi.
+back: 'Giá trị của việc giữ quyền hành động mà không có nghĩa vụ hành động: khi kết quả bất định, quyền chọn tạo ra một hồ sơ lời lỗ bất đối xứng, giới hạn thiệt hại và bỏ ngỏ phần lợi.'
 level: 3
 categories: [mental-models, theory]
 tags: [decision, risk]

@@ -1,24 +1,24 @@
 ---
 title: Falsifiability
-front: Nếu không có kết quả nào có thể chứng minh bạn sai, thì việc bạn đúng còn nghĩa lý gì?
-back: Tiêu chí cho rằng một tuyên bố chỉ mang nội dung khoa học khi tồn tại quan sát có thể mâu thuẫn với nó — một lý thuyết giải thích được mọi kết quả thì không loại trừ được gì.
+front: Nếu không có kết quả nào có thể chứng minh bạn sai, thì niềm tin của bạn đang nói lên điều gì về thế giới?
+back: Tiêu chí do Karl Popper đề xuất: một tuyên bố chỉ có giá trị khoa học nếu tồn tại một quan sát khả dĩ có thể bác bỏ nó.
 level: 4
 categories: [theory, mental-models]
 tags: [epistemology, science, evidence]
-links: [confirmation-bias, congruence-bias, epistemic-humility, publication-bias]
+links: [epistemic-humility, confirmation-bias, congruence-bias]
 refs: ['https://en.wikipedia.org/wiki/Falsifiability', 'https://en.wikipedia.org/wiki/Karl_Popper']
-strategy: 'Trước khi chạy một thử nghiệm, viết ra trước kết quả nào sẽ khiến bạn từ bỏ giả thuyết — nếu không viết ra được, thứ bạn có là một niềm tin chứ chưa phải giả thuyết.'
+strategy: 'Với mỗi niềm tin quan trọng, viết trước ra: quan sát cụ thể nào sẽ khiến tôi từ bỏ nó? Nếu không viết được, đó chưa phải một niềm tin về thế giới.'
 published: true
 ---
 
-Falsifiability là tiêu chí do Karl Popper đề xuất trong công trình về logic khám phá khoa học đầu thập niên 1930: điều phân biệt một tuyên bố khoa học với một tuyên bố phi khoa học không phải là nó được bao nhiêu bằng chứng ủng hộ, mà là có tồn tại quan sát nào về nguyên tắc mâu thuẫn được với nó hay không. Một tuyên bố tương thích với mọi kết quả có thể xảy ra thì không nói gì về thế giới, vì nó không loại trừ được khả năng nào.
+Falsifiability — tính khả bác — là tiêu chí phân định do Karl Popper đề xuất trong *Logik der Forschung* (1934) và phát triển trong *Conjectures and Refutations* (1963). Ý tưởng: cái làm nên một tuyên bố khoa học không phải là nó được xác nhận nhiều đến đâu, mà là nó **cấm** điều gì. Một lý thuyết mạnh là lý thuyết chìa cổ ra — nó nói rõ những quan sát nào, nếu xảy ra, sẽ khiến nó sai.
 
-Lập luận nền của Popper xuất phát từ một bất đối xứng logic. Không lượng quan sát hữu hạn nào chứng minh được mệnh đề tổng quát "mọi thiên nga đều trắng" — quy nạp luôn để ngỏ trường hợp tiếp theo. Nhưng chỉ một con thiên nga đen là đủ để bác bỏ nó. Vì thế Popper cho rằng khoa học tiến bộ không phải bằng cách chồng chất xác nhận, mà bằng cách đưa ra những phỏng đoán táo bạo rồi cố hết sức phản bác chúng. Lý thuyết nào sống sót qua các nỗ lực phản bác nghiêm túc thì tạm được giữ lại, chứ không được coi là đã chứng minh.
+Lập luận nền tảng của Popper là bất đối xứng logic giữa xác nhận và bác bỏ. Không có số lượng thiên nga trắng nào đủ để chứng minh "mọi thiên nga đều trắng"; nhưng chỉ một con thiên nga đen là đủ để bác bỏ. Vì vậy phương pháp khoa học không phải quá trình chất đống bằng chứng ủng hộ, mà là quá trình đưa ra phỏng đoán táo bạo rồi cố hết sức đánh sập chúng. Lý thuyết nào sống sót qua các nỗ lực bác bỏ nghiêm túc thì được giữ tạm thời — không bao giờ được chứng minh đúng.
 
-Điểm then chốt thường bị bỏ qua: một lý thuyết càng cấm nhiều thứ thì càng mạnh. Dự báo "quý sau sẽ có biến động" gần như không thể sai và vì thế gần như vô giá trị. Dự báo "tỉ lệ hoàn tất eKYC sẽ tăng từ 62% lên ít nhất 68% trong bốn tuần, đo trên nhóm người dùng mới" thì rất dễ sai — và chính vì thế nó đáng để kiểm tra.
+Popper dùng tiêu chí này để phân biệt vật lý Einstein với những hệ thống mà ông cho là giả khoa học. Thuyết tương đối rộng đưa ra một dự đoán chính xác và nguy hiểm về độ lệch ánh sáng gần Mặt Trời — nếu quan sát nhật thực 1919 cho kết quả khác, lý thuyết sập. Ngược lại, một số khung diễn giải tâm lý thời đó có thể giải thích được **mọi** hành vi, kể cả hai hành vi trái ngược nhau; sức mạnh giải thích vô hạn đó, với Popper, chính là điểm yếu chí mạng.
 
-Tiêu chí này đã bị phê phán và tinh chỉnh nhiều. Luận đề Duhem–Quine chỉ ra rằng ta không bao giờ kiểm định một giả thuyết đơn lẻ, mà luôn kiểm định nó cùng cả bó giả định phụ trợ về công cụ đo, mẫu và điều kiện; nên khi kết quả trái ngược, ta luôn có thể đổ lỗi cho một giả định phụ trợ thay vì từ bỏ lý thuyết chính. Thomas Kuhn và Imre Lakatos bổ sung rằng trong thực tế, các cộng đồng khoa học không vứt bỏ một khung lý thuyết chỉ vì một kết quả bất lợi. Falsifiability vì thế hoạt động tốt hơn như một chuẩn mực về thái độ trí tuệ hơn là một đường ranh giới sắc gọn.
+Tiêu chí này không phải không bị phản biện. Pierre Duhem và W.V.O. Quine chỉ ra rằng ta không bao giờ kiểm định một giả thuyết đơn lẻ mà luôn kiểm định cả một cụm giả định đi kèm — khi kết quả trái ngược, ta vẫn được quyền chọn sửa giả định phụ thay vì vứt lý thuyết chính. Imre Lakatos và Thomas Kuhn cho thấy trên thực tế các nhà khoa học không bỏ lý thuyết ngay sau một kết quả xấu. Falsifiability vì thế được đọc tốt nhất như một **kỷ luật cá nhân**, không phải một cỗ máy phân loại tự động.
 
-Cách áp dụng trong công việc ra quyết định là biến nó thành một bước bắt buộc. Với mỗi giả thuyết, viết ra ba thứ trước khi nhìn dữ liệu: kết quả kỳ vọng, ngưỡng cụ thể để coi là xác nhận, và kết quả nào sẽ khiến ta rút lại giả thuyết. Bước thứ ba là bước hay bị bỏ. Không có nó, mọi kết quả đều được kể lại thành một dạng ủng hộ, và cuộc thử nghiệm chỉ còn là nghi lễ.
+Đó cũng là chỗ nó hữu dụng nhất trong công việc. Một giả thuyết sản phẩm viết là "cải thiện trải nghiệm sẽ tăng gắn kết" thì không thể sai được, nên vô giá trị; viết lại thành "giảm luồng eKYC từ 6 xuống 3 bước sẽ nâng tỷ lệ hoàn tất ít nhất 5 điểm phần trăm trong hai tuần" thì có thể sai — và vì thế mới đáng chạy thử nghiệm.
 
-Falsifiability là liều thuốc trực tiếp cho confirmation-bias, vì nó bắt ta đi tìm bằng chứng bất lợi thay vì bằng chứng thuận. Nó nhắm thẳng vào congruence-bias, thói quen chỉ kiểm tra dự đoán của giả thuyết mình đang giữ mà không kiểm tra giả thuyết cạnh tranh. Nó là biểu hiện thao tác được của epistemic-humility. Và nó giúp thấy vì sao publication-bias nguy hiểm đến vậy: khi chỉ những kết quả xác nhận được công bố, cơ chế phản bác bị vô hiệu hoá ở cấp hệ thống.
+Falsifiability là hình thức nghiêm ngặt của epistemic-humility: giữ niềm tin ở dạng tạm thời và ghi rõ điều kiện từ bỏ. Nó là liều thuốc trực tiếp cho confirmation-bias, vì nó đảo chiều mặc định từ tìm bằng chứng ủng hộ sang tìm bằng chứng phản bác. Và nó chỉ thẳng vào congruence-bias — thói quen chỉ chạy đúng phép thử mà giả thuyết của mình dự đoán sẽ thành công, thay vì phép thử có khả năng làm nó thất bại.

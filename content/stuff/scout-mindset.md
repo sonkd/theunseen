@@ -1,24 +1,22 @@
 ---
 title: Scout Mindset
-front: Khi tranh luận, bạn đang cố vẽ đúng bản đồ hay đang cố giữ phòng tuyến của mình?
-back: Tư thế nhận thức đặt mục tiêu nhìn thấy sự thật rõ nhất có thể, kể cả khi sự thật đó bất lợi — đối lập với tư thế lính chiến, nơi lý lẽ được huy động để bảo vệ niềm tin đã có.
+front: Bạn đang cố vẽ đúng tấm bản đồ, hay đang cố giữ vững phòng tuyến của mình?
+back: Thái độ nhận thức lấy mục tiêu là nhìn thấy sự việc đúng như nó là, đối lập với "tư duy lính chiến" — bảo vệ niềm tin sẵn có như bảo vệ một vị trí.
 level: 4
 categories: [theory, mental-models]
 tags: [epistemology, reasoning, self-awareness]
-links: [confirmation-bias, epistemic-humility, metacognition, bias-blind-spot]
-refs: ['https://en.wikipedia.org/wiki/Motivated_reasoning', 'https://en.wikipedia.org/wiki/Confirmation_bias']
-strategy: 'Khi phát hiện mình đang thấy nhẹ nhõm vì một bằng chứng, hãy dừng lại và hỏi: nếu bằng chứng này ngược lại, mình có soi nó kỹ hơn không?'
+links: [epistemic-humility, bias-blind-spot, metacognition]
+refs: ['https://en.wikipedia.org/wiki/Julia_Galef', 'https://en.wikipedia.org/wiki/Motivated_reasoning']
+strategy: 'Khi bắt gặp mình đang tìm lý do bác bỏ một thông tin, hãy hỏi: nếu thông tin này ủng hộ phía mình, tôi có soi kỹ đến vậy không?'
 published: true
 ---
 
-Scout mindset là cách gọi do Julia Galef phổ biến trong cuốn sách cùng tên năm 2021, đặt tên cho một sự phân biệt cũ trong nghiên cứu về lập luận có động cơ. Người lính có nhiệm vụ giữ và chiếm: lý lẽ là vũ khí, bằng chứng thuận là đồng minh, bằng chứng nghịch là mối đe doạ cần vô hiệu hoá. Người trinh sát có nhiệm vụ khác hẳn: đi ra ngoài và vẽ lại bản đồ cho đúng thực địa. Với trinh sát, phát hiện ra một vực sâu ở chỗ mình từng nghĩ là đường bằng không phải thất bại — đó chính là thành công.
+Scout Mindset là khái niệm do Julia Galef trình bày trong cuốn sách cùng tên (2021), dựa trên một phép ẩn dụ đơn giản. Người lính có nhiệm vụ giữ vững vị trí: thông tin được đánh giá theo việc nó củng cố hay đe doạ phòng tuyến. Người trinh sát có nhiệm vụ khác hẳn — vẽ ra tấm bản đồ chính xác nhất có thể, kể cả khi bản đồ đó cho thấy địa hình bất lợi. Cả hai vai đều cần thiết trong một đội quân, nhưng phần lớn chúng ta mặc định vào vai lính ngay cả khi đang làm công việc của trinh sát.
 
-Cơ sở thực nghiệm nằm ở khái niệm lập luận có động cơ theo hướng: con người không đánh giá bằng chứng một cách trung lập rồi mới kết luận, mà đặt ra hai ngưỡng khác nhau. Với thông tin hợp ý, câu hỏi ngầm là "mình có thể tin điều này không" và chỉ cần một lý do khả dĩ là đủ. Với thông tin trái ý, câu hỏi trở thành "mình có buộc phải tin điều này không" và ta lập tức thấy ra đủ loại vấn đề về phương pháp, mẫu, thời điểm. Cùng một chất lượng bằng chứng, hai mức khắt khe khác nhau. Điều đáng chú ý là quá trình này không hiện ra như sự thiên vị từ bên trong — nó hiện ra như sự cẩn thận.
+Điểm mạnh của khung này nằm ở chỗ nó chuyển vấn đề từ **kỹ năng** sang **động cơ**. Galef lập luận rằng phần lớn suy luận tệ không đến từ thiếu logic mà từ việc ta đang tối ưu cho mục tiêu khác — bảo vệ hình ảnh bản thân, giữ vị thế trong nhóm, tránh cảm giác đã sai. Đây là mô tả trực quan của cái mà tâm lý học gọi là motivated reasoning, đặc biệt là quan sát của Tom Gilovich: với thông tin ta muốn tin, câu hỏi ngầm là "tôi *có thể* tin điều này không?"; với thông tin ta không muốn tin, câu hỏi đổi thành "tôi *bắt buộc* phải tin điều này không?". Cùng một bộ não, hai ngưỡng bằng chứng khác nhau.
 
-Vì thế Galef nhấn mạnh rằng scout mindset không phải là biết thêm về các thiên lệch, mà là một tập thói quen cảm xúc. Điểm mấu chốt là tháo gỡ bản sắc khỏi niềm tin: khi "tôi tin X" biến thành "tôi là người thuộc phe X", mọi bằng chứng chống lại X trở thành đòn tấn công cá nhân, và không kiến thức lý thuyết nào cứu được. Ngược lại, khi việc đổi ý được coi là một kỹ năng đáng khoe chứ không phải một sự thua cuộc, chi phí tâm lý của việc nhìn thẳng giảm hẳn.
+Vì là vấn đề động cơ, cách chữa cũng phải nhắm vào động cơ. Galef đề xuất vài phép thử tự kiểm khá thực dụng. **Phép thử tiêu chuẩn kép**: tôi có đánh giá lập luận này khắt khe như vậy nếu nó đến từ phía tôi ủng hộ không? **Phép thử người ngoài**: nếu đây là chuyện của người khác, tôi sẽ khuyên gì? **Phép thử đặt cược**: tôi có sẵn sàng cược tiền thật với tỷ lệ này không — câu hỏi này thường kéo mức tự tin miệng về sát mức tự tin thật. Và quan trọng nhất: xây dựng bản sắc quanh **quá trình** ("tôi là người đổi ý khi có bằng chứng") thay vì quanh **kết luận** ("tôi là người tin X"), vì bản sắc gắn với kết luận biến mọi bằng chứng trái chiều thành một cuộc tấn công cá nhân.
 
-Có vài phép thử tự kiểm khá thực dụng. Phép thử người ngoài cuộc: nếu người đưa ra kết quả này là đối thủ chứ không phải đồng đội, mình có tin nó không. Phép thử đổi phe: nếu con số nghiêng về hướng ngược lại, mình có đòi thêm dữ liệu không. Phép thử lần cuối: lần gần nhất mình thay đổi quan điểm về một chuyện quan trọng là khi nào — nếu không nhớ nổi, đó là dấu hiệu.
+Trong đội sản phẩm, khác biệt giữa hai tư duy hiện ra rõ nhất ở buổi đọc kết quả thử nghiệm. Tư duy lính chiến sẽ tìm lý do kỹ thuật để loại bỏ kết quả xấu của thiết kế mình đề xuất, và chấp nhận ngay kết quả tốt mà không soi. Tư duy trinh sát áp cùng một tiêu chuẩn cho cả hai chiều — và đó là thứ duy nhất khiến dữ liệu thực sự có giá trị.
 
-Trong công việc sản phẩm, scout mindset là thứ quyết định giá trị thật của một chương trình thử nghiệm. Đội có tư thế lính chiến sẽ chạy A/B test để tìm bằng chứng công bố cho quyết định đã chốt, và sẽ nhặt phân khúc, kéo dài thời gian chạy, hoặc đổi chỉ số cho tới khi ra kết quả mong muốn. Đội có tư thế trinh sát khoá trước chỉ số chính, ngưỡng và thời hạn, rồi coi kết quả âm là thông tin có giá trị chứ không phải một quý thất bại.
-
-Scout mindset là đối trọng trực tiếp của confirmation-bias và là biểu hiện hành vi của epistemic-humility. Nó đòi hỏi metacognition, vì phải quan sát được chính phản ứng của mình với bằng chứng trước khi sửa được nó. Và nó là cách chữa cụ thể cho bias-blind-spot — thay vì tin rằng mình khách quan hơn người khác, nó yêu cầu bằng chứng về những lần mình đã thực sự đổi ý.
+Scout Mindset là cách vận hành hằng ngày của epistemic-humility: không chỉ thừa nhận mình có thể sai, mà chủ động đi tìm chỗ mình sai. Nó là phản ứng trực tiếp với bias-blind-spot — người ta thấy thiên lệch ở người khác dễ hơn ở chính mình, nên các phép thử tự kiểm phải được hình thức hoá chứ không thể trông chờ vào cảm giác. Và toàn bộ bộ công cụ này là một ứng dụng cụ thể của metacognition: quan sát chính quá trình suy nghĩ của mình như một đối tượng có thể kiểm tra.
