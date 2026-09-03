@@ -97,9 +97,11 @@ OVERRIDES = {
         "một câu hỏi khó bị đánh tráo bằng một câu hỏi dễ — hai khối có độ phức tạp hình học "
         "trái ngược, đặt thay chỗ nhau"),
     "authority-bias": (
-        "pull",
-        "concept object: một nguồn có trọng lượng lớn kéo lệch toàn bộ phán đoán còn lại, "
-        "bất kể bằng chứng"),
+        "contrast",
+        "một nguồn quyền lực đứng như một khối nặng đối lập với toàn bộ bằng chứng còn lại — "
+        "đổi từ pull sang contrast vì pull+mint đã trùng byte với anchoring (anchoring giữ pull, "
+        "đúng nghĩa 'kéo lệch ước lượng' hơn vì có một con số neo cụ thể, còn ở đây là trọng "
+        "lượng của nguồn phát ngôn, không phải một điểm neo)"),
     "automation-bias": (
         "gate",
         "concept object: chỉ thông tin đến từ hệ thống tự động mới lọt qua cổng; "
@@ -109,9 +111,11 @@ OVERRIDES = {
         "concept object: chính sự lan truyền lặp lại tạo ra cảm giác đáng tin, không phải bằng chứng. "
         "echo sát hơn cycle vì cascade là khuếch đại một chiều, không phải vòng khép kín"),
     "availability-heuristic": (
-        "spectrum",
-        "trọng số đánh giá giảm dần theo độ khó nhớ lại: thứ dễ bật ra trong đầu được cho là "
-        "phổ biến/nguy hiểm hơn thực tế"),
+        "funnel",
+        "rất nhiều ký ức tồn tại, nhưng chỉ những thứ dễ bật ra trong đầu mới lọt qua để trở "
+        "thành phán đoán về tần suất/nguy hiểm — đổi từ spectrum sang funnel vì spectrum+amber "
+        "đã trùng byte với ambiguity-effect (ambiguity-effect giữ spectrum, đúng nghĩa 'dải liên "
+        "tục từ biết rõ tới mù mờ' hơn, còn ở đây bản chất là một phễu lọc theo độ dễ nhớ)"),
 
     # ---- batch #3 (2026-08-28) — xlsx gán 5 hierarchy + 4 branching + 1 proportion.
     # Chỉ 1/10 (base-rate-fallacy) là đúng. Thêm 2 concept object mới: `rebound`, `odd_one_out`
@@ -162,6 +166,57 @@ OVERRIDES = {
         "divergence",
         "khuếch tán trách nhiệm: một tình huống cần giúp bị chia thành nhiều phần cho nhiều "
         "người, càng nhiều nhánh mỗi nhánh càng loãng cho tới khi không ai hành động"),
+    "cathedral-effect": (
+        "halo_spill",
+        "concept object: chiều cao trần là một ấn tượng không gian mồi (prime) rồi lan sang "
+        "cách xử lý những vấn đề không liên quan gì tới không gian — đúng nghĩa 'ấn tượng lan "
+        "sang đánh giá lân cận', không phải quan hệ cha-con của hierarchy"),
+    "change-blindness": (
+        "beam",
+        "concept object: chú ý dồn hết vào việc đếm đường chuyền (điểm sáng), còn phần thay đổi "
+        "thực sự xảy ra trong vùng đang tối đi — beam đúng nghĩa hơn hierarchy vì đây không phải "
+        "quan hệ phân tầng mà là hệ quả của việc chú ý chỉ rọi được một điểm"),
+    "cheerleader-effect": (
+        "coverage_sphere",
+        "khuôn mặt trung bình của cả nhóm phủ lên nhận thức về từng khuôn mặt riêng lẻ, kéo "
+        "đánh giá về gần mức trung bình dễ nhìn hơn — không phải quan hệ lồng nhau (nesting) như "
+        "xlsx gán, vì không có 'lõi' nào bị bao bọc, chỉ có một lớp phủ đè lên toàn bộ"),
+    "chestertons-fence": (
+        "layers",
+        "hàng rào là một lớp trầm tích lịch sử — lý do dựng lên nằm ở tầng dưới, phải đào tới đó "
+        "trước khi gỡ lớp trên; layers sát nghĩa hơn hierarchy vì đây không phải quan hệ cha-con "
+        "mà là quan hệ tích tụ theo thời gian"),
+    "choice-overload": (
+        "spectrum",
+        "24 loại mứt là một dải gần như liên tục, càng dày đặc trên dải đó càng khó phân biệt và "
+        "khó chọn — spectrum đúng nghĩa hơn divergence vì đây không phải một điểm rẽ nhánh, mà là "
+        "mật độ lựa chọn dọc theo một dải"),
+    "choice-supportive-bias": (
+        "echo",
+        "concept object: mỗi lần nhớ lại, câu chuyện về lựa chọn đã chọn được kể lại và khuếch đại "
+        "thêm một chút theo hướng tích cực — đúng nghĩa lặp lại làm khuếch đại của echo, không "
+        "phải một điểm rẽ nhánh (divergence)"),
+    "circle-of-competence": (
+        "in_out_ring",
+        "concept object: đúng nghĩa đen tên gọi — có một vòng tròn, bên trong là phạm vi hiểu biết "
+        "đủ sâu để quyết định, bên ngoài là chỉ biết bề mặt; in_out_ring sát hơn hẳn hierarchy vì "
+        "đây không phải quan hệ cha-con mà là ranh giới thuộc về"),
+    "clustering-illusion": (
+        "cycle",
+        "một khi não bộ 'thấy' cụm trong dữ liệu ngẫu nhiên, mỗi điểm dữ liệu tiếp theo lại được "
+        "diễn giải để củng cố thêm cho cụm đó — vòng tự củng cố (cycle) đúng hơn network vì không "
+        "có liên kết thật giữa các điểm, chỉ có vòng lặp diễn giải; cũng tránh trùng hình với "
+        "apophenia (network) vốn diễn tả cùng một nhóm hiện tượng thấy-quy-luật-trong-nhiễu"),
+    "cognitive-dissonance": (
+        "mirror",
+        "concept object: cùng một con người soi qua hai khung — niềm tin đang giữ và hành vi đã "
+        "làm — lệch nhau, buộc phải chỉnh một trong hai để khớp lại; mirror đúng hơn hierarchy vì "
+        "đây không phải quan hệ phân tầng mà là cùng một sự việc nhìn qua hai lăng kính mâu thuẫn"),
+    "cognitive-load-theory": (
+        "threshold",
+        "bộ nhớ làm việc có một sức chứa cố định — vượt ngưỡng đó, chất lượng xử lý sập nhanh "
+        "chứ không suy giảm từ từ; threshold đúng nghĩa hơn hierarchy vì đây là một giới hạn dung "
+        "lượng, không phải quan hệ cha-con"),
 }
 
 

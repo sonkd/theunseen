@@ -8,6 +8,7 @@ tags: [motivation, self]
 links: [effort-justification, post-purchase-rationalization, self-licensing, confirmation-bias]
 refs: ['https://en.wikipedia.org/wiki/Cognitive_dissonance']
 strategy: 'Khi thấy mình đang giải thích quá nhiều cho một lựa chọn, dừng lại hỏi: mình đang bảo vệ sự thật, hay đang bảo vệ cái tôi đã chọn?'
+image: /assets/stuff/cognitive-dissonance.png
 published: true
 ---
 

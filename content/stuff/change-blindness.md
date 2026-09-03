@@ -7,6 +7,7 @@ categories: [perception]
 links: [attentional-bias, selective-perception]
 refs: ['https://en.wikipedia.org/wiki/Change_blindness']
 strategy: "Đừng tin vào cảm giác 'chắc chắn mình sẽ nhận ra nếu có gì thay đổi' — với giao diện hay tài liệu quan trọng, dùng công cụ so sánh tự động (diff) thay vì chỉ nhìn bằng mắt để phát hiện thay đổi."
+image: /assets/stuff/change-blindness.png
 published: true
 ---
 

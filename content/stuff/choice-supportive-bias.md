@@ -7,6 +7,7 @@ categories: [bias]
 links: [post-purchase-rationalization, escalation-of-commitment, effort-justification]
 refs: ['https://en.wikipedia.org/wiki/Choice-supportive_bias']
 strategy: "Ghi lại lý do và tiêu chí đánh giá NGAY LÚC đang cân nhắc, trước khi chốt quyết định — để sau này có thể đối chiếu cảm nhận thực tế với đánh giá khách quan ban đầu, thay vì chỉ tin vào ký ức đã bị tô hồng."
+image: /assets/stuff/choice-supportive-bias.png
 published: true
 ---
 
