@@ -89,12 +89,42 @@ Chạy lại sau khi đã viết xong: card vừa đạt 300+ từ tự chuyển
 
 ## Bước 5 — Commit
 
+**Repo này có nhiều worktree.** Branch đang được checkout KHÔNG chắc là `new` — nó phụ thuộc vào
+phiên làm việc trước đó. Commit thẳng mà không kiểm tra sẽ rơi vào `master`, vi phạm CLAUDE.md §5
+quy tắc 6. Sự cố 2026-09-03: batch 25 card commit nhầm vào `master`, và chuỗi lệnh khắc phục
+(`git branch -f new HEAD` → fail vì branch đang checkout → các lệnh sau vẫn chạy) đã amend nhầm lên
+tip của `origin/new` rồi tua `new` lùi 1 commit. Không mất dữ liệu nhưng mất một buổi để gỡ.
+
+### 5.1 — Gate bắt buộc: phải đứng trên `new` mới được commit
+
+Chạy nguyên khối này. Mỗi lệnh tự dừng nếu fail — KHÔNG bỏ qua lỗi để chạy tiếp lệnh sau.
+
 ```bash
-git add -A
-git commit -m "content: daily batch YYYY-MM-DD — N cards (enrich M, new K)"
+git worktree list                      # ghi vào báo cáo: có worktree nào khác đang giữ branch nào
+git rev-parse --verify new >/dev/null || { echo "FAIL: branch new không tồn tại"; exit 1; }
+git switch new                         || { echo "FAIL: không chuyển được sang new"; exit 1; }
+[ "$(git branch --show-current)" = "new" ] || { echo "FAIL: không ở trên new"; exit 1; }
 ```
 
-Commit vào branch `new` (đã được duyệt cho job tự động — xem CLAUDE.md). **Không push, không merge sang master.**
+Nếu bất kỳ dòng nào in `FAIL` → **DỪNG, KHÔNG commit**, báo cáo nguyên văn output và trạng thái
+`git status` + `git branch -vv`. Nguyên nhân thường gặp: một worktree khác đang giữ `new`
+(`git switch` sẽ từ chối), hoặc working tree bẩn.
+
+### 5.2 — Commit
+
+```bash
+git add -A
+git commit -m "content: daily batch $(date +%F) — N cards (enrich M, new K)"
+git log --oneline -1                   # xác nhận commit nằm đúng trên new
+git branch -vv | grep -E '^\* new'     # xác nhận new ahead, master không đổi
+```
+
+`N` phải là số card THỰC TẾ sản xuất, đếm bằng
+`git show --stat --oneline HEAD | grep -c 'content/stuff'` — không ghi theo hạn ngạch dự kiến.
+
+**Không push, không merge sang master.** Nếu phát hiện commit đã lỡ vào nhánh sai, KHÔNG tự khắc
+phục bằng `git branch -f` hay `git reset --hard`: báo cáo và để người thật xử lý, vì cả hai lệnh đó
+hành xử khác nhau tùy worktree đang giữ branch nào.
 
 ## Bước 6 — Build
 
@@ -106,6 +136,10 @@ Docker không có trong môi trường sandbox và cũng không phải đường
 (chỉ dùng preview local) → không build image tại đây. `npm run build` ở bước 3 là smoke test đủ.
 
 ## Báo cáo cuối
+
+**Dòng đầu tiên của báo cáo, bắt buộc:** branch đã commit (`git branch --show-current`), commit hash,
+và output `git worktree list`. Nếu không commit được thì nêu rõ lý do ở đúng chỗ này thay vì chôn
+xuống cuối. Đây là chốt kiểm để phát hiện ngay commit rơi nhầm nhánh.
 
 Bảng: slug | map (imagining/belief/thinking/intelligence/knowledge) | words | links | verify.
 

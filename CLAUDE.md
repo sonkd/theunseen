@@ -91,7 +91,7 @@ Body markdown **300–500 từ tự viết** (mẫu chuẩn: `content/stuff/anch
 3. `links` dùng **slug**, không dùng title. Verifier bắt link gãy.
 4. Giọng văn: `front` tiếng Việt gợi tò mò; `back` ngắn gọn, không học thuật khô. Fintech-first khi cho ví dụ.
 5. Icon **không random** — derive theo category (`src/lib/icons.ts`).
-6. **Không commit thẳng `master`.** Làm trên branch → PR → human review. *Ngoại lệ:* job `daily-content` (scheduled) được commit thẳng vào `new` sau khi `verify + graph + mapdata + build` đều PASS — vẫn không push/merge sang `master`.
+6. **Không commit thẳng `master`.** Làm trên branch → PR → human review. *Ngoại lệ:* job `daily-content` (scheduled) được commit thẳng vào `new` sau khi `verify + graph + mapdata + build` đều PASS — vẫn không push/merge sang `master`. Repo có nhiều worktree nên branch đang checkout không chắc là `new`: **bắt buộc `git switch new` + assert `git branch --show-current` trước khi commit** (xem §8 và `.claude/skills/daily-content/SKILL.md` Bước 5.1).
 
 ---
 
@@ -117,6 +117,18 @@ Body markdown **300–500 từ tự viết** (mẫu chuẩn: `content/stuff/anch
 ---
 
 ## 8. Gotchas
+
+### Repo dùng NHIỀU git worktree — đọc trước khi chạm git
+
+`git worktree list` để biết worktree nào đang giữ branch nào. Hệ quả bắt buộc nhớ:
+
+- **Branch đang checkout KHÔNG chắc là branch bạn nghĩ.** Luôn `git branch --show-current` trước khi commit. Đây là cách batch 2026-09-03 rơi nhầm vào `master`.
+- **`git branch -f <b>` fail nếu `<b>` đang được checkout ở bất kỳ worktree nào** (kể cả worktree hiện tại). Đừng nối nó vào một chuỗi lệnh — lệnh sau vẫn chạy dù lệnh này fail, và đó là cách một `commit --amend` đi lạc lên tip của `origin/new`.
+- **`git reset --hard` tác động lên branch đang checkout**, không phải branch bạn đang nói tới. Trong repo nhiều worktree, hai thứ đó thường khác nhau.
+- **Không tự khắc phục commit sai nhánh.** Báo cáo, để người thật xử lý. Mọi thứ đã commit đều cứu được bằng `git reflog`; điều không cứu được là một chuỗi lệnh "sửa" chạy trên giả định sai.
+- Worktree đặt trong `/tmp` sẽ biến mất sau reboot và để lại metadata hỏng → `git worktree prune`.
+
+### Content · build
 
 - Sửa frontmatter/thêm card mà không chạy lại `mapdata`/`graph` → map/graph hiển thị dữ liệu cũ. `npm run build` tự lo (prebuild).
 - `refs`/`links`/`categories` mặc định `[]` trong Zod — thiếu sẽ **không** throw schema, nhưng `verify` mới là cổng chất lượng thật (link gãy, thiếu ref…).
