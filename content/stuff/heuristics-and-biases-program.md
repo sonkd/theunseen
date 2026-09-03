@@ -1,24 +1,22 @@
 ---
 title: Heuristics and Biases Program
-front: Vì sao hàng trăm thiên lệch rời rạc lại có thể quy về vài quy tắc tắt duy nhất của não bộ?
-back: Chương trình nghiên cứu do Amos Tversky và Daniel Kahneman khởi xướng, cho rằng phán đoán dưới bất định dựa trên một số ít heuristic, và các thiên lệch có hệ thống chính là dấu vết để lộ ra những heuristic đó.
+front: Điều gì đã biến "con người đôi khi phi lý" từ một lời than thở thành một ngành khoa học đo được?
+back: Chương trình heuristic và thiên lệch là dòng nghiên cứu do Kahneman và Tversky khởi xướng, cho rằng phán đoán dưới bất định dựa trên một số ít quy tắc rút gọn, và chính các quy tắc ấy sinh ra những sai lệch có thể dự đoán trước.
 level: 5
 categories: [theory]
-tags: [judgment, heuristic, research]
-links: [representativeness-heuristic, availability-heuristic, anchoring, dual-process-theory]
-refs: ['https://en.wikipedia.org/wiki/Heuristics_in_judgment_and_decision-making', 'https://doi.org/10.1126/science.185.4157.1124']
-strategy: 'Khi phát hiện mình vừa mắc một thiên lệch, đừng dừng ở việc gọi tên nó — hỏi xem heuristic nào đã sinh ra nó, vì cùng một heuristic sẽ còn tái xuất ở chỗ khác.'
+tags: [judgment, kahneman-tversky, foundations]
+links: [dual-process-theory, availability-heuristic, representativeness-heuristic, attribute-substitution]
+refs: ['https://en.wikipedia.org/wiki/Heuristics_in_judgment_and_decision-making', 'https://en.wikipedia.org/wiki/Amos_Tversky']
+strategy: 'Khi phát hiện một sai lệch phán đoán lặp lại, hãy truy nó về quy tắc rút gọn đã sinh ra nó — chữa quy tắc thì sửa được cả họ lỗi, còn chữa từng lỗi thì không bao giờ hết.'
 published: true
 ---
 
-Heuristics and Biases Program là chương trình nghiên cứu do Amos Tversky và Daniel Kahneman khởi động cuối thập niên 1960 và đưa ra công chúng khoa học bằng bài báo "Judgment under Uncertainty: Heuristics and Biases" trên *Science* năm 1974. Luận điểm trung tâm: khi phải phán đoán xác suất hay tần suất, con người không tính toán mà thay câu hỏi khó bằng một câu hỏi dễ hơn, rồi trả lời câu hỏi dễ đó.
+Heuristics and biases program là tên gọi của dòng nghiên cứu do Daniel Kahneman và Amos Tversky khởi xướng từ đầu thập niên 1970, với bài báo bước ngoặt trên *Science* năm 1974. Luận điểm trung tâm gồm hai vế gắn chặt nhau. Vế thứ nhất: khi phải phán đoán xác suất hay tần suất mà không có đủ dữ liệu, con người không tính toán mà thay thế câu hỏi khó bằng một câu hỏi dễ hơn, trả lời được bằng ấn tượng trực tiếp. Vế thứ hai: vì phép thay thế ấy có cấu trúc ổn định, các sai lệch nó tạo ra cũng có cấu trúc ổn định — nghĩa là đo được, dự đoán được, và lặp lại được trong phòng thí nghiệm.
 
-Ba heuristic ban đầu được đề xuất. **Đại diện** (representativeness): đánh giá khả năng X thuộc lớp Y bằng độ giống nhau giữa X và hình mẫu điển hình của Y — nguồn gốc của việc bỏ qua tỷ lệ nền và của nghịch lý Linda. **Sẵn có** (availability): đánh giá tần suất bằng độ dễ nhớ ra ví dụ — nguồn gốc của việc phóng đại rủi ro được đưa tin nhiều. **Neo và điều chỉnh** (anchoring and adjustment): xuất phát từ một giá trị có sẵn rồi điều chỉnh, mà điều chỉnh thì luôn không đủ.
+Đây là điểm khiến chương trình này thay đổi cả một lĩnh vực. Trước đó, sai lệch trong phán đoán thường được quy cho nhiễu, cảm xúc hay thiếu động lực. Kahneman và Tversky cho thấy chúng đến từ chính cơ chế vốn hoạt động tốt trong đa số tình huống — và vì vậy chúng không biến mất khi người ta cố gắng hơn hay được trả tiền để làm đúng. Ba heuristic được mô tả đầu tiên là tính sẵn có, tính đại diện, và neo cùng điều chỉnh; về sau Kahneman khái quát chúng dưới một cơ chế chung là thay thế thuộc tính.
 
-Điểm phương pháp luận quan trọng — và cũng là điều khiến chương trình này thay đổi cả một ngành — nằm ở chữ **có hệ thống**. Nếu con người chỉ sai ngẫu nhiên quanh câu trả lời đúng, đó là nhiễu và mô hình duy lý vẫn dùng được ở mức trung bình. Nhưng Tversky và Kahneman cho thấy sai lệch có hướng, lặp lại được, và dự đoán được — nghĩa là chúng để lộ cấu trúc của cỗ máy phán đoán bên dưới. Từ đó, thiên lệch trở thành công cụ nghiên cứu chứ không phải phiền toái cần loại bỏ.
+Chương trình này là nền móng trực tiếp cho kinh tế học hành vi, cho prospect theory, và cho phần lớn thực hành nudge trong chính sách và sản phẩm. Nó cũng nhận phê phán đáng kể, và đó là phần cần được kể đủ. Gerd Gigerenzer và nhóm nghiên cứu ở Berlin lập luận rằng nhiều "thiên lệch" biến mất khi bài toán được trình bày bằng tần suất tự nhiên thay vì xác suất, và rằng gọi các quy tắc rút gọn là lỗi là đánh giá chúng bằng một chuẩn duy lý không phù hợp với môi trường thực. Thêm vào đó, khủng hoảng tái lập trong tâm lý học xã hội thập niên 2010 đã làm lung lay một số hiệu ứng ngoại vi được xây trên nền chương trình này, dù các phát hiện lõi về heuristic phán đoán nhìn chung vẫn đứng vững.
 
-Ảnh hưởng lan rất rộng: kinh tế học hành vi (Richard Thaler), luật và chính sách, y khoa lâm sàng, và toàn bộ nhánh thiết kế hành vi trong sản phẩm số. Giải Nobel Kinh tế 2002 trao cho Kahneman — Tversky đã mất năm 1996 — ghi nhận chính dòng công trình này.
+Với người làm sản phẩm và phân tích, giá trị lớn nhất của chương trình không nằm ở danh sách các thiên lệch mà ở phương pháp: coi sai lệch phán đoán như dữ liệu về cơ chế, không như bằng chứng về sự kém cỏi. Khi một nhóm khách hàng liên tục ước lượng sai rủi ro của một sản phẩm, câu hỏi hữu ích là họ đang thay thế câu hỏi nào bằng câu hỏi nào — vì câu trả lời đó chỉ ra chỗ cần đổi cách trình bày thông tin.
 
-Chương trình cũng vấp phải phản biện đáng kể và nên được đọc kèm với chúng. Gerd Gigerenzer lập luận rằng nhiều "thiên lệch" biến mất khi bài toán được trình bày bằng tần suất tự nhiên thay vì xác suất, và rằng heuristic đơn giản có thể chính xác hơn mô hình phức tạp trong môi trường phù hợp — tức là chúng là sự thích nghi chứ không phải khiếm khuyết. Cuộc khủng hoảng tái lặp trong tâm lý học những năm 2010 cũng làm lung lay một số hiệu ứng mồi nổi tiếng, dù các hiệu ứng lõi về phán đoán xác suất phần lớn vẫn đứng vững. Bản thân Kahneman về sau công khai rút lại độ tự tin ở một số chương trong *Thinking, Fast and Slow*.
-
-Chương trình này là mái nhà lý thuyết cho ba card nền: representativeness-heuristic, availability-heuristic và anchoring — chúng không phải ba hiện tượng rời rạc mà là ba biểu hiện của cùng một cơ chế thay thế câu hỏi. Nó cũng là tiền đề trực tiếp của dual-process-theory, khung phân biệt hệ thống trực giác nhanh với hệ thống phân tích chậm mà Kahneman dùng để tổ chức lại toàn bộ công trình đời mình.
+Card này là khung lý thuyết mà availability-heuristic và representativeness-heuristic là hai trường hợp cụ thể, và attribute-substitution là cơ chế khái quát hoá của chúng. Nó cùng tầng nền với dual-process-theory, vốn cung cấp kiến trúc hai hệ thống mà các heuristic này vận hành bên trong.

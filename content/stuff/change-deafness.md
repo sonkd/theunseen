@@ -1,22 +1,22 @@
 ---
 title: Change Deafness
-front: Nếu người đang nói chuyện điện thoại với bạn bị thay bằng một người khác giữa chừng, liệu bạn có nhận ra?
-back: Hiện tượng không phát hiện được một thay đổi rõ ràng trong dòng âm thanh — kể cả đổi hẳn người nói — khi chú ý đang đặt ở nội dung chứ không ở đặc tính của giọng.
+front: Người đang nói chuyện với bạn qua điện thoại bị đổi thành một người khác giữa chừng — bạn có chắc mình sẽ nhận ra?
+back: Change deafness là hiện tượng không phát hiện được một thay đổi rõ ràng trong cảnh âm thanh, kể cả khi giọng người nói bị thay hoàn toàn, nếu sự chú ý đang đặt ở nơi khác.
 level: 1
 categories: [perception]
-tags: [hearing, attention]
-links: [change-blindness, cocktail-party-effect, inattentional-blindness, modality-effect]
+tags: [hearing, attention, change-detection]
+links: [change-blindness, inattentional-blindness, cocktail-party-effect, mcgurk-effect]
 refs: ['https://en.wikipedia.org/wiki/Change_blindness', 'https://en.wikipedia.org/wiki/Auditory_scene_analysis']
-strategy: 'Đừng tin rằng người nghe sẽ tự nhận ra một thay đổi quan trọng — hãy làm nó gián đoạn dòng đang chạy, hoặc buộc họ xác nhận lại.'
+strategy: 'Đừng dựa vào việc người dùng sẽ tự nhận ra một thay đổi trong luồng thông tin — nếu thay đổi đó quan trọng, hãy buộc họ dừng lại và xác nhận nó một cách chủ động.'
 published: true
 ---
 
-Change deafness là phiên bản thính giác của mù thay đổi: một biến đổi lớn trong cảnh âm thanh diễn ra ngay trước tai người nghe mà họ không nhận ra. Trong các thí nghiệm điển hình, người tham gia nghe hai bản ghi liên tiếp của cùng một khung cảnh — tiếng quán cà phê, tiếng đường phố — với một nguồn âm bị thêm vào, bớt đi hoặc thay thế. Tỷ lệ phát hiện thấp đến mức đáng ngạc nhiên, đặc biệt khi cảnh có nhiều hơn bốn nguồn âm chồng lên nhau.
+Change deafness là phiên bản thính giác của mù thay đổi: một thành phần trong cảnh âm thanh bị thay thế hoặc biến mất, và người nghe không phát hiện ra, dù nếu được chỉ vào thì sự khác biệt hiển nhiên tới mức khó tin là mình đã bỏ sót. Hiện tượng xảy ra mạnh nhất khi thay đổi trùng với một gián đoạn — một tiếng động che lấp, một khoảng lặng, hay đơn giản là lúc người nghe đang bận xử lý việc khác.
 
-Thử nghiệm gây ấn tượng nhất là biến thể hội thoại. Một người tham gia trò chuyện qua điện thoại hoặc qua loa, và giữa chừng giọng nói được thay bằng một người hoàn toàn khác — khác cả giới tính trong một số phiên bản. Một tỷ lệ đáng kể người nghe tiếp tục cuộc trò chuyện bình thường và chỉ ngã ngửa khi được hỏi thẳng. Kết quả này gợi ý rằng hệ thính giác không lưu một bản mô tả chi tiết về nguồn âm; nó dựng một mô hình gọn nhẹ vừa đủ để bám theo nội dung, rồi cập nhật mô hình đó thay vì so sánh từng khung với khung trước.
+Các nghiên cứu từ đầu những năm 2000 của Vitevitch và của Neuhoff cùng cộng sự cho thấy quy mô của nó. Trong một thiết kế đáng nhớ, người tham gia trả lời câu hỏi qua điện thoại, và giữa cuộc gọi giọng người phỏng vấn được đổi sang một người khác hẳn. Một tỷ lệ lớn không nhận ra. Ở các thí nghiệm dùng cảnh âm thanh phức hợp — tiếng đường phố, tiếng quán ăn — người nghe thường bỏ sót việc một nguồn âm bị rút hẳn ra khỏi hỗn hợp.
 
-Điều này khớp với khung phân tích cảnh thính giác của Albert Bregman: bộ não phải nhóm những dao động hỗn độn chạm vào màng nhĩ thành các dòng riêng biệt tương ứng với từng nguồn phát. Khi một dòng đã được lập, danh tính của nó được giữ theo quán tính. Chỉ khi thay đổi đủ mạnh để phá vỡ nhóm hiện tại — một khoảng lặng, một chỗ ngắt, một sự kiện lệch hẳn khỏi dự đoán — thì mới có tín hiệu buộc phải dựng lại cảnh.
+Lý do nằm ở cách hệ thính giác tổ chức dữ liệu. Nó không lưu một bản ghi âm đầy đủ để đối chiếu, mà phân tách dòng âm thanh thành các luồng và gán nhãn ở mức khá thô: "một người đàn ông đang nói", "có nhạc nền". Miễn nhãn ấy còn đúng, hệ thống báo cáo là không có gì thay đổi. Chi tiết thấp hơn nhãn — âm sắc riêng của giọng ấy — chỉ được giữ nếu chú ý được đặt vào đó. Nói cách khác, cái ta lưu là bản tóm tắt, và việc phát hiện thay đổi phụ thuộc vào việc thay đổi có phá vỡ bản tóm tắt hay không.
 
-Trong sản phẩm, đây là lý do những thay đổi âm thầm rất nguy hiểm. Một luồng chuyển tiền đổi loại phí giữa chừng, hay một trợ lý thoại chuyển từ nhánh tự động sang nhân viên thật mà không có tín hiệu ngắt, thường trôi qua mà người dùng không đăng ký được rằng có gì đó vừa khác. Họ chỉ phát hiện ở bước cuối, khi số tiền không khớp — và lúc đó thiệt hại về niềm tin đã xảy ra. Nguyên tắc thiết kế rút ra: mọi thay đổi ngữ cảnh quan trọng phải kèm một điểm ngắt rõ ràng, chứ không chỉ một thông tin được nói thêm vào giữa dòng.
+Điều này có hệ quả nghiêm túc trong các bối cảnh dựa vào xác thực bằng giọng nói. Một tổng đài viên hay một khách hàng đang tập trung vào nội dung giao dịch có thể không nhận ra người ở đầu dây kia đã bị thay — đây là lỗ hổng mà các kịch bản lừa đảo qua điện thoại khai thác, và lý do các quy trình xác thực nghiêm túc không đặt gánh nặng phát hiện lên tri giác của con người. Ở phía sản phẩm, bài học tương tự áp dụng cho mọi thay đổi im lặng: đổi số tài khoản người thụ hưởng, đổi hạn mức, đổi điều khoản. Nếu hệ thống chỉ hiển thị trạng thái mới mà không đánh dấu rằng đã có thay đổi, phần lớn người dùng sẽ đi qua nó.
 
-Change deafness soi chiếu trực tiếp với change-blindness, và hai hiện tượng cùng chỉ ra rằng tri giác lưu ý nghĩa chứ không lưu chi tiết. Nó là mặt kia của cocktail-party-effect: cùng một bộ lọc giúp ta bám được một giọng cũng khiến ta bỏ lỡ việc giọng đó đã đổi chủ. Cùng với inattentional-blindness, nó khoanh vùng giới hạn thật của chú ý, còn modality-effect nhắc rằng thông tin qua tai và qua mắt được lưu giữ theo những cách không giống nhau.
+Card này song hành với change-blindness — cùng một giới hạn, hai giác quan khác nhau. Nó là mặt trái của cocktail-party-effect: cái giá của việc lọc mạnh một luồng là mất độ phân giải ở mọi luồng còn lại. Cùng với inattentional-blindness và mcgurk-effect, nó cho thấy tri giác đa giác quan là một bản dựng tiết kiệm, không phải một bản ghi trung thực.

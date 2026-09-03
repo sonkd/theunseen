@@ -1,22 +1,22 @@
 ---
 title: Cocktail Party Effect
-front: Giữa một căn phòng ồn ào bạn chẳng nghe rõ bàn bên nói gì, nhưng vì sao tên mình vang lên ở đó lại lọt vào tai ngay lập tức?
-back: Khả năng khoá chú ý vào một luồng âm thanh giữa nhiều luồng cạnh tranh, đồng thời vẫn để lọt qua một số tín hiệu quan trọng từ những luồng đang bị bỏ qua.
+front: Giữa một căn phòng ồn ào bạn không nghe được gì rõ ràng — vậy vì sao tên bạn được nhắc ở bàn bên vẫn lọt vào tai?
+back: Hệ thính giác có thể khoá vào một luồng âm thanh giữa nhiều luồng cạnh tranh, đồng thời vẫn giám sát các kênh bị bỏ qua đủ để phát hiện những tín hiệu nổi bật như tên riêng của chính mình.
 level: 1
 categories: [perception]
-tags: [hearing, attention]
-links: [selective-perception, inattentional-blindness, attentional-bias, self-relevance-effect]
+tags: [hearing, attention, selective-listening]
+links: [selective-perception, attentional-bias, inattentional-blindness, self-relevance-effect]
 refs: ['https://en.wikipedia.org/wiki/Cocktail_party_effect', 'https://en.wikipedia.org/wiki/Dichotic_listening']
-strategy: 'Nếu muốn một cảnh báo được nghe thấy giữa dòng thông tin dày đặc, đừng tăng âm lượng — hãy gắn nó với thứ người nhận đang quan tâm.'
+strategy: 'Khi thiết kế cảnh báo, đừng tăng âm lượng — hãy gắn nó với thứ người nhận đã coi là của mình, vì bộ lọc chú ý mở cửa cho mức liên quan chứ không mở cửa cho cường độ.'
 published: true
 ---
 
-Cocktail party effect là hiện tượng hệ thính giác tách được một giọng nói ra khỏi một mớ âm thanh chồng chéo và bám theo giọng đó, trong khi phần còn lại lùi thành nền mờ. Điều làm hiện tượng này thú vị không phải khả năng lọc, mà là chỗ rò rỉ của bộ lọc: những luồng bị bỏ qua không hề bị tắt hẳn. Tên riêng của người nghe, hoặc một từ có ý nghĩa cá nhân mạnh, vẫn xuyên qua và kéo chú ý quay lại.
+Cocktail party effect là khả năng tách một giọng nói ra khỏi một hỗn hợp âm thanh và bám theo nó, trong khi phần lớn phần còn lại bị đẩy xuống nền. Hệ thính giác làm việc này bằng nhiều manh mối cùng lúc: chênh lệch thời gian và cường độ giữa hai tai giúp định vị nguồn phát, cao độ và âm sắc giúp gom các thành phần cùng thuộc một người nói, còn nhịp điệu và ngữ pháp giúp dự đoán tiếng tiếp theo. Kết quả là một luồng nghe được dựng lên từ một mớ sóng chồng chéo.
 
-Colin Cherry đặt tên và nghiên cứu hiện tượng này năm 1953 tại Đại học Hoàng gia London, bằng kỹ thuật nghe hai tai lệch nhau: mỗi tai nhận một đoạn nói khác nhau, người tham gia được yêu cầu lặp lại theo đoạn ở tai bên trái. Kết quả cho thấy họ gần như không nhớ nội dung tai phải — không nói được nó bàn chuyện gì, thậm chí không nhận ra ngôn ngữ đã đổi. Nhưng họ vẫn phát hiện được các đặc tính vật lý thô như giọng chuyển từ nam sang nữ. Vài năm sau, Neville Moray bổ sung phát hiện quan trọng hơn: khoảng một phần ba người tham gia nghe thấy tên mình chèn vào luồng đang bị bỏ qua.
+Colin Cherry đặt tên và nghiên cứu hiện tượng này năm 1953 bằng phương pháp nghe hai tai tách biệt: người tham gia đeo tai nghe, mỗi tai nhận một đoạn nói khác nhau, và được yêu cầu nhắc lại nội dung ở một tai. Họ làm được, nhưng gần như không báo cáo được gì về nội dung tai kia — thậm chí không nhận ra ngôn ngữ đã đổi. Điều đó gợi ý một bộ lọc chặn sớm. Rồi Neville Moray năm 1959 phát hiện điểm phá vỡ: khi tên riêng của người nghe xuất hiện ở kênh bị bỏ qua, một tỷ lệ đáng kể vẫn nhận ra. Kênh ấy không bị tắt hẳn, nó chỉ bị hạ mức.
 
-Phát hiện đó châm ngòi cho một tranh luận kéo dài về vị trí của bộ lọc. Donald Broadbent cho rằng chú ý chặn sớm, ngay ở tầng đặc tính vật lý, trước khi âm thanh được hiểu nghĩa. Anne Treisman phản biện bằng mô hình suy giảm: luồng bị bỏ qua không bị chặn mà bị vặn nhỏ, nên những từ có ngưỡng kích hoạt thấp — tên mình, từ nguy hiểm — vẫn đủ sức vượt ngưỡng. Bằng chứng hiện nay nghiêng về phía lọc muộn và linh hoạt hơn là một công tắc đóng mở.
+Chính quan sát này đẩy lý thuyết chú ý từ mô hình "lọc tất hoặc không" sang mô hình suy giảm của Anne Treisman: tín hiệu ở kênh không được chú ý vẫn được xử lý ở mức yếu, và những mục có ngưỡng kích hoạt thấp — tên mình, tiếng khóc của con mình, một từ liên quan trực tiếp tới mối lo hiện tại — vẫn vượt ngưỡng. Cần nói thêm rằng tỷ lệ phát hiện tên trong các nghiên cứu lặp lại dao động đáng kể và gắn với dung lượng trí nhớ làm việc của từng người, nên đây không phải một hiệu ứng tuyệt đối.
 
-Trong thiết kế sản phẩm, đây là cơ sở giải thích vì sao chiến lược tăng cường độ thường thất bại. Một app tài chính đẩy mọi thông báo lên mức khẩn cấp sẽ nhanh chóng biến toàn bộ chúng thành tiếng ồn nền, kể cả cảnh báo giao dịch bất thường thật sự. Ngược lại, một thông báo nêu đích danh số tiền và tên người nhận vừa giao dịch lại xuyên qua được, vì nó khớp với thứ người dùng đang giữ trong đầu. Cùng một kênh, cùng một âm lượng, khác nhau ở mức liên quan cá nhân.
+Ý nghĩa thực tiễn khá trực tiếp. Trong một sản phẩm, người dùng không quét toàn bộ màn hình rồi mới quyết định đọc gì — họ hoạt động như đang ở giữa một bữa tiệc ồn ào, khoá vào nhiệm vụ chính và hạ mức mọi thứ khác. Một thông báo rủi ro đặt cạnh nút xác nhận sẽ bị hạ mức cùng phần nền. Thứ vượt qua được bộ lọc là thứ mang dấu hiệu liên quan tới chính người đó: số tiền của họ, tên người nhận họ vừa gõ, tài khoản họ đang dùng.
 
-Hiệu ứng này là phiên bản thính giác của inattentional-blindness: cả hai cho thấy dung lượng ý thức hẹp hơn nhiều so với lượng tín hiệu đi vào giác quan. Nó cũng là cơ chế nằm dưới selective-perception và attentional-bias, giải thích vì sao hai người ngồi cùng một cuộc họp lại nhớ hai cuộc họp khác nhau. Còn chỗ rò rỉ đặc trưng — tên mình — chính là biểu hiện thính giác của self-relevance-effect.
+Card này là mặt thính giác của cùng cơ chế mà inattentional-blindness mô tả ở thị giác. Nó cụ thể hoá selective-perception thành một thí nghiệm đo được, gắn với attentional-bias ở chỗ ngưỡng chú ý bị lệch bởi mối bận tâm sẵn có, và giải thích một phần vì sao self-relevance-effect lại mạnh đến vậy.
