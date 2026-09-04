@@ -162,6 +162,49 @@ OVERRIDES = {
         "divergence",
         "khuếch tán trách nhiệm: một tình huống cần giúp bị chia thành nhiều phần cho nhiều "
         "người, càng nhiều nhánh mỗi nhánh càng loãng cho tới khi không ai hành động"),
+    "cathedral-effect": (
+        "spectrum",
+        "trần thấp → trần cao là một dải liên tục, và kiểu xử lý thông tin trượt dần theo dải đó "
+        "(cụ thể → trừu tượng). hierarchy sai vì không có quan hệ cha-con nào ở đây, chỉ có một "
+        "biến độc lập kéo một biến phụ thuộc theo mức độ"),
+    "change-blindness": (
+        "beam",
+        "chú ý dồn hết vào một nhiệm vụ khiến phần còn lại của cảnh (kể cả thay đổi rõ ràng) "
+        "chìm vào tối — đúng nghĩa đen của beam, không phải quan hệ cha-con"),
+    "cheerleader-effect": (
+        "halo_spill",
+        "ấn tượng trung bình của cả nhóm lan sang cách đánh giá từng khuôn mặt riêng lẻ, khiến "
+        "khuôn mặt gốc 'ăn theo' vẻ hấp dẫn của trung bình nhóm. nested_scope sai vì đây không "
+        "phải quan hệ lồng nhau mà là một ấn tượng tràn/lan sang đánh giá lân cận"),
+    "chestertons-fence": (
+        "veil",
+        "lý do dựng hàng rào không biến mất, chỉ đang bị che khuất khỏi người muốn dỡ nó — đúng "
+        "nghĩa veil (thông tin bị che, không phải không tồn tại), không phải quan hệ cha-con"),
+    "choice-overload": (
+        "funnel",
+        "nhiều lựa chọn đổ vào nhưng số quyết định chốt được lại ít đi — hội tụ giảm dần đúng "
+        "kiểu funnel. divergence bị loại vì hướng đi ngược lại: đây là hội tụ, không phải rẽ nhánh"),
+    "choice-supportive-bias": (
+        "balance",
+        "sau khi chọn, cán cân đánh giá bị đẩy lệch thêm về phía đã chọn (khen thêm) và lệch xa "
+        "phía đã từ chối (chê thêm) — một cán cân có hướng, không phải một điểm rẽ nhiều nhánh"),
+    "circle-of-competence": (
+        "nested_scope",
+        "một lõi (điều thực sự biết rõ) nằm lọt bên trong một vùng ngoài rộng hơn (điều tưởng là "
+        "biết, hoặc không biết) — quyết định chỉ an toàn trong lõi. hierarchy sai vì không có "
+        "cấp bậc, chỉ có ranh giới bao trong-ngoài"),
+    "clustering-illusion": (
+        "echo",
+        "một chuỗi kết quả lặp lại (thắng liên tiếp) được khuếch đại thành cảm giác có quy luật "
+        "— đúng cơ chế echo (lặp lại → khuếch đại), không phải một điểm rẽ nhiều nhánh"),
+    "cognitive-dissonance": (
+        "fracture",
+        "hai mảnh lẽ ra phải khớp (niềm tin và hành động) bị lệch nhau, gây khó chịu cho tới khi "
+        "một trong hai bị chỉnh lại — đúng nghĩa fracture (bất nhất), không phải cha-con"),
+    "cognitive-load-theory": (
+        "threshold",
+        "bộ nhớ làm việc xử lý tốt cho tới một ngưỡng, vượt ngưỡng đó thì hiểu bài sụp đổ — "
+        "tipping point rõ ràng, không phải quan hệ cha-con"),
 }
 
 

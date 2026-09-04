@@ -7,6 +7,7 @@ categories: [perception]
 links: [halo-effect, cross-race-effect]
 refs: ['https://en.wikipedia.org/wiki/Cheerleader_effect', 'https://www.scientificamerican.com/article/the-cheerleader-effect/']
 strategy: "Khi đánh giá ứng viên qua ảnh nhóm (portfolio, ảnh sự kiện), chủ động xem thêm ảnh cá nhân riêng lẻ trước khi kết luận, vì bối cảnh nhóm có thể đang bóp méo ấn tượng ban đầu."
+image: /assets/stuff/cheerleader-effect.png
 published: true
 ---
 

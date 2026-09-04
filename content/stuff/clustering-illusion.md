@@ -7,6 +7,7 @@ categories: [bias]
 links: [gamblers-fallacy, hot-hand-fallacy, illusory-correlation]
 refs: ['https://en.wikipedia.org/wiki/Clustering_illusion']
 strategy: "Khi thấy một 'chuỗi' đáng chú ý trong dữ liệu (streak thắng, cụm giao dịch bất thường, nhóm khách hàng churn liên tiếp), kiểm tra bằng phép thử thống kê xem chuỗi đó có khác biệt có ý nghĩa so với nhiễu ngẫu nhiên hay không, trước khi diễn giải thành nguyên nhân."
+image: /assets/stuff/clustering-illusion.png
 published: true
 ---
 
