@@ -34,13 +34,17 @@ nhỏ hơn Thinking (81–110), mọi slot dư đều rơi vào Imagining và ba
 Với **từng** tag dưới đây, lọc `status=todo` rồi lấy **3 dòng priority thấp nhất trong chính tag đó**
 (thứ tự curated, KHÔNG đảo, KHÔNG trộn giữa các tag):
 
-| Map | tag trong `notes` | level bắt buộc | dải priority curated |
-|---|---|---|---|
-| 1 Imagining | `map:imagining` | `level: 1` | 41–70 |
-| 2 Belief | `map:belief` | `level: 2` | (chưa seed) |
-| 3 Thinking | `map:thinking` | `level: 3` | 81–110 |
-| 4 Intelligence | `map:intelligence` | `level: 4` | 121–150 |
-| 5 Knowledge | `map:knowledge` | `level: 5` | 161–190 |
+| Map | tag trong `notes` | level bắt buộc | dải priority curated (wave 1) | wave 2 (seed 2026-09-04) |
+|---|---|---|---|---|
+| 1 Imagining | `map:imagining` | `level: 1` | 41–70 | 241–270 |
+| 2 Belief | `map:belief` | `level: 2` | 201–230 | 271–300 |
+| 3 Thinking | `map:thinking` | `level: 3` | 81–110 | 301–330 |
+| 4 Intelligence | `map:intelligence` | `level: 4` | 121–150 | 331–360 |
+| 5 Knowledge | `map:knowledge` | `level: 5` | 161–190 | 361–390 |
+
+Dải priority CHỈ để sắp thứ tự curated bên trong một tag. Wave 2 luôn có số lớn hơn wave 1
+của cùng map, nên "lấy 3 priority thấp nhất trong tag" tự động vét cạn wave 1 trước.
+**Không bao giờ so priority giữa hai map khác nhau.**
 
 ### 2.2 — Khi một map cạn backlog
 
