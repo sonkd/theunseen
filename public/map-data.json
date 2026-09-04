@@ -32,56 +32,56 @@
           "y": 0.36363636363636365
         },
         {
-          "slug": "figure-ground-perception",
-          "title": "Figure-Ground Perception",
+          "slug": "ebbinghaus-illusion",
+          "title": "Ebbinghaus Illusion",
           "icon": "☀︎",
           "zone": 0,
           "x": 0.12121212121212122,
           "y": 0.5454545454545454
         },
         {
-          "slug": "law-of-closure",
-          "title": "Law of Closure",
+          "slug": "kanizsa-triangle",
+          "title": "Kanizsa Triangle",
           "icon": "☀︎",
           "zone": 0,
           "x": 0.15151515151515152,
           "y": 0.2727272727272727
         },
         {
-          "slug": "moon-illusion",
-          "title": "Moon Illusion",
+          "slug": "mcgurk-effect",
+          "title": "McGurk Effect",
           "icon": "☀︎",
           "zone": 0,
           "x": 0.18181818181818182,
           "y": 0.45454545454545453
         },
         {
-          "slug": "phi-phenomenon",
-          "title": "Phi Phenomenon",
+          "slug": "muller-lyer-illusion",
+          "title": "Müller-Lyer Illusion",
           "icon": "☀︎",
           "zone": 0,
           "x": 0.21212121212121213,
           "y": 0.36363636363636365
         },
         {
-          "slug": "semantic-priming",
-          "title": "Semantic Priming",
+          "slug": "rubber-hand-illusion",
+          "title": "Rubber Hand Illusion",
           "icon": "☀︎",
           "zone": 0,
           "x": 0.24242424242424243,
           "y": 0.5454545454545454
         },
         {
-          "slug": "subliminal-priming",
-          "title": "Subliminal Priming",
+          "slug": "stroop-effect",
+          "title": "Stroop Effect",
           "icon": "☀︎",
           "zone": 0,
           "x": 0.2727272727272727,
           "y": 0.36363636363636365
         },
         {
-          "slug": "troxler-effect",
-          "title": "Troxler Effect",
+          "slug": "thatcher-effect",
+          "title": "Thatcher Effect",
           "icon": "☀︎",
           "zone": 0,
           "x": 0.30303030303030304,
@@ -112,56 +112,56 @@
           "y": 0.45454545454545453
         },
         {
-          "slug": "flash-lag-effect",
-          "title": "Flash-Lag Effect",
+          "slug": "figure-ground-perception",
+          "title": "Figure-Ground Perception",
           "icon": "☀︎",
           "zone": 1,
           "x": 0.45454545454545453,
           "y": 0.5454545454545454
         },
         {
-          "slug": "mccollough-effect",
-          "title": "McCollough Effect",
+          "slug": "law-of-closure",
+          "title": "Law of Closure",
           "icon": "☀︎",
           "zone": 1,
           "x": 0.48484848484848486,
           "y": 0.2727272727272727
         },
         {
-          "slug": "motion-aftereffect",
-          "title": "Motion Aftereffect",
+          "slug": "moon-illusion",
+          "title": "Moon Illusion",
           "icon": "☀︎",
           "zone": 1,
           "x": 0.5151515151515151,
           "y": 0.45454545454545453
         },
         {
-          "slug": "ponzo-illusion",
-          "title": "Ponzo Illusion",
+          "slug": "phi-phenomenon",
+          "title": "Phi Phenomenon",
           "icon": "☀︎",
           "zone": 1,
           "x": 0.5454545454545454,
           "y": 0.36363636363636365
         },
         {
-          "slug": "size-constancy",
-          "title": "Size Constancy",
+          "slug": "semantic-priming",
+          "title": "Semantic Priming",
           "icon": "☀︎",
           "zone": 1,
           "x": 0.5757575757575758,
           "y": 0.5454545454545454
         },
         {
-          "slug": "synesthesia",
-          "title": "Synesthesia",
+          "slug": "subliminal-priming",
+          "title": "Subliminal Priming",
           "icon": "☀︎",
           "zone": 1,
           "x": 0.6060606060606061,
           "y": 0.36363636363636365
         },
         {
-          "slug": "uncanny-valley",
-          "title": "Uncanny Valley",
+          "slug": "troxler-effect",
+          "title": "Troxler Effect",
           "icon": "☀︎",
           "zone": 1,
           "x": 0.6363636363636364,
@@ -184,60 +184,68 @@
           "y": 0.6363636363636364
         },
         {
-          "slug": "ebbinghaus-illusion",
-          "title": "Ebbinghaus Illusion",
+          "slug": "cutaneous-rabbit-illusion",
+          "title": "Cutaneous Rabbit Illusion",
           "icon": "☀︎",
           "zone": 2,
           "x": 0.7575757575757576,
           "y": 0.36363636363636365
         },
         {
-          "slug": "kanizsa-triangle",
-          "title": "Kanizsa Triangle",
+          "slug": "flash-lag-effect",
+          "title": "Flash-Lag Effect",
           "icon": "☀︎",
           "zone": 2,
           "x": 0.7878787878787878,
           "y": 0.5454545454545454
         },
         {
-          "slug": "mcgurk-effect",
-          "title": "McGurk Effect",
+          "slug": "mccollough-effect",
+          "title": "McCollough Effect",
           "icon": "☀︎",
           "zone": 2,
           "x": 0.8181818181818182,
           "y": 0.2727272727272727
         },
         {
-          "slug": "muller-lyer-illusion",
-          "title": "Müller-Lyer Illusion",
+          "slug": "motion-aftereffect",
+          "title": "Motion Aftereffect",
           "icon": "☀︎",
           "zone": 2,
           "x": 0.8484848484848485,
           "y": 0.45454545454545453
         },
         {
-          "slug": "rubber-hand-illusion",
-          "title": "Rubber Hand Illusion",
+          "slug": "ponzo-illusion",
+          "title": "Ponzo Illusion",
           "icon": "☀︎",
           "zone": 2,
           "x": 0.8787878787878788,
           "y": 0.2727272727272727
         },
         {
-          "slug": "stroop-effect",
-          "title": "Stroop Effect",
+          "slug": "size-constancy",
+          "title": "Size Constancy",
           "icon": "☀︎",
           "zone": 2,
           "x": 0.9090909090909091,
           "y": 0.5454545454545454
         },
         {
-          "slug": "thatcher-effect",
-          "title": "Thatcher Effect",
+          "slug": "synesthesia",
+          "title": "Synesthesia",
           "icon": "☀︎",
           "zone": 2,
           "x": 0.9393939393939394,
           "y": 0.36363636363636365
+        },
+        {
+          "slug": "uncanny-valley",
+          "title": "Uncanny Valley",
+          "icon": "☀︎",
+          "zone": 2,
+          "x": 0.9696969696969697,
+          "y": 0.6363636363636364
         }
       ]
     },
@@ -253,7 +261,7 @@
           "title": "Abilene paradox",
           "icon": "☯︎",
           "zone": 0,
-          "x": 0.0044444444444444444,
+          "x": 0.0043859649122807015,
           "y": 0.45454545454545453
         },
         {
@@ -261,7 +269,7 @@
           "title": "Affect Heuristic",
           "icon": "◆",
           "zone": 0,
-          "x": 0.008888888888888889,
+          "x": 0.008771929824561403,
           "y": 0.6363636363636364
         },
         {
@@ -269,7 +277,7 @@
           "title": "Anchoring",
           "icon": "●",
           "zone": 0,
-          "x": 0.013333333333333334,
+          "x": 0.013157894736842105,
           "y": 0.45454545454545453
         },
         {
@@ -277,7 +285,7 @@
           "title": "Appeal to novelty",
           "icon": "✱",
           "zone": 0,
-          "x": 0.017777777777777778,
+          "x": 0.017543859649122806,
           "y": 0.6363636363636364
         },
         {
@@ -285,7 +293,7 @@
           "title": "Armchair fallacy",
           "icon": "▲",
           "zone": 0,
-          "x": 0.022222222222222223,
+          "x": 0.021929824561403508,
           "y": 0.45454545454545453
         },
         {
@@ -293,7 +301,7 @@
           "title": "Authority bias",
           "icon": "▲",
           "zone": 0,
-          "x": 0.02666666666666667,
+          "x": 0.02631578947368421,
           "y": 0.6363636363636364
         },
         {
@@ -301,7 +309,7 @@
           "title": "Availability heuristic",
           "icon": "◆",
           "zone": 0,
-          "x": 0.03111111111111111,
+          "x": 0.03070175438596491,
           "y": 0.45454545454545453
         },
         {
@@ -309,543 +317,551 @@
           "title": "Barnum effect",
           "icon": "▲",
           "zone": 0,
-          "x": 0.035555555555555556,
+          "x": 0.03508771929824561,
           "y": 0.6363636363636364
         },
         {
-          "slug": "bias-blind-spot",
-          "title": "Bias blind spot",
+          "slug": "ben-franklin-effect",
+          "title": "Ben Franklin Effect",
           "icon": "▲",
           "zone": 0,
-          "x": 0.04,
+          "x": 0.039473684210526314,
           "y": 0.36363636363636365
         },
         {
-          "slug": "bystander-effect",
-          "title": "Bystander Effect",
-          "icon": "☯︎",
-          "zone": 0,
-          "x": 0.044444444444444446,
-          "y": 0.6363636363636364
-        },
-        {
-          "slug": "change-blindness",
-          "title": "Change blindness",
-          "icon": "☀︎",
-          "zone": 0,
-          "x": 0.04888888888888889,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "choice-overload",
-          "title": "Choice Overload",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.05333333333333334,
-          "y": 0.6363636363636364
-        },
-        {
-          "slug": "compromise-effect",
-          "title": "Compromise Effect",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.057777777777777775,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "congruence-bias",
-          "title": "Congruence bias",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.06222222222222222,
-          "y": 0.6363636363636364
-        },
-        {
-          "slug": "continued-influence-effect",
-          "title": "Continued influence effect",
-          "icon": "☾",
-          "zone": 0,
-          "x": 0.06666666666666667,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "cryptomnesia",
-          "title": "Cryptomnesia",
-          "icon": "☾",
-          "zone": 0,
-          "x": 0.07111111111111111,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "decision-fatigue",
-          "title": "Decision Fatigue",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.07555555555555556,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "default-effect",
-          "title": "Default Effect",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.08,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "diffusion-of-responsibility",
-          "title": "Diffusion of Responsibility",
-          "icon": "☯︎",
-          "zone": 0,
-          "x": 0.08444444444444445,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "door-in-the-face-technique",
-          "title": "Door-in-the-Face Technique",
-          "icon": "☯︎",
-          "zone": 0,
-          "x": 0.08888888888888889,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "effort-justification",
-          "title": "Effort justification",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.09333333333333334,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "endowment-effect",
-          "title": "Endowment effect",
+          "slug": "bucket-error",
+          "title": "Bucket error",
           "icon": "●",
           "zone": 0,
-          "x": 0.09777777777777778,
-          "y": 0.5454545454545454
+          "x": 0.043859649122807015,
+          "y": 0.6363636363636364
         },
         {
-          "slug": "extension-neglect",
-          "title": "Extension neglect",
+          "slug": "certainty-effect",
+          "title": "Certainty Effect",
           "icon": "▲",
           "zone": 0,
-          "x": 0.10222222222222223,
+          "x": 0.04824561403508772,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "chestertons-fence",
+          "title": "Chesterton's fence",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.05263157894736842,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "clustering-illusion",
+          "title": "Clustering illusion",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.05701754385964912,
           "y": 0.36363636363636365
         },
         {
-          "slug": "false-consensus-effect",
-          "title": "False consensus effect",
+          "slug": "confirmation-bias",
+          "title": "Confirmation bias",
           "icon": "▲",
           "zone": 0,
-          "x": 0.10666666666666667,
+          "x": 0.06140350877192982,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "conservatism",
+          "title": "Conservatism",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.06578947368421052,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "cross-race-effect",
+          "title": "Cross-race effect",
+          "icon": "☀︎",
+          "zone": 0,
+          "x": 0.07017543859649122,
           "y": 0.5454545454545454
         },
         {
-          "slug": "framing-effect",
-          "title": "Framing effect",
+          "slug": "curse-of-knowledge",
+          "title": "Curse of knowledge",
           "icon": "▲",
           "zone": 0,
-          "x": 0.1111111111111111,
+          "x": 0.07456140350877193,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "decoy-effect",
+          "title": "Decoy effect",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.07894736842105263,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "deindividuation",
+          "title": "Deindividuation",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.08333333333333333,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "disposition-effect",
+          "title": "Disposition effect",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.08771929824561403,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "dunning-kruger-effect",
+          "title": "Dunning-Kruger effect",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.09210526315789473,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "egocentric-bias",
+          "title": "Egocentric bias",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.09649122807017543,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "escalation-of-commitment",
+          "title": "Escalation of commitment",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.10087719298245613,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "extrinsic-incentive-error",
+          "title": "Extrinsic incentive error",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.10526315789473684,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "focalism",
+          "title": "Focalism",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.10964912280701754,
           "y": 0.2727272727272727
         },
         {
-          "slug": "fundamental-attribution-error",
-          "title": "Fundamental attribution error",
+          "slug": "frequency-illusion",
+          "title": "Frequency illusion",
           "icon": "▲",
           "zone": 0,
-          "x": 0.11555555555555555,
+          "x": 0.11403508771929824,
           "y": 0.5454545454545454
+        },
+        {
+          "slug": "gamblers-fallacy",
+          "title": "Gambler's fallacy",
+          "icon": "✱",
+          "zone": 0,
+          "x": 0.11842105263157894,
+          "y": 0.36363636363636365
         },
         {
           "slug": "goodharts-law",
           "title": "Goodhart's law",
           "icon": "✦",
           "zone": 0,
-          "x": 0.12,
-          "y": 0.36363636363636365
+          "x": 0.12280701754385964,
+          "y": 0.5454545454545454
         },
         {
           "slug": "groupthink",
           "title": "Groupthink",
           "icon": "☯︎",
           "zone": 0,
-          "x": 0.12444444444444444,
-          "y": 0.5454545454545454
+          "x": 0.12719298245614036,
+          "y": 0.2727272727272727
         },
         {
           "slug": "hard-easy-effect",
           "title": "Hard-easy effect",
           "icon": "▲",
           "zone": 0,
-          "x": 0.1288888888888889,
-          "y": 0.2727272727272727
+          "x": 0.13157894736842105,
+          "y": 0.5454545454545454
         },
         {
           "slug": "horn-effect",
           "title": "Horn Effect",
           "icon": "▲",
           "zone": 0,
-          "x": 0.13333333333333333,
-          "y": 0.5454545454545454
+          "x": 0.13596491228070176,
+          "y": 0.36363636363636365
         },
         {
           "slug": "hyperbolic-discounting",
           "title": "Hyperbolic discounting",
           "icon": "▲",
           "zone": 0,
-          "x": 0.13777777777777778,
-          "y": 0.36363636363636365
+          "x": 0.14035087719298245,
+          "y": 0.5454545454545454
         },
         {
           "slug": "illusion-of-asymmetric-insight",
           "title": "Illusion of asymmetric insight",
           "icon": "▲",
           "zone": 0,
-          "x": 0.14222222222222222,
-          "y": 0.5454545454545454
+          "x": 0.14473684210526316,
+          "y": 0.2727272727272727
         },
         {
           "slug": "illusion-of-external-agency",
           "title": "Illusion of external agency",
           "icon": "▲",
           "zone": 0,
-          "x": 0.14666666666666667,
-          "y": 0.2727272727272727
+          "x": 0.14912280701754385,
+          "y": 0.5454545454545454
         },
         {
           "slug": "illusory-correlation",
           "title": "Illusory correlation",
           "icon": "✱",
           "zone": 0,
-          "x": 0.1511111111111111,
-          "y": 0.5454545454545454
+          "x": 0.15350877192982457,
+          "y": 0.2727272727272727
         },
         {
           "slug": "immune-neglect",
           "title": "Immune neglect",
           "icon": "●",
           "zone": 0,
-          "x": 0.15555555555555556,
-          "y": 0.2727272727272727
+          "x": 0.15789473684210525,
+          "y": 0.45454545454545453
         },
         {
           "slug": "in-group-bias",
           "title": "In-group bias",
           "icon": "●",
           "zone": 0,
-          "x": 0.16,
-          "y": 0.45454545454545453
+          "x": 0.16228070175438597,
+          "y": 0.2727272727272727
         },
         {
           "slug": "insensitivity-to-sample-size",
           "title": "Insensitivity to sample size",
           "icon": "●",
           "zone": 0,
-          "x": 0.16444444444444445,
-          "y": 0.2727272727272727
+          "x": 0.16666666666666666,
+          "y": 0.45454545454545453
         },
         {
           "slug": "law-of-narrative-gravity",
           "title": "Law of narrative gravity",
           "icon": "●",
           "zone": 0,
-          "x": 0.1688888888888889,
-          "y": 0.45454545454545453
+          "x": 0.17105263157894737,
+          "y": 0.2727272727272727
         },
         {
           "slug": "less-is-better-effect",
           "title": "Less-is-better effect",
           "icon": "▲",
           "zone": 0,
-          "x": 0.17333333333333334,
-          "y": 0.2727272727272727
+          "x": 0.17543859649122806,
+          "y": 0.5454545454545454
         },
         {
           "slug": "loss-aversion",
           "title": "Loss aversion",
           "icon": "▲",
           "zone": 0,
-          "x": 0.17777777777777778,
-          "y": 0.45454545454545453
+          "x": 0.17982456140350878,
+          "y": 0.2727272727272727
         },
         {
           "slug": "memory-inhibition",
           "title": "Memory inhibition",
           "icon": "☾",
           "zone": 0,
-          "x": 0.18222222222222223,
-          "y": 0.2727272727272727
+          "x": 0.18421052631578946,
+          "y": 0.5454545454545454
         },
         {
           "slug": "misattribution-of-memory",
           "title": "Misattribution of memory",
           "icon": "☾",
           "zone": 0,
-          "x": 0.18666666666666668,
-          "y": 0.5454545454545454
+          "x": 0.18859649122807018,
+          "y": 0.2727272727272727
         },
         {
           "slug": "money-illusion",
           "title": "Money illusion",
           "icon": "▲",
           "zone": 0,
-          "x": 0.19111111111111112,
-          "y": 0.2727272727272727
+          "x": 0.19298245614035087,
+          "y": 0.5454545454545454
         },
         {
           "slug": "naive-cynicism",
           "title": "Naïve cynicism",
           "icon": "▲",
           "zone": 0,
-          "x": 0.19555555555555557,
-          "y": 0.45454545454545453
+          "x": 0.19736842105263158,
+          "y": 0.2727272727272727
         },
         {
           "slug": "neglect-of-probability",
           "title": "Neglect of probability",
           "icon": "▲",
           "zone": 0,
-          "x": 0.2,
-          "y": 0.2727272727272727
+          "x": 0.20175438596491227,
+          "y": 0.5454545454545454
         },
         {
           "slug": "not-invented-here",
           "title": "Not invented here",
           "icon": "▲",
           "zone": 0,
-          "x": 0.20444444444444446,
-          "y": 0.5454545454545454
+          "x": 0.20614035087719298,
+          "y": 0.36363636363636365
         },
         {
           "slug": "omission-bias",
           "title": "Omission bias",
           "icon": "▲",
           "zone": 0,
-          "x": 0.2088888888888889,
-          "y": 0.36363636363636365
+          "x": 0.21052631578947367,
+          "y": 0.5454545454545454
         },
         {
           "slug": "out-group-homogeneity-bias",
           "title": "Out-group homogeneity bias",
           "icon": "▲",
           "zone": 0,
-          "x": 0.21333333333333335,
-          "y": 0.5454545454545454
+          "x": 0.2149122807017544,
+          "y": 0.2727272727272727
         },
         {
           "slug": "overjustification-effect",
           "title": "Overjustification Effect",
           "icon": "▲",
           "zone": 0,
-          "x": 0.21777777777777776,
-          "y": 0.2727272727272727
+          "x": 0.21929824561403508,
+          "y": 0.5454545454545454
         },
         {
           "slug": "pareto-principle",
           "title": "Pareto Principle",
           "icon": "●",
           "zone": 0,
-          "x": 0.2222222222222222,
-          "y": 0.5454545454545454
+          "x": 0.2236842105263158,
+          "y": 0.36363636363636365
         },
         {
           "slug": "peak-end-rule",
           "title": "Peak–end rule",
           "icon": "●",
           "zone": 0,
-          "x": 0.22666666666666666,
-          "y": 0.36363636363636365
+          "x": 0.22807017543859648,
+          "y": 0.5454545454545454
         },
         {
           "slug": "picture-superiority-effect",
           "title": "Picture superiority effect",
           "icon": "☾",
           "zone": 0,
-          "x": 0.2311111111111111,
-          "y": 0.5454545454545454
+          "x": 0.2324561403508772,
+          "y": 0.2727272727272727
         },
         {
           "slug": "pluralistic-ignorance",
           "title": "Pluralistic Ignorance",
           "icon": "☯︎",
           "zone": 0,
-          "x": 0.23555555555555555,
-          "y": 0.36363636363636365
+          "x": 0.23684210526315788,
+          "y": 0.5454545454545454
         },
         {
           "slug": "prejudice",
           "title": "Prejudice",
           "icon": "☯︎",
           "zone": 0,
-          "x": 0.24,
-          "y": 0.5454545454545454
+          "x": 0.2412280701754386,
+          "y": 0.36363636363636365
         },
         {
           "slug": "processing-fluency",
           "title": "Processing Fluency",
           "icon": "◆",
           "zone": 0,
-          "x": 0.24444444444444444,
-          "y": 0.36363636363636365
+          "x": 0.24561403508771928,
+          "y": 0.5454545454545454
         },
         {
           "slug": "publication-bias",
           "title": "Publication bias",
           "icon": "▲",
           "zone": 0,
-          "x": 0.24888888888888888,
-          "y": 0.5454545454545454
+          "x": 0.25,
+          "y": 0.36363636363636365
         },
         {
           "slug": "reactive-devaluation",
           "title": "Reactive devaluation",
           "icon": "●",
           "zone": 0,
-          "x": 0.25333333333333335,
-          "y": 0.36363636363636365
+          "x": 0.2543859649122807,
+          "y": 0.5454545454545454
         },
         {
           "slug": "reciprocity-bias",
           "title": "Reciprocity Bias",
           "icon": "▲",
           "zone": 0,
-          "x": 0.2577777777777778,
-          "y": 0.5454545454545454
+          "x": 0.25877192982456143,
+          "y": 0.36363636363636365
         },
         {
           "slug": "restraint-bias",
           "title": "Restraint bias",
           "icon": "▲",
           "zone": 0,
-          "x": 0.26222222222222225,
-          "y": 0.45454545454545453
+          "x": 0.2631578947368421,
+          "y": 0.6363636363636364
         },
         {
           "slug": "rosy-retrospection",
           "title": "Rosy retrospection",
           "icon": "▲",
           "zone": 0,
-          "x": 0.26666666666666666,
-          "y": 0.6363636363636364
+          "x": 0.2675438596491228,
+          "y": 0.36363636363636365
         },
         {
           "slug": "selective-perception",
           "title": "Selective perception",
           "icon": "▲",
           "zone": 0,
-          "x": 0.27111111111111114,
-          "y": 0.36363636363636365
+          "x": 0.2719298245614035,
+          "y": 0.6363636363636364
         },
         {
           "slug": "self-licensing",
           "title": "Self-licensing",
           "icon": "▲",
           "zone": 0,
-          "x": 0.27555555555555555,
-          "y": 0.6363636363636364
+          "x": 0.27631578947368424,
+          "y": 0.45454545454545453
         },
         {
           "slug": "semmelweis-reflex",
           "title": "Semmelweis reflex",
           "icon": "▲",
           "zone": 0,
-          "x": 0.28,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "social-comparison-bias",
-          "title": "Social comparison bias",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.28444444444444444,
+          "x": 0.2807017543859649,
           "y": 0.6363636363636364
         },
         {
-          "slug": "source-confusion",
-          "title": "Source confusion",
+          "slug": "shared-information-bias",
+          "title": "Shared Information Bias",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.2850877192982456,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "social-loafing",
+          "title": "Social Loafing",
+          "icon": "☯︎",
+          "zone": 0,
+          "x": 0.2894736842105263,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "spotlight-effect",
+          "title": "Spotlight effect",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.29385964912280704,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "streisand-effect",
+          "title": "Streisand Effect",
+          "icon": "☯︎",
+          "zone": 0,
+          "x": 0.2982456140350877,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "suggestibility",
+          "title": "Suggestibility",
           "icon": "☾",
           "zone": 0,
-          "x": 0.28888888888888886,
+          "x": 0.3026315789473684,
           "y": 0.45454545454545453
         },
         {
-          "slug": "status-quo-bias",
-          "title": "Status quo bias",
+          "slug": "swimmers-body-illusion",
+          "title": "Swimmer's body illusion",
           "icon": "▲",
           "zone": 0,
-          "x": 0.29333333333333333,
+          "x": 0.30701754385964913,
           "y": 0.6363636363636364
         },
         {
-          "slug": "subadditivity-effect",
-          "title": "Subadditivity effect",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.29777777777777775,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "sunk-cost-fallacy",
-          "title": "Sunk cost fallacy",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.3022222222222222,
-          "y": 0.6363636363636364
-        },
-        {
-          "slug": "system-justification",
-          "title": "System justification",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.30666666666666664,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "third-person-effect",
-          "title": "Third-person effect",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.3111111111111111,
-          "y": 0.6363636363636364
-        },
-        {
-          "slug": "tip-of-the-tongue-phenomenon",
-          "title": "Tip of the tongue phenomenon",
+          "slug": "testing-effect",
+          "title": "Testing effect",
           "icon": "☾",
           "zone": 0,
-          "x": 0.31555555555555553,
+          "x": 0.31140350877192985,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "time-saving-bias",
+          "title": "Time-saving bias",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.3157894736842105,
+          "y": 0.7272727272727273
+        },
+        {
+          "slug": "ultimate-attribution-error",
+          "title": "Ultimate attribution error",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.3201754385964912,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "weber-fechner-law",
+          "title": "Weber–Fechner law",
+          "icon": "☀︎",
+          "zone": 0,
+          "x": 0.32456140350877194,
+          "y": 0.7272727272727273
+        },
+        {
+          "slug": "zero-price-effect",
+          "title": "Zero-Price Effect",
+          "icon": "▲",
+          "zone": 0,
+          "x": 0.32894736842105265,
           "y": 0.5454545454545454
-        },
-        {
-          "slug": "unit-bias",
-          "title": "Unit bias",
-          "icon": "◆",
-          "zone": 0,
-          "x": 0.32,
-          "y": 0.7272727272727273
-        },
-        {
-          "slug": "well-traveled-road-effect",
-          "title": "Well-traveled road effect",
-          "icon": "◆",
-          "zone": 0,
-          "x": 0.3244444444444444,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "zero-risk-bias",
-          "title": "Zero-risk bias",
-          "icon": "▲",
-          "zone": 0,
-          "x": 0.3288888888888889,
-          "y": 0.7272727272727273
         },
         {
           "slug": "action-bias",
           "title": "Action Bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.3377777777777778,
+          "x": 0.33771929824561403,
           "y": 0.45454545454545453
         },
         {
@@ -853,7 +869,7 @@
           "title": "Affective forecasting",
           "icon": "▲",
           "zone": 1,
-          "x": 0.3422222222222222,
+          "x": 0.34210526315789475,
           "y": 0.7272727272727273
         },
         {
@@ -861,7 +877,7 @@
           "title": "Anthropomorphism",
           "icon": "▲",
           "zone": 1,
-          "x": 0.3466666666666667,
+          "x": 0.34649122807017546,
           "y": 0.5454545454545454
         },
         {
@@ -869,7 +885,7 @@
           "title": "Appeal to probability fallacy",
           "icon": "✱",
           "zone": 1,
-          "x": 0.3511111111111111,
+          "x": 0.3508771929824561,
           "y": 0.7272727272727273
         },
         {
@@ -877,7 +893,7 @@
           "title": "Attentional bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.35555555555555557,
+          "x": 0.35526315789473684,
           "y": 0.45454545454545453
         },
         {
@@ -885,7 +901,7 @@
           "title": "Automation bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.36,
+          "x": 0.35964912280701755,
           "y": 0.7272727272727273
         },
         {
@@ -893,7 +909,7 @@
           "title": "Backfire effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.36444444444444446,
+          "x": 0.36403508771929827,
           "y": 0.5454545454545454
         },
         {
@@ -901,543 +917,551 @@
           "title": "Base rate fallacy",
           "icon": "✱",
           "zone": 1,
-          "x": 0.3688888888888889,
+          "x": 0.3684210526315789,
           "y": 0.7272727272727273
         },
         {
-          "slug": "bizarreness-effect",
-          "title": "Bizarreness effect",
-          "icon": "☾",
+          "slug": "bias-blind-spot",
+          "title": "Bias blind spot",
+          "icon": "▲",
           "zone": 1,
-          "x": 0.37333333333333335,
+          "x": 0.37280701754385964,
           "y": 0.45454545454545453
         },
         {
-          "slug": "cathedral-effect",
-          "title": "Cathedral effect",
-          "icon": "●",
+          "slug": "bystander-effect",
+          "title": "Bystander Effect",
+          "icon": "☯︎",
           "zone": 1,
-          "x": 0.37777777777777777,
+          "x": 0.37719298245614036,
           "y": 0.6363636363636364
         },
         {
-          "slug": "cheerleader-effect",
-          "title": "Cheerleader effect",
+          "slug": "change-blindness",
+          "title": "Change blindness",
           "icon": "☀︎",
           "zone": 1,
-          "x": 0.38222222222222224,
+          "x": 0.3815789473684211,
           "y": 0.45454545454545453
         },
         {
-          "slug": "choice-supportive-bias",
-          "title": "Choice-supportive bias",
+          "slug": "choice-overload",
+          "title": "Choice Overload",
           "icon": "▲",
           "zone": 1,
-          "x": 0.38666666666666666,
+          "x": 0.38596491228070173,
           "y": 0.6363636363636364
         },
         {
-          "slug": "confabulation",
-          "title": "Confabulation",
+          "slug": "compromise-effect",
+          "title": "Compromise Effect",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.39035087719298245,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "congruence-bias",
+          "title": "Congruence bias",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.39473684210526316,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "continued-influence-effect",
+          "title": "Continued influence effect",
           "icon": "☾",
           "zone": 1,
-          "x": 0.39111111111111113,
+          "x": 0.3991228070175439,
           "y": 0.45454545454545453
         },
         {
-          "slug": "conjunction-fallacy",
-          "title": "Conjunction fallacy",
-          "icon": "✱",
-          "zone": 1,
-          "x": 0.39555555555555555,
-          "y": 0.6363636363636364
-        },
-        {
-          "slug": "contrast-effect",
-          "title": "Contrast effect",
-          "icon": "☀︎",
-          "zone": 1,
-          "x": 0.4,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "cue-dependent-forgetting",
-          "title": "Cue-dependent forgetting",
+          "slug": "cryptomnesia",
+          "title": "Cryptomnesia",
           "icon": "☾",
           "zone": 1,
-          "x": 0.40444444444444444,
+          "x": 0.40350877192982454,
           "y": 0.6363636363636364
         },
         {
-          "slug": "declinism",
-          "title": "Declinism",
+          "slug": "decision-fatigue",
+          "title": "Decision Fatigue",
           "icon": "▲",
           "zone": 1,
-          "x": 0.4088888888888889,
+          "x": 0.40789473684210525,
           "y": 0.36363636363636365
         },
         {
-          "slug": "defensive-attribution-hypothesis",
-          "title": "Defensive attribution hypothesis",
+          "slug": "default-effect",
+          "title": "Default Effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.41333333333333333,
+          "x": 0.41228070175438597,
           "y": 0.5454545454545454
         },
         {
-          "slug": "disposition-effect",
-          "title": "Disposition effect",
+          "slug": "denomination-effect",
+          "title": "Denomination effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.4177777777777778,
+          "x": 0.4166666666666667,
           "y": 0.36363636363636365
         },
         {
-          "slug": "dunning-kruger-effect",
-          "title": "Dunning-Kruger effect",
+          "slug": "distinction-bias",
+          "title": "Distinction bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.4222222222222222,
+          "x": 0.42105263157894735,
           "y": 0.5454545454545454
         },
         {
-          "slug": "egocentric-bias",
-          "title": "Egocentric bias",
+          "slug": "duration-neglect",
+          "title": "Duration neglect",
+          "icon": "☾",
+          "zone": 1,
+          "x": 0.42543859649122806,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "empathy-gap",
+          "title": "Empathy gap",
           "icon": "●",
           "zone": 1,
-          "x": 0.4266666666666667,
-          "y": 0.36363636363636365
+          "x": 0.4298245614035088,
+          "y": 0.5454545454545454
         },
         {
-          "slug": "escalation-of-commitment",
-          "title": "Escalation of commitment",
+          "slug": "essentialism",
+          "title": "Essentialism",
           "icon": "●",
           "zone": 1,
-          "x": 0.4311111111111111,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "extrinsic-incentive-error",
-          "title": "Extrinsic incentive error",
-          "icon": "▲",
-          "zone": 1,
-          "x": 0.43555555555555553,
+          "x": 0.4342105263157895,
           "y": 0.36363636363636365
         },
         {
-          "slug": "focalism",
-          "title": "Focalism",
-          "icon": "▲",
+          "slug": "fading-affect-bias",
+          "title": "Fading affect bias",
+          "icon": "☾",
           "zone": 1,
-          "x": 0.44,
+          "x": 0.43859649122807015,
           "y": 0.5454545454545454
         },
         {
-          "slug": "frequency-illusion",
-          "title": "Frequency illusion",
-          "icon": "▲",
+          "slug": "foot-in-the-door-technique",
+          "title": "Foot-in-the-Door Technique",
+          "icon": "☯︎",
           "zone": 1,
-          "x": 0.4444444444444444,
+          "x": 0.44298245614035087,
           "y": 0.2727272727272727
         },
         {
-          "slug": "gamblers-fallacy",
-          "title": "Gambler's fallacy",
-          "icon": "✱",
+          "slug": "functional-fixedness",
+          "title": "Functional fixedness",
+          "icon": "●",
           "zone": 1,
-          "x": 0.4488888888888889,
+          "x": 0.4473684210526316,
           "y": 0.5454545454545454
+        },
+        {
+          "slug": "generation-effect",
+          "title": "Generation effect",
+          "icon": "☾",
+          "zone": 1,
+          "x": 0.4517543859649123,
+          "y": 0.36363636363636365
         },
         {
           "slug": "group-attribution-error",
           "title": "Group attribution error",
           "icon": "▲",
           "zone": 1,
-          "x": 0.4533333333333333,
-          "y": 0.36363636363636365
+          "x": 0.45614035087719296,
+          "y": 0.5454545454545454
         },
         {
           "slug": "halo-effect",
           "title": "Halo effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.4577777777777778,
-          "y": 0.45454545454545453
+          "x": 0.4605263157894737,
+          "y": 0.2727272727272727
         },
         {
           "slug": "hawthorne-effect",
           "title": "Hawthorne Effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.4622222222222222,
-          "y": 0.2727272727272727
+          "x": 0.4649122807017544,
+          "y": 0.45454545454545453
         },
         {
           "slug": "hot-hand-fallacy",
           "title": "Hot-hand fallacy",
           "icon": "✱",
           "zone": 1,
-          "x": 0.4666666666666667,
-          "y": 0.45454545454545453
+          "x": 0.4692982456140351,
+          "y": 0.2727272727272727
         },
         {
           "slug": "identifiable-victim-effect",
           "title": "Identifiable victim effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.4711111111111111,
-          "y": 0.2727272727272727
+          "x": 0.47368421052631576,
+          "y": 0.45454545454545453
         },
         {
           "slug": "illusion-of-control",
           "title": "Illusion of control",
           "icon": "▲",
           "zone": 1,
-          "x": 0.47555555555555556,
-          "y": 0.45454545454545453
+          "x": 0.4780701754385965,
+          "y": 0.2727272727272727
         },
         {
           "slug": "illusion-of-transparency",
           "title": "Illusion of transparency",
           "icon": "▲",
           "zone": 1,
-          "x": 0.48,
-          "y": 0.2727272727272727
+          "x": 0.4824561403508772,
+          "y": 0.45454545454545453
         },
         {
           "slug": "illusory-superiority",
           "title": "Illusory superiority",
           "icon": "▲",
           "zone": 1,
-          "x": 0.48444444444444446,
-          "y": 0.45454545454545453
+          "x": 0.4868421052631579,
+          "y": 0.2727272727272727
         },
         {
           "slug": "impact-bias",
           "title": "Impact bias",
           "icon": "●",
           "zone": 1,
-          "x": 0.4888888888888889,
-          "y": 0.2727272727272727
+          "x": 0.49122807017543857,
+          "y": 0.45454545454545453
         },
         {
           "slug": "inattentional-blindness",
           "title": "Inattentional Blindness",
           "icon": "☀︎",
           "zone": 1,
-          "x": 0.49333333333333335,
-          "y": 0.45454545454545453
+          "x": 0.4956140350877193,
+          "y": 0.2727272727272727
         },
         {
           "slug": "just-world-hypothesis",
           "title": "Just-world hypothesis",
           "icon": "●",
           "zone": 1,
-          "x": 0.49777777777777776,
-          "y": 0.2727272727272727
+          "x": 0.5,
+          "y": 0.45454545454545453
         },
         {
           "slug": "law-of-the-instrument",
           "title": "Law of the instrument",
           "icon": "●",
           "zone": 1,
-          "x": 0.5022222222222222,
-          "y": 0.45454545454545453
+          "x": 0.5043859649122807,
+          "y": 0.2727272727272727
         },
         {
           "slug": "leveling-and-sharpening",
           "title": "Leveling and sharpening",
           "icon": "☾",
           "zone": 1,
-          "x": 0.5066666666666667,
-          "y": 0.2727272727272727
+          "x": 0.5087719298245614,
+          "y": 0.45454545454545453
         },
         {
           "slug": "magic-number-7-2",
           "title": "Magic number 7+-2",
           "icon": "☾",
           "zone": 1,
-          "x": 0.5111111111111111,
-          "y": 0.45454545454545453
+          "x": 0.5131578947368421,
+          "y": 0.2727272727272727
         },
         {
           "slug": "mental-accounting",
           "title": "Mental accounting",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5155555555555555,
-          "y": 0.2727272727272727
+          "x": 0.5175438596491229,
+          "y": 0.45454545454545453
         },
         {
           "slug": "misinformation-effect",
           "title": "Misinformation effect",
           "icon": "☾",
           "zone": 1,
-          "x": 0.52,
-          "y": 0.45454545454545453
+          "x": 0.5219298245614035,
+          "y": 0.36363636363636365
         },
         {
           "slug": "moral-luck",
           "title": "Moral luck",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5244444444444445,
-          "y": 0.36363636363636365
+          "x": 0.5263157894736842,
+          "y": 0.5454545454545454
         },
         {
           "slug": "naive-realism",
           "title": "Naïve realism",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5288888888888889,
-          "y": 0.5454545454545454
+          "x": 0.5307017543859649,
+          "y": 0.2727272727272727
         },
         {
           "slug": "next-in-line-effect",
           "title": "Next-in-line effect",
           "icon": "☾",
           "zone": 1,
-          "x": 0.5333333333333333,
-          "y": 0.2727272727272727
+          "x": 0.5350877192982456,
+          "y": 0.5454545454545454
         },
         {
           "slug": "observer-expectancy-effect",
           "title": "Observer-expectancy effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5377777777777778,
-          "y": 0.5454545454545454
+          "x": 0.5394736842105263,
+          "y": 0.36363636363636365
         },
         {
           "slug": "optimism-bias",
           "title": "Optimism bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5422222222222223,
-          "y": 0.36363636363636365
+          "x": 0.543859649122807,
+          "y": 0.5454545454545454
         },
         {
           "slug": "outcome-bias",
           "title": "Outcome bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5466666666666666,
-          "y": 0.5454545454545454
+          "x": 0.5482456140350878,
+          "y": 0.2727272727272727
         },
         {
           "slug": "pain-of-paying",
           "title": "Pain of Paying",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5511111111111111,
-          "y": 0.2727272727272727
+          "x": 0.5526315789473685,
+          "y": 0.5454545454545454
         },
         {
           "slug": "parkinsons-law",
           "title": "Parkinson's Law",
           "icon": "●",
           "zone": 1,
-          "x": 0.5555555555555556,
-          "y": 0.5454545454545454
+          "x": 0.5570175438596491,
+          "y": 0.36363636363636365
         },
         {
           "slug": "pessimism-bias",
           "title": "Pessimism bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.56,
-          "y": 0.36363636363636365
+          "x": 0.5614035087719298,
+          "y": 0.5454545454545454
         },
         {
           "slug": "placebo-effect",
           "title": "Placebo effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5644444444444444,
-          "y": 0.5454545454545454
+          "x": 0.5657894736842105,
+          "y": 0.36363636363636365
         },
         {
           "slug": "positivity-effect",
           "title": "Positivity effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5688888888888889,
-          "y": 0.36363636363636365
+          "x": 0.5701754385964912,
+          "y": 0.5454545454545454
         },
         {
           "slug": "primacy-effect",
           "title": "Primacy effect",
           "icon": "●",
           "zone": 1,
-          "x": 0.5733333333333334,
-          "y": 0.5454545454545454
+          "x": 0.5745614035087719,
+          "y": 0.36363636363636365
         },
         {
           "slug": "projection-bias",
           "title": "Projection bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.5777777777777777,
-          "y": 0.36363636363636365
+          "x": 0.5789473684210527,
+          "y": 0.5454545454545454
         },
         {
           "slug": "pygmalion-effect",
           "title": "Pygmalion Effect",
           "icon": "☯︎",
           "zone": 1,
-          "x": 0.5822222222222222,
-          "y": 0.5454545454545454
+          "x": 0.5833333333333334,
+          "y": 0.36363636363636365
         },
         {
           "slug": "recency-effect",
           "title": "Recency effect",
           "icon": "☾",
           "zone": 1,
-          "x": 0.5866666666666667,
-          "y": 0.36363636363636365
+          "x": 0.5877192982456141,
+          "y": 0.5454545454545454
         },
         {
           "slug": "regression-to-the-mean",
           "title": "Regression to the Mean",
           "icon": "✱",
           "zone": 1,
-          "x": 0.5911111111111111,
-          "y": 0.6363636363636364
+          "x": 0.5921052631578947,
+          "y": 0.45454545454545453
         },
         {
           "slug": "rhyme-as-reason-effect",
           "title": "Rhyme as reason effect",
           "icon": "◆",
           "zone": 1,
-          "x": 0.5955555555555555,
-          "y": 0.45454545454545453
+          "x": 0.5964912280701754,
+          "y": 0.6363636363636364
         },
         {
           "slug": "sapir-whorf-korzybski-hypothesis",
           "title": "Sapir Whorf Korzybski hypothesis",
           "icon": "✦",
           "zone": 1,
-          "x": 0.6,
-          "y": 0.6363636363636364
+          "x": 0.6008771929824561,
+          "y": 0.36363636363636365
         },
         {
           "slug": "self-consistency-bias",
           "title": "Self-consistency bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.6044444444444445,
-          "y": 0.36363636363636365
+          "x": 0.6052631578947368,
+          "y": 0.6363636363636364
         },
         {
           "slug": "self-relevance-effect",
           "title": "Self-relevance effect",
           "icon": "☾",
           "zone": 1,
-          "x": 0.6088888888888889,
-          "y": 0.6363636363636364
+          "x": 0.6096491228070176,
+          "y": 0.45454545454545453
         },
         {
           "slug": "serial-position-effect",
           "title": "Serial position effect",
           "icon": "☾",
           "zone": 1,
-          "x": 0.6133333333333333,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "social-desirability-bias",
-          "title": "Social desirability bias",
-          "icon": "▲",
-          "zone": 1,
-          "x": 0.6177777777777778,
+          "x": 0.6140350877192983,
           "y": 0.6363636363636364
         },
         {
-          "slug": "spacing-effect",
-          "title": "Spacing effect",
+          "slug": "social-comparison-bias",
+          "title": "Social comparison bias",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.618421052631579,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "source-confusion",
+          "title": "Source confusion",
           "icon": "☾",
           "zone": 1,
-          "x": 0.6222222222222222,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "stereotyping",
-          "title": "Stereotyping",
-          "icon": "▲",
-          "zone": 1,
-          "x": 0.6266666666666667,
+          "x": 0.6228070175438597,
           "y": 0.6363636363636364
         },
         {
-          "slug": "subjective-validation",
-          "title": "Subjective validation",
+          "slug": "status-quo-bias",
+          "title": "Status quo bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.6311111111111111,
+          "x": 0.6271929824561403,
           "y": 0.45454545454545453
         },
         {
-          "slug": "survivorship-bias",
-          "title": "Survivorship bias",
+          "slug": "subadditivity-effect",
+          "title": "Subadditivity effect",
           "icon": "▲",
           "zone": 1,
-          "x": 0.6355555555555555,
+          "x": 0.631578947368421,
           "y": 0.6363636363636364
         },
         {
-          "slug": "telescoping-effect",
-          "title": "Telescoping effect",
+          "slug": "sunk-cost-fallacy",
+          "title": "Sunk cost fallacy",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.6359649122807017,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "system-justification",
+          "title": "System justification",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.6403508771929824,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "third-person-effect",
+          "title": "Third-person effect",
+          "icon": "▲",
+          "zone": 1,
+          "x": 0.6447368421052632,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "tip-of-the-tongue-phenomenon",
+          "title": "Tip of the tongue phenomenon",
           "icon": "☾",
           "zone": 1,
-          "x": 0.64,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "time-discounting",
-          "title": "Time discounting",
-          "icon": "▲",
-          "zone": 1,
-          "x": 0.6444444444444445,
+          "x": 0.6491228070175439,
           "y": 0.6363636363636364
         },
         {
-          "slug": "trait-ascription-bias",
-          "title": "Trait ascription bias",
-          "icon": "▲",
+          "slug": "unit-bias",
+          "title": "Unit bias",
+          "icon": "◆",
           "zone": 1,
-          "x": 0.6488888888888888,
+          "x": 0.6535087719298246,
           "y": 0.45454545454545453
         },
         {
-          "slug": "von-restorff-effect",
-          "title": "Von Restorff effect",
-          "icon": "☀︎",
+          "slug": "well-traveled-road-effect",
+          "title": "Well-traveled road effect",
+          "icon": "◆",
           "zone": 1,
-          "x": 0.6533333333333333,
+          "x": 0.6578947368421053,
           "y": 0.6363636363636364
         },
         {
-          "slug": "zeigarnik-effect",
-          "title": "Zeigarnik Effect",
-          "icon": "☾",
-          "zone": 1,
-          "x": 0.6577777777777778,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "zero-sum-bias",
-          "title": "Zero sum bias",
+          "slug": "zero-risk-bias",
+          "title": "Zero-risk bias",
           "icon": "▲",
           "zone": 1,
-          "x": 0.6622222222222223,
-          "y": 0.6363636363636364
+          "x": 0.6622807017543859,
+          "y": 0.45454545454545453
         },
         {
           "slug": "actor-observer-bias",
           "title": "Actor-Observer Bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.6711111111111111,
+          "x": 0.6710526315789473,
           "y": 0.45454545454545453
         },
         {
@@ -1445,7 +1469,7 @@
           "title": "Ambiguity effect",
           "icon": "▲",
           "zone": 2,
-          "x": 0.6755555555555556,
+          "x": 0.6754385964912281,
           "y": 0.6363636363636364
         },
         {
@@ -1453,7 +1477,7 @@
           "title": "Apophenia",
           "icon": "☀︎",
           "zone": 2,
-          "x": 0.68,
+          "x": 0.6798245614035088,
           "y": 0.45454545454545453
         },
         {
@@ -1461,7 +1485,7 @@
           "title": "Argument from fallacy",
           "icon": "✱",
           "zone": 2,
-          "x": 0.6844444444444444,
+          "x": 0.6842105263157895,
           "y": 0.6363636363636364
         },
         {
@@ -1469,7 +1493,7 @@
           "title": "Attribute substitution",
           "icon": "◆",
           "zone": 2,
-          "x": 0.6888888888888889,
+          "x": 0.6885964912280702,
           "y": 0.45454545454545453
         },
         {
@@ -1477,7 +1501,7 @@
           "title": "Availability Cascade",
           "icon": "▲",
           "zone": 2,
-          "x": 0.6933333333333334,
+          "x": 0.6929824561403509,
           "y": 0.6363636363636364
         },
         {
@@ -1485,7 +1509,7 @@
           "title": "Bandwagon effect",
           "icon": "▲",
           "zone": 2,
-          "x": 0.6977777777777778,
+          "x": 0.6973684210526315,
           "y": 0.45454545454545453
         },
         {
@@ -1493,528 +1517,544 @@
           "title": "Belief bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.7022222222222222,
+          "x": 0.7017543859649122,
           "y": 0.6363636363636364
         },
         {
-          "slug": "bucket-error",
-          "title": "Bucket error",
-          "icon": "●",
+          "slug": "bizarreness-effect",
+          "title": "Bizarreness effect",
+          "icon": "☾",
           "zone": 2,
-          "x": 0.7066666666666667,
+          "x": 0.706140350877193,
           "y": 0.36363636363636365
         },
         {
-          "slug": "certainty-effect",
-          "title": "Certainty Effect",
-          "icon": "▲",
-          "zone": 2,
-          "x": 0.7111111111111111,
-          "y": 0.6363636363636364
-        },
-        {
-          "slug": "chestertons-fence",
-          "title": "Chesterton's fence",
+          "slug": "cathedral-effect",
+          "title": "Cathedral effect",
           "icon": "●",
           "zone": 2,
-          "x": 0.7155555555555555,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "clustering-illusion",
-          "title": "Clustering illusion",
-          "icon": "▲",
-          "zone": 2,
-          "x": 0.72,
+          "x": 0.7105263157894737,
           "y": 0.6363636363636364
         },
         {
-          "slug": "confirmation-bias",
-          "title": "Confirmation bias",
-          "icon": "▲",
-          "zone": 2,
-          "x": 0.7244444444444444,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "conservatism",
-          "title": "Conservatism",
-          "icon": "▲",
-          "zone": 2,
-          "x": 0.7288888888888889,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "cross-race-effect",
-          "title": "Cross-race effect",
+          "slug": "cheerleader-effect",
+          "title": "Cheerleader effect",
           "icon": "☀︎",
           "zone": 2,
-          "x": 0.7333333333333333,
-          "y": 0.36363636363636365
+          "x": 0.7149122807017544,
+          "y": 0.45454545454545453
         },
         {
-          "slug": "curse-of-knowledge",
-          "title": "Curse of knowledge",
+          "slug": "choice-supportive-bias",
+          "title": "Choice-supportive bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.7377777777777778,
-          "y": 0.5454545454545454
+          "x": 0.7192982456140351,
+          "y": 0.6363636363636364
         },
         {
-          "slug": "decoy-effect",
-          "title": "Decoy effect",
-          "icon": "▲",
-          "zone": 2,
-          "x": 0.7422222222222222,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "denomination-effect",
-          "title": "Denomination effect",
-          "icon": "▲",
-          "zone": 2,
-          "x": 0.7466666666666667,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "distinction-bias",
-          "title": "Distinction bias",
-          "icon": "▲",
-          "zone": 2,
-          "x": 0.7511111111111111,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "duration-neglect",
-          "title": "Duration neglect",
+          "slug": "confabulation",
+          "title": "Confabulation",
           "icon": "☾",
           "zone": 2,
-          "x": 0.7555555555555555,
-          "y": 0.5454545454545454
+          "x": 0.7236842105263158,
+          "y": 0.36363636363636365
         },
         {
-          "slug": "empathy-gap",
-          "title": "Empathy gap",
-          "icon": "●",
+          "slug": "conjunction-fallacy",
+          "title": "Conjunction fallacy",
+          "icon": "✱",
           "zone": 2,
-          "x": 0.76,
-          "y": 0.2727272727272727
+          "x": 0.7280701754385965,
+          "y": 0.6363636363636364
         },
         {
-          "slug": "essentialism",
-          "title": "Essentialism",
-          "icon": "●",
+          "slug": "contrast-effect",
+          "title": "Contrast effect",
+          "icon": "☀︎",
           "zone": 2,
-          "x": 0.7644444444444445,
-          "y": 0.5454545454545454
+          "x": 0.7324561403508771,
+          "y": 0.36363636363636365
         },
         {
-          "slug": "fading-affect-bias",
-          "title": "Fading affect bias",
+          "slug": "cue-dependent-forgetting",
+          "title": "Cue-dependent forgetting",
           "icon": "☾",
           "zone": 2,
-          "x": 0.7688888888888888,
-          "y": 0.2727272727272727
+          "x": 0.7368421052631579,
+          "y": 0.5454545454545454
         },
         {
-          "slug": "foot-in-the-door-technique",
-          "title": "Foot-in-the-Door Technique",
+          "slug": "declinism",
+          "title": "Declinism",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.7412280701754386,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "defensive-attribution-hypothesis",
+          "title": "Defensive attribution hypothesis",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.7456140350877193,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "diffusion-of-responsibility",
+          "title": "Diffusion of Responsibility",
           "icon": "☯︎",
           "zone": 2,
-          "x": 0.7733333333333333,
+          "x": 0.75,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "door-in-the-face-technique",
+          "title": "Door-in-the-Face Technique",
+          "icon": "☯︎",
+          "zone": 2,
+          "x": 0.7543859649122807,
           "y": 0.5454545454545454
         },
         {
-          "slug": "functional-fixedness",
-          "title": "Functional fixedness",
-          "icon": "●",
+          "slug": "effort-justification",
+          "title": "Effort justification",
+          "icon": "▲",
           "zone": 2,
-          "x": 0.7777777777777778,
+          "x": 0.7587719298245614,
           "y": 0.2727272727272727
         },
         {
-          "slug": "generation-effect",
-          "title": "Generation effect",
-          "icon": "☾",
+          "slug": "endowment-effect",
+          "title": "Endowment effect",
+          "icon": "●",
           "zone": 2,
-          "x": 0.7822222222222223,
+          "x": 0.7631578947368421,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "extension-neglect",
+          "title": "Extension neglect",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.7675438596491229,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "false-consensus-effect",
+          "title": "False consensus effect",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.7719298245614035,
           "y": 0.45454545454545453
+        },
+        {
+          "slug": "framing-effect",
+          "title": "Framing effect",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.7763157894736842,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "fundamental-attribution-error",
+          "title": "Fundamental attribution error",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.7807017543859649,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "golem-effect",
+          "title": "Golem Effect",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.7850877192982456,
+          "y": 0.2727272727272727
         },
         {
           "slug": "group-polarization",
           "title": "Group Polarization",
           "icon": "▲",
           "zone": 2,
-          "x": 0.7866666666666666,
-          "y": 0.2727272727272727
+          "x": 0.7894736842105263,
+          "y": 0.45454545454545453
         },
         {
           "slug": "hanlons-razor",
           "title": "Hanlon's Razor",
           "icon": "◆",
           "zone": 2,
-          "x": 0.7911111111111111,
-          "y": 0.45454545454545453
+          "x": 0.793859649122807,
+          "y": 0.2727272727272727
         },
         {
           "slug": "hindsight-bias",
           "title": "Hindsight bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.7955555555555556,
-          "y": 0.2727272727272727
+          "x": 0.7982456140350878,
+          "y": 0.45454545454545453
         },
         {
           "slug": "house-money-effect",
           "title": "House Money Effect",
           "icon": "▲",
           "zone": 2,
-          "x": 0.8,
-          "y": 0.45454545454545453
+          "x": 0.8026315789473685,
+          "y": 0.2727272727272727
         },
         {
           "slug": "ikea-effect",
           "title": "IKEA effect",
           "icon": "▲",
           "zone": 2,
-          "x": 0.8044444444444444,
-          "y": 0.2727272727272727
+          "x": 0.8070175438596491,
+          "y": 0.45454545454545453
         },
         {
           "slug": "illusion-of-explanatory-depth",
           "title": "Illusion of Explanatory Depth",
           "icon": "▲",
           "zone": 2,
-          "x": 0.8088888888888889,
-          "y": 0.45454545454545453
+          "x": 0.8114035087719298,
+          "y": 0.2727272727272727
         },
         {
           "slug": "illusion-of-validity",
           "title": "Illusion of validity",
           "icon": "▲",
           "zone": 2,
-          "x": 0.8133333333333334,
-          "y": 0.2727272727272727
+          "x": 0.8157894736842105,
+          "y": 0.45454545454545453
         },
         {
           "slug": "illusory-truth-effect",
           "title": "Illusory truth effect",
           "icon": "●",
           "zone": 2,
-          "x": 0.8177777777777778,
-          "y": 0.45454545454545453
+          "x": 0.8201754385964912,
+          "y": 0.2727272727272727
         },
         {
           "slug": "implicit-stereotypes",
           "title": "Implicit stereotypes",
           "icon": "●",
           "zone": 2,
-          "x": 0.8222222222222222,
-          "y": 0.2727272727272727
+          "x": 0.8245614035087719,
+          "y": 0.45454545454545453
         },
         {
           "slug": "information-bias",
           "title": "Information bias",
           "icon": "●",
           "zone": 2,
-          "x": 0.8266666666666667,
-          "y": 0.45454545454545453
+          "x": 0.8289473684210527,
+          "y": 0.2727272727272727
         },
         {
           "slug": "lake-wobegone-effect",
           "title": "Lake Wobegone effect",
           "icon": "●",
           "zone": 2,
-          "x": 0.8311111111111111,
-          "y": 0.2727272727272727
+          "x": 0.8333333333333334,
+          "y": 0.45454545454545453
         },
         {
           "slug": "law-of-triviality",
           "title": "Law of triviality",
           "icon": "●",
           "zone": 2,
-          "x": 0.8355555555555556,
-          "y": 0.45454545454545453
+          "x": 0.8377192982456141,
+          "y": 0.2727272727272727
         },
         {
           "slug": "levels-of-processing-effect",
           "title": "Levels of processing effect",
           "icon": "☾",
           "zone": 2,
-          "x": 0.84,
-          "y": 0.2727272727272727
+          "x": 0.8421052631578947,
+          "y": 0.45454545454545453
         },
         {
           "slug": "masked-man-fallacy",
           "title": "Masked man fallacy",
           "icon": "✱",
           "zone": 2,
-          "x": 0.8444444444444444,
-          "y": 0.45454545454545453
+          "x": 0.8464912280701754,
+          "y": 0.2727272727272727
         },
         {
           "slug": "mere-exposure-effect",
           "title": "Mere exposure effect",
           "icon": "▲",
           "zone": 2,
-          "x": 0.8488888888888889,
-          "y": 0.2727272727272727
+          "x": 0.8508771929824561,
+          "y": 0.5454545454545454
         },
         {
           "slug": "modality-effect",
           "title": "Modality effect",
           "icon": "☾",
           "zone": 2,
-          "x": 0.8533333333333334,
-          "y": 0.5454545454545454
+          "x": 0.8552631578947368,
+          "y": 0.36363636363636365
         },
         {
           "slug": "murphys-law",
           "title": "Murphy's Law",
           "icon": "◆",
           "zone": 2,
-          "x": 0.8577777777777778,
-          "y": 0.36363636363636365
+          "x": 0.8596491228070176,
+          "y": 0.5454545454545454
         },
         {
           "slug": "negativity-bias",
           "title": "Negativity bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.8622222222222222,
-          "y": 0.5454545454545454
+          "x": 0.8640350877192983,
+          "y": 0.2727272727272727
         },
         {
           "slug": "normalcy-bias",
           "title": "Normalcy bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.8666666666666667,
-          "y": 0.2727272727272727
+          "x": 0.868421052631579,
+          "y": 0.5454545454545454
         },
         {
           "slug": "occams-razor",
           "title": "Occam’s razor",
           "icon": "◆",
           "zone": 2,
-          "x": 0.8711111111111111,
-          "y": 0.5454545454545454
+          "x": 0.8728070175438597,
+          "y": 0.36363636363636365
         },
         {
           "slug": "ostrich-effect",
           "title": "Ostrich effect",
           "icon": "▲",
           "zone": 2,
-          "x": 0.8755555555555555,
-          "y": 0.36363636363636365
+          "x": 0.8771929824561403,
+          "y": 0.5454545454545454
         },
         {
           "slug": "overconfidence-effect",
           "title": "Overconfidence effect",
           "icon": "▲",
           "zone": 2,
-          "x": 0.88,
-          "y": 0.5454545454545454
+          "x": 0.881578947368421,
+          "y": 0.2727272727272727
         },
         {
           "slug": "pareidolia",
           "title": "Pareidolia",
           "icon": "☀︎",
           "zone": 2,
-          "x": 0.8844444444444445,
-          "y": 0.36363636363636365
+          "x": 0.8859649122807017,
+          "y": 0.5454545454545454
         },
         {
           "slug": "part-list-cueing-effect",
           "title": "Part-list cueing effect",
           "icon": "☾",
           "zone": 2,
-          "x": 0.8888888888888888,
-          "y": 0.5454545454545454
+          "x": 0.8903508771929824,
+          "y": 0.36363636363636365
         },
         {
           "slug": "peter-principle",
           "title": "Peter Principle",
           "icon": "✦",
           "zone": 2,
-          "x": 0.8933333333333333,
-          "y": 0.36363636363636365
+          "x": 0.8947368421052632,
+          "y": 0.5454545454545454
         },
         {
           "slug": "planning-fallacy",
           "title": "Planning fallacy",
           "icon": "●",
           "zone": 2,
-          "x": 0.8977777777777778,
-          "y": 0.5454545454545454
+          "x": 0.8991228070175439,
+          "y": 0.36363636363636365
         },
         {
           "slug": "post-purchase-rationalization",
           "title": "Post-purchase rationalization",
           "icon": "▲",
           "zone": 2,
-          "x": 0.9022222222222223,
-          "y": 0.36363636363636365
+          "x": 0.9035087719298246,
+          "y": 0.5454545454545454
         },
         {
           "slug": "pro-innovation-bias",
           "title": "Pro-innovation bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.9066666666666666,
-          "y": 0.5454545454545454
+          "x": 0.9078947368421053,
+          "y": 0.36363636363636365
         },
         {
           "slug": "pseudocertainty-effect",
           "title": "Pseudocertainty effect",
           "icon": "●",
           "zone": 2,
-          "x": 0.9111111111111111,
-          "y": 0.36363636363636365
+          "x": 0.9122807017543859,
+          "y": 0.5454545454545454
         },
         {
           "slug": "reactance",
           "title": "Reactance",
           "icon": "●",
           "zone": 2,
-          "x": 0.9155555555555556,
-          "y": 0.5454545454545454
+          "x": 0.9166666666666666,
+          "y": 0.36363636363636365
         },
         {
           "slug": "recency-illusion",
           "title": "Recency illusion",
           "icon": "▲",
           "zone": 2,
-          "x": 0.92,
-          "y": 0.36363636363636365
+          "x": 0.9210526315789473,
+          "y": 0.5454545454545454
         },
         {
           "slug": "representativeness-heuristic",
           "title": "Representativeness Heuristic",
           "icon": "◆",
           "zone": 2,
-          "x": 0.9244444444444444,
-          "y": 0.6363636363636364
+          "x": 0.9254385964912281,
+          "y": 0.45454545454545453
         },
         {
           "slug": "risk-compensation",
           "title": "Risk compensation",
           "icon": "✦",
           "zone": 2,
-          "x": 0.9288888888888889,
-          "y": 0.45454545454545453
+          "x": 0.9298245614035088,
+          "y": 0.6363636363636364
         },
         {
           "slug": "scarcity-effect",
           "title": "Scarcity Effect",
           "icon": "▲",
           "zone": 2,
-          "x": 0.9333333333333333,
-          "y": 0.6363636363636364
+          "x": 0.9342105263157895,
+          "y": 0.36363636363636365
         },
         {
           "slug": "self-fulfilling-prophecy",
           "title": "Self-Fulfilling Prophecy",
           "icon": "☯︎",
           "zone": 2,
-          "x": 0.9377777777777778,
-          "y": 0.36363636363636365
+          "x": 0.9385964912280702,
+          "y": 0.6363636363636364
         },
         {
           "slug": "self-serving-bias",
           "title": "Self-serving bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.9422222222222222,
-          "y": 0.6363636363636364
+          "x": 0.9429824561403509,
+          "y": 0.45454545454545453
         },
         {
           "slug": "serial-recall-effect",
           "title": "Serial recall effect",
           "icon": "☾",
           "zone": 2,
-          "x": 0.9466666666666667,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "social-loafing",
-          "title": "Social Loafing",
-          "icon": "☯︎",
-          "zone": 2,
-          "x": 0.9511111111111111,
+          "x": 0.9473684210526315,
           "y": 0.6363636363636364
         },
         {
-          "slug": "spotlight-effect",
-          "title": "Spotlight effect",
+          "slug": "social-desirability-bias",
+          "title": "Social desirability bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.9555555555555556,
+          "x": 0.9517543859649122,
           "y": 0.45454545454545453
         },
         {
-          "slug": "streisand-effect",
-          "title": "Streisand Effect",
-          "icon": "☯︎",
-          "zone": 2,
-          "x": 0.96,
-          "y": 0.6363636363636364
-        },
-        {
-          "slug": "suggestibility",
-          "title": "Suggestibility",
+          "slug": "spacing-effect",
+          "title": "Spacing effect",
           "icon": "☾",
           "zone": 2,
-          "x": 0.9644444444444444,
-          "y": 0.45454545454545453
-        },
-        {
-          "slug": "swimmers-body-illusion",
-          "title": "Swimmer's body illusion",
-          "icon": "▲",
-          "zone": 2,
-          "x": 0.9688888888888889,
+          "x": 0.956140350877193,
           "y": 0.6363636363636364
         },
         {
-          "slug": "testing-effect",
-          "title": "Testing effect",
-          "icon": "☾",
+          "slug": "stereotyping",
+          "title": "Stereotyping",
+          "icon": "▲",
           "zone": 2,
-          "x": 0.9733333333333334,
+          "x": 0.9605263157894737,
           "y": 0.45454545454545453
         },
         {
-          "slug": "time-saving-bias",
-          "title": "Time-saving bias",
+          "slug": "subjective-validation",
+          "title": "Subjective validation",
           "icon": "▲",
           "zone": 2,
-          "x": 0.9777777777777777,
-          "y": 0.7272727272727273
+          "x": 0.9649122807017544,
+          "y": 0.6363636363636364
         },
         {
-          "slug": "ultimate-attribution-error",
-          "title": "Ultimate attribution error",
+          "slug": "survivorship-bias",
+          "title": "Survivorship bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.9822222222222222,
+          "x": 0.9692982456140351,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "telescoping-effect",
+          "title": "Telescoping effect",
+          "icon": "☾",
+          "zone": 2,
+          "x": 0.9736842105263158,
+          "y": 0.6363636363636364
+        },
+        {
+          "slug": "time-discounting",
+          "title": "Time discounting",
+          "icon": "▲",
+          "zone": 2,
+          "x": 0.9780701754385965,
           "y": 0.5454545454545454
         },
         {
-          "slug": "weber-fechner-law",
-          "title": "Weber–Fechner law",
-          "icon": "☀︎",
+          "slug": "trait-ascription-bias",
+          "title": "Trait ascription bias",
+          "icon": "▲",
           "zone": 2,
-          "x": 0.9866666666666667,
+          "x": 0.9824561403508771,
           "y": 0.7272727272727273
         },
         {
-          "slug": "zero-price-effect",
-          "title": "Zero-Price Effect",
+          "slug": "von-restorff-effect",
+          "title": "Von Restorff effect",
+          "icon": "☀︎",
+          "zone": 2,
+          "x": 0.9868421052631579,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "zeigarnik-effect",
+          "title": "Zeigarnik Effect",
+          "icon": "☾",
+          "zone": 2,
+          "x": 0.9912280701754386,
+          "y": 0.7272727272727273
+        },
+        {
+          "slug": "zero-sum-bias",
+          "title": "Zero sum bias",
           "icon": "▲",
           "zone": 2,
-          "x": 0.9911111111111112,
-          "y": 0.45454545454545453
+          "x": 0.9956140350877193,
+          "y": 0.5454545454545454
         }
       ]
     },
@@ -2030,7 +2070,7 @@
           "title": "Adverse Selection",
           "icon": "✦",
           "zone": 0,
-          "x": 0.03333333333333333,
+          "x": 0.030303030303030304,
           "y": 0.36363636363636365
         },
         {
@@ -2038,71 +2078,79 @@
           "title": "Bayesian Updating",
           "icon": "●",
           "zone": 0,
-          "x": 0.06666666666666667,
-          "y": 0.5454545454545454
+          "x": 0.06060606060606061,
+          "y": 0.6363636363636364
         },
         {
           "slug": "cognitive-dissonance",
           "title": "Cognitive Dissonance",
           "icon": "✦",
           "zone": 0,
-          "x": 0.1,
+          "x": 0.09090909090909091,
           "y": 0.36363636363636365
         },
         {
-          "slug": "feedback-loops",
-          "title": "Feedback Loops",
+          "slug": "eisenhower-matrix",
+          "title": "Eisenhower Matrix",
           "icon": "●",
           "zone": 0,
-          "x": 0.13333333333333333,
+          "x": 0.12121212121212122,
           "y": 0.45454545454545453
         },
         {
-          "slug": "inversion",
-          "title": "Inversion",
-          "icon": "●",
+          "slug": "hedonic-treadmill",
+          "title": "Hedonic Treadmill",
+          "icon": "✦",
           "zone": 0,
-          "x": 0.16666666666666666,
+          "x": 0.15151515151515152,
           "y": 0.2727272727272727
         },
         {
-          "slug": "margin-of-safety",
-          "title": "Margin of Safety",
+          "slug": "lindy-effect",
+          "title": "Lindy Effect",
           "icon": "●",
           "zone": 0,
-          "x": 0.2,
+          "x": 0.18181818181818182,
           "y": 0.45454545454545453
         },
         {
-          "slug": "nudge-theory",
-          "title": "Nudge Theory",
-          "icon": "✦",
-          "zone": 0,
-          "x": 0.23333333333333334,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "optionality",
-          "title": "Optionality",
+          "slug": "nash-equilibrium",
+          "title": "Nash Equilibrium",
           "icon": "●",
           "zone": 0,
-          "x": 0.26666666666666666,
+          "x": 0.21212121212121213,
+          "y": 0.2727272727272727
+        },
+        {
+          "slug": "opportunity-cost",
+          "title": "Opportunity Cost",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.24242424242424243,
           "y": 0.5454545454545454
         },
         {
-          "slug": "systems-thinking",
-          "title": "Systems Thinking",
+          "slug": "probabilistic-thinking",
+          "title": "Probabilistic Thinking",
           "icon": "●",
           "zone": 0,
-          "x": 0.3,
+          "x": 0.2727272727272727,
           "y": 0.36363636363636365
+        },
+        {
+          "slug": "tragedy-of-the-commons",
+          "title": "Tragedy of the Commons",
+          "icon": "●",
+          "zone": 0,
+          "x": 0.30303030303030304,
+          "y": 0.6363636363636364
         },
         {
           "slug": "antifragility",
           "title": "Antifragility",
           "icon": "●",
           "zone": 1,
-          "x": 0.36666666666666664,
+          "x": 0.36363636363636365,
           "y": 0.45454545454545453
         },
         {
@@ -2110,7 +2158,7 @@
           "title": "Black Swan Theory",
           "icon": "✦",
           "zone": 1,
-          "x": 0.4,
+          "x": 0.3939393939393939,
           "y": 0.6363636363636364
         },
         {
@@ -2118,63 +2166,71 @@
           "title": "Cognitive Load Theory",
           "icon": "✦",
           "zone": 1,
-          "x": 0.43333333333333335,
+          "x": 0.42424242424242425,
           "y": 0.36363636363636365
         },
         {
-          "slug": "first-principles-thinking",
-          "title": "First-Principles Thinking",
+          "slug": "feedback-loops",
+          "title": "Feedback Loops",
           "icon": "●",
           "zone": 1,
-          "x": 0.4666666666666667,
+          "x": 0.45454545454545453,
           "y": 0.45454545454545453
         },
         {
-          "slug": "learned-helplessness",
-          "title": "Learned Helplessness",
-          "icon": "✦",
+          "slug": "inversion",
+          "title": "Inversion",
+          "icon": "●",
           "zone": 1,
-          "x": 0.5,
+          "x": 0.48484848484848486,
           "y": 0.2727272727272727
         },
         {
-          "slug": "moral-hazard",
-          "title": "Moral Hazard",
-          "icon": "✦",
-          "zone": 1,
-          "x": 0.5333333333333333,
-          "y": 0.5454545454545454
-        },
-        {
-          "slug": "ooda-loop",
-          "title": "OODA Loop",
+          "slug": "margin-of-safety",
+          "title": "Margin of Safety",
           "icon": "●",
           "zone": 1,
-          "x": 0.5666666666666667,
+          "x": 0.5151515151515151,
+          "y": 0.45454545454545453
+        },
+        {
+          "slug": "nudge-theory",
+          "title": "Nudge Theory",
+          "icon": "✦",
+          "zone": 1,
+          "x": 0.5454545454545454,
           "y": 0.36363636363636365
         },
         {
-          "slug": "prisoners-dilemma",
-          "title": "Prisoner's Dilemma",
+          "slug": "optionality",
+          "title": "Optionality",
           "icon": "●",
           "zone": 1,
-          "x": 0.6,
+          "x": 0.5757575757575758,
           "y": 0.6363636363636364
         },
         {
-          "slug": "via-negativa",
-          "title": "Via Negativa",
+          "slug": "second-order-thinking",
+          "title": "Second-order Thinking",
           "icon": "●",
           "zone": 1,
-          "x": 0.6333333333333333,
+          "x": 0.6060606060606061,
           "y": 0.45454545454545453
+        },
+        {
+          "slug": "unintended-consequences",
+          "title": "Unintended Consequences",
+          "icon": "●",
+          "zone": 1,
+          "x": 0.6363636363636364,
+          "y": 0.7272727272727273
         },
         {
           "slug": "barbell-strategy",
           "title": "Barbell Strategy",
           "icon": "●",
           "zone": 2,
-          "x": 0.7,
+          "x": 0.696969696969697,
           "y": 0.45454545454545453
         },
         {
@@ -2182,56 +2238,72 @@
           "title": "Circle of Competence",
           "icon": "●",
           "zone": 2,
-          "x": 0.7333333333333333,
+          "x": 0.7272727272727273,
           "y": 0.6363636363636364
         },
         {
-          "slug": "eisenhower-matrix",
-          "title": "Eisenhower Matrix",
+          "slug": "diminishing-returns",
+          "title": "Diminishing Returns",
           "icon": "●",
           "zone": 2,
-          "x": 0.7666666666666667,
+          "x": 0.7575757575757576,
           "y": 0.36363636363636365
         },
         {
-          "slug": "hedonic-treadmill",
-          "title": "Hedonic Treadmill",
-          "icon": "✦",
+          "slug": "first-principles-thinking",
+          "title": "First-Principles Thinking",
+          "icon": "●",
           "zone": 2,
-          "x": 0.8,
+          "x": 0.7878787878787878,
           "y": 0.5454545454545454
         },
         {
-          "slug": "lindy-effect",
-          "title": "Lindy Effect",
-          "icon": "●",
+          "slug": "learned-helplessness",
+          "title": "Learned Helplessness",
+          "icon": "✦",
           "zone": 2,
-          "x": 0.8333333333333334,
+          "x": 0.8181818181818182,
           "y": 0.2727272727272727
         },
         {
-          "slug": "nash-equilibrium",
-          "title": "Nash Equilibrium",
-          "icon": "●",
+          "slug": "moral-hazard",
+          "title": "Moral Hazard",
+          "icon": "✦",
           "zone": 2,
-          "x": 0.8666666666666667,
+          "x": 0.8484848484848485,
           "y": 0.5454545454545454
         },
         {
-          "slug": "opportunity-cost",
-          "title": "Opportunity Cost",
+          "slug": "ooda-loop",
+          "title": "OODA Loop",
           "icon": "●",
           "zone": 2,
-          "x": 0.9,
+          "x": 0.8787878787878788,
           "y": 0.36363636363636365
         },
         {
-          "slug": "second-order-thinking",
-          "title": "Second-order Thinking",
+          "slug": "prisoners-dilemma",
+          "title": "Prisoner's Dilemma",
           "icon": "●",
           "zone": 2,
-          "x": 0.9333333333333333,
+          "x": 0.9090909090909091,
           "y": 0.5454545454545454
+        },
+        {
+          "slug": "systems-thinking",
+          "title": "Systems Thinking",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9393939393939394,
+          "y": 0.36363636363636365
+        },
+        {
+          "slug": "via-negativa",
+          "title": "Via Negativa",
+          "icon": "●",
+          "zone": 2,
+          "x": 0.9696969696969697,
+          "y": 0.6363636363636364
         }
       ]
     },
@@ -2247,72 +2319,96 @@
           "title": "Calibrated Confidence",
           "icon": "✦",
           "zone": 0,
-          "x": 0.08333333333333333,
+          "x": 0.06666666666666667,
           "y": 0.36363636363636365
         },
         {
-          "slug": "falsifiability",
-          "title": "Falsifiability",
+          "slug": "epistemic-vs-aleatory-uncertainty",
+          "title": "Epistemic vs Aleatory Uncertainty",
           "icon": "✦",
           "zone": 0,
-          "x": 0.16666666666666666,
-          "y": 0.45454545454545453
+          "x": 0.13333333333333333,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "metacognition",
+          "title": "Metacognition",
+          "icon": "✦",
+          "zone": 0,
+          "x": 0.2,
+          "y": 0.2727272727272727
         },
         {
           "slug": "reference-class-forecasting",
           "title": "Reference Class Forecasting",
           "icon": "✦",
           "zone": 0,
-          "x": 0.25,
+          "x": 0.26666666666666666,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "double-crux",
+          "title": "Double Crux",
+          "icon": "✦",
+          "zone": 1,
+          "x": 0.4,
           "y": 0.36363636363636365
         },
         {
-          "slug": "epistemic-humility",
-          "title": "Epistemic Humility",
+          "slug": "evidence-hierarchy",
+          "title": "Evidence Hierarchy",
           "icon": "✦",
           "zone": 1,
-          "x": 0.4166666666666667,
-          "y": 0.36363636363636365
-        },
-        {
-          "slug": "metacognition",
-          "title": "Metacognition",
-          "icon": "✦",
-          "zone": 1,
-          "x": 0.5,
+          "x": 0.4666666666666667,
           "y": 0.45454545454545453
+        },
+        {
+          "slug": "noise-vs-bias",
+          "title": "Noise vs Bias",
+          "icon": "✦",
+          "zone": 1,
+          "x": 0.5333333333333333,
+          "y": 0.36363636363636365
         },
         {
           "slug": "scout-mindset",
           "title": "Scout Mindset",
           "icon": "✦",
           "zone": 1,
-          "x": 0.5833333333333334,
-          "y": 0.45454545454545453
+          "x": 0.6,
+          "y": 0.6363636363636364
         },
         {
-          "slug": "epistemic-vs-aleatory-uncertainty",
-          "title": "Epistemic vs Aleatory Uncertainty",
+          "slug": "epistemic-humility",
+          "title": "Epistemic Humility",
           "icon": "✦",
           "zone": 2,
-          "x": 0.75,
+          "x": 0.7333333333333333,
           "y": 0.36363636363636365
+        },
+        {
+          "slug": "falsifiability",
+          "title": "Falsifiability",
+          "icon": "✦",
+          "zone": 2,
+          "x": 0.8,
+          "y": 0.5454545454545454
         },
         {
           "slug": "outside-view",
           "title": "Outside View",
           "icon": "✦",
           "zone": 2,
-          "x": 0.8333333333333334,
-          "y": 0.5454545454545454
+          "x": 0.8666666666666667,
+          "y": 0.36363636363636365
         },
         {
           "slug": "unknown-unknowns",
           "title": "Unknown Unknowns",
           "icon": "✦",
           "zone": 2,
-          "x": 0.9166666666666666,
-          "y": 0.36363636363636365
+          "x": 0.9333333333333333,
+          "y": 0.5454545454545454
         }
       ]
     },
@@ -2328,7 +2424,7 @@
           "title": "Bounded Rationality",
           "icon": "✦",
           "zone": 0,
-          "x": 0.06666666666666667,
+          "x": 0.05555555555555555,
           "y": 0.36363636363636365
         },
         {
@@ -2336,31 +2432,39 @@
           "title": "Expected Utility Theory",
           "icon": "✦",
           "zone": 0,
-          "x": 0.13333333333333333,
+          "x": 0.1111111111111111,
           "y": 0.5454545454545454
         },
         {
-          "slug": "heuristics-and-biases-program",
-          "title": "Heuristics and Biases Program",
+          "slug": "global-workspace-theory",
+          "title": "Global Workspace Theory",
           "icon": "✦",
           "zone": 0,
-          "x": 0.2,
+          "x": 0.16666666666666666,
           "y": 0.2727272727272727
         },
         {
-          "slug": "predictive-processing",
-          "title": "Predictive Processing",
+          "slug": "map-is-not-the-territory",
+          "title": "Map is not the territory",
           "icon": "✦",
           "zone": 0,
-          "x": 0.26666666666666666,
-          "y": 0.6363636363636364
+          "x": 0.2222222222222222,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "schema-theory",
+          "title": "Schema Theory",
+          "icon": "✦",
+          "zone": 0,
+          "x": 0.2777777777777778,
+          "y": 0.45454545454545453
         },
         {
           "slug": "dual-process-theory",
           "title": "Dual Process Theory",
           "icon": "✦",
           "zone": 1,
-          "x": 0.4,
+          "x": 0.3888888888888889,
           "y": 0.36363636363636365
         },
         {
@@ -2368,31 +2472,39 @@
           "title": "Fast and Frugal Heuristics",
           "icon": "✦",
           "zone": 1,
-          "x": 0.4666666666666667,
+          "x": 0.4444444444444444,
           "y": 0.5454545454545454
         },
         {
-          "slug": "information-theory",
-          "title": "Information Theory",
+          "slug": "heuristics-and-biases-program",
+          "title": "Heuristics and Biases Program",
           "icon": "✦",
           "zone": 1,
-          "x": 0.5333333333333333,
+          "x": 0.5,
           "y": 0.36363636363636365
         },
         {
-          "slug": "prospect-theory",
-          "title": "Prospect Theory",
+          "slug": "predictive-processing",
+          "title": "Predictive Processing",
           "icon": "✦",
           "zone": 1,
-          "x": 0.6,
-          "y": 0.6363636363636364
+          "x": 0.5555555555555556,
+          "y": 0.5454545454545454
+        },
+        {
+          "slug": "signal-detection-theory",
+          "title": "Signal Detection Theory",
+          "icon": "✦",
+          "zone": 1,
+          "x": 0.6111111111111112,
+          "y": 0.36363636363636365
         },
         {
           "slug": "ecological-rationality",
           "title": "Ecological Rationality",
           "icon": "✦",
           "zone": 2,
-          "x": 0.7333333333333333,
+          "x": 0.7222222222222222,
           "y": 0.45454545454545453
         },
         {
@@ -2400,24 +2512,32 @@
           "title": "Free Energy Principle",
           "icon": "✦",
           "zone": 2,
-          "x": 0.8,
+          "x": 0.7777777777777778,
           "y": 0.5454545454545454
         },
         {
-          "slug": "map-is-not-the-territory",
-          "title": "Map is not the territory",
+          "slug": "information-theory",
+          "title": "Information Theory",
           "icon": "✦",
           "zone": 2,
-          "x": 0.8666666666666667,
+          "x": 0.8333333333333334,
           "y": 0.36363636363636365
         },
         {
-          "slug": "signal-detection-theory",
-          "title": "Signal Detection Theory",
+          "slug": "prospect-theory",
+          "title": "Prospect Theory",
           "icon": "✦",
           "zone": 2,
-          "x": 0.9333333333333333,
+          "x": 0.8888888888888888,
           "y": 0.5454545454545454
+        },
+        {
+          "slug": "working-memory-model",
+          "title": "Working Memory Model",
+          "icon": "✦",
+          "zone": 2,
+          "x": 0.9444444444444444,
+          "y": 0.36363636363636365
         }
       ]
     }
