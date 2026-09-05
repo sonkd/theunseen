@@ -504,11 +504,46 @@ def t_tail_event(p):
     return "".join(o)
 
 
+def t_gap_fill(p):
+    # Một mạch bị đứt, và một mảnh VÁ bắc qua chỗ đứt làm mạch trông liền lại.
+    # Mảnh vá lệch trục và khác chất liệu (accent trong suốt) — nhìn kỹ mới thấy
+    # nó không thuộc về mạch gốc. Khác `fracture` ở chỗ fracture để lộ chỗ lệch,
+    # còn ở đây chỗ hổng bị che đi nên tổng thể đọc thành liền mạch.
+    return (f'<rect x="10" y="58" width="38" height="16" rx="3" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="80" y="58" width="38" height="16" rx="3" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="42" y="42" width="44" height="22" rx="5" fill="{p["acc"]}" '
+            f'fill-opacity="0.70" {TS}/>')
+
+
+def t_granularity(p):
+    # Hai khối CÙNG kích thước: một bên phân giải được thành từng phần riêng biệt,
+    # một bên nhoè thành khối đồng nhất. Nội dung nằm ở việc hai bên bằng nhau về
+    # lượng nhưng khác nhau về độ phân giải — không phải bên nào lớn hơn.
+    cid = f"tgra{next(_uid)}"
+    return (f'<clipPath id="{cid}"><circle cx="38" cy="64" r="28"/></clipPath>'
+            f'<circle cx="38" cy="64" r="28" fill="{p["t1"]}" {TS}/>'
+            f'<g clip-path="url(#{cid})">'
+            f'<path d="M38,36 L38,92 M10,54 L66,54 M10,76 L66,76" {TNF}/></g>'
+            f'<circle cx="98" cy="64" r="28" fill="{p["acc"]}" fill-opacity="0.55" {TS}/>')
+
+
+def t_cue_lock(p):
+    # Nội dung còn NGUYÊN (khối đặc, không bị che) nhưng có một khuyết ở rìa, và
+    # mảnh khớp với khuyết đó nằm tách hẳn ra ngoài. Quên ở đây không phải mất dữ
+    # liệu mà là thiếu đúng mảnh để mở ra. Khác `veil` (bị che) và `gate` (bị chặn).
+    # Mảnh rời có ĐÚNG bán kính của khuyết (r=11) — chính sự khớp bán kính mới nói
+    # được "cái thiếu là mảnh này", chứ không phải một chấm trang trí bất kỳ.
+    return (f'<path d="M14,26 H82 V53 A11,11 0 0 0 82,75 V102 H14 Z" '
+            f'fill="{p["t2"]}" {TS}/>'
+            f'<circle cx="105" cy="64" r="11" fill="{p["acc"]}" fill-opacity="0.75" {TS}/>')
+
+
 CONCEPT_OBJECTS = dict(mirror=t_mirror, in_out_ring=t_in_out_ring, balance=t_balance,
                        beam=t_beam, halo_spill=t_halo_spill, veil=t_veil,
                        fracture=t_fracture, pull=t_pull, echo=t_echo, gate=t_gate,
                        rebound=t_rebound, odd_one_out=t_odd_one_out,
-                       tail_event=t_tail_event)
+                       tail_event=t_tail_event, gap_fill=t_gap_fill,
+                       granularity=t_granularity, cue_lock=t_cue_lock)
 
 # Quan hệ mà mỗi concept object biểu đạt — dùng khi chẩn đoán metaphor cho card.
 CONCEPT_MEANING = {
@@ -525,6 +560,9 @@ CONCEPT_MEANING = {
     "rebound":     "tác động bật ngược lại, kết quả đi ngược ý định ban đầu",
     "odd_one_out": "một phần tử lệch khỏi nền đồng nhất — phân biệt nhờ tương phản với phần còn lại",
     "tail_event":  "biến cố hiếm nhưng độ lớn áp đảo, nằm ngoài dải quen thuộc (đuôi phân phối)",
+    "gap_fill":    "một chỗ hổng được vá bằng vật liệu lạ, khiến tổng thể đọc thành liền mạch",
+    "granularity": "cùng một lượng, nhưng một bên phân giải được thành từng cá thể còn bên kia nhoè thành khối",
+    "cue_lock":    "nội dung còn nguyên nhưng thiếu đúng mảnh khớp để mở ra được",
 }
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS)

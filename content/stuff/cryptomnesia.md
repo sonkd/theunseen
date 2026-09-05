@@ -7,6 +7,7 @@ categories: [memory]
 links: [misattribution-of-memory, source-confusion, confabulation]
 refs: ['https://en.wikipedia.org/wiki/Cryptomnesia']
 strategy: 'Khi một ý tưởng "quá xuất sắc" bỗng xuất hiện trong đầu, dành vài phút tra cứu xem liệu mình đã từng đọc/nghe nó ở đâu trước khi công bố như một phát kiến của riêng mình.'
+image: /assets/stuff/cryptomnesia.png
 published: true
 ---
 

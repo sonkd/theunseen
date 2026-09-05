@@ -167,56 +167,105 @@ OVERRIDES = {
         "khuếch tán trách nhiệm: một tình huống cần giúp bị chia thành nhiều phần cho nhiều "
         "người, càng nhiều nhánh mỗi nhánh càng loãng cho tới khi không ai hành động"),
     "cathedral-effect": (
-        "halo_spill",
-        "concept object: chiều cao trần là một ấn tượng không gian mồi (prime) rồi lan sang "
-        "cách xử lý những vấn đề không liên quan gì tới không gian — đúng nghĩa 'ấn tượng lan "
-        "sang đánh giá lân cận', không phải quan hệ cha-con của hierarchy"),
+"spectrum": (
+        "trần thấp → trần cao là một dải liên tục, và kiểu xử lý thông tin trượt dần theo dải đó "
+        "(cụ thể → trừu tượng). hierarchy sai vì không có quan hệ cha-con nào ở đây, chỉ có một "
+        "biến độc lập kéo một biến phụ thuộc theo mức độ"),
     "change-blindness": (
         "beam",
-        "concept object: chú ý dồn hết vào việc đếm đường chuyền (điểm sáng), còn phần thay đổi "
-        "thực sự xảy ra trong vùng đang tối đi — beam đúng nghĩa hơn hierarchy vì đây không phải "
-        "quan hệ phân tầng mà là hệ quả của việc chú ý chỉ rọi được một điểm"),
+        "chú ý dồn hết vào một nhiệm vụ khiến phần còn lại của cảnh (kể cả thay đổi rõ ràng) "
+        "chìm vào tối — đúng nghĩa đen của beam, không phải quan hệ cha-con"),
     "cheerleader-effect": (
-        "coverage_sphere",
-        "khuôn mặt trung bình của cả nhóm phủ lên nhận thức về từng khuôn mặt riêng lẻ, kéo "
-        "đánh giá về gần mức trung bình dễ nhìn hơn — không phải quan hệ lồng nhau (nesting) như "
-        "xlsx gán, vì không có 'lõi' nào bị bao bọc, chỉ có một lớp phủ đè lên toàn bộ"),
+        "halo_spill",
+        "ấn tượng trung bình của cả nhóm lan sang cách đánh giá từng khuôn mặt riêng lẻ, khiến "
+        "khuôn mặt gốc 'ăn theo' vẻ hấp dẫn của trung bình nhóm. nested_scope sai vì đây không "
+        "phải quan hệ lồng nhau mà là một ấn tượng tràn/lan sang đánh giá lân cận"),
     "chestertons-fence": (
-        "layers",
-        "hàng rào là một lớp trầm tích lịch sử — lý do dựng lên nằm ở tầng dưới, phải đào tới đó "
-        "trước khi gỡ lớp trên; layers sát nghĩa hơn hierarchy vì đây không phải quan hệ cha-con "
-        "mà là quan hệ tích tụ theo thời gian"),
+        "veil",
+        "lý do dựng hàng rào không biến mất, chỉ đang bị che khuất khỏi người muốn dỡ nó — đúng "
+        "nghĩa veil (thông tin bị che, không phải không tồn tại), không phải quan hệ cha-con"),
     "choice-overload": (
-        "spectrum",
-        "24 loại mứt là một dải gần như liên tục, càng dày đặc trên dải đó càng khó phân biệt và "
-        "khó chọn — spectrum đúng nghĩa hơn divergence vì đây không phải một điểm rẽ nhánh, mà là "
-        "mật độ lựa chọn dọc theo một dải"),
+        "funnel",
+        "nhiều lựa chọn đổ vào nhưng số quyết định chốt được lại ít đi — hội tụ giảm dần đúng "
+        "kiểu funnel. divergence bị loại vì hướng đi ngược lại: đây là hội tụ, không phải rẽ nhánh"),
     "choice-supportive-bias": (
-        "echo",
-        "concept object: mỗi lần nhớ lại, câu chuyện về lựa chọn đã chọn được kể lại và khuếch đại "
-        "thêm một chút theo hướng tích cực — đúng nghĩa lặp lại làm khuếch đại của echo, không "
-        "phải một điểm rẽ nhánh (divergence)"),
+        "balance",
+        "sau khi chọn, cán cân đánh giá bị đẩy lệch thêm về phía đã chọn (khen thêm) và lệch xa "
+        "phía đã từ chối (chê thêm) — một cán cân có hướng, không phải một điểm rẽ nhiều nhánh"),
     "circle-of-competence": (
-        "in_out_ring",
-        "concept object: đúng nghĩa đen tên gọi — có một vòng tròn, bên trong là phạm vi hiểu biết "
-        "đủ sâu để quyết định, bên ngoài là chỉ biết bề mặt; in_out_ring sát hơn hẳn hierarchy vì "
-        "đây không phải quan hệ cha-con mà là ranh giới thuộc về"),
+        "nested_scope",
+        "một lõi (điều thực sự biết rõ) nằm lọt bên trong một vùng ngoài rộng hơn (điều tưởng là "
+        "biết, hoặc không biết) — quyết định chỉ an toàn trong lõi. hierarchy sai vì không có "
+        "cấp bậc, chỉ có ranh giới bao trong-ngoài"),
     "clustering-illusion": (
-        "cycle",
-        "một khi não bộ 'thấy' cụm trong dữ liệu ngẫu nhiên, mỗi điểm dữ liệu tiếp theo lại được "
-        "diễn giải để củng cố thêm cho cụm đó — vòng tự củng cố (cycle) đúng hơn network vì không "
-        "có liên kết thật giữa các điểm, chỉ có vòng lặp diễn giải; cũng tránh trùng hình với "
-        "apophenia (network) vốn diễn tả cùng một nhóm hiện tượng thấy-quy-luật-trong-nhiễu"),
+        "echo",
+        "một chuỗi kết quả lặp lại (thắng liên tiếp) được khuếch đại thành cảm giác có quy luật "
+        "— đúng cơ chế echo (lặp lại → khuếch đại), không phải một điểm rẽ nhiều nhánh"),
     "cognitive-dissonance": (
-        "mirror",
-        "concept object: cùng một con người soi qua hai khung — niềm tin đang giữ và hành vi đã "
-        "làm — lệch nhau, buộc phải chỉnh một trong hai để khớp lại; mirror đúng hơn hierarchy vì "
-        "đây không phải quan hệ phân tầng mà là cùng một sự việc nhìn qua hai lăng kính mâu thuẫn"),
+        "fracture",
+        "hai mảnh lẽ ra phải khớp (niềm tin và hành động) bị lệch nhau, gây khó chịu cho tới khi "
+        "một trong hai bị chỉnh lại — đúng nghĩa fracture (bất nhất), không phải cha-con"),
     "cognitive-load-theory": (
         "threshold",
-        "bộ nhớ làm việc có một sức chứa cố định — vượt ngưỡng đó, chất lượng xử lý sập nhanh "
-        "chứ không suy giảm từ từ; threshold đúng nghĩa hơn hierarchy vì đây là một giới hạn dung "
-        "lượng, không phải quan hệ cha-con"),
+        "bộ nhớ làm việc xử lý tốt cho tới một ngưỡng, vượt ngưỡng đó thì hiểu bài sụp đổ — "
+        "tipping point rõ ràng, không phải quan hệ cha-con"),
+
+    # ---- batch #5 (2026-09-05) — xlsx gán 7/10 card là hierarchy. Không card nào
+    # trong 10 card này là quan hệ cha-con, nên chẩn đoán lại toàn bộ theo body.
+    # Thêm 3 concept object mới (registry 27 -> 30): gap_fill, granularity, cue_lock.
+    "confabulation": (
+        "gap_fill",
+        "concept object MỚI: não không nhớ sai một cách lộ liễu — nó VÁ khoảng trống bằng "
+        "chi tiết hợp lý rồi đọc lại toàn bộ như một ký ức liền mạch. Không hình nào trong "
+        "registry cũ diễn được 'chỗ hổng bị lấp bằng vật liệu lạ': fracture để lộ chỗ lệch, "
+        "veil chỉ che chứ không thay thế"),
+    "confirmation-bias": (
+        "cycle",
+        "vòng tự củng cố: niềm tin quyết định bằng chứng nào được tìm và giữ, bằng chứng đó "
+        "lại làm niềm tin chắc thêm. gate (sàng lọc) sát nghĩa hơn về cơ chế nhưng gate+amber "
+        "đã thuộc automation-bias nên sẽ ra ảnh trùng byte"),
+    "congruence-bias": (
+        "gate",
+        "khác confirmation-bias ở chỗ thiên lệch nằm ngay trong THIẾT KẾ phép thử: chỉ phép "
+        "thử khớp với giả thuyết mới được cho chạy, nên đầu ra gần như chắc chắn là xác nhận. "
+        "nested_scope cũng đúng nghĩa (quy luật giả định là tập con) nhưng nested_scope+mint "
+        "đã có barnum-effect và circle-of-competence"),
+    "conjunction-fallacy": (
+        "nested_scope",
+        "'A và B' là tập con nằm gọn trong 'A' nhưng lại được chấm xác suất cao hơn — quan hệ "
+        "bao hàm là toàn bộ nội dung của card. proportion sát nhưng proportion+amber đã thuộc "
+        "base-rate-fallacy"),
+    "conservatism": (
+        "layers",
+        "đính chính được ĐẮP THÊM lên chứ không thay thế: lớp niềm tin cũ vẫn nằm dưới và vẫn "
+        "ánh lên qua các lớp mới (fill-opacity làm đúng việc đó). Phân biệt với "
+        "continued-influence-effect cùng batch: ở đây vấn đề là biên độ cập nhật thiếu, "
+        "không phải sự bất nhất giữa lời nói và suy luận"),
+    "continued-influence-effect": (
+        "fracture",
+        "niềm tin có ý thức đã sửa (người ta nhắc lại đúng lời đính chính) nhưng mô hình "
+        "nhân-quả ngầm thì chưa — hai mảnh lẽ ra phải khớp lại lệch nhau. Không dùng rebound "
+        "vì rebound là backfire-effect (niềm tin sai đậm THÊM), còn ở đây nó chỉ dai dẳng"),
+    "contrast-effect": (
+        "contrast",
+        "giữ nguyên xlsx — ca hiếm mà cột Hero shape đúng, và đây là card contrast đúng nghĩa "
+        "nhất trong corpus: cùng một vật, đặt cạnh vật khác thì đọc ra giá trị khác"),
+    "cross-race-effect": (
+        "granularity",
+        "concept object MỚI: cơ chế là ĐỘ PHÂN GIẢI tri giác, không phải tỉ trọng (proportion "
+        "của xlsx sai hẳn). Cùng một số lượng gương mặt: nhóm quen thì phân giải được thành "
+        "từng cá thể, nhóm lạ thì nhoè thành một khối đồng nhất. Cố ý KHÔNG dùng in_out_ring "
+        "để dành hình đó cho in-group-bias và out-group-homogeneity-bias"),
+    "cryptomnesia": (
+        "mirror",
+        "cùng MỘT nội dung xuất hiện hai lần dưới hai nhãn khác nhau: lần đầu là thứ đã đọc/"
+        "nghe, lần sau quay lại mà mất nhãn nguồn nên được đọc thành 'ý tưởng của mình'. "
+        "mirror là hình duy nhất diễn được 'một sự việc, hai cách quy kết'"),
+    "cue-dependent-forgetting": (
+        "cue_lock",
+        "concept object MỚI: card nói rõ ký ức VẪN CÒN NGUYÊN, chỉ thiếu cue để truy xuất. "
+        "veil (bị che) và gate (bị chặn) đều sai cơ chế, và cả hai đều đã dùng ở hue amber. "
+        "Ở đây nội dung hiện đầy đủ, cái thiếu là mảnh khớp nằm tách hẳn bên ngoài")
 }
 
 
@@ -328,9 +377,12 @@ def main():
     print(f"\nremaining after batch = {len(pending) - (0 if args.dry_run else len(batch))}")
 
     if not args.dry_run:
+        # Hash trên SVG chứ KHÔNG phải PNG: `convert` không cho ra byte tất định giữa
+        # các lần chạy, nên bản md5-trên-PNG trước đây bỏ sót 6/8 cặp trùng thật
+        # (vd belief-bias == cognitive-dissonance). SVG là nguồn nên so ở đó mới đúng.
         dupes = {}
         for c in index:
-            f = os.path.join(ASSETS, f"{c['slug']}.png")
+            f = os.path.join(ASSETS, f"{c['slug']}.svg")
             if os.path.exists(f):
                 dupes.setdefault(hashlib.md5(open(f, "rb").read()).hexdigest(),
                                  []).append(c["slug"])

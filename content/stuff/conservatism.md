@@ -7,6 +7,7 @@ categories: [bias]
 links: [continued-influence-effect, confirmation-bias, backfire-effect]
 refs: ['https://en.wikipedia.org/wiki/Conservatism_%28belief_revision%29']
 strategy: "Khi nhận bằng chứng mới đủ mạnh để đổi ý, chủ động viết lại rõ ràng kết luận mới và lý do — đừng chỉ ngầm 'ghi nhận' trong đầu, vì phần niềm tin cũ sẽ có xu hướng âm thầm tồn tại song song nếu không được thay thế một cách tường minh."
+image: /assets/stuff/conservatism.png
 published: true
 ---
 
