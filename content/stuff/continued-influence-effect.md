@@ -7,6 +7,7 @@ categories: [memory, bias]
 links: [misinformation-effect, backfire-effect, illusory-truth-effect, confirmation-bias]
 refs: ['https://en.wikipedia.org/wiki/Confirmation_bias#continued_influence_effect']
 strategy: 'Khi đính chính một thông tin sai, đừng chỉ nói "điều đó không đúng" — hãy đưa ra lời giải thích thay thế đầy đủ để lấp khoảng trống mà thông tin cũ để lại, nếu không não sẽ tự động quay lại dùng nó.'
+image: /assets/stuff/continued-influence-effect.png
 published: true
 ---
 

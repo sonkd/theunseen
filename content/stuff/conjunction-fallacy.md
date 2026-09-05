@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [base-rate-fallacy, availability-heuristic, belief-bias]
 refs: ['https://en.wikipedia.org/wiki/Conjunction_fallacy']
 strategy: "Khi một câu chuyện chi tiết nghe 'có vẻ đúng' hơn một khả năng chung chung, tách riêng từng điều kiện và ước lượng xác suất độc lập cho mỗi cái — xác suất của việc cả hai cùng xảy ra không bao giờ cao hơn xác suất của một điều kiện đơn lẻ."
+image: /assets/stuff/conjunction-fallacy.png
 published: true
 ---
 

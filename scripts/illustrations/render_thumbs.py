@@ -205,6 +205,63 @@ OVERRIDES = {
         "threshold",
         "bộ nhớ làm việc xử lý tốt cho tới một ngưỡng, vượt ngưỡng đó thì hiểu bài sụp đổ — "
         "tipping point rõ ràng, không phải quan hệ cha-con"),
+
+    # ---- batch #5 (2026-09-05) — xlsx gán 7/10 card là hierarchy. Không card nào
+    # trong 10 card này là quan hệ cha-con, nên chẩn đoán lại toàn bộ theo body.
+    # Thêm 3 concept object mới (registry 27 -> 30): gap_fill, granularity, cue_lock.
+    "confabulation": (
+        "gap_fill",
+        "concept object MỚI: não không nhớ sai một cách lộ liễu — nó VÁ khoảng trống bằng "
+        "chi tiết hợp lý rồi đọc lại toàn bộ như một ký ức liền mạch. Không hình nào trong "
+        "registry cũ diễn được 'chỗ hổng bị lấp bằng vật liệu lạ': fracture để lộ chỗ lệch, "
+        "veil chỉ che chứ không thay thế"),
+    "confirmation-bias": (
+        "cycle",
+        "vòng tự củng cố: niềm tin quyết định bằng chứng nào được tìm và giữ, bằng chứng đó "
+        "lại làm niềm tin chắc thêm. gate (sàng lọc) sát nghĩa hơn về cơ chế nhưng gate+amber "
+        "đã thuộc automation-bias nên sẽ ra ảnh trùng byte"),
+    "congruence-bias": (
+        "gate",
+        "khác confirmation-bias ở chỗ thiên lệch nằm ngay trong THIẾT KẾ phép thử: chỉ phép "
+        "thử khớp với giả thuyết mới được cho chạy, nên đầu ra gần như chắc chắn là xác nhận. "
+        "nested_scope cũng đúng nghĩa (quy luật giả định là tập con) nhưng nested_scope+mint "
+        "đã có barnum-effect và circle-of-competence"),
+    "conjunction-fallacy": (
+        "nested_scope",
+        "'A và B' là tập con nằm gọn trong 'A' nhưng lại được chấm xác suất cao hơn — quan hệ "
+        "bao hàm là toàn bộ nội dung của card. proportion sát nhưng proportion+amber đã thuộc "
+        "base-rate-fallacy"),
+    "conservatism": (
+        "layers",
+        "đính chính được ĐẮP THÊM lên chứ không thay thế: lớp niềm tin cũ vẫn nằm dưới và vẫn "
+        "ánh lên qua các lớp mới (fill-opacity làm đúng việc đó). Phân biệt với "
+        "continued-influence-effect cùng batch: ở đây vấn đề là biên độ cập nhật thiếu, "
+        "không phải sự bất nhất giữa lời nói và suy luận"),
+    "continued-influence-effect": (
+        "fracture",
+        "niềm tin có ý thức đã sửa (người ta nhắc lại đúng lời đính chính) nhưng mô hình "
+        "nhân-quả ngầm thì chưa — hai mảnh lẽ ra phải khớp lại lệch nhau. Không dùng rebound "
+        "vì rebound là backfire-effect (niềm tin sai đậm THÊM), còn ở đây nó chỉ dai dẳng"),
+    "contrast-effect": (
+        "contrast",
+        "giữ nguyên xlsx — ca hiếm mà cột Hero shape đúng, và đây là card contrast đúng nghĩa "
+        "nhất trong corpus: cùng một vật, đặt cạnh vật khác thì đọc ra giá trị khác"),
+    "cross-race-effect": (
+        "granularity",
+        "concept object MỚI: cơ chế là ĐỘ PHÂN GIẢI tri giác, không phải tỉ trọng (proportion "
+        "của xlsx sai hẳn). Cùng một số lượng gương mặt: nhóm quen thì phân giải được thành "
+        "từng cá thể, nhóm lạ thì nhoè thành một khối đồng nhất. Cố ý KHÔNG dùng in_out_ring "
+        "để dành hình đó cho in-group-bias và out-group-homogeneity-bias"),
+    "cryptomnesia": (
+        "mirror",
+        "cùng MỘT nội dung xuất hiện hai lần dưới hai nhãn khác nhau: lần đầu là thứ đã đọc/"
+        "nghe, lần sau quay lại mà mất nhãn nguồn nên được đọc thành 'ý tưởng của mình'. "
+        "mirror là hình duy nhất diễn được 'một sự việc, hai cách quy kết'"),
+    "cue-dependent-forgetting": (
+        "cue_lock",
+        "concept object MỚI: card nói rõ ký ức VẪN CÒN NGUYÊN, chỉ thiếu cue để truy xuất. "
+        "veil (bị che) và gate (bị chặn) đều sai cơ chế, và cả hai đều đã dùng ở hue amber. "
+        "Ở đây nội dung hiện đầy đủ, cái thiếu là mảnh khớp nằm tách hẳn bên ngoài"),
 }
 
 
@@ -316,9 +373,12 @@ def main():
     print(f"\nremaining after batch = {len(pending) - (0 if args.dry_run else len(batch))}")
 
     if not args.dry_run:
+        # Hash trên SVG chứ KHÔNG phải PNG: `convert` không cho ra byte tất định giữa
+        # các lần chạy, nên bản md5-trên-PNG trước đây bỏ sót 6/8 cặp trùng thật
+        # (vd belief-bias == cognitive-dissonance). SVG là nguồn nên so ở đó mới đúng.
         dupes = {}
         for c in index:
-            f = os.path.join(ASSETS, f"{c['slug']}.png")
+            f = os.path.join(ASSETS, f"{c['slug']}.svg")
             if os.path.exists(f):
                 dupes.setdefault(hashlib.md5(open(f, "rb").read()).hexdigest(),
                                  []).append(c["slug"])

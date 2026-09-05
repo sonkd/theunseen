@@ -7,6 +7,7 @@ categories: [perception, memory, social]
 links: [mere-exposure-effect, in-group-bias, out-group-homogeneity-bias, stereotyping]
 refs: ['https://en.wikipedia.org/wiki/Cross-race_effect']
 strategy: 'Khi thiết kế hệ thống nhận diện khuôn mặt hoặc eKYC, luôn kiểm thử tỷ lệ lỗi theo từng nhóm nhân khẩu học riêng biệt — độ chính xác trung bình có thể che giấu sai lệch nghiêm trọng ở một số nhóm.'
+image: /assets/stuff/cross-race-effect.png
 published: true
 ---
 
