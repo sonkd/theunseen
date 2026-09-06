@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [just-world-hypothesis, fundamental-attribution-error, self-serving-bias]
 refs: ['https://en.wikipedia.org/wiki/Defensive_attribution_hypothesis']
 strategy: 'Khi viết nội dung cảnh báo lừa đảo hoặc xử lý khiếu nại của nạn nhân gian lận, tránh ngôn ngữ ngầm quy trách nhiệm ("lẽ ra khách hàng phải kiểm tra kỹ hơn") — nó vừa gây tổn thương vừa phản tác dụng với trải nghiệm hỗ trợ.'
+image: /assets/stuff/defensive-attribution-hypothesis.png
 published: true
 ---
 

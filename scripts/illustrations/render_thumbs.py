@@ -167,7 +167,7 @@ OVERRIDES = {
         "khuếch tán trách nhiệm: một tình huống cần giúp bị chia thành nhiều phần cho nhiều "
         "người, càng nhiều nhánh mỗi nhánh càng loãng cho tới khi không ai hành động"),
     "cathedral-effect": (
-"spectrum": (
+        "spectrum",
         "trần thấp → trần cao là một dải liên tục, và kiểu xử lý thông tin trượt dần theo dải đó "
         "(cụ thể → trừu tượng). hierarchy sai vì không có quan hệ cha-con nào ở đây, chỉ có một "
         "biến độc lập kéo một biến phụ thuộc theo mức độ"),
@@ -265,7 +265,70 @@ OVERRIDES = {
         "cue_lock",
         "concept object MỚI: card nói rõ ký ức VẪN CÒN NGUYÊN, chỉ thiếu cue để truy xuất. "
         "veil (bị che) và gate (bị chặn) đều sai cơ chế, và cả hai đều đã dùng ở hue amber. "
-        "Ở đây nội dung hiện đầy đủ, cái thiếu là mảnh khớp nằm tách hẳn bên ngoài")
+        "Ở đây nội dung hiện đầy đủ, cái thiếu là mảnh khớp nằm tách hẳn bên ngoài"),
+
+    # ---- batch #6 (2026-09-06) — xlsx gán 8/10 card là branching. Không card nào
+    # trong 10 card này là "một điểm rẽ nhiều nhánh", nên chẩn đoán lại toàn bộ.
+    # Thêm 6 concept object mới (registry 30 -> 36): depletion, foil, latch,
+    # dilution, reference_kink, juxtaposition. Lý do phải thêm nhiều: 5 card mint và
+    # 5 card amber của batch này rơi vào nhóm quan hệ mà 30 hình cũ không có
+    # (cạn kiệt, mồi nhử, quán tính mặc định, loãng trách nhiệm, bất đối xứng quanh
+    # mốc, so sánh cạnh nhau vs riêng lẻ) — dùng lại hình cũ sẽ ra ảnh TRÙNG BYTE
+    # với card không liên quan về nghĩa.
+    "curse-of-knowledge": (
+        "veil",
+        "cái người nghe THIẾU thì vô hình với người nói — kiến thức của chính người nói "
+        "là tấm màn. Đây là mặt đối của armchair-fallacy (veil+amber), nên dùng veil+mint "
+        "để cùng họ nghĩa mà không trùng byte. branching sai hẳn: không có điểm rẽ nào"),
+    "decision-fatigue": (
+        "depletion",
+        "concept object MỚI: chất lượng giảm dần vì chính chuỗi quyết định trước đó đã rút "
+        "cạn nguồn lực. spectrum là dải TĨNH của một biến (và spectrum+amber đã thuộc "
+        "ambiguity-effect + availability-heuristic); ở đây việc sử dụng mới là nguyên nhân"),
+    "declinism": (
+        "rosy_tilt",
+        "concept object MỚI. Bản dựng đầu dùng depletion+mint, nhưng contact sheet ở khổ 64px "
+        "cho thấy nó chỉ khác decision-fatigue (depletion+amber) ở MÀU — hai card cạnh nhau "
+        "trong library sẽ trông như lỗi render. Quan trọng hơn, depletion sai nghĩa: declinism "
+        "không phải cái gì đó mất đi thật, mà là cùng một thực tại bị chấm điểm nhạt dần theo "
+        "thời gian. Nên: kích thước 4 ô GIỮ NGUYÊN, chỉ sắc độ đổi"),
+    "decoy-effect": (
+        "foil",
+        "concept object MỚI: phương án thứ ba tồn tại chỉ để làm phương án đích trông vượt "
+        "trội. odd_one_out (amber còn trống) sai cơ chế — nó nói về độ nổi bật trên nền đồng "
+        "nhất, còn decoy thì chưa bao giờ được chọn, nó chỉ đổi khung so sánh"),
+    "default-effect": (
+        "latch",
+        "concept object MỚI: các phương án ngang giá, nhưng giữ nguyên thì miễn phí còn đổi "
+        "thì phải vượt một bức tường công sức. Không hình nào trong registry cũ diễn được "
+        "quán tính; gate là sàng lọc (có khe, có người bị chặn) — ở đây không ai bị chặn cả"),
+    "defensive-attribution-hypothesis": (
+        "in_out_ring",
+        "người quan sát vẽ lại ranh giới thuộc về để đẩy nạn nhân ra ngoài 'nhóm giống tôi', "
+        "nhờ đó rủi ro cũng rơi ra ngoài vòng của mình. LƯU Ý cho batch sau: in_out_ring+mint "
+        "nên để dành cho in-group-bias; out-group-homogeneity-bias dùng granularity+amber "
+        "(đã thuộc cross-race-effect, card anh em) hoặc cần một object mới"),
+    "denomination-effect": (
+        "granularity",
+        "cùng MỘT tổng giá trị, khác nhau ở độ chia: một tờ lớn nguyên khối vs nhiều tờ nhỏ "
+        "tách rời. Đây là card granularity đúng nghĩa đen nhất corpus. hierarchy của xlsx sai "
+        "hẳn — không có quan hệ cha-con nào"),
+    "diffusion-of-responsibility": (
+        "dilution",
+        "concept object MỚI: một nghĩa vụ chia cho N người, mỗi phần loãng tới mức dưới ngưỡng "
+        "hành động. BẮT BUỘC khác bystander-effect (divergence+amber) vì hai card là anh em "
+        "gần nghĩa — dùng lại divergence sẽ ra hai thumbnail trùng byte cạnh nhau trong library"),
+    "disposition-effect": (
+        "reference_kink",
+        "concept object MỚI: cùng một biên độ lệch khỏi giá vốn, nhưng phía lãi thì buông sớm "
+        "còn phía lỗ thì ôm chặt. threshold+mint (antifragility) đọc thành 'vượt mốc thì mạnh "
+        "lên' — sai nghĩa. Object này sẽ dùng lại được cho loss-aversion, sunk-cost, endowment"),
+    "distinction-bias": (
+        "juxtaposition",
+        "concept object MỚI: cùng một cặp, đặt sát nhau thì chênh lệch thành bậc thang nhìn "
+        "thấy được, tách xa thì biến mất. contrast (xlsx) sai chiều — contrast nói 'hai thứ "
+        "khác nhau', còn card này nói hai thứ THỰC RA gần như nhau, chỉ cách nhìn tạo ra khác biệt"),
+
 }
 
 

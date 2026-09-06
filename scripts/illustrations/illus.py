@@ -538,12 +538,109 @@ def t_cue_lock(p):
             f'<circle cx="105" cy="64" r="11" fill="{p["acc"]}" fill-opacity="0.75" {TS}/>')
 
 
+def t_depletion(p):
+    # Một nguồn lực hữu hạn bị rút cạn dần BỞI CHÍNH việc sử dụng lặp lại.
+    # Khác `spectrum` (dải tĩnh của một biến) và `echo` (lặp lại nhạt dần, căn giữa):
+    # ở đây có một VẠCH MỐC nằm ngang = mức đầy ban đầu, và các cột căn ĐÁY để đọc
+    # được phần đã mất so với mốc đó. Không dùng fill-opacity — thông điệp nằm ở
+    # chiều cao, thêm biến thứ hai sẽ làm loãng.
+    o = [f'<rect x="14" y="26" width="100" height="7" rx="3" fill="{p["t1"]}" {TS}/>' ]
+    o += [f'<rect x="{x}" y="{106-h}" width="18" height="{h}" fill="{p["t3"]}" {TS}/>'
+          for x, h in ((18, 68), (44, 50), (70, 32), (96, 16))]
+    return "".join(o)
+
+
+def t_foil(p):
+    # Một phần tử được thêm vào CHỈ để làm phần tử bên cạnh trông vượt trội —
+    # bản thân nó không bao giờ được chọn. Dấu hiệu đọc được: khối nhỏ là BẢN THU
+    # NHỎ của khối lớn (cùng chất liệu, nhỏ hơn ở CẢ HAI chiều) và đứng sát nó, nên
+    # quan hệ áp đảo hiện ra ngay. Khối tròn bên trái là phương án KHÔNG so sánh
+    # được — nó phá thế đơn điệu để hình không bị đọc thành `spectrum`.
+    return (f'<circle cx="32" cy="68" r="26" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="62" y="36" width="32" height="64" fill="{p["acc"]}" '
+            f'fill-opacity="0.62" {TS}/>'
+            f'<rect x="98" y="64" width="18" height="36" fill="{p["acc"]}" '
+            f'fill-opacity="0.62" {TS}/>')
+
+
+def t_latch(p):
+    # Các phương án ngang giá, nhưng một phương án đã được cài sẵn ở phía TRƯỚC
+    # bức tường, còn muốn tới các phương án kia thì phải vượt tường. Bất đối xứng
+    # nằm ở CÔNG SỨC, không ở giá trị. Khác `gate`: gate có khe hở và dòng chảy
+    # xuyên qua (sàng lọc), còn tường ở đây ĐẶC — không ai bị chặn, chỉ là đứng yên
+    # thì rẻ hơn.
+    o = [f'<rect x="16" y="48" width="32" height="32" rx="4" fill="{p["acc"]}" '
+         f'fill-opacity="0.75" {TS}/>',
+         f'<rect x="58" y="18" width="8" height="92" rx="4" fill="{p["t2"]}" {TS}/>']
+    o += [f'<rect x="78" y="{y}" width="30" height="30" rx="4" fill="{p["t1"]}" {TS}/>'
+          for y in (26, 68)]
+    return "".join(o)
+
+
+def t_dilution(p):
+    # Cùng MỘT nghĩa vụ: khi một người giữ thì nó đặc; khi chia cho nhiều người thì
+    # mỗi phần mờ tới mức không đủ kích hoạt hành động. Tổng diện tích gần như không
+    # đổi — đó mới là điểm. Khác `proportion` (lát cắt trên tổng, tĩnh) và
+    # `granularity` (độ phân giải tri giác của hai người quan sát).
+    o = [f'<rect x="14" y="34" width="100" height="24" rx="5" fill="{p["acc"]}" '
+         f'fill-opacity="0.72" {TS}/>' ]
+    o += [f'<rect x="{14+i*17}" y="76" width="13" height="24" rx="3" fill="{p["acc"]}" '
+          f'fill-opacity="0.16" {TS}/>' for i in range(6)]
+    return "".join(o)
+
+
+def t_reference_kink(p):
+    # Một đường mốc, hai độ lệch BẰNG NHAU về độ lớn nhưng bị xử lý ngược nhau:
+    # phía trên đã rời khỏi mốc (buông sớm, nhạt), phía dưới vẫn dính chặt vào mốc
+    # (giữ lại, nặng). Hai ô cố ý CÙNG kích thước — nếu khác kích thước thì hình
+    # đọc thành `contrast` (hai thứ khác nhau) chứ không phải bất đối xứng quanh mốc.
+    # Hai ô đẩy về HAI ĐẦU đối diện: bản dựng đầu đặt ô dưới gần tâm nên hình đọc
+    # thành cái bàn/đòn cân có trụ đỡ (đụng `balance`). Lệch hẳn về hai góc thì
+    # quan hệ đọc đúng là bất đối xứng quanh mốc, không phải một vật có chân đế.
+    return (f'<rect x="12" y="61" width="104" height="6" rx="3" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="16" y="24" width="28" height="28" fill="{p["acc"]}" '
+            f'fill-opacity="0.22" {TS}/>'
+            f'<rect x="84" y="67" width="28" height="28" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>')
+
+
+def t_rosy_tilt(p):
+    # Thực tế KHÔNG đổi (4 ô bằng nhau y hệt, cùng đứng trên một vạch phẳng), chỉ
+    # có sắc độ đánh giá nhạt dần theo thời gian. Khác `depletion` ở đúng chỗ then
+    # chốt: depletion đổi CHIỀU CAO (nguồn lực mất thật), còn ở đây kích thước giữ
+    # nguyên và chỉ độ đậm đổi — nghĩa là cái suy giảm nằm trong cách nhìn, không
+    # nằm trong sự vật. Khác `echo` vì echo đổi cả chiều cao lẫn độ đậm và không có
+    # vạch mốc phẳng bên dưới.
+    # Ô cao 44 chứ không phải 22: bản 22 cho bbox chỉ cao 34/128, hình đọc thành một
+    # dải mỏng và lạc khỏi mật độ nét của cả bộ.
+    o = [f'<rect x="14" y="98" width="100" height="6" rx="3" fill="{p["t1"]}" {TS}/>' ]
+    o += [f'<rect x="{x}" y="48" width="22" height="44" fill="{p["acc"]}" '
+          f'fill-opacity="{op}" {TS}/>'
+          for x, op in ((16, 0.78), (42, 0.55), (68, 0.32), (94, 0.14))]
+    return "".join(o)
+
+
+def t_juxtaposition(p):
+    # CÙNG một cặp, vẽ hai lần. Hàng trên: đặt sát nhau, cạnh chung biến chênh lệch
+    # thành một bậc thang nhìn thấy được. Hàng dưới: tách xa, mất cạnh chung nên
+    # cùng chênh lệch đó không còn đọc ra. Biến duy nhất thay đổi là KHOẢNG CÁCH —
+    # kích thước hai khối giữ y nguyên giữa hai hàng, nếu không thì mất luận điểm.
+    o = [f'<rect x="34" y="18" width="28" height="34" fill="{p["t3"]}" {TS}/>',
+         f'<rect x="62" y="26" width="28" height="26" fill="{p["t3"]}" {TS}/>',
+         f'<rect x="14" y="76" width="28" height="34" fill="{p["t1"]}" {TS}/>',
+         f'<rect x="86" y="84" width="28" height="26" fill="{p["t1"]}" {TS}/>']
+    return "".join(o)
+
+
 CONCEPT_OBJECTS = dict(mirror=t_mirror, in_out_ring=t_in_out_ring, balance=t_balance,
                        beam=t_beam, halo_spill=t_halo_spill, veil=t_veil,
                        fracture=t_fracture, pull=t_pull, echo=t_echo, gate=t_gate,
                        rebound=t_rebound, odd_one_out=t_odd_one_out,
                        tail_event=t_tail_event, gap_fill=t_gap_fill,
-                       granularity=t_granularity, cue_lock=t_cue_lock)
+                       granularity=t_granularity, cue_lock=t_cue_lock,
+                       depletion=t_depletion, foil=t_foil, latch=t_latch,
+                       dilution=t_dilution, reference_kink=t_reference_kink,
+                       juxtaposition=t_juxtaposition, rosy_tilt=t_rosy_tilt)
 
 # Quan hệ mà mỗi concept object biểu đạt — dùng khi chẩn đoán metaphor cho card.
 CONCEPT_MEANING = {
@@ -563,6 +660,14 @@ CONCEPT_MEANING = {
     "gap_fill":    "một chỗ hổng được vá bằng vật liệu lạ, khiến tổng thể đọc thành liền mạch",
     "granularity": "cùng một lượng, nhưng một bên phân giải được thành từng cá thể còn bên kia nhoè thành khối",
     "cue_lock":    "nội dung còn nguyên nhưng thiếu đúng mảnh khớp để mở ra được",
+    "depletion":   "một nguồn lực hữu hạn bị rút cạn dần bởi chính việc sử dụng lặp lại",
+    "foil":        "một phần tử thêm vào chỉ để làm phần tử bên cạnh trông vượt trội",
+    "latch":       "các phương án ngang giá nhưng một phương án đã cài sẵn — đứng yên rẻ hơn đổi",
+    "dilution":    "cùng một nghĩa vụ chia cho nhiều người, mỗi phần loãng tới mức không đủ kích hoạt",
+    "reference_kink": "hai độ lệch bằng nhau quanh một đường mốc nhưng bị xử lý ngược nhau",
+    "juxtaposition":  "cùng một cặp: đặt sát nhau thì chênh lệch đọc ra, tách xa thì biến mất",
+    "rosy_tilt":   "sự vật không đổi, chỉ có sắc độ đánh giá nhạt/đậm dần theo trục thời gian",
+
 }
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS)

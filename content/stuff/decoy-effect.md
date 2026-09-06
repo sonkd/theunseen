@@ -7,6 +7,7 @@ categories: [bias, heuristic]
 links: [anchoring, framing-effect, less-is-better-effect]
 refs: ['https://en.wikipedia.org/wiki/Decoy_effect']
 strategy: 'Khi thiết kế bảng giá gói dịch vụ, kiểm tra xem gói "mồi" có đang âm thầm điều hướng người dùng khỏi lựa chọn thực sự phù hợp với nhu cầu của họ — decoy hiệu quả cho conversion không phải lúc nào cũng tốt cho trust dài hạn.'
+image: /assets/stuff/decoy-effect.png
 published: true
 ---
 

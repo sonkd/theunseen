@@ -8,6 +8,7 @@ tags: [group, responsibility]
 links: [bystander-effect, pluralistic-ignorance, groupthink]
 refs: ['https://en.wikipedia.org/wiki/Diffusion_of_responsibility', 'https://thedecisionlab.com/reference-guide/psychology/diffusion-of-responsibility']
 strategy: 'Nếu cần người khác hành động trong tình huống khẩn, chỉ đích danh một người cụ thể thay vì kêu gọi chung chung vào đám đông.'
+image: /assets/stuff/diffusion-of-responsibility.png
 published: true
 ---
 
