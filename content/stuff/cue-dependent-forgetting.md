@@ -7,6 +7,7 @@ categories: [memory]
 links: [tip-of-the-tongue-phenomenon, levels-of-processing-effect, memory-inhibition, spacing-effect]
 refs: ['https://en.wikipedia.org/wiki/Cue-dependent_forgetting']
 strategy: 'Khi thiết kế luồng nhắc việc hoặc onboarding, gắn thông tin quan trọng với đúng bối cảnh nó sẽ được dùng (contextual cue), thay vì chỉ dồn hết vào một màn hình giới thiệu chung chung dễ quên.'
+image: /assets/stuff/cue-dependent-forgetting.png
 published: true
 ---
 

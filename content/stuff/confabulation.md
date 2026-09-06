@@ -7,6 +7,7 @@ categories: [memory]
 links: [misattribution-of-memory, source-confusion, misinformation-effect]
 refs: ['https://en.wikipedia.org/wiki/Confabulation']
 strategy: "Với những ký ức quan trọng (ai nói gì trong cuộc họp, lý do thực sự của một quyết định cũ), ưu tiên tin vào ghi chép được lưu lại tại thời điểm xảy ra hơn là tin vào trí nhớ hồi tưởng, dù cảm giác chắc chắn về ký ức đó có mạnh đến đâu."
+image: /assets/stuff/confabulation.png
 published: true
 ---
 

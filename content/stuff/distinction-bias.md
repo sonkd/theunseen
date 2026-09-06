@@ -7,6 +7,7 @@ categories: [bias, perception]
 links: [contrast-effect, focalism, framing-effect]
 refs: ['https://en.wikipedia.org/wiki/Distinction_bias']
 strategy: 'Khi test A/B hai phương án thiết kế, cân nhắc thêm bước đánh giá độc lập (mỗi người dùng chỉ thấy một phương án) bên cạnh so sánh cạnh nhau — mức độ ưu tiên đo được từ hai cách có thể khác nhau đáng kể.'
+image: /assets/stuff/distinction-bias.png
 published: true
 ---
 

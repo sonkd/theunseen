@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [illusion-of-transparency, hindsight-bias, illusion-of-asymmetric-insight]
 refs: ['https://en.wikipedia.org/wiki/Curse_of_knowledge']
 strategy: 'Trước khi viết copy hoặc tài liệu hướng dẫn, nhờ một người chưa từng dùng sản phẩm đọc thử — nếu họ hỏi lại điều bạn thấy "hiển nhiên", đó chính là dấu hiệu của curse of knowledge.'
+image: /assets/stuff/curse-of-knowledge.png
 published: true
 ---
 

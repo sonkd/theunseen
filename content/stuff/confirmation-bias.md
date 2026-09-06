@@ -7,6 +7,7 @@ categories: [bias]
 links: [belief-bias, backfire-effect, congruence-bias]
 refs: ['https://en.wikipedia.org/wiki/Confirmation_bias']
 strategy: "Trước khi kết luận, chủ động đặt câu hỏi: 'Bằng chứng nào sẽ khiến mình đổi ý?' — nếu không nghĩ ra được bằng chứng nào, đó là dấu hiệu confirmation bias đang chi phối, không phải giả thuyết đã được kiểm chứng kỹ."
+image: /assets/stuff/confirmation-bias.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [rosy-retrospection, negativity-bias, optimism-bias]
 refs: ['https://en.wikipedia.org/wiki/Declinism']
 strategy: 'Khi đánh giá "mọi thứ đang tệ đi", thử tìm dữ liệu định lượng dài hạn thay vì dựa vào cảm giác — declinism thường không khớp với các chỉ số khách quan như tuổi thọ, tỷ lệ nghèo, hay tỷ lệ tội phạm.'
+image: /assets/stuff/declinism.png
 published: true
 ---
 

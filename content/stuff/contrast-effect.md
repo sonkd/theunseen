@@ -7,6 +7,7 @@ categories: [perception, bias]
 links: [anchoring, decoy-effect, distinction-bias, framing-effect]
 refs: ['https://en.wikipedia.org/wiki/Contrast_effect']
 strategy: 'Trước khi so sánh hai lựa chọn cạnh nhau, thử tự hỏi: nếu chỉ nhìn thấy phương án này một mình, mình sẽ đánh giá nó thế nào?'
+image: /assets/stuff/contrast-effect.png
 published: true
 ---
 
