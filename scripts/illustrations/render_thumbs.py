@@ -97,9 +97,11 @@ OVERRIDES = {
         "một câu hỏi khó bị đánh tráo bằng một câu hỏi dễ — hai khối có độ phức tạp hình học "
         "trái ngược, đặt thay chỗ nhau"),
     "authority-bias": (
-        "pull",
-        "concept object: một nguồn có trọng lượng lớn kéo lệch toàn bộ phán đoán còn lại, "
-        "bất kể bằng chứng"),
+        "contrast",
+        "một nguồn quyền lực đứng như một khối nặng đối lập với toàn bộ bằng chứng còn lại — "
+        "đổi từ pull sang contrast vì pull+mint đã trùng byte với anchoring (anchoring giữ pull, "
+        "đúng nghĩa 'kéo lệch ước lượng' hơn vì có một con số neo cụ thể, còn ở đây là trọng "
+        "lượng của nguồn phát ngôn, không phải một điểm neo)"),
     "automation-bias": (
         "gate",
         "concept object: chỉ thông tin đến từ hệ thống tự động mới lọt qua cổng; "
@@ -109,9 +111,11 @@ OVERRIDES = {
         "concept object: chính sự lan truyền lặp lại tạo ra cảm giác đáng tin, không phải bằng chứng. "
         "echo sát hơn cycle vì cascade là khuếch đại một chiều, không phải vòng khép kín"),
     "availability-heuristic": (
-        "spectrum",
-        "trọng số đánh giá giảm dần theo độ khó nhớ lại: thứ dễ bật ra trong đầu được cho là "
-        "phổ biến/nguy hiểm hơn thực tế"),
+        "funnel",
+        "rất nhiều ký ức tồn tại, nhưng chỉ những thứ dễ bật ra trong đầu mới lọt qua để trở "
+        "thành phán đoán về tần suất/nguy hiểm — đổi từ spectrum sang funnel vì spectrum+amber "
+        "đã trùng byte với ambiguity-effect (ambiguity-effect giữ spectrum, đúng nghĩa 'dải liên "
+        "tục từ biết rõ tới mù mờ' hơn, còn ở đây bản chất là một phễu lọc theo độ dễ nhớ)"),
 
     # ---- batch #3 (2026-08-28) — xlsx gán 5 hierarchy + 4 branching + 1 proportion.
     # Chỉ 1/10 (base-rate-fallacy) là đúng. Thêm 2 concept object mới: `rebound`, `odd_one_out`
@@ -162,6 +166,338 @@ OVERRIDES = {
         "divergence",
         "khuếch tán trách nhiệm: một tình huống cần giúp bị chia thành nhiều phần cho nhiều "
         "người, càng nhiều nhánh mỗi nhánh càng loãng cho tới khi không ai hành động"),
+    "cathedral-effect": (
+        "spectrum",
+        "trần thấp → trần cao là một dải liên tục, và kiểu xử lý thông tin trượt dần theo dải đó "
+        "(cụ thể → trừu tượng). hierarchy sai vì không có quan hệ cha-con nào ở đây, chỉ có một "
+        "biến độc lập kéo một biến phụ thuộc theo mức độ"),
+    "change-blindness": (
+        "beam",
+        "chú ý dồn hết vào một nhiệm vụ khiến phần còn lại của cảnh (kể cả thay đổi rõ ràng) "
+        "chìm vào tối — đúng nghĩa đen của beam, không phải quan hệ cha-con"),
+    "cheerleader-effect": (
+        "halo_spill",
+        "ấn tượng trung bình của cả nhóm lan sang cách đánh giá từng khuôn mặt riêng lẻ, khiến "
+        "khuôn mặt gốc 'ăn theo' vẻ hấp dẫn của trung bình nhóm. nested_scope sai vì đây không "
+        "phải quan hệ lồng nhau mà là một ấn tượng tràn/lan sang đánh giá lân cận"),
+    "chestertons-fence": (
+        "veil",
+        "lý do dựng hàng rào không biến mất, chỉ đang bị che khuất khỏi người muốn dỡ nó — đúng "
+        "nghĩa veil (thông tin bị che, không phải không tồn tại), không phải quan hệ cha-con"),
+    "choice-overload": (
+        "funnel",
+        "nhiều lựa chọn đổ vào nhưng số quyết định chốt được lại ít đi — hội tụ giảm dần đúng "
+        "kiểu funnel. divergence bị loại vì hướng đi ngược lại: đây là hội tụ, không phải rẽ nhánh"),
+    "choice-supportive-bias": (
+        "balance",
+        "sau khi chọn, cán cân đánh giá bị đẩy lệch thêm về phía đã chọn (khen thêm) và lệch xa "
+        "phía đã từ chối (chê thêm) — một cán cân có hướng, không phải một điểm rẽ nhiều nhánh"),
+    "circle-of-competence": (
+        "nested_scope",
+        "một lõi (điều thực sự biết rõ) nằm lọt bên trong một vùng ngoài rộng hơn (điều tưởng là "
+        "biết, hoặc không biết) — quyết định chỉ an toàn trong lõi. hierarchy sai vì không có "
+        "cấp bậc, chỉ có ranh giới bao trong-ngoài"),
+    "clustering-illusion": (
+        "echo",
+        "một chuỗi kết quả lặp lại (thắng liên tiếp) được khuếch đại thành cảm giác có quy luật "
+        "— đúng cơ chế echo (lặp lại → khuếch đại), không phải một điểm rẽ nhiều nhánh"),
+    "cognitive-dissonance": (
+        "fracture",
+        "hai mảnh lẽ ra phải khớp (niềm tin và hành động) bị lệch nhau, gây khó chịu cho tới khi "
+        "một trong hai bị chỉnh lại — đúng nghĩa fracture (bất nhất), không phải cha-con"),
+    "cognitive-load-theory": (
+        "threshold",
+        "bộ nhớ làm việc xử lý tốt cho tới một ngưỡng, vượt ngưỡng đó thì hiểu bài sụp đổ — "
+        "tipping point rõ ràng, không phải quan hệ cha-con"),
+
+    # ---- batch #5 (2026-09-05) — xlsx gán 7/10 card là hierarchy. Không card nào
+    # trong 10 card này là quan hệ cha-con, nên chẩn đoán lại toàn bộ theo body.
+    # Thêm 3 concept object mới (registry 27 -> 30): gap_fill, granularity, cue_lock.
+    "confabulation": (
+        "gap_fill",
+        "concept object MỚI: não không nhớ sai một cách lộ liễu — nó VÁ khoảng trống bằng "
+        "chi tiết hợp lý rồi đọc lại toàn bộ như một ký ức liền mạch. Không hình nào trong "
+        "registry cũ diễn được 'chỗ hổng bị lấp bằng vật liệu lạ': fracture để lộ chỗ lệch, "
+        "veil chỉ che chứ không thay thế"),
+    "confirmation-bias": (
+        "cycle",
+        "vòng tự củng cố: niềm tin quyết định bằng chứng nào được tìm và giữ, bằng chứng đó "
+        "lại làm niềm tin chắc thêm. gate (sàng lọc) sát nghĩa hơn về cơ chế nhưng gate+amber "
+        "đã thuộc automation-bias nên sẽ ra ảnh trùng byte"),
+    "congruence-bias": (
+        "gate",
+        "khác confirmation-bias ở chỗ thiên lệch nằm ngay trong THIẾT KẾ phép thử: chỉ phép "
+        "thử khớp với giả thuyết mới được cho chạy, nên đầu ra gần như chắc chắn là xác nhận. "
+        "nested_scope cũng đúng nghĩa (quy luật giả định là tập con) nhưng nested_scope+mint "
+        "đã có barnum-effect và circle-of-competence"),
+    "conjunction-fallacy": (
+        "nested_scope",
+        "'A và B' là tập con nằm gọn trong 'A' nhưng lại được chấm xác suất cao hơn — quan hệ "
+        "bao hàm là toàn bộ nội dung của card. proportion sát nhưng proportion+amber đã thuộc "
+        "base-rate-fallacy"),
+    "conservatism": (
+        "layers",
+        "đính chính được ĐẮP THÊM lên chứ không thay thế: lớp niềm tin cũ vẫn nằm dưới và vẫn "
+        "ánh lên qua các lớp mới (fill-opacity làm đúng việc đó). Phân biệt với "
+        "continued-influence-effect cùng batch: ở đây vấn đề là biên độ cập nhật thiếu, "
+        "không phải sự bất nhất giữa lời nói và suy luận"),
+    "continued-influence-effect": (
+        "fracture",
+        "niềm tin có ý thức đã sửa (người ta nhắc lại đúng lời đính chính) nhưng mô hình "
+        "nhân-quả ngầm thì chưa — hai mảnh lẽ ra phải khớp lại lệch nhau. Không dùng rebound "
+        "vì rebound là backfire-effect (niềm tin sai đậm THÊM), còn ở đây nó chỉ dai dẳng"),
+    "contrast-effect": (
+        "contrast",
+        "giữ nguyên xlsx — ca hiếm mà cột Hero shape đúng, và đây là card contrast đúng nghĩa "
+        "nhất trong corpus: cùng một vật, đặt cạnh vật khác thì đọc ra giá trị khác"),
+    "cross-race-effect": (
+        "granularity",
+        "concept object MỚI: cơ chế là ĐỘ PHÂN GIẢI tri giác, không phải tỉ trọng (proportion "
+        "của xlsx sai hẳn). Cùng một số lượng gương mặt: nhóm quen thì phân giải được thành "
+        "từng cá thể, nhóm lạ thì nhoè thành một khối đồng nhất. Cố ý KHÔNG dùng in_out_ring "
+        "để dành hình đó cho in-group-bias và out-group-homogeneity-bias"),
+    "cryptomnesia": (
+        "mirror",
+        "cùng MỘT nội dung xuất hiện hai lần dưới hai nhãn khác nhau: lần đầu là thứ đã đọc/"
+        "nghe, lần sau quay lại mà mất nhãn nguồn nên được đọc thành 'ý tưởng của mình'. "
+        "mirror là hình duy nhất diễn được 'một sự việc, hai cách quy kết'"),
+    "cue-dependent-forgetting": (
+        "cue_lock",
+        "concept object MỚI: card nói rõ ký ức VẪN CÒN NGUYÊN, chỉ thiếu cue để truy xuất. "
+        "veil (bị che) và gate (bị chặn) đều sai cơ chế, và cả hai đều đã dùng ở hue amber. "
+        "Ở đây nội dung hiện đầy đủ, cái thiếu là mảnh khớp nằm tách hẳn bên ngoài"),
+
+    # ---- batch #6 (2026-09-06) — xlsx gán 8/10 card là branching. Không card nào
+    # trong 10 card này là "một điểm rẽ nhiều nhánh", nên chẩn đoán lại toàn bộ.
+    # Thêm 6 concept object mới (registry 30 -> 36): depletion, foil, latch,
+    # dilution, reference_kink, juxtaposition. Lý do phải thêm nhiều: 5 card mint và
+    # 5 card amber của batch này rơi vào nhóm quan hệ mà 30 hình cũ không có
+    # (cạn kiệt, mồi nhử, quán tính mặc định, loãng trách nhiệm, bất đối xứng quanh
+    # mốc, so sánh cạnh nhau vs riêng lẻ) — dùng lại hình cũ sẽ ra ảnh TRÙNG BYTE
+    # với card không liên quan về nghĩa.
+    "curse-of-knowledge": (
+        "veil",
+        "cái người nghe THIẾU thì vô hình với người nói — kiến thức của chính người nói "
+        "là tấm màn. Đây là mặt đối của armchair-fallacy (veil+amber), nên dùng veil+mint "
+        "để cùng họ nghĩa mà không trùng byte. branching sai hẳn: không có điểm rẽ nào"),
+    "decision-fatigue": (
+        "depletion",
+        "concept object MỚI: chất lượng giảm dần vì chính chuỗi quyết định trước đó đã rút "
+        "cạn nguồn lực. spectrum là dải TĨNH của một biến (và spectrum+amber đã thuộc "
+        "ambiguity-effect + availability-heuristic); ở đây việc sử dụng mới là nguyên nhân"),
+    "declinism": (
+        "rosy_tilt",
+        "concept object MỚI. Bản dựng đầu dùng depletion+mint, nhưng contact sheet ở khổ 64px "
+        "cho thấy nó chỉ khác decision-fatigue (depletion+amber) ở MÀU — hai card cạnh nhau "
+        "trong library sẽ trông như lỗi render. Quan trọng hơn, depletion sai nghĩa: declinism "
+        "không phải cái gì đó mất đi thật, mà là cùng một thực tại bị chấm điểm nhạt dần theo "
+        "thời gian. Nên: kích thước 4 ô GIỮ NGUYÊN, chỉ sắc độ đổi"),
+    "decoy-effect": (
+        "foil",
+        "concept object MỚI: phương án thứ ba tồn tại chỉ để làm phương án đích trông vượt "
+        "trội. odd_one_out (amber còn trống) sai cơ chế — nó nói về độ nổi bật trên nền đồng "
+        "nhất, còn decoy thì chưa bao giờ được chọn, nó chỉ đổi khung so sánh"),
+    "default-effect": (
+        "latch",
+        "concept object MỚI: các phương án ngang giá, nhưng giữ nguyên thì miễn phí còn đổi "
+        "thì phải vượt một bức tường công sức. Không hình nào trong registry cũ diễn được "
+        "quán tính; gate là sàng lọc (có khe, có người bị chặn) — ở đây không ai bị chặn cả"),
+    "defensive-attribution-hypothesis": (
+        "in_out_ring",
+        "người quan sát vẽ lại ranh giới thuộc về để đẩy nạn nhân ra ngoài 'nhóm giống tôi', "
+        "nhờ đó rủi ro cũng rơi ra ngoài vòng của mình. LƯU Ý cho batch sau: in_out_ring+mint "
+        "nên để dành cho in-group-bias; out-group-homogeneity-bias dùng granularity+amber "
+        "(đã thuộc cross-race-effect, card anh em) hoặc cần một object mới"),
+    "denomination-effect": (
+        "granularity",
+        "cùng MỘT tổng giá trị, khác nhau ở độ chia: một tờ lớn nguyên khối vs nhiều tờ nhỏ "
+        "tách rời. Đây là card granularity đúng nghĩa đen nhất corpus. hierarchy của xlsx sai "
+        "hẳn — không có quan hệ cha-con nào"),
+    "diffusion-of-responsibility": (
+        "dilution",
+        "concept object MỚI: một nghĩa vụ chia cho N người, mỗi phần loãng tới mức dưới ngưỡng "
+        "hành động. BẮT BUỘC khác bystander-effect (divergence+amber) vì hai card là anh em "
+        "gần nghĩa — dùng lại divergence sẽ ra hai thumbnail trùng byte cạnh nhau trong library"),
+    "disposition-effect": (
+        "reference_kink",
+        "concept object MỚI: cùng một biên độ lệch khỏi giá vốn, nhưng phía lãi thì buông sớm "
+        "còn phía lỗ thì ôm chặt. threshold+mint (antifragility) đọc thành 'vượt mốc thì mạnh "
+        "lên' — sai nghĩa. Object này sẽ dùng lại được cho loss-aversion, sunk-cost, endowment"),
+    "distinction-bias": (
+        "juxtaposition",
+        "concept object MỚI: cùng một cặp, đặt sát nhau thì chênh lệch thành bậc thang nhìn "
+        "thấy được, tách xa thì biến mất. contrast (xlsx) sai chiều — contrast nói 'hai thứ "
+        "khác nhau', còn card này nói hai thứ THỰC RA gần như nhau, chỉ cách nhìn tạo ra khác biệt"),
+
+    # ---- batch #7 (2026-09-07) — xlsx gán 7 hierarchy + 3 divergence cho 10 card,
+    # tức cả batch sẽ chỉ ra ĐÚNG 2 hình. Chẩn đoán lại toàn bộ theo `back`.
+    # Mọi cặp (metaphor, hue) dưới đây đã được đối chiếu với 60 SVG đã render để
+    # không trùng byte — xem ghi chú về lỗi dupe-checker ở cuối file.
+    "door-in-the-face-technique": (
+        "foil",
+        "yêu cầu lớn mở đầu tồn tại CHỈ để làm yêu cầu thật trông vừa phải — đúng định nghĩa "
+        "foil. divergence (xlsx) đọc thành 'một điểm rẽ nhiều lựa chọn', mất hẳn ý 'phương án "
+        "mồi bị bỏ đi ngay'"),
+    "dual-process-theory": (
+        "latch",
+        "System 1 nằm sẵn phía trước, miễn phí; muốn tới System 2 phải vượt một bức tường công "
+        "sức. Bất đối xứng CHI PHÍ mới là nội dung của card, không phải quan hệ cha-con "
+        "(hierarchy) hay hai tầng chồng nhau (layers, vốn vẽ 4 đĩa nên đọc sai thành 4 tầng)"),
+    "dunning-kruger-effect": (
+        "overclaim",
+        "concept object MỚI: khung lớn = năng lực tự nhận, phần đặc ở đáy = năng lực thật, "
+        "khoảng rỗng ở giữa để TRỐNG vì đó đúng là thứ người trong cuộc không thấy. "
+        "Bản dựng đầu dùng coverage_sphere nhưng nhìn contact sheet 512 thì nó đọc thành quả "
+        "bóng biển (vật thể nhận dạng được — vi phạm Step 6) và không nói gì về card. "
+        "granularity sát nghĩa nhưng cả hai hue đều đã bị chiếm (denomination-effect, cross-race-effect)"),
+    "duration-neglect": (
+        "odd_one_out",
+        "chuỗi khoảnh khắc gần như đồng nhất và không được đếm; chỉ MỘT điểm (đỉnh cường độ) "
+        "lệch hẳn ra và chiếm trọn ký ức. hierarchy (xlsx) không có quan hệ cha-con nào ở đây"),
+    "effort-justification": (
+        "effort_price",
+        "concept object MỚI: cột chia đốt = công sức đếm được, khối đặc cạnh bên cao ĐÚNG bằng "
+        "cột = giá trị cảm nhận đọc ra từ công sức. Không hình nào trong registry diễn được "
+        "quan hệ 'input tạo ra định giá': spectrum là dải tĩnh, proportion là phần/tổng, "
+        "depletion là mất mát thật"),
+    "egocentric-bias": (
+        "halo_spill",
+        "lõi đậm = góc nhìn của chính mình, sắc độ lan sang mọi đánh giá lân cận (đóng góp, "
+        "công sức, vai trò). proportion sát nghĩa hơn nhưng proportion+amber đã thuộc "
+        "base-rate-fallacy"),
+    "empathy-gap": (
+        "juxtaposition",
+        "cùng một lựa chọn, nhìn từ trạng thái 'nóng' (sát, chênh lệch hiện rõ) và từ trạng thái "
+        "'lạnh' (xa, chênh lệch biến mất). Biến thay đổi là KHOẢNG CÁCH chứ không phải bản thân "
+        "lựa chọn — đúng cơ chế của empathy gap"),
+    "endowment-effect": (
+        "reference_kink",
+        "bất đối xứng quanh mốc sở hữu: cùng một món đồ, giá sẵn sàng BÁN và giá sẵn sàng MUA "
+        "lệch hẳn nhau. Object này đã được ghi chú dành sẵn cho endowment ở entry disposition-effect"),
+    "escalation-of-commitment": (
+        "depletion",
+        "nguồn lực hữu hạn bị rút cạn bởi chính việc dồn thêm để bảo vệ quyết định cũ. "
+        "cycle sát nghĩa nhưng cycle+mint đã thuộc abilene-paradox"),
+    "essentialism": (
+        "hierarchy",
+        "niềm tin vào các 'loại' cố định có bản chất bất biến — đây là card taxonomy đúng nghĩa "
+        "nhất của batch, nên giữ nguyên gợi ý hierarchy của xlsx (hierarchy+amber còn trống)"),
+
+    # --- batch 2026-09-08 -------------------------------------------------
+    # Cả 10 gợi ý của xlsx đều sai (7 branching/hierarchy máy móc). Vốn hình cũ đã
+    # dùng 63/78 tổ hợp (metaphor × hue) nên hầu hết hình đúng nghĩa đều kẹt hue —
+    # batch này phải mở thêm 9 concept object mới trong illus.py.
+    "extension-neglect": (
+        "base_blind",
+        "bỏ qua KÍCH THƯỚC tập hợp đứng sau một tỉ lệ. proportion vẽ cả phần lẫn tổng nên "
+        "tỉ lệ đọc ra được ngay — đúng cái mà card nói là người ta KHÔNG làm; branching của "
+        "xlsx thì không liên quan. base_blind giữ tử số y hệt và cho mẫu số đổi"),
+    "extrinsic-incentive-error": (
+        "locus_flip",
+        "động lực người khác bị gán ra NGOÀI, của mình thì để BÊN TRONG. mirror sát nghĩa "
+        "self↔other nhưng mirror+amber đã thuộc actor-observer-bias, và mirror nói về sắc độ "
+        "quy kết chứ không nói vị trí trong/ngoài của cái đẩy — đó mới là nội dung card"),
+    "fading-affect-bias": (
+        "asymmetric_fade",
+        "cảm xúc tiêu cực phai NHANH HƠN tích cực — luận điểm là chênh lệch tốc độ, nên phải "
+        "có đủ hai dãy. rosy_tilt (một dãy phai đều) vẽ được kết quả nhưng không vẽ được "
+        "nguyên nhân, và rosy_tilt+mint đã thuộc declinism"),
+    "false-consensus-effect": (
+        "overclaim",
+        "phạm vi đồng thuận tự nhận lớn hơn phần thực có, và khoảng chênh để RỖNG vì chính "
+        "người trong cuộc không thấy nó — đúng ngữ pháp overclaim. coverage_sphere cũng nói "
+        "'phủ lên toàn bộ' nhưng thiếu vế 'ước lượng quá tay' và đã kẹt amber ở affect-heuristic"),
+    "first-principles-thinking": (
+        "from_primitives",
+        "tháo vấn đề xuống thành phần cơ bản rồi DỰNG LẠI từ đó. granularity đúng vế 'phân "
+        "giải' nhưng không có vế lắp lại, và granularity+mint đã thuộc denomination-effect; "
+        "page_structure còn trống nhưng vẽ ra một trang wireframe — vật thể nhận dạng được"),
+    "focalism": (
+        "foreground_swell",
+        "một sự kiện phình to trong dự đoán trong khi phần đời còn lại vẫn chạy tiếp. beam là "
+        "hình đúng nhất về mặt nghĩa nhưng beam+amber đã thuộc change-blindness; hơn nữa beam "
+        "làm phần còn lại TỐI ĐI, còn card này nói phần còn lại vẫn diễn ra bình thường"),
+    "foot-in-the-door-technique": (
+        "ratchet",
+        "yêu cầu nhỏ đã nhận trở thành chỗ tựa cho yêu cầu lớn. spectrum chỉ là dải độ lớn "
+        "rời nhau, không có quan hệ phụ thuộc giữa các bậc — mà phụ thuộc mới là kỹ thuật; "
+        "spectrum+mint cũng đã thuộc cathedral-effect"),
+    "framing-effect": (
+        "two_frames",
+        "cùng một mốc, kể theo phía 'được' hay phía 'mất'. contrast vẽ hai khối khác chất = "
+        "đối lập có thật, ngược hẳn luận điểm 'bản chất hoàn toàn giống nhau'; mirror+amber "
+        "đã bị chiếm. two_frames giữ mực nước ở đúng một độ cao trong cả hai khung"),
+    "frequency-illusion": (
+        "salience_pop",
+        "tần suất thật KHÔNG tăng, chỉ độ để ý tăng. echo vẽ số lượng/độ lớn tăng dần tức là "
+        "vẽ đúng cái ảo giác chứ không vẽ khái niệm; odd_one_out thì nói phần tử khác biệt. "
+        "salience_pop giữ nguyên viền cho cả 9 chấm để đếm được rằng chúng vốn đã ở đó"),
+    "functional-fixedness": (
+        "one_affordance",
+        "vật có nhiều công dụng khả thi nhưng chỉ một mối ghép từng được dùng. cue_lock nói "
+        "THIẾU mảnh khớp (không mở được) — ở đây mảnh khớp không thiếu, cái chặn nằm trong "
+        "thói quen; latch+amber cũng đã thuộc dual-process-theory"),
+    "fundamental-attribution-error": (
+        "locus_flip",
+        "cùng MỘT hành vi, nguồn nhân quả bị đặt bên trong (tính cách người khác) hay bên "
+        "ngoài (hoàn cảnh của mình) — đúng định nghĩa dispositional vs situational. xlsx cho "
+        "divergence (một điểm rẽ nhiều nhánh) là mất hẳn phần 'cùng một hành vi'; mirror sát "
+        "nghĩa nhưng mirror+mint đã thuộc cryptomnesia và mirror+amber thuộc actor-observer-bias"),
+    "gamblers-fallacy": (
+        "owed_reversal",
+        "hình mới. Luận điểm là một chuỗi kết quả CÓ THẬT dồn về một phía, cộng với một ô "
+        "RỖNG phía đối diện = cái 'phải đổi chiều để cân bằng' không tồn tại. xlsx cho "
+        "hierarchy (cha-con) không liên quan gì; balance vẽ cán cân lệch có thật, tức là vẽ "
+        "đúng cái ảo giác chứ không vẽ khái niệm; reference_kink có hai độ lệch đều CÓ THẬT"),
+    "generation-effect": (
+        "self_built",
+        "hình mới. Cùng một nội dung qua hai lối: tự dựng lên từng phần thì giữ được dấu vết, "
+        "nhận nguyên si thì nhạt. xlsx cho divergence là sai chiều; asymmetric_fade đúng ý "
+        "'một dãy phai nhanh hơn' nhưng asymmetric_fade+mint đã thuộc fading-affect-bias, và "
+        "generation-effect nói về NGUỒN GỐC của nội dung chứ không về tốc độ phai theo thời gian"),
+    "goodharts-law": (
+        "proxy_inflates",
+        "hình mới. Phép đo và mục tiêu từng cao bằng nhau rồi tách hẳn ra đúng lúc phép đo bị "
+        "lấy làm đích — nên bắt buộc phải vẽ được trạng thái 'trước'. xlsx cho page_structure "
+        "(bố cục/IA) lạc đề hẳn; rebound nói kết quả bật ngược nhưng thiếu mất cặp đại lượng "
+        "từng trùng nhau; fracture+amber đã thuộc continued-influence-effect"),
+    "group-attribution-error": (
+        "one_for_all",
+        "hình mới. Tính chất của đúng một cá thể bị sơn lên toàn bộ vùng chứa nó. xlsx cho "
+        "nested_scope (các tầng phạm vi lồng nhau) chỉ vẽ được cái bao chứa, không vẽ được "
+        "việc suy rộng; in_out_ring là ranh giới THUỘC VỀ (không có gì lan ra); halo_spill thì "
+        "lan có nhạt dần và đã bị halo-effect trong cùng batch này chiếm về mặt nghĩa"),
+    "groupthink": (
+        "consensus_merge",
+        "hình mới. Các quan điểm chồng lên nhau thành một khối đồng sắc, phần tử không nhập "
+        "vào bị bỏ rỗng ngoài rìa. xlsx cho funnel (nhiều vào ít ra) đọc thành 'quy trình lọc "
+        "hợp lý' — ngược hẳn luận điểm rằng chất lượng quyết định GIẢM; funnel+amber cũng đã "
+        "thuộc availability-heuristic"),
+    "halo-effect": (
+        "tint_carryover",
+        "hình mới. Bốn ô đánh giá CÙNG một sắc độ, chỉ một ô có bằng chứng bên trong — chỗ "
+        "'không nhạt đi' mới là nội dung: các phẩm chất kia được chấm điểm y hệt mà không có "
+        "dữ liệu nào. halo_spill là hình chính danh của khái niệm này nhưng halo_spill+mint đã "
+        "thuộc cheerleader-effect và +amber thuộc egocentric-bias; xlsx cho hierarchy vô nghĩa ở đây"),
+    "hanlons-razor": (
+        "parsimony",
+        "hình mới. Cùng một hệ quả, hai lối giải thích khác hẳn nhau về SỐ MẮT XÍCH giả định — "
+        "ác ý cần ba giả định (cố ý + có động cơ + nhắm vào mình), vô tâm cần một. xlsx cho "
+        "divergence vẽ một điểm rẽ nhiều nhánh, ngược chiều; balance+amber đã bị chiếm hai lần "
+        "và cán cân nói 'nặng/nhẹ' chứ không nói 'ít giả định hơn'"),
+    "hard-easy-effect": (
+        "regression_crossing",
+        "hình mới. Điểm cắt là toàn bộ nội dung: độ lệch ĐỔI DẤU qua nó — việc khó thì tự đánh "
+        "giá cao hơn thật, việc dễ thì thấp hơn thật. xlsx cho hierarchy vô nghĩa; overclaim "
+        "chỉ lệch một chiều nên vẽ ra sẽ thành Dunning-Kruger; reference_kink có hai ô lệch RỜI "
+        "nhau quanh một mốc, không có đường thứ hai cắt qua để tạo chỗ đổi dấu"),
+    "hawthorne-effect": (
+        "observed_lift",
+        "hình mới. Dãy cột đều nhau, riêng phần nằm trong cung 'đang bị quan sát' thì cao hẳn "
+        "lên dù không điều kiện nào đổi. xlsx cho divergence sai hẳn; beam nói chú ý của CHÍNH "
+        "chủ thể dồn vào một điểm, còn ở đây cái nhìn đến từ bên ngoài và thứ đổi là hành vi "
+        "của người bị nhìn; veil thì ngược (che đi, không phải soi vào)"),
+
 }
 
 
@@ -273,11 +609,21 @@ def main():
     print(f"\nremaining after batch = {len(pending) - (0 if args.dry_run else len(batch))}")
 
     if not args.dry_run:
+        # Hash trên SVG chứ KHÔNG phải PNG: `convert` không cho ra byte tất định giữa
+        # các lần chạy, nên bản md5-trên-PNG trước đây bỏ sót 6/8 cặp trùng thật
+        # (vd belief-bias == cognitive-dissonance). SVG là nguồn nên so ở đó mới đúng.
+        # Chuẩn hoá id của clipPath trước khi hash: các hàm dùng clipPath (granularity,
+        # coverage_sphere, mirror, veil...) sinh id từ một biến đếm toàn cục, nên hai card
+        # CÙNG metaphor + CÙNG hue vẫn ra hai chuỗi khác nhau. Bản trước hash thô nên bỏ lọt
+        # toàn bộ nhóm này — batch 2026-09-07 suýt ship 3 cặp trùng (granularity+mint đụng
+        # denomination-effect, coverage_sphere+amber đụng affect-heuristic, mirror+mint đụng
+        # cryptomnesia) mà checker vẫn báo sạch.
         dupes = {}
         for c in index:
-            f = os.path.join(ASSETS, f"{c['slug']}.png")
+            f = os.path.join(ASSETS, f"{c['slug']}.svg")
             if os.path.exists(f):
-                dupes.setdefault(hashlib.md5(open(f, "rb").read()).hexdigest(),
+                body = re.sub(r'([a-z]{3,4})\d+', 'ID', open(f, encoding="utf-8").read())
+                dupes.setdefault(hashlib.md5(body.encode()).hexdigest(),
                                  []).append(c["slug"])
         clashes = [v for v in dupes.values() if len(v) > 1]
         if clashes:

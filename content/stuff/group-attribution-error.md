@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [fundamental-attribution-error, ultimate-attribution-error, in-group-bias, stereotyping]
 refs: ['https://en.wikipedia.org/wiki/Group_attribution_error', 'https://www.thebehavioralscientist.com/glossary/group-attribution-error']
 strategy: 'Trước khi khái quát hoá từ một cá nhân sang cả nhóm, tự hỏi: mẫu quan sát của mình có đủ lớn và đại diện không?'
+image: /assets/stuff/group-attribution-error.png
 published: true
 ---
 

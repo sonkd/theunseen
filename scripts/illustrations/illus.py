@@ -504,14 +504,454 @@ def t_tail_event(p):
     return "".join(o)
 
 
-CONCEPT_OBJECTS = dict(mirror=t_mirror, in_out_ring=t_in_out_ring, balance=t_balance,
+def t_gap_fill(p):
+    # Một mạch bị đứt, và một mảnh VÁ bắc qua chỗ đứt làm mạch trông liền lại.
+    # Mảnh vá lệch trục và khác chất liệu (accent trong suốt) — nhìn kỹ mới thấy
+    # nó không thuộc về mạch gốc. Khác `fracture` ở chỗ fracture để lộ chỗ lệch,
+    # còn ở đây chỗ hổng bị che đi nên tổng thể đọc thành liền mạch.
+    return (f'<rect x="10" y="58" width="38" height="16" rx="3" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="80" y="58" width="38" height="16" rx="3" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="42" y="42" width="44" height="22" rx="5" fill="{p["acc"]}" '
+            f'fill-opacity="0.70" {TS}/>')
+
+
+def t_granularity(p):
+    # Hai khối CÙNG kích thước: một bên phân giải được thành từng phần riêng biệt,
+    # một bên nhoè thành khối đồng nhất. Nội dung nằm ở việc hai bên bằng nhau về
+    # lượng nhưng khác nhau về độ phân giải — không phải bên nào lớn hơn.
+    cid = f"tgra{next(_uid)}"
+    return (f'<clipPath id="{cid}"><circle cx="38" cy="64" r="28"/></clipPath>'
+            f'<circle cx="38" cy="64" r="28" fill="{p["t1"]}" {TS}/>'
+            f'<g clip-path="url(#{cid})">'
+            f'<path d="M38,36 L38,92 M10,54 L66,54 M10,76 L66,76" {TNF}/></g>'
+            f'<circle cx="98" cy="64" r="28" fill="{p["acc"]}" fill-opacity="0.55" {TS}/>')
+
+
+def t_cue_lock(p):
+    # Nội dung còn NGUYÊN (khối đặc, không bị che) nhưng có một khuyết ở rìa, và
+    # mảnh khớp với khuyết đó nằm tách hẳn ra ngoài. Quên ở đây không phải mất dữ
+    # liệu mà là thiếu đúng mảnh để mở ra. Khác `veil` (bị che) và `gate` (bị chặn).
+    # Mảnh rời có ĐÚNG bán kính của khuyết (r=11) — chính sự khớp bán kính mới nói
+    # được "cái thiếu là mảnh này", chứ không phải một chấm trang trí bất kỳ.
+    return (f'<path d="M14,26 H82 V53 A11,11 0 0 0 82,75 V102 H14 Z" '
+            f'fill="{p["t2"]}" {TS}/>'
+            f'<circle cx="105" cy="64" r="11" fill="{p["acc"]}" fill-opacity="0.75" {TS}/>')
+
+
+def t_depletion(p):
+    # Một nguồn lực hữu hạn bị rút cạn dần BỞI CHÍNH việc sử dụng lặp lại.
+    # Khác `spectrum` (dải tĩnh của một biến) và `echo` (lặp lại nhạt dần, căn giữa):
+    # ở đây có một VẠCH MỐC nằm ngang = mức đầy ban đầu, và các cột căn ĐÁY để đọc
+    # được phần đã mất so với mốc đó. Không dùng fill-opacity — thông điệp nằm ở
+    # chiều cao, thêm biến thứ hai sẽ làm loãng.
+    o = [f'<rect x="14" y="26" width="100" height="7" rx="3" fill="{p["t1"]}" {TS}/>' ]
+    o += [f'<rect x="{x}" y="{106-h}" width="18" height="{h}" fill="{p["t3"]}" {TS}/>'
+          for x, h in ((18, 68), (44, 50), (70, 32), (96, 16))]
+    return "".join(o)
+
+
+def t_foil(p):
+    # Một phần tử được thêm vào CHỈ để làm phần tử bên cạnh trông vượt trội —
+    # bản thân nó không bao giờ được chọn. Dấu hiệu đọc được: khối nhỏ là BẢN THU
+    # NHỎ của khối lớn (cùng chất liệu, nhỏ hơn ở CẢ HAI chiều) và đứng sát nó, nên
+    # quan hệ áp đảo hiện ra ngay. Khối tròn bên trái là phương án KHÔNG so sánh
+    # được — nó phá thế đơn điệu để hình không bị đọc thành `spectrum`.
+    return (f'<circle cx="32" cy="68" r="26" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="62" y="36" width="32" height="64" fill="{p["acc"]}" '
+            f'fill-opacity="0.62" {TS}/>'
+            f'<rect x="98" y="64" width="18" height="36" fill="{p["acc"]}" '
+            f'fill-opacity="0.62" {TS}/>')
+
+
+def t_latch(p):
+    # Các phương án ngang giá, nhưng một phương án đã được cài sẵn ở phía TRƯỚC
+    # bức tường, còn muốn tới các phương án kia thì phải vượt tường. Bất đối xứng
+    # nằm ở CÔNG SỨC, không ở giá trị. Khác `gate`: gate có khe hở và dòng chảy
+    # xuyên qua (sàng lọc), còn tường ở đây ĐẶC — không ai bị chặn, chỉ là đứng yên
+    # thì rẻ hơn.
+    o = [f'<rect x="16" y="48" width="32" height="32" rx="4" fill="{p["acc"]}" '
+         f'fill-opacity="0.75" {TS}/>',
+         f'<rect x="58" y="18" width="8" height="92" rx="4" fill="{p["t2"]}" {TS}/>']
+    o += [f'<rect x="78" y="{y}" width="30" height="30" rx="4" fill="{p["t1"]}" {TS}/>'
+          for y in (26, 68)]
+    return "".join(o)
+
+
+def t_dilution(p):
+    # Cùng MỘT nghĩa vụ: khi một người giữ thì nó đặc; khi chia cho nhiều người thì
+    # mỗi phần mờ tới mức không đủ kích hoạt hành động. Tổng diện tích gần như không
+    # đổi — đó mới là điểm. Khác `proportion` (lát cắt trên tổng, tĩnh) và
+    # `granularity` (độ phân giải tri giác của hai người quan sát).
+    o = [f'<rect x="14" y="34" width="100" height="24" rx="5" fill="{p["acc"]}" '
+         f'fill-opacity="0.72" {TS}/>' ]
+    o += [f'<rect x="{14+i*17}" y="76" width="13" height="24" rx="3" fill="{p["acc"]}" '
+          f'fill-opacity="0.16" {TS}/>' for i in range(6)]
+    return "".join(o)
+
+
+def t_reference_kink(p):
+    # Một đường mốc, hai độ lệch BẰNG NHAU về độ lớn nhưng bị xử lý ngược nhau:
+    # phía trên đã rời khỏi mốc (buông sớm, nhạt), phía dưới vẫn dính chặt vào mốc
+    # (giữ lại, nặng). Hai ô cố ý CÙNG kích thước — nếu khác kích thước thì hình
+    # đọc thành `contrast` (hai thứ khác nhau) chứ không phải bất đối xứng quanh mốc.
+    # Hai ô đẩy về HAI ĐẦU đối diện: bản dựng đầu đặt ô dưới gần tâm nên hình đọc
+    # thành cái bàn/đòn cân có trụ đỡ (đụng `balance`). Lệch hẳn về hai góc thì
+    # quan hệ đọc đúng là bất đối xứng quanh mốc, không phải một vật có chân đế.
+    return (f'<rect x="12" y="61" width="104" height="6" rx="3" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="16" y="24" width="28" height="28" fill="{p["acc"]}" '
+            f'fill-opacity="0.22" {TS}/>'
+            f'<rect x="84" y="67" width="28" height="28" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>')
+
+
+def t_rosy_tilt(p):
+    # Thực tế KHÔNG đổi (4 ô bằng nhau y hệt, cùng đứng trên một vạch phẳng), chỉ
+    # có sắc độ đánh giá nhạt dần theo thời gian. Khác `depletion` ở đúng chỗ then
+    # chốt: depletion đổi CHIỀU CAO (nguồn lực mất thật), còn ở đây kích thước giữ
+    # nguyên và chỉ độ đậm đổi — nghĩa là cái suy giảm nằm trong cách nhìn, không
+    # nằm trong sự vật. Khác `echo` vì echo đổi cả chiều cao lẫn độ đậm và không có
+    # vạch mốc phẳng bên dưới.
+    # Ô cao 44 chứ không phải 22: bản 22 cho bbox chỉ cao 34/128, hình đọc thành một
+    # dải mỏng và lạc khỏi mật độ nét của cả bộ.
+    o = [f'<rect x="14" y="98" width="100" height="6" rx="3" fill="{p["t1"]}" {TS}/>' ]
+    o += [f'<rect x="{x}" y="48" width="22" height="44" fill="{p["acc"]}" '
+          f'fill-opacity="{op}" {TS}/>'
+          for x, op in ((16, 0.78), (42, 0.55), (68, 0.32), (94, 0.14))]
+    return "".join(o)
+
+
+def t_juxtaposition(p):
+    # CÙNG một cặp, vẽ hai lần. Hàng trên: đặt sát nhau, cạnh chung biến chênh lệch
+    # thành một bậc thang nhìn thấy được. Hàng dưới: tách xa, mất cạnh chung nên
+    # cùng chênh lệch đó không còn đọc ra. Biến duy nhất thay đổi là KHOẢNG CÁCH —
+    # kích thước hai khối giữ y nguyên giữa hai hàng, nếu không thì mất luận điểm.
+    o = [f'<rect x="34" y="18" width="28" height="34" fill="{p["t3"]}" {TS}/>',
+         f'<rect x="62" y="26" width="28" height="26" fill="{p["t3"]}" {TS}/>',
+         f'<rect x="14" y="76" width="28" height="34" fill="{p["t1"]}" {TS}/>',
+         f'<rect x="86" y="84" width="28" height="26" fill="{p["t1"]}" {TS}/>']
+    return "".join(o)
+
+
+def t_overclaim(p):
+    # Khung lớn = phạm vi tự nhận, phần tô đặc ở ĐÁY = phần thực sự có. Khoảng rỗng
+    # phía trên chính là nội dung: nó không được vẽ thành một vật thể thứ hai, vì thứ
+    # người ta thiếu đúng là thứ họ không nhìn thấy. Khác `proportion` (phần/tổng của
+    # một đại lượng có thật) và khác `nested_scope` (nhiều tầng phạm vi lồng nhau —
+    # ở đây chỉ có HAI mức và chúng chung đáy).
+    return (f'<rect x="30" y="18" width="68" height="92" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="30" y="86" width="68" height="24" fill="{p["acc"]}" '
+            f'fill-opacity="0.78" {TS}/>')
+
+
+def t_effort_price(p):
+    # Một cột chia thành từng ĐỐT (công sức đã bỏ, đếm được) và ngay cạnh là một
+    # khối ĐẶC cùng chiều cao nhưng rộng gấp đôi (giá trị cảm nhận). Nội dung nằm ở
+    # chỗ chiều cao khối phải bằng chiều cao cột: giá trị được đọc ra TỪ lượng công
+    # sức, không từ bản thân vật. Khác `depletion` (cột thấp dần + vạch mốc, mất mát
+    # thật) và khác `proportion` (phần/tổng): ở đây không có tổng nào bị chia cả.
+    o = [f'<rect x="20" y="{y}" width="24" height="26" fill="{p["t2"]}" {TS}/>'
+         for y in (26, 52, 78)]
+    o.append(f'<rect x="56" y="26" width="56" height="78" fill="{p["acc"]}" '
+             f'fill-opacity="0.70" {TS}/>')
+    return "".join(o)
+
+
+def t_base_blind(p):
+    # HAI lần cùng một khối đặc y hệt (cùng bề rộng, cùng sắc độ) — con số được
+    # trưng ra. Cái khác nhau là cái RAY nhạt đứng sau nó: một ray ngắn, một ray
+    # dài gấp đôi. Cùng một tử số đọc trên hai mẫu số khác hẳn nhau. Ray vẽ nhạt
+    # vì đó đúng là thứ bị bỏ qua chứ không phải thứ không tồn tại.
+    # Khác `proportion`: donut cho thấy phần VÀ tổng nên tỉ lệ đọc ra được ngay —
+    # ở đây tổng mới là biến, và nó bị nhìn xuyên qua.
+    o = [f'<rect x="14" y="28" width="46" height="30" fill="{p["t1"]}" {TS}/>',
+         f'<rect x="14" y="72" width="100" height="30" fill="{p["t1"]}" {TS}/>',
+         f'<rect x="14" y="28" width="30" height="30" fill="{p["acc"]}" '
+         f'fill-opacity="0.80" {TS}/>',
+         f'<rect x="14" y="72" width="30" height="30" fill="{p["acc"]}" '
+         f'fill-opacity="0.80" {TS}/>']
+    return "".join(o)
+
+
+def t_locus_flip(p):
+    # Hai khung VUÔNG y hệt nhau; điểm đặc (động lực) nằm TRONG khung bên trái và
+    # NGOÀI khung bên phải. Cùng một hành vi, chỉ khác chỗ ta đặt nguồn thúc đẩy.
+    # Khác `mirror` (chia MỘT vật thành hai nửa sắc độ — quy kết bất đối xứng nói
+    # chung): ở đây nội dung là VỊ TRÍ trong/ngoài của cái đẩy, không phải sắc độ.
+    # Chấm ngoài phải CHẠM cạnh trái của khung phải: thả nó lơ lửng giữa hai khung
+    # thì nó đọc thành một phần tử thứ ba, không đọc thành "cái đẩy của khung này".
+    return (f'<rect x="14" y="44" width="36" height="38" fill="{p["t1"]}" {TS}/>'
+            f'<circle cx="32" cy="63" r="8" fill="{p["acc"]}" fill-opacity="0.85" {TS}/>'
+            f'<rect x="76" y="44" width="36" height="38" fill="{p["t1"]}" {TS}/>'
+            f'<circle cx="68" cy="63" r="8" fill="{p["acc"]}" fill-opacity="0.85" {TS}/>')
+
+
+def t_asymmetric_fade(p):
+    # HAI dãy cùng xuất phát từ một mốc trái, ô nào cũng bằng nhau về kích thước —
+    # chỉ sắc độ đổi. Dãy trên giữ được độ đậm gần như nguyên; dãy dưới rơi gần về 0.
+    # Nội dung là TỐC ĐỘ phai khác nhau giữa hai dãy, nên phải có đủ hai dãy.
+    # Khác `rosy_tilt` (một dãy phai đều — sự vật không đổi, cách nhìn nhạt dần):
+    # ở đây một dãy phai nhanh hơn dãy kia mới là luận điểm.
+    o = []
+    for y, ops in ((26, (0.80, 0.72, 0.64, 0.56)), (70, (0.74, 0.34, 0.15, 0.06))):
+        o += [f'<rect x="{x}" y="{y}" width="22" height="32" fill="{p["acc"]}" '
+              f'fill-opacity="{op}" {TS}/>'
+              for x, op in zip((14, 40, 66, 92), ops)]
+    return "".join(o)
+
+
+def t_from_primitives(p):
+    # ĐÚNG ba primitive đó, vẽ hai lần. Hàng dưới: rời nhau, mỗi cái đứng một mình
+    # (thành phần cơ bản đã kiểm chứng). Hàng trên: vẫn ba cái đó nhưng khít trong
+    # MỘT khung — lời giải được dựng lại từ chính chúng. Biến đổi duy nhất là việc
+    # có khung bao hay không, nên hình đọc thành "tháo ra rồi lắp lại", không phải
+    # "cái này biến thành cái khác".
+    # Khác `granularity` (hai khối bằng lượng, khác độ phân giải): ở đây hai hàng là
+    # cùng một bộ phận tử, khác nhau ở chỗ đã lắp hay chưa.
+    return (f'<rect x="16" y="22" width="96" height="38" fill="none" {TS}/>'
+            f'<rect x="24" y="30" width="22" height="22" fill="{p["t3"]}" {TS}/>'
+            f'<path d="M54,52 L66,30 L78,52 Z" fill="{p["t3"]}" {TS}/>'
+            f'<circle cx="98" cy="41" r="11" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="18" y="82" width="22" height="22" fill="{p["t1"]}" {TS}/>'
+            f'<path d="M52,104 L64,82 L76,104 Z" fill="{p["t1"]}" {TS}/>'
+            f'<circle cx="104" cy="93" r="11" fill="{p["t1"]}" {TS}/>')
+
+
+def t_ratchet(p):
+    # Ba bậc cao dần, bậc sau ĐỨNG SÁT vai bậc trước chứ không rời ra — bậc đã
+    # nhận (đặc, accent) là thứ đỡ cho bậc kế tiếp. Chính chỗ tiếp giáp mới là nội
+    # dung: không có bậc nhỏ thì bậc lớn không có chỗ tựa.
+    # Khác `spectrum` (4 vòng lớn dần, rời nhau, chỉ là dải độ lớn — không bậc nào
+    # phụ thuộc bậc nào) và khác `threshold` (có một đường mốc để vượt qua).
+    return (f'<rect x="16" y="86" width="30" height="24" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>'
+            f'<rect x="46" y="62" width="30" height="48" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="76" y="30" width="30" height="80" fill="{p["t1"]}" {TS}/>')
+
+
+def t_salience_pop(p):
+    # Một trường 9 chấm ĐỀU NHAU: cùng bán kính, cùng lưới, cùng nét viền — nghĩa là
+    # số lượng và vị trí không hề đổi. Chỉ ba chấm được tô đặc. Vì mọi chấm đều còn
+    # nguyên đường viền, người xem đếm được rằng phần "mới xuất hiện" vốn đã ở đó.
+    # Khác `odd_one_out` (một phần tử LỆCH khỏi nền đồng nhất — khác biệt nằm trong
+    # vật) và khác `echo` (số lượng/độ lớn tăng dần — tần suất tăng thật).
+    hot = {(56, 30), (22, 64), (90, 98)}
+    o = []
+    for y in (30, 64, 98):
+        for x in (22, 56, 90):
+            op = 0.85 if (x, y) in hot else 0.12
+            o.append(f'<circle cx="{x}" cy="{y}" r="10" fill="{p["acc"]}" '
+                     f'fill-opacity="{op}" {TS}/>')
+    return "".join(o)
+
+
+def t_foreground_swell(p):
+    # Một dãy biến cố ĐỀU NHAU chạy suốt trên một vạch đáy, và dãy đó vẫn tiếp tục
+    # ở CẢ HAI phía của khối lớn — đời sống không dừng lại vì sự kiện trọng tâm.
+    # Khối giữa phình to là cỡ nó chiếm trong dự đoán, không phải cỡ thật của nó.
+    # Khác `tail_event` (khối lớn nằm ở RÌA và hiếm — nội dung là độ hiếm) và khác
+    # `beam` (nguồn sáng làm phần còn lại tối đi — ở đây phần còn lại vẫn sáng đều).
+    o = [f'<rect x="12" y="98" width="104" height="5" rx="2" fill="{p["t1"]}" {TS}/>']
+    o += [f'<rect x="{x}" y="78" width="10" height="18" fill="{p["t2"]}" {TS}/>'
+          for x in (14, 29, 44, 92, 107)]
+    o.append(f'<rect x="58" y="26" width="28" height="70" fill="{p["acc"]}" '
+             f'fill-opacity="0.78" {TS}/>')
+    return "".join(o)
+
+
+def t_one_affordance(p):
+    # Một khối có BA mấu nối giống hệt nhau ở ba cạnh — ba công dụng đều khả thi.
+    # Chỉ một mấu được ghép với vật đối ứng; hai mấu kia vẽ đầy đủ nhưng bỏ trống.
+    # Nội dung nằm ở chỗ ba mấu vẽ y như nhau: cái chặn không nằm trong vật, nó nằm
+    # trong việc chỉ một mối ghép từng được dùng.
+    # Khác `cue_lock` (thiếu đúng mảnh khớp nên KHÔNG mở được) và khác `latch`
+    # (các phương án ngang giá, một cái đã cài sẵn): ở đây mảnh khớp không thiếu.
+    # Bản đầu dùng MẤU LỒI ra ngoài cộng một vật đối ứng: silhouette đọc thành một
+    # cỗ máy (vật thể nhận dạng được — style cấm), và mấu đã ghép dính liền vật đối
+    # ứng thành một khối nên không còn thấy "ghép". Đổi sang HỐC lõm nằm trong thân:
+    # ba hốc vẽ y hệt nhau, chỉ một hốc được lấp đầy.
+    return (f'<rect x="34" y="34" width="60" height="60" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="57" y="40" width="14" height="10" fill="#FFFFFF" {TS}/>'
+            f'<rect x="40" y="57" width="10" height="14" fill="#FFFFFF" {TS}/>'
+            f'<rect x="78" y="57" width="10" height="14" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>')
+
+
+def t_two_frames(p):
+    # Hai khung y hệt nhau, mực nước ở ĐÚNG cùng một độ cao (y=64) — sự thật không
+    # đổi. Khung trái tô phần DƯỚI mức, khung phải tô phần TRÊN mức: cùng một mốc,
+    # một bên đọc thành "được bấy nhiêu", bên kia thành "mất bấy nhiêu".
+    # Khác `contrast` (hai khối khác hình, khác chất — đối lập có thật) và khác
+    # `reference_kink` (hai độ lệch quanh mốc bị xử lý ngược): ở đây chỉ có MỘT mốc
+    # và không có độ lệch nào cả, chỉ có phía nào được tô.
+    return (f'<rect x="16" y="30" width="42" height="68" fill="none" {TS}/>'
+            f'<rect x="16" y="64" width="42" height="34" fill="{p["acc"]}" '
+            f'fill-opacity="0.55" {TS}/>'
+            f'<rect x="70" y="30" width="42" height="68" fill="none" {TS}/>'
+            f'<rect x="70" y="30" width="42" height="34" fill="{p["acc"]}" '
+            f'fill-opacity="0.55" {TS}/>')
+
+
+def t_owed_reversal(p):
+    # Một dãy 4 ô Y HỆT NHAU nằm CÙNG một phía của đường mốc = chuỗi kết quả đã xảy
+    # ra thật. Ô thứ 5 nằm phía đối diện nhưng để RỖNG: cái "phải đến để cân bằng
+    # lại" chưa hề tồn tại, và không có gì trong chuỗi sinh ra nó. Chỗ rỗng chính là
+    # nội dung — quá khứ không nợ tương lai điều gì.
+    # Khác `reference_kink` (hai độ lệch CÓ THẬT, bằng nhau, bị xử lý ngược nhau):
+    # ở đây phía dưới không có độ lệch nào, chỉ có kỳ vọng. Ô rỗng phải CÙNG kích
+    # thước với 4 ô kia — nhỏ hơn thì hình đọc thành `spectrum`.
+    o = [f'<line x1="12" y1="64" x2="116" y2="64" {TNF}/>']
+    o += [f'<rect x="{x}" y="34" width="17" height="26" fill="{p["acc"]}" '
+          f'fill-opacity="0.78" {TS}/>' for x in (14, 35, 56, 77)]
+    o.append(f'<rect x="98" y="68" width="17" height="26" fill="none" {TS}/>')
+    return "".join(o)
+
+
+def t_self_built(p):
+    # Hai khối CÙNG kích thước = cùng một nội dung. Khối trái tô đặc và có mối ghép
+    # bên trong: thứ do chính mình dựng lên từng phần. Khối phải liền một mảng, tô
+    # nhạt: thứ nhận nguyên si. Dấu vết của việc TỰ TẠO là cái quyết định độ đậm.
+    # Khác `granularity` (hai hình TRÒN, và bên phân giải được lại là bên NHẠT — nói
+    # về độ phân giải của một lượng) và khác `effort_price` (cột đốt + khối giá trị
+    # rộng gấp đôi — nói về định giá, không nói về lưu giữ).
+    return (f'<rect x="16" y="34" width="44" height="60" fill="{p["acc"]}" '
+            f'fill-opacity="0.72" {TS}/>'
+            f'<path d="M16,54 L60,54 M16,74 L60,74 M38,34 L38,54" {TNF}/>'
+            f'<rect x="70" y="34" width="44" height="60" fill="{p["t1"]}" {TS}/>')
+
+
+def t_proxy_inflates(p):
+    # Hai cặp cột trên cùng một đáy. Cặp trái: phép đo và mục tiêu CAO BẰNG NHAU —
+    # phép đo còn là chỉ báo trung thực. Cặp phải: cột phép đo vọt lên, cột mục tiêu
+    # tụt xuống. Nội dung nằm ở chỗ hai đại lượng TỪNG trùng nhau rồi tách ra đúng
+    # lúc bị tối ưu — nên bắt buộc phải có trạng thái "trước".
+    # Khác `ratchet` (ba bậc cao dần, bậc sau tựa bậc trước, không có trạng thái
+    # trước) và khác `contrast` (hai khối khác chất, không chung mốc nào).
+    return (f'<rect x="14" y="56" width="18" height="50" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="35" y="56" width="18" height="50" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="75" y="24" width="18" height="82" fill="{p["acc"]}" '
+            f'fill-opacity="0.78" {TS}/>'
+            f'<rect x="96" y="86" width="18" height="20" fill="{p["t1"]}" {TS}/>')
+
+
+def t_one_for_all(p):
+    # Một vùng = ranh giới nhóm, bên trong là các cá thể RỜI NHAU. Đúng MỘT cá thể
+    # được quan sát (tô đặc); cả vùng bên trong lấy luôn sắc độ của cá thể đó.
+    # Nội dung: tính chất của một mẫu bị sơn lên toàn bộ tập.
+    # Khác `in_out_ring` (có chấm nằm HẲN ngoài vành — nói về ranh giới thuộc về,
+    # không có gì lan ra) và khác `odd_one_out` (nền đồng nhất + một phần tử lệch:
+    # cái lệch là nội dung, và nó không nhuộm ai cả).
+    o = [f'<circle cx="64" cy="66" r="48" fill="{p["acc"]}" fill-opacity="0.16" {TS}/>']
+    o += [f'<circle cx="{x}" cy="{y}" r="11" fill="#FFFFFF" {TS}/>'
+          for x, y in ((84, 46), (44, 86), (84, 86))]
+    o.append(f'<circle cx="44" cy="46" r="11" fill="{p["acc"]}" '
+             f'fill-opacity="0.88" {TS}/>')
+    return "".join(o)
+
+
+def t_consensus_merge(p):
+    # Ba vòng chồng lên nhau tới mức gần thành MỘT khối, cùng một sắc độ: các quan
+    # điểm đã nhập lại làm một. Vòng thứ tư tách hẳn ra và để RỖNG — ý kiến khác
+    # không bao giờ được tô vào khối đồng thuận.
+    # Khác `overlap_phases` (các ellipse chồng nhau đều, không ai bị bỏ lại — nói về
+    # giao thoa giai đoạn) và khác `in_out_ring` (có vành ranh giới rõ, và cái ngoài
+    # vành là người ngoài nhóm chứ không phải ý kiến bị loại).
+    o = [f'<circle cx="{x}" cy="{y}" r="24" fill="{p["acc"]}" fill-opacity="0.34" {TS}/>'
+         for x, y in ((48, 46), (72, 46), (60, 68))]
+    o.append(f'<circle cx="101" cy="97" r="13" fill="none" {TS}/>')
+    return "".join(o)
+
+
+def t_tint_carryover(p):
+    # Bốn ô đánh giá rời nhau, TÔ CÙNG một sắc độ, không ô nào nhạt hơn ô nào. Chỉ ô
+    # đầu có chấm đặc bên trong = tiêu chí duy nhất thực sự có bằng chứng. Ba ô còn
+    # lại được chấm điểm y hệt mà trong ruột không có gì.
+    # Khác `halo_spill` (sắc độ NHẠT DẦN khi lan ra): ở đây không nhạt đi chút nào,
+    # và chính chỗ "không nhạt" mới là nội dung. Khác `salience_pop` (lưới 9 chấm,
+    # vài chấm được tô — nói về độ nhìn thấy, không về suy diễn phẩm chất).
+    o = [f'<rect x="{x}" y="{y}" width="34" height="34" fill="{p["acc"]}" '
+         f'fill-opacity="0.42" {TS}/>'
+         for x, y in ((22, 22), (72, 22), (22, 72), (72, 72))]
+    o.append(f'<circle cx="39" cy="39" r="9" fill="{p["acc"]}" '
+             f'fill-opacity="0.95" {TS}/>')
+    return "".join(o)
+
+
+def t_parsimony(p):
+    # Cùng MỘT hành vi quan sát được (khối phải), hai lối giải thích dẫn tới nó: lối
+    # trên phải đi qua ba mắt xích rỗng (cố ý + có động cơ + nhắm vào mình), lối dưới
+    # chỉ cần một mắt xích đặc (vô tâm). Nội dung là CHÊNH LỆCH số giả định, nên hai
+    # chuỗi bắt buộc phải khác hẳn nhau về số mắt.
+    # Khác `divergence` (một điểm rẽ ra nhiều nhánh — chiều ngược lại) và khác
+    # `funnel` (nhiều đầu vào bị một cái phễu thu hẹp, không phải hai lối song song).
+    o = [f'<path d="M18,30 L96,30 L96,60 M26,92 L96,92 L96,74" {TNF}/>']
+    o += [f'<circle cx="{x}" cy="30" r="8" fill="#FFFFFF" {TS}/>' for x in (18, 44, 70)]
+    o.append(f'<circle cx="26" cy="92" r="9" fill="{p["acc"]}" '
+             f'fill-opacity="0.82" {TS}/>')
+    o.append(f'<rect x="82" y="53" width="28" height="28" fill="{p["t3"]}" {TS}/>')
+    return "".join(o)
+
+
+def t_regression_crossing(p):
+    # Đường DỐC = năng lực thật, chạy từ việc dễ (trái, cao) xuống việc khó (phải,
+    # thấp). Đường PHẲNG = mức tự đánh giá, gần như không đổi theo độ khó. Hai đường
+    # cắt nhau nên hai nêm giữa chúng ĐỔI DẤU: phía dễ tự đánh giá thấp hơn thật,
+    # phía khó tự đánh giá cao hơn thật. Chỗ cắt nhau là nội dung.
+    # Khác `overclaim` (chỉ lệch một chiều, phần tự nhận luôn lớn hơn phần thật) và
+    # khác `reference_kink` (một mốc ngang + hai ô lệch RỜI nhau, không có đường thứ
+    # hai cắt qua).
+    return (f'<path d="M16,30 L64,64 L16,64 Z" fill="{p["t1"]}" {TS}/>'
+            f'<path d="M64,64 L112,98 L112,64 Z" fill="{p["acc"]}" '
+            f'fill-opacity="0.55" {TS}/>'
+            f'<path d="M16,30 L112,98" {TNF}/>'
+            f'<path d="M16,64 L112,64" {TNF}/>')
+
+
+def t_observed_lift(p):
+    # Một dãy cột đều nhau = hành vi nền. Cung phía trên phủ đúng hai cột giữa: đó là
+    # phạm vi đang bị quan sát. Hai cột nằm dưới cung cao hẳn lên và tô đặc, dù không
+    # có điều kiện nào khác thay đổi. Nội dung: mức đo tăng do PHẠM VI QUAN SÁT.
+    # Cung phải hở hai đầu — khép lại thành vòng thì đọc thành con mắt, đúng thứ
+    # phong cách này cấm.
+    # Khác `beam` (chùm dồn vào một điểm, phần còn lại tối đi — nói về chú ý của
+    # chính chủ thể) và khác `ratchet`/`spectrum` (dãy tăng đơn điệu, không có mốc
+    # nào đánh dấu phạm vi).
+    o = [f'<path d="M40,40 A30,26 0 0 1 88,40" {TNF}/>']
+    for x, h, fill, opa in ((14, 30, p["t1"], ""), (42, 52, p["acc"], ' fill-opacity="0.78"'),
+                            (70, 52, p["acc"], ' fill-opacity="0.78"'), (98, 30, p["t1"], "")):
+        o.append(f'<rect x="{x}" y="{106-h}" width="16" height="{h}" '
+                 f'fill="{fill}"{opa} {TS}/>')
+    return "".join(o)
+
+
+CONCEPT_OBJECTS = dict(effort_price=t_effort_price, overclaim=t_overclaim,
+                       owed_reversal=t_owed_reversal, self_built=t_self_built,
+                       proxy_inflates=t_proxy_inflates, one_for_all=t_one_for_all,
+                       consensus_merge=t_consensus_merge,
+                       tint_carryover=t_tint_carryover, parsimony=t_parsimony,
+                       regression_crossing=t_regression_crossing,
+                       observed_lift=t_observed_lift,
+                       base_blind=t_base_blind, locus_flip=t_locus_flip,
+                       asymmetric_fade=t_asymmetric_fade,
+                       from_primitives=t_from_primitives, ratchet=t_ratchet,
+                       salience_pop=t_salience_pop,
+                       foreground_swell=t_foreground_swell,
+                       one_affordance=t_one_affordance, two_frames=t_two_frames,
+                       mirror=t_mirror, in_out_ring=t_in_out_ring, balance=t_balance,
                        beam=t_beam, halo_spill=t_halo_spill, veil=t_veil,
                        fracture=t_fracture, pull=t_pull, echo=t_echo, gate=t_gate,
                        rebound=t_rebound, odd_one_out=t_odd_one_out,
-                       tail_event=t_tail_event)
+                       tail_event=t_tail_event, gap_fill=t_gap_fill,
+                       granularity=t_granularity, cue_lock=t_cue_lock,
+                       depletion=t_depletion, foil=t_foil, latch=t_latch,
+                       dilution=t_dilution, reference_kink=t_reference_kink,
+                       juxtaposition=t_juxtaposition, rosy_tilt=t_rosy_tilt)
 
 # Quan hệ mà mỗi concept object biểu đạt — dùng khi chẩn đoán metaphor cho card.
 CONCEPT_MEANING = {
+    "effort_price": "công sức đã bỏ ra được đọc thành giá trị của vật — cột đốt đếm được "
+                    "quyết định chiều cao khối giá trị bên cạnh",
+    "overclaim":   "phạm vi tự nhận lớn hơn hẳn phần thực có, và khoảng chênh để rỗng "
+                   "vì chính người trong cuộc không nhìn thấy nó",
     "mirror":      "cùng một sự việc, hai cách quy kết (mình ↔ người khác)",
     "in_out_ring": "trong nhóm ↔ ngoài nhóm; ranh giới thuộc về",
     "balance":     "đánh đổi, cán cân lệch có hướng",
@@ -525,6 +965,51 @@ CONCEPT_MEANING = {
     "rebound":     "tác động bật ngược lại, kết quả đi ngược ý định ban đầu",
     "odd_one_out": "một phần tử lệch khỏi nền đồng nhất — phân biệt nhờ tương phản với phần còn lại",
     "tail_event":  "biến cố hiếm nhưng độ lớn áp đảo, nằm ngoài dải quen thuộc (đuôi phân phối)",
+    "gap_fill":    "một chỗ hổng được vá bằng vật liệu lạ, khiến tổng thể đọc thành liền mạch",
+    "granularity": "cùng một lượng, nhưng một bên phân giải được thành từng cá thể còn bên kia nhoè thành khối",
+    "cue_lock":    "nội dung còn nguyên nhưng thiếu đúng mảnh khớp để mở ra được",
+    "depletion":   "một nguồn lực hữu hạn bị rút cạn dần bởi chính việc sử dụng lặp lại",
+    "foil":        "một phần tử thêm vào chỉ để làm phần tử bên cạnh trông vượt trội",
+    "latch":       "các phương án ngang giá nhưng một phương án đã cài sẵn — đứng yên rẻ hơn đổi",
+    "dilution":    "cùng một nghĩa vụ chia cho nhiều người, mỗi phần loãng tới mức không đủ kích hoạt",
+    "reference_kink": "hai độ lệch bằng nhau quanh một đường mốc nhưng bị xử lý ngược nhau",
+    "juxtaposition":  "cùng một cặp: đặt sát nhau thì chênh lệch đọc ra, tách xa thì biến mất",
+    "rosy_tilt":   "sự vật không đổi, chỉ có sắc độ đánh giá nhạt/đậm dần theo trục thời gian",
+    "base_blind":  "cùng một tử số đọc trên hai mẫu số khác hẳn nhau — cái nền quyết định "
+                   "ý nghĩa con số lại là thứ bị nhìn xuyên qua",
+    "locus_flip":  "cùng một hành vi, nguồn thúc đẩy được đặt bên trong hay bên ngoài vật",
+    "asymmetric_fade": "hai dãy cùng xuất phát, một dãy phai nhanh hơn hẳn dãy kia — "
+                       "chênh lệch nằm ở tốc độ phai, không ở điểm bắt đầu",
+    "from_primitives": "cùng một bộ phần tử cơ bản: rời ra khi tháo, khít trong một khung "
+                       "khi dựng lại — lời giải xây từ thành phần đã kiểm chứng",
+    "ratchet":     "các bậc cao dần và bậc sau tựa lên vai bậc trước — bậc nhỏ đã nhận là "
+                   "chỗ đứng cho bậc lớn kế tiếp",
+    "salience_pop": "số lượng và vị trí không đổi, chỉ vài phần tử được tô đặc — cái tăng "
+                    "lên là độ nhìn thấy, không phải tần suất",
+    "foreground_swell": "một phần tử phình to trong khi dãy đều đặn vẫn chạy tiếp ở cả hai "
+                        "phía — cỡ nó chiếm trong dự đoán, không phải cỡ thật",
+    "one_affordance": "một vật có nhiều mấu nối như nhau nhưng chỉ một mối ghép từng được "
+                      "dùng — cái chặn nằm trong thói quen, không trong vật",
+    "two_frames":  "cùng một mốc, một bên tô phần dưới, bên kia tô phần trên — được hay mất "
+                   "chỉ là phía nào được kể",
+    "owed_reversal": "một chuỗi kết quả có thật dồn về một phía của mốc, và một ô rỗng ở phía "
+                     "đối diện — cái 'đến lượt phải đổi chiều' chưa hề tồn tại",
+    "self_built":  "cùng một nội dung qua hai lối: thứ tự mình dựng lên từng phần giữ được "
+                   "dấu vết, thứ nhận nguyên si thì nhạt",
+    "proxy_inflates": "phép đo và mục tiêu từng cao bằng nhau, rồi tách hẳn ra khi phép đo bị "
+                      "lấy làm đích — chỉ số vọt lên trong lúc mục tiêu tụt xuống",
+    "one_for_all": "tính chất của đúng một cá thể được quan sát bị sơn lên toàn bộ vùng chứa "
+                   "nó — mẫu một người, kết luận cả nhóm",
+    "consensus_merge": "nhiều quan điểm chồng lên nhau tới mức thành một khối đồng sắc, và "
+                       "phần tử không nhập vào thì bị bỏ rỗng ngoài rìa",
+    "tint_carryover": "nhiều ô đánh giá cùng một sắc độ nhưng chỉ một ô có bằng chứng bên "
+                      "trong — các ô kia được chấm điểm y hệt mà ruột rỗng",
+    "parsimony":   "cùng một hệ quả, hai lối giải thích khác hẳn nhau về số mắt xích giả định",
+    "regression_crossing": "hai đường cắt nhau nên độ lệch đổi dấu qua điểm cắt — một phía "
+                           "đánh giá cao hơn thật, phía kia thấp hơn thật",
+    "observed_lift": "một dãy đều nhau, riêng phần nằm trong phạm vi được quan sát thì cao "
+                     "hẳn lên — mức đo đổi vì bị nhìn, không vì điều kiện đổi",
+
 }
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS)

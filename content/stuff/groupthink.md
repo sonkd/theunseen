@@ -8,6 +8,7 @@ tags: [group, decision]
 links: [bystander-effect, system-justification, bandwagon-effect]
 refs: ['https://en.wikipedia.org/wiki/Groupthink']
 strategy: 'Chỉ định một người đóng vai "devil advocate" bắt buộc phải phản biện trong mọi cuộc họp quyết định quan trọng.'
+image: /assets/stuff/groupthink.png
 published: true
 ---
 
