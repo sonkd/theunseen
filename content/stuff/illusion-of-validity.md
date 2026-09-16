@@ -7,6 +7,7 @@ categories: [bias]
 links: [overconfidence-effect, base-rate-fallacy, confirmation-bias]
 refs: ['https://en.wikipedia.org/wiki/Illusion_of_validity', 'https://thedecisionlab.com/biases/illusion-of-validity']
 strategy: 'Khi một hồ sơ hay bộ dữ liệu "kể một câu chuyện quá mạch lạc" khiến bạn tự tin dự đoán, chủ động tra lại base rate (tỷ lệ nền) và hiệu suất dự đoán lịch sử của chính phương pháp đó, thay vì tin vào cảm giác mạch lạc.'
+image: /assets/stuff/illusion-of-validity.png
 published: true
 ---
 

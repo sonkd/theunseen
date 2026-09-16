@@ -498,6 +498,171 @@ OVERRIDES = {
         "chủ thể dồn vào một điểm, còn ở đây cái nhìn đến từ bên ngoài và thứ đổi là hành vi "
         "của người bị nhìn; veil thì ngược (che đi, không phải soi vào)"),
 
+    # ---- batch #6 (2026-09-12) — xlsx gán 6 branching + 3 hierarchy + 1 nesting,
+    # tức 9/10 card dồn vào 2 hình. Chẩn đoán lại toàn bộ theo `back`.
+    # 5 hình mới phải viết vì không hình nào trong 57 hình sẵn có diễn được quan hệ.
+    # 2 card đổi hue (không đổi metaphor) vì metaphor đúng đã bị chiếm ở hue của xlsx —
+    # đổi hue rẻ hơn đổi nghĩa, và hai lần đổi ngược chiều nhau nên cân bằng mint/amber
+    # của corpus không đổi.
+    "hedonic-treadmill": (
+        "setpoint_return",
+        "hình mới. Quan hệ là QUAY VỀ MỨC NỀN: một độ lệch lên và một độ lệch xuống, cả hai dựng "
+        "dốc rồi thoải về đúng đường nền — thích nghi không phân biệt tin tốt với tin xấu. xlsx "
+        "cho branching vô nghĩa (không có gì rẽ nhánh). cycle đã gần nhưng vòng khép kín nói "
+        "'lặp lại', còn ở đây không có vòng nào, chỉ có cái đuôi tắt dần. threshold thì ngược hẳn: "
+        "vượt ngưỡng rồi Ở LUÔN trạng thái mới, đúng cái mà hedonic treadmill phủ định"),
+    "hindsight-bias": (
+        "retrofit_path",
+        "hình mới. Ba kết cục khả dĩ để RỖNG và cùng cỡ, chỉ kết cục đã xảy ra được tô đặc và nối "
+        "vào một đường liền về điểm đầu. xlsx cho nesting sai hẳn. divergence vẽ mọi nhánh đều "
+        "đặc — đúng trạng thái TRƯỚC khi biết, mà hindsight bias lại nằm ở chỗ ba nhánh kia bị "
+        "xoá khỏi ký ức; cái rỗng mới là nội dung, nên phải để rỗng thật"),
+    "horn-effect": (
+        "halo_spill",
+        "một ấn tượng nổi bật lan sang các đánh giá lân cận không liên quan — hình này trung tính "
+        "về hoá trị nên dùng được cho cả halo lẫn horn (card tự gọi mình là 'mặt trái của halo "
+        "effect'). halo-effect trong corpus đi với tint_carryover (nói về chuyện chấm điểm y hệt "
+        "mà ruột rỗng), nên halo_spill còn trống và về nghĩa thì đúng hơn cho horn. xlsx cho "
+        "hierarchy sai: không có quan hệ cha–con nào ở đây"),
+    "hot-hand-fallacy": (
+        "streak_projection",
+        "hình mới. Bốn kết quả BẰNG NHAU (mỗi lần thử độc lập và giống hệt nhau) rồi một ô rỗng "
+        "cùng phía nhưng cao hơn hẳn = kỳ vọng nối dài chuỗi, mà không gì trong chuỗi sinh ra nó. "
+        "xlsx cho branching sai. Bản thử đầu dùng echo nhưng echo NHẠT VÀ THẤP DẦN — vẽ ra thành "
+        "'chuỗi đang tắt', tức ngược hẳn nội dung card. Cặp đối của nó là owed_reversal "
+        "(gamblers-fallacy, amber): ở đó ô rỗng nằm phía ĐỐI DIỆN đường mốc, ở đây cùng phía và "
+        "cao hơn — đủ khác để không lẫn ở 64px"),
+    "hyperbolic-discounting": (
+        "steep_then_flat",
+        "hình mới. Nội dung là ĐỘ CONG, không phải độ giảm: mức sụt ở đoạn gần lớn hơn tổng các "
+        "mức sụt còn lại, rồi gần như nằm ngang ở đoạn xa — chính chỗ nằm ngang giải thích nghịch "
+        "lý đảo chiều ưu tiên trong `front`. xlsx cho branching sai. spectrum giảm ĐỀU nên vẽ ra "
+        "sẽ thành chiết khấu tuyến tính, tức phủ định đúng điểm của card; depletion có vạch 'mức "
+        "đầy' bị rút dần — mất mát do sử dụng, không phải định giá theo khoảng cách thời gian"),
+    "identifiable-victim-effect": (
+        "foreground_swell",
+        "một cá thể phình to trong khi dãy đều đặn vẫn chạy tiếp ở cả hai phía — cỡ nó chiếm "
+        "trong phản ứng của ta không phải cỡ thật của vấn đề. xlsx cho branching sai. granularity "
+        "(phân giải được thành cá thể ↔ nhoè thành khối) sát nghĩa nhất nhưng đã hết cả hai hue "
+        "(cross-race-effect, denomination-effect). ĐỔI HUE amber→mint: foreground_swell+amber đã "
+        "là focalism"),
+    "ikea-effect": (
+        "effort_price",
+        "công sức bỏ ra được đọc thành giá trị của vật — đúng định nghĩa card, sát hơn bất cứ hình "
+        "nào khác. xlsx cho hierarchy sai. ĐỔI HUE mint→amber: effort_price+mint đã là "
+        "effort-justification (giữ nguyên, đã ship). Hai card này là họ hàng gần nên dùng chung "
+        "hình là đúng; phân biệt bằng hue, không bịa một hình lệch nghĩa chỉ để khác nhau"),
+    "illusion-of-asymmetric-insight": (
+        "asymmetric_probe",
+        "hình mới. Hai khối Y HỆT NHAU (thực tế đối xứng — không ai có lợi thế thông tin) nhưng "
+        "mũi thăm dò một bên cắm sâu tới tâm, mũi bên kia đứng lại giữa khoảng trống. xlsx cho "
+        "branching sai. mirror nói cùng MỘT sự việc qua hai khung quy kết, chỉ có một đối tượng; "
+        "ở đây phải có HAI chủ thể cùng tự nhận về phía đối diện. overclaim lệch một chiều, một "
+        "chủ thể — mất mất tính đối xứng vốn là toàn bộ cái ảo giác"),
+    "illusion-of-control": (
+        "unlinked_control",
+        "hình mới. Một mấu nối chỉ ĐÚNG HƯỚNG vào vùng kết quả ngẫu nhiên, nhưng không có gì băng "
+        "qua khoảng trống: cảm giác điều khiển là có thật, mối liên kết thì không. xlsx cho "
+        "branching sai. fracture có nối nhưng lệch khớp (bất nhất), ở đây không có khớp nào; veil "
+        "thì thông tin vẫn tồn tại sau tấm che, còn ở đây liên kết vốn không tồn tại — khác nhau "
+        "về bản chất, không về mức độ"),
+    "illusion-of-explanatory-depth": (
+        "hollow_chain",
+        "hình mới. Một khung liền vây quanh cả chuỗi = lời tự nhận 'hiểu từ đầu tới cuối'; bên "
+        "trong chỉ mắt đầu và mắt cuối được tô, hai mắt giữa rỗng. xlsx cho hierarchy sai. "
+        "overclaim đúng nghĩa nhất nhưng đã hết cả hai hue (dunning-kruger, false-consensus) và "
+        "vẽ lại sẽ thành Dunning-Kruger; gap_fill là chỗ hổng ĐƯỢC VÁ bằng vật liệu lạ, còn ở đây "
+        "không ai vá — lỗ vẫn nguyên, chỉ là chưa ai nhìn vào, và đó mới là điểm của card"),
+
+    # ---- batch 2026-09-16 — xlsx gán 9 branching + 1 nesting, tức 9/10 card sẽ nhận
+    # ĐÚNG một hình (divergence). Không card nào trong batch là "một điểm rẽ nhiều
+    # nhánh". Chẩn đoán lại toàn bộ theo `back`; 9 concept object mới phải viết vì các
+    # hình gần nghĩa nhất (locus_flip, veil, overclaim, echo, base_blind, one_for_all)
+    # đều đã kín cả hai hue. Card thứ 10 (in-group-bias) dùng hình cũ + đổi hue.
+    "illusion-of-external-agency": (
+        "outward_credit",
+        "hình mới. Cảm giác do CHÍNH MÌNH sinh ra (chấm đặc nằm trong khối bản thân) nhưng "
+        "công được ghi cho một tác nhân bên ngoài 'thấu hiểu' — vẽ rỗng vì tác nhân đó không "
+        "làm gì cả. xlsx cho branching sai hẳn: không có điểm rẽ nào. locus_flip là hình sát "
+        "nghĩa nhất nhưng đã kín cả hai hue (fundamental-attribution-error, "
+        "extrinsic-incentive-error) và nó nói 'nguồn được đặt trong HAY ngoài' — ở đây nguồn "
+        "đã xác định là bên trong, cái được thêm vào mới là chỗ rỗng. unlinked_control+mint "
+        "(illusion-of-control) thì không có mối nối nào cả"),
+    "illusion-of-transparency": (
+        "signal_leak",
+        "hình mới. Ba đại lượng bắt buộc: cường độ nội tâm (đặc), lượng thực sự lọt qua ranh "
+        "giới (chấm nhỏ), và lượng ta TIN là lọt ra (khung lớn). xlsx cho branching sai. "
+        "overclaim đúng ngữ pháp 'tự nhận > thực có' nhưng đã kín hai hue (dunning-kruger, "
+        "false-consensus) và thiếu mất cái ranh giới — mà ranh giới trong–ngoài mới là chỗ "
+        "khác biệt của card này. veil kín cả hai hue và sai chiều: ở đây không ai che gì"),
+    "illusion-of-validity": (
+        "fitted_overreach",
+        "hình mới. Cơ chế của card là ĐỘ MẠCH LẠC sinh ra tự tin: các điểm thẳng hàng hoàn "
+        "hảo, và đường khớp chạy tiếp ra ngoài vùng có dữ liệu. xlsx cho branching sai. "
+        "overclaim/hollow_chain nói về phạm vi tự nhận nhưng không vẽ được chỗ 'quá gọn nên "
+        "dễ kể thành câu chuyện' — mà đó là nguyên nhân card nêu ra, không phải hệ quả"),
+    "illusory-correlation": (
+        "one_cell_counted",
+        "hình mới. Bảng 2x2 đủ bốn ô, chỉ ô đồng xuất hiện được tô — khớp thẳng với "
+        "`strategy` của card ('đếm cả những lần X xảy ra mà KHÔNG có Y'). xlsx cho branching "
+        "sai. network+mint còn trống nhưng network là apophenia (áp một mạng lên các điểm rời "
+        "rạc) — ở đây chỉ có ĐÚNG hai biến và vấn đề là ba ô không được đếm, không phải một "
+        "mạng liên kết. echo (lặp lại → khuếch đại) kín cả hai hue và sai cơ chế"),
+    "illusory-superiority": (
+        "all_above_median",
+        "hình mới. Luận điểm nằm ở tính BẤT KHẢ THỐNG KÊ: mọi chấm đều trên đường trung bình "
+        "và nửa dưới bỏ trống. xlsx cho branching sai. overclaim (dunning-kruger, mint) là "
+        "họ hàng gần nhất nhưng nó vẽ MỘT chủ thể tự nhận quá tay; ở đây phải thấy được cả "
+        "một quần thể cùng làm thế thì nghịch lý mới hiện ra"),
+    "illusory-truth-effect": (
+        "stacked_copies",
+        "hình mới. Ba bản sao y hệt, mỗi bản nhạt như nhau (không bản nào mang thêm bằng "
+        "chứng), chỗ chồng lên nhau thì đậm. xlsx cho branching sai. echo là hình chính danh "
+        "nhưng kín cả hai hue (clustering-illusion, availability-cascade) và echo NHẠT/THẤP "
+        "DẦN — vẽ ra thành 'đang tắt', ngược với việc lặp lại làm niềm tin đậm thêm. "
+        "availability-cascade là card anh em nên càng phải tránh dùng lại đúng hình đó"),
+    "immune-neglect": (
+        "unseen_cushion",
+        "hình mới. Card nói rõ cái bị bỏ sót là CƠ CHẾ ĐỐI PHÓ, nên nó phải có mặt trong hình "
+        "mà vẫn đọc ra là 'không được tính' — dải đệm vẽ rỗng, nằm giữa cú rơi và mức dự đoán. "
+        "xlsx cho branching sai. setpoint_return+amber còn trống và đúng nghĩa về mặt quỹ đạo, "
+        "nhưng nó thuộc hedonic-treadmill (mint) — dùng lại sẽ ra hai thumbnail chỉ khác MÀU "
+        "cho hai card link nhau, đúng lỗi declinism/decision-fatigue mà batch 2026-09-08 phải "
+        "sửa. Hơn nữa setpoint_return VẼ RA sự hồi phục, còn card này nói nó bị bỏ quên"),
+    "impact-bias": (
+        "over_scaled_forecast",
+        "hình mới. Card nói rõ phóng đại CẢ 'length' LẪN 'intensity', nên khung dự báo phải "
+        "lớn hơn trên hai trục và chung gốc với khối trải nghiệm thật. xlsx cho branching sai. "
+        "overclaim chỉ lệch một trục (phần đặc trải hết bề ngang) nên mất đúng vế 'kéo dài bao "
+        "lâu', và nó đã kín cả hai hue. Phân biệt với immune-neglect cùng batch: ở đó nội dung "
+        "là lực đỡ bị bỏ quên, ở đây là quy mô bị gán sai"),
+    "implicit-stereotypes": (
+        "group_tint_applied",
+        "hình mới, là chiều NGƯỢC của one_for_all (mint, group-attribution-error): ở đó một cá "
+        "thể được quan sát rồi sơn lên cả nhóm; ở đây sắc độ của nhóm chảy nguyên vẹn vào một "
+        "cá thể mà ruột cá thể đó rỗng. xlsx cho branching sai. one_for_all+amber còn trống "
+        "nhưng vẽ đúng chiều ngược lại thì thành card khác. halo_spill (nhạt dần khi lan) kín "
+        "cả hai hue và sai: ở đây sắc độ sang cá thể không nhạt đi chút nào"),
+    "in-group-bias": (
+        "in_out_ring",
+        "hình cũ, đúng nghĩa: ranh giới THUỘC VỀ và trọng số khác nhau ở hai phía. Đây là card "
+        "mà chú thích ở entry defensive-attribution-hypothesis (batch 2026-09-06) đã ghi rõ là "
+        "để dành in_out_ring+mint cho nó. xlsx gán nesting (nested_scope) — nested_scope nói "
+        "quan hệ BAO HÀM (tập con nằm trong tập mẹ), còn in-group bias là hai nhóm TÁCH nhau "
+        "với một vành phân định, và nested_scope cũng đã kín cả hai hue"),
+}
+
+# Đổi hue khi metaphor đúng đã bị một card khác chiếm ở hue mà xlsx gán (cùng metaphor +
+# cùng hue = ảnh trùng byte). Đổi hue rẻ hơn đổi metaphor: hue không mang nghĩa, chỉ ảnh
+# hưởng cân bằng mint/amber của corpus. slug -> (hue, "lý do")
+HUE_OVERRIDES = {
+    "identifiable-victim-effect": (
+        "mint", "foreground_swell+amber đã là focalism"),
+    "ikea-effect": (
+        "amber", "effort_price+mint đã là effort-justification"),
+    "in-group-bias": (
+        "mint", "in_out_ring+amber đã là defensive-attribution-hypothesis; mint vốn được "
+                "ghi chú để dành sẵn cho card này từ batch 2026-09-06"),
 }
 
 
@@ -586,7 +751,11 @@ def main():
             print(f"  !! shape lạ: {c['slug']} -> {c['shape']}", file=sys.stderr)
             return 1
         hue = c["hue"] if c["hue"] in ("mint", "amber") else "mint"
+        hue_ovr, hue_reason = HUE_OVERRIDES.get(c["slug"], (None, None))
+        if hue_ovr:
+            hue = hue_ovr
         print(f"{c['slug']:<40} {c['shape']:<14} {metaphor:<16} {hue}"
+              + (f"   [hue: {c['hue']}->{hue_ovr}, {hue_reason}]" if hue_ovr else "")
               + (f"   [override: {reason}]" if reason else ""))
         if args.dry_run:
             continue

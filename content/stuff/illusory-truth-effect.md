@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [mere-exposure-effect, confirmation-bias, availability-heuristic]
 refs: ['https://en.wikipedia.org/wiki/Illusory_truth_effect', 'https://thedecisionlab.com/biases/illusory-truth-effect', 'https://doi.org/10.1016/S0022-5371(77)80012-1', 'https://www.apa.org/pubs/journals/features/xge-0000098.pdf']
 strategy: 'Trước khi tin một thông tin nghe quen tai, tự hỏi: mình tin vì có bằng chứng, hay chỉ vì đã nghe/đọc nó nhiều lần?'
+image: /assets/stuff/illusory-truth-effect.png
 published: true
 ---
 

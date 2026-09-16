@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [stereotyping, in-group-bias, halo-effect, confirmation-bias]
 refs: ['https://en.wikipedia.org/wiki/Implicit_stereotype', 'https://www.apa.org/research-practice/conduct-research/hidden-association', 'https://faculty.washington.edu/agg/pdf/Greenwald,Banaji&Nosek.JPSP.2015.pdf', 'https://www.law.upenn.edu/live/files/8939-94jap567pdf']
 strategy: 'Trước khi đánh giá một người (hồ sơ ứng tuyển, khách hàng, đồng nghiệp mới), tự hỏi: mình đang phản ứng với năng lực/hành vi thực tế của họ, hay với hình mẫu nhóm mà mình gán sẵn cho họ?'
+image: /assets/stuff/implicit-stereotypes.png
 published: true
 ---
 
