@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [gamblers-fallacy, hot-hand-fallacy, clustering-illusion, base-rate-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Insensitivity_to_sample_size', 'http://stats.org.uk/statistical-inference/TverskyKahneman1971.pdf', 'https://fs.blog/mental-model-bias-from-insensitivity-to-sample-size/']
 strategy: "Trước khi kết luận điều gì đó từ một mẫu nhỏ (vài chục người dùng test A/B, vài ngày dữ liệu, vài tháng hiệu suất), tự hỏi: nếu mẫu lớn gấp 10 lần, kết luận này có còn đứng vững không?"
+image: /assets/stuff/insensitivity-to-sample-size.png
 published: true
 ---
 

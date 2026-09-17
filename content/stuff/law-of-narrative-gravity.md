@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [confirmation-bias, bandwagon-effect, illusory-truth-effect, availability-heuristic]
 refs: ['https://medium.com/backchannel/the-invisible-force-that-warps-what-you-read-in-the-news-41dca28a1f7d', 'https://en.wikipedia.org/wiki/Confirmation_bias', 'https://en.wikipedia.org/wiki/Filter_bubble']
 strategy: 'Trước khi tin một câu chuyện nghe rất "khớp" về ai đó hay một công ty, thử đảo ngược: nếu chủ thể là người/phe khác, cùng một sự kiện có được kể theo hướng khác không?'
+image: /assets/stuff/law-of-narrative-gravity.png
 published: true
 ---
 

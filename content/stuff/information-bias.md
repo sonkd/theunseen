@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [confirmation-bias, zero-risk-bias, neglect-of-probability]
 refs: ['https://en.wikipedia.org/wiki/Information_bias_%28psychology%29', 'https://www.sas.upenn.edu/~baron/papers/diagreas2.pdf', 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8763848/']
 strategy: 'Trước khi tìm thêm dữ liệu, tự hỏi: nếu kết quả ra khác đi, mình có thực sự hành động khác không? Nếu câu trả lời là không, dừng tìm kiếm lại.'
+image: /assets/stuff/information-bias.png
 published: true
 ---
 

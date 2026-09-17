@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [defensive-attribution-hypothesis, fundamental-attribution-error, system-justification]
 refs: ['https://en.wikipedia.org/wiki/Just-world_hypothesis', 'https://thedecisionlab.com/biases/just-world-hypothesis', 'https://effectiviology.com/just-world/']
 strategy: 'Trước khi phán xét nạn nhân của một bất công (lừa đảo, tai nạn, bệnh tật), tự hỏi: mình đang tìm lỗi ở họ để cảm thấy an toàn hơn, hay lỗi thực sự nằm ở hoàn cảnh?'
+image: /assets/stuff/just-world-hypothesis.png
 published: true
 ---
 
