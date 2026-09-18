@@ -739,6 +739,94 @@ OVERRIDES.update({
 })
 
 
+OVERRIDES.update({
+    # ---- batch #10 (2026-09-18) — mười card L/M. xlsx gán 6/10 là `hierarchy`, 1
+    # `branching`, tức bảy card sẽ nhận đúng hai hình. Chẩn đoán lại từng card theo
+    # `back`: KHÔNG card nào có quan hệ cha–con. Cả mười hình dưới đây là hình mới —
+    # mọi hình sát nghĩa sẵn có đều đã kín cả hai hue, và hình gần-đúng chính là thứ
+    # runbook cảnh báo.
+    "less-is-better-effect": (
+        "rank_reversal",
+        "hình mới. `juxtaposition` (distinction-bias amber / empathy-gap mint) là họ hàng "
+        "gần nhất và cũng vẽ 'cùng một cặp, hai chế độ đánh giá' — nhưng ở đó biến duy "
+        "nhất là KHOẢNG CÁCH và điều hiện ra là chênh lệch trở nên nhìn thấy được. Card "
+        "này nói mạnh hơn thế: thứ hạng ĐẢO NGÔI. Nên phải thấy bên thắng đổi chỗ, mà "
+        "juxtaposition cố ý giữ nguyên chiều cao hai khối. `contrast` kín cả hai hue và "
+        "chỉ nói 'hai thứ khác nhau', không có ai hơn ai"),
+    "leveling-and-sharpening": (
+        "fewer_louder",
+        "hình mới. Card có ĐÚNG HAI chiều biến đổi cùng lúc (lược bỏ + phóng đại) nên "
+        "hình phải cho thấy cả số phần tử giảm và phần tử còn lại cao vượt bản gốc. "
+        "`asymmetric_fade` (fading-affect-bias mint, amber còn trống) giữ nguyên số ô và "
+        "chỉ đổi sắc độ — mất hẳn vế lược bỏ. `foreground_swell` (focalism amber / "
+        "identifiable-victim mint) cố ý cho dãy nền chạy đều liên tục, tức phủ định đúng "
+        "vế leveling. xlsx cho hierarchy sai"),
+    "levels-of-processing-effect": (
+        "encoding_depth",
+        "hình mới. xlsx gán nesting→nested_scope (kín cả hai hue) vốn là quan hệ BAO HÀM, "
+        "còn đây là một trục SÂU có thứ tự. Điểm phải vẽ ra là phép so số-lần đối lại "
+        "độ-sâu, nên hình mang cả ba ô lặp ở tầng nông lẫn một khối đâm sâu. `layers` "
+        "(conservatism mint, amber còn trống) là các đĩa xếp chồng, không có gì xuyên qua "
+        "và không đếm số lần lặp"),
+    "lindy-effect": (
+        "age_forecast",
+        "hình mới. Định luật là một tỉ lệ 1:1 giữa đã-sống và sống-thêm, nên hình buộc "
+        "phải có phần CHƯA XẢY RA vẽ rỗng và dài đúng bằng phần đặc. `ratchet` "
+        "(foot-in-the-door mint, amber còn trống) là bậc thang tựa lên nhau, không có "
+        "phần tương lai nào. `streak_projection` (hot-hand amber, mint còn trống) có ô "
+        "rỗng nhưng dùng cho một NGỘ NHẬN — dùng lại sẽ nói rằng Lindy cũng là ngộ nhận, "
+        "trong khi card trình bày nó như một tính chất thống kê thật. xlsx cho hierarchy sai"),
+    "loss-aversion": (
+        "steeper_below",
+        "hình mới. `reference_kink` là hình chính danh của họ mốc-tham-chiếu nhưng kín cả "
+        "hai hue (endowment amber / disposition mint) VÀ chú thích của nó ghi rõ hai ô cố "
+        "ý CÙNG kích thước vì nội dung ở đó là xử lý ngược chiều. Ở đây nội dung chính là "
+        "ĐỘ LỚN chênh nhau ~2x trên cùng một khoảng cách tới mốc — tức đúng thứ "
+        "reference_kink phải tránh. xlsx cho hierarchy sai"),
+    "magic-number-7-2": (
+        "holding_capacity",
+        "hình mới. xlsx gán tipping point→threshold, kín cả hai hue (cognitive-load-theory "
+        "amber / antifragility mint); mà 7±2 không phải một ngưỡng đổi TRẠNG THÁI, nó là "
+        "một SỨC CHỨA tĩnh — vượt quá thì thứ dư không đổi chất, chỉ là không được giữ. "
+        "`gate` kín cả hai hue và ở đó có dòng chảy xuyên qua đang diễn ra. Vẽ theo `back` "
+        "(giới hạn số đơn vị giữ cùng lúc) chứ không theo `strategy` (chunking), vì chunking "
+        "sẽ ra một dãy 7 ô regroup — quá dày cho khổ 64px"),
+    "map-is-not-the-territory": (
+        "map_remainder",
+        "hình mới. Quan hệ là BIỂU DIỄN ↔ VẬT ĐƯỢC BIỂU DIỄN, với một phần dư không bao "
+        "giờ khép lại. Bắt buộc lệch chất liệu (bao cong méo / đa giác cạnh thẳng) mới "
+        "tách được khỏi `nested_scope` (kín cả hai hue, quan hệ bao hàm thuần tuý). "
+        "`hollow_chain`+mint còn trống nhưng đó là illusion-of-explanatory-depth: ở đó cái "
+        "rỗng là các mắt trung gian của một lời tự nhận; ở đây bản đồ hoàn toàn đặc và "
+        "trung thực trong phạm vi của nó, cái rỗng là phần nó không với tới. xlsx cho "
+        "hierarchy sai"),
+    "masked-man-fallacy": (
+        "split_identity",
+        "hình mới. `mirror` (cùng một sự việc soi qua hai khung) kín cả hai hue và ở đó cả "
+        "hai phía đều là ẢNH; tại đây một phía là TÊN GỌI, phía kia là VẬT, và lỗi nằm ở "
+        "chỗ chia tách chỉ có ở tầng tên. `two_frames`+mint còn trống nhưng đó là "
+        "framing-effect (một mốc, đổi phía được tô) — không có đối tượng nào bị đếm thành "
+        "hai. `fracture` kín cả hai hue và vẽ khối THẬT SỰ bị tách, tức khẳng định đúng "
+        "cái card bảo là sai. xlsx cho hierarchy sai"),
+    "memory-inhibition": (
+        "flagged_transient",
+        "hình mới. Card nói cơ chế CHỦ ĐỘNG: một phán định 'tạm thời' ở đầu vào quyết "
+        "định có ghi hay không — nên dấu hiệu phải nằm trên chính vật, ở mức silhouette. "
+        "`cue_lock`+mint còn trống nhưng cue-dependent-forgetting là card em ruột và ở đó "
+        "dữ liệu CÒN ĐỦ, chỉ thiếu chìa; dùng lại sẽ ra hai thumbnail chỉ khác hue cho hai "
+        "card link nhau. `gate`/`latch` đều có vật chắn bên ngoài, còn ở đây không ai chặn. "
+        "Tách khỏi encoding_depth cùng batch bằng cách bỏ hẳn trục sâu. xlsx cho hierarchy sai"),
+    "mental-accounting": (
+        "sealed_bins",
+        "hình mới. xlsx gán branching→divergence (một điểm rẽ nhiều nhánh) — sai chiều: "
+        "tiền không rẽ đi đâu, nó bị DỰNG VÁCH trong khi vẫn là một tổng. `nested_scope` "
+        "(bao hàm) và `proportion` (một lát trên tổng — ở đó các phần vẫn cùng loại) đều "
+        "kín cả hai hue và đều không có vách. `page_structure` là hình duy nhất trong "
+        "registry chưa ai dùng và cũng là khung+ô, nhưng nó có lề trong và một dải header, "
+        "tức đọc thành bố cục trang; ngăn tiền phải chia HẾT bề ngang"),
+})
+
+
 def read_index():
     wb = openpyxl.load_workbook(XLSX, read_only=True, data_only=True)
     ws = wb["Article Index"]

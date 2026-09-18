@@ -7,6 +7,7 @@ categories: [mental-models, theory]
 links: [antifragility, black-swan-theory, survivorship-bias]
 refs: ['https://en.wikipedia.org/wiki/Lindy_effect', 'https://medium.com/incerto/an-expert-called-lindy-fdb30f146eaf', 'https://www.bbc.com/future/article/20190624-how-to-think-about-the-far-future']
 strategy: Trước khi đầu tư thời gian/tiền vào một công nghệ hay xu hướng mới, hỏi "nó đã tồn tại bao lâu?" — thứ mới toanh cần bằng chứng nhiều hơn, không phải ít hơn.
+image: /assets/stuff/lindy-effect.png
 published: true
 ---
 

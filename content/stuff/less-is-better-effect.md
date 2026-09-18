@@ -7,6 +7,7 @@ categories: [bias, perception]
 links: [distinction-bias, contrast-effect, framing-effect, decoy-effect]
 refs: ['https://en.wikipedia.org/wiki/Less-is-better_effect', 'https://onlinelibrary.wiley.com/doi/abs/10.1002/(SICI)1099-0771(199806)11:2%3C107::AID-BDM292%3E3.0.CO;2-Y']
 strategy: 'Trước khi chốt đánh giá một lựa chọn khi nhìn riêng lẻ (một gói dịch vụ, một món quà), tự hỏi: nếu đặt nó cạnh phương án khác để so sánh trực tiếp, đánh giá của mình có còn giữ nguyên không?'
+image: /assets/stuff/less-is-better-effect.png
 published: true
 ---
 
