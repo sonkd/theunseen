@@ -8,6 +8,7 @@ tags: [choice-architecture, product]
 links: [status-quo-bias, choice-overload, nudge-theory]
 refs: ['https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1324774']
 strategy: 'Chọn giá trị mặc định phản ánh đúng lợi ích lâu dài của phần lớn người dùng — mặc định không trung lập, nó luôn dẫn dắt hành vi.'
+image: /assets/stuff/default-effect.png
 published: true
 ---
 

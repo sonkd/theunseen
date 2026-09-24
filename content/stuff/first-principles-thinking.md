@@ -7,6 +7,7 @@ categories: [mental-models, theory]
 links: [circle-of-competence, occams-razor]
 refs: ['https://en.wikipedia.org/wiki/First_principle', 'https://fs.blog/first-principles/', 'https://jamesclear.com/first-principles']
 strategy: 'Khi gặp một giả định "ai cũng làm vậy" hoặc "ngành này luôn thế", tách nó thành các thành phần vật lý/chi phí/quy luật cơ bản, rồi tự hỏi: nếu bắt đầu lại từ số 0, liệu kết luận có giống vậy không?'
+image: /assets/stuff/first-principles-thinking.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [in-group-bias, stereotyping, cross-race-effect]
 refs: ['https://en.wikipedia.org/wiki/Out-group_homogeneity']
 strategy: 'Khi mô tả một nhóm "đối thủ" hoặc "phân khúc khách hàng khác", chủ động liệt kê ít nhất 3 điểm khác biệt cụ thể giữa các cá nhân trong nhóm đó trước khi đưa ra kết luận chung.'
+image: /assets/stuff/out-group-homogeneity-bias.png
 published: true
 ---
 

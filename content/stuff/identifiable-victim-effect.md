@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [empathy-gap, availability-heuristic]
 refs: ['https://en.wikipedia.org/wiki/Identifiable_victim_effect', 'https://www.tandfonline.com/doi/full/10.1080/15534510.2016.1216891']
 strategy: 'Khi thiết kế lời kêu gọi hành động (gây quỹ, cảnh báo rủi ro tài chính), cân nhắc dùng câu chuyện cá nhân cụ thể thay vì chỉ đưa số liệu tổng hợp — nhưng cần minh bạch để không thao túng cảm xúc.'
+image: /assets/stuff/identifiable-victim-effect.png
 published: true
 ---
 

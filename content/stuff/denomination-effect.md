@@ -7,6 +7,7 @@ categories: [bias]
 links: [mental-accounting, money-illusion, unit-bias]
 refs: ['https://en.wikipedia.org/wiki/Denomination_effect']
 strategy: 'Nếu muốn khuyến khích tiết kiệm, gợi ý người dùng "đổi" khoản tiền lớn thành một con số lớn duy nhất trong ví điện tử thay vì chia nhỏ — cảm giác mệnh giá lớn tự nhiên tạo ra rào cản tâm lý trước khi tiêu.'
+image: /assets/stuff/denomination-effect.png
 published: true
 ---
 

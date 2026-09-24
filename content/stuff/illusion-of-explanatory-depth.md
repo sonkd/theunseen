@@ -7,6 +7,7 @@ categories: [bias]
 links: [dunning-kruger-effect, overconfidence-effect, illusory-superiority]
 refs: ['https://en.wikipedia.org/wiki/Illusion_of_explanatory_depth', 'https://thedecisionlab.com/biases/the-illusion-of-explanatory-depth', 'https://onlinelibrary.wiley.com/doi/abs/10.1207/s15516709cog2605_1', 'https://journals.sagepub.com/doi/abs/10.1177/0956797612464058']
 strategy: 'Trước khi chốt là mình đã "hiểu rõ" một cơ chế hay chính sách, thử viết ra từng bước vận hành của nó như đang giải thích cho người mới — chỗ nào bạn khựng lại chính là chỗ ảo tưởng vừa sụp đổ.'
+image: /assets/stuff/illusion-of-explanatory-depth.png
 published: true
 ---
 

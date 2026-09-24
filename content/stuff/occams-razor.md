@@ -7,6 +7,7 @@ categories: [heuristic, mental-models]
 links: [inversion, second-order-thinking, law-of-the-instrument]
 refs: ['https://en.wikipedia.org/wiki/Occam%27s_razor']
 strategy: 'Trước khi chấp nhận một lời giải thích phức tạp, thử hỏi: có cách giải thích nào đơn giản hơn, ít giả định hơn, mà vẫn khớp với toàn bộ dữ liệu đang có không?'
+image: /assets/stuff/occams-razor.png
 published: true
 ---
 

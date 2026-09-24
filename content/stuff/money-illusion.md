@@ -7,6 +7,7 @@ categories: [bias]
 links: [mental-accounting, anchoring, loss-aversion]
 refs: ['https://en.wikipedia.org/wiki/Money_illusion']
 strategy: "Khi so sánh thu nhập, giá cả hoặc lợi nhuận đầu tư qua nhiều năm, luôn quy đổi về giá trị thực (đã trừ lạm phát) thay vì chỉ so sánh con số danh nghĩa trên giấy tờ."
+image: /assets/stuff/money-illusion.png
 published: true
 ---
 

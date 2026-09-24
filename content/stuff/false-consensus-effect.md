@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [bandwagon-effect, egocentric-bias, naive-realism]
 refs: ['https://en.wikipedia.org/wiki/False-consensus_effect', 'https://thedecisionlab.com/biases/false-consensus-effect']
 strategy: "Trước khi giả định 'chắc ai cũng nghĩ như mình' khi ra quyết định (thiết kế tính năng, chọn thông điệp marketing), kiểm chứng bằng dữ liệu khảo sát người dùng thật thay vì suy diễn từ chính bản thân."
+image: /assets/stuff/false-consensus-effect.png
 published: true
 ---
 

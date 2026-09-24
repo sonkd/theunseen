@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [illusory-truth-effect, halo-effect, frequency-illusion]
 refs: ['https://en.wikipedia.org/wiki/Mere-exposure_effect']
 strategy: "Khi thấy mình 'thích' một lựa chọn quen thuộc hơn hẳn lựa chọn mới, thử đánh giá lại dựa trên tiêu chí khách quan (chi phí, chất lượng, phù hợp nhu cầu) thay vì mức độ quen mắt."
+image: /assets/stuff/mere-exposure-effect.png
 published: true
 ---
 

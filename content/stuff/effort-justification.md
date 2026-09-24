@@ -7,6 +7,7 @@ categories: [bias]
 links: [ikea-effect, sunk-cost-fallacy, escalation-of-commitment]
 refs: ['https://en.wikipedia.org/wiki/Effort_justification']
 strategy: 'Khi thiết kế onboarding, một luồng thiết lập đòi hỏi vài bước chủ động từ người dùng (chọn mục tiêu tài chính, tuỳ chỉnh danh mục) có thể tạo gắn kết cao hơn một luồng tự động hoàn toàn — nhưng cần cân bằng với rủi ro drop-off nếu quá dài.'
+image: /assets/stuff/effort-justification.png
 published: true
 ---
 

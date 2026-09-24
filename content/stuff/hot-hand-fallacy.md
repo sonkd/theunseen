@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [gamblers-fallacy, clustering-illusion, illusory-correlation]
 refs: ['https://en.wikipedia.org/wiki/Hot-hand_fallacy', 'https://www.scientificamerican.com/article/momentum-isnt-magic-vindicating-the-hot-hand-with-the-mathematics-of-streaks/']
 strategy: "Trước khi 'ăn theo phong độ' (all-in vì đang thắng, tăng hạn mức vì khách hàng vừa trả nợ đúng hạn vài lần), kiểm tra lại: chuỗi này có thực sự thay đổi xác suất nền, hay chỉ là biến động ngẫu nhiên bình thường?"
+image: /assets/stuff/hot-hand-fallacy.png
 published: true
 ---
 

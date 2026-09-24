@@ -8,6 +8,7 @@ tags: [decision, product]
 links: [decision-fatigue, status-quo-bias, default-effect]
 refs: ['https://en.wikipedia.org/wiki/Overchoice']
 strategy: 'Giới hạn số lựa chọn hiển thị mặc định (5-7), đẩy phần còn lại vào "xem thêm" thay vì liệt kê hết ngay từ đầu.'
+image: /assets/stuff/choice-overload.png
 published: true
 ---
 

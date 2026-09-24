@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [dunning-kruger-effect, overconfidence-effect, first-principles-thinking]
 refs: ['https://en.wikipedia.org/wiki/Circle_of_competence', 'https://www.wealest.com/articles/circle-of-competence']
 strategy: 'Trước một quyết định quan trọng (đầu tư, tuyển dụng, đánh giá rủi ro), tự hỏi: mình có đủ dữ kiện để phản biện lại chính kết luận của mình không? Nếu không, đó là dấu hiệu đang ở ngoài circle of competence.'
+image: /assets/stuff/circle-of-competence.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [memory]
 links: [cue-dependent-forgetting, memory-inhibition, serial-recall-effect]
 refs: ['https://en.wikipedia.org/wiki/Memory_inhibition#Part-set_cuing_effect']
 strategy: 'Khi cần người khác nhớ lại đầy đủ một danh sách (ví dụ tất cả rủi ro của một quyết định), tránh đưa gợi ý một phần trước — để họ tự nhớ lại tự do trước khi bổ sung gợi ý.'
+image: /assets/stuff/part-list-cueing-effect.png
 published: true
 ---
 

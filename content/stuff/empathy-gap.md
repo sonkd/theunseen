@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [affective-forecasting, projection-bias, immune-neglect, impact-bias]
 refs: ['https://en.wikipedia.org/wiki/Empathy_gap', 'https://en.wikipedia.org/wiki/Hot-cold_empathy_gap']
 strategy: 'Ra quyết định quan trọng khi đang ở trạng thái "lạnh" (bình tĩnh, no, không vội) thay vì lúc đang "nóng" (giận, đói, thèm muốn, áp lực thời gian).'
+image: /assets/stuff/empathy-gap.png
 published: true
 ---
 

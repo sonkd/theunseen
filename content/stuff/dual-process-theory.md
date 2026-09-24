@@ -9,6 +9,7 @@ refs:
   - 'https://en.wikipedia.org/wiki/Dual-process_theory_(psychology)'
   - 'https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow'
 strategy: "Khi quyết định quan trọng, chủ động chuyển từ phản xạ sang hỏi lại bằng cách dùng System 2."
+image: /assets/stuff/dual-process-theory.png
 published: true
 ---
 Dual Process Theory phân biệt hai cách chúng ta xử lý thông tin: System 1 hoạt động nhanh như phản xạ, dùng mẫu và cảm giác, còn System 2 vận hành chậm hơn, có chủ ý và lý luận. Hệ 1 gợi ý câu trả lời đầu tiên; hệ 2 kiểm tra xem câu trả lời đó có đủ chắc chưa.

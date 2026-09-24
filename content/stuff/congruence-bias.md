@@ -7,6 +7,7 @@ categories: [bias, fallacy]
 links: [confirmation-bias, testing-effect]
 refs: ['https://en.wikipedia.org/wiki/Congruence_bias']
 strategy: 'Khi kiểm định một giả thuyết, chủ động thiết kế phép thử có khả năng chứng minh giả thuyết SAI, không chỉ những phép thử có xu hướng xác nhận nó đúng.'
+image: /assets/stuff/congruence-bias.png
 published: true
 ---
 

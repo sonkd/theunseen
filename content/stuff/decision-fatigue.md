@@ -8,6 +8,7 @@ tags: [decision, cognition]
 links: [choice-overload, cognitive-load-theory, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Decision_fatigue']
 strategy: 'Sắp xếp các quyết định quan trọng nhất vào đầu ngày/đầu phiên làm việc, và giảm số bước lựa chọn nhỏ không cần thiết trước đó.'
+image: /assets/stuff/decision-fatigue.png
 published: true
 ---
 

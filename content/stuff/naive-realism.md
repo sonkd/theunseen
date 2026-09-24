@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [naive-cynicism, bias-blind-spot, false-consensus-effect]
 refs: ['https://en.wikipedia.org/wiki/Na%C3%AFve_realism_%28psychology%29']
 strategy: "Khi bất đồng với ai đó dai dẳng, thử giả định trước rằng cả hai đang nhìn cùng một sự việc qua lăng kính khác nhau — thay vì mặc định chỉ có một phía đang 'thấy đúng'."
+image: /assets/stuff/naive-realism.png
 published: true
 ---
 

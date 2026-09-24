@@ -7,6 +7,7 @@ categories: [bias]
 links: [status-quo-bias, loss-aversion, framing-effect]
 refs: ['https://en.wikipedia.org/wiki/Omission_bias']
 strategy: 'Khi so sánh hai phương án (can thiệp vs. không can thiệp), đánh giá cả hai bằng cùng một thước đo hậu quả — đừng để việc "ai chủ động làm gì" ảnh hưởng tới phán xét đạo đức hoặc rủi ro.'
+image: /assets/stuff/omission-bias.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias, perception]
 links: [selective-perception, confirmation-bias, availability-heuristic]
 refs: ['http://rationalwiki.org/wiki/Frequency_illusion', 'https://en.wikipedia.org/wiki/Frequency_illusion']
 strategy: "Khi thấy một khái niệm 'xuất hiện khắp nơi' ngay sau khi mới học, tự hỏi liệu tần suất thật sự tăng, hay chỉ do mình mới bắt đầu để ý."
+image: /assets/stuff/frequency-illusion.png
 published: true
 ---
 

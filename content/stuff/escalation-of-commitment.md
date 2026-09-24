@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [sunk-cost-fallacy, effort-justification, backfire-effect, self-consistency-bias]
 refs: ['https://en.wikipedia.org/wiki/Escalation_of_commitment', 'https://www.sciencedirect.com/science/article/abs/pii/0030507376900052']
 strategy: 'Trước khi rót thêm nguồn lực vào một dự án đang xấu đi, tự hỏi: "Nếu hôm nay mới bắt đầu và chưa đầu tư gì, mình có chọn làm việc này không?" — bỏ qua hoàn toàn những gì đã bỏ ra trước đó.'
+image: /assets/stuff/escalation-of-commitment.png
 published: true
 ---
 

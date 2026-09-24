@@ -7,6 +7,7 @@ categories: [bias]
 links: [hindsight-bias, self-serving-bias, moral-luck]
 refs: ['https://en.wikipedia.org/wiki/Outcome_bias']
 strategy: 'Khi review một quyết định đã qua, tách riêng hai câu hỏi: "quyết định này có hợp lý với thông tin lúc đó không?" và "kết quả thực tế ra sao?" — không gộp chung thành một đánh giá duy nhất.'
+image: /assets/stuff/outcome-bias.png
 published: true
 ---
 

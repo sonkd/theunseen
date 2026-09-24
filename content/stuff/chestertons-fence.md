@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [status-quo-bias, bucket-error]
 refs: ['https://en.m.wikipedia.org/wiki/Wikipedia:Chesterton%27s_fence']
 strategy: "Trước khi loại bỏ một bước trong quy trình hoặc một điều khoản trong sản phẩm vì thấy nó 'thừa thãi', hãy tìm hiểu ai đã thêm nó vào và trong bối cảnh nào — nếu không tìm ra lý do, mới cân nhắc gỡ bỏ."
+image: /assets/stuff/chestertons-fence.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [dunning-kruger-effect, illusory-superiority, planning-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Overconfidence_effect']
 strategy: 'Khi ước lượng một con số (thời gian, chi phí, xác suất thành công), yêu cầu bản thân đưa ra khoảng tin cậy 90% thay vì một con số duy nhất — hầu hết mọi người sẽ thấy khoảng đó vẫn quá hẹp so với thực tế.'
+image: /assets/stuff/overconfidence-effect.png
 published: true
 ---
 

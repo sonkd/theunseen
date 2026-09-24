@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [self-serving-bias, false-consensus-effect, curse-of-knowledge, spotlight-effect]
 refs: ['https://en.wikipedia.org/wiki/Egocentric_bias', 'https://www.semanticscholar.org/paper/Egocentric-Biases-in-Availability-and-Attribution-Ross-Sicoly/4c6f4665525501ea95db3a1c8bd96a8d032893b7']
 strategy: 'Trước khi kết luận "mình làm nhiều hơn", liệt kê cụ thể phần việc của từng người ra giấy — bộ nhớ chọn lọc sẽ lộ rõ khi phải đối chiếu với sự kiện thật.'
+image: /assets/stuff/egocentric-bias.png
 published: true
 ---
 

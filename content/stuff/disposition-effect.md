@@ -7,6 +7,7 @@ categories: [bias]
 links: [loss-aversion, sunk-cost-fallacy, endowment-effect, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Disposition_effect']
 strategy: 'Thiết kế công cụ đầu tư nên tách bạch rõ "giá đã trả" khỏi giao diện quyết định bán/mua mặc định, hoặc chủ động nhắc nhà đầu tư về ngưỡng cắt lỗ đã đặt trước — làm giảm neo tâm lý vào giá vốn.'
+image: /assets/stuff/disposition-effect.png
 published: true
 ---
 
