@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [law-of-the-instrument, essentialism, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Functional_fixedness', 'https://thedecisionlab.com/biases/functional-fixedness']
 strategy: "Khi bí ý tưởng vì 'không có dụng cụ phù hợp', tự hỏi: vật nào quanh đây có thể tạm thời đóng vai trò khác, nếu bỏ qua công dụng gốc của nó?"
+image: /assets/stuff/functional-fixedness.png
 published: true
 ---
 

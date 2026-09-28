@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [fundamental-attribution-error, self-serving-bias, egocentric-bias]
 refs: ['https://en.wikipedia.org/wiki/Extrinsic_incentives_bias', 'https://thedecisionlab.com/biases/extrinsic-incentive-bias']
 strategy: "Khi thiết kế chính sách lương thưởng hay chương trình khuyến khích đội nhóm/người dùng, đừng mặc định người khác chỉ phản ứng với tiền — hỏi trực tiếp điều gì khiến họ thực sự gắn bó, thay vì suy diễn từ góc nhìn của chính mình."
+image: /assets/stuff/extrinsic-incentive-error.png
 published: true
 ---
 

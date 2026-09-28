@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [halo-effect, negativity-bias, stereotyping]
 refs: ['https://en.wikipedia.org/wiki/Horn_effect', 'https://www.thebehavioralscientist.com/glossary/horn-effect', 'https://www.simplypsychology.org/halo-effect.html', 'https://www.sciencedirect.com/science/article/abs/pii/S1075293505000309']
 strategy: 'Khi đánh giá năng lực hoặc chất lượng (phỏng vấn, chấm điểm, review sản phẩm), tách riêng lỗi nhỏ khỏi đánh giá tổng thể và kiểm tra lại bằng chứng thay vì để một ấn tượng xấu quyết định tất cả.'
+image: /assets/stuff/horn-effect.png
 published: true
 ---
 

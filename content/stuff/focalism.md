@@ -7,6 +7,7 @@ categories: [bias]
 links: [affective-forecasting, impact-bias, immune-neglect, distinction-bias]
 refs: ['https://en.wikipedia.org/wiki/Affective_forecasting#Focalism', 'https://scholar.harvard.edu/files/danielgilbert/files/wilson_et_al_focalism.pdf']
 strategy: "Trước khi quyết định dựa trên dự đoán cảm xúc về một sự kiện lớn, tự hỏi: một tuần sau khi nó xảy ra, mình sẽ còn dành bao nhiêu thời gian nghĩ về nó, so với những việc khác vẫn đang chiếm cuộc sống hàng ngày?"
+image: /assets/stuff/focalism.png
 published: true
 ---
 

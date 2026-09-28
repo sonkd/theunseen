@@ -7,6 +7,7 @@ categories: [memory]
 links: [misinformation-effect, memory-inhibition, cue-dependent-forgetting]
 refs: ['https://en.wikipedia.org/wiki/Misattribution_of_memory']
 strategy: "Với những ký ức quan trọng (tranh chấp, khiếu nại, nhân chứng), đối chiếu với ghi chép khách quan — tin nhắn, hóa đơn, log hệ thống — thay vì tin tuyệt đối vào trí nhớ chủ quan, kể cả khi cảm giác rất chắc chắn."
+image: /assets/stuff/misattribution-of-memory.png
 published: true
 ---
 

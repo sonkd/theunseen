@@ -7,6 +7,7 @@ categories: [mental-models, heuristic]
 links: [planning-fallacy, optimism-bias, illusion-of-control]
 refs: ['https://en.wikipedia.org/wiki/Parkinson%27s_law', 'https://asana.com/resources/parkinsons-law']
 strategy: 'Đặt deadline chủ động ngắn hơn deadline thực tế (time-boxing) cho các task không có ràng buộc rõ ràng, để buộc bản thân ưu tiên phần việc cốt lõi thay vì để nó giãn nở lấp đầy toàn bộ thời gian rảnh.'
+image: /assets/stuff/parkinsons-law.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias, memory]
 links: [curse-of-knowledge, self-serving-bias]
 refs: ['https://en.wikipedia.org/wiki/Hindsight_bias', 'https://www.sciencedirect.com/science/article/abs/pii/S0022103121000573']
 strategy: 'Trước khi ra quyết định quan trọng, viết lại dự đoán và mức độ tự tin của mình — để sau này không tự huyễn hoặc rằng "mình đã biết trước".'
+image: /assets/stuff/hindsight-bias.png
 published: true
 ---
 

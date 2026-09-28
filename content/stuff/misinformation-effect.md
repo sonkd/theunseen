@@ -7,6 +7,7 @@ categories: [memory]
 links: [misattribution-of-memory, memory-inhibition, continued-influence-effect]
 refs: ['https://en.wikipedia.org/wiki/Misinformation_effect']
 strategy: "Khi thu thập phản hồi người dùng về một sự cố, hỏi mở trước khi đưa ra gợi ý hoặc từ ngữ định hướng, để tránh cấy thông tin sai lệch vào chính câu trả lời của họ."
+image: /assets/stuff/misinformation-effect.png
 published: true
 ---
 

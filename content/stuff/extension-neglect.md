@@ -7,6 +7,7 @@ categories: [bias]
 links: [base-rate-fallacy, insensitivity-to-sample-size, duration-neglect, conjunction-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Extension_neglect']
 strategy: "Trước khi tin một con số hay tỷ lệ phần trăm, luôn hỏi thêm một câu: kích thước tập hợp đứng sau con số này là bao nhiêu — vì tỷ lệ mà thiếu mẫu số thì gần như vô nghĩa."
+image: /assets/stuff/extension-neglect.png
 published: true
 ---
 

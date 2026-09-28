@@ -7,6 +7,7 @@ categories: [bias]
 links: [time-discounting, loss-aversion]
 refs: ['https://en.wikipedia.org/wiki/Hyperbolic_discounting', 'https://thedecisionlab.com/biases/hyperbolic-discounting']
 strategy: 'Thiết kế lựa chọn tài chính (tiết kiệm, trả góp) để phần thưởng tức thời nằm ở phía hành vi tốt (ví dụ thưởng ngay khi bắt đầu tiết kiệm) thay vì chỉ hứa hẹn lợi ích xa.'
+image: /assets/stuff/hyperbolic-discounting.png
 published: true
 ---
 

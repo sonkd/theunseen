@@ -8,6 +8,7 @@ tags: [behavioral-economics, product]
 links: [default-effect, status-quo-bias, dual-process-theory]
 refs: ['https://en.wikipedia.org/wiki/Nudge_(book)']
 strategy: 'Trước khi thêm quy tắc bắt buộc, thử câu hỏi: có cách nào sắp xếp lại lựa chọn để hành vi tốt trở thành đường ít lực cản nhất không?'
+image: /assets/stuff/nudge-theory.png
 published: true
 ---
 

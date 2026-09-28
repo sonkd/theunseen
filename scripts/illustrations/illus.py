@@ -1725,6 +1725,446 @@ CONCEPT_MEANING.update({
 THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260918)
 
 
+# --------------------------------------------------------------------------
+# Batch 2026-09-19 — mere-exposure → naive-realism
+# xlsx gán 6/10 card thành `hierarchy` và 4/10 thành `branching`; không card nào
+# trong lô này là quan hệ cha–con hay rẽ nhánh, nên toàn bộ đều override.
+# --------------------------------------------------------------------------
+
+
+def t_familiarity_fill(p):
+    # Ba phần tử Y HỆT NHAU về hình và KÍCH THƯỚC — vật không hề đổi, không có
+    # thông tin nào được thêm vào. Biến duy nhất là sắc độ, tăng theo số lần gặp:
+    # mức ưa thích dâng lên trong khi đối tượng đứng yên.
+    # Cỡ bắt buộc không đổi. Vẽ to dần là đã nói "có thêm giá trị thật", tức phủ
+    # định đúng luận điểm của card.
+    # Khác `stacked_copies` (illusory-truth, amber: ba bản CHỒNG lên nhau, cùng một
+    # sắc độ nhạt, chỗ giao mới đậm — nói về niềm tin sinh từ số lần gặp) vì ở đây
+    # ba bản tách rời và chính từng bản đậm dần. Khác `echo` (cột thấp dần VÀ nhạt
+    # dần — biên độ tắt) và khác `spectrum` (bán kính lớn dần).
+    specs = ((16, 0.16), (50, 0.46), (84, 0.82))
+    return "".join(f'<rect x="{x}" y="50" width="28" height="28" fill="{p["acc"]}" '
+                   f'fill-opacity="{op}" {TS}/>' for x, op in specs)
+
+
+def t_source_swap(p):
+    # Hai nguồn khác hẳn nhau về hình: tam giác (trái) và tròn (phải), cả hai vẽ rỗng.
+    # Khối nội dung phía dưới được tô ĐẶC — ký ức còn nguyên vẹn, không mất mát gì — và
+    # nó đội một mái TAM GIÁC: dấu của nguồn đã sinh ra nó. Nhưng đường dẫn duy nhất lại
+    # chạy sang hình TRÒN. Sai ở chỗ quy nguồn, không ở chỗ nội dung.
+    # Mái phải nằm ở mức silhouette (cao 18px, còn 9px ở khổ hiển thị thật); một nhãn
+    # nhỏ trong lòng khối sẽ tàng hình ở 64px.
+    # Khác `cue_lock` (khuyết bán nguyệt + mảnh khớp rời: dữ liệu đủ, thiếu chìa để mở)
+    # và khác `fracture` (hai nửa lệch khớp — bất nhất lộ ra ngoài): ở đây không có gì
+    # lệch hay thiếu, chỉ có một mối nối chỉ nhầm địa chỉ.
+    return (f'<path d="M30,18 L46,44 L14,44 Z" fill="none" {TS}/>'
+            f'<circle cx="98" cy="31" r="15" fill="none" {TS}/>'
+            f'<path d="M24,80 L46,62 L68,80 L68,106 L24,106 Z" fill="{p["t3"]}" {TS}/>'
+            f'<line x1="68" y1="88" x2="86" y2="43" {TNF}/>')
+
+
+def t_overwrite_seam(p):
+    # Khối ký ức gốc có MỘT đường bao liền, không đứt ở đâu cả. Phần bên phải bên trong
+    # nó đã bị thay bằng vật liệu khác (accent trong suốt) nhưng KHÔNG có nét mực nào
+    # ngăn giữa hai phần — nhìn từ ngoài vẫn là một khối liền mạch, không có mối ghép
+    # nào để lần ra chỗ bị viết đè. Mẩu rời phía trên cùng bề rộng, cùng chất liệu: đó
+    # là thông tin đến sau, và nó vừa khít đúng phần đã chiếm chỗ.
+    # Đường bao ngoài phải vẽ SAU phần tô để mép trên/dưới của vùng tô không cắt qua nét.
+    # Khác `gap_fill` (mảnh vá nổi lên, lệch trục, nhìn ra được là đồ lạ) vì ở đây chỗ
+    # ghép phẳng lì; khác `veil` (tấm che nằm ĐÈ lên, phần bị che vẫn còn nguyên phía
+    # sau) vì ở đây phần gốc đã mất chỗ thật sự.
+    return (f'<rect x="70" y="62" width="44" height="44" fill="{p["acc"]}" '
+            f'fill-opacity="0.62" stroke="none"/>'
+            f'<rect x="14" y="62" width="100" height="44" fill="none" {TS}/>'
+            f'<rect x="70" y="16" width="44" height="28" fill="{p["acc"]}" '
+            f'fill-opacity="0.62" {TS}/>')
+
+
+def t_tail_advantage(p):
+    # Hai hàng = hai kênh giác quan, cùng một chuỗi, cùng số phần tử, ba phần tử ĐẦU
+    # giống hệt nhau ở cả hai hàng. Khác biệt dồn hết vào phần tử CUỐI: hàng trên nó
+    # cao hơn và tô đặc, hàng dưới nó rỗng. Nội dung nằm ở chỗ ưu thế chỉ xuất hiện ở
+    # ĐUÔI chuỗi chứ không trải đều — đúng điểm phân biệt modality effect khỏi recency
+    # thông thường.
+    # Ba phần tử đầu bắt buộc giống hệt nhau giữa hai hàng; cho chúng lệch nhau là đã
+    # nói "kênh này nhớ tốt hơn ở mọi vị trí", tức sai luận điểm.
+    o = []
+    for x in (14, 40, 66):
+        o.append(f'<rect x="{x}" y="26" width="20" height="20" fill="{p["t2"]}" {TS}/>')
+        o.append(f'<rect x="{x}" y="76" width="20" height="20" fill="{p["t2"]}" {TS}/>')
+    o.append(f'<rect x="92" y="16" width="20" height="30" fill="{p["acc"]}" '
+             f'fill-opacity="0.85" {TS}/>')
+    o.append(f'<rect x="92" y="76" width="20" height="20" fill="none" {TS}/>')
+    return "".join(o)
+
+
+def t_nominal_real(p):
+    # Ba mốc thời gian. Cái VỎ rỗng cao dần = con số danh nghĩa, năm sau to hơn năm
+    # trước. Cái LÕI đặc bên trong teo dần = sức mua thực. Hai chiều biến thiên ngược
+    # nhau trong cùng một vật chính là toàn bộ nội dung: nhìn vỏ thì thấy đi lên.
+    # Lõi phải nằm HẲN trong vỏ và cùng căn đáy với vỏ, nếu không mất quan hệ
+    # "cùng một thứ, đo hai cách".
+    # Khác `two_frames` (framing-effect, amber: hai khung Y HỆT nhau, cùng một mốc, chỉ
+    # khác phía nào được tô) vì ở đây các khung khác chiều cao và có biến thiên theo
+    # thời gian. Khác `depletion` (cột đặc thấp dần dưới một vạch mốc) vì ở đó không có
+    # vỏ rỗng nào lớn lên.
+    specs = ((18, 42, 24, 36), (51, 60, 57, 26), (84, 78, 90, 16))
+    o = []
+    for fx, fh, cx_, ch in specs:
+        o.append(f'<rect x="{fx}" y="{106-fh}" width="26" height="{fh}" fill="none" {TS}/>')
+        o.append(f'<rect x="{cx_}" y="{106-ch}" width="14" height="{ch}" '
+                 f'fill="{p["acc"]}" fill-opacity="0.82" {TS}/>')
+    return "".join(o)
+
+
+def t_shielded_downside(p):
+    # Hai khối RỦI RO CÙNG KÍCH THƯỚC, cùng sắc độ — cùng một lượng rủi ro được nhận.
+    # Khối trái không chạm đất vì bên dưới nó có một trụ đỡ vẽ RỖNG: cơ chế bảo vệ có
+    # tồn tại nhưng không hấp thụ gì cả, nó chỉ nâng bên chọn rủi ro lên khỏi hậu quả.
+    # Khối phải đứng thẳng trên đường đáy — cùng một rủi ro đó, đáp xuống bên không được
+    # nâng. Nội dung là chỗ tách rời giữa nơi rủi ro được CHỌN và nơi nó được GÁNH.
+    # Hai khối bắt buộc cùng cỡ; vẽ khối chạm đất nhỏ hơn là đã nói "có bảo hiểm thì tổn
+    # thất ít đi", tức phủ định đúng điều card khẳng định.
+    # Trụ phải vẽ rỗng và phải ĐỨNG TRÊN đường đáy. Bản đầu dùng một thanh ngang mảnh
+    # lơ lửng: ở 64px cả cụm đọc thành "vật đặt trên bàn", mất sạch quan hệ chống-đỡ.
+    # Khác `unseen_cushion` (khối rơi + dải đệm rỗng + đường dự báo, bố cục dọc căn giữa,
+    # nói về cái đệm bị BỎ QUÊN khỏi dự báo) vì ở đây ai cũng biết trụ có mặt — biết nên
+    # mới dám nhận thêm rủi ro.
+    return (f'<line x1="12" y1="106" x2="116" y2="106" {TNF}/>'
+            f'<rect x="16" y="70" width="48" height="36" fill="none" {TS}/>'
+            f'<rect x="24" y="34" width="32" height="32" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>'
+            f'<rect x="76" y="74" width="32" height="32" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>')
+
+
+def t_outcome_weighted(p):
+    # Hàng trên: hai hành vi Y HỆT NHAU — cùng hình, cùng cỡ, cùng sắc độ. Đây là điều
+    # kiện bắt buộc: chất lượng quyết định của hai bên không khác nhau chút nào.
+    # Hàng dưới: hai kết quả lệch hẳn về sức nặng, do may rủi. Nét mực (mức lên án) bám
+    # theo KẾT QUẢ chứ không theo hành vi — đó là toàn bộ nghịch lý.
+    # Nếu vẽ hai khối trên khác nhau dù chỉ một chút thì hình mất nghĩa: người xem sẽ
+    # đọc thành "quyết định tệ hơn thì hậu quả nặng hơn", đúng cái mà card bác bỏ.
+    # Khác `divergence` (MỘT điểm rẽ thành nhiều nhánh) vì ở đây có hai gốc độc lập, và
+    # khác `outward_credit` (bố cục dọc một cột, chấm đặc trong khối nối lên vòng rỗng).
+    o = []
+    for x in (20, 74):
+        o.append(f'<rect x="{x}" y="18" width="34" height="28" fill="{p["t3"]}" {TS}/>')
+        o.append(f'<line x1="{x+17}" y1="46" x2="{x+17}" y2="60" {TNF}/>')
+    o.append(f'<circle cx="37" cy="72" r="12" fill="{p["acc"]}" fill-opacity="0.22" {TS}/>')
+    o.append(f'<circle cx="91" cy="84" r="22" fill="{p["acc"]}" fill-opacity="0.85" {TS}/>')
+    return "".join(o)
+
+
+def t_recorded_few(p):
+    # Hai DẢI cùng chiều cao và cùng cỡ ô, chỉ khác chiều dài. Dải dưới = những gì thật
+    # sự xảy ra: sáu ô, chỉ hai ô đi sai được tô. Dải trên = bản ghi còn lại trong trí
+    # nhớ: ngắn hơn hẳn và đậm KÍN, vì ba phần tư số lần mọi thứ suôn sẻ không để lại
+    # dấu nào. Tỉ lệ đậm trong hai dải lệch nhau — đó là toàn bộ nội dung: câu ngạn ngữ
+    # sống nhờ khoảng chênh đó chứ không nhờ tần suất thật.
+    # Phải vẽ thành DẢI LIỀN chia ô, không phải các ô rời. Bản đầu dùng hai hàng ô tách
+    # rời cạnh 16px: ở 64px chúng rụng xuống 8px và cả hình đọc thành mấy chấm vung vãi,
+    # không còn tỉ lệ nào đọc được.
+    # Khác `sealed_bins` (mental-accounting, amber: MỘT dải chia hết bề ngang thành ba
+    # ngăn KHÁC bề rộng và ba sắc độ khác nhau) vì ở đây có hai dải, ô đều nhau tuyệt
+    # đối, và biến duy nhất là chiều dài dải cùng việc ô nào được tô.
+    o = []
+    for x0, w, n, hits in ((14, 34, 2, (0, 1)), (14, 102, 6, (1, 4))):
+        cw = w / n
+        o.append(f'<rect x="{x0}" y="{32 if n == 2 else 78}" width="{w}" height="22" '
+                 f'fill="none" {TS}/>')
+        for i in range(n):
+            if i in hits:
+                o.append(f'<rect x="{x0 + i * cw:.1f}" y="{32 if n == 2 else 78}" '
+                         f'width="{cw:.1f}" height="22" fill="{p["acc"]}" '
+                         f'fill-opacity="0.85" {TS}/>')
+            elif i:
+                o.append(f'<line x1="{x0 + i * cw:.1f}" y1="{32 if n == 2 else 78}" '
+                         f'x2="{x0 + i * cw:.1f}" y2="{54 if n == 2 else 100}" {TNF}/>')
+    return "".join(o)
+
+
+def t_opaque_other(p):
+    # Hai vật CÙNG LOẠI, cùng cỡ. Vật bên trái vẽ rỗng nên nhìn thấu được vào trong, và
+    # cái thấy được là một lõi nhỏ: động cơ của chính mình, đã soi và thấy vừa phải.
+    # Vật bên phải bị tô kín đặc — không nhìn vào được, nên toàn bộ phần không thấy bị
+    # điền bằng suy đoán. Bất đối xứng nằm ở ĐỘ TRONG SUỐT, không ở hình dạng: hai bên
+    # vốn là cùng một loại vật.
+    # Dùng hình TRÒN là có chủ ý — `locus_flip` (fundamental-attribution-error, mint) đã
+    # chiếm thế "hai khung VUÔNG cạnh nhau, chấm trong / chấm ngoài"; đổi chất tròn↔vuông
+    # để hai card không nhầm nhau ở 64px. Ở đó nội dung là VỊ TRÍ trong/ngoài của cái đẩy,
+    # ở đây là việc có nhìn vào được hay không.
+    return (f'<circle cx="40" cy="64" r="24" fill="none" {TS}/>'
+            f'<circle cx="40" cy="64" r="9" fill="{p["acc"]}" fill-opacity="0.80" {TS}/>'
+            f'<circle cx="90" cy="64" r="24" fill="{p["acc"]}" fill-opacity="0.88" {TS}/>')
+
+
+def t_coincident_view(p):
+    # Khối đặc = sự việc. Khung rỗng gần như TRÙNG KHÍT lên nó, chỉ lệch vài pixel = cách
+    # mình nhìn, sát tới mức tự cảm thấy không có lăng kính nào ở giữa. Khung rỗng bên
+    # phải cùng cỡ nhưng XOAY hẳn đi = cách người khác nhìn, lệch thấy rõ.
+    # Đây là hình của NIỀM TIN chứ không phải của sự thật: card nói về việc người ta tin
+    # cái mình thấy trùng với thực tại, nên vẽ đúng thế mới trung thực với luận điểm.
+    # Khung "cách mình nhìn" phải ĐỒNG TÂM với khối đặc, không lệch chéo. Bản đầu cho nó
+    # lệch 4px theo đường chéo: ở 64px cặp đó đọc thành một khối có đổ bóng — đúng thứ
+    # phong cách này cấm — chứ không đọc thành hai vật trùng khít. Đồng tâm thì quan hệ
+    # là sự KHỚP CHỒNG, không thể nhầm sang hiệu ứng.
+    # Hai khung rỗng phải cùng kích thước để so sánh được: khác biệt duy nhất giữa chúng
+    # là một cái trùng tâm với sự việc, một cái xoay lệch khỏi nó.
+    # Góc xoay phải đủ lớn (18°) để cạnh nghiêng đọc được ở 64px; xoay nhỏ hơn sẽ bị
+    # nhầm thành lỗi render. Khác `stacked_copies` (illusory-truth, amber: ba bản cùng cỡ
+    # TỊNH TIẾN đều) chính nhờ phép xoay, và khác `fracture` (hai nửa đặc lệch khớp).
+    return (f'<rect x="22" y="50" width="32" height="32" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="18" y="46" width="40" height="40" fill="none" {TS}/>'
+            f'<rect x="70" y="46" width="40" height="40" fill="none" {TS} '
+            f'transform="rotate(18 90 66)"/>')
+
+
+CONCEPT_OBJECTS_20260919 = dict(
+    familiarity_fill=t_familiarity_fill, source_swap=t_source_swap,
+    overwrite_seam=t_overwrite_seam, tail_advantage=t_tail_advantage,
+    nominal_real=t_nominal_real, shielded_downside=t_shielded_downside,
+    outcome_weighted=t_outcome_weighted, recorded_few=t_recorded_few,
+    opaque_other=t_opaque_other, coincident_view=t_coincident_view,
+)
+
+CONCEPT_MEANING.update({
+    "familiarity_fill": "ba vật y hệt nhau về cỡ, chỉ sắc độ đậm dần — mức ưa thích dâng "
+                        "lên trong khi đối tượng không đổi chút nào",
+    "source_swap": "khối nội dung còn nguyên và đội mái tam giác của nguồn đã sinh ra nó, "
+                   "nhưng đường dẫn duy nhất lại chạy sang hình tròn",
+    "overwrite_seam": "một khối có đường bao liền, phần bên trong bị thay bằng vật liệu khác "
+                      "mà không có nét ngăn nào — mẩu rời phía trên vừa khít chỗ đã chiếm",
+    "tail_advantage": "hai hàng cùng chuỗi, ba phần tử đầu giống hệt nhau, khác biệt dồn hết "
+                      "vào phần tử cuối: một bên đặc và cao hơn, một bên rỗng",
+    "nominal_real": "vỏ rỗng cao dần bọc lấy lõi đặc teo dần — cùng một thứ, hai cách đo đi "
+                    "ngược chiều nhau",
+    "shielded_downside": "hai khối rủi ro cùng cỡ: khối đứng trên tấm chắn không chạm đáy, "
+                         "khối ngoài rìa tấm chắn rơi hẳn xuống đường đáy",
+    "outcome_weighted": "hai hành vi y hệt nhau ở trên, hai kết quả lệch hẳn sức nặng ở dưới "
+                        "— nét mực bám theo kết quả chứ không theo hành vi",
+    "recorded_few": "năm sự việc cùng cỡ ở hàng dưới chỉ hai cái đặc, và hàng trên — bản ghi "
+                    "— chỉ gồm đúng hai cái đặc đó",
+    "opaque_other": "hai vật cùng loại cùng cỡ: một cái rỗng nhìn thấu vào lõi nhỏ bên trong, "
+                    "một cái tô kín nên phần không thấy được điền đặc bằng suy đoán",
+    "coincident_view": "khung rỗng gần như trùng khít lên khối đặc, và một khung cùng cỡ xoay "
+                       "hẳn đi bên cạnh",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260919)
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-09-20 — concept object cho 10 card #141-150
+# --------------------------------------------------------------------------
+
+def t_one_sours_sum(p):
+    # Hàng trên: bốn sự việc CÙNG CỠ — ba cái nhạt (tích cực/trung tính), một cái đậm
+    # (tiêu cực). Tỉ lệ thật là 3:1. Thanh tổng ở dưới — ấn tượng đọng lại — lại đậm
+    # KÍN như thể cả bốn đều tiêu cực. Khoảng chênh giữa tỉ lệ thật và sắc độ của thanh
+    # tổng chính là trọng số dư mà card nói tới, và cũng đúng phần `strategy` bảo đi đếm
+    # lại tỉ lệ thực.
+    # Bốn ô phải cùng cỡ tuyệt đối: to nhỏ khác nhau thì hình đọc thành "cái tiêu cực
+    # vốn lớn hơn", tức là bác bỏ chính luận điểm.
+    # Khác `odd_one_out` (bizarreness-effect): ở đó chỉ có một hàng và cái khác biệt
+    # đáng nhớ vì khác, không có thanh tổng nào bị nó kéo theo.
+    o = []
+    for i in range(4):
+        paint = (f'fill="{p["acc"]}" fill-opacity="0.9"' if i == 2
+                 else f'fill="{p["t2"]}"')
+        o.append(f'<rect x="{16+i*26}" y="30" width="18" height="18" {paint} {TS}/>')
+    o.append(f'<rect x="16" y="78" width="96" height="22" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+def t_ramp_to_step(p):
+    # Trái: một dốc LIÊN TỤC — xác suất thật đi từ thấp tới cao không đứt đoạn.
+    # Phải: đúng dải đó sau khi qua đầu đọc của não — chỉ còn HAI mức, thấp tịt và cao
+    # kịch, không có nấc trung gian nào. Cùng đứng trên một đường đáy để so được.
+    # Phần giữa của dốc (vùng não bỏ qua) chính là chỗ bị nuốt mất khi sang bên phải.
+    # Khác `spectrum` (dãy tròn to dần, không có bản đối chiếu) và khác `steep_then_flat`
+    # (một đường cong duy nhất, nói về thời gian chứ không phải độ phân giải).
+    return (f'<path d="M18,96 L58,96 L58,36 Z" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="70" y="82" width="20" height="14" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="92" y="42" width="20" height="54" fill="{p["t3"]}" {TS}/>'
+            f'<line x1="14" y1="100" x2="116" y2="100" {TNF}/>')
+
+
+def t_gap_before_self(p):
+    # Một hàng lượt: ba lượt đầu được ghi lại (đặc), lượt NGAY TRƯỚC mình rỗng hoàn
+    # toàn, và lượt của mình vống hẳn lên vì toàn bộ chú ý đã dồn vào đó.
+    # Vị trí của ô rỗng là điều kiện bắt buộc: nó phải kề sát ô vống. Đặt ô rỗng ở giữa
+    # hàng thì hình đọc thành "quên ngẫu nhiên một chỗ", mất hẳn quan hệ nhân quả giữa
+    # sự chuẩn bị cho lượt mình và lỗ hổng ngay trước đó.
+    # Khác `gap_fill` (confabulation): ở đó lỗ hổng được ĐIỀN bằng vật liệu khác; ở đây
+    # nó để trống, và nguyên nhân nằm ở ô bên cạnh chứ không ở bản thân lỗ hổng.
+    o = [f'<rect x="{12+i*22}" y="68" width="16" height="22" fill="{p["t3"]}" {TS}/>'
+         for i in range(3)]
+    o.append(f'<rect x="78" y="68" width="16" height="22" fill="none" {TS}/>')
+    o.append(f'<rect x="100" y="44" width="16" height="46" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+def t_expected_flat(p):
+    # Thanh ngang chạy suốt khung, cao độ không đổi từ đầu tới cuối = giả định "mọi thứ
+    # vẫn bình thường". Khối dựng đứng cắt ngang qua nó = biến cố hiếm, thật, đang xảy
+    # ra. Thanh KHÔNG hề chệch hướng ở chỗ giao — nó đi thẳng qua như không có gì.
+    # Chỗ giao tự đậm lên nhờ fill-opacity: đó là vùng duy nhất trong hình nơi hai sự
+    # thật cùng tồn tại, và cũng là vùng người ta không nhìn.
+    # Thanh phải chạy HẾT chiều rộng, không dừng trước khối: dừng lại là đã thừa nhận
+    # biến cố, tức mất nghĩa. Khác `tail_event` (black-swan) vốn là một phân bố có đuôi,
+    # ở đó biến cố nằm ngoài rìa; ở đây nó nằm ngay giữa mà vẫn không được tính vào.
+    return (f'<rect x="60" y="26" width="34" height="72" fill="{p["acc"]}" '
+            f'fill-opacity="0.32" {TS}/>'
+            f'<rect x="14" y="72" width="100" height="14" fill="{p["acc"]}" '
+            f'fill-opacity="0.32" {TS}/>'
+            f'<line x1="14" y1="102" x2="114" y2="102" {TNF}/>')
+
+
+def t_own_side_premium(p):
+    # Một bức tường đặc chia khung làm hai. Cùng MỘT loại vật thể (hình vuông) nằm hai
+    # bên: bên ngoài vẽ rỗng và nhỏ, bên trong vẽ đặc và to. Không có khác biệt nào
+    # khác giữa chúng ngoài việc đứng ở phía nào của tường — toàn bộ chênh lệch giá trị
+    # sinh ra từ đường ranh giới, đúng câu hỏi trong `strategy`.
+    # Phải dùng cùng một primitive cho cả hai. Đổi hình (vuông vs tròn) là rơi sang
+    # `contrast` và mất nghĩa: khi đó hai thứ khác nhau thật, không còn nghịch lý.
+    # Khác `in_out_ring` (in-group-bias): ở đó ranh giới là vòng kín và nội dung hai bên
+    # là các cá thể rời; ở đây ranh giới là tường thẳng và vật thể là một, chỉ đổi cỡ.
+    return (f'<rect x="22" y="50" width="30" height="30" fill="none" {TS}/>'
+            f'<rect x="61" y="20" width="7" height="88" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="74" y="44" width="40" height="40" fill="{p["t3"]}" {TS}/>')
+
+
+def t_tilted_floor(p):
+    # Ba cửa Y HỆT NHAU, cả ba đều MỞ — không cửa nào bị bịt, đó là điều kiện sống còn
+    # của nudge (không cấm đoán). Cái thay đổi là mặt sàn: nó nghiêng, nên khối tự lăn
+    # về phía một cửa. Kiến trúc lựa chọn nằm ở độ nghiêng, không nằm ở số cửa.
+    # Ba cửa phải cùng bề rộng và cùng chiều cao: làm cửa "tốt" to hơn là đã can thiệp
+    # vào lợi ích của lựa chọn, tức không còn là nudge mà là ưu đãi.
+    # Khác `unused_exit` (learned-helplessness): ở đó có đúng một lối ra và khối đứng
+    # yên xa nó; ở đây có ba lối và khối đang ở phía thấp nhất do trọng lực bố cục.
+    # Sàn vẽ thành BẬC THANG chứ không phải dốc nghiêng: bản dốc đầu tiên khiến ba cửa
+    # (vốn là rect thẳng đứng) chỉ chạm sàn ở một điểm, hai góc đáy hở ra 3-4px và ở
+    # 64px cả ba đọc thành mấy ô vuông trôi lơ lửng cạnh một gạch chéo. Bậc thang cho
+    # mỗi cửa một mặt phẳng nằm ngang để đứng, mọi cạnh trùng trục nên nét sắc ở khổ nhỏ,
+    # mà chiều đi xuống — tức phía ít lực cản — vẫn đọc nguyên.
+    o = [f'<polyline points="16,70 44,70 44,82 72,82 72,94 114,94" fill="none" {TS}/>']
+    for x, y in ((20, 70), (48, 82), (83, 94)):
+        o.append(f'<rect x="{x}" y="{y-24}" width="20" height="24" fill="none" {TS}/>')
+    o.append(f'<circle cx="93" cy="85" r="8" fill="{p["acc"]}" fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+def t_prior_passthrough(p):
+    # Một hình dạng đặc trưng đi VÀO bộ máy đo ở đầu này, và đúng hình dạng đó — cùng
+    # cỡ, cùng hướng, cùng sắc độ — đi RA ở đầu kia. Bộ máy vẽ rỗng và trung tính, vì
+    # nó trông như một quy trình khách quan; cái đã quyết định kết quả là thứ được đưa
+    # vào, không phải thứ nó làm.
+    # Hai tam giác bắt buộc phải khớp nhau tuyệt đối. Vẽ cái ra hơi khác cái vào là
+    # thành "quy trình có tác động chút ít" — mất hẳn ý rò rỉ kỳ vọng.
+    # Khác `forced_fit` (law-of-the-instrument): ở đó công cụ ÉP vật liệu vào khuôn của
+    # nó; ở đây công cụ không làm gì cả, kỳ vọng chỉ đơn giản đi xuyên qua.
+    return (f'<polygon points="18,38 40,38 29,18" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="38" y="50" width="52" height="30" fill="none" {TS}/>'
+            f'<line x1="31" y1="40" x2="44" y2="50" {TNF}/>'
+            f'<line x1="86" y1="80" x2="97" y2="90" {TNF}/>'
+            f'<polygon points="88,112 110,112 99,92" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>')
+
+
+def t_fewer_supports(p):
+    # Hai cột cùng đội MỘT tấm nóc y hệt nhau — cùng một hiện tượng được giải thích.
+    # Khác biệt duy nhất nằm ở số khối kê bên dưới: một bên cần một khối, bên kia cần
+    # bốn. Cả hai đều đứng được; hình không nói bên nào ĐÚNG, chỉ nói bên nào phải giả
+    # định nhiều hơn — đúng phạm vi của Occam (ưu tiên xem xét trước, không phải chân lý).
+    # Tấm nóc hai bên bắt buộc cùng cỡ. Nóc khác cỡ thì thành "giải thích nhiều hơn",
+    # mà tiền đề của dao cạo là hai giả thuyết giải thích được như nhau.
+    # Khác `stacked_copies` (illusory-truth): ở đó các bản sao cùng cỡ tịnh tiến đều và
+    # không có gì đội lên; ở đây chồng khối là phần MÓNG, và điểm so sánh là chiều cao
+    # chồng giữa hai bên. Khác `parsimony` (hanlons-razor) vốn là hình một-lối-đơn-giản
+    # cạnh một lối vòng vèo.
+    # Hai cột phải TÁCH hẳn nhau và tấm nóc phải NHÔ RA khỏi chồng móng. Bản đầu để hai
+    # cột cách nhau 4px và nóc bằng đúng bề rộng móng: ở 64px khe 2px biến mất, hai cột
+    # dính thành một khối bậc thang duy nhất và hình mất sạch nghĩa so sánh. Khe 14px
+    # cộng phần nhô 6px mỗi bên cho mỗi cột một hình bóng riêng đọc được ở khổ thật.
+    o = [f'<rect x="12" y="20" width="44" height="12" fill="{p["t3"]}" {TS}/>',
+         f'<rect x="70" y="20" width="44" height="12" fill="{p["t3"]}" {TS}/>',
+         f'<rect x="18" y="38" width="32" height="14" fill="{p["t2"]}" {TS}/>']
+    o += [f'<rect x="76" y="{38+i*18}" width="32" height="14" fill="{p["t2"]}" {TS}/>'
+          for i in range(4)]
+    return "".join(o)
+
+
+def t_visible_hand(p):
+    # Hai tổn hại Y HỆT NHAU ở hàng dưới — cùng cỡ, cùng sắc độ. Hàng trên là hai tác
+    # nhân cũng cùng cỡ. Khác biệt duy nhất: bên trái có một nét nối tác nhân với hậu
+    # quả và tác nhân đó được tô đặc (bị quy trách nhiệm); bên phải không có nét nối
+    # nào và tác nhân để rỗng. Không-hành-động không để lại đường dẫn nào để lần theo,
+    # nên nó thoát khỏi phán xét dù hậu quả bằng nhau.
+    # Hai khối dưới phải bằng nhau tuyệt đối — đó là tiền đề. Vẽ lệch cỡ là biến hình
+    # thành "hành động gây hại nhiều hơn", tức bác bỏ card.
+    # Khác `outcome_weighted` (moral-luck): ở đó hành vi giống nhau và KẾT QUẢ lệch;
+    # ở đây kết quả giống nhau và sự QUY KẾT lệch — bố cục đảo ngược đúng trục.
+    return (f'<rect x="22" y="80" width="30" height="30" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="76" y="80" width="30" height="30" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<circle cx="37" cy="32" r="14" fill="{p["acc"]}" fill-opacity="0.9" {TS}/>'
+            f'<circle cx="91" cy="32" r="14" fill="none" {TS}/>'
+            f'<line x1="37" y1="46" x2="37" y2="80" {TNF}/>')
+
+
+def t_forgone_stack(p):
+    # Hai cột đứng trên cùng một đường đáy. Phần đặc của hai cột BẰNG NHAU — đó là số
+    # tiền/công sức thực sự bỏ ra, thứ duy nhất người ta thường đem ra so. Cột phải đội
+    # thêm một khối RỖNG cùng cỡ: phương án tốt nhất đã bị từ bỏ. Nó rỗng vì không ai
+    # xuất hoá đơn cho nó, nhưng nó chiếm đúng chỗ trong chi phí thật.
+    # Khối rỗng phải dính liền mép trên của khối đặc, không tách rời: tách ra thì nó
+    # đọc thành một vật khác đặt gần đó, chứ không phải phần cộng thêm của cùng một chi phí.
+    # Khác `nominal_real` (money-illusion): ở đó vỏ rỗng BỌC lấy lõi và hai thứ đi
+    # ngược chiều nhau; ở đây hai khối xếp chồng, cùng chiều, và phần rỗng là phần bị bỏ sót.
+    return (f'<rect x="24" y="68" width="32" height="36" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="72" y="68" width="32" height="36" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="72" y="30" width="32" height="38" fill="none" {TS}/>'
+            f'<line x1="16" y1="108" x2="112" y2="108" {TNF}/>')
+
+
+CONCEPT_OBJECTS_20260920 = dict(
+    one_sours_sum=t_one_sours_sum, ramp_to_step=t_ramp_to_step,
+    gap_before_self=t_gap_before_self, expected_flat=t_expected_flat,
+    own_side_premium=t_own_side_premium, tilted_floor=t_tilted_floor,
+    prior_passthrough=t_prior_passthrough, fewer_supports=t_fewer_supports,
+    visible_hand=t_visible_hand, forgone_stack=t_forgone_stack,
+)
+
+CONCEPT_MEANING.update({
+    "one_sours_sum": "bốn ô cùng cỡ chỉ một ô đậm, nhưng thanh tổng bên dưới đậm kín như "
+                     "thể cả bốn đều vậy",
+    "ramp_to_step": "một dốc liên tục cạnh chính nó sau khi bị đọc lại thành đúng hai mức, "
+                    "mất sạch nấc giữa",
+    "gap_before_self": "hàng lượt có ba ô đặc, một ô rỗng, và ô kề ngay sau đó vống cao hẳn "
+                       "— chỗ chú ý đã dồn vào",
+    "expected_flat": "thanh ngang chạy suốt ở một cao độ không đổi, xuyên qua khối biến cố "
+                     "dựng đứng mà không chệch chút nào",
+    "own_side_premium": "cùng một hình vuông ở hai bên bức tường: bên ngoài nhỏ và rỗng, "
+                        "bên trong to và đặc",
+    "tilted_floor": "ba cửa y hệt nhau đều đang mở, mặt sàn nghiêng, khối nằm ở cửa thấp nhất",
+    "prior_passthrough": "một tam giác đi vào bộ máy rỗng ở đầu này và đúng tam giác đó đi ra "
+                         "ở đầu kia",
+    "fewer_supports": "hai tấm nóc cùng cỡ, một bên kê một khối, bên kia kê bốn khối chồng lên",
+    "visible_hand": "hai tổn hại bằng nhau, chỉ bên có nét nối lên tác nhân mới có tác nhân "
+                    "được tô đặc",
+    "forgone_stack": "hai cột đặc bằng nhau, cột phải đội thêm một khối rỗng cùng cỡ dính liền "
+                     "mép trên",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260920)
+
+
 def thumb(name, hue="mint"):
     """SVG 128x128, nền paper (trắng), tint ladder theo hue của card."""
     p = _pal(hue, paper_bg=True)
@@ -1732,3 +2172,253 @@ def thumb(name, hue="mint"):
             'width="128" height="128">'
             f'<rect width="128" height="128" fill="#FFFFFF"/>'
             f'{THUMB_REGISTRY[name](p)}</svg>')
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-09-24 — optimism-bias → part-list-cueing-effect
+# --------------------------------------------------------------------------
+
+def t_self_exempt(p):
+    # Một đường mức rủi ro KHÁCH QUAN chạy ngang suốt khung, đi qua cả hai cột. Cột
+    # "người khác" dựng đúng tới đường đó. Cột "mình" thấp hẳn, và khoảng hở phía trên
+    # nó để rỗng — rủi ro không biến mất, chỉ là phần tự-ước-lượng không chạm tới.
+    # Đường mức bắt buộc phải là MỘT nét liền chạy qua cả hai cột. Vẽ hai đường mức
+    # riêng cho mỗi cột là thành "hai mức rủi ro khác nhau", tức bác bỏ card: tiền đề
+    # của optimism bias là mức rủi ro khách quan NHƯ NHAU.
+    # Khác `all_above_median` (illusory-superiority): ở đó mọi phần tử đều vượt đường
+    # trung vị và nửa dưới bỏ trống — một phân bố bất khả. Ở đây chỉ có đúng một phần
+    # tử tụt xuống, và nó tụt vì nó là phần tử "mình".
+    # Khác `overclaim` (dunning-kruger): overclaim là phạm vi tự nhận LỚN hơn phần
+    # thực; ở đây đại lượng tự nhận NHỎ hơn mức thực, ngược chiều.
+    return (f'<line x1="14" y1="34" x2="114" y2="34" {TNF}/>'
+            f'<rect x="76" y="34" width="32" height="72" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="22" y="78" width="32" height="28" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<line x1="14" y1="106" x2="114" y2="106" {TNF}/>')
+
+
+def t_averted_gaze(p):
+    # Khối thông tin bên phải vẽ ĐẶC và không bị gì che: nó hiện diện đầy đủ, nhìn là
+    # thấy. Cái nón nhìn bên trái mở về phía ngược lại, trùm lên một vùng rỗng không có
+    # gì. Cái thiếu là hành vi nhìn, không phải khả năng nhìn.
+    # Khối thông tin tuyệt đối không được phủ hatch, mờ hay viền đứt. Chỉ cần một lớp
+    # che là hình rơi ngay về `veil` (thông tin bị che khuất) — đúng cái mà ostrich
+    # effect KHÔNG phải: ở đây không ai giấu gì cả.
+    # Khác `veil` (curse-of-knowledge, chestertons-fence): ở đó rào cản nằm giữa người
+    # xem và vật; ở đây không có rào cản nào, chỉ có hướng nhìn quay đi.
+    # Nón nhìn vẽ bằng hai tia tách rộng (42° mở) chứ không phải một mũi tên: mũi tên
+    # ở 64px đọc thành "dòng chảy", còn hai tia mở từ một đỉnh giữ được nghĩa "trường
+    # nhìn" và thấy rõ là trong đó rỗng.
+    return (f'<rect x="76" y="42" width="36" height="44" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<circle cx="62" cy="64" r="9" fill="none" {TS}/>'
+            f'<line x1="54" y1="60" x2="16" y2="34" {TNF}/>'
+            f'<line x1="54" y1="68" x2="16" y2="94" {TNF}/>')
+
+
+def t_near_side_detail(p):
+    # Một đường ranh giới nhóm chạy dọc giữa khung. Phía gần (nhóm mình): ba phần tử
+    # RIÊNG BIỆT, khác cỡ khác dạng, mỗi cái một đường bao. Phía xa (nhóm ngoài): đúng
+    # một khối liền, không có nét chia nào bên trong. Cùng một vùng diện tích, chỉ khác
+    # ở chỗ bên nào được phân giải thành cá thể.
+    # Khối bên phải bắt buộc KHÔNG có nét chia trong. Thêm vào một nét là thành "nhóm
+    # ngoài có 2-3 loại", mất hẳn nghĩa đồng nhất hoá.
+    # Đường ranh giới là biến nhân quả, phải vẽ rõ và chạy hết chiều cao: bỏ nó đi thì
+    # hình chỉ còn là `granularity` chung chung (cross-race-effect, denomination-effect),
+    # vốn nói về độ phân giải mà không nói vì sao — ở đây lý do là bạn đứng bên nào.
+    o = [f'<line x1="64" y1="14" x2="64" y2="114" {TNF}/>',
+         f'<circle cx="30" cy="32" r="11" fill="none" {TS}/>',
+         f'<rect x="16" y="54" width="30" height="16" fill="none" {TS}/>',
+         f'<circle cx="34" cy="92" r="14" fill="none" {TS}/>',
+         f'<rect x="76" y="32" width="36" height="64" fill="{p["t3"]}" {TS}/>']
+    return "".join(o)
+
+
+def t_ex_post_grade(p):
+    # Hàng trên là hai quyết định với RUỘT Y HỆT NHAU — cùng số chứng cứ, cùng vị trí,
+    # cùng sắc độ. Đó là tiền đề: tại thời điểm ra quyết định, hai bên có chung một cơ
+    # sở. Hàng dưới là hai kết cục, một đặc một rỗng. Sắc độ của khung quyết định phía
+    # trên sao chép đúng sắc độ của kết cục phía dưới nó, dù ruột hai bên không khác gì.
+    # Hai chấm chứng cứ trong hai khung phải đặt cùng toạ độ tương đối. Lệch đi một
+    # chấm là hình tự trả lời "quyết định trái tốt hơn thật", tức không còn là bias.
+    # Khác `outcome_weighted` (moral-luck): ở đó hàng trên là HÀNH VI và cái lệch là
+    # sức nặng đạo đức. Ở đây hàng trên là quyết định có chứng cứ NHÌN THẤY ĐƯỢC bên
+    # trong, và cái bị sao chép là nhãn chấm điểm — trục của outcome bias là thông tin
+    # sẵn có lúc quyết, nên nó phải hiện ra trong hình.
+    o = [f'<rect x="14" y="16" width="44" height="36" fill="{p["t3"]}" {TS}/>',
+         f'<rect x="70" y="16" width="44" height="36" fill="none" {TS}/>']
+    for bx in (14, 70):
+        o.append(f'<circle cx="{bx+14}" cy="34" r="5" fill="{p["acc"]}" '
+                 f'fill-opacity="0.9" {TS}/>')
+        o.append(f'<circle cx="{bx+30}" cy="34" r="5" fill="{p["acc"]}" '
+                 f'fill-opacity="0.9" {TS}/>')
+    o += [f'<line x1="36" y1="52" x2="36" y2="80" {TNF}/>',
+          f'<line x1="92" y1="52" x2="92" y2="80" {TNF}/>',
+          f'<rect x="22" y="80" width="28" height="28" fill="{p["t3"]}" {TS}/>',
+          f'<rect x="78" y="80" width="28" height="28" fill="none" {TS}/>']
+    return "".join(o)
+
+
+def t_narrow_interval(p):
+    # Dải rộng vẽ rỗng là độ bất định THẬT. Thanh đặc ngắn nằm gọn bên trong là khoảng
+    # tin cậy tự nhận. Chấm đặc là giá trị thật — nó rơi RA NGOÀI thanh tự nhận nhưng
+    # vẫn nằm trong dải thật. Sai không nằm ở chỗ đoán trượt, mà ở bề rộng của khoảng.
+    # Chấm bắt buộc nằm ngoài thanh đặc và trong dải rỗng. Kéo nó vào trong thanh là
+    # hình thành "đoán đúng", ra ngoài cả dải là thành "mô hình sai" — cả hai đều không
+    # phải overconfidence.
+    # Khác `overclaim` (dunning-kruger, false-consensus): ở đó phạm vi tự nhận LỚN hơn
+    # phần thực. Ở đây ngược hẳn chiều — phạm vi tự nhận HẸP hơn dải thực, và chính độ
+    # hẹp đó sinh ra lỗi.
+    # Dải thật vẽ bằng TRỤC có hai nút chặn hai đầu chứ không phải một khung chữ nhật:
+    # bản đầu dùng rect nên thanh đặc bên trong đọc thành "một vật nằm trong hộp", mất
+    # nghĩa khoảng-trên-thang-đo. Có trục thì cả thanh tự nhận lẫn chấm giá trị thật
+    # cùng nằm trên một đường, và chuyện chấm rơi ngoài thanh mới đọc ra được.
+    return (f'<line x1="16" y1="64" x2="112" y2="64" {TNF}/>'
+            f'<line x1="16" y1="46" x2="16" y2="82" {TNF}/>'
+            f'<line x1="112" y1="46" x2="112" y2="82" {TNF}/>'
+            f'<rect x="34" y="52" width="34" height="24" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<circle cx="94" cy="64" r="7" fill="{p["acc"]}" fill-opacity="0.9" {TS}/>')
+
+
+def t_crowd_out(p):
+    # Trên: một khung, bên trong đúng một lõi ĐẶC lớn — động lực vốn có. Dưới: cùng
+    # khung đó, một khối thưởng RỖNG được cắm vào từ bên ngoài, và lõi đặc teo lại nhỏ
+    # hơn hẳn phần được thêm. Tổng phần đặc sau khi thêm thưởng THẤP hơn trước khi thêm.
+    # Lõi dưới bắt buộc phải nhỏ hơn lõi trên nhiều hơn là bề rộng khối thưởng. Vẽ lõi
+    # giữ nguyên cỡ là thành "thưởng cộng thêm vào", đúng trực giác thông thường mà
+    # card này bác bỏ.
+    # Khối thưởng để RỖNG có chủ đích: nó chiếm chỗ trong khung nhưng không phải là
+    # động lực — nó là cái giá phải trả, không phải cái được thêm.
+    # Khác `locus_flip` (fundamental-attribution-error, extrinsic-incentive-error): ở
+    # đó nguồn thúc đẩy chỉ ĐỔI CHỖ trong/ngoài mà tổng không đổi. Ở đây tổng giảm —
+    # đó chính là chữ "over" trong overjustification.
+    return (f'<rect x="18" y="14" width="92" height="36" fill="none" {TS}/>'
+            f'<rect x="24" y="20" width="64" height="24" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="18" y="74" width="92" height="36" fill="none" {TS}/>'
+            f'<rect x="24" y="80" width="24" height="24" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="56" y="80" width="30" height="24" fill="none" {TS}/>'
+            f'<line x1="118" y1="92" x2="84" y2="92" {TNF}/>')
+
+
+def t_figure_in_noise(p):
+    # Một vệt chấm rải ngẫu nhiên, mọi chấm cùng cỡ và đều RỖNG — dữ liệu không có cấu
+    # trúc. Ba chấm được tô đặc và nối thành một hình khép kín quen thuộc. Nét nối là
+    # thứ người xem thêm vào; trong đám chấm không có gì tương ứng với nó.
+    # Các chấm nền phải đặt LỆCH NHAU, không theo lưới. Xếp thành hàng đều là hình tự
+    # sinh ra cấu trúc thật, và pareidolia mất nghĩa: cái sai phải nằm ở người nhìn.
+    # Ba chấm được chọn cũng không được nằm ở vị trí đặc biệt nào so với phần còn lại.
+    # Khác `network` (apophenia): ở đó các liên kết là một mạng thật đang tồn tại. Ở
+    # đây chỉ có đúng một hình đóng, và nó phủ lên ba chấm không khác gì các chấm khác.
+    # Khác `unlinked_control` (illusion-of-control): ở đó nét nối hụt qua một khoảng
+    # trống; ở đây nét nối liền mạch — ảo giác là hình, không phải quan hệ nhân quả.
+    noise = [(22, 30), (96, 22), (18, 78), (108, 62), (74, 108), (40, 66), (104, 100)]
+    o = [f'<circle cx="{x}" cy="{y}" r="5" fill="none" {TS}/>' for x, y in noise]
+    tri = [(44, 42), (88, 50), (62, 88)]
+    o.append('<polygon points="' + " ".join(f"{x},{y}" for x, y in tri) +
+             f'" fill="none" {TS}/>')
+    o += [f'<circle cx="{x}" cy="{y}" r="5" fill="{p["acc"]}" fill-opacity="0.9" {TS}/>'
+          for x, y in tri]
+    return "".join(o)
+
+
+def t_vital_few(p):
+    # Hai dải CÙNG BỀ RỘNG, cùng gốc trái. Dải trên là nguyên nhân: phần đặc chỉ chiếm
+    # một mẩu đầu. Dải dưới là kết quả: phần đặc chiếm gần hết. Hai phần đặc cùng bắt
+    # đầu từ mép trái nên đọc được ngay là mẩu nhỏ phía trên ứng với khối lớn phía dưới.
+    # Hai dải bắt buộc bằng nhau tuyệt đối về bề rộng — đó là "100%" ở cả hai vế. Vẽ
+    # lệch bề rộng là mất trục so sánh và hình thành hai đại lượng rời nhau.
+    # Không vẽ nét nối giữa hai phần đặc: căn lề trái đã đủ, thêm nét nối ở 64px thành
+    # một vệt đen chen giữa hai dải và làm nhoè cả hai.
+    # Khác `proportion` (affective-forecasting, base-rate-fallacy) vốn là một hình duy
+    # nhất chia phần: ở đây phải có HAI dải thì mới nói được quan hệ bắt chéo ít→nhiều.
+    return (f'<rect x="14" y="32" width="100" height="26" fill="none" {TS}/>'
+            f'<rect x="14" y="32" width="20" height="26" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="14" y="74" width="100" height="26" fill="none" {TS}/>'
+            f'<rect x="14" y="74" width="80" height="26" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>')
+
+
+def t_fill_to_frame(p):
+    # Hai khung rộng hẹp khác hẳn nhau. Trong mỗi khung, khối việc giãn ra CHẠM cả hai
+    # mép. Nhưng cái lõi đặc bên trong — phần việc thật sự phải làm — thì hai bên bằng
+    # nhau chằn chặn. Bề rộng khối việc do khung quyết định, không do lõi.
+    # Hai lõi bắt buộc cùng cỡ và cùng khoảng cách tới mép trái khung. Cho lõi dưới to
+    # hơn là thành "việc nhiều hơn nên lâu hơn" — đúng cái cách đọc mà Parkinson's law
+    # bác bỏ.
+    # Khối việc phải chạm sát mép trong của khung ở CẢ HAI phía. Chừa lại khe là hình
+    # thành "việc chưa lấp đầy", mất chữ "luôn giãn nở".
+    # Khác `coverage_sphere` (affect-heuristic): ở đó một thứ phủ lên toàn bộ phần còn
+    # lại. Ở đây có hai khung đối chiếu, và ý nghĩa nằm ở chỗ khối giãn KHÁC NHAU trong
+    # khi lõi thì không.
+    return (f'<rect x="12" y="24" width="48" height="36" fill="none" {TS}/>'
+            f'<rect x="16" y="28" width="40" height="28" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="22" y="34" width="18" height="16" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="12" y="74" width="104" height="36" fill="none" {TS}/>'
+            f'<rect x="16" y="78" width="96" height="28" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="22" y="84" width="18" height="16" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>')
+
+
+def t_cue_crowds_out(p):
+    # Hàng trên là đối chứng: năm ô nhớ được, cao bằng nhau, đều rỗng — không ai gợi ý
+    # gì cả. Hàng dưới là khi ĐƯỢC gợi ý: hai ô đầu được cho sẵn nên tô đặc và cao
+    # nguyên; ba ô còn lại tụt hẳn xuống so với chính chúng ở hàng trên. Đường mức đứt
+    # nối từ đỉnh ô được gợi ý chạy sang cho thấy chúng đáng lẽ cao tới đâu.
+    # Ba ô sau bắt buộc phải THẤP HƠN hàng đối chứng, không phải biến mất. Xoá hẳn là
+    # thành "quên sạch"; part-list cueing chỉ nói nhớ TỆ HƠN, và phần hụt phải nhìn thấy.
+    # Hàng trên bắt buộc giữ nguyên năm ô đều nhau — bỏ nó đi thì không còn gì để nói
+    # ba ô kia "thấp hơn" so với cái gì.
+    # Khác `cue_lock` (cue-dependent-forgetting): ở đó nội dung còn nguyên nhưng THIẾU
+    # mảnh khớp để mở. Ở đây mảnh khớp đã được ĐƯA cho, và chính nó làm hụt phần còn
+    # lại — nguyên nhân đảo ngược.
+    o = [f'<rect x="{14+i*20}" y="20" width="16" height="26" fill="none" {TS}/>'
+         for i in range(5)]
+    o += [f'<rect x="14" y="80" width="16" height="26" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>',
+          f'<rect x="34" y="80" width="16" height="26" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>']
+    o += [f'<rect x="{54+i*20}" y="94" width="16" height="12" fill="none" {TS}/>'
+          for i in range(3)]
+    o.append(f'<line x1="54" y1="80" x2="110" y2="80" fill="none" stroke="{INK}" '
+             f'stroke-width="{SW_THUMB}" stroke-dasharray="3 4" stroke-linecap="round"/>')
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20260924 = dict(
+    self_exempt=t_self_exempt, averted_gaze=t_averted_gaze,
+    near_side_detail=t_near_side_detail, ex_post_grade=t_ex_post_grade,
+    narrow_interval=t_narrow_interval, crowd_out=t_crowd_out,
+    figure_in_noise=t_figure_in_noise, vital_few=t_vital_few,
+    fill_to_frame=t_fill_to_frame, cue_crowds_out=t_cue_crowds_out,
+)
+
+CONCEPT_MEANING.update({
+    "self_exempt": "một đường mức chạy qua cả hai cột, cột 'người khác' chạm tới còn cột "
+                   "'mình' thấp hẳn và khoảng hở phía trên để rỗng",
+    "averted_gaze": "khối thông tin vẽ đặc và không bị che, nón nhìn mở về phía ngược lại "
+                    "trùm lên vùng rỗng",
+    "near_side_detail": "một đường ranh giới: phía gần là bốn phần tử riêng biệt khác cỡ, "
+                        "phía xa là một khối liền không có nét chia nào",
+    "ex_post_grade": "hai khung quyết định ruột y hệt nhau, sắc độ mỗi khung sao chép đúng "
+                     "sắc độ của kết cục nằm dưới nó",
+    "narrow_interval": "một dải rỗng rộng, một thanh đặc hẹp nằm trong, và điểm giá trị thật "
+                       "rơi ra ngoài thanh nhưng vẫn trong dải",
+    "crowd_out": "cùng một khung: lõi đặc lớn khi đứng một mình, lõi teo hẳn khi có thêm một "
+                 "khối rỗng cắm vào từ ngoài",
+    "figure_in_noise": "chấm rải lệch nhau đều rỗng, ba chấm được tô đặc và nối thành một "
+                       "hình khép kín",
+    "vital_few": "hai dải cùng bề rộng cùng gốc trái: mẩu đặc nhỏ ở dải trên nằm đúng trên "
+                 "khối đặc lớn ở dải dưới",
+    "fill_to_frame": "hai khung rộng hẹp khác nhau, khối việc chạm hai mép trong cả hai, "
+                     "nhưng lõi đặc bên trong bằng nhau",
+    "cue_crowds_out": "hàng đối chứng năm ô đều nhau; hàng có gợi ý thì hai ô đầu đặc cao "
+                      "nguyên còn ba ô sau tụt hẳn dưới đường mức đứt",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260924)

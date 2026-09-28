@@ -7,6 +7,7 @@ categories: [bias]
 links: [effort-justification, endowment-effect, sunk-cost-fallacy]
 refs: ['https://en.wikipedia.org/wiki/IKEA_effect', 'https://thedecisionlab.com/biases/ikea-effect']
 strategy: "Khi thiết kế trải nghiệm 'tự thiết lập' (portfolio, mục tiêu tiết kiệm), để người dùng chủ động tuỳ chỉnh vài bước thật — cảm giác sở hữu tăng lên, nhưng tránh lạm dụng nó để che giấu chất lượng sản phẩm kém."
+image: /assets/stuff/ikea-effect.png
 published: true
 ---
 

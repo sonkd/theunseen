@@ -7,6 +7,7 @@ categories: [perception]
 links: [clustering-illusion, illusory-correlation, anthropomorphism]
 refs: ['https://en.wikipedia.org/wiki/Pareidolia']
 strategy: 'Khi một hình ảnh hoặc dữ liệu "trông giống" một khuôn mẫu quen thuộc một cách bất ngờ, kiểm tra bằng thống kê hoặc góc nhìn khác trước khi tin đó là tín hiệu thật — pareidolia đặc biệt mạnh trong việc nhận diện khuôn mặt.'
+image: /assets/stuff/pareidolia.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [anchoring, loss-aversion, decoy-effect, contrast-effect]
 refs: ['https://en.wikipedia.org/wiki/Framing_effect_%28psychology%29', 'https://thedecisionlab.com/biases/framing-effect']
 strategy: "Trước khi quyết định, tự dịch lại thông tin sang chiều ngược lại (lãi ↔ lỗ, sống ↔ chết) để xem lựa chọn của mình có còn giữ nguyên không."
+image: /assets/stuff/framing-effect.png
 published: true
 ---
 

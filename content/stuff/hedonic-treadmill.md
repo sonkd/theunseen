@@ -8,6 +8,7 @@ tags: [wellbeing, psychology]
 links: [affective-forecasting, impact-bias, focalism]
 refs: ['https://en.wikipedia.org/wiki/Hedonic_treadmill']
 strategy: 'Khi thiết kế trải nghiệm "phần thưởng" trong sản phẩm, ưu tiên tần suất những niềm vui nhỏ lặp lại hơn một phần thưởng lớn một lần — vì cả hai đều bị thích nghi, nhưng cái đầu dễ tái tạo hơn.'
+image: /assets/stuff/hedonic-treadmill.png
 published: true
 ---
 
