@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [spotlight-effect, egocentric-bias, illusion-of-asymmetric-insight]
 refs: ['https://en.wikipedia.org/wiki/Illusion_of_transparency', 'https://journals.sagepub.com/doi/10.1111/1467-8721.00039']
 strategy: 'Trước khi lo "ai cũng thấy mình đang bối rối" (thuyết trình, phỏng vấn, đàm phán), nhắc bản thân: khoảng cách giữa cảm giác nội tâm và biểu hiện ra ngoài luôn lớn hơn ta tưởng.'
+image: /assets/stuff/illusion-of-transparency.png
 published: true
 ---
 

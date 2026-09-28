@@ -7,6 +7,7 @@ categories: [bias]
 links: [choice-supportive-bias, illusion-of-control]
 refs: ['https://en.wikipedia.org/wiki/Illusion_of_external_agency', 'https://doi.org/10.1037/0022-3514.79.5.690']
 strategy: 'Khi cảm thấy một sản phẩm/dịch vụ "hiểu mình" một cách kỳ diệu ngay sau khi mình vừa chọn nó, thử tách bạch: cảm giác hài lòng này đến từ chất lượng thật của lựa chọn, hay từ việc mình đang tự hợp lý hoá quyết định vừa đưa ra?'
+image: /assets/stuff/illusion-of-external-agency.png
 published: true
 ---
 

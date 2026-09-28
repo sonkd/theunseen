@@ -923,6 +923,127 @@ def t_observed_lift(p):
     return "".join(o)
 
 
+def t_setpoint_return(p):
+    # Một MỨC NỀN nằm ngang, và hai độ lệch — một lên, một xuống — đều dựng lên rất
+    # dốc rồi thoải dần về đúng đường nền đó. Nội dung là cái ĐUÔI: biến cố không bị
+    # xoá, nó chỉ hết tác dụng. Hai độ lệch phải NGƯỢC CHIỀU và cùng cỡ để đọc được
+    # rằng cơ chế thích nghi không phân biệt tin tốt với tin xấu.
+    # Khác `threshold` (đường ngang + các khối VƯỢT qua nó và ở luôn trạng thái mới):
+    # ở đây không có gì vượt qua, mọi thứ quay về. Khác `rebound` (bật ngược lại phía
+    # người tác động) và khác `rosy_tilt` (sự vật không đổi, chỉ sắc độ trôi theo thời
+    # gian — không có mức nền nào để quay về).
+    return (f'<line x1="14" y1="64" x2="114" y2="64" {TNF}/>'
+            f'<path d="M26,64 L38,22 Q45,20 49,33 Q57,58 70,64 Z" '
+            f'fill="{p["t3"]}" {TS}/>'
+            f'<path d="M72,64 L84,106 Q91,108 95,95 Q103,70 116,64 Z" '
+            f'fill="{p["t2"]}" {TS}/>')
+
+
+def t_retrofit_path(p):
+    # Nhiều kết cục khả dĩ đứng RỜI NHAU và CÙNG CỠ ở phía phải = trước khi biết, không
+    # cái nào nổi trội. Chỉ đúng một cái được tô đặc và được nối vào một đường liền về
+    # điểm khởi đầu. Nội dung: đường đó chỉ vẽ được SAU khi đã biết, nhưng vẽ rồi thì
+    # trông như nó vốn là con đường duy nhất.
+    # Khác `divergence` (các nêm đặc toả ra từ một điểm — nói về việc rẽ nhánh, tất cả
+    # nhánh đều có thật và đều được vẽ): ở đây ba kết cục kia để RỖNG, và cái rỗng đó
+    # mới là điều ta quên mất. Khác `salience_pop` (lưới đều, vài phần tử được tô — nói
+    # về độ nhìn thấy) vì ở đây có một ĐƯỜNG NỐI, tức một lời giải thích nhân quả.
+    o = [f'<line x1="31" y1="63" x2="88" y2="52" {TNF}/>',
+         f'<circle cx="22" cy="64" r="9" fill="{p["acc"]}" fill-opacity="0.78" {TS}/>']
+    o += [f'<circle cx="100" cy="{cy}" r="11" fill="none" {TS}/>'
+          for cy in (22, 78, 106)]
+    o.append(f'<circle cx="100" cy="50" r="11" fill="{p["acc"]}" '
+             f'fill-opacity="0.78" {TS}/>')
+    return "".join(o)
+
+
+def t_asymmetric_probe(p):
+    # Hai khối Y HỆT NHAU — cùng cỡ, cùng sắc độ — nên thực tế là đối xứng: không ai có
+    # lợi thế thông tin nào. Chỉ có hai mũi thăm dò là lệch: mũi từ trái cắm sâu tới
+    # tâm khối phải, mũi từ phải đứng lại giữa khoảng trống. Nội dung là ĐỘ SÂU TỰ
+    # NHẬN, không phải độ sâu thật — và vì hai khối giống nhau, người xem tự thấy mũi
+    # ngắn kia đáng ra phải dài bằng mũi dài.
+    # Khác `mirror` (cùng MỘT sự việc soi qua hai khung quy kết — chỉ có một đối tượng):
+    # ở đây có HAI chủ thể, mỗi bên tự nhận về phía bên kia. Khác `overclaim` (phạm vi
+    # tự nhận lớn hơn phần thực có — một chiều, một chủ thể).
+    return (f'<circle cx="34" cy="64" r="22" fill="{p["t1"]}" {TS}/>'
+            f'<circle cx="94" cy="64" r="22" fill="{p["t1"]}" {TS}/>'
+            f'<line x1="34" y1="54" x2="94" y2="54" {TNF}/>'
+            f'<line x1="94" y1="76" x2="66" y2="76" {TNF}/>'
+            f'<circle cx="34" cy="64" r="4" fill="{p["acc"]}" {TS}/>'
+            f'<circle cx="94" cy="64" r="4" fill="{p["acc"]}" {TS}/>')
+
+
+def t_unlinked_control(p):
+    # Bên trái: một khối đặc, có thứ tự, có một mấu nối chìa ra = cái ta thao tác.
+    # Bên phải: một vùng chỉ chứa các chấm nằm rải rác không theo trật tự nào = kết quả
+    # ngẫu nhiên. Giữa hai thứ là một KHOẢNG TRỐNG không có gì băng qua. Nội dung nằm ở
+    # chỗ thiếu: mấu nối chỉ đúng hướng, nên cảm giác điều khiển được là có thật, còn
+    # mối liên kết thì không.
+    # Khác `fracture` (hai phần CÓ nối nhưng lệch khớp — bất nhất): ở đây không có khớp
+    # nào cả. Khác `veil` (thông tin bị che, vẫn tồn tại sau tấm che): ở đây không có gì
+    # bị che, liên kết vốn không tồn tại.
+    o = [f'<rect x="14" y="46" width="28" height="36" fill="{p["t3"]}" {TS}/>',
+         f'<line x1="42" y1="64" x2="56" y2="64" {TNF}/>',
+         f'<circle cx="92" cy="64" r="24" fill="none" {TS}/>']
+    o += [f'<circle cx="{cx}" cy="{cy}" r="5" fill="{p["acc"]}" '
+          f'fill-opacity="0.78" {TS}/>'
+          for cx, cy in ((83, 52), (101, 57), (85, 77), (100, 74))]
+    return "".join(o)
+
+
+def t_hollow_chain(p):
+    # Một KHUNG liền vây quanh cả dãy = lời tự nhận "tôi hiểu cơ chế này từ đầu tới
+    # cuối". Bên trong, chỉ mắt đầu và mắt cuối được tô đặc; hai mắt giữa để rỗng.
+    # Nội dung: cái biết được là hai đầu — hiện tượng vào và kết quả ra — còn các mắt
+    # trung gian chưa bao giờ được kiểm, và chính cái khung mới khiến nó đọc thành liền
+    # mạch. Bốn mắt phải CÙNG KÍCH THƯỚC, nếu không hình sẽ đọc thành `spectrum`.
+    # Khác `gap_fill` (chỗ hổng được VÁ bằng vật liệu lạ): ở đây không ai vá, lỗ vẫn
+    # nguyên — chỉ là không ai nhìn vào. Khác `tint_carryover` (lưới 2x2 tô cùng sắc độ,
+    # nói về việc chấm điểm lây lan) vì đây là một CHUỖI có thứ tự trước–sau.
+    o = [f'<rect x="14" y="38" width="100" height="52" rx="6" fill="none" {TS}/>']
+    o += [f'<rect x="{x}" y="52" width="18" height="24" '
+          f'fill="{p["acc"]}" fill-opacity="0.78" {TS}/>' for x in (20, 92)]
+    o += [f'<rect x="{x}" y="52" width="18" height="24" fill="none" {TS}/>'
+          for x in (44, 68)]
+    return "".join(o)
+
+
+def t_streak_projection(p):
+    # Bốn kết quả CÙNG CỠ nằm trên một vạch đáy = chuỗi thắng có thật, và chúng bằng
+    # nhau vì mỗi lần thử là độc lập và giống hệt nhau. Ô thứ năm để RỖNG và CAO HƠN
+    # hẳn: cái được kỳ vọng ở lần tới, vừa chưa tồn tại vừa bị thổi lên quá mức. Nội
+    # dung nằm ở chỗ không có gì trong bốn ô kia sinh ra chiều cao của ô thứ năm.
+    # Khác `owed_reversal` (ô rỗng nằm phía ĐỐI DIỆN một đường mốc — kỳ vọng đảo chiều,
+    # tức gambler's fallacy): ở đây ô rỗng nằm CÙNG phía và cao hơn, tức kỳ vọng nối
+    # dài. Khác `ratchet` (các bậc cao dần và tựa lên nhau — ở đó quan hệ phụ thuộc là
+    # CÓ THẬT): bốn ô ở đây phải bằng nhau tuyệt đối, nếu vẽ cao dần là đã khẳng định
+    # cái mà card phủ định. Khác `echo` (nhạt và thấp dần — khuếch đại một chiều rồi
+    # tắt), vì hot-hand đi lên chứ không tắt.
+    o = [f'<line x1="12" y1="98" x2="116" y2="98" {TNF}/>']
+    o += [f'<rect x="{x}" y="62" width="15" height="34" fill="{p["acc"]}" '
+          f'fill-opacity="0.78" {TS}/>' for x in (14, 34, 54, 74)]
+    o.append(f'<rect x="97" y="38" width="15" height="58" fill="none" {TS}/>')
+    return "".join(o)
+
+
+def t_steep_then_flat(p):
+    # Năm cột trên một đường mốc, nhưng mức SỤT giữa cột 1 và cột 2 lớn hơn tổng ba
+    # mức sụt còn lại. Nội dung là ĐỘ CONG: giá trị không giảm đều theo khoảng cách —
+    # nó đổ sập ở đoạn gần rồi gần như nằm ngang ở đoạn xa. Chính chỗ "gần như nằm
+    # ngang" giải thích được nghịch lý đảo chiều ưu tiên: dịch cả hai mốc ra xa thì
+    # chênh lệch gần như biến mất, nên lựa chọn lật ngược.
+    # Không dùng ramp sắc độ: thông điệp nằm ở chiều cao, thêm biến thứ hai sẽ làm
+    # loãng. Khác `depletion` (có vạch mốc "mức đầy" ở trên và các cột tụt gần như ĐỀU
+    # nhau — mất mát do sử dụng): ở đây không có mức đầy nào bị rút, và nhịp sụt là
+    # không đều một cách có chủ ý. Khác `spectrum` (dải tròn nhạt dần, tăng/giảm ĐỀU).
+    o = [f'<line x1="12" y1="102" x2="116" y2="102" {TNF}/>']
+    o += [f'<rect x="{x}" y="{102-h}" width="16" height="{h}" fill="{p["acc"]}" '
+          f'fill-opacity="0.72" {TS}/>'
+          for x, h in ((16, 64), (38, 27), (60, 18), (82, 14), (104, 12))]
+    return "".join(o)
+
+
 CONCEPT_OBJECTS = dict(effort_price=t_effort_price, overclaim=t_overclaim,
                        owed_reversal=t_owed_reversal, self_built=t_self_built,
                        proxy_inflates=t_proxy_inflates, one_for_all=t_one_for_all,
@@ -944,7 +1065,14 @@ CONCEPT_OBJECTS = dict(effort_price=t_effort_price, overclaim=t_overclaim,
                        granularity=t_granularity, cue_lock=t_cue_lock,
                        depletion=t_depletion, foil=t_foil, latch=t_latch,
                        dilution=t_dilution, reference_kink=t_reference_kink,
-                       juxtaposition=t_juxtaposition, rosy_tilt=t_rosy_tilt)
+                       juxtaposition=t_juxtaposition, rosy_tilt=t_rosy_tilt,
+                       setpoint_return=t_setpoint_return,
+                       retrofit_path=t_retrofit_path,
+                       asymmetric_probe=t_asymmetric_probe,
+                       unlinked_control=t_unlinked_control,
+                       hollow_chain=t_hollow_chain,
+                       streak_projection=t_streak_projection,
+                       steep_then_flat=t_steep_then_flat)
 
 # Quan hệ mà mỗi concept object biểu đạt — dùng khi chẩn đoán metaphor cho card.
 CONCEPT_MEANING = {
@@ -1009,10 +1137,221 @@ CONCEPT_MEANING = {
                            "đánh giá cao hơn thật, phía kia thấp hơn thật",
     "observed_lift": "một dãy đều nhau, riêng phần nằm trong phạm vi được quan sát thì cao "
                      "hẳn lên — mức đo đổi vì bị nhìn, không vì điều kiện đổi",
-
+    "setpoint_return": "hai độ lệch ngược chiều quanh một mức nền, cả hai đều dốc lên rồi "
+                       "thoải về đúng mức nền — biến cố hết tác dụng chứ không bị xoá",
+    "retrofit_path": "nhiều kết cục khả dĩ cùng cỡ, chỉ cái đã xảy ra được tô đặc và nối vào "
+                     "một đường liền về điểm đầu — đường chỉ vẽ được sau khi đã biết",
+    "asymmetric_probe": "hai chủ thể y hệt nhau, nhưng mũi thăm dò một bên cắm sâu hơn hẳn "
+                        "bên kia — chênh lệch nằm ở độ sâu tự nhận, không ở thực tế",
+    "unlinked_control": "một mấu nối chỉ đúng hướng vào vùng kết quả ngẫu nhiên nhưng không "
+                        "có gì băng qua khoảng trống — liên kết vốn không tồn tại",
+    "hollow_chain": "một khung liền vây quanh cả chuỗi nhưng chỉ hai mắt đầu–cuối được tô, "
+                    "các mắt giữa để rỗng — cái khung khiến nó đọc thành liền mạch",
+    "streak_projection": "một chuỗi kết quả bằng nhau và một ô rỗng CÙNG phía nhưng cao hơn "
+                         "hẳn — kỳ vọng nối dài chuỗi, mà không gì trong chuỗi sinh ra nó",
+    "steep_then_flat": "mức sụt ở đoạn gần lớn hơn tổng các mức sụt còn lại, rồi gần như nằm "
+                       "ngang ở đoạn xa — độ cong, không phải độ giảm",
 }
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS)
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-09-16 — 9 concept object mới.
+# Lý do phải mở thêm nhiều: xlsx gán 9/10 card của batch này là `branching`
+# (-> divergence) và 1 là `nesting`. Không card nào là "một điểm rẽ nhiều nhánh".
+# Sau khi chẩn đoán lại theo `back`, các quan hệ cần vẽ (tự sinh nhưng gán ra
+# ngoài · rò rỉ tín hiệu qua một ranh giới · ngoại suy vượt dữ liệu · chỉ đếm một
+# ô của bảng 2x2 · tất cả đều trên mức trung bình · lặp lại bản sao rỗng · tấm đệm
+# không được tính · dự báo phóng đại trên CẢ hai trục · sắc độ nhóm sơn lên cá thể)
+# đều không có trong 62 hình sẵn có, và các hình gần nghĩa nhất (locus_flip, veil,
+# overclaim, echo, base_blind, one_for_all) đã kín cả hai hue.
+# --------------------------------------------------------------------------
+
+
+def t_outward_credit(p):
+    # Một khối = bản thân, và chấm ĐẶC nằm BÊN TRONG nó: cảm giác/lựa chọn thực sự
+    # do chính mình sinh ra. Mối nối chạy LÊN TRÊN tới một vòng RỖNG = tác nhân bên
+    # ngoài được ghi công. Nội dung nằm ở sự lệch pha giữa hai chỗ: chỗ đặc là nguồn
+    # thật, chỗ rỗng là nơi nhận công.
+    # Bố cục DỌC là có chủ ý — `locus_flip` (hai khung vuông cạnh nhau, chấm trong /
+    # chấm ngoài) nói cùng một hành vi được quy nguồn vào trong hay ra ngoài; ở đây
+    # nguồn đã xác định là bên trong, và cái được thêm vào là một tác nhân KHÔNG CÓ
+    # THẬT. Khác `unlinked_control` (khoảng trống không ai băng qua): ở đây mối nối
+    # có thật, chỉ có phía nhận là rỗng.
+    # Vòng rỗng đặt CHÉO lên góc trên-phải, không đặt thẳng trục: bản dựng đầu để nó
+    # ngay trên đỉnh khối và nối bằng một đoạn dọc — ở khổ lớn hình đó đọc thành cái
+    # kẹo mút / một dáng người có đầu, tức vật thể nhận dạng được (vi phạm Step 6).
+    return (f'<rect x="16" y="58" width="62" height="48" fill="{p["t1"]}" {TS}/>'
+            f'<circle cx="47" cy="82" r="13" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<line x1="70" y1="62" x2="88" y2="44" {TNF}/>'
+            f'<circle cx="99" cy="33" r="16" fill="none" {TS}/>')
+
+
+def t_signal_leak(p):
+    # Trái: khối tô ĐẶC = cường độ nội tâm cảm nhận được, đầy. Đường dọc giữa khung
+    # = ranh giới trong–ngoài (da mặt, giọng nói). Phải: khung RỖNG lớn = lượng mà ta
+    # tin là người khác đọc được, với một chấm nhỏ ở giữa = lượng thực sự lọt ra.
+    # Nội dung là khoảng rỗng giữa chấm nhỏ và khung lớn, và nó nằm ở PHÍA BÊN KIA
+    # một ranh giới — đó là thứ phân biệt card này với overclaim thuần tuý.
+    # Khác `veil` (thông tin bị che khỏi NGƯỜI KHÁC nhìn vào): ở đây không ai che gì,
+    # vấn đề là ta ước lượng sai độ trong suốt của chính mình. Khác `over_scaled_forecast`
+    # (không có ranh giới, và phần thật nằm ở GÓC vì lệch trên cả hai trục).
+    return (f'<rect x="12" y="34" width="34" height="60" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>'
+            f'<line x1="56" y1="20" x2="56" y2="108" {TNF}/>'
+            f'<rect x="68" y="34" width="46" height="60" fill="none" {TS}/>'
+            f'<circle cx="91" cy="64" r="7" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>')
+
+
+def t_fitted_overreach(p):
+    # Năm điểm nằm trên một đường THẲNG HOÀN HẢO — độ mạch lạc của dữ liệu, chính là
+    # thứ sinh ra cảm giác tự tin. Đường khớp qua chúng KHÔNG dừng ở điểm cuối mà chạy
+    # tiếp tới mép khung, và đoạn chạy tiếp đó không có điểm nào bên dưới. Nội dung:
+    # sự tự tin kéo dài ra ngoài phạm vi mà mẫu hình bảo chứng, và nó tự tin ĐƯỢC chính
+    # vì mẫu hình quá gọn.
+    # Các điểm phải thẳng tuyệt đối — vẽ lệch một chút là mất luận điểm "dễ kể thành
+    # câu chuyện". Khác `regression_crossing` (hai đường cắt nhau, độ lệch đổi dấu) và
+    # khác `ratchet` (các bậc rời, bậc sau tựa bậc trước).
+    # Đường khớp bắt đầu ĐÚNG ở điểm đầu tiên và chỉ kéo dài về PHÍA TRƯỚC. Bản dựng
+    # đầu cho nó thò ra cả hai đầu, làm đoạn thừa phía sau đọc thành nhiễu và loãng
+    # mất luận điểm (chỉ đoạn vượt quá điểm cuối mới là phần không có dữ liệu đỡ).
+    # Điểm vẽ SAU đường để đường không cắt ngang qua giữa chấm.
+    o = [f'<line x1="20" y1="96" x2="118" y2="20" {TNF}/>']
+    o += [f'<circle cx="{x}" cy="{y}" r="6" fill="{p["acc"]}" '
+          f'fill-opacity="0.82" {TS}/>'
+          for x, y in ((20, 96), (38, 82), (56, 69), (74, 55), (92, 42))]
+    return "".join(o)
+
+
+def t_one_cell_counted(p):
+    # Bảng 2x2 đủ bốn ô, bốn ô BẰNG NHAU vì cả bốn đều xảy ra thật. Chỉ ô "có X và có
+    # Y" được tô; ba ô còn lại để rỗng vì chưa bao giờ được đếm. Hai vạch đậm ở mép
+    # trên và mép trái đánh dấu đúng hàng/cột đã được chú ý.
+    # Nội dung nằm ở BA ô rỗng: mối liên hệ chỉ tồn tại khi bỏ qua chúng — đúng phần
+    # `strategy` của card ("đếm cả những lần X xảy ra mà KHÔNG có Y").
+    # Khác `tint_carryover` (lưới 2x2 tô CÙNG sắc độ cả bốn ô — nói về chấm điểm lây
+    # lan) và khác `odd_one_out` (một DÃY đồng nhất với một phần tử lệch).
+    o = [f'<rect x="{x}" y="{y}" width="40" height="40" fill="none" {TS}/>'
+         for x, y in ((20, 24), (70, 24), (20, 74), (70, 74))]
+    o.append(f'<rect x="20" y="24" width="40" height="40" fill="{p["acc"]}" '
+             f'fill-opacity="0.82" {TS}/>')
+    # Bản dựng đầu có thêm hai vạch đánh dấu hàng/cột đã được chú ý; ở khổ lớn chúng
+    # đọc thành vệt thừa chứ không thành nhãn, nên bỏ. Lưới 2x2 với ĐÚNG một ô được
+    # tô đã là chữ ký riêng — không hình nào khác trong registry có dạng này.
+    return "".join(o)
+
+
+def t_all_above_median(p):
+    # Một đường mốc = mức trung bình. TẤT CẢ các chấm đều nằm phía trên nó, và nửa
+    # dưới để trống hoàn toàn. Nội dung là chỗ trống đó: nếu mọi người đều tự chấm
+    # mình trên trung bình thì phân bố này không thể tồn tại — bất khả về mặt thống kê
+    # chứ không phải chỉ là "hơi lạc quan".
+    # Chiều cao các chấm phải KHÁC nhau (người ta không tự cho mình bằng nhau), nhưng
+    # không chấm nào được chạm hay vượt xuống dưới đường mốc.
+    # Khác `salience_pop` (lưới 9 chấm, vài chấm được tô — nói về độ nhìn thấy) và
+    # khác `owed_reversal` (dãy ô một phía + MỘT ô rỗng phía đối diện).
+    o = [f'<line x1="12" y1="76" x2="116" y2="76" {TNF}/>']
+    o += [f'<circle cx="{x}" cy="{y}" r="8" fill="{p["acc"]}" '
+          f'fill-opacity="0.80" {TS}/>'
+          for x, y in ((20, 56), (42, 40), (64, 54), (86, 38), (108, 50))]
+    return "".join(o)
+
+
+def t_stacked_copies(p):
+    # Ba bản sao Y HỆT NHAU về kích thước và sắc độ, lệch nhau một quãng đều. Mỗi bản
+    # tô rất nhạt — tự nó không mang thêm bằng chứng nào. Chỗ cả ba chồng lên nhau thì
+    # đậm hẳn: cảm giác "đúng" sinh ra từ SỐ LẦN gặp lại, không từ nội dung của bất kỳ
+    # lần nào. Ba hình bắt buộc phải cùng cỡ; vẽ to dần là đã khẳng định có thêm thông
+    # tin, tức phủ định đúng điểm của card.
+    # Khác `echo` (nhạt và thấp dần — khuếch đại một chiều rồi tắt) và khác
+    # `consensus_merge` (các vòng nhập thành một khối + một phần tử bị bỏ rỗng ngoài
+    # rìa, nói về áp lực nhóm chứ không về sự lặp lại).
+    return "".join(f'<rect x="{x}" y="{x}" width="56" height="56" fill="{p["acc"]}" '
+                   f'fill-opacity="0.30" {TS}/>' for x in (20, 36, 52))
+
+
+def t_unseen_cushion(p):
+    # Khối đặc ở trên = cú sốc đang rơi. Dải RỖNG ở giữa = cơ chế đối phó/hợp lý hoá,
+    # có thật và sẽ đỡ lấy cú rơi, nhưng vẽ rỗng vì nó không có mặt trong dự báo. Đường
+    # dưới cùng = mức mà ta dự đoán mình sẽ chạm tới. Nội dung là khoảng cách giữa đáy
+    # dải đệm và đường đó: phần dự báo sai, đúng bằng phần bị bỏ quên.
+    # Khác `threshold` (vượt mốc thì đổi trạng thái) và khác `latch` (bức tường công
+    # sức chặn việc ĐỔI): ở đây không có gì bị chặn, chỉ có một lực đỡ không được tính.
+    # Khác `setpoint_return` (hedonic-treadmill, mint) vốn vẽ đường hồi về mức nền —
+    # ở đó sự hồi phục được vẽ ra, còn ở đây cái phải thấy là nó bị BỎ QUA.
+    return (f'<rect x="44" y="18" width="40" height="30" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>'
+            f'<rect x="20" y="62" width="88" height="20" fill="none" {TS}/>'
+            f'<line x1="14" y1="104" x2="114" y2="104" {TNF}/>')
+
+
+def t_over_scaled_forecast(p):
+    # Khung RỖNG lớn = cảm xúc được dự báo, phóng đại trên CẢ hai trục: rộng (kéo dài
+    # bao lâu) và cao (mạnh tới đâu). Khối đặc nhỏ nằm ở GÓC, chung đúng góc gốc với
+    # khung = trải nghiệm thật. Chung gốc là bắt buộc: hai thứ xuất phát từ cùng một
+    # sự kiện, chỉ khác nhau ở quy mô được gán.
+    # Khác `overclaim` (phần đặc trải HẾT bề ngang ở đáy — chỉ lệch trên MỘT trục,
+    # dùng cho Dunning-Kruger và false-consensus): ở đây lệch trên hai trục vì card
+    # nói rõ cả "length" lẫn "intensity". Khác `signal_leak` (có ranh giới dọc và chấm
+    # nằm giữa khung, nói về cái lọt ra ngoài chứ không về quy mô dự báo).
+    return (f'<rect x="16" y="22" width="96" height="84" fill="none" {TS}/>'
+            f'<rect x="16" y="80" width="30" height="26" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>')
+
+
+def t_group_tint_applied(p):
+    # Trái: một cụm phần tử nhỏ, tất cả cùng một sắc độ = phẩm chất được gán cho cả
+    # nhóm. Phải: MỘT phần tử lớn hơn, tô CHÍNH sắc độ đó, nhưng ruột là một ô rỗng —
+    # không có quan sát nào về riêng người này. Mối nối chạy từ cụm sang cá thể để chỉ
+    # rõ sắc độ đến từ đâu.
+    # Đây là chiều NGƯỢC của `one_for_all` (mint, group-attribution-error): ở đó một cá
+    # thể được quan sát rồi sơn lên cả vùng; ở đây cả vùng chưa chắc được quan sát mà
+    # sắc độ của nó vẫn chảy ngược vào một cá thể. Khác `halo_spill` (sắc độ nhạt dần
+    # khi lan): ở đây sắc độ sang tới cá thể KHÔNG nhạt đi chút nào.
+    o = [f'<rect x="{x}" y="{y}" width="18" height="18" fill="{p["acc"]}" '
+         f'fill-opacity="0.55" {TS}/>'
+         for x, y in ((14, 32), (36, 32), (14, 56), (36, 56))]
+    o.append(f'<line x1="58" y1="51" x2="76" y2="51" {TNF}/>')
+    o.append(f'<rect x="78" y="30" width="36" height="42" fill="{p["acc"]}" '
+             f'fill-opacity="0.55" {TS}/>')
+    o.append(f'<rect x="88" y="40" width="16" height="22" fill="#FFFFFF" {TS}/>')
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20260916 = dict(
+    outward_credit=t_outward_credit, signal_leak=t_signal_leak,
+    fitted_overreach=t_fitted_overreach, one_cell_counted=t_one_cell_counted,
+    all_above_median=t_all_above_median, stacked_copies=t_stacked_copies,
+    unseen_cushion=t_unseen_cushion,
+    over_scaled_forecast=t_over_scaled_forecast,
+    group_tint_applied=t_group_tint_applied,
+)
+
+CONCEPT_MEANING.update({
+    "outward_credit": "cảm giác sinh ra bên trong nhưng công được ghi cho một tác nhân "
+                      "bên ngoài vốn rỗng",
+    "signal_leak": "nội tâm đầy, phần lọt qua ranh giới thì nhỏ xíu, nhưng phạm vi tự "
+                   "cho là người khác đọc được lại lớn",
+    "fitted_overreach": "các điểm thẳng hàng hoàn hảo và đường khớp chạy tiếp ra ngoài "
+                        "vùng có dữ liệu — mạch lạc sinh ra tự tin, không sinh ra độ chính xác",
+    "one_cell_counted": "bảng 2x2 đủ bốn ô nhưng chỉ ô đồng xuất hiện được tô — liên hệ "
+                        "chỉ tồn tại khi ba ô kia không được đếm",
+    "all_above_median": "mọi phần tử đều nằm trên đường trung bình và nửa dưới bỏ trống — "
+                        "một phân bố không thể tồn tại",
+    "stacked_copies": "nhiều bản sao y hệt, mỗi bản rỗng như nhau, chỗ chồng lên nhau thì "
+                      "đậm — độ tin đến từ số lần gặp lại",
+    "unseen_cushion": "một lực đỡ có thật nằm giữa cú rơi và mức dự đoán, nhưng vẽ rỗng vì "
+                      "nó không có mặt trong dự báo",
+    "over_scaled_forecast": "khung dự báo phóng đại trên cả hai trục (kéo dài bao lâu và "
+                            "mạnh tới đâu) so với khối trải nghiệm thật chung gốc",
+    "group_tint_applied": "sắc độ của cả nhóm chảy nguyên vẹn vào một cá thể mà ruột cá thể "
+                          "đó không có quan sát nào",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260916)
 
 
 def thumb(name, hue="mint"):

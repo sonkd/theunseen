@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [out-group-homogeneity-bias, implicit-stereotypes, ultimate-attribution-error, stereotyping]
 refs: ['https://en.wikipedia.org/wiki/In-group_favoritism', 'https://thedecisionlab.com/biases/in-group-bias', 'https://www.simplypsychology.org/social-identity-theory.html', 'https://www.themantic-education.com/ibpsych/2016/10/25/key-studies-minimal-group-paradigm-sit-tajfel-et-al/']
 strategy: 'Khi thấy mình tin tưởng hoặc đánh giá cao một đề xuất chỉ vì nó đến từ "người của mình", thử hỏi: nếu đúng nội dung này đến từ một team/nhóm khác, mình có đánh giá y hệt không?'
+image: /assets/stuff/in-group-bias.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [affective-forecasting, immune-neglect, projection-bias, optimism-bias]
 refs: ['https://en.wikipedia.org/wiki/Impact_bias', 'https://thedecisionlab.com/biases/impact-bias', 'https://doi.org/10.1111/j.0963-7214.2005.00355.x', 'https://web.archive.org/web/20160517091130/http://www.danielgilbert.com/Gilbert%20et%20al%20%28IMMUNE%20NEGLECT%29.pdf']
 strategy: 'Trước khi ra quyết định lớn vì tưởng tượng cảm xúc tương lai (mua sắm, nghỉ việc, chia tay), tự hỏi: những chuyện khác trong đời mình có tiếp tục xảy ra song song không, và lần trước gặp cú sốc tương tự mình đã hồi phục nhanh hơn dự đoán bao nhiêu?'
+image: /assets/stuff/impact-bias.png
 published: true
 ---
 
