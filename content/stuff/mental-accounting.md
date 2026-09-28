@@ -7,6 +7,7 @@ categories: [bias]
 links: [loss-aversion, sunk-cost-fallacy, money-illusion, denomination-effect]
 refs: ['https://en.wikipedia.org/wiki/Mental_accounting']
 strategy: "Trước khi chi tiêu 'tiền lạ' (thưởng, hoàn tiền, trúng thưởng), thử tưởng tượng đó là tiền lương thông thường, để áp cùng một mức độ cân nhắc như mọi khoản chi khác."
+image: /assets/stuff/mental-accounting.png
 published: true
 ---
 

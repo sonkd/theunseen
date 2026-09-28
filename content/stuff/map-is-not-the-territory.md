@@ -7,6 +7,7 @@ categories: [theory, mental-models]
 links: [sapir-whorf-korzybski-hypothesis, framing-effect, curse-of-knowledge, essentialism]
 refs: ['https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation', 'https://en.wikipedia.org/wiki/Alfred_Korzybski']
 strategy: 'Khi xây dựng persona, mô hình tài chính, hay quy trình sản phẩm, định kỳ tự hỏi: chi tiết nào của thực tế đã bị bản đồ này bỏ sót — và khoảng cách đó có đang dẫn tới quyết định sai không?'
+image: /assets/stuff/map-is-not-the-territory.png
 published: true
 ---
 

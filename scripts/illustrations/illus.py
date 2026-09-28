@@ -1523,6 +1523,208 @@ CONCEPT_MEANING.update({
 THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260916)
 
 
+# --------------------------------------------------------------------------
+# batch 2026-09-18 — mười card L/M. xlsx gán 6/10 là `hierarchy`; không card nào
+# trong batch có quan hệ cha–con. Mọi hình sát nghĩa sẵn có đều đã kín cả hai hue
+# (chi tiết trong OVERRIDES của render_thumbs.py), nên viết mười hình mới.
+# --------------------------------------------------------------------------
+
+def t_rank_reversal(p):
+    # Đường dọc chia hai CHẾ ĐỘ đánh giá. Cùng một cặp (vòng nhỏ / vòng lớn), cỡ giữ
+    # y nguyên ở cả hai bên. Chiều cao = mức được đánh giá; tô đặc = bên thắng.
+    # Trái (đánh giá riêng lẻ): vòng NHỎ ở trên và đặc. Phải (so cạnh nhau): vòng LỚN
+    # ở trên và đặc. Thứ hạng lật hẳn dù không có gì về hai lựa chọn thay đổi.
+    # Khác `juxtaposition` (distinction-bias amber / empathy-gap mint) vốn giữ nguyên
+    # chiều cao và chỉ đổi KHOẢNG CÁCH — ở đó cái hiện ra là chênh lệch, không phải
+    # sự đảo ngôi. Khác `contrast` (hai khối khác chất, không có ai hơn ai).
+    return (f'<line x1="64" y1="16" x2="64" y2="112" {TNF}/>'
+            f'<circle cx="34" cy="38" r="12" fill="{p["acc"]}" fill-opacity="0.82" {TS}/>'
+            f'<circle cx="34" cy="88" r="19" fill="none" {TS}/>'
+            f'<circle cx="95" cy="44" r="19" fill="{p["acc"]}" fill-opacity="0.82" {TS}/>'
+            f'<circle cx="95" cy="95" r="12" fill="none" {TS}/>')
+
+
+def t_fewer_louder(p):
+    # Hàng trên: NĂM thanh bằng nhau = bộ chi tiết của bản gốc. Hàng dưới: chỉ còn HAI
+    # thanh, và thanh cao nhất vượt hẳn mọi thanh ở hàng trên. Hai chiều biến đổi cùng
+    # lúc trong một lần kể lại: số chi tiết rụng đi (leveling) và vài chi tiết bị đẩy
+    # cao lên (sharpening). Thiếu một trong hai thì mất nửa luận điểm.
+    # Khác `asymmetric_fade` (hai dãy CÙNG số ô, chỉ sắc độ phai khác nhau) và khác
+    # `foreground_swell` (một dãy đều liên tục ở CẢ HAI phía khối lớn — ở đó dãy nền
+    # không hề rụng bớt). Khác `depletion`: ở đây có thứ CAO LÊN, không chỉ vơi đi.
+    # Khe giữa hai hàng phải ≥14px: bản đầu để thanh cao bắt đầu ở y=48 trong khi hàng
+    # trên kết ở y=44, ở khổ 64px hai hàng dính thành một cụm và mất hẳn nhịp "kể lại".
+    o = [f'<rect x="{x}" y="18" width="14" height="20" fill="{p["t2"]}" {TS}/>'
+         for x in (14, 34, 54, 74, 94)]
+    o.append(f'<rect x="30" y="82" width="24" height="30" fill="{p["t2"]}" {TS}/>')
+    o.append(f'<rect x="66" y="54" width="24" height="58" fill="{p["acc"]}" '
+             f'fill-opacity="0.80" {TS}/>')
+    return "".join(o)
+
+
+def t_encoding_depth(p):
+    # Đường ngang trên cùng = mặt tiếp nhận. BA ô RỖNG y hệt nhau nằm ngay dưới mặt,
+    # không ô nào đi sâu hơn ô nào: đọc lại ba lần vẫn là ba lần ở cùng một tầng.
+    # Một khối ĐẶC duy nhất bên phải đâm xuống hết khung. Biến nhìn thấy được là SỐ
+    # LẦN (3) đối lại ĐỘ SÂU (1) — đúng điều card phủ định: lặp lại không mua được
+    # độ sâu.
+    # Khác `flagged_transient` cùng batch (hai vật cùng cỡ, khác nhau ở dấu hiệu, không
+    # có trục sâu nào) và khác `layers` (các đĩa dẹt xếp chồng, không có gì đâm xuyên).
+    o = [f'<line x1="14" y1="34" x2="114" y2="34" {TNF}/>']
+    o += [f'<rect x="{x}" y="34" width="16" height="16" fill="none" {TS}/>'
+          for x in (16, 38, 60)]
+    o.append(f'<rect x="88" y="34" width="24" height="72" fill="{p["acc"]}" '
+             f'fill-opacity="0.82" {TS}/>')
+    return "".join(o)
+
+
+def t_age_forecast(p):
+    # Ba hàng, hàng nào cũng gồm một đoạn ĐẶC (tuổi đã sống, quan sát được) nối tiếp
+    # một đoạn RỖNG DÀI ĐÚNG BẰNG nó (tuổi còn lại, chưa xảy ra). Càng xuống dưới cặp
+    # càng dài, nhưng tỉ lệ 1:1 giữa hai nửa không đổi — đó chính là phát biểu của
+    # Lindy: kỳ vọng sống thêm tỉ lệ thuận với đã sống được bao lâu.
+    # Nửa rỗng bắt buộc bằng nửa đặc; vẽ lệch tỉ lệ là nói sai định luật. Khác
+    # `ratchet` (bậc thang tựa lên nhau, không có phần chưa xảy ra) và khác
+    # `streak_projection` (dãy dọc trên một vạch đáy + đúng MỘT ô rỗng vượt cao).
+    o = []
+    for y, w in ((26, 20), (58, 34), (90, 46)):
+        o.append(f'<rect x="14" y="{y}" width="{w}" height="22" fill="{p["acc"]}" '
+                 f'fill-opacity="0.78" {TS}/>')
+        o.append(f'<rect x="{14+w}" y="{y}" width="{w}" height="22" fill="none" {TS}/>')
+    return "".join(o)
+
+
+def t_steeper_below(p):
+    # Một mốc tham chiếu (vạch ngang + gạch dọc ngắn tại gốc). Hai phía cách gốc ĐÚNG
+    # cùng một khoảng — 48px mỗi bên, tức hai lượng bằng nhau. Nhưng vùng phía dưới
+    # (mất) sâu gấp hơn hai lần vùng phía trên (được), và dốc hẳn ngay sát gốc.
+    # Khoảng cách bằng nhau là điều kiện để đọc ra bất đối xứng; lệch khoảng thì hình
+    # chỉ còn nói "hai thứ khác cỡ".
+    # Khác `reference_kink` (endowment amber / disposition mint) vốn CỐ Ý cho hai ô
+    # bằng nhau và nói về việc xử lý ngược chiều; ở đây độ lớn cảm nhận mới là nội
+    # dung. Khác `two_frames` (hai khung rời, một mực nước, chỉ khác phía được tô) và
+    # khác `setpoint_return` (hai gò ngược chiều CÙNG cỡ và đều quay về nền).
+    return (f'<line x1="14" y1="64" x2="114" y2="64" {TNF}/>'
+            f'<line x1="64" y1="52" x2="64" y2="76" {TNF}/>'
+            f'<path d="M64,64 Q88,58 112,48 L112,64 Z" fill="{p["t2"]}" {TS}/>'
+            f'<path d="M64,64 Q46,98 16,106 L16,64 Z" fill="{p["acc"]}" '
+            f'fill-opacity="0.72" {TS}/>')
+
+
+def t_holding_capacity(p):
+    # Khung = số chỗ giữ được cùng lúc, và nó có kích thước CỐ ĐỊNH. Ba ô đặc nằm gọn
+    # bên trong. Hai ô cùng cỡ nằm HẲN ngoài khung, vẽ rỗng: chúng vẫn tồn tại, chỉ là
+    # không được giữ. Giới hạn nằm ở cái khung, không ở số lượng thứ đang chờ.
+    # Các ô trong khung phải có lề với mép khung — dính mép thì hình đọc thành
+    # `negative_space` (vùng phải tránh, áp sát mép). Khác `gate` (khe hẹp, có dòng
+    # chảy xuyên qua: ở đó việc sàng lọc đang diễn ra, còn đây là một sức chứa tĩnh).
+    o = [f'<rect x="14" y="36" width="62" height="56" fill="none" {TS}/>']
+    o += [f'<rect x="{x}" y="57" width="14" height="14" fill="{p["acc"]}" '
+          f'fill-opacity="0.82" {TS}/>' for x in (20, 38, 56)]
+    o += [f'<rect x="88" y="{y}" width="14" height="14" fill="none" {TS}/>'
+          for y in (48, 72)]
+    return "".join(o)
+
+
+def t_map_remainder(p):
+    # Đường bao MÉO, vẽ rỗng = lãnh thổ, với đủ chỗ lồi chỗ lõm không quy về hình học
+    # đơn giản nào. Bên trong là một tứ giác ĐẶC, bốn cạnh thẳng, nhỏ hơn hẳn = bản đồ.
+    # Các múi rỗng giữa hai đường bao là phần thực tại bị lược đi: có mặt trong hình
+    # nhưng không được tô, và không bao giờ khép lại được.
+    # Bản đồ bắt buộc là đa giác CẠNH THẲNG nằm trong một bao CONG méo — cùng chất
+    # liệu thì hình đọc thành `nested_scope` (các vòng đồng tâm, quan hệ bao hàm thuần
+    # tuý). Khác `forced_fit` (hình bị khung CẮT phẳng — ở đó lãnh thổ bị bẻ; ở đây
+    # lãnh thổ nguyên vẹn, chỉ có bản đồ là thiếu).
+    return (f'<path d="M62,14 C90,12 114,34 108,58 C102,82 116,98 92,110 '
+            f'C68,120 34,110 22,88 C10,66 18,32 62,14 Z" fill="none" {TS}/>'
+            f'<path d="M48,40 L92,50 L84,88 L42,80 Z" fill="{p["acc"]}" '
+            f'fill-opacity="0.72" {TS}/>')
+
+
+def t_split_identity(p):
+    # MỘT khối đặc liền mạch ở dưới = đối tượng, và nó không bị chia ở bất cứ đâu.
+    # Hai ô rỗng phía trên = hai tên gọi, mỗi ô có một cuống nối xuống đúng khối đó.
+    # Đường dọc giữa hai tên DỪNG LẠI trước khi tới khối: sự chia tách chỉ tồn tại ở
+    # tầng tên gọi và tầng niềm tin, không tồn tại ở tầng đối tượng.
+    # Đường dọc bắt buộc không chạm khối — chạm vào là hình đọc thành `latch` (bức
+    # tường đặc chia hẳn hai phía) hoặc thành `fracture` (khối thật sự bị tách).
+    # Khác `mirror` (cùng một sự việc soi qua hai khung quy kết, taken cả hai hue):
+    # ở đó hai ảnh đều là ảnh; ở đây một bên là tên, một bên là vật.
+    o = [f'<rect x="20" y="74" width="88" height="32" rx="4" fill="{p["acc"]}" '
+         f'fill-opacity="0.72" {TS}/>']
+    o += [f'<rect x="{x}" y="24" width="30" height="30" fill="none" {TS}/>'
+          for x in (24, 74)]
+    o += [f'<line x1="{x}" y1="54" x2="{x}" y2="74" {TNF}/>' for x in (39, 89)]
+    o.append(f'<line x1="64" y1="20" x2="64" y2="66" {TNF}/>')
+    return "".join(o)
+
+
+def t_flagged_transient(p):
+    # Hai vật CÙNG KÍCH THƯỚC. Vật trái nguyên vẹn và được tô đặc = thông tin được
+    # mã hoá sâu. Vật phải khác đúng một điểm: một góc bị vát — dấu "tạm thời" — và vì
+    # có dấu đó nên nó không nhận được một nét mực nào. Cái quyết định không phải nội
+    # dung hay số lần gặp, mà là một phán định gắn ở đầu vào.
+    # Dấu hiệu phải ở mức SILHOUETTE (góc vát 14px, còn ~7px ở khổ hiển thị thật) —
+    # một nhãn nhỏ bên trong sẽ tàng hình ở 64px. Khác `encoding_depth` cùng batch (có
+    # trục sâu và đếm số lần lặp) và khác `cue_lock` (khối nguyên + mảnh khớp nằm rời:
+    # ở đó dữ liệu còn đủ, chỉ thiếu chìa; ở đây dữ liệu chưa từng được ghi).
+    return (f'<rect x="22" y="44" width="40" height="40" fill="{p["acc"]}" '
+            f'fill-opacity="0.82" {TS}/>'
+            f'<path d="M70,44 L96,44 L110,58 L110,84 L70,84 Z" fill="none" {TS}/>')
+
+
+def t_sealed_bins(p):
+    # MỘT dải liền = tổng số tiền, bị chia hết bề ngang thành ba ngăn chạm nhau. Mỗi
+    # ngăn một sắc độ riêng và một bề rộng riêng: tiền trong ngăn này không còn đọc
+    # được là cùng loại với tiền ngăn kia, dù trên thực tế chúng thay thế nhau hoàn
+    # toàn. Vách ngăn là hai nét trùng tại mép chung — đặc và không đi qua được.
+    # Sắc độ cố ý KHÔNG tăng dần và bề rộng cố ý không đều: xếp tăng dần thì hình đọc
+    # thành `spectrum` (một dải liên tục) chứ không thành các ngăn tách biệt. Không
+    # chừa lề trong khung như `page_structure` — chia hết bề ngang mới là "toàn bộ số
+    # tiền", còn lề sẽ đọc thành bố cục trang.
+    # Ngăn nhạt nhất KHÔNG được nằm giữa: đặt ở giữa thì nó đọc thành khoảng trống chia
+    # đôi dải, tức mất luôn nghĩa "ba ngăn". Thứ tự nhạt–đậm–vừa vừa phá được cả nhịp
+    # tăng dần lẫn cái đọc-thành-khoảng-trống.
+    return (f'<rect x="14" y="40" width="36" height="48" fill="{p["t1"]}" {TS}/>'
+            f'<rect x="50" y="40" width="26" height="48" fill="{p["acc"]}" '
+            f'fill-opacity="0.62" {TS}/>'
+            f'<rect x="76" y="40" width="38" height="48" fill="{p["t3"]}" {TS}/>')
+
+
+CONCEPT_OBJECTS_20260918 = dict(
+    rank_reversal=t_rank_reversal, fewer_louder=t_fewer_louder,
+    encoding_depth=t_encoding_depth, age_forecast=t_age_forecast,
+    steeper_below=t_steeper_below, holding_capacity=t_holding_capacity,
+    map_remainder=t_map_remainder, split_identity=t_split_identity,
+    flagged_transient=t_flagged_transient, sealed_bins=t_sealed_bins,
+)
+
+CONCEPT_MEANING.update({
+    "rank_reversal": "cùng một cặp, cỡ không đổi, nhưng bên nào được tô đặc và bên nào "
+                     "ở trên thì lật ngược khi chuyển từ đánh giá riêng lẻ sang so cạnh nhau",
+    "fewer_louder": "hàng sau ít phần tử hơn hàng trước nhưng phần tử cao nhất lại vượt "
+                    "mọi phần tử hàng trước — vừa rụng chi tiết vừa phóng đại chi tiết",
+    "encoding_depth": "ba ô rỗng nằm cùng một tầng nông đối lại một khối đặc đâm sâu — "
+                      "số lần lặp lại không mua được độ sâu xử lý",
+    "age_forecast": "ba cặp dài dần, cặp nào cũng gồm một nửa đặc đã sống và một nửa rỗng "
+                    "dài đúng bằng nó — sống thêm tỉ lệ thuận với đã sống",
+    "steeper_below": "hai phía cách mốc đúng cùng một khoảng, nhưng vùng phía mất sâu gấp "
+                     "hơn hai lần vùng phía được",
+    "holding_capacity": "một khung cỡ cố định giữ được ba ô, hai ô cùng cỡ nằm hẳn ngoài "
+                        "khung và vẽ rỗng — vẫn tồn tại, chỉ là không được giữ",
+    "map_remainder": "một đường bao méo vẽ rỗng và một đa giác cạnh thẳng đặc nằm trong nó; "
+                     "các múi rỗng ở giữa là phần thực tại bản đồ lược đi",
+    "split_identity": "một khối liền mạch với hai tên gọi rỗng phía trên, và đường chia giữa "
+                      "hai tên dừng lại trước khi tới khối",
+    "flagged_transient": "hai vật cùng cỡ, vật bị vát một góc thì không nhận nét mực nào — "
+                         "một phán định ở đầu vào quyết định có được ghi hay không",
+    "sealed_bins": "một dải bị chia hết bề ngang thành ba ngăn chạm nhau, mỗi ngăn một sắc "
+                   "độ và một bề rộng riêng — cùng một nguồn lực bị đọc thành ba loại",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260918)
+
+
 def thumb(name, hue="mint"):
     """SVG 128x128, nền paper (trắng), tint ladder theo hue của card."""
     p = _pal(hue, paper_bg=True)

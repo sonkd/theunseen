@@ -7,6 +7,7 @@ categories: [memory]
 links: [cue-dependent-forgetting, misinformation-effect, misattribution-of-memory]
 refs: ['https://en.wikipedia.org/wiki/Memory_inhibition']
 strategy: "Nếu cần nhớ lâu dài, đừng chỉ 'tra rồi dùng' — ghi chú tay hoặc tóm tắt lại bằng lời của mình để buộc não mã hóa sâu thay vì coi thông tin là tạm thời, có thể tra lại bất cứ lúc nào."
+image: /assets/stuff/memory-inhibition.png
 published: true
 ---
 
