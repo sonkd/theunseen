@@ -7,6 +7,7 @@ categories: [mental-models, social]
 links: [attribute-substitution, dunning-kruger-effect, law-of-the-instrument]
 refs: ['https://en.wikipedia.org/wiki/Law_of_triviality', 'https://fs.blog/bikeshed-effect/']
 strategy: 'Trước cuộc họp quan trọng, timebox thời gian cho từng mục nhỏ và giao hẳn quyền quyết định việc vụn vặt cho một người, để năng lượng cả nhóm dồn vào vấn đề thật sự đáng bàn.'
+image: /assets/stuff/law-of-triviality.png
 published: true
 ---
 

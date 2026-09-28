@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [illusory-superiority, overconfidence-effect, self-serving-bias]
 refs: ['https://en.wikipedia.org/wiki/Lake_Wobegon#The_Lake_Wobegon_effect', 'https://www.nonpartisaneducation.org/Review/Articles/v1n2.htm', 'https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1745-3992.1988.tb00838.x', 'https://pubmed.ncbi.nlm.nih.gov/10474208/']
 strategy: "Trước khi tin vào con số 'trên trung bình' tự báo cáo (đánh giá hiệu suất, khảo sát nội bộ, kỹ năng đầu tư), hỏi: nhóm so sánh có được định nghĩa rõ ràng và độc lập không — nếu ai cũng tự xưng trên trung bình, ít nhất một nửa trong số đó chắc chắn sai."
+image: /assets/stuff/lake-wobegone-effect.png
 published: true
 ---
 

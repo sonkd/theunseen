@@ -9,6 +9,7 @@ refs:
   - 'https://en.wikipedia.org/wiki/Charlie_Munger'
   - 'https://fs.blog/2013/03/inversion/'
 strategy: "Trước khi lập kế hoạch, viết ra 3 điều tồi tệ nhất có thể xảy ra và tránh chúng trước."
+image: /assets/stuff/inversion.png
 published: true
 ---
 Inversion là chiến lược suy nghĩ ngược: thay vì hỏi "làm sao để thành công?", ta hỏi "làm sao để không thất bại?". Đây là cách Charlie Munger dùng để giải quyết vấn đề phức tạp, đặc biệt khi rủi ro và những bẫy nhận thức lớn hơn chính cơ hội.

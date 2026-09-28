@@ -666,6 +666,79 @@ HUE_OVERRIDES = {
 }
 
 
+OVERRIDES.update({
+    # ---- batch #9 (2026-09-17) — xlsx gán 9/10 card là `hierarchy`, tức gần như toàn
+    # batch sẽ nhận đúng một hình. Chẩn đoán lại từ `back` của từng card. Chín hình
+    # dưới đây là hình MỚI viết cho batch này: các hình sát nghĩa sẵn có đều đã bị
+    # card khác chiếm ở CẢ hai hue, mà dùng hình gần-đúng chính là thứ runbook cảnh báo.
+    "inattentional-blindness": (
+        "unattended_object",
+        "hình mới. `beam` mới là nghĩa gốc (chú ý dồn một điểm) nhưng beam+mint đã là "
+        "attentional-bias và beam+amber đã là change-blindness. Vả lại beam vẽ nón chiếu "
+        "từ một nguồn, còn điểm của card này là vật KHÔNG bị che, không nằm ngoài rìa, "
+        "chỉ đơn giản không nhận được nét mực nào — nên vẽ vòng lớn rỗng cạnh cụm nhỏ "
+        "đặc. `veil` sai hẳn: ở đó có tấm che thật"),
+    "information-bias": (
+        "inert_input",
+        "hình mới. xlsx đoán hierarchy — card không có quan hệ cha–con nào. Quan hệ thật "
+        "là đầu vào tăng mà đầu ra đứng yên, nên hai ô kết quả phải vẽ y hệt nhau ở cùng "
+        "độ cao. `funnel` (nhiều vào ít ra) nói về sàng lọc, `depletion` nói về hao mòn — "
+        "cả hai đều làm cái gì đó THAY ĐỔI, tức phủ định đúng điểm của card"),
+    "insensitivity-to-sample-size": (
+        "spread_by_n",
+        "hình mới. `base_blind` (mẫu số bị nhìn xuyên qua) là họ hàng gần nhất nhưng "
+        "base_blind+mint đã là extension-neglect, và nó nói về tỉ lệ chứ không về phương "
+        "sai. Quan hệ đúng ở đây là ĐỘ VĂNG quanh giá trị thật thay đổi theo cỡ mẫu — "
+        "hàng ít phần tử văng rộng, hàng nhiều phần tử bám sát. Chỉ khác số lượng thôi "
+        "thì thành `granularity`"),
+    "inversion": (
+        "negative_space",
+        "hình mới. `rebound` (bật ngược, kết quả đi ngược ý định) nghe hợp chữ 'đảo "
+        "ngược' nhưng sai nghĩa: inversion là một THỦ PHÁP chủ động, không phải một cú "
+        "phản tác dụng. Vẽ đúng cái card mô tả: chỉ các vùng phải tránh được tô, lời "
+        "giải là khoảng rỗng còn lại và cố ý không vẽ ra"),
+    "just-world-hypothesis": (
+        "deserved_backfill",
+        "hình mới. Điểm đau của card nằm ở chiều SUY NGƯỢC — 'bị phạt thì hẳn là đáng "
+        "đời'. Nên cột kết cục (quan sát được) vẽ đặc, cột phẩm chất (suy ra) vẽ rỗng mà "
+        "khít từng cặp. `cycle` bắt được vế tự củng cố nhưng cả hai hue đều đã dùng và nó "
+        "không cho thấy cái nào có thật cái nào được lấp vào. `mirror` sai: hai cột đây là "
+        "hai thứ khác nhau, không phải một sự việc soi hai lần"),
+    "lake-wobegone-effect": (
+        "all_above_median",
+        "giữ hình có sẵn: 'on average we all think we're above average' đúng là phân bố "
+        "bất khả mà t_all_above_median vẽ ra. Hình này đang dùng cho illusory-superiority "
+        "(mint) — hai card vốn là cùng một hiện tượng nên dùng chung hình là TRUNG THỰC, "
+        "không phải lười; hue amber của xlsx đã đủ tách byte"),
+    "law-of-narrative-gravity": (
+        "narrative_tilt",
+        "hình mới. Chữ 'gravity' trỏ thẳng tới `pull`, nhưng pull+mint là anchoring và "
+        "pull+amber là bandwagon-effect. Quan trọng hơn: pull bóp hẹp KHOẢNG CÁCH (ước "
+        "lượng bị kéo dịch chỗ), còn card này nói sự kiện trung tính bị kéo về mặt DIỄN "
+        "GIẢI — nên giữ nguyên cỡ và khoảng cách, chỉ cho góc nghiêng tăng dần khi lại gần"),
+    "law-of-the-instrument": (
+        "forced_fit",
+        "hình mới. `one_affordance` là card anh em (functional-fixedness) nhưng ở đó vật "
+        "KHÔNG biến dạng — chỉ là các công dụng khác không được nhìn ra. Ở đây chiều ngược "
+        "lại: chính bài toán bị bẻ cho vừa công cụ, nên phải thấy hình tròn bị cắt phẳng "
+        "bốn cạnh theo khung vuông. `gate` sai vì không có gì bị chặn, chỉ có hình bị đổi"),
+    "law-of-triviality": (
+        "inverse_weight",
+        "hình mới. Quan hệ là TỈ LỆ NGHỊCH giữa hai đại lượng đo được (tầm quan trọng ↔ "
+        "thời gian bàn), cần thấy hai cặp bắt chéo nhau quanh một đường mốc. `proportion` "
+        "(phần/tổng) và `foreground_swell` (một phần tử phình to) đều chỉ có MỘT đại "
+        "lượng, và cả hai hue của cả hai hình đều đã dùng"),
+    "learned-helplessness": (
+        "unused_exit",
+        "hình mới. xlsx gán iteration→cycle, mà cycle+mint (abilene-paradox) và "
+        "cycle+amber (confirmation-bias) đều đã dùng. Cycle cũng chỉ kể được vế lặp lại, "
+        "bỏ mất vế quyết định: lối thoát CÓ THẬT và đang mở mà vẫn không được dùng — nên "
+        "tường phải có khoảng hở vẽ rõ và khối đặc nép ở tường đối diện. `unlinked_control` "
+        "là ảnh phản chiếu sai chiều: ở đó tin vào một liên kết không tồn tại, ở đây là "
+        "không tin vào một liên kết có tồn tại"),
+})
+
+
 def read_index():
     wb = openpyxl.load_workbook(XLSX, read_only=True, data_only=True)
     ws = wb["Article Index"]

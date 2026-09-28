@@ -1321,6 +1321,175 @@ def t_group_tint_applied(p):
     return "".join(o)
 
 
+def t_unattended_object(p):
+    # Một vòng LỚN, chiếm gần hết khung, vẽ RỖNG hoàn toàn: vật thể hiện diện đầy đủ
+    # trong tầm mắt, kích thước không thể bỏ sót, nhưng không nhận được một nét mực nào.
+    # Cụm ô nhỏ đặc nằm BÊN TRONG vòng đó = nhiệm vụ đang được đếm. Nội dung nằm ở chỗ
+    # cả hai ở CÙNG một trường nhìn: cái lớn không bị che, không nằm ngoài rìa, nó chỉ
+    # không được chú ý tới.
+    # Khác `beam` (attentional-bias mint / change-blindness amber) vốn vẽ nón sáng từ một
+    # nguồn — ở đó có hướng chiếu; tại đây không có nguồn nào, chỉ có phần được tô và
+    # phần không. Khác `veil` (có tấm che thật) và khác `nested_scope` (nhiều vòng đồng tâm).
+    o = [f'<circle cx="64" cy="64" r="46" fill="none" {TS}/>']
+    o += [f'<rect x="{x}" y="82" width="15" height="15" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>' for x in (40, 58, 76)]
+    return "".join(o)
+
+
+def t_inert_input(p):
+    # Hai cột đầu vào CHÊNH LỆCH hẳn về khối lượng, nhưng hai ô kết quả phía trên thì
+    # y hệt nhau về cỡ VÀ nằm đúng cùng một độ cao. Đường mốc ngang khoá hai ô đó lại
+    # để thấy rõ chúng không hề xê dịch. Nội dung: đổ thêm bao nhiêu thông tin vào cũng
+    # không làm kết luận nhích đi một milimet.
+    # Khác `depletion` (nguồn lực vơi dần) và khác `echo` (dãy nhạt dần): ở đây cái
+    # KHÔNG đổi mới là điểm, nên hai ô kết quả bắt buộc phải vẽ giống hệt nhau.
+    return (f'<line x1="14" y1="32" x2="114" y2="32" {TNF}/>'
+            f'<rect x="28" y="24" width="17" height="17" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="83" y="24" width="17" height="17" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="24" y="72" width="25" height="36" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="79" y="52" width="25" height="56" fill="{p["t2"]}" {TS}/>')
+
+
+def t_spread_by_n(p):
+    # Một trục dọc = giá trị thật. Hàng trên: BA chấm, văng xa trục về cả hai phía.
+    # Hàng dưới: NĂM chấm nhỏ hơn, bám sát trục. Cùng một hiện tượng, chỉ khác cỡ mẫu —
+    # mẫu nhỏ dao động rộng hơn hẳn mẫu lớn. Nội dung là chỗ ta đọc hai hàng như nhau.
+    # Số chấm mỗi hàng phải khác nhau và ĐỘ VĂNG phải khác nhau; nếu chỉ khác số lượng
+    # thì hình đọc thành `granularity` (phân giải thô/mịn) chứ không thành phương sai.
+    o = [f'<line x1="64" y1="16" x2="64" y2="112" {TNF}/>']
+    o += [f'<circle cx="{x}" cy="36" r="8" fill="{p["acc"]}" fill-opacity="0.80" {TS}/>'
+          for x in (20, 66, 108)]
+    o += [f'<circle cx="{x}" cy="92" r="6" fill="{p["acc"]}" fill-opacity="0.80" {TS}/>'
+          for x in (38, 51, 64, 77, 90)]
+    return "".join(o)
+
+
+def t_negative_space(p):
+    # Khung = không gian phương án. Ba khối đặc ÁP SÁT mép khung = các kết cục phải
+    # tránh, thứ duy nhất được vẽ ra. Lời giải là khoảng rỗng hình chữ L còn lại —
+    # cố ý KHÔNG vẽ, vì phương pháp này không đi tìm nó, nó chỉ loại trừ phần còn lại.
+    # Các khối bắt buộc dính mép khung: rời ra khỏi mép thì hình đọc thành
+    # `page_structure` (khối nội dung có lề trong một bố cục) thay vì vùng cấm.
+    o = [f'<rect x="18" y="18" width="92" height="92" fill="none" {TS}/>']
+    o += [f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{p["acc"]}" '
+          f'fill-opacity="0.78" {TS}/>'
+          for x, y, w, h in ((18, 18, 44, 34), (76, 18, 34, 50), (18, 74, 52, 36))]
+    return "".join(o)
+
+
+def t_deserved_backfill(p):
+    # Cột PHẢI: hai khối đặc = cái thực sự quan sát được (ai bị phạt, ai được thưởng).
+    # Cột TRÁI: hai ô RỖNG, cỡ khớp chính xác từng khối bên phải = phẩm chất đạo đức
+    # được suy ngược ra từ kết cục. Vẽ rỗng vì nó chưa từng được quan sát: thế giới
+    # công bằng đòi mỗi kết cục phải có một mức xứng đáng đi kèm, nên ô đó luôn được
+    # lấp cho vừa. Không cặp nào lệch — chính sự khít tuyệt đối là cái sai.
+    # Khác `mirror` (cùng một sự việc soi qua hai khung quy kết) vì ở đây hai cột là
+    # hai THỨ khác nhau: một cái đo được, một cái suy ra. Rỗng = chưa quan sát, đúng
+    # idiom đã dùng ở `unseen_cushion` và `group_tint_applied`.
+    o = []
+    for y in (24, 74):
+        o.append(f'<rect x="18" y="{y}" width="34" height="30" fill="none" {TS}/>')
+        o.append(f'<rect x="76" y="{y}" width="34" height="30" fill="{p["acc"]}" '
+                 f'fill-opacity="0.82" {TS}/>')
+        o.append(f'<line x1="52" y1="{y+15}" x2="76" y2="{y+15}" {TNF}/>')
+    return "".join(o)
+
+
+def t_narrative_tilt(p):
+    # Một khối nặng ở mép trái = câu chuyện đã được chấp nhận. Ba thanh bên phải có
+    # CÙNG cỡ và CÙNG khoảng cách, chỉ khác góc nghiêng: càng gần khối nặng càng ngả
+    # về phía nó. Sự kiện mới không bị kéo dịch chỗ, nó bị xoay CÁCH DIỄN GIẢI.
+    # Khác `pull` (anchoring mint / bandwagon amber) vốn giữ nguyên hướng các vệ tinh
+    # và bóp hẹp KHOẢNG CÁCH — ở đó cái lệch là vị trí ước lượng; ở đây vị trí không
+    # đổi chút nào, cái lệch là phương hướng.
+    o = [f'<circle cx="32" cy="64" r="24" fill="{p["acc"]}" fill-opacity="0.68" {TS}/>']
+    o += [f'<rect x="{x}" y="47" width="10" height="34" fill="{p["t2"]}" '
+          f'transform="rotate({a} {x + 5} 64)" {TS}/>'
+          for x, a in ((66, -38), (86, -22), (104, -8))]
+    return "".join(o)
+
+
+def t_forced_fit(p):
+    # Trên trái: một vòng tròn nhỏ vẽ rỗng = bài toán ở hình dạng vốn có của nó.
+    # Giữa: khung VUÔNG = công cụ quen tay. Khối bên trong là chính vòng tròn đó, phóng
+    # to rồi CẮT PHẲNG bốn cạnh theo khung — bốn cạnh thẳng, bốn góc còn cong, dấu vết
+    # của việc bị ép. Vấn đề bị bẻ cho vừa công cụ, không phải công cụ được chọn cho vừa
+    # vấn đề.
+    # Khác `one_affordance` (functional-fixedness amber) vốn nói về vật có nhiều mấu nối
+    # mà chỉ một mối từng dùng — ở đó vật không hề biến dạng. Khác `gate` (lọc bớt số
+    # lượng): tại đây không có gì bị chặn lại, chỉ có hình dạng bị đổi.
+    cid = f"tfit{next(_uid)}"
+    return (f'<circle cx="23" cy="23" r="10" fill="none" {TS}/>'
+            f'<clipPath id="{cid}"><rect x="36" y="36" width="56" height="56"/></clipPath>'
+            f'<circle cx="64" cy="64" r="34" fill="{p["acc"]}" fill-opacity="0.72" '
+            f'clip-path="url(#{cid})"/>'
+            f'<rect x="36" y="36" width="56" height="56" fill="none" {TS}/>')
+
+
+def t_inverse_weight(p):
+    # Đường mốc ngang chia hai đại lượng. TRÊN mốc = tầm quan trọng thật. DƯỚI mốc =
+    # thời gian đem ra bàn. Cặp trái: quan trọng lớn — bàn một tí. Cặp phải: quan trọng
+    # tí xíu — bàn rất lâu. Hai cặp bắt chéo nhau về cỡ; chính thế bắt chéo là nội dung.
+    # Hai khối trên bắt buộc chạm đúng đường mốc để so chiều cao đọc được ngay.
+    # Khác `contrast` (hai khối đối lập rời nhau, không có đại lượng nào được đo) và
+    # khác `proportion` (phần trên tổng, một vòng donut).
+    # Hai khối trên dùng chung mép đáy y=58, hai khối dưới dùng chung mép trên y=70:
+    # chung mép mới so chiều cao được. Chừa 6px hai bên đường mốc — bản đầu để khối
+    # dính sát đường, ở khổ 64px cả cụm dính thành một vệt đen liền.
+    return (f'<line x1="14" y1="64" x2="114" y2="64" {TNF}/>'
+            f'<rect x="20" y="18" width="40" height="40" fill="{p["acc"]}" '
+            f'fill-opacity="0.75" {TS}/>'
+            f'<rect x="20" y="70" width="40" height="14" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="70" y="44" width="38" height="14" fill="{p["acc"]}" '
+            f'fill-opacity="0.75" {TS}/>'
+            f'<rect x="70" y="70" width="38" height="40" fill="{p["t2"]}" {TS}/>')
+
+
+def t_unused_exit(p):
+    # Một vùng kín, nhưng tường phải có một KHOẢNG HỞ vẽ rõ ràng — lối ra có thật và
+    # đang mở. Khối đặc nằm nép sát tường đối diện, xa lối ra nhất có thể. Không có gì
+    # chặn nó lại; cái chặn đã chuyển vào bên trong sau chuỗi lần thử vô ích.
+    # Khoảng hở bắt buộc nằm trên tường, không phải ở góc: hở ở góc thì đọc thành khung
+    # vẽ dở. Khác `gate` (khe hẹp, nhiều tới ít qua — ở đó việc đi qua vẫn đang diễn ra)
+    # và khác `nested_scope` (vòng chứa vòng, không có lối ra nào).
+    return (f'<path d="M98,50 L98,26 L30,26 L30,102 L98,102 L98,78" fill="none" {TS}/>'
+            f'<circle cx="49" cy="64" r="14" fill="{p["acc"]}" fill-opacity="0.82" {TS}/>')
+
+
+CONCEPT_OBJECTS_20260917 = dict(
+    unattended_object=t_unattended_object, inert_input=t_inert_input,
+    spread_by_n=t_spread_by_n, negative_space=t_negative_space,
+    deserved_backfill=t_deserved_backfill, narrative_tilt=t_narrative_tilt,
+    forced_fit=t_forced_fit, inverse_weight=t_inverse_weight,
+    unused_exit=t_unused_exit,
+)
+
+CONCEPT_MEANING.update({
+    "unattended_object": "một vật lớn hiện diện đầy đủ trong khung nhưng vẽ rỗng, cạnh "
+                         "cụm nhỏ đặc đang được đếm — không bị che, chỉ không được chú ý",
+    "inert_input": "hai khối đầu vào chênh lệch hẳn nhưng hai ô kết quả y hệt nhau và "
+                   "cùng một độ cao — thêm thông tin không làm kết luận xê dịch",
+    "spread_by_n": "cùng một trục, hàng ít phần tử thì văng rộng, hàng nhiều phần tử thì "
+                   "bám sát — dao động phụ thuộc cỡ mẫu",
+    "negative_space": "các vùng phải tránh được tô đặc áp sát mép khung, lời giải là "
+                      "khoảng rỗng còn lại và cố ý không được vẽ",
+    "deserved_backfill": "cột kết cục quan sát được thì đặc, cột phẩm chất suy ngược ra "
+                         "thì rỗng nhưng khít từng cặp — sự khít tuyệt đối mới là cái sai",
+    "narrative_tilt": "một khối nặng và dãy thanh cùng cỡ cùng khoảng cách, chỉ góc nghiêng "
+                      "tăng dần khi lại gần — cái bị kéo là cách diễn giải, không phải vị trí",
+    "forced_fit": "một hình tròn bị cắt phẳng bốn cạnh theo khung vuông bao quanh nó — "
+                  "vấn đề bị bẻ cho vừa công cụ",
+    "inverse_weight": "hai cặp đại lượng bắt chéo quanh một đường mốc: quan trọng lớn ứng "
+                      "với bàn ít, quan trọng nhỏ ứng với bàn nhiều",
+    "unused_exit": "một vùng kín có khoảng hở rõ ràng trên tường và khối đặc nép ở tường "
+                   "đối diện — lối ra mở nhưng không được dùng",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260917)
+
+
 CONCEPT_OBJECTS_20260916 = dict(
     outward_credit=t_outward_credit, signal_leak=t_signal_leak,
     fitted_overreach=t_fitted_overreach, one_cell_counted=t_one_cell_counted,
