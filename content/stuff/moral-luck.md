@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [fundamental-attribution-error, outcome-bias, hindsight-bias]
 refs: ['https://en.wikipedia.org/wiki/Moral_luck']
 strategy: "Khi đánh giá một quyết định của người khác hoặc của chính mình, tách rõ 'chất lượng của quyết định lúc đưa ra' khỏi 'kết quả xảy ra sau đó' — hai thứ này độc lập với nhau về mặt xác suất."
+image: /assets/stuff/moral-luck.png
 published: true
 ---
 

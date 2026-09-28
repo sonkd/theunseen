@@ -8,6 +8,7 @@ tags: [persuasion, compliance]
 links: [foot-in-the-door-technique, contrast-effect, reactance]
 refs: ['https://en.wikipedia.org/wiki/Door-in-the-face_technique']
 strategy: 'Khi đàm phán, cân nhắc mở đầu bằng một đề xuất cao hơn mức mong muốn thật — miễn còn hợp lý, vì đề xuất tiếp theo sẽ trông như một sự nhượng bộ đáng được đáp lại.'
+image: /assets/stuff/door-in-the-face-technique.png
 published: true
 ---
 

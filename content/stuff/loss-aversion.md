@@ -7,6 +7,7 @@ categories: [bias]
 links: [endowment-effect, sunk-cost-fallacy, status-quo-bias, mental-accounting]
 refs: ['https://en.wikipedia.org/wiki/Loss_aversion']
 strategy: "Trước một quyết định giữ hay bỏ, tự hỏi 'nếu mình chưa từng sở hữu thứ này, mình có bỏ tiền mua nó ở mức giá hiện tại không?' để tách cảm giác mất mát khỏi giá trị thực."
+image: /assets/stuff/loss-aversion.png
 published: true
 ---
 

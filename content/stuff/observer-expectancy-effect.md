@@ -7,6 +7,7 @@ categories: [bias]
 links: [confirmation-bias, illusory-correlation, subjective-validation]
 refs: ['https://en.wikipedia.org/wiki/Observer-expectancy_effect']
 strategy: 'Trong nghiên cứu người dùng, dùng kịch bản phỏng vấn đã chuẩn hóa và tách vai trò người đặt câu hỏi khỏi người phân tích kết quả để giảm rò rỉ kỳ vọng.'
+image: /assets/stuff/observer-expectancy-effect.png
 published: true
 ---
 

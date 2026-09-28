@@ -8,6 +8,7 @@ tags: [economics, risk, fintech]
 links: [adverse-selection, risk-compensation, self-serving-bias]
 refs: ['https://en.wikipedia.org/wiki/Moral_hazard']
 strategy: 'Thiết kế cơ chế chia sẻ rủi ro (đồng chi trả, khấu trừ, xếp hạng theo hành vi) để người được bảo vệ vẫn giữ một phần trách nhiệm.'
+image: /assets/stuff/moral-hazard.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [ikea-effect, status-quo-bias, endowment-effect]
 refs: ['https://en.wikipedia.org/wiki/Not_invented_here']
 strategy: 'Trước khi quyết định "build" thay vì "buy/reuse", buộc trả lời câu hỏi: nếu công cụ này do chính đội mình tạo ra, mình có đánh giá nó khác đi không?'
+image: /assets/stuff/not-invented-here.png
 published: true
 ---
 

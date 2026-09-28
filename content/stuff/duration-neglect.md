@@ -7,6 +7,7 @@ categories: [memory, bias]
 links: [peak-end-rule, telescoping-effect]
 refs: ['https://en.wikipedia.org/wiki/Duration_neglect']
 strategy: 'Khi thiết kế một luồng trải nghiệm khó tránh khỏi có phần khó chịu (chờ xử lý giao dịch, xác minh danh tính), ưu tiên giảm cường độ đỉnh điểm và tạo cảm giác tích cực ở bước cuối cùng — hiệu quả cải thiện đánh giá tổng thể hơn là chỉ cố rút ngắn thời gian.'
+image: /assets/stuff/duration-neglect.png
 published: true
 ---
 

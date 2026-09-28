@@ -8,6 +8,7 @@ tags: [psychology, motivation]
 links: [optimism-bias, normalcy-bias, illusion-of-control]
 refs: ['https://en.wikipedia.org/wiki/Learned_helplessness']
 strategy: 'Chia nhỏ vấn đề để tạo ra ít nhất một hành động có kết quả kiểm soát được — cảm giác kiểm soát cục bộ giúp phá vòng lặp bất lực trước khi nó lan rộng.'
+image: /assets/stuff/learned-helplessness.png
 published: true
 ---
 

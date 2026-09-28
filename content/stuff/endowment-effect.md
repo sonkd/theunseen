@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [loss-aversion, status-quo-bias, ikea-effect, mental-accounting]
 refs: ['https://en.wikipedia.org/wiki/Endowment_effect', 'https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_et_al_1990_Experimental_tests.pdf']
 strategy: 'Trước khi định giá thứ mình đang sở hữu, tự hỏi: "Nếu chưa từng có nó, mình sẵn sàng trả bao nhiêu để mua?" — con số đó gần với giá trị thật hơn.'
+image: /assets/stuff/endowment-effect.png
 published: true
 ---
 

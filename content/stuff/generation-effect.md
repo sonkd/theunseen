@@ -7,6 +7,7 @@ categories: [memory]
 links: []
 refs: ['https://en.wikipedia.org/wiki/Generation_effect', 'https://link.springer.com/article/10.3758/s13423-020-01762-3']
 strategy: 'Khi học điều gì mới, tự đặt câu hỏi và trả lời bằng lời của mình thay vì chỉ đọc lại — active recall thắng passive review.'
+image: /assets/stuff/generation-effect.png
 published: true
 ---
 

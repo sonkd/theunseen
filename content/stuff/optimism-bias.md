@@ -7,6 +7,7 @@ categories: [bias]
 links: [overconfidence-effect, planning-fallacy, illusion-of-control]
 refs: ['https://en.wikipedia.org/wiki/Optimism_bias']
 strategy: 'Khi lập kế hoạch cá nhân hoặc dự án, chủ động hỏi "nếu đây là kế hoạch của người khác, mình sẽ đánh giá rủi ro thế nào?" để tách bản thân khỏi thiên lệch lạc quan.'
+image: /assets/stuff/optimism-bias.png
 published: true
 ---
 

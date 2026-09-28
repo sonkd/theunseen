@@ -9,6 +9,7 @@ refs:
   - https://en.wikipedia.org/wiki/Goodhart%27s_law
   - https://arxiv.org/abs/1803.04585
 strategy: "Đừng đặt một chỉ số làm mục tiêu duy nhất: dùng nhiều chỉ số, đo lường kết quả thực tế, và bổ sung đánh giá định tính/thử nghiệm liên tục."
+image: /assets/stuff/goodharts-law.png
 published: true
 ---
 

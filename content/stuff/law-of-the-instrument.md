@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [functional-fixedness, confirmation-bias, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Law_of_the_instrument', 'https://quoteinvestigator.com/2014/05/08/hammer-nail/']
 strategy: 'Trước khi bắt tay giải quyết bằng công cụ/phương pháp quen thuộc, tự hỏi: nếu không có nó, mình sẽ tiếp cận vấn đề này thế nào?'
+image: /assets/stuff/law-of-the-instrument.png
 published: true
 ---
 

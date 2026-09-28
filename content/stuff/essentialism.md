@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [stereotyping, group-attribution-error, naive-realism, out-group-homogeneity-bias]
 refs: ['https://en.wikipedia.org/wiki/Essentialism', 'https://www.sciencedirect.com/science/article/abs/pii/S1364661304001834']
 strategy: 'Khi bắt gặp mình nghĩ "người/nhóm này bản chất là vậy", thử tách hành vi cụ thể ra khỏi con người — hỏi xem đó là đặc điểm cố định hay chỉ là kết quả của hoàn cảnh.'
+image: /assets/stuff/essentialism.png
 published: true
 ---
 

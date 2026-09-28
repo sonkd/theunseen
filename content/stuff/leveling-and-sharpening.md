@@ -7,6 +7,7 @@ categories: [memory]
 links: [misinformation-effect, confabulation, memory-inhibition, misattribution-of-memory]
 refs: ['https://en.wikipedia.org/wiki/Leveling_and_sharpening', 'https://thedecisionlab.com/biases/leveling-and-sharpening']
 strategy: Khi nghe một câu chuyện đã qua nhiều lần kể lại (họp hành, sự cố sản phẩm, tin đồn công sở), tìm về bản ghi chép gần thời điểm gốc nhất — càng xa nguồn, chi tiết càng dễ bị lược bỏ hoặc thổi phồng.
+image: /assets/stuff/leveling-and-sharpening.png
 published: true
 ---
 

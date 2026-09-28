@@ -8,6 +8,7 @@ tags: [research, workplace]
 links: [observer-expectancy-effect, pygmalion-effect, social-desirability-bias]
 refs: ['https://en.wikipedia.org/wiki/Hawthorne_effect']
 strategy: 'Khi đo lường hành vi người dùng/nhân sự, ưu tiên dữ liệu quan sát âm thầm (log sản phẩm) hơn khảo sát/thử nghiệm mà đối tượng biết rõ mình đang được theo dõi.'
+image: /assets/stuff/hawthorne-effect.png
 published: true
 ---
 

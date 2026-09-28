@@ -7,6 +7,7 @@ categories: [memory]
 links: [tip-of-the-tongue-phenomenon, spotlight-effect, cue-dependent-forgetting]
 refs: ['http://www.oxfordreference.com/view/10.1093/oi/authority.20110803100232913']
 strategy: 'Nếu cần nắm thông tin của người phát biểu ngay trước mình (họp, phỏng vấn nhóm), ghi chú thay vì cố nhớ — não sẽ không lưu được khi đang bận lo lắng cho lượt của mình.'
+image: /assets/stuff/next-in-line-effect.png
 published: true
 ---
 

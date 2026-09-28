@@ -7,6 +7,7 @@ categories: [bias]
 links: [optimism-bias, ostrich-effect, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Normalcy_bias']
 strategy: 'Với rủi ro hệ thống hiếm nhưng nghiêm trọng (sự cố bảo mật, khủng hoảng thị trường), chuẩn bị sẵn kịch bản phản ứng TRƯỚC khi nó xảy ra — đừng đợi "cảm thấy" nó đủ thật để hành động.'
+image: /assets/stuff/normalcy-bias.png
 published: true
 ---
 

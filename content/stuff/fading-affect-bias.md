@@ -7,6 +7,7 @@ categories: [memory, bias]
 links: [rosy-retrospection, declinism, negativity-bias]
 refs: ['https://en.wikipedia.org/wiki/Fading_affect_bias', 'https://www.niu.edu/jskowronski/publications/walkerskowronski2009.pdf']
 strategy: "Khi cân nhắc quay lại một lựa chọn cũ đã từng khiến mình khó chịu (đổi việc, quay lại một app, một mối quan hệ), đừng chỉ dựa vào cảm giác hồi tưởng — tìm lại ghi chép, tin nhắn, hay đánh giá viết ra ngay lúc sự việc xảy ra, vì chúng đáng tin hơn ký ức đã phai màu."
+image: /assets/stuff/fading-affect-bias.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [affective-forecasting, focalism, impact-bias, projection-bias]
 refs: ['https://en.wikipedia.org/wiki/Affective_forecasting#Immune_neglect', 'https://dtg.sites.fas.harvard.edu/Gilbert%20et%20al%20(IMMUNE%20NEGLECT).pdf', 'https://pubmed.ncbi.nlm.nih.gov/9781405/', 'https://www.cambridge.org/core/journals/judgment-and-decision-making/article/coping-strategies-and-immune-neglect-in-affective-forecasting-direct-evidence-and-key-moderators/9AD988E27CCC85FC04661B926BD1848B']
 strategy: 'Trước khi hành động để né một cảm xúc tiêu cực tưởng tượng trong tương lai (cắt lỗ, huỷ hợp đồng, tránh né quyết định), tự hỏi: lần gần nhất mình trải qua chuyện tương tự, mình mất bao lâu để thấy bình thường trở lại?'
+image: /assets/stuff/immune-neglect.png
 published: true
 ---
 

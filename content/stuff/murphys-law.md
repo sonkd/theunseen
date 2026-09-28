@@ -7,6 +7,7 @@ categories: [heuristic]
 links: [illusion-of-control, pessimism-bias, hindsight-bias]
 refs: ['https://en.wikipedia.org/wiki/Murphy%27s_law']
 strategy: "Khi thiết kế hệ thống hoặc quy trình quan trọng, chủ động giả định lỗi hiếm gặp vẫn sẽ xảy ra ở quy mô đủ lớn (defensive design), thay vì trông chờ vào may mắn để hệ thống luôn vận hành trơn tru."
+image: /assets/stuff/murphys-law.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [dunning-kruger-effect, overconfidence-effect, self-serving-bias, lake-wobegone-effect]
 refs: ['https://en.wikipedia.org/wiki/Illusory_superiority', 'https://www.sciencedirect.com/science/article/abs/pii/S1369847804000440', 'https://www.tandfonline.com/doi/full/10.1080/15205436.2025.2495206']
 strategy: "Trước khi tự chấm điểm bản thân ở một kỹ năng nào đó (lái xe, đầu tư, làm việc nhóm), thử tìm một thước đo khách quan bên ngoài thay vì chỉ dựa vào cảm giác so sánh mơ hồ với 'người khác'."
+image: /assets/stuff/illusory-superiority.png
 published: true
 ---
 

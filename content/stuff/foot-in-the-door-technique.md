@@ -8,6 +8,7 @@ tags: [persuasion, compliance]
 links: [door-in-the-face-technique, self-consistency-bias, escalation-of-commitment]
 refs: ['https://en.wikipedia.org/wiki/Foot-in-the-door_technique']
 strategy: 'Khi muốn ai đó cam kết lâu dài (đăng ký gói trả phí, thay đổi hành vi), thiết kế một bước cam kết nhỏ trước — không phải để lừa, mà để họ tự trải nghiệm mình là kiểu người sẵn sàng tham gia.'
+image: /assets/stuff/foot-in-the-door-technique.png
 published: true
 ---
 

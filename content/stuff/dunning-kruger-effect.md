@@ -7,6 +7,7 @@ categories: [bias]
 links: [illusory-superiority, overconfidence-effect, hard-easy-effect]
 refs: ['https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect']
 strategy: 'Trước khi tự tin đánh giá năng lực bản thân ở một lĩnh vực mới, tìm một chuẩn đối chiếu khách quan bên ngoài (test, phản hồi từ chuyên gia) thay vì chỉ dựa vào cảm giác tự tin nội tại.'
+image: /assets/stuff/dunning-kruger-effect.png
 published: true
 ---
 

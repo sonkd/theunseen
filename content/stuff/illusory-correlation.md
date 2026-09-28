@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [confirmation-bias, clustering-illusion, hot-hand-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Illusory_correlation', 'https://study.com/academy/lesson/illusory-correlation-definition-examples.html']
 strategy: 'Trước khi kết luận "X luôn đi kèm Y" từ vài lần quan sát nổi bật, thử đếm cả những lần X xảy ra mà KHÔNG có Y — não thường bỏ qua nhóm này.'
+image: /assets/stuff/illusory-correlation.png
 published: true
 ---
 

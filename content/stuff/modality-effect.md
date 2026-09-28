@@ -7,6 +7,7 @@ categories: [memory, perception]
 links: [levels-of-processing-effect, picture-superiority-effect, serial-position-effect]
 refs: ['https://en.wikipedia.org/wiki/Modality_effect']
 strategy: "Khi cần người dùng nhớ chắc một thông điệp quan trọng ở cuối luồng thao tác (ví dụ cảnh báo phí, xác nhận giao dịch), cân nhắc kết hợp giọng đọc hoặc âm thanh thay vì chỉ hiển thị chữ."
+image: /assets/stuff/modality-effect.png
 published: true
 ---
 

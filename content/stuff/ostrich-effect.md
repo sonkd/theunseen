@@ -7,6 +7,7 @@ categories: [bias]
 links: [normalcy-bias, zero-risk-bias, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Ostrich_effect']
 strategy: 'Đặt lịch kiểm tra định kỳ bắt buộc (ví dụ xem báo cáo tài khoản đầu tư mỗi tháng) thay vì để bản thân tự quyết định "khi nào sẵn sàng nhìn" — vì né tránh luôn thắng nếu để tùy chọn.'
+image: /assets/stuff/ostrich-effect.png
 published: true
 ---
 

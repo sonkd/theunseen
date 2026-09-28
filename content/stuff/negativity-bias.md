@@ -7,6 +7,7 @@ categories: [bias]
 links: [loss-aversion, positivity-effect, availability-heuristic]
 refs: ['https://en.wikipedia.org/wiki/Negativity_bias']
 strategy: 'Trước khi kết luận từ một phản hồi tiêu cực, chủ động đếm tỷ lệ phản hồi tích cực/tiêu cực thực tế để cân bằng lại trọng số cảm xúc.'
+image: /assets/stuff/negativity-bias.png
 published: true
 ---
 

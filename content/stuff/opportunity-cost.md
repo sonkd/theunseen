@@ -8,6 +8,7 @@ tags: [economics, decision]
 links: [sunk-cost-fallacy, mental-accounting, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Opportunity_cost']
 strategy: 'Trước một quyết định "miễn phí" hay "đã trả rồi", tự hỏi: nếu dùng cùng thời gian/tiền/công sức này cho việc khác, tôi được gì nhiều hơn không?'
+image: /assets/stuff/opportunity-cost.png
 published: true
 ---
 

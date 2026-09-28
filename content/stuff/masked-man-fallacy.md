@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [argument-from-fallacy, belief-bias]
 refs: ['https://en.wikipedia.org/wiki/Masked-man_fallacy']
 strategy: "Khi lập luận dựa trên niềm tin về một đối tượng, kiểm tra xem kết luận có đang trộn lẫn giữa thuộc tính thật của đối tượng và mức độ hiểu biết của người suy luận về đối tượng đó hay không."
+image: /assets/stuff/masked-man-fallacy.png
 published: true
 ---
 

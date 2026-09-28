@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [egocentric-bias, illusion-of-transparency, spotlight-effect]
 refs: ['https://en.wikipedia.org/wiki/Illusion_of_asymmetric_insight', 'https://pubmed.ncbi.nlm.nih.gov/11642351/']
 strategy: 'Trước khi khẳng định "tôi hiểu bạn hơn bạn hiểu tôi" trong một cuộc tranh luận hay đàm phán, nhắc bản thân: khoảng cách này chỉ là ảo giác, cả hai phía đều đang thiếu thông tin như nhau.'
+image: /assets/stuff/illusion-of-asymmetric-insight.png
 published: true
 ---
 

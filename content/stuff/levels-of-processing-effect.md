@@ -7,6 +7,7 @@ categories: [memory]
 links: [generation-effect, spacing-effect, testing-effect, picture-superiority-effect]
 refs: ['https://en.wikipedia.org/wiki/Levels-of-processing_effect']
 strategy: "Khi cần nhớ điều gì lâu dài, đừng đọc lại nhiều lần — diễn giải bằng lời của mình hoặc liên hệ với thứ đã biết để ép não xử lý ở tầng ngữ nghĩa."
+image: /assets/stuff/levels-of-processing-effect.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [zero-risk-bias, availability-heuristic, base-rate-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Neglect_of_probability']
 strategy: 'Khi quyết định liên quan tới rủi ro, viết ra con số xác suất thực tế trước khi hỏi cảm giác — buộc não so sánh với con số thay vì phản ứng nhị phân.'
+image: /assets/stuff/neglect-of-probability.png
 published: true
 ---
 

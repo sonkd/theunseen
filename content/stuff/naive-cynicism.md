@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [naive-realism, fundamental-attribution-error, self-serving-bias]
 refs: ['https://en.wikipedia.org/wiki/Na%C3%AFve_cynicism']
 strategy: "Trước khi kết luận về động cơ của đồng nghiệp hoặc đối tác, thử liệt kê ít nhất một lý do khách quan — ngoài tư lợi — có thể giải thích hành vi của họ."
+image: /assets/stuff/naive-cynicism.png
 published: true
 ---
 

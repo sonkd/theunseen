@@ -8,6 +8,7 @@ tags: [attention, perception]
 links: [change-blindness, selective-perception, attentional-bias]
 refs: ['https://en.wikipedia.org/wiki/Inattentional_blindness']
 strategy: 'Với các tác vụ đòi hỏi phát hiện lỗi hiếm gặp (rà soát gian lận, kiểm tra hợp đồng), phân công ít nhất hai người độc lập thay vì tin vào một cặp mắt duy nhất, dù người đó đang rất tập trung.'
+image: /assets/stuff/inattentional-blindness.png
 published: true
 ---
 

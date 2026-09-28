@@ -7,6 +7,7 @@ categories: [mental-models, heuristic]
 links: [law-of-triviality, parkinsons-law, goodharts-law]
 refs: ['https://en.wikipedia.org/wiki/Pareto_principle', 'https://thedecisionlab.com/reference-guide/economics/the-pareto-principle', 'https://www.juran.com/blog/a-guide-to-the-pareto-principle-80-20-rule-pareto-analysis/']
 strategy: 'Trước khi dàn trải nguồn lực, tự hỏi 20% nào đang tạo ra phần lớn kết quả — rồi dồn lực vào đó thay vì chia đều.'
+image: /assets/stuff/pareto-principle.png
 published: true
 ---
 

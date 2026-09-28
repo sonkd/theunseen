@@ -8,6 +8,7 @@ tags: [motivation, reward]
 links: [extrinsic-incentive-error, ikea-effect, effort-justification]
 refs: ['https://en.wikipedia.org/wiki/Overjustification_effect']
 strategy: 'Khi thiết kế cơ chế thưởng cho một hành vi người dùng vốn đã tự nguyện làm, cân nhắc thưởng mang tính thông tin (ghi nhận năng lực) thay vì thưởng mang tính kiểm soát (tiền mặt cho mỗi lần thực hiện).'
+image: /assets/stuff/overjustification-effect.png
 published: true
 ---
 

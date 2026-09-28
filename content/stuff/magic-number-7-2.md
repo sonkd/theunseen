@@ -7,6 +7,7 @@ categories: [memory]
 links: [cognitive-load-theory, serial-position-effect, spacing-effect]
 refs: ['https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two']
 strategy: "Khi thiết kế danh sách, menu hay biểu mẫu, nhóm thông tin thành cụm 3-5 mục thay vì liệt kê phẳng quá 7 lựa chọn, để tránh quá tải trí nhớ ngắn hạn của người dùng."
+image: /assets/stuff/magic-number-7-2.png
 published: true
 ---
 

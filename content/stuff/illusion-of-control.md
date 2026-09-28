@@ -7,6 +7,7 @@ categories: [bias]
 links: [overconfidence-effect, optimism-bias]
 refs: ['https://en.wikipedia.org/wiki/Illusion_of_control', 'https://nuovoeutile.it/wp-content/uploads/2014/10/Langer1975_IllusionofControl.pdf']
 strategy: "Trước khi hành động dựa trên cảm giác 'mình đang kiểm soát được tình hình' (thị trường, may rủi), tự hỏi: nếu tách hết mọi tín hiệu bề ngoài gợi cảm giác kỹ năng (tự chọn số, thao tác nghi thức), xác suất thực tế có thay đổi không?"
+image: /assets/stuff/illusion-of-control.png
 published: true
 ---
 
