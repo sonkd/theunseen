@@ -7,6 +7,7 @@ categories: [fallacy]
 links: [hot-hand-fallacy, insensitivity-to-sample-size, clustering-illusion]
 refs: ['https://en.wikipedia.org/wiki/Gambler%27s_fallacy', 'https://thedecisionlab.com/biases/gamblers-fallacy']
 strategy: "Trước khi đặt cược 'lần này chắc chắn phải đổi chiều', tự nhắc: mỗi lần thử độc lập, quá khứ không nợ tương lai điều gì."
+image: /assets/stuff/gamblers-fallacy.png
 published: true
 ---
 

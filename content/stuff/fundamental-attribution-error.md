@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [self-serving-bias, ultimate-attribution-error, defensive-attribution-hypothesis, naive-realism]
 refs: ['https://en.wikipedia.org/wiki/Fundamental_attribution_error', 'https://thedecisionlab.com/biases/fundamental-attribution-error']
 strategy: "Trước khi kết luận về tính cách người khác qua một hành vi, tự hỏi: nếu mình ở đúng hoàn cảnh đó, liệu mình có làm y hệt không?"
+image: /assets/stuff/fundamental-attribution-error.png
 published: true
 ---
 

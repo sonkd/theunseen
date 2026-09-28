@@ -7,6 +7,7 @@ categories: [bias]
 links: [overconfidence-effect, dunning-kruger-effect]
 refs: ['https://en.wikipedia.org/wiki/Hard%E2%80%93easy_effect', 'https://link.springer.com/article/10.3758/PBR.16.1.204']
 strategy: 'Khi tự tin cao ở nhiệm vụ khó, chủ động tìm phản biện/dữ liệu bên ngoài; khi thấy nhiệm vụ "quá dễ", đừng bỏ qua bước kiểm tra lại.'
+image: /assets/stuff/hard-easy-effect.png
 published: true
 ---
 

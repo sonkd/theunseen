@@ -7,6 +7,7 @@ categories: [heuristic, social]
 links: [fundamental-attribution-error, self-serving-bias, naive-realism]
 refs: ['https://en.wikipedia.org/wiki/Hanlon%27s_razor', 'https://thedecisionlab.com/reference-guide/philosophy/hanlons-razor', 'https://www.britannica.com/topic/Hanlons-razor']
 strategy: 'Trước khi gán nhãn "cố tình" cho một hành vi khó chịu, liệt kê ít nhất một lý do vô tình/thiếu hiểu biết có thể giải thích y hệt hành vi đó, rồi mới quyết định tin vào giả thuyết nào.'
+image: /assets/stuff/hanlons-razor.png
 published: true
 ---
 

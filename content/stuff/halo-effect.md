@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [stereotyping, primacy-effect, implicit-stereotypes]
 refs: ['https://en.wikipedia.org/wiki/Halo_effect', 'https://www.simplypsychology.org/halo-effect.html']
 strategy: 'Khi đánh giá năng lực (phỏng vấn, chấm điểm nhân viên, review sản phẩm), tách riêng từng tiêu chí và chấm độc lập, tránh để ấn tượng đầu ảnh hưởng tới tiêu chí sau.'
+image: /assets/stuff/halo-effect.png
 published: true
 ---
 
