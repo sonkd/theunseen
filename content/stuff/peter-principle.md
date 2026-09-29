@@ -7,6 +7,7 @@ categories: [theory, heuristic]
 links: [dunning-kruger-effect, halo-effect, goodharts-law]
 refs: ['https://en.wikipedia.org/wiki/Peter_principle', 'https://academic.oup.com/qje/article/134/4/2085/5550760', 'https://www.nber.org/papers/w24343', 'https://www.mindtools.com/your-toolkit/development-frameworks/peter-principle/']
 strategy: 'Trước khi thăng ai lên quản lý, đánh giá riêng năng lực quản lý (giao việc, phản hồi, ra quyết định) thay vì suy từ hiệu suất chuyên môn hiện tại.'
+image: /assets/stuff/peter-principle.png
 published: true
 ---
 

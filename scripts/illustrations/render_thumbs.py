@@ -1046,6 +1046,64 @@ OVERRIDES.update({
 })
 
 
+# ---- batch #16 (2026-09-29) — card #161-170 (peak-end-rule → prejudice). xlsx gán
+# 5 hierarchy + 4 branching + 1 contrast, tức 9/10 card sẽ nhận đúng 2 hình. Chẩn đoán
+# lại toàn bộ theo `back`; cả 10 đều cần một concept object mới (xem illus.py, batch
+# 2026-09-29) vì các hình gần nghĩa nhất đã kín ở hue cần dùng hoặc sai trục nội dung.
+OVERRIDES.update({
+    "peak-end-rule": (
+        "peak_end_kept",
+        "card nói rõ trí nhớ chỉ giữ ĐỈNH và ĐIỂM KẾT của một chuỗi khoảnh khắc, phần "
+        "giữa dù dài bao lâu cũng rụng. hierarchy (cha-con) không có trục thời gian nào; "
+        "fewer_louder gần nhất nhưng đã chiếm và nói về việc kể lại bị bóp méo hai chiều"),
+    "pessimism-bias": (
+        "felt_likelihood",
+        "trục của card là XÁC SUẤT bị thổi phồng, không phải rẽ nhánh. phải giữ hai ô "
+        "bằng nhau trên một thang để không trượt sang độ lớn hậu quả (loss-aversion đã "
+        "dùng steeper_below, negativity-bias đã dùng one_sours_sum)"),
+    "peter-principle": (
+        "promoted_past_fit",
+        "quan hệ cần vẽ là năng lực NGỪNG LỚN trong khi yêu cầu vị trí vẫn lớn — hierarchy "
+        "chỉ vẽ được sơ đồ tổ chức, không vẽ được chỗ không còn vừa. ratchet sát nghĩa "
+        "một-chiều nhưng đã bị foot-in-the-door-technique chiếm ở mint"),
+    "picture-superiority-effect": (
+        "dual_route",
+        "dual-coding theory: hình ảnh được mã hoá qua HAI kênh song song, từ ngữ chỉ một. "
+        "biến là SỐ LÀN, không phải độ sâu — encoding_depth (đúng trục độ sâu) đã thuộc "
+        "levels-of-processing-effect ở mint, và hai card này là hai cơ chế khác nhau"),
+    "placebo-effect": (
+        "sham_response",
+        "contrast chỉ nói 'hai thứ khác nhau'. điểm của card là nguyên nhân RỖNG vẫn sinh "
+        "phản hồi THẬT, đo được — nên hai thanh phản hồi phải cùng đặc, chỉ hai nguyên "
+        "nhân khác nhau ở ruột. inert_input ngược chiều (kết quả không nhích) và đã chiếm"),
+    "planning-fallacy": (
+        "outside_view_ignored",
+        "cơ chế trong card là inside view đối lại outside view: dữ liệu dự án cùng lớp có "
+        "sẵn mà không mở ra xem. cần ba thanh tham chiếu BẰNG NHAU và rỗng; branching "
+        "không diễn được, over_scaled_forecast lệch ngược chiều (dự báo lớn hơn thực)"),
+    "pluralistic-ignorance": (
+        "unvoiced_row",
+        "nghịch lý của card: lớp ngoài đồng nhất VÀ lớp trong cũng đồng nhất, nhưng không "
+        "ai thấy lớp trong của người khác. bắt buộc mọi ô phải đều tuyệt đối — một ô khác "
+        "cỡ là thành odd_one_out, tức đúng điều card phủ định"),
+    "positivity-effect": (
+        "liking_flip",
+        "biến điều tiết là MỨC YÊU THÍCH, đó là thứ duy nhất phân biệt card này với "
+        "fundamental-attribution-error (locus_flip) và halo-effect (tint_carryover) — nên "
+        "nó phải hiện ra thành một token trong hình, và hành vi thì đảo CỠ chứ không đảo loại"),
+    "post-purchase-rationalization": (
+        "commit_lift",
+        "thí nghiệm Knox–Inkster là trục của card: tin tưởng nhích lên ngay sau mốc trả "
+        "tiền mà KHÔNG có thông tin mới nào. cần một mốc dọc + hai chùm chứng cứ bằng "
+        "nhau; retrofit_path (hindsight) và ex_post_grade (outcome) đều cần một kết cục đã biết"),
+    "prejudice": (
+        "blanket_affect",
+        "prejudice là thành phần AFFECT, gán theo tư cách thành viên. phải thấy các cá thể "
+        "vốn KHÁC NHAU rồi bị một dải cảm xúc liền đắp ngang — group_tint_applied "
+        "(implicit-stereotypes, thành phần cognition) vẽ các phần tử đã đồng nhất từ đầu"),
+})
+
+
 def read_index():
     wb = openpyxl.load_workbook(XLSX, read_only=True, data_only=True)
     ws = wb["Article Index"]

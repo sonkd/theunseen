@@ -7,6 +7,7 @@ categories: [social]
 links: [in-group-bias, out-group-homogeneity-bias, stereotyping, implicit-stereotypes]
 refs: ['https://en.wikipedia.org/wiki/Prejudice']
 strategy: 'Khi thiết kế quy trình ra quyết định liên quan tới con người (chấm điểm tín dụng, duyệt hồ sơ), tách rõ dữ liệu hành vi khách quan khỏi các trường có thể trở thành proxy cho nhóm nhân khẩu học, và audit định kỳ outcome theo nhóm để phát hiện thiên lệch không chủ đích.'
+image: /assets/stuff/prejudice.png
 published: true
 ---
 

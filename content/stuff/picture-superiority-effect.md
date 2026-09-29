@@ -7,6 +7,7 @@ categories: [memory]
 links: [levels-of-processing-effect, generation-effect, von-restorff-effect]
 refs: ['https://en.wikipedia.org/wiki/Picture_superiority_effect']
 strategy: 'Khi truyền tải một con số hoặc cảnh báo quan trọng (phí ẩn, lãi suất, rủi ro), đi kèm một hình ảnh/icon ẩn dụ thay vì chỉ dùng text — tỷ lệ nhớ lại sau vài ngày thường cao hơn đáng kể.'
+image: /assets/stuff/picture-superiority-effect.png
 published: true
 ---
 
