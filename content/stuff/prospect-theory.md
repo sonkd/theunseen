@@ -8,6 +8,7 @@ tags: [behavioral-economics, decision, foundational]
 links: [loss-aversion, framing-effect, endowment-effect]
 refs: ['https://en.wikipedia.org/wiki/Prospect_theory']
 strategy: 'Khi trình bày lựa chọn tài chính, kiểm tra xem đang neo người dùng vào khung "mất" hay khung "được" — cùng một con số, khung khác nhau tạo quyết định khác nhau.'
+image: /assets/stuff/prospect-theory.png
 published: true
 ---
 

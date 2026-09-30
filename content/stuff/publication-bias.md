@@ -7,6 +7,7 @@ categories: [bias]
 links: [survivorship-bias, confirmation-bias]
 refs: ['https://en.wikipedia.org/wiki/Publication_bias']
 strategy: 'Khi dùng một nghiên cứu học thuật để justify quyết định sản phẩm (vd. "pattern X tăng conversion theo paper Y"), tìm thêm ít nhất một nghiên cứu replication hoặc kết quả null trước khi coi đó là bằng chứng đủ vững để build.'
+image: /assets/stuff/publication-bias.png
 published: true
 ---
 

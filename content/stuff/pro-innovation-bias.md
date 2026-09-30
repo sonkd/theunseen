@@ -7,6 +7,7 @@ categories: [bias]
 links: [status-quo-bias, bandwagon-effect, not-invented-here]
 refs: ['https://en.wikipedia.org/wiki/Pro-innovation_bias']
 strategy: 'Trước khi build một tính năng "đột phá", phỏng vấn ít nhất 8-10 người dùng hiện tại để kiểm tra vấn đề họ thật sự gặp có khớp với innovation không — tránh xây giải pháp đi tìm vấn đề.'
+image: /assets/stuff/pro-innovation-bias.png
 published: true
 ---
 

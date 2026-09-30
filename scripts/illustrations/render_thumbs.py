@@ -1151,6 +1151,80 @@ def set_frontmatter_image(slug):
     return True
 
 
+# ---- batch #17 (2026-09-30) — card #171-180 (primacy-effect → reactive-devaluation).
+# xlsx gán 7 branching + 3 hierarchy, tức 10/10 card sẽ nhận đúng 2 hình. Chẩn đoán lại
+# toàn bộ theo `back` + thân bài; cả 10 đều cần một concept object mới (xem illus.py,
+# batch 2026-09-30): không card nào trong batch này thật sự là quan hệ cha-con hay một
+# điểm rẽ nhiều nhánh.
+OVERRIDES.update({
+    "primacy-effect": (
+        "head_transferred",
+        "hình mới. xlsx cho branching sai: không có điểm rẽ nào. Cơ chế trong bài là "
+        "rehearsal — mục ở ĐẦU được tập dượt đủ để chuyển sang trí nhớ dài hạn, phần sau "
+        "chỉ trôi nổi rồi mất. Phải có HAI tầng (đang tiếp nhận / bản ghi bền) mới nói "
+        "được chữ 'chuyển'. `peak_end_kept` (peak-end-rule) một tầng và thanh cao thấp "
+        "khác nhau; ở đây mọi mục giống hệt nhau, chỉ vị trí khác"),
+    "pro-innovation-bias": (
+        "assumed_uptake",
+        "hình mới. xlsx cho branching sai. Thiên kiến nằm ở phía NGƯỜI DỰNG: họ đã adopt "
+        "trọn vẹn nên ngoại suy rằng mọi người cũng vậy, ngay lập tức. Cột đầu đặc-cao "
+        "là gốc của phép ngoại suy đó, khoảng rỗng trên bốn cột sau là chính thiên kiến. "
+        "`overclaim` (dunning-kruger) chỉ có một khung nên không có ca thật nào để ngoại "
+        "suy từ đó"),
+    "processing-fluency": (
+        "edge_reads_true",
+        "hình mới. xlsx cho branching sai. Card nói rõ nội dung GIỐNG HỆT, chỉ độ trôi "
+        "chảy khi xử lý khác — nên hai khối phải bằng nhau tuyệt đối và khác biệt duy "
+        "nhất là đường biên (trơn / răng). `two_frames` (framing-effect) đặt cái khác "
+        "biệt ở KHUNG bên ngoài; ở đây sự khó/dễ nằm ngay trên chính vật thể"),
+    "projection-bias": (
+        "now_tiled_forward",
+        "hình mới. xlsx cho branching sai. Cơ chế là DẬP trạng thái hiện tại lên các mốc "
+        "tương lai — nên ba khối dự đoán phải bằng nhau tuyệt đối, và giá trị thật (khung "
+        "rỗng) phải cao thấp khác nhau rõ. `expected_flat` (black-swan) chỉ có một thanh "
+        "ngang bị một biến cố cắt qua, không có trục nhiều mốc"),
+    "prospect-theory": (
+        "value_curve_s",
+        "hình mới. xlsx cho hierarchy sai: không có phân loại cha-con nào. Đây là lý "
+        "thuyết MẸ, nên phải vẽ nguyên hàm giá trị: điểm tham chiếu ở giữa, nhánh được "
+        "lồi-bẹt dần, nhánh mất dốc hơn. `steeper_below` (loss-aversion) chỉ giữ lại kết "
+        "luận về độ nặng và `reference_kink` (disposition/endowment) chỉ giữ điểm mốc — "
+        "cả hai đều là hệ quả của đường cong này, không thay được nó"),
+    "pseudocertainty-effect": (
+        "certain_inside_branch",
+        "hình mới. xlsx cho hierarchy sai. Nội dung là 'chắc chắn CỤC BỘ': phần tô đầy "
+        "sát mép buồng của nó nhưng buồng chỉ là một phần của khung, nên rủi ro tổng thể "
+        "không đổi. `sealed_bins` (mental-accounting) có nhiều buồng đều có phần chứa; ở "
+        "đây bắt buộc một buồng đầy và một buồng rỗng tuyệt đối"),
+    "publication-bias": (
+        "drawer_below_line",
+        "hình mới. xlsx cho hierarchy sai. File-drawer problem: các nghiên cứu null vẫn "
+        "TỒN TẠI (vẽ rỗng, treo dưới ngưỡng) chứ không phải chưa từng có, và số dưới phải "
+        "nhiều hơn số trên. `veil` có một tấm che đắp lên một hình; `gate` có dòng chảy "
+        "qua khe. Ở đây không che cũng không chảy — chỉ một ngưỡng và phép phân loại theo "
+        "KẾT QUẢ"),
+    "pygmalion-effect": (
+        "frame_pulls_up",
+        "hình mới. xlsx cho branching sai. Tiền đề thí nghiệm Rosenthal–Jacobson là hai "
+        "nhóm chọn NGẪU NHIÊN, nên đường khởi điểm bắt buộc là một nét liền chạy qua cả "
+        "hai bên; kỳ vọng (khung rỗng) có trước, hiệu suất dâng lên sau. "
+        "`prior_passthrough` (observer-expectancy) uốn SỐ ĐO, còn ở đây uốn chính hiệu "
+        "suất thật"),
+    "reactance": (
+        "barred_grows",
+        "hình mới. xlsx cho branching sai. Bốn lựa chọn ngang giá, đúng một cái bị chắn, "
+        "và chính cái bị chắn thành đậm nhất — giá trị tăng vì bị lấy đi, không vì nó nổi "
+        "bật. `odd_one_out` nói về sự CHÚ Ý và không có tác nhân chắn từ ngoài; "
+        "`unused_exit` là cửa mở không ai đi, ngược chiều"),
+    "reactive-devaluation": (
+        "discounted_across_line",
+        "hình mới. xlsx cho branching sai. Trục của card là ĐỐI KHÁNG, nên phải thấy hai "
+        "phe đối diện qua một vách và một đề nghị y hệt bị trừ giá khi đứng ở phía bên "
+        "kia. `own_side_premium` (not-invented-here) có trục NGUỒN GỐC trong/ngoài tổ "
+        "chức; `source_swap` (misattribution) chỉ tráo nhãn nguồn, không có hai phe"),
+})
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=10)
