@@ -31,6 +31,68 @@ CONTENT = os.path.join(ROOT, "content", "stuff")
 # chính file ghi đây là "design hypothesis"), nên phải chẩn đoán lại theo `back`
 # của từng card. slug -> (metaphor, "lý do")
 OVERRIDES = {
+    # --- batch 2026-10-01 ---
+    "second-order-thinking": (
+        "second_step_reverses",
+        "hệ quả bậc một nằm trên mốc, bậc hai đổ hẳn xuống dưới và sâu hơn — dấu ĐỔI ở "
+        "bước thứ hai mới là nội dung (Munger: nghĩ thêm một bước). layers theo xlsx chỉ "
+        "nói 'có nhiều tầng' mà không nói tầng sau lật ngược tầng trước, và bản mint của "
+        "layers đã thuộc conservatism"),
+    "recency-effect": (
+        "fresh_buffer_tail",
+        "sáu vị trí đều nhau, hai vị trí cuối đặc và nằm trong một khung HỞ một đầu — "
+        "ưu thế của đuôi chuỗi đến từ chỗ nó còn trong kho tạm, nên một tác vụ chen "
+        "ngang đẩy nó ra là mất sạch (Murdock 1962). Đó cũng là điểm phân biệt khỏi "
+        "primacy-effect, vốn giữ head_transferred. divergence không nói gì về vị trí "
+        "trong chuỗi — mà vị trí mới là toàn bộ nội dung card"),
+    "recency-illusion": (
+        "noticed_from_here",
+        "hiện tượng chạy suốt trục thời gian, nhưng chỉ phần sau vạch 'lúc mình để ý' "
+        "được ghi nhận (đặc, trên đường), phần trước vạch vẫn có mặt mà vẽ rỗng ở dưới "
+        "— ảo giác nằm ở chỗ mốc chú ý bị đọc thành mốc khởi đầu. divergence không có "
+        "trục thời gian; salience_pop đã thuộc frequency-illusion, card song sinh ngay "
+        "cạnh nó trong corpus"),
+    "regression-to-the-mean": (
+        "extreme_then_center",
+        "hai lần đo ở cả hai phía một đường trung bình: cực cao tụt về gần đường, cực "
+        "thấp dâng về gần đường. Tính ĐỐI XỨNG qua mốc mới là bằng chứng đây là quy "
+        "luật thống kê chứ không phải tác động nhân quả — một can thiệp thật chỉ đẩy về "
+        "một chiều. divergence không có mốc nào để hồi quy về"),
+    "representativeness-heuristic": (
+        "prototype_match",
+        "bài toán Linda: khối lớn (tỉ lệ nền) không mang hình mẫu, khối nhỏ có đúng "
+        "hình mẫu gắn trên nóc, và thanh phán đoán đi theo khối nhỏ. Cơ chế là KHỚP "
+        "HÌNH DẠNG với khuôn mẫu lấn át cỡ nhóm nền. hierarchy (cha-con) sai hẳn — ở "
+        "đây không có quan hệ phân cấp nào; base-rate-fallacy giữ proportion nên hai "
+        "card không đụng hình"),
+    "restraint-bias": (
+        "thin_shield_overstep",
+        "người tin mình có tấm chắn ý chí nên chủ động đứng ra sát mép vực; tấm chắn đó mỏng "
+        "hơn họ tưởng. divergence không có khái niệm 'phơi mình ra trước rủi ro' — vốn là cơ "
+        "chế trung tâm trong nghiên cứu Nordgren"),
+    "rhyme-as-reason-effect": (
+        "rhythmic_edge",
+        "hai khối nội dung bằng nhau tuyệt đối, chỉ khác BIÊN (vần điệu = hình thức), vậy mà "
+        "thanh 'đáng tin' bên dưới lệch hẳn — đúng thiết kế thí nghiệm McGlone & Tofighbakhsh. "
+        "processing-fluency giữ bản mint, card này lấy amber vì là biến thể cụ thể của nó"),
+    "risk-compensation": (
+        "offset_safety",
+        "ba thời điểm, ba cột cao bằng nhau tuyệt đối dưới một đường đỉnh liền: lớp bảo "
+        "vệ rỗng dâng lên đúng bằng phần thận trọng đặc rút đi, nên tổng rủi ro ròng "
+        "không nhúc nhích (Peltzman 1975). divergence không có đường mốc nào để cho "
+        "thấy 'tổng không đổi'"),
+    "rosy-retrospection": (
+        "recalled_above_lived",
+        "năm thời điểm của cùng một trải nghiệm: cột đặc là cảm nhận ghi tại chỗ, khung "
+        "rỗng cùng vị trí là mức nhớ lại — khung cao hơn cột ở mọi vị trí và phần tô "
+        "không bao giờ chạm nóc. Khoảng hở đó chính là phần trí nhớ thêm vào (Mitchell "
+        "& Thompson 1997). declinism giữ rosy_tilt nên bản xã hội và bản cá nhân không "
+        "trùng hình"),
+    "sapir-whorf-korzybski-hypothesis": (
+        "cue_lock",
+        "ý tưởng vẫn còn nguyên vẹn nhưng thiếu đúng mảnh khớp — một cái tên trong ngôn ngữ "
+        "mình đang dùng — nên không mở ra được. divergence sai hoàn toàn; map_remainder đã "
+        "thuộc về map-is-not-the-territory nên không lấy lại"),
     "abilene-paradox": (
         "cycle",
         "vòng phản hồi tự củng cố — im lặng của mỗi người được người kế tiếp đọc thành "

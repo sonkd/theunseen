@@ -7,6 +7,7 @@ categories: [memory]
 links: [primacy-effect, serial-position-effect, peak-end-rule]
 refs: ['https://en.wikipedia.org/wiki/Serial_position_effect#Recency_effect', 'https://www.simplypsychology.org/primacy-recency.html']
 strategy: 'Trong họp hay phỏng vấn nhiều phương án liên tiếp, ghi chú ngay sau mỗi phần thay vì dựa vào trí nhớ cuối buổi — nếu không, phương án cuối cùng luôn có lợi thế không công bằng.'
+image: /assets/stuff/recency-effect.png
 published: true
 ---
 

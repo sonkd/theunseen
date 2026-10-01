@@ -8,6 +8,7 @@ tags: [probability, cognition]
 links: [base-rate-fallacy, conjunction-fallacy, availability-heuristic]
 refs: ['https://en.wikipedia.org/wiki/Representativeness_heuristic']
 strategy: 'Khi một mô tả nghe "khớp" với hình mẫu nào đó, tự hỏi thêm: trong toàn bộ dân số liên quan, nhóm nào thực sự đông hơn — bất kể có khớp hình mẫu hay không.'
+image: /assets/stuff/representativeness-heuristic.png
 published: true
 ---
 

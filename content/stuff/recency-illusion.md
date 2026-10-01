@@ -7,6 +7,7 @@ categories: [bias, perception]
 links: [frequency-illusion, selective-perception, availability-heuristic]
 refs: ['https://en.wikipedia.org/wiki/Recency_illusion', 'https://arnoldzwicky.org/linguistics-notes/illusions-postings/']
 strategy: 'Trước khi khẳng định "dạo này mới thấy X", thử tra cứu nhanh gốc gác của X — nhiều thứ tưởng mới hoá ra đã tồn tại hàng chục năm, chỉ là mình mới để ý.'
+image: /assets/stuff/recency-illusion.png
 published: true
 ---
 

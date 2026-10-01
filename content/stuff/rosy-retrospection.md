@@ -7,6 +7,7 @@ categories: [bias, memory]
 links: [declinism, choice-supportive-bias, fading-affect-bias]
 refs: ['https://en.wikipedia.org/wiki/Rosy_retrospection', 'https://thedecisionlab.com/biases/rosy-retrospection']
 strategy: 'Khi cân nhắc lặp lại một trải nghiệm, tìm lại ghi chép hoặc tin nhắn thật lúc đang trải qua nó, thay vì chỉ dựa vào cảm nhận hiện tại.'
+image: /assets/stuff/rosy-retrospection.png
 published: true
 ---
 

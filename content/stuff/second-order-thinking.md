@@ -9,6 +9,7 @@ refs:
   - 'https://en.wikipedia.org/wiki/Unintended_consequences'
   - 'https://fs.blog/2019/02/second-order-thinking/'
 strategy: 'Trước khi quyết định, hỏi lại: "Điều này dẫn đến gì tiếp theo, và hậu quả đó lại dẫn đến gì?"'
+image: /assets/stuff/second-order-thinking.png
 published: true
 ---
 Second-order Thinking không chỉ là chọn giải pháp tốt, mà là hình dung được phản ứng của thế hệ tiếp theo sau khi giải pháp đó hoạt động. Nếu first-order nghĩ "làm nhiều thông báo hơn sẽ tăng tương tác", second-order sẽ hỏi "tăng thông báo sẽ khiến người dùng phàn nàn và tắt thông báo không?".

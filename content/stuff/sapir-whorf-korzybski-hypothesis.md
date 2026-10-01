@@ -7,6 +7,7 @@ categories: [theory]
 links: [framing-effect, curse-of-knowledge, essentialism]
 refs: ['http://www.nobeliefs.com/Sapir-Whorf-Korzybski.htm', 'https://en.wikipedia.org/wiki/Linguistic_relativity', 'https://www.simplypsychology.org/sapir-whorf-hypothesis.html']
 strategy: 'Khi một khái niệm khó diễn đạt trong tiếng mẹ đẻ, thử mượn thuật ngữ từ ngôn ngữ khác hoặc tự đặt tên riêng cho nó — có tên gọi rõ ràng giúp tư duy về nó chính xác hơn.'
+image: /assets/stuff/sapir-whorf-korzybski-hypothesis.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [self-licensing, overconfidence-effect, optimism-bias]
 refs: ['https://en.wikipedia.org/wiki/Restraint_bias', 'https://thedecisionlab.com/biases/restraint-bias']
 strategy: 'Đừng dựa vào ý chí — thiết kế môi trường để giảm tiếp xúc với cám dỗ ngay từ đầu, vì ý chí không đáng tin bằng việc không phải dùng tới nó.'
+image: /assets/stuff/restraint-bias.png
 published: true
 ---
 
