@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [functional-fixedness, framing-effect]
 refs: ['https://assets.csom.umn.edu/assets/71190.pdf', 'https://en.wikipedia.org/wiki/Cathedral_effect']
 strategy: "Chọn không gian phù hợp với loại công việc: phòng trần cao/thoáng cho brainstorm và tư duy chiến lược, không gian gọn/thấp hơn cho công việc cần tập trung chi tiết như debug hay kiểm tra số liệu."
+image: /assets/stuff/cathedral-effect.png
 published: true
 ---
 

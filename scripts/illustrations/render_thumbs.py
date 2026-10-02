@@ -97,9 +97,12 @@ OVERRIDES = {
         "một câu hỏi khó bị đánh tráo bằng một câu hỏi dễ — hai khối có độ phức tạp hình học "
         "trái ngược, đặt thay chỗ nhau"),
     "authority-bias": (
-        "pull",
-        "concept object: một nguồn có trọng lượng lớn kéo lệch toàn bộ phán đoán còn lại, "
-        "bất kể bằng chứng"),
+        # sửa ở batch #4: bản pull trùng BYTE với anchoring (cùng hue mint), mà anchoring mới là
+        # card "khối nặng kéo lệch ước lượng" đúng nghĩa.
+        "gate",
+        "concept object: chỉ thông tin mang nhãn thẩm quyền được lọt qua cổng, bằng chứng trái "
+        "chiều bị chặn lại — cơ chế là sàng lọc theo nguồn, không phải lực kéo. mint phân biệt "
+        "với automation-bias (gate/amber), bản 'thẩm quyền = cái máy' của cùng quan hệ này"),
     "automation-bias": (
         "gate",
         "concept object: chỉ thông tin đến từ hệ thống tự động mới lọt qua cổng; "
@@ -109,9 +112,12 @@ OVERRIDES = {
         "concept object: chính sự lan truyền lặp lại tạo ra cảm giác đáng tin, không phải bằng chứng. "
         "echo sát hơn cycle vì cascade là khuếch đại một chiều, không phải vòng khép kín"),
     "availability-heuristic": (
-        "spectrum",
-        "trọng số đánh giá giảm dần theo độ khó nhớ lại: thứ dễ bật ra trong đầu được cho là "
-        "phổ biến/nguy hiểm hơn thực tế"),
+        # sửa ở batch #4: bản spectrum trùng BYTE với ambiguity-effect (cùng hue amber), mà
+        # ambiguity-effect mới là dải liên tục đúng nghĩa (biết rõ xác suất → mù mờ).
+        "echo",
+        "concept object: cái được nhắc lại nhiều thì bật ra trong đầu dễ hơn, và chính độ dễ bật "
+        "ra đó bị đọc thành 'phổ biến / nguy hiểm hơn thực tế' — khuếch đại từ lặp lại. amber "
+        "phân biệt với availability-cascade (echo/mint), vốn là bản lan truyền trong xã hội"),
 
     # ---- batch #3 (2026-08-28) — xlsx gán 5 hierarchy + 4 branching + 1 proportion.
     # Chỉ 1/10 (base-rate-fallacy) là đúng. Thêm 2 concept object mới: `rebound`, `odd_one_out`
@@ -162,6 +168,62 @@ OVERRIDES = {
         "divergence",
         "khuếch tán trách nhiệm: một tình huống cần giúp bị chia thành nhiều phần cho nhiều "
         "người, càng nhiều nhánh mỗi nhánh càng loãng cho tới khi không ai hành động"),
+
+    # ---- batch #4 (2026-10-02) — xlsx gán 8 hierarchy + 1 branching + 1 nesting.
+    # Chỉ 1/10 (choice-overload) đúng. Lưu ý thêm: phải tránh cả cặp (metaphor, hue) đã dùng —
+    # mirror/amber đã thuộc actor-observer-bias, coverage_sphere/amber thuộc affect-heuristic,
+    # veil/amber thuộc armchair-fallacy, nên 3 hình sát nghĩa nhất của batch này bị loại.
+    "cathedral-effect": (
+        "coverage_sphere",
+        "một yếu tố môi trường (chiều cao trần) phủ lên toàn bộ cách xử lý thông tin, kể cả "
+        "những vấn đề chẳng liên quan gì tới không gian — đúng nghĩa 'một thứ phủ lên tất cả'. "
+        "hierarchy của xlsx sai hẳn: không có quan hệ cha-con nào. mint để phân biệt với "
+        "affect-heuristic (coverage_sphere/amber)"),
+    "change-blindness": (
+        "beam",
+        "concept object: chỉ phần nằm trong vùng được rọi mới được xử lý sâu, phần còn lại được "
+        "lấp bằng phỏng đoán — con khỉ đột nằm ngoài chùm sáng. Card tự nói rõ cơ chế này. amber "
+        "để không đụng attentional-bias (beam/mint), card anh em mà chính bài có đem ra so sánh"),
+    "cheerleader-effect": (
+        "halo_spill",
+        "bối cảnh nhóm lan sang đánh giá về một gương mặt cụ thể — chính gương mặt đó không đổi, "
+        "chỉ có vùng ảnh hưởng xung quanh làm nó được chấm cao hơn. nesting của xlsx chỉ nói "
+        "'nhóm chứa cá nhân', mất mất phần quan trọng nhất là đánh giá bị dịch chuyển"),
+    "chestertons-fence": (
+        "nested_scope",
+        "hàng rào là vòng ngoài nhìn thấy được, lý do dựng nó là cái lõi bị che phía trong — "
+        "nguyên tắc buộc phải chạm tới lõi trước khi động vào vòng ngoài. veil sát nghĩa hơn "
+        "nhưng veil/amber đã là armchair-fallacy"),
+    "choice-overload": (
+        "divergence",
+        "giữ nguyên xlsx — ca hiếm mà cột Hero shape đúng: một điểm quyết định rẽ thành quá "
+        "nhiều nhánh tương đương, và chính sự bùng nổ nhánh đó làm throughput sụp (24 loại mứt "
+        "→ 3% mua). mint để không đụng bystander-effect (divergence/amber)"),
+    "choice-supportive-bias": (
+        "fracture",
+        "concept object: ký ức về quyết định và những gì thực sự biết lúc quyết định lẽ ra phải "
+        "khớp, nhưng lệch nhau — card nói rõ bộ nhớ còn chỉnh sửa lại chi tiết sự kiện. branching "
+        "của xlsx chỉ vẽ được lúc đang phân vân, không vẽ được phần hậu-quyết-định"),
+    "circle-of-competence": (
+        "in_out_ring",
+        "cả mental model là một đường viền và việc mình đang đứng trong hay ngoài nó — in_out_ring "
+        "là hình duy nhất lấy ranh giới thuộc-về làm trung tâm. hierarchy của xlsx gợi thang bậc "
+        "kiến thức, mà card nói rõ vòng to hay nhỏ không quan trọng"),
+    "clustering-illusion": (
+        "odd_one_out",
+        "nền rải rác đồng đều tự nhiên sinh ra một cụm dày, và cụm đó bị đọc thành tín hiệu — nền "
+        "đồng nhất là MỘT PHẦN của cơ chế (bom V-1 rơi theo phân phối Poisson). Không dùng network "
+        "vì network/amber đã là apophenia, card gần nghĩa nhất, hai ô sẽ đọc như một"),
+    "cognitive-dissonance": (
+        "contrast",
+        "hai nhận thức không thể cùng đứng trong một khung — căng thẳng sinh ra từ chính sự đối "
+        "lập hình học đó. fracture sát nghĩa ngang nhưng fracture/mint đã là belief-bias; "
+        "contrast/mint còn trống (attribute-substitution dùng amber)"),
+    "cognitive-load-theory": (
+        "layers",
+        "bộ nhớ làm việc là vật chứa có chiều cao hữu hạn, trong đó ba loại tải (intrinsic / "
+        "extraneous / germane) xếp thành tầng và tranh nhau chỗ — đúng quan hệ tầng/trầm tích. "
+        "hierarchy của xlsx không diễn được phần 'giới hạn sức chứa'"),
 }
 
 

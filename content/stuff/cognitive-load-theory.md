@@ -9,6 +9,7 @@ refs:
   - 'https://en.wikipedia.org/wiki/Cognitive_load_theory'
   - 'https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two'
 strategy: 'Thiết kế mỗi bước chỉ giữ 3–5 mẩu thông tin, xóa bỏ chi tiết không cần thiết và dùng chunks rõ ràng.'
+image: /assets/stuff/cognitive-load-theory.png
 published: true
 ---
 Cognitive Load Theory giải thích tại sao một slide dài, một form rối, hay một dashboard nhồi nhiều biểu đồ lại nhanh chóng làm người dùng mất tập trung. Nền tảng của nó là ý tưởng rằng bộ nhớ làm việc chỉ chứa được một lượng thông tin giới hạn trước khi bắt đầu rơi rụng hoặc suy giảm chất lượng suy nghĩ.
