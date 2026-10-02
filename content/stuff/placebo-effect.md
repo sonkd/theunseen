@@ -7,6 +7,7 @@ categories: [bias]
 links: [observer-expectancy-effect, suggestibility, subjective-validation]
 refs: ['https://en.wikipedia.org/wiki/Placebo']
 strategy: 'Khi test một tính năng mới có yếu tố "được hỗ trợ thông minh hơn" (vd. gợi ý tiết kiệm bằng AI), thêm nhóm đối chứng thấy giao diện tương tự nhưng không có xử lý thật — để tách hiệu ứng tâm lý "cảm thấy được hỗ trợ" khỏi giá trị thật của tính năng.'
+image: /assets/stuff/placebo-effect.png
 published: true
 ---
 

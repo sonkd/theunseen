@@ -7,6 +7,7 @@ categories: [bias]
 links: [choice-supportive-bias, effort-justification, endowment-effect]
 refs: ['https://en.wikipedia.org/wiki/Choice-supportive_bias']
 strategy: 'Sau một quyết định chi tiêu lớn (nâng cấp gói dịch vụ, đầu tư), thiết kế điểm chạm "xác nhận giá trị" thật (progress recap, tính năng đã unlock, số liệu tiết kiệm được) để giảm hối tiếc dựa trên bằng chứng — thay vì chỉ dựa vào cơ chế tự-thuyết-phục của người dùng.'
+image: /assets/stuff/post-purchase-rationalization.png
 published: true
 ---
 

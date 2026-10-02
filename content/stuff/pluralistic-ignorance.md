@@ -8,6 +8,7 @@ tags: [group, conformity]
 links: [bystander-effect, diffusion-of-responsibility, false-consensus-effect]
 refs: ['https://en.wikipedia.org/wiki/Pluralistic_ignorance']
 strategy: 'Tạo kênh phản hồi ẩn danh trước khi hỏi công khai — nhiều người sẽ nói ra suy nghĩ thật một khi biết mình không phải người duy nhất.'
+image: /assets/stuff/pluralistic-ignorance.png
 published: true
 ---
 

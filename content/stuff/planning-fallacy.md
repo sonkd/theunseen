@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [optimism-bias, overconfidence-effect, illusion-of-control]
 refs: ['https://en.wikipedia.org/wiki/Planning_fallacy']
 strategy: 'Ước lượng effort/thời gian một dự án bằng reference class forecasting: lấy dữ liệu thực tế từ 5-10 dự án tương tự đã hoàn thành trong quá khứ, thay vì tự ước lượng from scratch dựa trên kế hoạch lý tưởng.'
+image: /assets/stuff/planning-fallacy.png
 published: true
 ---
 

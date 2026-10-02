@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [halo-effect, fundamental-attribution-error, self-serving-bias]
 refs: ['https://en.wikipedia.org/wiki/Positivity_effect']
 strategy: 'Trong đánh giá hiệu suất hoặc peer feedback, tách rõ "hành vi quan sát được" khỏi "diễn giải về động cơ" trước khi viết nhận xét — để tránh việc người được yêu thích luôn được đọc thiện chí, người ít được yêu thích luôn bị đọc ác ý.'
+image: /assets/stuff/positivity-effect.png
 published: true
 ---
 

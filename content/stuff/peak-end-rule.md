@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [duration-neglect, recency-effect, rosy-retrospection]
 refs: ['https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule']
 strategy: 'Khi thiết kế một hành trình nhiều bước (onboarding, khiếu nại, thanh toán), đầu tư có chủ đích vào đúng một khoảnh khắc đỉnh điểm và bước kết thúc — thay vì cố làm đều tay ở mọi bước.'
+image: /assets/stuff/peak-end-rule.png
 published: true
 ---
 

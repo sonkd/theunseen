@@ -7,6 +7,7 @@ categories: [bias]
 links: [optimism-bias, negativity-bias, declinism]
 refs: ['https://en.wikipedia.org/wiki/Optimism_bias#Pessimism_bias']
 strategy: 'Trước khi đánh giá rủi ro cho một quyết định tài chính, tách riêng xác suất khách quan (dữ liệu lịch sử) khỏi cảm giác chủ quan "chắc sẽ tệ" — viết cả hai ra hai cột trước khi kết luận.'
+image: /assets/stuff/pessimism-bias.png
 published: true
 ---
 
