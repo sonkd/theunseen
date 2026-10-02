@@ -2700,3 +2700,269 @@ CONCEPT_MEANING.update({
 })
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260929)
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-09-30 — primacy-effect → reactive-devaluation (card #171-180)
+# --------------------------------------------------------------------------
+
+def t_head_transferred(p):
+    # Hai tầng: hàng TRÊN là dòng đang tiếp nhận, hàng DƯỚI là bản ghi bền.
+    # Năm ô hàng trên BẮT BUỘC bằng nhau tuyệt đối về cả cỡ và sắc độ — tiền đề của
+    # card là các mục không hơn nhau về nội dung, chỉ khác VỊ TRÍ. Vẽ chúng cao thấp
+    # khác nhau là đổi trục sang "cái nổi bật được nhớ", tức bác bỏ card.
+    # Hàng dưới chỉ có đúng MỘT khối, nằm thẳng dưới ô đầu tiên: chỉ mục đầu được tập
+    # dượt đủ để chuyển sang bộ nhớ dài hạn. Bốn vị trí còn lại của hàng dưới để TRỐNG
+    # HOÀN TOÀN (không cả nét viền) — không có bản ghi nào để vẽ.
+    # Khác `unvoiced_row` (hàng trên đặc, hàng dưới rỗng nhưng có đủ bốn ô viền ở cả hai
+    # hàng): ở đó nội dung là "đã tồn tại mà không được nói"; ở đây hàng dưới KHÔNG có
+    # ô nào ngoài ô đầu, vì phần không chuyển được thì không để lại dấu.
+    # Khác `peak_end_kept` (một hàng, thanh cao thấp khác nhau, hai thanh được tô): ở
+    # đây hai tầng và mọi ô hàng trên giống hệt nhau.
+    o = [f'<rect x="{x}" y="22" width="18" height="18" fill="{p["t3"]}" {TS}/>'
+         for x in (12, 34, 56, 78, 100)]
+    o.append(f'<line x1="10" y1="62" x2="118" y2="62" {TNF}/>')
+    o.append(f'<rect x="12" y="76" width="18" height="18" fill="{p["acc"]}" '
+             f'fill-opacity="0.85" {TS}/>')
+    return "".join(o)
+
+
+def t_assumed_uptake(p):
+    # Năm cột trên một đường nền. Cột ĐẦU đặc và cao hết khung = người dựng ra cái mới,
+    # đã "adopt" trọn vẹn. Bốn cột còn lại đặc nhưng rất thấp = mức chấp nhận thật của
+    # phần còn lại. Trên mỗi cột thấp, một khung RỖNG nối tiếp lên đúng cao độ của cột
+    # đầu = mức người dựng mặc định ai cũng sẽ đạt tới, ngay lập tức.
+    # Khoảng rỗng đó chính là thiên kiến, và nó phải để rỗng: thứ bị bỏ qua đúng là thứ
+    # người dựng không nhìn thấy.
+    # Cột đầu bắt buộc ĐẶC và cao thật — khác `overclaim` (một khung duy nhất, phần đặc
+    # ở đáy) vì ở đây có một trường hợp thật sự đạt mức đó, và chính nó là gốc của phép
+    # ngoại suy. Khác `ramp_to_step` (một dốc liên tục bị nén thành hai mức) vì ở đây
+    # không có dốc nào: bốn cột sau bằng nhau, khác biệt duy nhất là cột đầu.
+    o = [f'<line x1="10" y1="108" x2="118" y2="108" {TNF}/>',
+         f'<rect x="13" y="28" width="16" height="80" fill="{p["acc"]}" '
+         f'fill-opacity="0.85" {TS}/>']
+    for x in (36, 58, 80, 102):
+        o.append(f'<rect x="{x}" y="90" width="16" height="18" fill="{p["t3"]}" {TS}/>')
+        o.append(f'<rect x="{x}" y="28" width="16" height="62" fill="none" {TS}/>')
+    return "".join(o)
+
+
+def t_edge_reads_true(p):
+    # Hai khối nội dung Y HỆT NHAU: cùng bề rộng, cùng chiều cao, cùng sắc độ. Đây là
+    # điều kiện bắt buộc — card nói nội dung giống hệt nhau, chỉ độ trôi chảy khi xử lý
+    # khác nhau. Khác biệt duy nhất được phép là ĐƯỜNG BIÊN: khối trái có biên thẳng
+    # (đọc trơn), khối phải có biên răng (đọc vướng).
+    # Dưới mỗi khối là một thanh "được cho là đúng". Thanh dưới khối biên thẳng cao hơn
+    # hẳn. Vì hai khối bằng nhau tuyệt đối, chênh lệch hai thanh dưới không thể quy cho
+    # nội dung — chỉ còn quy được cho biên. Đó là toàn bộ luận điểm.
+    # Răng phải vẽ bằng path zigzag (hình học), không phải texture/pattern.
+    # Khác `two_frames` (framing-effect: cùng một đại lượng đọc qua hai khung khác nhau)
+    # vì ở đây không có khung nào — sự khó/dễ nằm ngay trên chính vật thể.
+    # Răng đặt ở biên NGOÀI (phải) của khối phải, không đặt ở khe giữa hai khối —
+    # ở khe giữa, răng đọc được là của cả hai khối và mất hẳn tính quy thuộc.
+    zig = "M110,22 " + " ".join(
+        f"L{110 + (7 if i % 2 else 0)},{22 + i * 6}" for i in range(1, 7))
+    return (f'<rect x="14" y="22" width="36" height="36" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="74" y="22" width="36" height="36" fill="{p["t3"]}" {TS}/>'
+            f'<path d="{zig}" fill="none" {TS}/>'
+            f'<line x1="10" y1="110" x2="118" y2="110" {TNF}/>'
+            f'<rect x="20" y="68" width="24" height="42" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="80" y="96" width="24" height="14" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>')
+
+
+def t_now_tiled_forward(p):
+    # Bốn mốc trên một trục thời gian. Mốc đầu đặc = trạng thái HIỆN TẠI, đo được.
+    # Ba mốc sau cũng đặc và cao BẰNG ĐÚNG mốc đầu — bản dập lại của hiện tại, tức phần
+    # được dự đoán. Sau mỗi mốc dự đoán là một khung RỖNG cao thấp khác nhau = giá trị
+    # thật của tương lai, vốn không bằng hiện tại và cũng không bằng nhau.
+    # Ba khối đặc phải bằng nhau TUYỆT ĐỐI: chỉ khi chúng phẳng tuyệt đối thì hình mới
+    # đọc thành "dập khuôn" thay vì "ước lượng hơi lệch".
+    # Ba khung rỗng phải cao thấp khác nhau rõ: nếu chúng cũng bằng nhau thì hình nói
+    # "dự đoán đúng", tức bác bỏ card.
+    # Khác `expected_flat` (một thanh ngang duy nhất bị một khối biến cố cắt qua): ở đây
+    # bốn cột rời nhau và cái lệch là từng mốc một, không phải một biến cố đơn lẻ.
+    # Mỗi mốc là một CẶP cạnh nhau: cột đặc (dự đoán) + cột rỗng (giá trị thật). Hai
+    # cột trong cặp không được chồng lên nhau — chồng lên thì ở 64px chỉ còn một khối
+    # nhoè và mất hẳn phép so sánh từng cặp.
+    o = [f'<line x1="10" y1="110" x2="118" y2="110" {TNF}/>',
+         f'<rect x="12" y="68" width="13" height="42" fill="{p["acc"]}" '
+         f'fill-opacity="0.85" {TS}/>']
+    for x, htrue in ((41, 76), (69, 30), (97, 92)):
+        o.append(f'<rect x="{x}" y="68" width="13" height="42" fill="{p["acc"]}" '
+                 f'fill-opacity="0.85" {TS}/>')
+        o.append(f'<rect x="{x + 15}" y="{110 - htrue}" width="11" height="{htrue}" '
+                 f'fill="none" {TS}/>')
+    return "".join(o)
+
+
+def t_value_curve_s(p):
+    # Đường giá trị của prospect theory, vẽ nguyên hình: một ĐIỂM THAM CHIẾU ở giữa
+    # (chấm đặc), trục ngang đi qua nó, và MỘT nét liền chữ S bất đối xứng.
+    # Nhánh trên-phải (được): lồi lên rồi bẹt dần — độ nhạy giảm khi lượng tăng.
+    # Nhánh dưới-trái (mất): dốc xuống DỰNG hơn hẳn nhánh được ở cùng khoảng cách
+    # ngang. Chính độ dốc chênh nhau là loss aversion, và nó là HỆ QUẢ của đường cong
+    # này chứ không phải nội dung duy nhất — nên phải vẽ cả hai nhánh trong một nét.
+    # Điểm tham chiếu bắt buộc nằm đúng chỗ nét đổi chiều cong: nếu lệch, hình mất luôn
+    # ý "mọi thứ được đo từ một mốc, không phải từ 0 tuyệt đối".
+    # Khác `steeper_below` (loss-aversion, hai thanh dọc lệch nhau quanh một đường mốc):
+    # ở đó chỉ còn lại kết luận về độ nặng; ở đây là cả hàm giá trị, có độ CONG và có
+    # vùng bẹt — thứ steeper_below không có.
+    return (f'<line x1="12" y1="64" x2="116" y2="64" {TNF}/>'
+            f'<path d="M22,110 C40,104 54,88 64,64 C74,44 92,34 110,30" '
+            f'fill="none" {TS}/>'
+            f'<circle cx="64" cy="64" r="5" fill="{p["acc"]}" {TS}/>')
+
+
+def t_certain_inside_branch(p):
+    # Một khung = TOÀN BỘ quyết định. Một vách dọc chia nó thành hai buồng không bằng
+    # nhau. Buồng lớn được tô ĐẦY tới sát mọi mép của chính nó — trong nhánh này, kết
+    # quả đúng là chắc chắn. Buồng nhỏ để TRỐNG HOÀN TOÀN — nhánh còn lại, nơi không có
+    # gì được bảo toàn.
+    # Nội dung nằm ở chỗ: phần tô đầy chỉ đầy so với BUỒNG, không đầy so với KHUNG. Cảm
+    # giác "chắc chắn" là thật nhưng chỉ đúng cục bộ.
+    # Vách dọc bắt buộc là nét liền và chạm hai mép khung: nếu hở, hai buồng đọc thành
+    # hai vật thể rời và mất ý "cùng một quyết định".
+    # Khác `sealed_bins` (mental-accounting: nhiều buồng, buồng nào cũng có phần chứa
+    # riêng) vì ở đây đúng một buồng đầy và một buồng rỗng tuyệt đối. Khác `shielded_
+    # downside` (có một lớp đệm che phía dưới) vì ở đây không có lớp nào — chỉ có tỉ lệ
+    # giữa buồng và khung.
+    # Hai buồng vẽ RỜI nhau (có khe), mỗi buồng có viền riêng: nếu vẽ liền thành một
+    # khung bị vạch chia, hình đọc thành "thanh đầy 72%" — tức một tỉ trọng, sai hẳn
+    # trục. Có khe thì đọc được là hai KẾT CỤC loại trừ nhau, và cái được tô đầy chỉ
+    # đầy trong phạm vi của chính nó.
+    # Khung mảnh bao ngoài cả hai buồng = toàn bộ quyết định, để thấy phần "chắc chắn"
+    # không phủ hết nó.
+    return (f'<rect x="10" y="30" width="108" height="68" fill="none" {TS}/>'
+            f'<rect x="20" y="42" width="58" height="44" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="88" y="42" width="22" height="44" fill="none" {TS}/>')
+
+
+def t_drawer_below_line(p):
+    # Một đường ngang = ngưỡng công bố. TRÊN đường: ba khối đặc, đứng thẳng, thấy được.
+    # DƯỚI đường: năm khối RỖNG treo xuống — chúng đã được làm thật, chỉ là không ai
+    # đọc được. Số lượng dưới phải NHIỀU hơn số trên, vì đó chính là hình dạng của méo
+    # mó: cái nhìn thấy là phần nhỏ hơn của tập thật.
+    # Khối dưới để rỗng chứ không mờ: chúng không yếu hơn về chất lượng, chúng chỉ không
+    # có mặt trong bản ghi.
+    # Khác `veil` (một tấm che đắp lên làm khuất phần dưới của MỘT hình) vì ở đây không
+    # có tấm che nào — chỉ có một ngưỡng, và các phần tử tự rơi về hai phía theo KẾT QUẢ
+    # của chúng. Khác `gate` (khe hẹp, dòng đi qua) vì ở đây không có dòng nào chảy: mọi
+    # khối đều đã tồn tại sẵn, việc phân loại xảy ra một lần.
+    o = [f'<line x1="8" y1="64" x2="120" y2="64" {TNF}/>']
+    o += [f'<rect x="{x}" y="{64 - h}" width="16" height="{h}" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>' for x, h in ((20, 34), (54, 44), (88, 28))]
+    o += [f'<rect x="{x}" y="66" width="12" height="{h}" fill="none" {TS}/>'
+          for x, h in ((12, 26), (34, 38), (56, 22), (78, 32), (100, 28))]
+    return "".join(o)
+
+
+def t_frame_pulls_up(p):
+    # Một đường ngang chạy suốt khung = năng lực khởi điểm, BẰNG NHAU ở cả hai bên. Đây
+    # là tiền đề bắt buộc của card: hai nhóm được chọn ngẫu nhiên, không ai giỏi hơn ai.
+    # Trên đường đó, hai khung RỖNG cao thấp khác nhau = mức kỳ vọng được đặt vào từng
+    # bên. Phần tô ĐẶC trong mỗi khung dâng lên đúng tới nóc khung của chính nó: kết quả
+    # thật đi theo kỳ vọng, không theo năng lực khởi điểm.
+    # Khung phải vẽ RỖNG và cao hơn phần đặc ở đường khởi điểm để đọc được thứ tự nhân
+    # quả: kỳ vọng có trước, phần dâng lên là hệ quả.
+    # Đường khởi điểm bắt buộc là MỘT nét liền chạy qua cả hai bên — vẽ hai đoạn rời cho
+    # mỗi bên là thành "hai mức năng lực khác nhau", tức bác bỏ card.
+    # Khác `prior_passthrough` (observer-expectancy: kỳ vọng đi xuyên qua phép đo mà
+    # không đổi) vì ở đó cái bị uốn là SỐ ĐO, còn ở đây là chính hiệu suất thật.
+    # Ba tầng bắt buộc, thiếu tầng nào là mất luận điểm:
+    #   - đường NỀN dưới cùng: chỗ đứng chung.
+    #   - đường KHỞI ĐIỂM (y=86) chạy liền qua cả hai bên: năng lực ban đầu bằng nhau.
+    #   - khung kỳ vọng rỗng dựng TỪ đường khởi điểm lên, cao thấp khác nhau; phần tô
+    #     đặc dâng từ nền lên đúng nóc khung của chính nó.
+    # Vẽ khung và phần tô trùng khít toạ độ (bản trước) làm khung tàng hình, hình rơi
+    # xuống thành "hai thanh cao thấp khác nhau" — tức mất cả tiền đề lẫn chiều nhân quả.
+    o = [f'<line x1="8" y1="110" x2="120" y2="110" {TNF}/>']
+    for x, top in ((20, 24), (74, 60)):
+        o.append(f'<rect x="{x}" y="{top}" width="34" height="{86 - top}" '
+                 f'fill="none" {TS}/>')
+        o.append(f'<rect x="{x}" y="{top}" width="34" height="{110 - top}" '
+                 f'fill="{p["acc"]}" fill-opacity="0.32" {TS}/>')
+    o.append(f'<line x1="8" y1="86" x2="120" y2="86" {TNF}/>')
+    return "".join(o)
+
+
+def t_barred_grows(p):
+    # Bốn ô bằng nhau tuyệt đối trên một hàng = bốn lựa chọn ngang giá. Đúng MỘT ô bị
+    # một thanh ngang chắn qua = lựa chọn bị lấy đi. Chính ô bị chắn đó lại là ô ĐẬM
+    # NHẤT trong hàng — sức hấp dẫn tăng lên đúng vì nó bị cấm.
+    # Ba ô còn lại phải để RỖNG hết: nếu ô nào khác cũng được tô thì mất ý "trước khi bị
+    # cấm, không ô nào nổi hơn ô nào".
+    # Thanh chắn phải là rect (không phải line) và phải TRÀN qua hai mép ô: ở 64px một
+    # line 1.6px gần như biến mất, và thanh không tràn mép sẽ đọc thành dấu gạch trang
+    # trí bên trong ô chứ không phải một rào chắn áp từ ngoài vào.
+    # Khác `odd_one_out` (một lưới phần tử, một phần tử khác kiểu — nói về việc bị chú
+    # ý) vì ở đây có tác nhân chắn từ ngoài, và cái đổi là GIÁ TRỊ chứ không phải sự
+    # nổi bật. Khác `unused_exit` (có một cửa mở mà không ai đi qua) vì ở đây cửa bị
+    # đóng lại, ngược chiều.
+    o = []
+    for i, x in enumerate((12, 41, 70, 99)):
+        fill = (f'fill="{p["acc"]}" fill-opacity="0.85"' if i == 2 else 'fill="none"')
+        o.append(f'<rect x="{x}" y="44" width="23" height="40" {fill} {TS}/>')
+    # Thanh chắn tô TRẮNG (nền) chứ không tô tint: tô tint thì nó đọc thành một dải
+    # nhấn nằm TRONG ô; tô trắng có viền thì nó nằm ĐÈ lên trên, đúng nghĩa rào chắn
+    # áp từ ngoài vào.
+    o.append(f'<rect x="62" y="57" width="39" height="13" fill="#FFFFFF" {TS}/>')
+    return "".join(o)
+
+
+def t_discounted_across_line(p):
+    # Một vách dọc = ranh giới hai phe. Hai bên có hai khối Y HỆT NHAU về cỡ: cùng một
+    # đề nghị, nội dung không đổi. Bên "phe mình" khối được tô ĐẶC; bên "phe đối" cùng
+    # khối đó chỉ còn nét viền rỗng. Dưới mỗi khối là một thanh định giá: thanh bên phe
+    # mình cao, bên phe đối thấp hẳn.
+    # Hai khối bắt buộc bằng nhau tuyệt đối — đó là toàn bộ điều kiện của card. Vẽ khối
+    # bên phe đối nhỏ hơn là biến hình thành "đề nghị tệ hơn", tức bác bỏ card.
+    # Vách phải chạm hai mép trên dưới của vùng hình để đọc được là RANH GIỚI, không
+    # phải một trục đo.
+    # Khác `own_side_premium` (not-invented-here: phần thưởng cộng thêm cho cái của mình,
+    # trục là NGUỒN GỐC bên trong/bên ngoài tổ chức) vì ở đây trục là ĐỐI KHÁNG: phải
+    # thấy hai phe đối diện qua một vách, và cái bị trừ giá là một đề nghị đã đưa sang.
+    # Khác `source_swap` (misattribution: nguồn bị tráo, nội dung giữ nguyên) vì ở đó
+    # không có hai phe nào đối nhau, chỉ có một vật đổi nhãn nguồn.
+    return (f'<line x1="64" y1="24" x2="64" y2="110" {TNF}/>'
+            f'<rect x="20" y="30" width="32" height="26" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="76" y="30" width="32" height="26" fill="none" {TS}/>'
+            f'<rect x="24" y="66" width="24" height="42" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="80" y="94" width="24" height="14" fill="{p["t3"]}" {TS}/>')
+
+
+CONCEPT_OBJECTS_20260930 = dict(
+    head_transferred=t_head_transferred, assumed_uptake=t_assumed_uptake,
+    edge_reads_true=t_edge_reads_true, now_tiled_forward=t_now_tiled_forward,
+    value_curve_s=t_value_curve_s, certain_inside_branch=t_certain_inside_branch,
+    drawer_below_line=t_drawer_below_line, frame_pulls_up=t_frame_pulls_up,
+    barred_grows=t_barred_grows, discounted_across_line=t_discounted_across_line,
+)
+
+CONCEPT_MEANING.update({
+    "head_transferred": "hàng trên năm ô đều tuyệt đối, hàng dưới chỉ một khối đặc nằm "
+                        "thẳng dưới ô đầu, các vị trí dưới còn lại trống hẳn",
+    "assumed_uptake": "cột đầu đặc cao hết khung, bốn cột sau đặc rất thấp và mỗi cột "
+                      "có khung rỗng nối lên đúng cao độ cột đầu",
+    "edge_reads_true": "hai khối bằng nhau tuyệt đối, một khối có biên răng zigzag, "
+                       "dưới mỗi khối một thanh cao thấp lệch hẳn",
+    "now_tiled_forward": "bốn cột đặc cao bằng nhau tuyệt đối, ba cột sau mỗi cột kèm "
+                         "một khung rỗng cao thấp khác nhau lệch sang phải",
+    "value_curve_s": "một nét liền chữ S bất đối xứng qua một chấm đặc giữa trục ngang, "
+                     "nhánh dưới dốc hơn nhánh trên",
+    "certain_inside_branch": "một khung chia bởi vách dọc thành hai buồng lệch cỡ, buồng "
+                             "lớn tô đầy sát mép, buồng nhỏ trống hẳn",
+    "drawer_below_line": "ba khối đặc dựng trên một đường ngang, năm khối rỗng treo dưới "
+                         "cùng đường đó",
+    "frame_pulls_up": "một đường ngang chạy suốt, trên đó hai khung rỗng cao thấp khác "
+                      "nhau và phần tô trong mỗi khung dâng đúng tới nóc khung của nó",
+    "barred_grows": "bốn ô đều tuyệt đối, ba ô rỗng, ô bị một thanh ngang tràn mép chắn "
+                    "qua lại là ô đặc nhất",
+    "discounted_across_line": "một vách dọc, hai khối bằng nhau tuyệt đối hai bên một "
+                              "đặc một rỗng, dưới mỗi khối một thanh cao thấp lệch hẳn",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260930)

@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [recency-effect, serial-position-effect, anchoring]
 refs: ['https://en.wikipedia.org/wiki/Serial_position_effect#Primacy_effect']
 strategy: 'Trong danh sách gói dịch vụ/sản phẩm, đặt lựa chọn bạn muốn người dùng cân nhắc kỹ nhất ở vị trí đầu tiên — không phải giữa danh sách, nơi tỷ lệ được nhớ và được chọn thấp nhất.'
+image: /assets/stuff/primacy-effect.png
 published: true
 ---
 

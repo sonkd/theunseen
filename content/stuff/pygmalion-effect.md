@@ -8,6 +8,7 @@ tags: [motivation, social]
 links: [observer-expectancy-effect, placebo-effect, halo-effect]
 refs: ['https://en.wikipedia.org/wiki/Pygmalion_effect']
 strategy: 'Khi giao việc cho ai đó, diễn đạt kỳ vọng cụ thể và tích cực ("tôi tin bạn xử lý được ca khó này") thay vì trung tính — cách nói định hình một phần kết quả thật.'
+image: /assets/stuff/pygmalion-effect.png
 published: true
 ---
 

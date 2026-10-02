@@ -7,6 +7,7 @@ categories: [mental-models, social]
 links: [reactance, in-group-bias, naive-realism]
 refs: ['https://en.wikipedia.org/wiki/Reactive_devaluation']
 strategy: 'Trong đàm phán/xung đột nội bộ (vd. Design vs Engineering), tách nội dung đề xuất khỏi người đề xuất khi đánh giá — thử tự hỏi "nếu team mình đưa ra đề xuất y hệt, mình có đồng ý không?" trước khi phản đối.'
+image: /assets/stuff/reactive-devaluation.png
 published: true
 ---
 

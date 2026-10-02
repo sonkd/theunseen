@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [reactive-devaluation, illusion-of-control, endowment-effect]
 refs: ['https://en.wikipedia.org/wiki/Reactance_%28psychology%29']
 strategy: 'Tránh ngôn ngữ mệnh lệnh mạnh ("Bắt buộc phải...") trong thông báo/nudge — đóng khung như một lựa chọn có kèm lý do rõ ràng, kèm phương án "để sau" hiển thị, để giảm phản ứng chống đối làm giảm hiệu quả của chính nudge đó.'
+image: /assets/stuff/reactance.png
 published: true
 ---
 

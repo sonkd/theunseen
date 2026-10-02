@@ -7,6 +7,7 @@ categories: [mental-models]
 links: [framing-effect, zero-risk-bias, ambiguity-effect]
 refs: ['https://en.wikipedia.org/wiki/Pseudocertainty_effect']
 strategy: 'Khi trình bày sản phẩm bảo vệ tài sản (bảo hiểm, đầu tư bảo toàn vốn), kiểm tra xem UI có đang khiến một phần lựa chọn "trông có vẻ chắc chắn an toàn" khiến người dùng bỏ qua phân tích rủi ro ở phần còn lại — nếu có, tách rõ hai phần bằng hiển thị riêng.'
+image: /assets/stuff/pseudocertainty-effect.png
 published: true
 ---
 

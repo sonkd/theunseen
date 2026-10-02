@@ -7,6 +7,7 @@ categories: [bias]
 links: [affective-forecasting, empathy-gap, impact-bias]
 refs: ['https://en.wikipedia.org/wiki/Affective_forecasting#Projection_bias']
 strategy: 'Khi thiết kế trải nghiệm dài hạn (lộ trình tiết kiệm, kế hoạch nghỉ hưu), đừng chỉ hỏi người dùng "bạn muốn gì bây giờ" — mô phỏng trạng thái tương lai của họ (hoàn cảnh tài chính, độ tuổi khác) để giảm sai lệch do họ chiếu trạng thái hiện tại lên tương lai.'
+image: /assets/stuff/projection-bias.png
 published: true
 ---
 

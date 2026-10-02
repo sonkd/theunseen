@@ -8,6 +8,7 @@ tags: [perception, judgment]
 links: [illusory-truth-effect, mere-exposure-effect, rhyme-as-reason-effect]
 refs: ['https://en.wikipedia.org/wiki/Processing_fluency']
 strategy: 'Khi đánh giá độ tin cậy của một thông tin quan trọng, cố tình đọc nó ở định dạng khó hơn bình thường (in đậm khác thường, font lạ) để tách cảm giác "dễ hiểu" ra khỏi phán đoán "đúng".'
+image: /assets/stuff/processing-fluency.png
 published: true
 ---
 
