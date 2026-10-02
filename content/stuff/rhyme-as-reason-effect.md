@@ -7,6 +7,7 @@ categories: [heuristic, bias]
 links: [illusory-truth-effect, halo-effect, mere-exposure-effect]
 refs: ['https://en.wikipedia.org/wiki/Rhyme-as-reason_effect', 'https://gwern.net/doc/psychology/cognitive-bias/1999-mcglone.pdf']
 strategy: 'Khi một khẩu hiệu hay câu châm ngôn nghe "đúng" một cách bất thường, thử viết lại nó không vần và tự hỏi liệu nội dung có còn thuyết phục như vậy không.'
+image: /assets/stuff/rhyme-as-reason-effect.png
 published: true
 ---
 

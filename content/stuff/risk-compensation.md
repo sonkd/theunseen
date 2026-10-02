@@ -7,6 +7,7 @@ categories: [theory]
 links: [zero-risk-bias, self-licensing, optimism-bias]
 refs: ['https://en.wikipedia.org/wiki/Risk_compensation', 'https://slate.com/technology/2021/11/risk-compensation-debunked-masks-rapid-tests-vaccines-safety.html']
 strategy: 'Khi triển khai một biện pháp an toàn mới (cảnh báo, giới hạn, bảo hiểm), đo lường hành vi thực tế sau đó thay vì giả định rủi ro giảm đúng bằng lý thuyết — người dùng có thể bù trừ lại phần an toàn vừa được thêm vào.'
+image: /assets/stuff/risk-compensation.png
 published: true
 ---
 

@@ -2966,3 +2966,235 @@ CONCEPT_MEANING.update({
 })
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS_20260930)
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-10-01 — recency-effect → second-order-thinking
+#
+# Lý do phải viết hình mới thay vì tái dùng: engine có 64 hình x 2 hue = 128 ô
+# phân biệt được, trong khi corpus đã dùng 172 cặp. Perceptual check cho thấy 8/10
+# card của batch này đụng >= 0.985 với card cũ dùng cùng hình ở hue kia — đổi hue
+# không cứu được vì mint và amber gần bằng nhau về độ sáng. Từ đây trở đi mỗi batch
+# gần như bắt buộc phải đẻ hình mới.
+# --------------------------------------------------------------------------
+
+def t_fresh_buffer_tail(p):
+    # Sáu vị trí ĐỀU NHAU trên một chuỗi. Bốn vị trí đầu vẽ rỗng, hai vị trí cuối tô
+    # đặc và nằm trong một khung HỞ MỘT ĐẦU — kho tạm của trí nhớ làm việc. Nội dung
+    # là chỗ ưu thế của đuôi chuỗi đến từ việc nó còn đang nằm trong kho tạm đó, nên
+    # một tác vụ chen ngang đẩy nó ra là mất sạch (thí nghiệm Murdock 1962).
+    # Khung bắt buộc HỞ: vẽ kín bốn cạnh là thành "hai mục này được cất giữ", tức
+    # ngược hẳn điều card nói — tính dễ mất mới là điểm phân biệt recency khỏi primacy.
+    # Khác `head_transferred` (primacy-effect, hai hàng, khối đặc nằm dưới ô ĐẦU) và
+    # khác `peak_end_kept` (sáu thanh CAO THẤP khác nhau, tô thanh cao nhất + thanh
+    # cuối): ở đây sáu ô cao bằng nhau tuyệt đối, chỉ vị trí quyết định.
+    o = []
+    for i, x in enumerate((14, 32, 50, 68, 86, 104)):
+        fill = f'fill="{p["acc"]}" fill-opacity="0.9"' if i >= 4 else 'fill="none"'
+        o.append(f'<rect x="{x}" y="58" width="13" height="13" {fill} {TS}/>')
+    # khung hở đầu phải: chỉ ba cạnh
+    o.append(f'<polyline points="122,42 83,42 83,88 122,88" {TNF}/>')
+    return "".join(o)
+
+
+def t_noticed_from_here(p):
+    # Một đường ngang chạy SUỐT khung = hiện tượng tồn tại trên toàn bộ trục thời gian.
+    # Vạch dọc là thời điểm mình bắt đầu để ý. Các lần xuất hiện sau vạch tô đặc và nằm
+    # TRÊN đường; các lần xuất hiện trước vạch vẫn có mặt nhưng vẽ rỗng và nằm DƯỚI
+    # đường. Cái đổi là phía nào được ghi nhận, không phải đường có bắt đầu ở đó không.
+    # Đường ngang bắt buộc chạy hết chiều ngang và vượt qua vạch dọc ở cả hai phía:
+    # cắt nó ngắn lại ở vạch là đã nói "hiện tượng bắt đầu từ đây", tức khẳng định
+    # đúng cái ảo giác mà card đang chỉ ra là sai.
+    # Khác `salience_pop` (frequency-illusion, mint: cùng số phần tử cùng vị trí, chỉ
+    # vài cái được tô): ở đó không có trục thời gian và không có mốc "lúc mình để ý",
+    # mà mốc đó mới là nội dung của recency illusion.
+    o = [f'<line x1="10" y1="64" x2="118" y2="64" {TNF}/>',
+         f'<line x1="74" y1="26" x2="74" y2="102" {TNF}/>']
+    for x in (18, 34, 50, 62):
+        o.append(f'<rect x="{x}" y="70" width="10" height="10" fill="none" {TS}/>')
+    for x in (84, 100):
+        o.append(f'<rect x="{x}" y="48" width="10" height="10" '
+                 f'fill="{p["acc"]}" fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+def t_extreme_then_center(p):
+    # Một đường trung bình chạy suốt. Hai cặp đo: cặp trên xuất phát rất cao rồi lần đo
+    # sau tụt gần đường; cặp dưới xuất phát rất thấp rồi lần đo sau dâng gần đường. Hai
+    # phía ĐỐI XỨNG nhau qua đường — đó là chỗ phân biệt hiện tượng thống kê với một
+    # tác động nhân quả, vốn chỉ đẩy về một chiều.
+    # Bắt buộc vẽ đủ CẢ HAI phía. Chỉ vẽ phía trên là thành "mọi thứ rồi sẽ tệ đi"
+    # (một câu nhân quả), mất hẳn tính đối xứng vốn là bằng chứng cho thấy không cần
+    # can thiệp nào cũng xảy ra đúng như vậy.
+    # Khác `regression_crossing` (hard-easy-effect, mint: hai ĐƯỜNG cắt nhau): ở đây
+    # không có đường nào cắt nhau, chỉ có bốn cột và một mốc.
+    # Khác `setpoint_return` (hedonic-treadmill: hai độ lệch dốc lên rồi THOẢI dần theo
+    # một nét liền): ở đây chỉ có hai lần đo rời rạc, không có quỹ đạo thoải.
+    o = [f'<line x1="10" y1="64" x2="118" y2="64" {TNF}/>']
+    for x, y, h in ((20, 22, 42), (44, 48, 16)):
+        o.append(f'<rect x="{x}" y="{y}" width="18" height="{h}" '
+                 f'fill="{p["acc"]}" fill-opacity="0.9" {TS}/>')
+    for x, h in ((74, 42), (98, 16)):
+        o.append(f'<rect x="{x}" y="64" width="18" height="{h}" '
+                 f'fill="{p["acc"]}" fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+def t_prototype_match(p):
+    # Trên cùng: một hình mẫu — tam giác — vẽ rỗng. Bên trái một khối LỚN không mang
+    # dấu hiệu nào của hình mẫu; bên phải một khối NHỎ có đúng tam giác đó gắn trên
+    # nóc. Hai thanh phán đoán bên dưới đi theo khối NHỎ chứ không theo khối lớn: mức
+    # giống hình mẫu lấn át cỡ của nhóm nền (bài toán Linda).
+    # Chênh lệch kích thước hai khối bắt buộc rõ: hai khối bằng nhau là mất mất tỉ lệ
+    # nền, mà tỉ lệ nền mới là thứ bị bỏ qua.
+    # Khác `base_blind` (extension-neglect, mint: cùng một tử số trên hai mẫu số) và
+    # khác `proportion` (base-rate-fallacy, amber: phần/tổng): cả hai nói về con số,
+    # còn ở đây cơ chế là sự KHỚP HÌNH DẠNG với một khuôn mẫu.
+    return (f'<polygon points="64,14 72,30 56,30" fill="none" {TS}/>'
+            f'<rect x="14" y="40" width="40" height="40" fill="none" {TS}/>'
+            f'<polygon points="92,42 99,56 85,56" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="80" y="56" width="24" height="24" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="22" y="96" width="24" height="12" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="80" y="88" width="24" height="20" fill="{p["t3"]}" {TS}/>')
+
+
+def t_thin_shield_overstep(p):
+    # Nền đặc chỉ chiếm nửa trái; nửa phải là vực. Khối "mình" đứng HẲN ra ngoài mép,
+    # được đỡ bởi một tấm rất mỏng. Khung rỗng cao bao quanh tấm đó là bề dày ý chí mà
+    # người ta tự tin mình có. Khoảng hở giữa khung và tấm chính là restraint bias, và
+    # chính nó cho phép bước ra khỏi mép ngay từ đầu.
+    # Khối bắt buộc nằm ngoài mép nền: kéo nó về trên nền là mất cơ chế trung tâm —
+    # tự tin dẫn tới PHƠI MÌNH nhiều hơn, chứ không chỉ tới một đánh giá sai.
+    # Khác `shielded_downside` (moral-hazard, amber: hai khối rủi ro BẰNG NHAU, một
+    # khối được trụ rỗng nâng, một khối rơi xuống đáy): ở đó nội dung là ai gánh hậu
+    # quả; ở đây chỉ có một chủ thể và chênh lệch nằm giữa bề dày tưởng và bề dày thật.
+    # Khác `overclaim` (dunning-kruger, mint): overclaim là phạm vi tự nhận rộng hơn
+    # phần thực trên cùng một trục; ở đây cái tự nhận là sức CHỊU, và hệ quả của nó là
+    # một thay đổi vị trí đứng.
+    # Tuyệt đối KHÔNG vẽ đường nền chạy suốt khung: bản đầu có nó và ở 64px cả cụm đọc
+    # thành "hai vật đặt trên sàn", mất sạch cái vực — tức mất luôn nghĩa bước ra ngoài mép.
+    return (f'<rect x="10" y="72" width="50" height="36" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="60" y="84" width="50" height="7" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="60" y="64" width="50" height="27" fill="none" {TS}/>'
+            f'<rect x="70" y="34" width="30" height="30" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>')
+
+
+def t_rhythmic_edge(p):
+    # Hai khối nội dung XẾP DỌC, bằng nhau tuyệt đối. Khối trên mang ba mấu ĐỀU NHAU
+    # trên cạnh phải — tính chu kỳ của vần điệu, một thuộc tính thuần hình thức. Khối
+    # dưới trơn. Hai thanh "đáng tin" bên phải lệch hẳn nhau dù nội dung hai khối y hệt
+    # (thiết kế McGlone & Tofighbakhsh 1999: cùng nghĩa, chỉ khác có vần hay không).
+    # Ba mấu bắt buộc ĐỀU NHAU và cùng cỡ: vẽ chúng lệch nhau là thành "biên gồ ghề"
+    # chung chung, mất nghĩa chu kỳ — mà chu kỳ mới là cái tạo ra processing fluency.
+    # Khác `edge_reads_true` (processing-fluency, mint: bố cục NGANG, biên răng zigzag
+    # bất quy tắc): ở đây bố cục dọc và mấu đều, để hai card không trùng hình ở 64px.
+    # Khác `stacked_copies` (illusory-truth-effect: nhiều bản sao chồng lên nhau): ở
+    # đó độ tin đến từ số lần gặp lại, ở đây từ hình dạng của đúng một lần gặp.
+    o = [f'<rect x="14" y="22" width="40" height="28" fill="{p["acc"]}" '
+         f'fill-opacity="0.9" {TS}/>']
+    for y in (26, 34, 42):
+        o.append(f'<rect x="54" y="{y}" width="7" height="6" fill="{p["acc"]}" '
+                 f'fill-opacity="0.9" {TS}/>')
+    o.append(f'<rect x="14" y="78" width="40" height="28" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    o.append(f'<rect x="72" y="28" width="44" height="16" fill="{p["t3"]}" {TS}/>')
+    o.append(f'<rect x="72" y="84" width="20" height="16" fill="{p["t3"]}" {TS}/>')
+    return "".join(o)
+
+
+def t_offset_safety(p):
+    # Ba thời điểm, ba cột CAO BẰNG NHAU TUYỆT ĐỐI — tổng rủi ro ròng không đổi, và
+    # một đường ngang chạy qua đỉnh cả ba để nói rõ điều đó. Phần đặc dưới mỗi cột là
+    # mức thận trọng, phần rỗng trên là lớp bảo vệ vừa thêm vào. Bảo vệ tăng dần, thận
+    # trọng rút đi đúng bằng ngần ấy (Peltzman 1975).
+    # Ba cột bắt buộc cao bằng nhau và đường đỉnh phải liền: cho cột sau thấp hơn là đã
+    # nói "biện pháp an toàn có hiệu quả ròng", tức bỏ mất chính cơ chế bù trừ.
+    # Khác `nominal_real` (money-illusion, mint: vỏ rỗng LỒNG ngoài lõi đặc, các khung
+    # khác chiều cao): ở đây hai phần XẾP CHỒNG trong một cột và tổng bị khoá cứng.
+    # Khác `expected_flat` (normalcy-bias, amber: một thanh ngang xuyên qua đúng một
+    # khối biến cố): ở đây có ba cột và sự đánh đổi diễn ra BÊN TRONG mỗi cột.
+    o = [f'<line x1="10" y1="36" x2="118" y2="36" {TNF}/>']
+    for x, split in ((16, 50), (52, 70), (88, 90)):
+        o.append(f'<rect x="{x}" y="36" width="26" height="{split-36}" fill="none" {TS}/>')
+        o.append(f'<rect x="{x}" y="{split}" width="26" height="{108-split}" '
+                 f'fill="{p["acc"]}" fill-opacity="0.9" {TS}/>')
+    o.append(f'<line x1="10" y1="108" x2="118" y2="108" {TNF}/>')
+    return "".join(o)
+
+
+def t_recalled_above_lived(p):
+    # Năm thời điểm của cùng MỘT trải nghiệm. Cột đặc là mức cảm nhận ghi tại chỗ; khung
+    # rỗng cùng vị trí cùng bề rộng là mức nhớ lại sau đó. Khung cao hơn cột ở MỌI vị
+    # trí, và khoảng hở giữa hai cái là phần trí nhớ tự thêm vào (Mitchell & Thompson
+    # 1997, theo dõi cùng người trước–trong–sau ba chuyến đi).
+    # Khung bắt buộc cao hơn cột ở TẤT CẢ năm vị trí: để lẫn một vị trí thấp hơn là
+    # thành "nhớ lại có chỗ đúng chỗ sai", còn card nói về một độ lệch một chiều.
+    # Phần tô tuyệt đối KHÔNG được dâng tới nóc khung — khoảng hở chính là nội dung.
+    # Khác `rosy_tilt` (declinism, mint: vật không đổi, chỉ SẮC ĐỘ nhạt/đậm dần): ở đó
+    # độ lệch thể hiện bằng màu, ở đây bằng chiều cao, và có mặt cả hai bản đo.
+    # Khác `frame_pulls_up` (frame_pulls_up: phần tô dâng ĐÚNG tới nóc khung): ngược hẳn.
+    o = []
+    for x, lh, rh in ((14, 26, 46), (36, 20, 42), (58, 30, 50), (80, 18, 40), (102, 24, 44)):
+        o.append(f'<rect x="{x}" y="{100-rh}" width="16" height="{rh}" fill="none" {TS}/>')
+        o.append(f'<rect x="{x}" y="{100-lh}" width="16" height="{lh}" '
+                 f'fill="{p["acc"]}" fill-opacity="0.9" {TS}/>')
+    o.append(f'<line x1="8" y1="100" x2="120" y2="100" {TNF}/>')
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20261001 = dict(
+    fresh_buffer_tail=t_fresh_buffer_tail, noticed_from_here=t_noticed_from_here,
+    extreme_then_center=t_extreme_then_center, prototype_match=t_prototype_match,
+    thin_shield_overstep=t_thin_shield_overstep, rhythmic_edge=t_rhythmic_edge,
+    offset_safety=t_offset_safety, recalled_above_lived=t_recalled_above_lived,
+)
+
+CONCEPT_MEANING.update({
+    "fresh_buffer_tail": "sáu ô đều tuyệt đối trên một chuỗi, hai ô cuối tô đặc và nằm "
+                         "trong một khung hở một đầu",
+    "noticed_from_here": "một đường ngang chạy suốt, một vạch dọc cắt ngang nó, các ô "
+                         "trước vạch rỗng và nằm dưới đường, các ô sau vạch đặc và nằm trên",
+    "extreme_then_center": "một đường mốc, hai cột cao hẳn phía trên rồi tụt gần đường, "
+                           "hai cột thấp hẳn phía dưới rồi dâng gần đường — đối xứng qua mốc",
+    "prototype_match": "một hình mẫu rỗng ở trên, khối lớn không mang hình mẫu và khối nhỏ "
+                       "có mang nó, thanh phán đoán đi theo khối nhỏ",
+    "thin_shield_overstep": "nền đặc chỉ nửa khung, khối đứng hẳn ngoài mép và được đỡ bởi "
+                            "một tấm mỏng nằm trong một khung rỗng cao gấp nhiều lần",
+    "rhythmic_edge": "hai khối bằng nhau xếp dọc, khối trên mang ba mấu đều nhau trên cạnh, "
+                     "hai thanh bên phải lệch hẳn chiều dài",
+    "offset_safety": "ba cột cao bằng nhau tuyệt đối dưới một đường đỉnh liền, phần đặc "
+                     "rút dần trong khi phần rỗng phía trên dâng lên đúng bằng ngần ấy",
+    "recalled_above_lived": "năm cặp cùng vị trí cùng bề rộng, khung rỗng cao hơn cột đặc ở "
+                            "mọi vị trí và phần tô không bao giờ dâng tới nóc khung",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261001)
+
+
+def t_second_step_reverses(p):
+    # Một đường mốc. Hành động (cột trái, vừa phải) và hệ quả bậc MỘT (cột giữa, cao) đều
+    # nằm trên mốc — nhìn tới đây thì quyết định có vẻ đúng. Hệ quả bậc HAI (cột phải) nằm
+    # hẳn dưới mốc và sâu hơn chiều cao của bậc một. Nội dung là chỗ dấu ĐỔI ở bước thứ
+    # hai, nên dừng lại ở bậc một là đọc ngược kết quả.
+    # Cột phải bắt buộc sâu hơn cột giữa cao: vẽ nông hơn là thành "có tác dụng phụ nhỏ",
+    # còn card nói về việc bậc hai nuốt trọn lợi ích của bậc một.
+    # Ba cột phải thẳng hàng theo trục ngang để đọc ra thứ tự thời gian; bỏ cột hành động
+    # đi thì chỉ còn `rebound` (backfire-effect: bật ngược) mà mất mất tính BẬC.
+    o = [f'<line x1="8" y1="64" x2="120" y2="64" {TNF}/>']
+    o.append(f'<rect x="16" y="44" width="26" height="20" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    o.append(f'<rect x="51" y="26" width="26" height="38" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    o.append(f'<rect x="86" y="64" width="26" height="48" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20261001["second_step_reverses"] = t_second_step_reverses
+CONCEPT_MEANING["second_step_reverses"] = (
+    "một đường mốc, hai cột trên mốc cao dần rồi một cột thứ ba đổ hẳn xuống dưới mốc và "
+    "sâu hơn cột cao nhất")
+THUMB_REGISTRY["second_step_reverses"] = t_second_step_reverses

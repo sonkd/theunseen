@@ -8,6 +8,7 @@ tags: [statistics, decision]
 links: [gamblers-fallacy, hot-hand-fallacy, illusory-correlation]
 refs: ['https://en.wikipedia.org/wiki/Regression_toward_the_mean']
 strategy: 'Trước khi kết luận một can thiệp (thưởng, phạt, thay đổi chính sách) có hiệu quả, luôn hỏi: nếu không làm gì cả, kết quả có tự "hồi quy" về mức trung bình không?'
+image: /assets/stuff/regression-to-the-mean.png
 published: true
 ---
 
