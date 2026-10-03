@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [contrast-effect, self-serving-bias, egocentric-bias]
 refs: ['https://en.wikipedia.org/wiki/Social_comparison_bias', 'https://en.wikipedia.org/wiki/Social_comparison_theory', 'http://www-personal.umich.edu/~smgarcia/pubs/Social%20Comparison%20Bias.pdf']
 strategy: 'Trước khi để một so sánh làm mình khó chịu, hỏi lại: mình đang so với ai, trên tiêu chí nào, và tiêu chí đó có thật sự quan trọng với mình hay chỉ đang nổi bật vì vừa xuất hiện trước mắt?'
+image: /assets/stuff/social-comparison-bias.png
 published: true
 ---
 

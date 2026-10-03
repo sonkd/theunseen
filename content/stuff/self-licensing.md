@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [halo-effect, self-serving-bias, effort-justification]
 refs: ['https://en.wikipedia.org/wiki/Moral_credential_effect', 'https://en.wikipedia.org/wiki/Self-licensing', 'https://pubmed.ncbi.nlm.nih.gov/25716992/']
 strategy: 'Trước khi tự thưởng sau một hành động "tốt", tách bạch hai quyết định ra — đánh giá phần thưởng dựa trên giá trị của chính nó, không phải dựa trên việc mình "xứng đáng" vì vừa làm điều tốt.'
+image: /assets/stuff/self-licensing.png
 published: true
 ---
 

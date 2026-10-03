@@ -7,6 +7,7 @@ categories: [bias, perception]
 links: [confirmation-bias, attentional-bias, congruence-bias]
 refs: ['https://en.wikipedia.org/wiki/Selective_perception', 'https://www.clearerthinking.org/post/selective-perception-definition-examples-and-effects', 'https://catalogofbias.org/biases/perception-bias/']
 strategy: 'Khi đọc dữ liệu hoặc phản hồi quan trọng, chủ động liệt kê cả những điểm trái với kỳ vọng của mình trước khi kết luận — đừng để mắt chỉ dừng ở phần "thuận tai".'
+image: /assets/stuff/selective-perception.png
 published: true
 ---
 

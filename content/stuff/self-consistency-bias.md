@@ -7,6 +7,7 @@ categories: [bias, memory]
 links: [hindsight-bias, choice-supportive-bias, misattribution-of-memory]
 refs: ['https://reliawire.com/self-consistency-bias/', 'https://www.spring.org.uk/2023/01/commitment-consistency-bias.php', 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5963926/']
 strategy: 'Trước khi tin "mình luôn nghĩ vậy", tìm lại bằng chứng cũ (bài viết, tin nhắn, ghi chú) để kiểm tra xem quan điểm của mình có thực sự đứng yên theo thời gian hay không.'
+image: /assets/stuff/self-consistency-bias.png
 published: true
 ---
 

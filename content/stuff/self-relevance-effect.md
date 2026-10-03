@@ -7,6 +7,7 @@ categories: [memory]
 links: [egocentric-bias, spotlight-effect, levels-of-processing-effect, self-serving-bias]
 refs: ['https://en.wikipedia.org/wiki/Self-reference_effect', 'https://pubmed.ncbi.nlm.nih.gov/909043/', 'https://psychology.iresearchnet.com/social-psychology/self/self-reference-effect/']
 strategy: 'Khi cần người dùng ghi nhớ hoặc hành động theo một thông tin quan trọng (cảnh báo rủi ro, số dư, điều khoản), diễn đạt nó gắn trực tiếp với tình huống cá nhân của họ thay vì trình bày như một sự kiện trung lập, chung chung.'
+image: /assets/stuff/self-relevance-effect.png
 published: true
 ---
 

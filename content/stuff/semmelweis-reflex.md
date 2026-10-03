@@ -7,6 +7,7 @@ categories: [bias]
 links: [ostrich-effect, confirmation-bias, status-quo-bias, backfire-effect]
 refs: ['https://en.wikipedia.org/wiki/Semmelweis_reflex', 'https://pubmed.ncbi.nlm.nih.gov/31837492/', 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11568873/']
 strategy: 'Khi gặp phản biện mạnh tới một niềm tin chuyên môn lâu năm, tạm dừng và tự hỏi: mình đang bác bỏ vì bằng chứng thật sự yếu, hay chỉ vì nó khác với điều mình vẫn tin?'
+image: /assets/stuff/semmelweis-reflex.png
 published: true
 ---
 

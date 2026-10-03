@@ -7,6 +7,7 @@ categories: [memory]
 links: [serial-position-effect, spacing-effect, testing-effect]
 refs: ['https://en.wikipedia.org/wiki/Recall_%28memory%29#Serial_recall', 'https://pubmed.ncbi.nlm.nih.gov/28567713/', 'https://direct.mit.edu/opmi/article/doi/10.1162/opmi_a_00092/116981/Noun-Sequence-Statistics-Affect-Serial-Recall-and']
 strategy: 'Khi cần người dùng thực hiện đúng một chuỗi bước (ví dụ quy trình xác thực nhiều bước), trình bày các bước theo đúng thứ tự thực hiện thay vì liệt kê tự do — trí nhớ tuần tự phụ thuộc mạnh vào thứ tự học được ban đầu.'
+image: /assets/stuff/serial-recall-effect.png
 published: true
 ---
 

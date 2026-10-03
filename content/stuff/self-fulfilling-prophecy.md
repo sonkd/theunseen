@@ -7,6 +7,7 @@ categories: [social, bias]
 links: [pygmalion-effect, observer-expectancy-effect, confirmation-bias]
 refs: ['https://en.wikipedia.org/wiki/Self-fulfilling_prophecy', 'https://www.simplypsychology.org/self-fulfilling-prophecy.html', 'https://corporatefinanceinstitute.com/resources/career-map/sell-side/capital-markets/self-fulfilling-prophecy-examples/']
 strategy: 'Trước khi hành động theo một dự đoán tiêu cực, tách bạch phần bằng chứng khách quan khỏi phần hành vi của chính mình đang góp phần tạo ra kết quả đó.'
+image: /assets/stuff/self-fulfilling-prophecy.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [memory]
 links: [primacy-effect, recency-effect, von-restorff-effect]
 refs: ['https://en.wikipedia.org/wiki/Serial_position_effect', 'https://www.semanticscholar.org/paper/The-serial-position-effect-of-free-recall-Murdock-Bennet/f51820619ca42c5799f3c5acc3855671b905419c', 'https://www.simplypsychology.org/primacy-recency.html']
 strategy: 'Khi trình bày một danh sách quan trọng (điều khoản, lựa chọn gói dịch vụ, checklist), đặt thông tin then chốt nhất ở đầu hoặc cuối — tránh chôn nó ở giữa, nơi tỷ lệ được nhớ thấp nhất.'
+image: /assets/stuff/serial-position-effect.png
 published: true
 ---
 

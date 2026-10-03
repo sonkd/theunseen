@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [fundamental-attribution-error, egocentric-bias, choice-supportive-bias]
 refs: ['https://en.wikipedia.org/wiki/Self-serving_bias', 'https://web.mit.edu/curhan/www/docs/Articles/biases/82_Psychological_Bulletin_213_(Miller).pdf', 'https://thedecisionlab.com/biases/self-serving-bias']
 strategy: 'Trước khi kết luận thành công là nhờ năng lực còn thất bại là do hoàn cảnh, thử hỏi ngược: nếu người khác đạt đúng kết quả này trong đúng hoàn cảnh này, mình sẽ giải thích ra sao?'
+image: /assets/stuff/self-serving-bias.png
 published: true
 ---
 

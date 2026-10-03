@@ -3198,3 +3198,217 @@ CONCEPT_MEANING["second_step_reverses"] = (
     "một đường mốc, hai cột trên mốc cao dần rồi một cột thứ ba đổ hẳn xuống dưới mốc và "
     "sâu hơn cột cao nhất")
 THUMB_REGISTRY["second_step_reverses"] = t_second_step_reverses
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-10-03 — selective-perception → social-comparison-bias
+# xlsx gán cả 10 card là branching/divergence (đồng nghĩa 5 cặp trùng byte),
+# nên toàn bộ batch được chẩn đoán lại theo `back`. 6 card dùng concept object
+# đã có trong thư viện, 4 card dưới đây cần object mới.
+# --------------------------------------------------------------------------
+
+
+def t_self_made_evidence(p):
+    # Một VÒNG KHÉP KÍN, không có gì đi vào từ ngoài vòng. Trên vòng đúng hai khối
+    # CÙNG KÍCH THƯỚC: khối rỗng (dự đoán, chưa có bằng chứng) và khối đặc (kết cục
+    # được coi là bằng chứng). Nội dung: cái "bằng chứng" đặc kia do chính vòng này
+    # sinh ra, không phải dữ kiện độc lập — nên hai khối phải bằng nhau tuyệt đối,
+    # nếu khối đặc to hơn thì hình đọc thành `echo` (khuếch đại dần).
+    # Hai khối phải CẮT QUA nét vòng (nằm trên nó), thả rời bên cạnh thì vòng đọc
+    # thành một phần tử thứ ba và mất nghĩa "mạch kín".
+    # Khác `cycle` (nhiều nút đều nhau quanh một lõi — lặp lại nói chung): ở đây
+    # chỉ có hai nút và biến duy nhất là rỗng ↔ đặc.
+    # Hai khối phải lót nền trắng trước khi vẽ: để fill="none" thì nét vòng chạy xuyên
+    # qua ruột khối, ở 64px cụm này đọc thành một mớ nét cắt nhau.
+    return (f'<rect x="30" y="34" width="68" height="60" rx="16" fill="none" {TS}/>'
+            f'<rect x="16" y="50" width="30" height="28" fill="#FFFFFF" stroke="none"/>'
+            f'<rect x="16" y="50" width="30" height="28" fill="none" {TS}/>'
+            f'<rect x="82" y="50" width="30" height="28" fill="#FFFFFF" stroke="none"/>'
+            f'<rect x="82" y="50" width="30" height="28" fill="{p["acc"]}" '
+            f'fill-opacity="0.80" {TS}/>')
+
+
+def t_licence_overdraw(p):
+    # Đường mốc ngang = mức "không nợ gì". TRÊN mốc: khối đặc = tín nhiệm vừa kiếm
+    # được, cao 28. DƯỚI mốc, ngay đối xứng qua mốc: khung RỖNG cao đúng 28 = phần mà
+    # tín nhiệm đó thật sự chi trả nổi. Bên cạnh, cũng dưới mốc: khối đặc sâu 46 =
+    # phần đã tự cho phép. Nội dung là chỗ CHÊNH giữa 28 và 46 — hai hành vi không hề
+    # bù trừ nhau, dù trong đầu thì có.
+    # Khối rỗng phải bằng ĐÚNG khối trên mốc (cùng w, cùng h) mới so ra được; vẽ nó
+    # lệch cỡ là hình mất hẳn luận điểm và chỉ còn là `contrast`.
+    # Khác `offset_safety` (phần đặc rút đi và phần rỗng dâng lên đúng ngần ấy — bù
+    # trừ THẬT, tổng không đổi): ở đây tổng KHÔNG cân, và sự không cân là nội dung.
+    return (f'<line x1="14" y1="64" x2="114" y2="64" {TNF}/>'
+            f'<rect x="22" y="36" width="38" height="28" fill="{p["acc"]}" '
+            f'fill-opacity="0.80" {TS}/>'
+            f'<rect x="22" y="64" width="38" height="28" fill="none" {TS}/>'
+            f'<rect x="70" y="64" width="38" height="46" fill="{p["t3"]}" {TS}/>')
+
+
+def t_ordered_chain(p):
+    # Hàng trên: ba ô ĐẶC bằng nhau, cùng tựa lên một trục liền (rect bo góc, không
+    # dùng <line> — ở 64px nét 1.6px gần như tàng hình). Hàng dưới: ĐÚNG ba ô đó,
+    # cùng kích thước, nhưng rỗng, lệch cao độ và KHÔNG có trục nào nối.
+    # Nội dung: cùng một bộ phần tử; đi theo thứ tự đã học thì truy xuất được, bốc
+    # rời khỏi thứ tự thì không. Ba ô phải bằng nhau tuyệt đối ở cả hai hàng — cho
+    # chúng to dần là thành `spectrum`.
+    # Khác `hollow_chain` (một khung vây quanh cả chuỗi, chỉ hai đầu được tô — nói về
+    # chỗ giữa chưa ai kiểm): ở đây biến là CÓ/KHÔNG trục nối, không phải chỗ nào được tô.
+    o = [f'<rect x="16" y="32" width="96" height="6" rx="3" fill="{p["t3"]}" {TS}/>']
+    o += [f'<rect x="{x}" y="16" width="20" height="16" fill="{p["acc"]}" '
+          f'fill-opacity="0.80" {TS}/>' for x in (20, 54, 88)]
+    o += [f'<rect x="{x}" y="{y}" width="20" height="20" fill="none" {TS}/>'
+          for x, y in ((24, 76), (58, 90), (88, 68))]
+    return "".join(o)
+
+
+def t_neighbor_scale(p):
+    # Bên trái: một khung CAO và RỖNG = chuẩn khách quan, có mặt nhưng không ai dùng
+    # tới. Bên phải: hai cột cùng bề rộng, cùng mép đáy, chênh chiều cao — mình và
+    # người kề bên. Phần được tô ĐẶC lại là khoảng HỞ giữa hai đỉnh, đặt đúng trên
+    # đỉnh cột của mình: cái được đo và cảm thấy là cái thiếu so với người bên cạnh,
+    # không phải chiều cao thật của ai.
+    # Khối chênh phải CHẠM đỉnh cột trái và dừng đúng ở đỉnh cột phải; để hở là hình
+    # đọc thành ba cột rời và mất nghĩa "đo bằng nhau".
+    # Khác `self_exempt` (có đường mức, cột 'mình' thấp hơn và khoảng hở để RỖNG —
+    # nói về việc tự miễn khỏi chuẩn): ở đây khoảng hở được tô ĐẶC, còn chuẩn mới là
+    # thứ bỏ rỗng. Khác `juxtaposition` (cùng một cặp, gần thì chênh đọc ra, xa thì
+    # mất) vì ở đây khoảng cách không đổi, cái đổi là chuẩn nào được dùng.
+    # Khung chuẩn phải HẸP hơn và TÁCH XA hẳn hai cột, nếu không ở 64px cả cụm đọc
+    # thành ba cột của một biểu đồ và mất nghĩa "chuẩn có mặt nhưng không ai dùng".
+    return (f'<rect x="14" y="18" width="14" height="92" fill="none" {TS}/>'
+            f'<rect x="56" y="70" width="26" height="40" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="88" y="40" width="26" height="70" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="56" y="40" width="26" height="30" fill="{p["acc"]}" '
+            f'fill-opacity="0.80" {TS}/>')
+
+
+CONCEPT_OBJECTS_20261003 = dict(
+    self_made_evidence=t_self_made_evidence,
+    licence_overdraw=t_licence_overdraw,
+    ordered_chain=t_ordered_chain,
+    neighbor_scale=t_neighbor_scale,
+)
+
+CONCEPT_MEANING.update({
+    "self_made_evidence":
+        "một vòng khép kín với đúng hai khối bằng nhau trên nó, một rỗng một đặc — "
+        "'bằng chứng' do chính vòng sinh ra, không có gì đi vào từ ngoài",
+    "licence_overdraw":
+        "khối đặc trên mốc và khung rỗng bằng đúng nó dưới mốc, cạnh đó một khối đặc "
+        "sâu hơn hẳn — phần tự cho phép vượt quá phần tín nhiệm thật sự kiếm được",
+    "ordered_chain":
+        "ba ô đặc tựa trên một trục liền, và đúng ba ô đó rỗng, lệch cao độ, không có "
+        "trục nối — cùng bộ phần tử, chỉ khác có đi theo thứ tự hay không",
+    "neighbor_scale":
+        "một khung cao bỏ rỗng (chuẩn khách quan không ai dùng) bên cạnh hai cột chênh "
+        "nhau, và chỗ được tô đặc là khoảng hở giữa hai đỉnh",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261003)
+
+
+# ---- batch 2026-10-03, vòng 2: 4 object thay cho 4 lựa chọn bị TRÙNG BYTE với card
+# đã có ảnh (asymmetric_fade/mint -> fading-affect-bias, locus_flip -> fundamental-
+# attribution-error + extrinsic-incentive-error, hollow_chain/amber -> illusion-of-
+# explanatory-depth, inverse_weight/mint -> law-of-triviality). Trong cả 4 ca, card cũ
+# mới là chủ sở hữu đúng nghĩa của object đó, nên card mới phải có hình riêng.
+
+
+def t_same_record_two_reads(p):
+    # Trên: MỘT thanh đặc duy nhất = bản ghi khách quan, chung cho mọi người.
+    # Dưới: hai ô rỗng BẰNG NHAU TUYỆT ĐỐI = hai người đọc. Trong mỗi ô, phần giữ lại
+    # được tô đặc với CÙNG diện tích nhưng nằm ở nửa khác nhau. Nội dung: không ai
+    # thêm bớt dữ kiện, chỉ phần được giữ là khác — Hastorf–Cantril 1954.
+    # Hai mẩu đặc phải bằng nhau: cho một mẩu to hơn là hình đọc thành 'một bên đúng
+    # hơn', trong khi luận điểm là cả hai đều lọc như nhau.
+    # Khác `gate` (nhiều thứ tới, ít thứ qua — sàng lọc theo nhãn nguồn, một đầu ra)
+    # vì ở đây có HAI đầu ra cùng xuất phát từ một nguồn. Khác `two_frames` (cùng một
+    # mốc, một bên tô dưới một bên tô trên — được/mất do cách kể) vì ở đây cái đổi là
+    # PHẦN NÀO của bản ghi còn lại, không phải phía nào của mốc.
+    o = [f'<rect x="20" y="16" width="88" height="20" fill="{p["t3"]}" {TS}/>']
+    o += [f'<rect x="{x}" y="58" width="38" height="36" fill="none" {TS}/>'
+          for x in (20, 70)]
+    o += [f'<rect x="20" y="58" width="18" height="36" fill="{p["acc"]}" '
+          f'fill-opacity="0.80" {TS}/>',
+          f'<rect x="90" y="58" width="18" height="36" fill="{p["acc"]}" '
+          f'fill-opacity="0.80" {TS}/>']
+    return "".join(o)
+
+
+def t_esteem_ratchet(p):
+    # Đường mốc = kết quả trung tính. TRÊN mốc: thanh thắng, tô ĐẶC, và mẩu nguyên nhân
+    # nằm TRONG nó. DƯỚI mốc: thanh thua, cùng bề rộng và cùng độ lớn tuyệt đối, nhưng
+    # để RỖNG, và mẩu nguyên nhân bị đẩy ra NGOÀI, dính vào mép xa. Hai thanh phải bằng
+    # nhau tuyệt đối — chênh lệch duy nhất là chỗ đặt nguyên nhân và chỗ được tô.
+    # Khác `locus_flip` (hai khung vuông NẰM CẠNH nhau, dấu đặc trong/ngoài — quy kết
+    # cho hành vi nói chung, đã dùng cho fundamental-attribution-error): ở đây trục là
+    # THẮNG/THUA qua một đường mốc, và thêm biến đặc/rỗng. Khác `mirror` (mình ↔ người
+    # khác) vì cả hai thanh đều là của chính mình.
+    # Hai mẩu nguyên nhân phải CÙNG chất liệu (accent đặc) mới đọc ra là cùng một thứ bị
+    # đặt ở hai chỗ; thân thanh thắng dùng tint nhạt để mẩu bên trong nổi lên ở 64px.
+    return (f'<line x1="14" y1="64" x2="114" y2="64" {TNF}/>'
+            f'<rect x="20" y="26" width="36" height="38" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="29" y="36" width="18" height="18" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="60" y="64" width="36" height="38" fill="none" {TS}/>'
+            f'<rect x="96" y="74" width="18" height="18" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>')
+
+
+def t_u_shaped_recall(p):
+    # Bốn cột cùng bề rộng, cùng mép đáy: hai cột ĐẦU và CUỐI cao, hai cột GIỮA thấp
+    # hẳn. Biến duy nhất là VỊ TRÍ trong chuỗi, nên bốn cột buộc phải cách đều nhau và
+    # bằng nhau về bề rộng; cho chúng đổi bề rộng là hình đọc thành `proportion`.
+    # Hai cột ngoài đặc, hai cột giữa để sắc độ nhạt hơn: chỗ bị mất không phải chỗ
+    # trống mà là chỗ nhớ yếu.
+    # Khác `hollow_chain` (các ô BẰNG NHAU trong một khung liền, biến là chỗ nào được
+    # tô — đã dùng cho illusion-of-explanatory-depth) vì ở đây biến là CHIỀU CAO và
+    # không có khung nào. Khác `spectrum` (biến thiên một chiều) vì đây đối xứng hai đầu.
+    o = []
+    for x, h, fill, op in ((12, 56, p["acc"], 0.80), (40, 20, p["acc"], 0.30),
+                           (68, 20, p["acc"], 0.30), (96, 56, p["acc"], 0.80)):
+        o.append(f'<rect x="{x}" y="{106 - h}" width="20" height="{h}" '
+                 f'fill="{fill}" fill-opacity="{op}" {TS}/>')
+    return "".join(o)
+
+
+def t_wall_rebuff(p):
+    # Dải đặc dọc bên phải = chuẩn mực đã lập, không nhúc nhích. Ba khối rỗng bên trái
+    # = bằng chứng mới, to dần. Khoảng hở tới dải cũng rộng dần đúng theo cỡ khối:
+    # bằng chứng càng mạnh thì càng bị giữ xa hơn. Chính quan hệ NGHỊCH giữa cỡ khối và
+    # khoảng hở là nội dung, nên ba khối phải vừa khác cỡ vừa khác khoảng hở.
+    # Không khối nào được CHẠM dải — chạm vào là đọc thành 'có tiếp nhận một phần',
+    # trong khi Semmelweis reflex là bác bỏ thẳng.
+    # Khác `gate` (ít thứ lọt qua — vẫn có cái qua được, lọc theo nhãn nguồn) vì ở đây
+    # KHÔNG gì qua được. Khác `rebound` (bật ngược, kết quả trái ý định — backfire-effect)
+    # vì ở đây không có chuyển động nào, chỉ có khoảng cách tỉ lệ với trọng lượng.
+    o = [f'<rect x="98" y="14" width="16" height="98" fill="{p["t4"]}" {TS}/>']
+    o += [f'<rect x="{x}" y="{y}" width="{s}" height="{s}" fill="none" {TS}/>'
+          for x, y, s in ((74, 16, 18), (58, 44, 24), (36, 78, 32))]
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20261003.update(
+    same_record_two_reads=t_same_record_two_reads,
+    esteem_ratchet=t_esteem_ratchet,
+    u_shaped_recall=t_u_shaped_recall,
+    wall_rebuff=t_wall_rebuff,
+)
+
+CONCEPT_MEANING.update({
+    "same_record_two_reads":
+        "một thanh đặc duy nhất phía trên và hai ô rỗng bằng nhau phía dưới, mỗi ô giữ "
+        "lại một nửa khác nhau của cùng diện tích — cùng bản ghi, hai cách đọc",
+    "esteem_ratchet":
+        "hai thanh bằng nhau tuyệt đối hai phía một đường mốc: thanh thắng tô đặc với "
+        "mẩu nguyên nhân nằm trong, thanh thua để rỗng với mẩu nguyên nhân đẩy ra ngoài",
+    "u_shaped_recall":
+        "bốn cột cùng bề rộng cách đều: hai cột đầu–cuối cao và đặc, hai cột giữa thấp "
+        "và nhạt — biến duy nhất là vị trí trong chuỗi",
+    "wall_rebuff":
+        "một dải đặc không nhúc nhích và ba khối rỗng to dần bên cạnh, khối càng to thì "
+        "khoảng hở tới dải càng rộng — không khối nào chạm tới",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261003)

@@ -224,6 +224,72 @@ OVERRIDES = {
         "bộ nhớ làm việc là vật chứa có chiều cao hữu hạn, trong đó ba loại tải (intrinsic / "
         "extraneous / germane) xếp thành tầng và tranh nhau chỗ — đúng quan hệ tầng/trầm tích. "
         "hierarchy của xlsx không diễn được phần 'giới hạn sức chứa'"),
+    # ---- batch 2026-10-03 (selective-perception → social-comparison-bias) ----
+    # xlsx gán CẢ 10 card là branching -> divergence. 10 card một hình, hue xen kẽ
+    # mint/amber => 5 cặp trùng byte. Chẩn đoán lại toàn bộ theo `back` của từng card.
+    "selective-perception": (
+        "same_record_two_reads",
+        "object mới. Không phải một điểm rẽ nhánh: cùng MỘT bản ghi khách quan, mỗi người giữ lại "
+        "phần khớp kỳ vọng và quên nhanh phần gây khó chịu (Hastorf-Cantril 1954 - cùng một đoạn "
+        "phim, mỗi trường thấy đối phương phạm lỗi nhiều hơn). Không dùng asymmetric_fade: "
+        "fading-affect-bias đã sở hữu đúng nghĩa 'tốc độ phai lệch nhau', còn card này nằm ở tầng "
+        "tri giác/tiếp nhận chứ không phải tầng phai của ký ức"),
+    "self-consistency-bias": (
+        "overwrite_seam",
+        "ký ức niềm tin cũ bị tái dựng theo niềm tin hiện tại mà KHÔNG để lại mối ghép "
+        "nào để lần ra — đúng nghĩa 'viết đè không đường may'. divergence sai hẳn: ở đây "
+        "không có lựa chọn nào rẽ ra, chỉ có một khối bị thay ruột"),
+    "self-fulfilling-prophecy": (
+        "self_made_evidence",
+        "object mới. Vòng khép kín: dự đoán rỗng (chưa có bằng chứng) -> hành vi phòng thủ "
+        "-> kết cục đặc, bằng đúng cỡ dự đoán, bị đọc thành bằng chứng cho nó. Bank run của "
+        "Merton: 'tin đồn sai tự tạo ra bằng chứng cho chính nó'. cycle (đã dùng cho "
+        "abilene-paradox) chỉ nói 'có lặp', không nói được chỗ bằng chứng là nội sinh"),
+    "self-licensing": (
+        "licence_overdraw",
+        "object mới. Tín nhiệm kiếm được ở một việc tốt bị tiêu vào một việc kém sâu hơn "
+        "hẳn — card ghi rõ 'xét tổng thể ngân sách, hai hành vi này không hề bù trừ nhau "
+        "hợp lý', nên không dùng offset_safety (bù trừ THẬT, tổng không đổi). amber phân "
+        "biệt với self-relevance-effect (mint) trong cùng batch"),
+    "self-relevance-effect": (
+        "dual_route",
+        "cùng một mặt tiếp nhận, cùng một dữ kiện; khi có yếu tố tự liên hệ thì nó đi qua "
+        "NHIỀU đường dẫn (mạng ký ức–cảm xúc–kinh nghiệm sẵn có) và để lại dấu vết đậm "
+        "hơn. Rogers–Kuiper–Kirker 1977: nhóm tự liên hệ nhớ vượt cả nhóm xử lý theo nghĩa. "
+        "Không lấy encoding_depth: trục ở đó là ĐỘ SÂU đối lại SỐ LẦN LẶP, còn ở đây là SỐ "
+        "ĐƯỜNG MÓC TREO"),
+    "self-serving-bias": (
+        "esteem_ratchet",
+        "object mới. Thành công: nguyên nhân ghi vào bên trong; thất bại cùng độ lớn: nguyên nhân "
+        "đẩy ra ngoài, và chỉ phía thắng được tô đặc. Không dùng locus_flip: "
+        "fundamental-attribution-error (card mà chính self-serving-bias trỏ tới) đã sở hữu bản "
+        "mint, extrinsic-incentive-error giữ bản amber - ở đây trục là THẮNG/THUA của cùng một "
+        "người, không phải mình đối với người khác"),
+    "semmelweis-reflex": (
+        "wall_rebuff",
+        "object mới. Bằng chứng càng mạnh, càng trái chuẩn đã lập thì bị giữ càng xa: khoảng hở "
+        "tỉ lệ với cỡ khối và KHÔNG khối nào chạm tới dải (bác bỏ thẳng, không tiếp nhận một "
+        "phần). Không dùng inverse_weight: law-of-triviality đã sở hữu bản mint của quan hệ "
+        "nghịch đó; gate thì vẫn có thứ lọt qua"),
+    "serial-position-effect": (
+        "u_shaped_recall",
+        "object mới. Chữ U theo VỊ TRÍ trong chuỗi: hai đầu cao và đặc, hai vị trí giữa thấp và "
+        "nhạt - primacy cộng recency. Không dùng hollow_chain: illusion-of-explanatory-depth đã "
+        "sở hữu bản amber, và ở đó biến là chỗ-nào-được-tô trong một khung liền, không phải chiều "
+        "cao theo vị trí"),
+    "serial-recall-effect": (
+        "ordered_chain",
+        "object mới. Truy xuất phụ thuộc thứ tự đã học: cùng một bộ phần tử, có trục nối "
+        "theo đúng trình tự thì lấy ra được, bốc rời khỏi trình tự thì không. Tách khỏi "
+        "hollow_chain của serial-position-effect ngay trong batch này bằng biến CÓ/KHÔNG "
+        "trục nối thay cho chỗ-nào-được-tô"),
+    "social-comparison-bias": (
+        "neighbor_scale",
+        "object mới. Card nói rõ: tự đánh giá bằng cách so với người khác THAY VÌ theo một "
+        "chuẩn khách quan — nên chuẩn phải có mặt mà bỏ rỗng, còn phần được tô đặc là "
+        "khoảng hở so với người kề bên. contrast-effect (đã có ảnh) và juxtaposition nói về "
+        "chênh lệch do đặt cạnh nhau; ở đây nội dung là CHUẨN NÀO được dùng để đo"),
+
 }
 
 
