@@ -3412,3 +3412,239 @@ CONCEPT_MEANING.update({
 })
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261003)
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-10-04 — social-desirability-bias → subjective-validation
+# --------------------------------------------------------------------------
+
+def t_spaced_repeats(p):
+    # Hai hàng có ĐÚNG cùng số vạch ôn tập (4) và cùng bề rộng — tổng thời gian học
+    # bằng nhau, đó là tiền đề của card. Biến duy nhất là khoảng cách giữa các vạch:
+    # hàng trên dồn sát nhau, hàng dưới trải đều. Khối bên phải mỗi hàng là phần giữ
+    # lại được: hàng dồn thấp, hàng trải cao.
+    # Bắt buộc 4 vạch mỗi hàng, cùng kích thước: thêm/bớt một vạch là thành "học nhiều
+    # hơn thì nhớ nhiều hơn", phá đúng cái điểm card muốn nói.
+    # Khác `steep_then_flat` (forgetting curve): ở đó nội dung là độ cong của một đường
+    # suy giảm; ở đây không có đường nào, chỉ có mật độ vạch trên trục.
+    # Khác `echo` (lặp lại → quen thuộc): echo nói số lần lặp; ở đây số lần lặp bằng
+    # nhau, chỉ khác chỗ đặt.
+    o = [f'<line x1="12" y1="44" x2="116" y2="44" {TNF}/>',
+         f'<line x1="12" y1="96" x2="116" y2="96" {TNF}/>']
+    o += [f'<rect x="{x}" y="28" width="6" height="16" fill="{p["t2"]}" {TS}/>'
+          for x in (14, 24, 34, 44)]
+    o += [f'<rect x="{x}" y="80" width="6" height="16" fill="{p["t2"]}" {TS}/>'
+          for x in (14, 36, 58, 80)]
+    o.append(f'<rect x="96" y="32" width="18" height="12" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    o.append(f'<rect x="96" y="60" width="18" height="36" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+def t_trait_from_band(p):
+    # Dải đặc trên cùng là đặc điểm gán cho CẢ NHÓM. Ba ô thành viên dưới nó được tô
+    # đúng sắc độ của dải, và ruột mỗi ô để rỗng — không ô nào có dữ liệu riêng. Ba
+    # nét dọc chỉ rõ chiều: sắc độ đi TỪ dải XUỐNG từng cá thể.
+    # Ruột ba ô bắt buộc rỗng hết. Tô bằng chứng vào một ô là rơi ngay về
+    # `tint_carryover` (halo-effect): ở đó có một ô CÓ bằng chứng rồi sắc độ lan sang
+    # các ô kề; ở đây nguồn sắc độ là cái dải nhóm, không ô nào từng được quan sát.
+    # Ngược chiều `one_for_all` (group-attribution-error): ở đó một cá thể đặc được sơn
+    # lên toàn vùng chứa — cá thể → nhóm. Ở đây dải nhóm sơn xuống cá thể — nhóm → cá
+    # thể. Chiều của ba nét dọc là thứ phân biệt hai hình, không được vẽ ngược.
+    o = [f'<rect x="14" y="16" width="100" height="18" fill="{p["t3"]}" {TS}/>']
+    for x in (18, 51, 84):
+        o.append(f'<rect x="{x}" y="56" width="26" height="34" fill="{p["t3"]}" {TS}/>')
+        o.append(f'<rect x="{x + 8}" y="66" width="10" height="14" fill="#FFFFFF" {TS}/>')
+        o.append(f'<line x1="{x + 13}" y1="34" x2="{x + 13}" y2="56" {TNF}/>')
+    return "".join(o)
+
+
+def t_unpacked_overshoot(p):
+    # Một đường mức chạy ngang suốt khung, đi qua cả hai cột: xác suất THẬT của cùng
+    # một tập sự kiện — như nhau cho cả hai cách mô tả, đó là tiền đề logic của card.
+    # Cột trái là danh mục gộp chung, dựng một khối liền và DỪNG dưới đường mức.
+    # Cột phải là cùng tập đó tách thành ba mảnh rời, xếp lên nhau và VƯỢT đường mức.
+    # Đường mức phải là MỘT nét liền qua cả hai cột: vẽ hai mức riêng là thành "hai sự
+    # kiện khác nhau", bác bỏ chính tiền đề.
+    # Khác `granularity` (cross-race-effect): ở đó biến là phân giải được thành cá thể
+    # hay nhoè thành khối, và hai bên bằng nhau về lượng. Ở đây hai bên cũng cùng lượng
+    # thật, nhưng cái đo được lệch về hai phía một mốc — nội dung là tổng bị phình.
+    # Khác `proportion` (phần/tổng): ở đó không có mốc nào bị vượt.
+    o = [f'<line x1="12" y1="52" x2="116" y2="52" {TNF}/>',
+         f'<line x1="12" y1="108" x2="116" y2="108" {TNF}/>',
+         f'<rect x="22" y="68" width="30" height="40" fill="{p["t2"]}" {TS}/>']
+    o += [f'<rect x="76" y="{y}" width="30" height="20" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>' for y in (88, 65, 42)]
+    return "".join(o)
+
+
+def t_cover_widens_reach(p):
+    # Hai trạng thái của CÙNG một lõi: hai ô vuông đặc bằng nhau tuyệt đối — thông tin
+    # gốc không đổi về kích thước, đó là tiền đề. Vòng rỗng quanh mỗi lõi là tầm lan
+    # của nó. Bên trái không có gì chặn, vòng nhỏ. Bên phải có một dải đặc đè ngang
+    # qua lõi — nỗ lực che — và vòng lan to gấp nhiều lần.
+    # Hai lõi bắt buộc bằng nhau: làm lõi phải to hơn là thành "thông tin đó vốn quan
+    # trọng hơn", mất hẳn nghĩa chính hành vi che gây ra lan rộng.
+    # Khác `rebound` (backfire-effect): rebound là một tác động bật NGƯỢC trở lại nguồn
+    # — quỹ đạo quay đầu. Ở đây không có gì bật lại; đại lượng đổi là BÁN KÍNH lan, và
+    # nguyên nhân là vật chặn nằm đè lên lõi.
+    # Khác `echo` (mere-exposure): echo lặp lại cùng một thứ nhiều lần; ở đây đúng một
+    # lần can thiệp, và nó nở vòng ra.
+    return (f'<circle cx="30" cy="64" r="15" fill="none" {TS}/>'
+            f'<rect x="24" y="58" width="12" height="12" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<circle cx="88" cy="64" r="36" fill="none" {TS}/>'
+            f'<rect x="82" y="58" width="12" height="12" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="70" y="60" width="36" height="8" fill="{p["t3"]}" {TS}/>')
+
+
+def t_verdict_ignores_fit(p):
+    # Ba hàng, mỗi hàng là cùng MỘT phát biểu chung (khung rỗng, vị trí và cỡ y hệt ở
+    # cả ba hàng) đặt cạnh một cá nhân khác nhau (khối đặc). Phần trùng nhau giảm dần
+    # từ trên xuống: hàng cuối gần như không còn chồng lấn. Ba thanh phán quyết bên
+    # phải bằng nhau tuyệt đối — mức "đúng ghê" không hề đi theo mức khớp thật.
+    # Ba thanh phải bằng nhau CHÍNH XÁC: cho thanh dưới thấp hơn một chút là thành
+    # "càng khớp càng tin", tức nói ngược card.
+    # Khác `tint_carryover` (halo-effect): ở đó các ô được chấm điểm giống nhau vì lây
+    # từ một ô có bằng chứng; ở đây có sẵn một thước khớp đo được cho từng hàng, và
+    # phán quyết phớt lờ đúng cái thước đó.
+    # Khác `consensus_merge` (bandwagon): ở đó nhiều quan điểm nhập thành một khối.
+    o = []
+    for y, xi in ((18, 36), (54, 50), (90, 62)):
+        o.append(f'<rect x="16" y="{y}" width="46" height="24" fill="none" {TS}/>')
+        o.append(f'<rect x="{xi}" y="{y}" width="30" height="24" fill="{p["t2"]}" {TS}/>')
+        o.append(f'<rect x="104" y="{y}" width="10" height="24" fill="{p["acc"]}" '
+                 f'fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20261004 = dict(
+    spaced_repeats=t_spaced_repeats,
+    trait_from_band=t_trait_from_band,
+    unpacked_overshoot=t_unpacked_overshoot,
+    cover_widens_reach=t_cover_widens_reach,
+    verdict_ignores_fit=t_verdict_ignores_fit,
+)
+
+CONCEPT_MEANING.update({
+    "spaced_repeats":
+        "hai hàng cùng số vạch bằng nhau, một hàng dồn sát một hàng trải đều, khối giữ "
+        "lại bên phải cao thấp theo đó — biến duy nhất là khoảng cách",
+    "trait_from_band":
+        "một dải nhóm tô đặc và ba ô thành viên mang đúng sắc độ của dải với ruột để "
+        "rỗng, ba nét dọc chỉ chiều từ dải xuống cá thể",
+    "unpacked_overshoot":
+        "một đường mức qua cả hai cột: khối gộp chung dừng dưới mức, cùng tập đó tách "
+        "ba mảnh xếp lên thì vượt mức",
+    "cover_widens_reach":
+        "hai lõi đặc bằng nhau, lõi bị một dải đè ngang có vòng lan rộng gấp nhiều lần "
+        "lõi không bị chặn",
+    "verdict_ignores_fit":
+        "ba hàng cùng một khung rỗng với phần chồng lấn giảm dần, ba thanh phán quyết "
+        "bên phải bằng nhau tuyệt đối",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261004)
+
+
+def t_per_hand_decline(p):
+    # Ba nhóm: 1 người, 2 người, 3 người. Mọi cột RỘNG BẰNG NHAU và cách đều — một cột
+    # là một người, nên biến duy nhất còn lại là CHIỀU CAO mỗi cột, tức nỗ lực mỗi
+    # người. Đường ngang là mức một người làm một mình, chạy suốt khung: nhóm càng
+    # đông, mỗi cột càng tụt xa khỏi đường đó. Tổng dưới mức cộng dồn là hệ quả đọc ra
+    # được, không phải thứ phải vẽ thêm.
+    # Bề rộng cột bắt buộc không đổi giữa ba nhóm: bóp cột cho nhóm đông là thành "mỗi
+    # người nhỏ đi", mất nghĩa "mỗi người CỐ ít đi".
+    # Khác `dilution` (bystander, diffusion-of-responsibility): ở đó mỗi phần loãng tới
+    # mức không đủ KÍCH HOẠT — nội dung là một ngưỡng không được chạm. Ở đây không có
+    # ngưỡng nào, đại lượng giảm liên tục theo cỡ nhóm.
+    # Khác `assumed_uptake` (pro-innovation-bias): ở đó mỗi cột thấp có một khung RỖNG
+    # vươn lên đúng cao độ cột đầu — nội dung là phần kỳ vọng hụt. Ở đây tuyệt đối
+    # không vẽ khung rỗng: mức một mình đã nằm ở đường ngang.
+    o = [f'<line x1="12" y1="40" x2="116" y2="40" {TNF}/>',
+         f'<line x1="12" y1="104" x2="116" y2="104" {TNF}/>']
+    for x in (14,):
+        o.append(f'<rect x="{x}" y="40" width="12" height="64" fill="{p["acc"]}" '
+                 f'fill-opacity="0.9" {TS}/>')
+    for x in (36, 50):
+        o.append(f'<rect x="{x}" y="52" width="12" height="52" fill="{p["acc"]}" '
+                 f'fill-opacity="0.9" {TS}/>')
+    for x in (72, 86, 100):
+        o.append(f'<rect x="{x}" y="64" width="12" height="40" fill="{p["acc"]}" '
+                 f'fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+def t_preset_holds(p):
+    # Hai phương án Y HỆT NHAU ở hàng trên: cùng bề rộng, cùng chiều cao, cùng một ô
+    # ruột đặc bằng nhau — giá trị ngang nhau là tiền đề của card (thí nghiệm
+    # Samuelson–Zeckhauser: cùng một danh mục, chỉ khác cái nhãn 'đang nắm giữ').
+    # Phương án trái đứng trên một bệ đặc: nó đã ở sẵn đó. Phương án phải không có bệ.
+    # Hai thanh dưới là tỉ lệ được chọn: thanh dưới bên có bệ cao hẳn.
+    # Hai khối trên bắt buộc giống nhau tới từng pixel kể cả ô ruột: làm khối trái to
+    # hơn một chút là thành "phương án cũ tốt hơn", tức bác bỏ card.
+    # Khác `latch` (dual-process-theory giữ hue amber): latch dựng một BỨC TƯỜNG đặc
+    # giữa phương án sẵn có và các phương án kia — bất đối xứng nằm ở công sức phải
+    # vượt. Ở đây không có tường nào, không ai bị chặn; đại lượng đổi là TỈ LỆ CHỌN, và
+    # nguyên nhân chỉ là cái bệ 'đang ở đây'.
+    o = []
+    for x in (20, 78):
+        o.append(f'<rect x="{x}" y="16" width="30" height="28" fill="none" {TS}/>')
+        o.append(f'<rect x="{x + 10}" y="24" width="10" height="12" fill="{p["t2"]}" {TS}/>')
+    o.append(f'<rect x="16" y="48" width="38" height="11" fill="{p["t3"]}" {TS}/>')
+    o.append(f'<rect x="20" y="68" width="30" height="44" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    o.append(f'<rect x="78" y="98" width="30" height="14" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    o.append(f'<line x1="12" y1="112" x2="116" y2="112" {TNF}/>')
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20261004.update(
+    per_hand_decline=t_per_hand_decline,
+    preset_holds=t_preset_holds,
+)
+
+CONCEPT_MEANING.update({
+    "per_hand_decline":
+        "ba nhóm 1–2–3 cột cùng bề rộng cách đều dưới một đường mức 'làm một mình': "
+        "nhóm càng đông thì mỗi cột càng thấp, không có khung rỗng nào",
+    "preset_holds":
+        "hai phương án giống nhau tới từng chi tiết, một cái đứng trên bệ, và thanh tỉ "
+        "lệ chọn dưới cái có bệ cao gấp nhiều lần",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261004)
+
+
+def t_share_of_field(p):
+    # Hai khung RỖNG bằng nhau tuyệt đối: cùng một trường chú ý của người khác, không
+    # bên nào rộng hơn — đó là tiền đề. Khung trái là trường đó như mình HÌNH DUNG:
+    # một khối đặc duy nhất chiếm gần hết. Khung phải là trường đó trên thực tế: sáu ô
+    # bằng nhau, mình chỉ là MỘT ô được tô, năm ô kia (mối bận tâm riêng của họ) để
+    # rỗng. Biến duy nhất là TỈ PHẦN mình chiếm trong cùng một khung.
+    # Hai khung bắt buộc bằng nhau: nới khung trái rộng ra là thành "mình tưởng thế
+    # giới to hơn", lạc hẳn khỏi card.
+    # Khác `overclaim` (dunning-kruger, cùng hue mint): overclaim so một phạm vi tự
+    # nhận với phần thực có trên CÙNG một trục, khoảng chênh để rỗng. Ở đây không có
+    # trục nào; đại lượng là phần diện tích chiếm trong một khung đã chia ô sẵn.
+    # Khác `signal_leak` (illusion-of-transparency): ở đó cái bị ước lượng sai là phần
+    # nội tâm LỌT RA; ở đây là phần chú ý của người khác DỒN VÀO.
+    o = [f'<rect x="12" y="38" width="48" height="52" fill="none" {TS}/>',
+         f'<rect x="18" y="46" width="36" height="36" fill="{p["acc"]}" '
+         f'fill-opacity="0.9" {TS}/>',
+         f'<rect x="68" y="38" width="48" height="52" fill="none" {TS}/>']
+    for x in (72, 88, 102):
+        for y in (44, 68):
+            fill = f'{p["acc"]}" fill-opacity="0.9' if (x, y) == (88, 44) else 'none'
+            o.append(f'<rect x="{x}" y="{y}" width="12" height="20" fill="{fill}" {TS}/>')
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20261004["share_of_field"] = t_share_of_field
+CONCEPT_MEANING["share_of_field"] = (
+    "hai khung rỗng bằng nhau: khung trái một khối đặc chiếm gần hết, khung phải sáu ô "
+    "bằng nhau chỉ một ô được tô — cùng một trường, khác tỉ phần mình chiếm")
+THUMB_REGISTRY["share_of_field"] = t_share_of_field

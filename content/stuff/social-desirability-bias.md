@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [self-serving-bias, illusory-superiority, halo-effect]
 refs: ['https://en.wikipedia.org/wiki/Social_desirability_bias', 'https://en.wikipedia.org/wiki/Marlowe%E2%80%93Crowne_Social_Desirability_Scale', 'https://doi.org/10.1007/s11135-011-9640-9']
 strategy: 'Khi thiết kế khảo sát chạm chủ đề nhạy cảm (thu nhập, sức khỏe, thói quen tài chính), ưu tiên hình thức ẩn danh và đối chiếu câu trả lời với dữ liệu hành vi thực, thay vì tin tuyệt đối vào lời tự thuật.'
+image: /assets/stuff/social-desirability-bias.png
 published: true
 ---
 

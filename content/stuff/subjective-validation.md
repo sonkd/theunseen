@@ -7,6 +7,7 @@ categories: [bias]
 links: [barnum-effect, confirmation-bias, illusory-truth-effect]
 refs: ['https://en.wikipedia.org/wiki/Subjective_validation', 'https://en.wikipedia.org/wiki/Forer_effect', 'https://en.wikipedia.org/wiki/Cold_reading', 'https://thedecisionlab.com/biases/barnum-effect']
 strategy: 'Khi thấy một nhận định "quá đúng với mình", thử chủ động tìm bằng chứng KHÔNG khớp trước khi tin, thay vì chỉ lục trí nhớ để xác nhận nó.'
+image: /assets/stuff/subjective-validation.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias]
 links: [base-rate-fallacy, conjunction-fallacy, availability-heuristic, extension-neglect]
 refs: ['https://en.wikipedia.org/wiki/Subadditivity_effect', 'https://www.researchgate.net/publication/232522236_Support_Theory_A_Nonextensional_Representation_of_Subjective_Probability', 'https://www.thebehavioralscientist.com/glossary/subadditivity-effect']
 strategy: "Trước khi cộng dồn xác suất hay mức độ rủi ro của từng phần nhỏ (bảo hiểm, phân bổ tài sản, đánh giá nguy cơ), thử ước lượng lại toàn bộ như một danh mục gộp chung một lần — nếu hai con số lệch nhau đáng kể, hãy tin vào cách gộp chung hơn."
+image: /assets/stuff/subadditivity-effect.png
 published: true
 ---
 

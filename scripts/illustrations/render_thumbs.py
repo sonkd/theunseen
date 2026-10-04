@@ -290,8 +290,92 @@ OVERRIDES = {
         "khoảng hở so với người kề bên. contrast-effect (đã có ảnh) và juxtaposition nói về "
         "chênh lệch do đặt cạnh nhau; ở đây nội dung là CHUẨN NÀO được dùng để đo"),
 
-}
+    # ---- batch 2026-10-04 ----
+    "social-desirability-bias": (
+        "observed_lift",
+        "xlsx gán divergence (một điểm rẽ nhiều nhánh) — card không có nhánh nào. "
+        "Quan hệ cốt lõi: cùng một hành vi thật, con số TỰ THUẬT đổi vì có người đọc "
+        "câu trả lời. observed_lift dựng đúng thế: dãy đều nhau, riêng phần nằm trong "
+        "phạm vi được quan sát thì cao hẳn lên. hawthorne-effect (đã có ảnh) ăn phải "
+        "divergence nên ô này còn trống"),
+    "social-loafing": (
+        "per_hand_decline",
+        "object mới. xlsx gán nested_scope (vòng ngoài chứa lõi) — card không nói về "
+        "phạm vi lồng nhau. dilution là họ gần nhất nhưng đã thuộc "
+        "diffusion-of-responsibility ở đúng hue amber (dup check bắt được ngay vòng "
+        "render đầu), và nghĩa của dilution là 'mỗi phần loãng tới mức không đủ KÍCH "
+        "HOẠT' — một ngưỡng, tức bystander. Social loafing không có ngưỡng nào: thí "
+        "nghiệm Ringelmann 1913 đo nỗ lực MỖI người giảm liên tục theo cỡ nhóm (2 "
+        "người = 186%, 8 người = 392%). Hình mới khoá bề rộng cột không đổi để biến "
+        "duy nhất là chiều cao mỗi người"),
+    "source-confusion": (
+        "source_swap",
+        "xlsx gán hierarchy (cha–con) — sai hẳn. source_swap đã có sẵn trong registry "
+        "và được viết đúng cho quan hệ này: khối nội dung tô ĐẶC (ký ức nguyên vẹn) "
+        "đội mái tam giác của nguồn đã sinh ra nó, nhưng đường dẫn duy nhất chạy sang "
+        "hình tròn — sai ở chỗ quy nguồn, không ở nội dung. Chưa card nào dùng. Khác "
+        "gap_fill (confabulation: vá chỗ hổng) và cue_lock (cue-dependent-forgetting: "
+        "không mở ra được)"),
+    "spacing-effect": (
+        "spaced_repeats",
+        "object mới. xlsx gán cycle (vòng lặp khép kín) — spacing effect không khép "
+        "vòng, nó trải trên một trục thời gian. Tiền đề của card là TỔNG thời gian ôn "
+        "BẰNG NHAU, chỉ khác mật độ; không hình nào có sẵn giữ được tiền đề đó: "
+        "steep_then_flat nói độ cong của đường quên, echo nói số lần lặp. Hình mới "
+        "khoá cứng 4 vạch mỗi hàng, biến duy nhất là khoảng cách"),
+    "spotlight-effect": (
+        "share_of_field",
+        "object mới. xlsx gán divergence — không có nhánh nào. Hai ứng viên có sẵn đều "
+        "hỏng: foreground_swell đã thuộc identifiable-victim-effect ở hue mint (dup "
+        "check bắt), còn asymmetric_probe render ra hai vòng tròn có chấm giữa, ở 64px "
+        "đọc thành CẶP MẮT KÍNH và độ lệch của hai mũi thăm dò biến mất — vi phạm cả "
+        "'không vật thể nhận dạng được' lẫn 'đọc được ở 64px' (đã render rồi nhìn mới "
+        "thấy). signal_leak thì đúng nghĩa illusion-of-transparency, phiên bản hướng "
+        "nội, không phải card này. Hình mới giữ hai khung bằng nhau và chỉ đổi tỉ phần "
+        "mình chiếm trong trường chú ý — đúng thí nghiệm Gilovich 2000"),
+    "status-quo-bias": (
+        "preset_holds",
+        "object mới. xlsx gán divergence. latch là định nghĩa nguyên văn của card "
+        "nhưng dual-process-theory đã chiếm nó ở đúng hue amber (dup check bắt được) — "
+        "một gán sai nên báo lại chứ không tự sửa ở batch này. latch còn dựng một BỨC "
+        "TƯỜNG: bất đối xứng nằm ở công sức phải vượt. Ở status quo bias không ai bị "
+        "chặn — Samuelson–Zeckhauser 1988 giữ nguyên nội dung danh mục, chỉ thêm nhãn "
+        "'đang nắm giữ', và TỈ LỆ CHỌN vọt lên. Hình mới: hai phương án giống nhau tới "
+        "từng chi tiết, một cái có bệ, thanh tỉ lệ chọn dưới nó cao gấp nhiều lần"),
+    "stereotyping": (
+        "trait_from_band",
+        "object mới. xlsx gán divergence. Chiều của quan hệ mới là điểm chết: "
+        "stereotyping đi NHÓM → CÁ THỂ, còn one_for_all có sẵn đi CÁ THỂ → NHÓM "
+        "(group-attribution-error, đã render). tint_carryover thì cần một ô CÓ bằng "
+        "chứng rồi lây sang ô kề (halo-effect) — ở đây không cá thể nào từng được "
+        "quan sát. Hình mới: dải nhóm đặc, ba ô thành viên mang sắc độ của dải với "
+        "ruột rỗng, nét dọc chỉ chiều xuống. Khác group_tint_applied (implicit-stereotypes, "
+        "cùng hue mint): ở đó một CỤM nhỏ nối sang MỘT cá thể lớn; ở đây một DẢI "
+        "liền sơn xuống BA cá thể, không cá thể nào có bằng chứng riêng"),
+    "streisand-effect": (
+        "cover_widens_reach",
+        "object mới. xlsx gán divergence. rebound (bật ngược) là họ gần nhất nhưng đã "
+        "thuộc backfire-effect ở hue mint, và dùng rebound/amber cho card này sẽ ra "
+        "hai ô chỉ khác màu — vi phạm điều kiện 'không hai ô nào trông giống nhau'. "
+        "Hơn nữa đại lượng đổi ở Streisand không phải quỹ đạo quay đầu mà là BÁN KÍNH "
+        "lan (6 lượt tải → 420.000 lượt truy cập, lõi thông tin không to thêm). Hình "
+        "mới khoá hai lõi bằng nhau, chỉ vòng lan nở ra khi có dải che đè lên"),
+    "subadditivity-effect": (
+        "unpacked_overshoot",
+        "object mới. xlsx gán hierarchy. Card là một bất đẳng thức quanh một mốc: "
+        "cùng một tập sự kiện, mô tả gộp → ước lượng DƯỚI mức thật, tách gói → tổng "
+        "VƯỢT mức thật (58% vs 73%). granularity nói về phân giải cá thể và không có "
+        "mốc nào bị vượt; proportion nói phần/tổng. Hình mới giữ một đường mức liền "
+        "qua cả hai cột để tiền đề 'cùng một tập' không bị bác"),
+    "subjective-validation": (
+        "verdict_ignores_fit",
+        "object mới. xlsx gán hierarchy. barnum-effect (card gần nhất) đã render bằng "
+        "nested_scope. Nội dung riêng của card này: phán quyết 'đúng ghê' KHÔNG đi "
+        "theo mức khớp thật — nên hình phải có cả thước khớp (phần chồng lấn giảm "
+        "dần) lẫn phán quyết (ba thanh bằng nhau tuyệt đối). tint_carryover thiếu "
+        "thước khớp, consensus_merge nói về nhập khối"),
 
+}
 
 def read_index():
     wb = openpyxl.load_workbook(XLSX, read_only=True, data_only=True)

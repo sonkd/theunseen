@@ -7,6 +7,7 @@ categories: [social, bias]
 links: [bystander-effect, diffusion-of-responsibility, groupthink]
 refs: ['https://en.wikipedia.org/wiki/Social_loafing', 'https://en.wikipedia.org/wiki/Ringelmann_effect', 'https://www.simplypsychology.org/social-loafing.html']
 strategy: 'Chia nhỏ nhóm và gắn tên cụ thể cho từng phần việc, để không ai còn chỗ ẩn mình sau nỗ lực tập thể.'
+image: /assets/stuff/social-loafing.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [egocentric-bias, illusion-of-transparency, false-consensus-effect, third-person-effect]
 refs: ['https://en.wikipedia.org/wiki/Spotlight_effect', 'https://doi.org/10.1037/0022-3514.78.2.211', 'https://thedecisionlab.com/biases/spotlight-effect']
 strategy: "Trước khi lo 'chắc ai cũng thấy', tự hỏi: tuần trước mình có nhớ chi tiết trang phục hay lỗi nhỏ của người ngồi cạnh không? — câu trả lời thường là không, và người khác cũng vậy với mình."
+image: /assets/stuff/spotlight-effect.png
 published: true
 ---
 

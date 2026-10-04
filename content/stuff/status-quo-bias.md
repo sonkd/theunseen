@@ -7,6 +7,7 @@ categories: [bias]
 links: [loss-aversion, endowment-effect, omission-bias, sunk-cost-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Status_quo_bias', 'https://thedecisionlab.com/biases/status-quo-bias']
 strategy: 'Trước khi giữ nguyên một lựa chọn, tự hỏi "nếu hôm nay mới bắt đầu từ đầu, mình có chọn phương án này không?" — nếu câu trả lời là không, có thể bạn đang bị status quo bias chứ không phải đang chọn phương án tốt nhất.'
+image: /assets/stuff/status-quo-bias.png
 published: true
 ---
 

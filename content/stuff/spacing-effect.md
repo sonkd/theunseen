@@ -7,6 +7,7 @@ categories: [memory]
 links: [testing-effect, generation-effect, cue-dependent-forgetting, levels-of-processing-effect]
 refs: ['https://en.wikipedia.org/wiki/Spacing_effect', 'https://en.wikipedia.org/wiki/Hermann_Ebbinghaus', 'https://en.wikipedia.org/wiki/Spaced_repetition', 'https://thedecisionlab.com/reference-guide/psychology/the-spacing-effect']
 strategy: 'Chia lịch ôn tập hoặc onboarding thành nhiều đợt ngắn cách nhau vài ngày thay vì một buổi học dồn một lần — thông tin sẽ bám lại lâu hơn nhiều.'
+image: /assets/stuff/spacing-effect.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [memory]
 links: [misattribution-of-memory, cryptomnesia, confabulation, misinformation-effect]
 refs: ['https://en.wikipedia.org/wiki/Misattribution_of_memory#Source_confusion', 'https://en.wikipedia.org/wiki/Source-monitoring_error', 'https://en.wikipedia.org/wiki/False_memory']
 strategy: 'Trước khi coi một thông tin là chắc chắn, tự hỏi lại nguồn cụ thể — mình đọc ở đâu, nghe từ ai, hay tự suy ra — nếu không nhớ rõ, hạ bớt độ tin cậy dành cho nó.'
+image: /assets/stuff/source-confusion.png
 published: true
 ---
 

@@ -8,6 +8,7 @@ tags: [media, internet]
 links: [reactance, bandwagon-effect, third-person-effect]
 refs: ['https://en.wikipedia.org/wiki/Streisand_effect']
 strategy: 'Trước khi gửi yêu cầu gỡ bỏ một nội dung tiêu cực nhưng ít người biết đến, cân nhắc liệu phản hồi công khai, điềm tĩnh có rủi ro thấp hơn việc dùng biện pháp pháp lý ồn ào.'
+image: /assets/stuff/streisand-effect.png
 published: true
 ---
 

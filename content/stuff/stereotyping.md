@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [in-group-bias, out-group-homogeneity-bias, illusory-correlation, group-attribution-error]
 refs: ['https://en.wikipedia.org/wiki/Stereotype', 'https://thedecisionlab.com/biases/stereotyping', 'https://en.wikipedia.org/wiki/Illusory_correlation']
 strategy: 'Trước khi dùng đặc điểm của cả nhóm để suy đoán về một người cụ thể, tự hỏi: mình có thông tin thật về CHÍNH người này, hay đang mượn tạm ấn tượng chung về nhóm họ thuộc về?'
+image: /assets/stuff/stereotyping.png
 published: true
 ---
 
