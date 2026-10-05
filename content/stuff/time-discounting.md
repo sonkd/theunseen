@@ -7,6 +7,7 @@ categories: [bias, mental-models]
 links: [hyperbolic-discounting, affective-forecasting, loss-aversion, planning-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Affective_forecasting#Time_discounting', 'https://en.wikipedia.org/wiki/Time_preference']
 strategy: 'Tự động hoá khoản tiết kiệm hoặc đầu tư ngay khi nhận lương — loại bỏ hoàn toàn bước "quyết định" để cái tôi hiện tại không có cơ hội đánh bại cái tôi tương lai.'
+image: /assets/stuff/time-discounting.png
 published: true
 ---
 

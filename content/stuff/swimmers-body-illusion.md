@@ -7,6 +7,7 @@ categories: [bias, fallacy]
 links: [survivorship-bias, illusory-correlation, base-rate-fallacy]
 refs: ['https://en.wikipedia.org/wiki/Fooled_by_Randomness', 'https://www.shortform.com/blog/swimmers-body-illusion/', 'https://fs.blog/survivorship-bias/']
 strategy: 'Trước khi bắt chước thói quen của người nổi bật, tự hỏi: đặc điểm đó là NGUYÊN NHÂN dẫn tới thành công của họ, hay chỉ là ĐIỀU KIỆN khiến họ được chọn vào vị trí đó từ đầu?'
+image: /assets/stuff/swimmers-body-illusion.png
 published: true
 ---
 

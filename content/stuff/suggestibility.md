@@ -7,6 +7,7 @@ categories: [memory]
 links: [misinformation-effect, misattribution-of-memory, confabulation, source-confusion]
 refs: ['https://en.wikipedia.org/wiki/Suggestibility', 'https://en.wikipedia.org/wiki/Gudjonsson_Suggestibility_Scale', 'https://www.simplypsychology.org/loftus-palmer.html']
 strategy: 'Khi thiết kế câu hỏi khảo sát, phỏng vấn hay biểu mẫu phản hồi, ưu tiên câu hỏi mở và trung tính, tránh cài sẵn từ ngữ hoặc thang đánh giá định hướng khiến người trả lời "nhớ lại" đúng theo khung câu hỏi thay vì trải nghiệm thật.'
+image: /assets/stuff/suggestibility.png
 published: true
 ---
 

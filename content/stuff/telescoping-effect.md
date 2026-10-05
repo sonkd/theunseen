@@ -7,6 +7,7 @@ categories: [memory, bias]
 links: [duration-neglect, hindsight-bias, misattribution-of-memory, recency-effect]
 refs: ['https://en.wikipedia.org/wiki/Telescoping_effect', 'https://thedecisionlab.com/biases/telescoping-effect', 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6878269']
 strategy: 'Khi cần biết chính xác thời điểm một việc đã xảy ra (giao dịch, sự cố, mốc hợp đồng), luôn đối chiếu log hoặc hoá đơn thay vì ước lượng bằng cảm giác "lâu chưa" — trí nhớ có xu hướng nén hoặc giãn thời gian một cách hệ thống, không ngẫu nhiên.'
+image: /assets/stuff/telescoping-effect.png
 published: true
 ---
 

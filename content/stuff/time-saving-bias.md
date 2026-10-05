@@ -7,6 +7,7 @@ categories: [bias, heuristic]
 links: [unit-bias, framing-effect, anchoring, availability-heuristic]
 refs: ['https://en.wikipedia.org/wiki/Time-saving_bias']
 strategy: 'Khi so sánh hai lựa chọn về tốc độ hay chi phí, tính theo phần trăm thay đổi thay vì chỉ nhìn con số phút hoặc số tiền tuyệt đối.'
+image: /assets/stuff/time-saving-bias.png
 published: true
 ---
 

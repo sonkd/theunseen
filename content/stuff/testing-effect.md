@@ -7,6 +7,7 @@ categories: [memory, mental-models]
 links: [spacing-effect, generation-effect, levels-of-processing-effect]
 refs: ['https://en.wikipedia.org/wiki/Testing_effect']
 strategy: 'Khi học kiến thức mới, tự kiểm tra lại (flashcard, quiz nhanh) thay vì chỉ đọc lại tài liệu — retrieval củng cố trí nhớ tốt hơn nhiều so với đọc thụ động.'
+image: /assets/stuff/testing-effect.png
 published: true
 ---
 

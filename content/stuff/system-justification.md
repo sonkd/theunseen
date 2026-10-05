@@ -10,6 +10,7 @@ refs:
   - 'https://bpspsychub.onlinelibrary.wiley.com/doi/10.1111/j.2044-8309.1994.tb01008.x'
   - 'https://thedecisionlab.com/reference-guide/sociology/system-justification-theory'
 strategy: 'Trước khi đồng tình rằng "đây chỉ là cách mọi thứ vận hành", tách câu hỏi "hệ thống này có công bằng không" ra khỏi câu hỏi "mình có đang phụ thuộc vào nó không" — hai câu trả lời không nhất thiết phải giống nhau.'
+image: /assets/stuff/system-justification.png
 published: true
 ---
 

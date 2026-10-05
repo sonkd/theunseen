@@ -7,6 +7,7 @@ categories: [bias, fallacy]
 links: [loss-aversion, escalation-of-commitment, disposition-effect, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Sunk_cost', 'https://www.sciencedirect.com/science/article/abs/pii/0749597885900494', 'https://thedecisionlab.com/biases/the-sunk-cost-fallacy']
 strategy: 'Tách quyết định thành hai câu hỏi riêng biệt: "Tôi đã bỏ ra bao nhiêu" và "Từ đây, lựa chọn nào tốt nhất cho tương lai" — chỉ câu hỏi thứ hai được phép quyết định bước tiếp theo.'
+image: /assets/stuff/sunk-cost-fallacy.png
 published: true
 ---
 

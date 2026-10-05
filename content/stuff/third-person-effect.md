@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [illusory-superiority, optimism-bias, false-consensus-effect, bias-blind-spot]
 refs: ['https://en.wikipedia.org/wiki/Third-person_effect']
 strategy: 'Trước khi tự tin rằng một cảnh báo lừa đảo hay quảng cáo thao túng "không dành cho mình", hãy nhớ rằng chính niềm tin đó là thứ khiến người ta dễ mắc bẫy nhất.'
+image: /assets/stuff/third-person-effect.png
 published: true
 ---
 

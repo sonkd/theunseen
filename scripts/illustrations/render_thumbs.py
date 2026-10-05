@@ -375,6 +375,76 @@ OVERRIDES = {
         "dần) lẫn phán quyết (ba thanh bằng nhau tuyệt đối). tint_carryover thiếu "
         "thước khớp, consensus_merge nói về nhập khối"),
 
+    # ---- batch 2026-10-05 (suggestibility → time-saving-bias) — xlsx gán 5 hierarchy
+    # + 4 branching + 1 nesting, tức 9/10 card sẽ nhận đúng 2 hình. Chẩn đoán lại toàn
+    # bộ theo `back`. Mọi object sát nghĩa nhất đã bị card khác chiếm, nên batch này
+    # viết 10 object mới trong illus.py thay vì dùng lại hình ở hue còn lại (hai ô
+    # trông giống nhau là lỗi contact sheet).
+    "suggestibility": (
+        "prompt_shaped_answer",
+        "gợi ý từ ngoài cấp HÌNH DẠNG cho câu trả lời, và không có nét nối nào giữa "
+        "khuôn và khối phản hồi — người trả lời đọc nó thành của mình. hierarchy nói "
+        "quan hệ cha-con, không có gì liên quan. overwrite_seam sát nghĩa nhưng đã "
+        "thuộc misinformation-effect, mà chính card này ghi rõ nó RỘNG hơn "
+        "misinformation-effect: suggestibility không cần ký ức sẵn có để bị ghi đè"),
+    "sunk-cost-fallacy": (
+        "past_outweighs_ahead",
+        "một vách 'bây giờ': đại lượng quyết định lựa chọn nằm BÊN TRÁI vách, phía lẽ "
+        "ra không được tính. hierarchy không diễn được chuyện này. pull (anchoring) "
+        "thiếu trục thời gian — sunk cost không phải một mỏ neo trên cùng mặt phẳng, "
+        "nó là chi phí đã chôn được mang sang phép tính tương lai"),
+    "survivorship-bias": (
+        "sample_minus_eliminated",
+        "khung dữ liệu quan sát được chỉ chứa nhóm sống sót, nhóm bị loại đông hơn hẳn "
+        "và nằm ngoài khung, tường khung vẽ liền (không bị che — chưa bao giờ vào "
+        "được). hierarchy sai hẳn. gate vẽ quá trình lọc và đã thuộc authority-bias/"
+        "automation-bias; ở đây quá trình đã xong, cái phải thấy là bảng dữ liệu còn lại"),
+    "swimmers-body-illusion": (
+        "trait_precedes_frame",
+        "lỗi của card là CHIỀU nhân quả, không phải việc lọc: ba khối bằng nhau xuất "
+        "hiện đặc TRƯỚC khung, đặc trong khung, rỗng SAU khung — phần 'do hoạt động "
+        "tạo ra' bỏ rỗng. nesting/nested_scope chỉ nói lồng nhau. Phải khác hẳn "
+        "survivorship-bias dù hai card là họ hàng: ở đó cái vắng là nhóm bị loại, ở "
+        "đây cái vắng là hệ quả được gán cho hoạt động"),
+    "system-justification": (
+        "braced_from_below",
+        "điểm gây tranh cãi nhất của card: thanh đỡ duy nhất của cấu trúc mọc lên từ "
+        "chính bậc rỗng — nhóm yếu thế biện minh mạnh nhất. hierarchy vẽ đúng cấu trúc "
+        "nhưng dừng ở đó, mà cấu trúc không phải nội dung card; NGUỒN của lực đỡ mới là"),
+    "telescoping-effect": (
+        "recall_slides_on_axis",
+        "hai độ lệch NGƯỢC CHIỀU quanh mốc hiện tại trên một trục thời gian (forward + "
+        "backward telescoping). branching/divergence chỉ có một điểm rẽ nhánh, mất sạch "
+        "nửa card. extreme_then_center cũng đối xứng qua mốc nhưng nói hồi quy về trung "
+        "bình — ở đây không có lực kéo về trung tâm, chỉ có vị trí bị định vị sai"),
+    "testing-effect": (
+        "pulled_out_deeper",
+        "chiều của động tác mới là nội dung: LẤY RA (một mẩu rút khỏi hốc của chính "
+        "khối) cho dấu vết sâu hơn nhiều lượt nạp vào. branching sai hẳn. encoding_depth "
+        "đã thuộc levels-of-processing-effect và nói về độ sâu xử lý; self_built thuộc "
+        "generation-effect (tự dựng vs nhận nguyên si) — cả hai là card họ hàng được "
+        "link ngay trong bài, nên phải phân biệt được bằng mắt"),
+    "third-person-effect": (
+        "uniform_field_self_blank",
+        "dải tác động chạy LIỀN dưới cả bốn ô bằng nhau, chỉ ô 'mình' để rỗng — trường "
+        "phủ như nhau, khác nhau ở việc có tự xếp mình vào nhóm bị phủ. branching sai. "
+        "self_exempt đã thuộc optimism-bias và ở đó biến là CHIỀU CAO cột tự ước lượng; "
+        "ở đây mọi ô cao bằng nhau, biến là được tô hay không"),
+    "time-discounting": (
+        "distance_discounts_fill",
+        "hai khung cao BẰNG NHAU tuyệt đối (phần thưởng danh nghĩa bằng nhau) trên một "
+        "trục thời gian, phần tô teo đi theo khoảng cách. branching sai. steep_then_flat "
+        "đã thuộc hyperbolic-discounting và vẽ ĐỘ CONG của đường chiết khấu — đúng là "
+        "card em của card này, nên hình phải khác: ở đây chỉ hai mốc và đại lượng là "
+        "phần giá trị còn lại trong khung; discounted_across_line đã thuộc "
+        "reactive-devaluation"),
+    "time-saving-bias": (
+        "equal_step_unequal_gain",
+        "quan hệ PHI TUYẾN: hai mẩu tăng tốc bằng nhau tuyệt đối cho hai kết quả chênh "
+        "hẳn, và khung rỗng cao bằng kết quả bên trái chính là lượng trực giác tưởng sẽ "
+        "nhận được. branching sai. inert_input ngược chiều (hai đầu vào chênh, hai kết "
+        "quả bằng nhau); anchoring/pull chỉ bắt được phần neo, không bắt được tính phi tuyến"),
+
 }
 
 def read_index():

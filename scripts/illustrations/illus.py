@@ -3648,3 +3648,276 @@ CONCEPT_MEANING["share_of_field"] = (
     "hai khung rỗng bằng nhau: khung trái một khối đặc chiếm gần hết, khung phải sáu ô "
     "bằng nhau chỉ một ô được tô — cùng một trường, khác tỉ phần mình chiếm")
 THUMB_REGISTRY["share_of_field"] = t_share_of_field
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-10-05 — suggestibility → time-saving-bias
+# xlsx gán 5 hierarchy + 4 branching + 1 nesting cho 10 card, tức 9/10 sẽ nhận
+# đúng 2 hình. Chẩn đoán lại toàn bộ theo `back`. Cả 9 card dưới đây cần object
+# mới: các object sát nghĩa nhất trong thư viện đều đã bị một card khác chiếm
+# (overwrite_seam → misinformation-effect, self_exempt → optimism-bias,
+# discounted_across_line → reactive-devaluation, recorded_few → murphys-law),
+# và dùng lại cùng một hình ở hue còn lại sẽ tạo ra hai ô trông giống nhau trên
+# contact sheet — điều checklist cấm.
+# --------------------------------------------------------------------------
+
+
+def t_prompt_shaped_answer(p):
+    # Trái: một khuôn RỖNG hình chữ L lệch (gợi ý / câu hỏi dẫn dắt) — nó tồn tại
+    # bên ngoài người trả lời. Phải: khối phản hồi, và phần được tô ĐẶC bên trong nó
+    # mang ĐÚNG hình chữ L đó. Giữa hai bên KHÔNG có nét nối nào: đó là nội dung của
+    # card — hình dạng câu trả lời đến từ ngoài, nhưng người trả lời không thấy đường
+    # truyền nên đọc nó thành của mình.
+    # Hai hình L bắt buộc trùng khít về kích thước và hướng; vẽ lệch đi là mất luận
+    # điểm "đúng theo khung gợi ý" và chỉ còn là contrast.
+    # Khác `overwrite_seam` (misinformation-effect): ở đó vật liệu lạ THAY phần ruột
+    # của một khối đã có — ký ức bị ghi đè. Ở đây khối phản hồi vốn trống, cái được
+    # cấp từ ngoài là HÌNH DẠNG, nên suggestibility rộng hơn: không cần có ký ức
+    # trước để bị ghi đè.
+    # Khác `prior_passthrough` (vật đi vào rồi đi ra nguyên si qua một bộ máy rỗng):
+    # ở đây không có đường đi xuyên, và chính sự VẮNG đường truyền là điểm chính.
+    L = "M0,0 h26 v14 h-14 v22 h-12 Z"
+    return (f'<path d="{L}" transform="translate(16,46)" fill="none" {TS}/>'
+            f'<rect x="64" y="38" width="50" height="52" fill="none" {TS}/>'
+            f'<path d="{L}" transform="translate(76,46)" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>')
+
+
+def t_past_outweighs_ahead(p):
+    # Vach doc = moc "bay gio". BEN TRAI vach: khoi DAC cao (chi phi da bo ra, khong
+    # thu hoi duoc). BEN PHAI: hai phuong an tuong lai, hai thanh RONG cung be rong —
+    # "tiep tuc" thap, "doi huong" cao hon han. O chon DAC dat NGOI DUNG LEN noc thanh
+    # thap, va noc no ngang bang noc khoi qua khu ben trai.
+    # O chon bat buoc cham noc thanh thap (khong de ho): tha roi la hinh doc thanh bon
+    # hinh chu nhat roi rac, mat sach quan he — ban dung dau mac dung loi nay.
+    # Noc o chon bat buoc ngang noc khoi ben trai: do la toan bo luan diem — chieu cao
+    # cua lua chon do khoi BEN TRAI vach quyet dinh, khong phai thanh no dung tren.
+    # Khac `pull` (anchoring): pull la khoi nang keo lech uoc luong tren cung mot mat
+    # phang, khong co truc thoi gian.
+    # Khac `forgone_stack` (chi phi co hoi): o do phan bi bo qua la cai CHUA xay ra.
+    return (f'<line x1="54" y1="18" x2="54" y2="112" {TNF}/>'
+            f'<rect x="14" y="40" width="32" height="72" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="62" y="64" width="22" height="48" fill="none" {TS}/>'
+            f'<rect x="94" y="28" width="22" height="84" fill="none" {TS}/>'
+            f'<rect x="62" y="40" width="22" height="24" fill="{p["t4"]}" {TS}/>')
+
+def t_sample_minus_eliminated(p):
+    # Một khung KÍN (tập dữ liệu quan sát được) với ba ô ĐẶC bên trong. Phía ngoài,
+    # áp sát mặt dưới khung: năm ô RỖNG CÙNG KÍCH THƯỚC với ba ô bên trong. Tường
+    # khung vẽ LIỀN, không có khe nào — nhóm bên ngoài không phải bị che, chúng chưa
+    # bao giờ vào được, nên không có mặt trong bất kỳ kết luận rút ra từ khung.
+    # Năm ô ngoài phải bằng đúng ba ô trong: cho chúng nhỏ hơn là hình nói "nhóm thất
+    # bại ít quan trọng hơn", ngược hẳn card.
+    # Khác `holding_capacity` (sức chứa bộ nhớ: khung giữ ba ô, hai ô cùng cỡ nằm
+    # ngoài): ở đó giới hạn là SỨC CHỨA của khung, số ô ngoài ít hơn trong. Ở đây số
+    # ô ngoài NHIỀU hơn hẳn số ô trong, và đó mới là điểm — phần bị loại áp đảo phần
+    # sống sót về số lượng.
+    # Khác `gate` (sàng lọc: nhiều tới, ít qua): gate vẽ quá trình lọc; ở đây quá
+    # trình đã xong và cái được vẽ là BẢNG DỮ LIỆU còn lại.
+    o = [f'<rect x="20" y="26" width="88" height="44" fill="none" {TS}/>']
+    o += [f'<rect x="{x}" y="38" width="18" height="20" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>' for x in (28, 55, 82)]
+    o += [f'<rect x="{x}" y="82" width="18" height="20" fill="none" {TS}/>'
+          for x in (8, 29, 50, 71, 92)]
+    return "".join(o)
+
+
+def t_trait_precedes_frame(p):
+    # Đọc từ trái sang phải là chiều thời gian. TRÁI: ba khối cao–hẹp ĐẶC, đứng rời
+    # — đặc điểm đã có sẵn, trước khi có hoạt động nào. GIỮA: một khung (hoạt động,
+    # vị trí được chọn vào) chứa đúng ba khối đó, vẫn đặc, vẫn nguyên kích thước.
+    # PHẢI: đúng ba khối đó nhưng RỖNG, đặt ngoài khung — phần "do hoạt động tạo ra",
+    # và nó rỗng vì không có gì được tạo ra cả.
+    # Ba khối ở cả ba vị trí phải bằng nhau tuyệt đối: cho nhóm trong khung cao hơn
+    # là hình tự bác bỏ card, vì nó khẳng định hoạt động có làm thay đổi đặc điểm.
+    # Khác `gate` / `sample_minus_eliminated`: hai hình đó nói về phần BỊ LOẠI. Ở đây
+    # không vẽ nhóm bị loại; cái được vẽ là CHIỀU nhân quả — đặc điểm có trước khung,
+    # và ô rỗng bên phải là phần nhân quả bị gán sai.
+    o = [f'<rect x="{x}" y="34" width="10" height="38" fill="{p["acc"]}" '
+         f'fill-opacity="0.85" {TS}/>' for x in (10, 24)]
+    o += [f'<rect x="42" y="26" width="42" height="54" fill="none" {TS}/>',
+          f'<rect x="50" y="34" width="10" height="38" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>',
+          f'<rect x="66" y="34" width="10" height="38" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>',
+          f'<rect x="94" y="34" width="10" height="38" fill="none" {TS}/>',
+          f'<rect x="110" y="34" width="10" height="38" fill="none" {TS}/>']
+    return "".join(o)
+
+
+def t_braced_from_below(p):
+    # Ba bac = cau truc: bac TREN rong nhat va DAC nhat (phan huong loi), bac DUOI hep
+    # nhat va RONG (phan chiu thiet). Chong do ca khoi la MOT thanh doc dac duy nhat,
+    # va no moc len tu dung bac rong do.
+    # Ca cum dat LECH han sang trai, khong doi xung: can giua la hinh doc thanh cai ban
+    # / cai den, tuc mot vat nhan dang duoc — style cam. Ban dung dau mac dung loi nay.
+    # Thanh do bat buoc cham ca mat duoi bac tren lan mat tren bac duoi va di xuyen bac
+    # giua; ho mot dau la hinh chi con `hierarchy` cong mot vach.
+    # Khac `ratchet` (bac sau tua vai bac truoc, leo dan theo thoi gian).
+    # Khac `fewer_supports` (so SO diem tua): o day chi mot diem tua, van de la no o dau ra.
+    return (f'<rect x="14" y="20" width="98" height="22" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="30" y="56" width="68" height="20" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="22" y="90" width="30" height="20" fill="none" {TS}/>'
+            f'<rect x="32" y="42" width="10" height="48" fill="{p["t4"]}" {TS}/>')
+
+def t_recall_slides_on_axis(p):
+    # Vach doc ben phai = moc "bay gio", dung chung cho ca hai hang. HAI HANG doc lap,
+    # moi hang mot truc ngang rieng va mot cap o CUNG KICH THUOC: o RONG = vi tri that,
+    # o DAC = vi tri duoc nho.
+    # Hang tren (forward telescoping): o dac nam GAN moc hon o rong — viec xa xua cam
+    # giac nhu moi day. Hang duoi (backward): o dac nam XA moc hon o rong.
+    # Tach hai hang la bat buoc: ban dung dau gop bon o len mot truc, o 64px chung doc
+    # thanh mot bieu do cot bon vach va mat han quan he tung cap.
+    # Hai do lech bat buoc NGUOC chieu: cho cung chieu la mat nua card.
+    # O rong va o dac cung hang phai bang nhau tuyet doi — "cung mot viec, chi doi cho".
+    return (f'<line x1="112" y1="18" x2="112" y2="110" {TNF}/>'
+            f'<rect x="12" y="44" width="96" height="4" rx="2" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="18" y="26" width="12" height="18" fill="none" {TS}/>'
+            f'<rect x="58" y="26" width="12" height="18" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="12" y="90" width="96" height="4" rx="2" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="84" y="72" width="12" height="18" fill="none" {TS}/>'
+            f'<rect x="44" y="72" width="12" height="18" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>')
+
+def t_pulled_out_deeper(p):
+    # Duong ngang = mat tiep nhan; phan DUOI duong la do sau dau vet con lai.
+    # TRAI: ba ban sao RONG xep chong khit (doc lai nhieu luot, khong luot nao lay gi
+    # ra) -> duoi duong la mot thanh dac NONG.
+    # PHAI: dung MOT khoi, va mot mau cua no duoc ve TACH HAN ra ben canh (phan vua
+    # duoc luc lai tu bo nho) -> duoi duong la thanh dac SAU gap may lan.
+    # Noi dung: ben phai it luot hon han nhung dau vet sau hon, vi chieu cua dong tac
+    # la LAY RA chu khong phai nap vao.
+    # Giu so phan tu toi thieu: ban dung dau dung khoi co hoc khuyet + mau roi, o 64px
+    # cum do nhoe thanh mot mo net. Mau roi phai tach ro khoi khoi va cung chieu cao.
+    # Khac `encoding_depth` (levels-of-processing, cung hue mint): o do ba o rong nong
+    # doi lai mot khoi dac dam sau, va khong co gi bi lay ra.
+    # Khac `self_built` (generation-effect): o do cung noi dung qua hai loi dung/nhan.
+    o = [f'<rect x="10" y="62" width="108" height="4" rx="2" fill="{p["t3"]}" {TS}/>']
+    o += [f'<rect x="14" y="{y}" width="34" height="14" fill="none" {TS}/>'
+          for y in (20, 34, 48)]
+    o += [f'<rect x="18" y="66" width="26" height="14" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>',
+          f'<rect x="68" y="48" width="26" height="14" fill="none" {TS}/>',
+          f'<rect x="102" y="48" width="16" height="14" fill="{p["t4"]}" {TS}/>',
+          f'<rect x="72" y="66" width="26" height="44" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>']
+    return "".join(o)
+
+def t_uniform_field_self_blank(p):
+    # Một DẢI ĐẶC duy nhất chạy LIỀN suốt bề ngang khung = trường tác động của truyền
+    # thông, phủ đều lên mọi người, không bị ngắt ở đâu. Bốn ô cùng cỡ nằm trên dải:
+    # ba ô "người khác" được tô ĐẶC (có nhận tác động), ô thứ tư — "mình" — để RỖNG.
+    # Dải bắt buộc chạy liền dưới cả bốn ô, kể cả ô rỗng: ngắt dải ở ô rỗng là hình
+    # khẳng định mình thật sự ở ngoài vùng ảnh hưởng, tức bác bỏ card.
+    # Bốn ô bắt buộc bằng nhau tuyệt đối: thu nhỏ ô "mình" là thành "mình ít tiếp xúc
+    # hơn", một lý do khách quan mà card không nói tới.
+    # Khác `self_exempt` (optimism-bias): ở đó có một ĐƯỜNG MỨC rủi ro và cột "mình"
+    # THẤP hơn — đại lượng bị ước lượng thấp là chiều cao. Ở đây mọi ô cao bằng nhau
+    # và biến duy nhất là ĐƯỢC TÔ hay KHÔNG, tức việc có tự xếp mình vào nhóm bị ảnh
+    # hưởng hay không.
+    # Khác `blanket_affect` (affect heuristic: một dải đắp lên bốn khung khác cỡ): ở
+    # đó bốn khung khác cỡ và đều rỗng; ở đây bốn ô bằng nhau và ba trong bốn được tô.
+    o = [f'<rect x="8" y="56" width="112" height="16" fill="{p["acc"]}" '
+         f'fill-opacity="0.85" {TS}/>']
+    for i, x in enumerate((14, 42, 70, 98)):
+        fill = 'none' if i == 3 else f'{p["t4"]}'
+        o.append(f'<rect x="{x}" y="38" width="18" height="52" fill="{fill}" {TS}/>')
+    return "".join(o)
+
+
+def t_distance_discounts_fill(p):
+    # Trục ngang = thời gian, mốc "bây giờ" ở mép trái. Hai KHUNG RỖNG cao BẰNG NHAU
+    # TUYỆT ĐỐI = hai phần thưởng danh nghĩa bằng nhau; khung thứ hai đặt xa mốc hơn
+    # hẳn. Phần tô ĐẶC trong mỗi khung = giá trị thật sự cảm nhận được: khung gần đầy
+    # gần hết, khung xa chỉ còn một mẩu đáy.
+    # Hai khung bắt buộc bằng nhau: cho khung xa thấp hơn là hình nói "phần thưởng
+    # tương lai vốn nhỏ hơn", xoá sạch nội dung card.
+    # Khoảng cách tới mốc phải chênh rõ (gấp vài lần), vì biến giải thích duy nhất ở
+    # đây là KHOẢNG CÁCH, không phải cỡ.
+    # Khác `steep_then_flat` (hyperbolic-discounting, cùng hue mint): ở đó cái được
+    # vẽ là ĐỘ CONG của đường chiết khấu qua nhiều mốc — mức sụt đoạn gần lớn hơn
+    # tổng các đoạn sau. Ở đây chỉ có hai mốc và cái được vẽ là phần GIÁ TRỊ CÒN LẠI
+    # trong một khung cố định.
+    # Khác `recalled_above_lived` (năm cặp, khung luôn cao hơn cột): ở đó năm cặp và
+    # các khung khác cao độ; ở đây đúng hai cặp, hai khung bằng nhau, và trục thời
+    # gian mới là thứ giải thích chênh lệch.
+    return (f'<line x1="14" y1="16" x2="14" y2="112" {TNF}/>'
+            f'<rect x="10" y="104" width="108" height="4" rx="2" fill="{p["t3"]}" {TS}/>'
+            f'<rect x="28" y="36" width="26" height="68" fill="none" {TS}/>'
+            f'<rect x="28" y="48" width="26" height="56" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="88" y="36" width="26" height="68" fill="none" {TS}/>'
+            f'<rect x="88" y="88" width="26" height="16" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>')
+
+
+def t_equal_step_unequal_gain(p):
+    # HAI HANG nam ngang, moi hang mot doan toc do. Dau moi hang: mot o DAC bang nhau
+    # tuyet doi = cung mot muc tang toc (+10 km/h o ca hai hang).
+    # Hang tren (xuat phat tu toc do THAP): thanh thoi gian tiet kiem duoc DAI.
+    # Hang duoi (xuat phat tu toc do CAO): chi mot mau DAC ngan, nam trong mot KHUNG
+    # RONG dai dung bang thanh hang tren = luong truc giac tuong se nhan duoc. Khoang
+    # ho trong khung chinh la sai so cua card.
+    # Ve nam ngang la co chu dich: ban dung theo cot trung bo cuc voi
+    # `distance_discounts_fill` (time-discounting) — hai card khac nhau ma cung doc
+    # thanh "hai cot, trai day phai voi".
+    # Hai o dau hang bat buoc bang nhau tuyet doi: chenh mot chut la mat tien de.
+    # Khung rong bat buoc dai dung bang thanh hang tren.
+    # Khac `inert_input` (hai dau vao chenh nhau, hai ket qua y het): nguoc chieu han.
+    return (f'<rect x="12" y="28" width="18" height="18" fill="{p["t4"]}" {TS}/>'
+            f'<rect x="38" y="30" width="76" height="14" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="12" y="82" width="18" height="18" fill="{p["t4"]}" {TS}/>'
+            f'<rect x="38" y="84" width="76" height="14" fill="none" {TS}/>'
+            f'<rect x="38" y="84" width="20" height="14" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>')
+CONCEPT_OBJECTS_20261005 = dict(
+    prompt_shaped_answer=t_prompt_shaped_answer,
+    past_outweighs_ahead=t_past_outweighs_ahead,
+    sample_minus_eliminated=t_sample_minus_eliminated,
+    trait_precedes_frame=t_trait_precedes_frame,
+    braced_from_below=t_braced_from_below,
+    recall_slides_on_axis=t_recall_slides_on_axis,
+    pulled_out_deeper=t_pulled_out_deeper,
+    uniform_field_self_blank=t_uniform_field_self_blank,
+    distance_discounts_fill=t_distance_discounts_fill,
+    equal_step_unequal_gain=t_equal_step_unequal_gain,
+)
+
+CONCEPT_MEANING.update({
+    "prompt_shaped_answer":
+        "một khuôn rỗng bên ngoài và đúng hình khuôn đó được tô đặc bên trong khối "
+        "phản hồi, không có nét nối nào giữa hai bên",
+    "past_outweighs_ahead":
+        "một vách thời gian: khối đặc cao bên trái vách, hai thanh rỗng cao thấp bên "
+        "phải, và ô chọn nằm trên thanh thấp ở đúng cao độ khối bên trái",
+    "sample_minus_eliminated":
+        "một khung kín chứa ba ô đặc, và năm ô rỗng cùng cỡ áp sát mặt ngoài khung — "
+        "phần bị loại đông hơn phần sống sót và không có mặt trong khung",
+    "trait_precedes_frame":
+        "ba khối bằng nhau xuất hiện đặc trước khung, đặc trong khung, và rỗng sau "
+        "khung — đặc điểm có trước hoạt động, phần 'do hoạt động tạo ra' thì rỗng",
+    "braced_from_below":
+        "ba bậc dọc, bậc trên rộng và đặc nhất, bậc dưới hẹp và rỗng, và thanh đỡ duy "
+        "nhất của cả khối mọc lên từ chính bậc rỗng",
+    "recall_slides_on_axis":
+        "một trục với mốc hiện tại ở mép phải: hai vạch rỗng là vị trí thật, hai khối "
+        "đặc cùng cỡ là vị trí được nhớ, lệch ngược chiều nhau",
+    "pulled_out_deeper":
+        "ba bản sao rỗng xếp chồng cho một dấu vết nông, đối lại một khối có mẩu được "
+        "rút ra khỏi hốc của chính nó cho một dấu vết sâu gấp nhiều lần",
+    "uniform_field_self_blank":
+        "một dải đặc chạy liền dưới bốn ô bằng nhau tuyệt đối, ba ô được tô và ô "
+        "'mình' để rỗng — trường phủ như nhau, chỉ khác ô nào tự nhận là bị phủ",
+    "distance_discounts_fill":
+        "hai khung rỗng cao bằng nhau tuyệt đối trên một trục thời gian, khung gần mốc "
+        "gần đầy còn khung xa chỉ còn một mẩu đáy",
+    "equal_step_unequal_gain":
+        "hai mẩu tăng cùng bề rộng ở hai đoạn khác nhau của một trục: khối kết quả bên "
+        "trái cao, bên phải chỉ một mẩu mỏng nằm trong khung rỗng cao bằng khối trái",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261005)

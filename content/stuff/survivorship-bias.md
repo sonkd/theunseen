@@ -7,6 +7,7 @@ categories: [bias]
 links: [swimmers-body-illusion, outcome-bias, hindsight-bias, availability-heuristic]
 refs: ['https://en.wikipedia.org/wiki/Survivorship_bias', 'https://thedecisionlab.com/biases/survivorship-bias', 'http://www.ams.org/publicoutreach/feature-column/fc-2016-06']
 strategy: 'Trước khi rút bài học từ một nhóm "thành công", chủ động tìm dữ liệu về nhóm đã thất bại hoặc biến mất — nếu không tìm được, coi kết luận đó là chưa đủ căn cứ.'
+image: /assets/stuff/survivorship-bias.png
 published: true
 ---
 
