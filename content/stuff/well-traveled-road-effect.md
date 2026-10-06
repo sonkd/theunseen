@@ -7,6 +7,7 @@ categories: [heuristic, mental-models]
 links: [planning-fallacy, availability-heuristic, optimism-bias]
 refs: ['https://en.wikipedia.org/wiki/Well_travelled_road_effect']
 strategy: 'Khi ước lượng thời gian cho một quy trình quen thuộc, cộng thêm một biên an toàn — cảm giác "quen tay" luôn khiến ta đánh giá thấp thời gian thực tế cần bỏ ra.'
+image: /assets/stuff/well-traveled-road-effect.png
 published: true
 ---
 

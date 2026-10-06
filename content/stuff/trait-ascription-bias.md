@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [fundamental-attribution-error, false-consensus-effect, self-serving-bias]
 refs: ['https://en.wikipedia.org/wiki/Trait_ascription_bias', 'https://en.wikipedia.org/wiki/Actor%E2%80%93observer_bias']
 strategy: 'Trước khi gán một hành vi của người khác cho "tính cách" của họ, tự hỏi liệu bạn có làm điều tương tự nếu ở đúng hoàn cảnh và áp lực họ đang chịu.'
+image: /assets/stuff/trait-ascription-bias.png
 published: true
 ---
 

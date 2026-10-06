@@ -7,6 +7,7 @@ categories: [bias, heuristic]
 links: [loss-aversion, risk-compensation, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Zero-risk_bias', 'https://thedecisionlab.com/biases/zero-risk-bias']
 strategy: 'Khi thiết kế thông điệp về rủi ro, đừng chỉ nhấn mạnh từ "an toàn tuyệt đối" — trình bày rõ đánh đổi giữa loại bỏ hoàn toàn một rủi ro nhỏ và giảm thiểu một rủi ro tổng thể lớn hơn.'
+image: /assets/stuff/zero-risk-bias.png
 published: true
 ---
 

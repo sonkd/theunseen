@@ -3921,3 +3921,103 @@ CONCEPT_MEANING.update({
 })
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261005)
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-10-06 — von-restorff-effect, zeigarnik-effect, zero-sum-bias
+# Ba quan hệ không có hình nào trong 177 hình hiện có diễn được, nên vẽ mới.
+# --------------------------------------------------------------------------
+
+def t_isolate_recalled(p):
+    # von Restorff: một dãy ĐỒNG NHẤT và đúng một phần tử khác LOẠI, cộng thêm hàng
+    # thanh nhớ lại phía dưới. Hai tầng này đều bắt buộc:
+    #   - nền đồng nhất: bỏ đi thì không còn gì để "lệch khỏi";
+    #   - thanh nhớ lại: không có nó thì hình chỉ nói "có một cái khác", chưa nói
+    #     "cái khác đó được NHỚ hơn" — mà vế sau mới là nội dung của card.
+    # Phần tử lệch là hình thoi (ô vuông xoay 45°), không phải hình tròn, để không
+    # trùng với `odd_one_out` vốn dùng tròn-giữa-vuông và không có tầng nhớ lại.
+    # Năm ô phải cùng cỡ cùng khoảng cách: chênh cỡ là thành `foreground_swell`.
+    cx = [20, 42, 64, 86, 108]
+    o = []
+    for i, x in enumerate(cx):
+        if i == 2:
+            continue
+        o.append(f'<rect x="{x - 9}" y="20" width="18" height="18" '
+                 f'fill="{p["t2"]}" {TS}/>')
+    o.append(f'<path d="M64,18 L75,29 L64,40 L53,29 Z" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    o.append(f'<line x1="8" y1="108" x2="120" y2="108" {TNF}/>')
+    for i, x in enumerate(cx):
+        if i == 2:
+            o.append(f'<rect x="{x - 6}" y="64" width="12" height="44" '
+                     f'fill="{p["acc"]}" fill-opacity="0.9" {TS}/>')
+        else:
+            o.append(f'<rect x="{x - 6}" y="94" width="12" height="14" '
+                     f'fill="none" {TS}/>')
+    return "".join(o)
+
+
+def t_open_loop_retained(p):
+    # Zeigarnik: vòng ĐÃ KHÉP thì nhả ra, vòng còn HỞ thì giữ lại.
+    # Bên trái: vòng khép kín, ruột để rỗng — việc xong rồi, không còn gì bám lại.
+    # Bên phải: vòng cùng cỡ nhưng còn một khoảng hở rõ ràng trên vành, và ruột có
+    # khối đặc — sức căng chưa được giải phóng nên nội dung vẫn nằm đó.
+    # Hai vòng BẮT BUỘC cùng bán kính: cho vòng hở to hơn là thành "việc lớn hơn thì
+    # nhớ hơn", tức bỏ mất biến duy nhất của card là trạng thái khép/hở.
+    # Khoảng hở phải nằm trên vành ngoài và rộng ~60° để còn đọc được ở 64px; vá kín
+    # hay để hở quá nửa vòng thì cả hai đều mất nghĩa.
+    # Khác `cycle` (abilene-paradox): cycle là vòng KHÉP tự củng cố, ở đây cái mang
+    # nghĩa lại chính là chỗ vòng không khép.
+    import math as _m
+    o = [f'<circle cx="36" cy="64" r="25" fill="none" {TS}/>']
+    pts = []
+    for k in range(41):
+        a = _m.radians(30 + k * (300 / 40))
+        pts.append(f'{94 + 25 * _m.cos(a):.1f},{64 + 25 * _m.sin(a):.1f}')
+    o.append(f'<polyline points="{" ".join(pts)}" fill="none" {TS}/>')
+    o.append(f'<circle cx="94" cy="64" r="12" fill="{p["acc"]}" '
+             f'fill-opacity="0.9" {TS}/>')
+    return "".join(o)
+
+
+def t_fixed_total_split(p):
+    # Zero-sum: hai hàng cùng MỘT khung rộng y hệt nhau, chia bởi một vách dọc.
+    # Hàng dưới vách bị đẩy sang phải: phần đặc (mình) nở ra đúng bằng phần phía kia
+    # teo lại — trong một cái tổng không đổi thì được của người này là mất của người
+    # kia, đúng cái khung mà zero-sum bias áp vào mọi tình huống.
+    # Khối rỗng nằm NGOÀI mép phải khung hàng dưới là phần tổng lẽ ra có thể nở thêm;
+    # vẽ rỗng vì nó không có mặt trong cách người ta nghĩ về tình huống.
+    # Hai khung ngoài bắt buộc rộng bằng nhau chằn chặn — cho khung dưới rộng hơn là
+    # tự bác bỏ tiền đề "tổng cố định" ngay trong hình.
+    # Khác `proportion` (base-rate-fallacy): proportion nói phần/tổng tĩnh, ở đây phải
+    # thấy được sự DỊCH CHUYỂN bù trừ giữa hai lần chia.
+    return (f'<rect x="10" y="28" width="76" height="26" fill="none" {TS}/>'
+            f'<rect x="10" y="28" width="38" height="26" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="48" y="28" width="38" height="26" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="10" y="74" width="76" height="26" fill="none" {TS}/>'
+            f'<rect x="10" y="74" width="56" height="26" fill="{p["acc"]}" '
+            f'fill-opacity="0.9" {TS}/>'
+            f'<rect x="66" y="74" width="20" height="26" fill="{p["t2"]}" {TS}/>'
+            f'<rect x="92" y="74" width="26" height="26" fill="none" {TS}/>')
+
+
+CONCEPT_OBJECTS_20261006 = dict(
+    isolate_recalled=t_isolate_recalled,
+    open_loop_retained=t_open_loop_retained,
+    fixed_total_split=t_fixed_total_split,
+)
+
+CONCEPT_MEANING.update({
+    "isolate_recalled":
+        "một dãy ô đồng nhất với đúng một phần tử khác loại, và hàng thanh nhớ lại "
+        "phía dưới chỉ cao hẳn ở đúng phần tử đó",
+    "open_loop_retained":
+        "hai vòng cùng bán kính: vòng khép kín thì ruột rỗng, vòng còn hở trên vành "
+        "thì ruột có khối đặc — cái được giữ lại là cái chưa khép",
+    "fixed_total_split":
+        "hai hàng cùng một khung rộng y hệt chia bởi vách dọc, vách dịch sang phải nên "
+        "phần này nở đúng bằng phần kia teo, và phần tổng có thể nở thêm để rỗng ngoài mép",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261006)

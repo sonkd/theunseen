@@ -31,6 +31,84 @@ CONTENT = os.path.join(ROOT, "content", "stuff")
 # chính file ghi đây là "design hypothesis"), nên phải chẩn đoán lại theo `back`
 # của từng card. slug -> (metaphor, "lý do")
 OVERRIDES = {
+    "tip-of-the-tongue-phenomenon": (
+        "hollow_chain",
+        "Brown & McNeill (1966): người trong trạng thái TOT đoán đúng chữ cái đầu và số "
+        "âm tiết trên mức ngẫu nhiên — tức hai đầu chuỗi được truy xuất, khúc giữa rỗng, "
+        "mà cái khung bao quanh lại khiến nó đọc thành 'sắp bật ra'. hierarchy không có "
+        "quan hệ nào ở đây; khác `veil` (thông tin bị che) và `cue_lock` (thiếu mảnh "
+        "khớp) ở chỗ TOT là truy cập MỘT PHẦN, và chính phần có được mới sinh ra cảm giác"),
+    "trait-ascription-bias": (
+        "near_side_detail",
+        "quan hệ cốt lõi là bất đối xứng về ĐỘ PHÂN GIẢI hai bên một ranh giới mình/người "
+        "khác: phía mình phân giải được thành từng tình huống riêng khác cỡ nhau, phía "
+        "người khác là một khối liền không có nét chia nào — đúng cái bất cân xứng thông "
+        "tin mà Nisbett & Ross mô tả. hierarchy nói cha-con, không nói gì về chênh lệch "
+        "độ phân giải; `mirror` (actor-observer-bias) nói cùng một sự việc hai cách quy "
+        "kết, còn ở đây cái lệch là lượng chi tiết nhìn thấy được ở mỗi phía. "
+        "`granularity` cũng đúng nghĩa nhưng amber đã bị cross-race-effect chiếm nên "
+        "trùng byte; near_side_detail hơn ở chỗ vẽ hẳn cái ranh giới ra"),
+    "ultimate-attribution-error": (
+        "liking_flip",
+        "card là một bảng 2x2: trong-nhóm/ngoài-nhóm × thành công/thất bại, và trọng số "
+        "quy kết ĐẢO NGƯỢC giữa hai phía. liking_flip đúng cấu trúc đó (hai vòng "
+        "trong/ngoài ở trên, hai ô mỗi bên đảo cỡ nhau ở dưới). nested_scope trong xlsx "
+        "chỉ vẽ được 'vòng ngoài chứa lõi' — mất sạch phần đảo chiều, vốn là toàn bộ "
+        "nội dung; `in_out_ring` cũng chỉ nói ranh giới thuộc về, không nói sự bất đối xứng"),
+    "unit-bias": (
+        "fill_to_frame",
+        "Geier/Rozin/Wansink (2006): khẩu phần lớn hơn thì ăn nhiều hơn dù nhu cầu thật "
+        "không đổi — khối tiêu thụ giãn chạm mép của bất kỳ khung đơn vị nào được đưa, "
+        "còn lõi đặc (nhu cầu thật) hai bên bằng nhau chằn chặn. hierarchy không diễn "
+        "được quan hệ này. Dùng chung hình với parkinsons-law là có chủ ý: cùng một quan "
+        "hệ 'khung quyết định lượng, không phải nhu cầu', và parkinsons-law hiện đang để "
+        "mint nên không trùng byte"),
+    "von-restorff-effect": (
+        "isolate_recalled",
+        "HÌNH MỚI. Card cần hai vế: nền đồng nhất + một phần tử khác loại (vế này "
+        "`odd_one_out` có, nhưng mint đã bị bizarreness-effect chiếm nên trùng byte), VÀ "
+        "phần tử đó được NHỚ hơn — vế sau mới là phát hiện của von Restorff và không hình "
+        "nào trong 177 hình có. isolate_recalled thêm hàng thanh nhớ lại chỉ cao ở đúng "
+        "ô lệch. divergence trong xlsx (một điểm rẽ nhiều nhánh) không liên quan gì"),
+    "weber-fechner-law": (
+        "base_blind",
+        "quan hệ cốt lõi: CÙNG một mức thay đổi tuyệt đối đọc trên hai cái nền khác hẳn "
+        "nhau — giảm 10k trên 100k là 10%, trên 2 triệu là 0,5%. Cái nền quyết định thay "
+        "đổi có được nhận ra hay không lại là thứ bị nhìn xuyên qua. hierarchy không có "
+        "quan hệ nào; `equal_step_unequal_gain` sát nghĩa nhưng amber đã bị "
+        "time-saving-bias chiếm nên trùng byte"),
+    "well-traveled-road-effect": (
+        "discounted_across_line",
+        "tiền đề của card là hai quãng đường DÀI BẰNG NHAU, chỉ khác quen/lạ, và ước "
+        "lượng thời gian lệch hẳn. discounted_across_line đúng cấu trúc đó: vách dọc chia "
+        "quen/lạ, hai khối bằng nhau tuyệt đối, thanh ước lượng dưới mỗi khối lệch hẳn. "
+        "Quy ước đọc (đừng đảo ở batch sau): khối ĐẶC = tuyến LẠ — đúng chữ của card, "
+        "tuyến lạ đòi chú ý liên tục nên mỗi phút cảm giác 'dày' hơn — nên nó mang thanh "
+        "ước lượng CAO; khối RỖNG = tuyến quen, đi tự động nên rỗng chú ý và thanh thấp. "
+        "divergence trong xlsx vẽ 'một điểm rẽ nhiều nhánh' — đọc thành chọn tuyến, mà "
+        "card không nói về chọn tuyến, nó nói về sai số ước lượng trên hai tuyến bằng nhau"),
+    "zeigarnik-effect": (
+        "open_loop_retained",
+        "HÌNH MỚI. Biến duy nhất của card là trạng thái KHÉP/HỞ: việc xong thì nhả khỏi "
+        "trí nhớ, việc bị ngắt giữa chừng thì giữ nguyên sức căng (lý thuyết trường của "
+        "Lewin). Không hình nào trong 177 hình lấy chỗ-vòng-không-khép làm nội dung — "
+        "`cycle` thì ngược hẳn (vòng khép tự củng cố), `odd_one_out` nói lệch-khỏi-nền "
+        "chứ không nói dở-dang. hierarchy trong xlsx không liên quan"),
+    "zero-risk-bias": (
+        "certain_inside_branch",
+        "card là một đánh đổi sai: dốc sức vét MỘT buồng nhỏ xuống đúng số 0 trong khi "
+        "buồng lớn vẫn đầy nguyên. certain_inside_branch đúng hình đó — khung chia hai "
+        "buồng lệch cỡ, buồng nhỏ trống hẳn, buồng lớn tô đầy sát mép. hierarchy không "
+        "diễn được; `balance` sát nghĩa đánh đổi nhưng cả mint lẫn amber đều đã bị chiếm, "
+        "và balance cũng không nói được chỗ 'trống HẲN' — tức sức hút riêng của con số 0"),
+    "zero-sum-bias": (
+        "fixed_total_split",
+        "HÌNH MỚI. Card có hai vế: (a) tổng bị coi là CỐ ĐỊNH nên được của người này là "
+        "mất của người kia, (b) thực tế tổng có thể nở ra nhưng khả năng đó không có mặt "
+        "trong cách nghĩ. `balance` chỉ có vế (a) và đã bị chiếm ở cả hai hue; "
+        "`share_of_field` nói tỉ phần tĩnh, không có sự bù trừ. fixed_total_split giữ cả "
+        "hai: khung rộng y hệt ở hai hàng với vách dịch, cộng khối rỗng ngoài mép phải. "
+        "divergence trong xlsx không liên quan"),
     "abilene-paradox": (
         "cycle",
         "vòng phản hồi tự củng cố — im lặng của mỗi người được người kế tiếp đọc thành "

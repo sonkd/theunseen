@@ -7,6 +7,7 @@ categories: [heuristic, mental-models]
 links: [sunk-cost-fallacy, effort-justification, escalation-of-commitment, loss-aversion]
 refs: ['http://www.alleydog.com/glossary/definition.php?term=Unit%20Bias']
 strategy: 'Khi thiết kế một luồng thao tác (form nhiều bước, gói sản phẩm, subscription), luôn cho phép người dùng dừng hoặc thoát bất kỳ lúc nào — đừng lợi dụng tâm lý "phải hoàn thành unit" để giữ chân họ.'
+image: /assets/stuff/unit-bias.png
 published: true
 ---
 

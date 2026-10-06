@@ -7,6 +7,7 @@ categories: [memory, perception]
 links: [cue-dependent-forgetting, memory-inhibition, confabulation, cryptomnesia]
 refs: ['https://en.wikipedia.org/wiki/Tip_of_the_tongue']
 strategy: 'Khi bí một từ hay chi tiết nào đó, đừng cố ép nhớ — chuyển sang việc khác vài phút, trí nhớ thường tự "nhả" ra câu trả lời khi không còn bị gắng sức tìm kiếm.'
+image: /assets/stuff/tip-of-the-tongue-phenomenon.png
 published: true
 ---
 

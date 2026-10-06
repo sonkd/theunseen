@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [in-group-bias, loss-aversion, framing-effect]
 refs: ['http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3153800/', 'https://en.wikipedia.org/wiki/Zero-sum_thinking']
 strategy: 'Trong đàm phán, chủ động chỉ ra phần giá trị cả hai bên cùng có lợi trước khi bàn tới phần phải đánh đổi — phá vỡ khung "ai thắng ai thua" mà não bộ mặc định áp vào tình huống.'
+image: /assets/stuff/zero-sum-bias.png
 published: true
 ---
 

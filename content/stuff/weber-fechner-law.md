@@ -7,6 +7,7 @@ categories: [perception, theory]
 links: [anchoring, contrast-effect, denomination-effect, loss-aversion]
 refs: ['https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law', 'https://en.wikipedia.org/wiki/Just-noticeable_difference']
 strategy: 'Khi trình bày mức phí hoặc thay đổi giá, luôn hiển thị cả số tuyệt đối lẫn phần trăm — người dùng cảm nhận thay đổi theo tỷ lệ tương đối với mức nền, không theo con số tuyệt đối.'
+image: /assets/stuff/weber-fechner-law.png
 published: true
 ---
 

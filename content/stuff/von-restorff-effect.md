@@ -7,6 +7,7 @@ categories: [perception, memory]
 links: [selective-perception, contrast-effect, bizarreness-effect, picture-superiority-effect]
 refs: ['https://en.wikipedia.org/wiki/Von_Restorff_effect']
 strategy: 'Khi cần người dùng chú ý một hành động quan trọng giữa một giao diện nhiều thông tin, làm nó khác biệt rõ ràng — màu sắc, vị trí, kích thước — thay vì chỉ dựa vào việc đặt nó "đúng chỗ".'
+image: /assets/stuff/von-restorff-effect.png
 published: true
 ---
 

@@ -8,6 +8,7 @@ tags: [memory, motivation]
 links: [serial-position-effect, spacing-effect, testing-effect]
 refs: ['https://en.wikipedia.org/wiki/Zeigarnik_effect']
 strategy: 'Trước khi ngừng một công việc dở dang, ghi lại cụ thể bước tiếp theo cần làm — não sẽ bớt bám lấy nó như một mối bận tâm chưa xử lý.'
+image: /assets/stuff/zeigarnik-effect.png
 published: true
 ---
 

@@ -7,6 +7,7 @@ categories: [bias, social]
 links: [fundamental-attribution-error, group-attribution-error, in-group-bias, out-group-homogeneity-bias]
 refs: ['https://en.wikipedia.org/wiki/Ultimate_attribution_error']
 strategy: 'Khi đánh giá hành động của một nhóm hoặc tổ chức không thuộc "phe mình", chủ động tìm hiểu bối cảnh và giới hạn của họ trước khi quy kết cho năng lực hay bản chất.'
+image: /assets/stuff/ultimate-attribution-error.png
 published: true
 ---
 
