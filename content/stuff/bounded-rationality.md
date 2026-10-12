@@ -8,6 +8,7 @@ tags: [decision, economics]
 links: [availability-heuristic, representativeness-heuristic, attribute-substitution, dual-process-theory, choice-overload]
 refs: ['https://en.wikipedia.org/wiki/Bounded_rationality', 'https://en.wikipedia.org/wiki/Satisficing', 'https://en.wikipedia.org/wiki/Herbert_A._Simon']
 strategy: 'Khi thiết kế lựa chọn cho người khác, đừng hỏi phương án nào tối ưu — hãy hỏi phương án nào đủ tốt và tìm được trong ba mươi giây.'
+image: /assets/stuff/bounded-rationality.png
 published: true
 ---
 

@@ -544,6 +544,10 @@ def read_index():
             hue=str(r[ix["Hue"]]).strip().lower(),
         ))
     out.sort(key=lambda d: d["n"])
+    # Article Index (230 dòng) đã phủ 100% từ 2026-10-06. Các card được thêm vào
+    # content/stuff/ sau khi xlsx được sinh ra thì không có dòng nào trong đó, nên
+    # từ 2026-10-12 danh sách batch được nối thêm EXTRA_CARDS (khai báo cuối file).
+    out += EXTRA_CARDS
     return out
 
 
@@ -570,6 +574,92 @@ def set_frontmatter_image(slug):
         lines.insert(pub if pub is not None else len(lines), line)
     open(path, "w", encoding="utf-8").write("---\n" + "\n".join(lines) + "\n---\n" + rest)
     return True
+
+
+# ---------------------------------------------------------------------------
+# Batch ngoài Article Index. xlsx chỉ phủ 230/342 card; phần còn lại được chẩn
+# đoán trực tiếp từ `back` của từng card rồi khai báo ở đây — shape ghi "(ngoài
+# xlsx)" để báo cáo phân biệt được nguồn, metaphor lấy từ OVERRIDES như mọi card khác.
+# ---------------------------------------------------------------------------
+
+OVERRIDES.update({
+    "action-bias": (
+        "best_off_board",
+        "card không nằm trong xlsx nên không có shape nào để đối chiếu. Quan hệ cốt lõi "
+        "nằm ở bước DỰNG tập phương án, không ở bước chấm: Bar-Eli cho thấy đứng yên có "
+        "kỳ vọng tốt hơn, nhưng nó không bao giờ lên bảng so sánh — đúng chữ trong "
+        "strategy của card. Khác `visible_hand` (omission-bias, mint) vốn nói về quy kết "
+        "tác nhân khi hậu quả đã xảy ra; ở đây chưa có hậu quả nào, chỉ có một tập thiếu"),
+    "afterimage-effect": (
+        "complement_rebound",
+        "cơ chế là cặp đối lập Hering mất điểm cân bằng, nên hình phải có một đường cân "
+        "bằng và hai độ lệch ĐỐI XỨNG quanh nó, phần sau để rỗng vì không có kích thích "
+        "nào ở đó. Khác `setpoint_return` (hedonic adaptation) vốn vẽ đường trở về mức "
+        "nền; dư ảnh không phải sự trở về mà là một độ lệch mới ở phía chưa bị dùng"),
+    "autokinetic-effect": (
+        "drift_attribution",
+        "phép trừ chuyển động mất mẫu số khi bối cảnh biến mất — nên biến phải là SỰ CÓ "
+        "MẶT của khung tham chiếu, và nét rung phải giữ y nguyên để thấy nó chỉ đổi chủ. "
+        "Không chọn nhánh Sherif (chuẩn nhóm) vì `prompt_shaped_answer` đã thuộc "
+        "suggestibility, và `back` của card đặt trọng tâm ở cơ chế thị giác"),
+    "barbell-strategy": (
+        "ends_loaded",
+        "điểm phân biệt với đa dạng hoá là phần GIỮA bị bỏ trống có chủ ý, nên khoảng "
+        "giữa phải được vẽ ra thành một khung rỗng chứ không để trắng. Ba cược nhỏ rời "
+        "nhau để nói điều kiện không-tương-quan — bẫy thứ hai card nêu. Khác `tail_event` "
+        "(black-swan-theory, amber): ở đó đuôi là thứ xảy đến, ở đây là thứ được chọn"),
+    "barber-pole-illusion": (
+        "aperture_cue",
+        "aperture problem: thông tin thiếu ngay từ gốc, và hệ thị giác lấy manh mối ở ĐẦU "
+        "MÚT trên cạnh dài của cửa sổ. Nên hình phải giữ nguyên độ nghiêng vạch, đổi hình "
+        "cửa sổ, và đánh dấu đầu mút — đó là toàn bộ lập luận 'hướng ta thấy là hình dạng "
+        "của cái khung'. Khác `coincident_view` vì ở đây hai khung khác hình nhau"),
+    "bayesian-updating": (
+        "weighted_shift",
+        "nội dung là phép TRỘN CÓ TỈ LỆ, nên phải vẽ hai lần với trọng số đảo nhau mới "
+        "thấy được tính tỉ lệ; vạch kết quả không chạm cực nào vì card bác bỏ đúng hai "
+        "cách đọc 'bỏ qua bằng chứng' và 'lật ngược vì một mẫu nhỏ'. Khác `balance` vốn "
+        "chỉ nói cán cân lệch có hướng, không nói mức lệch do đâu quyết định"),
+    "ben-franklin-effect": (
+        "act_tints_actor",
+        "chiều tác động là người CHO đổi thái độ, và điều kiện tắt là cảm giác bị ép — "
+        "nên thanh đè phải có mặt như biến điều tiết, giống cách `liking_flip` vẽ biến "
+        "điều tiết ra. Khác `effort_price` (effort-justification + ikea-effect đã chiếm "
+        "cả mint và amber) vì ở đó vật được định giá bằng công sức, còn ở đây đối tượng "
+        "được định giá lại là một NGƯỜI và đại lượng là sắc độ thái độ"),
+    "binocular-rivalry": (
+        "exclusive_state",
+        "nội dung nằm ở cái KHÔNG xảy ra: không có lưới caro. Nên hình phải cho hai trạng "
+        "thái chiếm cùng một chỗ mà chỉ một cái được tô. Khác `overlap_phases` (vùng giao "
+        "đậm lên) vì đó chính là phép trộn mà hiện tượng này bác bỏ — dùng nó sẽ vẽ ra "
+        "đúng câu trả lời sai mà front của card đặt ra"),
+    "bounded-rationality": (
+        "stop_at_threshold",
+        "satisficing: đặt ngưỡng, dừng ở phương án đầu vượt ngưỡng, và cái tối ưu vẫn còn "
+        "đó nhưng chưa bao giờ được mở ra vì tìm kiếm có giá. Phần rỗng phải nằm SAU vạch "
+        "dừng mới nói được là chi phí tìm kiếm chứ không phải lỗi phán đoán. Khác "
+        "`noticed_from_here` ở chiều tô: ở đó phần rỗng nằm trước vạch"),
+    "calibrated-confidence": (
+        "identity_line_shortfall",
+        "hiệu chỉnh là khớp giữa mức phát biểu và tần suất đúng, nên mốc phải là đường "
+        "đồng nhất CHO TRƯỚC, không phải đường khớp từ dữ liệu. Khoảng rơi nới rộng dần "
+        "để mang luôn hard-easy-effect. Khác `narrow_interval` (overconfidence-effect, "
+        "mint) vốn lấy bề rộng khoảng tin cậy làm đại lượng, và khác `fitted_overreach` "
+        "(illusion-of-validity) vốn nói đường khớp chạy ra ngoài vùng có dữ liệu"),
+})
+
+EXTRA_CARDS = [
+    dict(n=1001, slug="action-bias", title="Action Bias", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1002, slug="afterimage-effect", title="Afterimage Effect", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1003, slug="autokinetic-effect", title="Autokinetic Effect", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1004, slug="barbell-strategy", title="Barbell Strategy", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1005, slug="barber-pole-illusion", title="Barber Pole Illusion", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1006, slug="bayesian-updating", title="Bayesian Updating", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1007, slug="ben-franklin-effect", title="Ben Franklin Effect", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1008, slug="binocular-rivalry", title="Binocular Rivalry", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1009, slug="bounded-rationality", title="Bounded Rationality", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1010, slug="calibrated-confidence", title="Calibrated Confidence", shape="(ngoài xlsx)", hue="mint"),
+]
 
 
 def main():

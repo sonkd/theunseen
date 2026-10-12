@@ -8,6 +8,7 @@ tags: [persuasion, self-perception, relationships]
 links: [cognitive-dissonance, effort-justification, ikea-effect, reciprocity-bias]
 refs: ['https://en.wikipedia.org/wiki/Ben_Franklin_effect', 'https://en.wikipedia.org/wiki/Cognitive_dissonance']
 strategy: 'Khi cần xây quan hệ với một người còn dè dặt, hãy nhờ họ một việc nhỏ và dễ nhận lời — lời nhờ vừa phải tạo ra gắn kết tốt hơn một món quà.'
+image: /assets/stuff/ben-franklin-effect.png
 published: true
 ---
 

@@ -8,6 +8,7 @@ tags: [decision-making, control, urgency]
 links: [omission-bias, illusion-of-control, escalation-of-commitment, status-quo-bias]
 refs: ['https://en.wikipedia.org/wiki/Action_bias', 'https://en.wikipedia.org/wiki/Illusion_of_control']
 strategy: 'Đưa "không làm gì" vào danh sách phương án chính thức và bắt nó được đánh giá bằng cùng tiêu chí như các phương án khác — nếu nó không bao giờ xuất hiện trên bảng so sánh, nó sẽ không bao giờ được chọn.'
+image: /assets/stuff/action-bias.png
 published: true
 ---
 

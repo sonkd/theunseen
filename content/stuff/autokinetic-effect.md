@@ -8,6 +8,7 @@ tags: [vision, motion, eye-movement]
 links: [motion-aftereffect, phi-phenomenon, flash-lag-effect, suggestibility]
 refs: ['https://en.wikipedia.org/wiki/Autokinetic_effect', 'https://en.wikipedia.org/wiki/Muzafer_Sherif']
 strategy: 'Khi phải phán đoán trong điều kiện thiếu mốc tham chiếu, hãy dựng mốc trước khi hỏi ý kiến người khác — nếu không, nhóm sẽ hội tụ vào một chuẩn tự tạo và tưởng đó là sự thật.'
+image: /assets/stuff/autokinetic-effect.png
 published: true
 ---
 

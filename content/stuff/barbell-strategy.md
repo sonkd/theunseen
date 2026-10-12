@@ -8,6 +8,7 @@ tags: [risk, decision-making, strategy]
 links: [antifragility, black-swan-theory, margin-of-safety, expected-utility-theory]
 refs: ['https://en.wikipedia.org/wiki/Barbell_strategy', 'https://en.wikipedia.org/wiki/Antifragility']
 strategy: 'Chia danh mục dự án thành hai đầu: một đầu chắc chắn đủ nuôi sống hệ thống, một đầu gồm nhiều cược nhỏ có thể thất bại toàn bộ mà không gây thiệt hại dây chuyền — và cắt bỏ những dự án nằm giữa.'
+image: /assets/stuff/barbell-strategy.png
 published: true
 ---
 

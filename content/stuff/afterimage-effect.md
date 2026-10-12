@@ -8,6 +8,7 @@ tags: [vision, color, adaptation]
 links: [mccollough-effect, motion-aftereffect, color-constancy, troxler-effect]
 refs: ['https://en.wikipedia.org/wiki/Afterimage', 'https://en.wikipedia.org/wiki/Opponent_process']
 strategy: 'Sau khi tiếp xúc lâu với một góc nhìn hay một khung số liệu, hãy nghỉ và đổi nền trước khi đưa ra phán đoán — đầu ra ngay sau phơi nhiễm luôn mang dấu vết của cái vừa rời khỏi.'
+image: /assets/stuff/afterimage-effect.png
 published: true
 ---
 

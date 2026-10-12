@@ -4021,3 +4021,263 @@ CONCEPT_MEANING.update({
 })
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261006)
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-10-12 — 10 card NGOÀI Article Index (action-bias → calibrated-confidence)
+# Article Index (230 dòng) đã phủ 100% từ 2026-10-06. content/stuff/ còn 112 card chưa
+# có dòng nào trong xlsx, nên từ batch này shape + hue được chẩn đoán trực tiếp từ `back`.
+# 179/180 metaphor cũ đã bị dùng → mỗi card ở đây cần một hình mới.
+# --------------------------------------------------------------------------
+
+
+def t_best_off_board(p):
+    # Một KHUNG = bảng so sánh phương án. Trong khung: hai cột đặc — các phương án "làm
+    # gì đó", được đưa lên bàn và được chấm. Ngoài mép phải khung: một cột RỖNG cao hơn
+    # cả hai — phương án "đứng yên", giá trị tốt nhất, nhưng chưa bao giờ nằm trong tập
+    # được so sánh.
+    # Cột ngoài bắt buộc CAO HƠN mọi cột trong khung: thấp hơn là hình chỉ còn đọc thành
+    # "có một phương án bị bỏ sót" chung chung, mất chữ "không hành động mới cho kết quả
+    # tốt hơn". Nó cũng bắt buộc nằm HẲN ngoài đường bao: chạm mép là thành "đã xét rồi
+    # loại", trong khi cơ chế của card nằm ở bước DỰNG tập phương án, trước mọi phép chấm.
+    # Khác `drawer_below_line` (publication bias: một ngưỡng, nhiều khối rỗng rơi xuống
+    # dưới theo KẾT QUẢ của chúng) vì ở đây chỉ đúng một phần tử bị loại và nó bị loại
+    # trước khi có kết quả nào. Khác `unused_exit` (learned helplessness: lối ra mở mà
+    # không dùng) vì ở đó không có phép so sánh giá trị nào; ở đây hình là một bảng chấm.
+    o = [f'<rect x="10" y="40" width="72" height="62" rx="4" fill="none" {TS}/>']
+    o += [f'<rect x="{x}" y="{102 - h}" width="20" height="{h}" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>' for x, h in ((20, 34), (52, 44))]
+    o += [f'<rect x="94" y="26" width="20" height="76" fill="none" {TS}/>']
+    return "".join(o)
+
+
+def t_complement_rebound(p):
+    # Một đường cân bằng nằm ngang suốt khung = điểm giữa của cặp kênh đối lập. Nửa
+    # trái: khối ĐẶC đặt hẳn phía trên đường — kích thích có thật, kéo dài. Vạch dọc ở
+    # giữa = lúc kích thích ngừng. Nửa phải: không còn khối đặc nào, mà một khối RỖNG
+    # cùng kích thước xuất hiện ở phía ĐỐI DIỆN đường, lệch khỏi đường đúng bằng khoảng
+    # lệch của khối đặc. Dư ảnh là một độ lệch đối xứng gương, và nó rỗng vì ở đó không
+    # có kích thích nào.
+    # Hai khối bắt buộc BẰNG NHAU và cách đường đúng cùng một khoảng: cho khối phải nhỏ
+    # hơn là thành "phai dần", tức kể chuyện tắt dần chứ không kể chuyện bù trừ.
+    # Khác `two_frames` (framing: cùng một mốc, một bên tô phần dưới bên kia tô phần
+    # trên) vì ở đó cả hai cách kể đều có thật và cùng đặc; ở đây có vạch thời gian chia
+    # trước–sau và phần sau RỖNG. Khác `setpoint_return` (hedonic adaptation) vì ở đó cái
+    # được vẽ là đường trở về mức nền, còn ở đây là một độ lệch MỚI sinh ra ở phía chưa dùng.
+    return (f'<line x1="10" y1="64" x2="118" y2="64" {TNF}/>'
+            f'<line x1="64" y1="22" x2="64" y2="106" {TNF}/>'
+            f'<rect x="20" y="34" width="34" height="24" fill="{p["acc"]}" '
+            f'fill-opacity="0.85" {TS}/>'
+            f'<rect x="74" y="70" width="34" height="24" fill="none" {TS}/>')
+
+
+def t_drift_attribution(p):
+    # Cùng một chấm, cùng một nét rung. Nửa trái: có KHUNG tham chiếu, và nét rung chính
+    # là cạnh dưới của khung — chuyển động nhỏ của người quan sát được trừ đi nhờ bối
+    # cảnh, nên chấm đứng yên. Nửa phải: khung biến mất, và đúng nét rung đó bây giờ dính
+    # vào chấm. Biến duy nhất là SỰ CÓ MẶT của khung; cái được quy kết đổi chủ theo nó.
+    # Hai nét rung phải GIỐNG NHAU từng đoạn. Vẽ nét phải dài hơn là thành "bên phải rung
+    # nhiều hơn", nói sai: lượng rung không đổi, chỉ chỗ nó được gán vào là đổi.
+    # Khác `locus_flip` (fundamental attribution error: hai khung vuông cạnh nhau, một
+    # chấm trong / một chấm ngoài) vì ở đó cả hai bên đều có khung và biến là vị trí chấm.
+    # Khác `unlinked_control` (illusion of control: một mấu nối không băng qua khoảng
+    # trống) vì ở đây không có mối nối nào bị đứt.
+    jig = "l11,9 l11,-9 l11,9 l11,-9"
+    return (f'<path d="M12,82 L12,38 L56,38 L56,82" fill="none" {TS}/>'
+            f'<path d="M12,82 {jig}" fill="none" {TS}/>'
+            f'<circle cx="34" cy="60" r="7" fill="{p["acc"]}" fill-opacity="0.85" {TS}/>'
+            f'<circle cx="92" cy="60" r="7" fill="{p["acc"]}" fill-opacity="0.85" {TS}/>'
+            f'<path d="M70,67 {jig}" fill="none" {TS}/>')
+
+
+def t_ends_loaded(p):
+    # Một trục rủi ro nằm ngang. Đầu trái: MỘT khối đặc rất lớn — phần gần như không thể
+    # mất. Đầu phải: ba khối đặc rất nhỏ, RỜI nhau — các cược mặt phải lớn, mỗi cái đủ
+    # nhỏ để chết một mình. Khoảng giữa: một khung RỖNG dẹt chiếm hết phần trục còn lại —
+    # vùng rủi ro trung bình bị bỏ trống CÓ CHỦ Ý, và nó phải được vẽ ra chứ không để
+    # trắng, vì "cắt bỏ phần giữa" mới là nội dung của mô hình.
+    # Ba khối phải RỜI NHAU: dính liền là thành một khối giữa thu nhỏ, mất chữ "nhiều
+    # cược độc lập, không tương quan" — đúng cái bẫy thứ hai mà card cảnh báo.
+    # Khác `vital_few` (Pareto: mẩu đặc nhỏ nằm đúng TRÊN khối đặc lớn, nói về tỉ lệ đóng
+    # góp) vì ở đây hai đầu nằm trên CÙNG một trục và cái mang nghĩa là khoảng trống giữa
+    # chúng. Khác `tail_event` (biến cố hiếm độ lớn áp đảo, ngoài dải quen) vì ở đây đuôi
+    # là thứ được CHỌN phân bổ vào, không phải thứ xảy đến.
+    o = [f'<line x1="10" y1="98" x2="117" y2="98" {TNF}/>',
+         f'<rect x="12" y="34" width="30" height="64" fill="{p["acc"]}" '
+         f'fill-opacity="0.85" {TS}/>',
+         f'<rect x="48" y="86" width="38" height="12" fill="none" {TS}/>']
+    o += [f'<rect x="{x}" y="76" width="7" height="22" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>' for x in (90, 100, 110)]
+    return "".join(o)
+
+
+def t_aperture_cue(p):
+    # Cùng một bộ ba vạch chéo, CÙNG độ nghiêng, nhìn qua hai cửa sổ khác hình. Các chấm
+    # đặc là ĐẦU MÚT của vạch tại mép cửa — chỗ duy nhất hướng chuyển động được xác định
+    # hoàn toàn, và cũng là manh mối mà hệ thị giác lấy rồi áp cho cả vạch. Cửa sổ dọc:
+    # đầu mút xếp thành hai cụm DỌC theo hai cạnh dài. Cửa sổ ngang: đúng bộ vạch đó cho
+    # các đầu mút xếp thành hai cụm NGANG. Hướng đọc ra mang hình dạng của cửa sổ.
+    # Độ nghiêng hai bên bắt buộc BẰNG NHAU (ở đây đều 45°): đổi nghiêng là thành "hai
+    # vật khác nhau", mất sạch tiền đề. Chấm phải nằm ĐÚNG trên đường bao cửa sổ, vì nội
+    # dung là đầu mút bị cái khung sinh ra, không phải điểm bất kỳ trên vạch.
+    # Khác `coincident_view` (khung rỗng trùng khít lên khối đặc) và khác `granularity`
+    # (độ phân giải thô/mịn): ở đây hai khung KHÁC HÌNH nhau, vật thì y nguyên, và cái
+    # đổi là trục mà các manh mối đáng tin xếp theo.
+    o = [f'<rect x="16" y="22" width="30" height="84" fill="none" {TS}/>']
+    o += [f'<line x1="16" y1="{y}" x2="46" y2="{y + 30}" {TNF}/>' for y in (30, 50, 70)]
+    o += [f'<circle cx="16" cy="{y}" r="2.6" fill="{p["acc"]}" {TS}/>' for y in (30, 50, 70)]
+    o += [f'<circle cx="46" cy="{y}" r="2.6" fill="{p["acc"]}" {TS}/>' for y in (60, 80, 100)]
+    o += [f'<rect x="62" y="48" width="54" height="34" fill="none" {TS}/>']
+    o += [f'<line x1="{x}" y1="48" x2="{x + 34}" y2="82" {TNF}/>' for x in (64, 74, 82)]
+    o += [f'<circle cx="{x}" cy="48" r="2.6" fill="{p["acc"]}" {TS}/>' for x in (64, 74, 82)]
+    o += [f'<circle cx="{x}" cy="82" r="2.6" fill="{p["acc"]}" {TS}/>' for x in (98, 108, 116)]
+    return "".join(o)
+
+
+def t_weighted_shift(p):
+    # Hai hàng, mỗi hàng một trục nối hai cực CỐ ĐỊNH: cực trái là niềm tin ban đầu, cực
+    # phải là bằng chứng mới. BỀ RỘNG mỗi cực = độ mạnh của nó. Vạch dọc cao trên trục là
+    # niềm tin sau cập nhật, rơi vào đúng điểm chia theo tỉ lệ hai bề rộng. Hàng trên:
+    # prior dày, bằng chứng mỏng → vạch nhích rất ít. Hàng dưới: đảo đúng hai bề rộng đó
+    # → vạch chạy gần hết sang phải. Cùng hai cực, chỉ trọng số đổi.
+    # Hai trục bắt buộc DÀI BẰNG NHAU và hai cực nằm đúng cùng toạ độ ở cả hai hàng: xê
+    # dịch cực đi là thành "hai bài toán khác nhau", mất phép so sánh.
+    # Vạch KHÔNG được chạm vào cực nào: chạm trái là "bỏ qua bằng chứng", chạm phải là
+    # "lật ngược hoàn toàn vì một mẫu nhỏ" — đúng hai cách đọc mà card bác bỏ.
+    # Khác `balance` (cán cân lệch có hướng, nói về đánh đổi) vì ở đây đại lượng là VỊ TRÍ
+    # kết quả giữa hai mốc và nó được vẽ hai lần để tỉ lệ hiện ra. Khác `extreme_then_center`
+    # (regression to the mean) vì ở đó không có hai nguồn trọng số nào cả.
+    o = []
+    for y, wl, wr, tx in ((40, 24, 8, 46), (88, 8, 24, 82)):
+        o += [f'<line x1="28" y1="{y}" x2="100" y2="{y}" {TNF}/>',
+              f'<rect x="{28 - wl / 2}" y="{y - 13}" width="{wl}" height="26" '
+              f'fill="{p["acc"]}" fill-opacity="0.85" {TS}/>',
+              f'<rect x="{100 - wr / 2}" y="{y - 13}" width="{wr}" height="26" '
+              f'fill="{p["acc"]}" fill-opacity="0.85" {TS}/>',
+              f'<line x1="{tx}" y1="{y - 17}" x2="{tx}" y2="{y + 17}" {TNF}/>']
+    return "".join(o)
+
+
+def t_act_tints_actor(p):
+    # Hai cột tình huống. Trên mỗi cột: một ô nhỏ = việc đã làm cho người kia, và vì nó
+    # đã xảy ra rồi, không rút lại được, nên luôn vẽ ĐẶC. Dưới nó, nối bằng một nét dọc,
+    # là khối thái độ CỦA CHÍNH NGƯỜI LÀM. Cột trái: việc được làm tự nguyện → khối thái
+    # độ nhận đúng sắc độ của việc. Cột phải: cùng việc đó nhưng có một thanh đè ngang
+    # trên nó = bị ép → đã có sẵn lời giải thích cho hành vi, nên thái độ để RỖNG.
+    # Thanh đè là biến điều tiết và bắt buộc có mặt: bỏ nó đi thì hình chỉ còn "làm thì
+    # thích hơn", mất điều kiện tự nguyện — vốn chính là chỗ hiệu ứng tắt.
+    # Hai ô việc phải CÙNG CỠ CÙNG SẮC: cho ô phải nhạt hơn là thành "việc nhỏ hơn", đổi
+    # sang chuyện liều lượng. Nét nối phải đi từ việc XUỐNG thái độ của NGƯỜI LÀM, không
+    # sang phía người nhận — chiều đó mới phân biệt card này với reciprocity-bias.
+    # Khác `effort_price` (effort-justification, ikea-effect: cột đốt công sức quyết định
+    # chiều cao khối giá trị của VẬT) vì ở đây thứ được định giá lại là một NGƯỜI và đại
+    # lượng là sắc độ thái độ, không phải chiều cao.
+    o = []
+    for x, tinted in ((34, True), (94, False)):
+        o += [f'<rect x="{x - 12}" y="24" width="24" height="20" fill="{p["acc"]}" '
+              f'fill-opacity="0.85" {TS}/>',
+              f'<line x1="{x}" y1="44" x2="{x}" y2="66" {TNF}/>',
+              f'<rect x="{x - 18}" y="66" width="36" height="32" '
+              f'fill="{p["t3"] if tinted else "none"}" {TS}/>']
+    o += [f'<rect x="76" y="14" width="36" height="8" fill="{p["t4"]}" {TS}/>']
+    return "".join(o)
+
+
+def t_exclusive_state(p):
+    # Hai ô đầu vào bên trái, mỗi ô một bộ vạch theo hướng KHÁC nhau — hai hình không thể
+    # hoà hợp. Bên phải là đầu ra: hai ô xếp lệch chiếm gần cùng một chỗ, ô trước mang
+    # đúng bộ vạch của đầu vào thứ nhất và được TÔ, ô sau mang bộ vạch của đầu vào thứ hai
+    # và để RỖNG. Hai trạng thái cùng một vị trí, mỗi lúc chỉ một cái được tô — tri giác
+    # cam kết vào một bản dựng rồi lật, chứ không trộn.
+    # Ô đầu ra TUYỆT ĐỐI không được chứa cả hai hướng vạch cùng lúc: một ô có vạch bắt
+    # chéo là vẽ ra cái lưới caro — đúng kết quả mà hiện tượng này bác bỏ.
+    # Khác `overlap_phases` (hai ellipse chồng nhau, vùng giao ĐẬM LÊN) vì đó là hợp nhất,
+    # ngược hẳn nội dung ở đây. Khác `consensus_merge` (nhiều quan điểm nhập thành một
+    # khối đồng sắc) vì ở đây không có khối chung nào được tạo ra.
+    o = [f'<rect x="12" y="20" width="32" height="30" fill="none" {TS}/>']
+    o += [f'<line x1="12" y1="{y}" x2="44" y2="{y}" {TNF}/>' for y in (29, 35, 41)]
+    o += [f'<rect x="12" y="62" width="32" height="30" fill="none" {TS}/>']
+    o += [f'<line x1="{x}" y1="62" x2="{x}" y2="92" {TNF}/>' for x in (21, 28, 35)]
+    o += [f'<rect x="72" y="46" width="42" height="42" fill="none" {TS}/>']
+    o += [f'<line x1="{x}" y1="46" x2="{x}" y2="88" {TNF}/>' for x in (96, 104)]
+    o += [f'<rect x="62" y="34" width="42" height="42" fill="{p["t2"]}" {TS}/>']
+    o += [f'<line x1="62" y1="{y}" x2="104" y2="{y}" {TNF}/>' for y in (45, 55, 65)]
+    return "".join(o)
+
+
+def t_stop_at_threshold(p):
+    # Một đường mức ngang = ngưỡng "đủ tốt". Các phương án xếp theo thứ tự tìm kiếm từ
+    # trái sang. Hai phương án đầu ĐẶC và thấp hơn đường — đã xét, đã loại. Phương án thứ
+    # ba ĐẶC và vượt đường → một vạch dọc dựng ngay sau nó: tìm kiếm dừng tại đây. Phần
+    # bên phải vạch vẽ RỖNG, và trong đó có một phương án cao hơn hẳn mọi thứ đã xét —
+    # phương án tối ưu, vẫn tồn tại, chỉ là chưa bao giờ được mở ra.
+    # Cột rỗng cao nhất bắt buộc nằm SAU vạch dừng: đặt trước vạch là thành "đã xét rồi
+    # bỏ qua", đổi sang chuyện lỗi phán đoán, còn nội dung ở đây là CHI PHÍ TÌM KIẾM —
+    # dừng là hành vi hợp lý khi tính cả cái giá của việc tìm tiếp.
+    # Khác `noticed_from_here` (một vạch dọc, các ô TRƯỚC vạch rỗng và nằm dưới đường) vì
+    # ở đây chiều tô ngược lại: phần đặc nằm TRƯỚC vạch, phần rỗng sau vạch, và cái cao
+    # nhất nằm trong phần rỗng. Khác `gate` (nhiều tới, ít qua) vì không có dòng nào chảy.
+    o = [f'<line x1="10" y1="52" x2="118" y2="52" {TNF}/>',
+         f'<line x1="10" y1="104" x2="118" y2="104" {TNF}/>']
+    o += [f'<rect x="{x}" y="{t}" width="14" height="{104 - t}" fill="{p["acc"]}" '
+          f'fill-opacity="0.85" {TS}/>' for x, t in ((14, 72), (32, 64), (50, 40))]
+    o += [f'<line x1="70" y1="22" x2="70" y2="108" {TNF}/>']
+    o += [f'<rect x="{x}" y="{t}" width="14" height="{104 - t}" fill="none" {TS}/>'
+          for x, t in ((78, 24), (98, 60))]
+    return "".join(o)
+
+
+def t_identity_line_shortfall(p):
+    # Khung vuông: trục ngang là mức chắc chắn phát biểu, trục dọc là tần suất đúng thực
+    # tế. Nét chéo liền là đường đồng nhất — chỗ hai đại lượng khớp nhau, tức hiệu chỉnh
+    # hoàn hảo. Ba chấm đặc là ba nhóm xác suất. Chấm thấp nhất nằm ĐÚNG trên đường; hai
+    # chấm sau rơi xuống dưới, và khoảng rơi NỚI RỘNG dần về phía đầu cao — quá tự tin
+    # nặng nhất ở đúng chỗ người ta nói chắc nhất.
+    # Khoảng chênh phải tăng đơn điệu: cho ba chấm lệch đều nhau là thành "lệch một hằng
+    # số", mất hẳn phần hard-easy vốn là nội dung tinh tế của card. Chấm đầu bắt buộc nằm
+    # TRÊN đường: hạ nó xuống là thành "sai ở mọi mức", trong khi ở mức thấp người ta
+    # thậm chí còn thiếu tự tin.
+    # Khác `fitted_overreach` (illusion-of-validity: các điểm thẳng hàng hoàn hảo và
+    # đường khớp chạy tiếp ra ngoài vùng có dữ liệu) vì ở đây đường chéo là MỐC cho trước,
+    # không phải đường khớp từ dữ liệu, và nội dung nằm ở khoảng rơi so với mốc. Khác
+    # `narrow_interval` (overconfidence-effect) vì ở đó đại lượng là bề rộng khoảng tin cậy.
+    o = [f'<rect x="16" y="16" width="96" height="96" fill="none" {TS}/>',
+         f'<line x1="16" y1="112" x2="112" y2="16" {TNF}/>']
+    o += [f'<circle cx="{cx}" cy="{cy}" r="4" fill="{p["acc"]}" fill-opacity="0.9" {TS}/>'
+          for cx, cy in ((54, 74), (78, 62), (102, 52))]
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20261012 = dict(
+    best_off_board=t_best_off_board, complement_rebound=t_complement_rebound,
+    drift_attribution=t_drift_attribution, ends_loaded=t_ends_loaded,
+    aperture_cue=t_aperture_cue, weighted_shift=t_weighted_shift,
+    act_tints_actor=t_act_tints_actor, exclusive_state=t_exclusive_state,
+    stop_at_threshold=t_stop_at_threshold,
+    identity_line_shortfall=t_identity_line_shortfall,
+)
+
+CONCEPT_MEANING.update({
+    "best_off_board": "một khung bảng so sánh chứa hai cột đặc, và một cột rỗng cao hơn "
+                      "cả hai nằm hẳn ngoài khung — phương án tốt nhất không có mặt trong tập được xét",
+    "complement_rebound": "một đường cân bằng và vạch thời gian: khối đặc trên đường ở "
+                          "nửa trước, khối rỗng bằng đúng nó dưới đường ở nửa sau",
+    "drift_attribution": "cùng một chấm và cùng một nét rung; bên có khung thì nét rung "
+                         "thuộc về khung, bên không khung thì nét rung dính vào chấm",
+    "ends_loaded": "một khối đặc lớn ở đầu trục và ba khối đặc nhỏ rời nhau ở đầu kia, "
+                   "khoảng giữa là một khung rỗng dẹt được bỏ trống có chủ ý",
+    "aperture_cue": "cùng bộ vạch chéo một độ nghiêng qua hai cửa sổ khác hình; đầu mút "
+                    "xếp dọc ở cửa sổ dọc và xếp ngang ở cửa sổ ngang",
+    "weighted_shift": "hai trục cùng hai cực cố định, bề rộng cực là độ mạnh, và vạch kết "
+                      "quả rơi vào điểm chia theo đúng tỉ lệ hai bề rộng",
+    "act_tints_actor": "việc đã làm vẽ đặc, thái độ của chính người làm nằm dưới nó nhận "
+                       "đúng sắc độ ấy — trừ khi có thanh đè báo bị ép, khi đó thái độ để rỗng",
+    "exclusive_state": "hai đầu vào vạch khác hướng, và hai ô đầu ra lệch nhau cùng một "
+                       "chỗ chỉ một cái được tô — chọn một bản dựng, không trộn",
+    "stop_at_threshold": "một đường mức: các cột đặc trước vạch dừng đã được xét, các cột "
+                         "rỗng sau vạch chưa, và cột cao nhất nằm trong phần rỗng",
+    "identity_line_shortfall": "một đường chéo đồng nhất và ba chấm rơi dưới nó với khoảng "
+                               "rơi nới rộng dần về đầu cao",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261012)

@@ -8,6 +8,7 @@ tags: [probability, forecasting]
 links: [overconfidence-effect, hard-easy-effect, illusion-of-validity, bayesian-updating]
 refs: ['https://en.wikipedia.org/wiki/Calibration_(statistics)', 'https://en.wikipedia.org/wiki/Brier_score']
 strategy: 'Ghi dự đoán kèm xác suất vào một sổ theo dõi, rồi ba tháng một lần chấm điểm theo nhóm xác suất để thấy mình lệch ở đâu.'
+image: /assets/stuff/calibrated-confidence.png
 published: true
 ---
 

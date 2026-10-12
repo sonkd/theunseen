@@ -7,6 +7,7 @@ categories: [mental-models, theory]
 links: [base-rate-fallacy, confirmation-bias, overconfidence-effect, regression-to-the-mean]
 refs: ['https://en.wikipedia.org/wiki/Bayesian_probability', 'https://en.wikipedia.org/wiki/Bayes%27_theorem']
 strategy: 'Trước khi diễn giải một bằng chứng mới (kết quả A/B test, phản hồi khách hàng), viết ra rõ ràng niềm tin trước đó (prior) của mình bằng con số phần trăm — rồi tự hỏi bằng chứng này đủ mạnh để dịch chuyển con số đó bao nhiêu, thay vì để nó lật ngược hoàn toàn kết luận chỉ vì một mẫu nhỏ.'
+image: /assets/stuff/bayesian-updating.png
 published: true
 ---
 

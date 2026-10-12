@@ -8,6 +8,7 @@ tags: [vision, motion, aperture]
 links: [motion-aftereffect, phi-phenomenon, flash-lag-effect, binocular-rivalry]
 refs: ['https://en.wikipedia.org/wiki/Barberpole_illusion', 'https://en.wikipedia.org/wiki/Motion_perception']
 strategy: 'Khi một xu hướng chỉ được quan sát qua một cửa sổ hẹp, đừng vội kết luận về hướng của nó — hãy mở rộng khung quan sát trước, vì hướng bạn thấy có thể chỉ là hình dạng của cái khung.'
+image: /assets/stuff/barber-pole-illusion.png
 published: true
 ---
 

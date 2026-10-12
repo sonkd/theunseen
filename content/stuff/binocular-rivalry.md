@@ -8,6 +8,7 @@ tags: [vision, consciousness]
 links: [change-blindness, inattentional-blindness, kanizsa-triangle, motion-aftereffect]
 refs: ['https://en.wikipedia.org/wiki/Binocular_rivalry', 'https://en.wikipedia.org/wiki/Multistable_perception']
 strategy: 'Khi hai cách hiểu cùng khớp với dữ liệu, đừng cố trộn chúng — hãy tách ra kiểm tra từng cái, vì bộ não vốn không giỏi giữ hai bản dựng cùng lúc.'
+image: /assets/stuff/binocular-rivalry.png
 published: true
 ---
 
