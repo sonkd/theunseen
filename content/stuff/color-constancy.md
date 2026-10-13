@@ -8,6 +8,7 @@ tags: [vision, color, adaptation]
 links: [size-constancy, weber-fechner-law]
 refs: ['https://en.wikipedia.org/wiki/Color_constancy']
 strategy: 'Khi kiểm tra màu sắc thương hiệu hoặc trạng thái (đỏ/xanh cảnh báo) trên sản phẩm số, luôn test dưới nhiều điều kiện ánh sáng màn hình và môi trường thực tế — cảm nhận màu "ổn định" trong đầu người thiết kế chưa chắc khớp với môi trường sử dụng thật của người dùng.'
+image: /assets/stuff/color-constancy.png
 published: true
 ---
 

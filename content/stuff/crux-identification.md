@@ -8,6 +8,7 @@ tags: [epistemology, reasoning, decision]
 links: [double-crux, falsifiability, scout-mindset, epistemic-humility]
 refs: ['https://en.wikipedia.org/wiki/Falsifiability', 'https://en.wikipedia.org/wiki/Sensitivity_analysis']
 strategy: "Với mỗi lý do trong danh sách của bạn, hỏi nếu điều này sai mình có đổi kết luận không - lý do trả lời không thì gạch bỏ, phần còn lại mới đáng đi tìm bằng chứng."
+image: /assets/stuff/crux-identification.png
 published: true
 ---
 

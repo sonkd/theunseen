@@ -4281,3 +4281,238 @@ CONCEPT_MEANING.update({
 })
 
 THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261012)
+
+
+# --------------------------------------------------------------------------
+# Batch 2026-10-13 — certainty-effect → cutaneous-rabbit-illusion
+# (10 card đầu ngoài Article Index, lô thứ hai)
+# --------------------------------------------------------------------------
+
+def t_endpoint_premium(p):
+    # Một trục xác suất với VÁCH CHẶN dựng ở mép phải = mốc 100%. Hai mẩu tăng trên trục
+    # có bề rộng BẰNG NHAU TUYỆT ĐỐI: một mẩu ở giữa thang, một mẩu áp sát vách. Phía trên
+    # mỗi mẩu là khối "sẵn sàng trả": khối trên mẩu giữa chỉ là một mẩu dẹt, khối trên mẩu
+    # sát vách cao gấp nhiều lần. Cùng ngần ấy điểm phần trăm, trọng số lệch hẳn vì nó
+    # chạm vào mốc tuyệt đối.
+    # Hai mẩu tăng BẮT BUỘC bằng nhau: cho mẩu cuối rộng hơn là thành "mua nhiều hơn nên
+    # trả nhiều hơn", tức xoá sạch nội dung card. Vách chặn bắt buộc phải có: không có nó
+    # thì đoạn cuối chỉ là "một đoạn nữa trên trục", mất chỗ dựa của hiệu ứng.
+    # Khác `value_curve_s` (prospect-theory) vốn vẽ cả đường cong giá trị qua điểm tham
+    # chiếu, và khác `equal_step_unequal_gain` ở chỗ bên đó độ lệch nằm ở ĐỘ CONG đều đặn
+    # của một đại lượng cảm nhận, còn ở đây nó dồn vào đúng một điểm mút.
+    o = [f'<line x1="12" y1="104" x2="114" y2="104" {TNF}/>',
+         f'<line x1="114" y1="26" x2="114" y2="112" {TNF}/>']
+    o += [f'<rect x="{x}" y="92" width="18" height="12" fill="none" {TS}/>'
+          for x in (50, 96)]
+    o += [f'<rect x="54" y="78" width="10" height="12" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>']
+    o += [f'<rect x="100" y="34" width="10" height="56" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>']
+    return "".join(o)
+
+
+def t_label_holds(p):
+    # Hai cảnh cạnh nhau, mỗi cảnh một khung NHÃN rỗng ở trên — hai nhãn cùng cỡ y hệt
+    # nhau, vì nhãn là thứ duy nhất được lưu. Dưới nhãn, cảnh trái và cảnh phải khác nhau
+    # rõ ràng ở phần tử giữa (cao 34 đổi thành cao 14), hai phần tử còn lại giữ nguyên.
+    # Dải dưới cùng là bản báo cáo "có gì thay đổi": để RỖNG hoàn toàn.
+    # Hai khung nhãn bắt buộc giống nhau tới từng pixel — vẽ lệch nhau một chút là thành
+    # "nhãn cũng đổi mà vẫn không thấy", tức bác bỏ cơ chế: cái khiến thay đổi tàng hình
+    # chính là việc nó KHÔNG phá vỡ bản tóm tắt.
+    # Khác `granularity` (cùng một lượng, một bên phân giải được, bên kia nhoè thành khối)
+    # vì ở đây hai bên có cùng độ phân giải, cái lệch nằm giữa hai THỜI ĐIỂM. Khác
+    # `veil` (thông tin bị che) vì không có gì che cả — nội dung mới hiện ra đầy đủ.
+    o = [f'<rect x="{x}" y="14" width="44" height="12" fill="none" {TS}/>'
+         for x in (12, 72)]
+    o += [f'<line x1="12" y1="74" x2="116" y2="74" {TNF}/>']
+    for x0 in (12, 72):
+        hs = (26, 34, 18) if x0 == 12 else (26, 14, 18)
+        for i, h in enumerate(hs):
+            o += [f'<rect x="{x0 + 2 + i * 14}" y="{74 - h}" width="10" height="{h}" '
+                  f'fill="{p["acc"]}" fill-opacity="0.9" {TS}/>']
+    o += [f'<rect x="12" y="90" width="104" height="18" fill="none" {TS}/>']
+    return "".join(o)
+
+
+def t_band_discounted(p):
+    # Hai khối vuông BẰNG NHAU TUYỆT ĐỐI về cỡ và về sắc độ. Một dải nhạt phủ ngang nửa
+    # phải khung, trùm lên khối bên phải — ngữ cảnh chiếu sáng. Dưới mỗi khối là thanh
+    # "đọc ra được": thanh dưới khối trong dải cao gấp hơn hai lần thanh kia.
+    # Hai khối bắt buộc cùng một fill: tô khác nhau là thành "hai bề mặt khác nhau", đúng
+    # cái kết luận sai mà ảo giác này tạo ra, chứ không phải tiền đề của nó. Dải phải
+    # trùm HẲN qua khối phải và chạm mép khung, để đọc ra là một vùng chiếu sáng chứ không
+    # phải một cái nhãn dán lên khối.
+    # Khác `edge_reads_true` (hai khối bằng nhau, một khối có biên răng zigzag) vì ở đó
+    # ngữ cảnh nằm trên chính đường biên của khối, còn ở đây nó là một vùng bao quanh.
+    # Khác `illuminant_divided_out` (color-constancy) ở chiều kết quả: bên đó phần đọc ra
+    # GIỮ NGUYÊN vì phép trừ ngữ cảnh chạy đúng, ở đây nó LỆCH vì cảnh được dựng để lừa.
+    o = [f'<rect x="62" y="0" width="66" height="70" fill="{p["t2"]}" {TS}/>']
+    o += [f'<rect x="{x}" y="26" width="28" height="28" fill="{p["t4"]}" {TS}/>'
+          for x in (20, 78)]
+    o += [f'<line x1="8" y1="110" x2="120" y2="110" {TNF}/>']
+    o += [f'<rect x="24" y="94" width="20" height="16" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>']
+    o += [f'<rect x="82" y="76" width="20" height="34" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>']
+    return "".join(o)
+
+
+def t_illuminant_divided_out(p):
+    # Ba dải trên đỉnh mang ba sắc độ khác hẳn nhau = ba nguồn sáng. Dưới mỗi dải là một
+    # vật, ba vật cùng cỡ và CÙNG MỘT sắc độ. Hàng dưới cùng là màu đọc ra được: ba thanh
+    # bằng nhau tuyệt đối. Tín hiệu vào lệch, thuộc tính suy ra giữ nguyên.
+    # Ba thanh dưới bắt buộc bằng nhau tới từng pixel: cho chúng lệch một chút là thành
+    # "hằng định không hoàn hảo" — một card khác. Ba dải trên bắt buộc khác sắc độ rõ
+    # rệt, vì chúng là biến duy nhất được phép thay đổi.
+    # Khác `inert_input` (hai đầu vào chênh lệch, hai kết quả y hệt) vì bên đó cái bất
+    # động là KẾT LUẬN khi có thêm bằng chứng, một thất bại; ở đây sự bất động là lời giải
+    # đúng của một bài toán ngược. Khác `band_discounted` (checker-shadow) ở chiều kết quả.
+    xs = (14, 50, 86)
+    o = [f'<rect x="{x}" y="12" width="28" height="12" fill="{t}" {TS}/>'
+         for x, t in zip(xs, (p["t1"], p["t3"], p["acc"]))]
+    o += [f'<rect x="{x + 3}" y="36" width="22" height="22" fill="{p["t3"]}" {TS}/>'
+          for x in xs]
+    o += [f'<line x1="12" y1="108" x2="116" y2="108" {TNF}/>']
+    o += [f'<rect x="{x + 3}" y="80" width="22" height="28" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>' for x in xs]
+    return "".join(o)
+
+
+def t_attended_stream_leak(p):
+    # Ba luồng song song dài bằng nhau. Luồng trên TÔ ĐẶC — luồng đang được khoá vào. Hai
+    # luồng dưới để RỖNG: bị hạ mức, không bị tắt. Trong luồng giữa có đúng một mẩu được
+    # tô đặc: mục có ngưỡng kích hoạt thấp (tên riêng) vẫn vượt lên dù kênh đã bị hạ.
+    # Hai luồng dưới BẮT BUỘC vẽ rỗng chứ không được bỏ đi: bỏ đi là thành mô hình "lọc
+    # tất hoặc không" của Cherry, vốn chính là mô hình mà quan sát của Moray bác bỏ. Mẩu
+    # đặc bắt buộc nằm TRONG lòng một luồng rỗng, không được nhô ra ngoài: nó không phải
+    # một luồng thứ tư, nó là một phần tử của kênh bị bỏ qua.
+    # Khác `beam` (chú ý dồn một điểm, phần còn lại TỐI ĐI) vì beam không có chỗ nào cho
+    # cái lọt qua. Khác `gate` (nhiều tới, ít qua) vì ở đây không có dòng nào chảy qua
+    # một cửa, chỉ có ba kênh song song và một mức ưu tiên khác nhau.
+    o = [f'<rect x="12" y="26" width="104" height="18" fill="{p["acc"]}" '
+         f'fill-opacity="0.9" {TS}/>']
+    o += [f'<rect x="12" y="{y}" width="104" height="18" fill="none" {TS}/>'
+          for y in (58, 90)]
+    o += [f'<rect x="70" y="62" width="22" height="10" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>']
+    return "".join(o)
+
+
+def t_multiplied_base(p):
+    # Bốn kỳ cùng bề rộng trên một đường nền. Chiều cao mỗi cột gấp đôi cột trước: kết quả
+    # của kỳ này là điểm xuất phát của kỳ sau. Nét thẳng chạy qua là kỳ vọng tuyến tính —
+    # "cộng thêm mỗi kỳ một khoản". Hai cột đầu còn nằm dưới nét thẳng, cột cuối vượt hẳn
+    # lên: phần lớn kết quả rơi vào đoạn cuối, và suốt đoạn đầu mọi thứ trông như đứng yên.
+    # Nét thẳng bắt buộc phải là MỘT đường thẳng: bẻ nó thành đường cong là mất hẳn phần
+    # nội dung "trực giác người ta được hiệu chỉnh cho tăng trưởng tuyến tính". Hai cột
+    # đầu bắt buộc thấp hơn nét thẳng, nếu không thì không có đoạn "trông như đứng yên".
+    # Khác `ratchet` (bậc sau tựa lên vai bậc trước) vì ratchet nói về chỗ đứng đã nhận
+    # được, không có đại lượng nào tăng theo cấp số nhân và không có mốc tuyến tính để so.
+    # Khác `steep_then_flat` (hyperbolic discounting) vì độ cong ở đây hướng LÊN.
+    o = [f'<line x1="12" y1="110" x2="116" y2="110" {TNF}/>']
+    o += [f'<rect x="{x}" y="{110 - h}" width="18" height="{h}" fill="{p["acc"]}" '
+          f'fill-opacity="0.9" {TS}/>'
+          for x, h in ((14, 8), (40, 16), (66, 32), (92, 64))]
+    o += [f'<line x1="14" y1="96" x2="110" y2="64" {TNF}/>']
+    return "".join(o)
+
+
+def t_middle_by_position(p):
+    # Hai tập lựa chọn, cùng một thước. Tập trên có ba cột 14–24–34: cột GIỮA được tô.
+    # Tập dưới bỏ cột nhỏ nhất và thêm một cột cao hơn, nên vẫn ba cột 24–34–44 — và lần
+    # này cột 24 (đúng cột đã có trong tập trên) rơi về vị trí cực, mất tô; cột được tô là
+    # cột 34, cột giữa mới. Cùng một sản phẩm, tỉ lệ chọn bám theo VỊ TRÍ chứ không theo nó.
+    # Cột 24 bắt buộc có mặt ở cả hai hàng với đúng chiều cao ấy: nó là bằng chứng duy
+    # nhất cho thấy vật không đổi mà phán đoán đổi. Cột được tô bắt buộc là cột giữa của
+    # từng hàng, không được tô theo chiều cao.
+    # Khác `foil` (decoy-effect: một phương án thêm vào chỉ để làm phương án bên cạnh
+    # trông vượt trội) vì phương án thêm vào ở đây là một cực HỢP LỆ, không bị lấn át, và
+    # cái nó làm là dịch vị trí tương đối. Khác `rank_reversal` vì ở đó cùng một CẶP bị
+    # lật khi đổi cách đánh giá, còn ở đây tập lựa chọn mới là thứ bị đổi.
+    o = []
+    for base, hs in ((58, (14, 24, 34)), (112, (24, 34, 44))):
+        o += [f'<line x1="12" y1="{base}" x2="116" y2="{base}" {TNF}/>']
+        for i, h in enumerate(hs):
+            fill = f'fill="{p["acc"]}" fill-opacity="0.9"' if i == 1 else 'fill="none"'
+            o += [f'<rect x="{18 + i * 32}" y="{base - h}" width="24" height="{h}" '
+                  f'{fill} {TS}/>']
+    return "".join(o)
+
+
+def t_load_bearing_one(p):
+    # Tấm kết luận nằm trên, năm thanh lý do dựng dưới nó. Bốn thanh vẽ RỖNG và dừng lại
+    # trước khi chạm tấm — đúng, liên quan, nhưng không chịu lực: bỏ đi thì tấm vẫn đứng.
+    # Đúng một thanh được tô đặc và chạm hẳn vào mặt dưới tấm: crux. Rút nó ra thì không
+    # còn gì đỡ.
+    # Bốn thanh rỗng BẮT BUỘC chừa một khoảng hở tới tấm: cho chúng chạm tới là thành
+    # `fewer_supports` (đếm số chỗ đỡ), xoá sạch phép thử ngược vốn là toàn bộ nội dung
+    # card. Chỉ được có ĐÚNG MỘT thanh đặc: hai thanh là thành "phân tích độ nhạy nhiều
+    # biến", một card khác.
+    # Khác `vital_few` (pareto: mẩu đặc nhỏ ứng với khối đặc lớn) vì ở đó đại lượng là TỈ
+    # PHẦN đóng góp, còn ở đây là quan hệ nhị phân chịu lực / không chịu lực. Khác
+    # `braced_from_below` vì ở đó thanh đỡ duy nhất mọc lên từ bậc RỖNG, nói chuyện nền
+    # móng không nhìn thấy, ngược chiều với việc chỉ ra được mệnh đề chịu lực ở đây.
+    o = [f'<rect x="12" y="24" width="104" height="18" fill="{p["t3"]}" {TS}/>',
+         f'<line x1="12" y1="110" x2="116" y2="110" {TNF}/>']
+    for i, x in enumerate((18, 38, 58, 78, 98)):
+        if i == 2:
+            o += [f'<rect x="{x}" y="42" width="12" height="68" fill="{p["acc"]}" '
+                  f'fill-opacity="0.9" {TS}/>']
+        else:
+            o += [f'<rect x="{x}" y="58" width="12" height="52" fill="none" {TS}/>']
+    return "".join(o)
+
+
+def t_interpolated_path(p):
+    # Một nét liền chạy dọc = quãng da giữa hai điểm. Hai đầu là hai cặp chấm ĐẶC sát
+    # nhau: những cú gõ thật sự xảy ra, dồn ở đúng hai vị trí. Giữa hai đầu là ba chấm
+    # RỖNG cách đều: những điểm chạm chưa từng tồn tại, được nội suy để chuỗi đọc thành
+    # một vật đang di chuyển.
+    # Ba chấm giữa bắt buộc CÁCH ĐỀU và rỗng: vẽ chúng đặc là thành "có gõ thật ở giữa",
+    # mất hẳn ảo giác; vẽ chúng thưa dần là thành chuyển động có gia tốc, một card khác.
+    # Hai đầu bắt buộc là CẶP chấm, không phải một chấm: chuỗi nhanh nhiều cú tại một
+    # điểm mới là điều kiện sinh ra hiệu ứng.
+    # Khác `hollow_chain` (tip-of-the-tongue: một khung liền vây quanh cả chuỗi, hai mắt
+    # đầu–cuối được tô) vì ở đó cái khung bao quanh là thứ khiến chuỗi đọc thành liền mạch
+    # và nội dung là truy xuất MỘT PHẦN; ở đây không có khung nào, và phần giữa không phải
+    # thứ bị thiếu mà là thứ được BỔ SUNG thêm. Khác `gap_fill` vì chỗ hổng ở đây không
+    # được vá bằng vật liệu lạ, nó được nội suy từ chính hai đầu.
+    o = [f'<line x1="14" y1="64" x2="114" y2="64" {TNF}/>']
+    o += [f'<circle cx="{cx}" cy="64" r="5" fill="{p["acc"]}" fill-opacity="0.9" {TS}/>'
+          for cx in (16, 30, 98, 112)]
+    o += [f'<circle cx="{cx}" cy="64" r="5" fill="none" {TS}/>'
+          for cx in (47, 64, 81)]
+    return "".join(o)
+
+
+CONCEPT_OBJECTS_20261013 = dict(
+    endpoint_premium=t_endpoint_premium, label_holds=t_label_holds,
+    band_discounted=t_band_discounted,
+    illuminant_divided_out=t_illuminant_divided_out,
+    attended_stream_leak=t_attended_stream_leak,
+    multiplied_base=t_multiplied_base, middle_by_position=t_middle_by_position,
+    load_bearing_one=t_load_bearing_one, interpolated_path=t_interpolated_path,
+)
+
+CONCEPT_MEANING.update({
+    "endpoint_premium": "một trục có vách chặn ở mút, hai mẩu tăng bằng nhau tuyệt đối "
+                        "trên đó, và khối trọng số trên mẩu sát vách cao gấp nhiều lần",
+    "label_holds": "hai cảnh có khung nhãn rỗng y hệt nhau, nội dung dưới nhãn lệch nhau "
+                   "ở một phần tử, và dải báo cáo thay đổi để rỗng hoàn toàn",
+    "band_discounted": "hai khối bằng nhau tuyệt đối cùng một sắc độ, một khối nằm trong "
+                       "dải nhạt phủ ngang, và hai thanh đọc ra lệch hẳn nhau",
+    "illuminant_divided_out": "ba dải sắc độ khác nhau trên ba vật cùng cỡ cùng sắc độ, và "
+                              "ba thanh đọc ra bằng nhau tuyệt đối",
+    "attended_stream_leak": "ba luồng dài bằng nhau: luồng trên đặc, hai luồng dưới rỗng, "
+                            "và đúng một mẩu đặc nằm trong lòng một luồng rỗng",
+    "multiplied_base": "bốn cột cùng bề rộng cao gấp đôi dần trên một đường nền, và một "
+                       "nét thẳng kỳ vọng tuyến tính bị cột cuối vượt hẳn lên",
+    "middle_by_position": "hai tập ba cột trên cùng một thước, cột giữa của mỗi tập được "
+                          "tô, và cột có mặt ở cả hai tập mất tô khi nó rơi về vị trí cực",
+    "load_bearing_one": "một tấm kết luận và năm thanh lý do: bốn thanh rỗng dừng trước "
+                        "khi chạm tấm, đúng một thanh đặc chạm hẳn vào mặt dưới",
+    "interpolated_path": "một nét liền với hai cặp chấm đặc ở hai đầu và ba chấm rỗng "
+                         "cách đều ở giữa — phần giữa được nội suy, không xảy ra",
+})
+
+THUMB_REGISTRY.update(CONCEPT_OBJECTS_20261013)

@@ -8,6 +8,7 @@ tags: [cognitive-science, neural-networks, learning]
 links: [schema-theory, predictive-processing, global-workspace-theory, dual-process-theory]
 strategy: 'Khi một hành vi có vẻ tuân theo quy tắc, hãy kiểm tra xem hệ thống có thực sự chứa quy tắc đó không, hay chỉ đang khớp mẫu thống kê — hai trường hợp này hỏng theo hai kiểu rất khác nhau.'
 refs: ['https://en.wikipedia.org/wiki/Connectionism', 'https://en.wikipedia.org/wiki/Parallel_distributed_processing']
+image: /assets/stuff/connectionism.png
 published: true
 ---
 

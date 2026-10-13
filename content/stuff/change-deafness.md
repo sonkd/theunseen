@@ -8,6 +8,7 @@ tags: [hearing, attention, change-detection]
 links: [change-blindness, inattentional-blindness, cocktail-party-effect, mcgurk-effect]
 refs: ['https://en.wikipedia.org/wiki/Change_blindness', 'https://en.wikipedia.org/wiki/Auditory_scene_analysis']
 strategy: 'Đừng dựa vào việc người dùng sẽ tự nhận ra một thay đổi trong luồng thông tin — nếu thay đổi đó quan trọng, hãy buộc họ dừng lại và xác nhận nó một cách chủ động.'
+image: /assets/stuff/change-deafness.png
 published: true
 ---
 

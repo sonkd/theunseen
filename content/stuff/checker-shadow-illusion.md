@@ -8,6 +8,7 @@ tags: [vision, brightness, context]
 links: [color-constancy, size-constancy, muller-lyer-illusion, kanizsa-triangle]
 refs: ['https://en.wikipedia.org/wiki/Checker_shadow_illusion', 'https://en.wikipedia.org/wiki/Lightness_constancy']
 strategy: 'Khi so sánh hai con số lấy từ hai bối cảnh khác nhau, hãy tách chúng khỏi bối cảnh trước — nếu không, bộ máy diễn giải sẽ tự động "hiệu chỉnh" giúp bạn và bạn sẽ không nhận ra điều đó.'
+image: /assets/stuff/checker-shadow-illusion.png
 published: true
 ---
 

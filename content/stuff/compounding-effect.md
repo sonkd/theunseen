@@ -8,6 +8,7 @@ tags: [growth, time, systems]
 links: [feedback-loops, diminishing-returns, hyperbolic-discounting, lindy-effect]
 strategy: 'Khi so sánh hai lựa chọn dài hạn, đừng so mức lợi mỗi kỳ — hãy so tốc độ tăng trưởng và số kỳ, vì hai đại lượng đó mới quyết định kết quả cuối.'
 refs: ['https://en.wikipedia.org/wiki/Compound_interest', 'https://en.wikipedia.org/wiki/Exponential_growth']
+image: /assets/stuff/compounding-effect.png
 published: true
 ---
 

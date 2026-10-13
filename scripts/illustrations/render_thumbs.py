@@ -648,6 +648,80 @@ OVERRIDES.update({
         "(illusion-of-validity) vốn nói đường khớp chạy ra ngoài vùng có dữ liệu"),
 })
 
+# --- batch 2026-10-13: 10 card đầu ngoài Article Index, lô thứ hai. Không có dòng nào
+# trong xlsx nên KHÔNG có "shape sai" để sửa — mỗi entry dưới đây là chẩn đoán gốc từ
+# `back` của card. Chín hình mới được viết cho lô này; `network` là hình có sẵn.
+OVERRIDES.update({
+    "certainty-effect": (
+        "endpoint_premium",
+        "quan hệ cốt lõi: hai mức tăng xác suất BẰNG NHAU được gán trọng số lệch hẳn, và "
+        "cái lệch dồn vào đúng điểm mút 100% — nghịch lý Allais (1953) đo chính chỗ đó. "
+        "endpoint_premium vẽ vách chặn ở mút cộng hai mẩu tăng bằng nhau tuyệt đối. Khác "
+        "`value_curve_s` (prospect-theory) vốn vẽ cả hàm giá trị, và khác "
+        "`equal_step_unequal_gain` (weber) vốn nói độ cong đều đặn chứ không nói điểm mút"),
+    "change-deafness": (
+        "label_holds",
+        "cái được lưu là NHÃN thô ('một người đàn ông đang nói'), nên một thay đổi không "
+        "phá vỡ nhãn thì hệ thống báo là không có gì đổi. label_holds vẽ hai cảnh cùng "
+        "khung nhãn y hệt, nội dung lệch một phần tử, dải báo cáo để rỗng. Khác `veil` vì "
+        "nội dung mới không bị che chút nào, và khác `granularity` vì hai bên cùng độ "
+        "phân giải — cái lệch nằm giữa hai thời điểm, không giữa hai phía"),
+    "checker-shadow-illusion": (
+        "band_discounted",
+        "Adelson (1995): hai ô CÙNG MỘT giá trị xám, một ô nằm trong vùng bóng, và phán "
+        "đoán lệch hẳn vì hệ thị giác trừ ngữ cảnh chiếu sáng ra. band_discounted giữ hai "
+        "khối cùng fill (tiền đề) và cho dải phủ trùm hẳn một khối. Khác `edge_reads_true` "
+        "vì ở đó ngữ cảnh nằm trên đường biên của chính khối, còn ở đây là một vùng bao"),
+    "cocktail-party-effect": (
+        "attended_stream_leak",
+        "Cherry (1953) + Moray (1959): kênh bị bỏ qua không bị TẮT, nó bị HẠ MỨC, và một "
+        "mục ngưỡng thấp (tên riêng) vẫn vượt lên — đúng chỗ Treisman thay mô hình lọc "
+        "tất-hoặc-không bằng mô hình suy giảm. attended_stream_leak vẽ luồng rỗng (hạ mức, "
+        "không tắt) kèm một mẩu đặc nằm trong lòng nó. `beam` không có chỗ cho cái lọt "
+        "qua, `gate` thì cần một dòng chảy qua cửa, ở đây chỉ có ba kênh song song"),
+    "color-constancy": (
+        "illuminant_divided_out",
+        "quan hệ: tín hiệu vật lý vào mắt đổi mạnh theo nguồn sáng, thuộc tính suy ra GIỮ "
+        "NGUYÊN — suy luận vô thức của Helmholtz. illuminant_divided_out vẽ ba dải nguồn "
+        "sáng khác sắc độ trên ba vật cùng sắc độ, ba thanh đọc ra bằng nhau tuyệt đối. "
+        "Cùng cơ chế với checker-shadow nhưng NGƯỢC chiều kết quả, nên phải là hai hình "
+        "khác nhau: ở đây phép trừ ngữ cảnh chạy đúng, ở kia cảnh được dựng để lừa"),
+    "compounding-effect": (
+        "multiplied_base",
+        "kết quả kỳ này là điểm xuất phát kỳ sau, nên đường đi cong LÊN và phần lớn kết "
+        "quả rơi vào đoạn cuối. multiplied_base cho bốn cột gấp đôi dần cộng một nét thẳng "
+        "kỳ vọng tuyến tính mà hai cột đầu còn nằm dưới — chính đoạn 'trông như đứng yên' "
+        "khiến người ta bỏ dở. Khác `ratchet` (chỗ đứng đã nhận, không có cấp số nhân và "
+        "không có mốc tuyến tính để so) và khác `steep_then_flat` ở chiều cong"),
+    "compromise-effect": (
+        "middle_by_position",
+        "Simonson (1989): cùng một sản phẩm được chọn nhiều khi nó là lựa chọn GIỮA và ít "
+        "khi nó thành cực của một tập khác — tỉ lệ chọn bám theo vị trí tương đối. "
+        "middle_by_position giữ đúng một cột xuất hiện ở cả hai tập và cho nó mất tô khi "
+        "rơi về cực. Khác `foil` (decoy) vì phương án thêm vào ở đây là một cực HỢP LỆ, "
+        "không bị lấn át — card tự phân biệt chính điểm này"),
+    "connectionism": (
+        "network",
+        "tri thức nằm ở TẬP TRỌNG SỐ phân tán trên toàn mạng, không định vị được ở một "
+        "đơn vị nào — `network` là hình đúng nghĩa đen và nghĩa cấu trúc của card. Hue "
+        "mint còn trống (amber đã thuộc apophenia). Cân nhắc viết hình riêng cho luận "
+        "điểm 'hành vi tuân theo quy tắc không chứng minh có quy tắc bên trong', nhưng ở "
+        "128px một khuôn quy tắc rỗng cộng một lưới là quá đông chi tiết dưới 8px"),
+    "crux-identification": (
+        "load_bearing_one",
+        "phép thử ngược: lý do nào mà nếu sai thì kết luận sụp. load_bearing_one vẽ bốn "
+        "thanh rỗng DỪNG TRƯỚC khi chạm tấm kết luận và đúng một thanh đặc chạm hẳn — "
+        "quan hệ nhị phân chịu lực / không chịu lực. Khác `vital_few` (pareto) vì ở đó đại "
+        "lượng là tỉ phần đóng góp; khác `fewer_supports` vì ở đó chỉ đếm số chỗ đỡ"),
+    "cutaneous-rabbit-illusion": (
+        "interpolated_path",
+        "Geldard & Sherrick (1972): da chỉ bị chạm tại ĐÚNG HAI vị trí, nhưng cảm nhận là "
+        "một chuỗi điểm rải đều dọc quãng giữa — não nội suy, và nội suy ngược cả thời "
+        "gian. interpolated_path vẽ hai cặp chấm đặc ở hai đầu cộng ba chấm rỗng cách đều. "
+        "Khác `hollow_chain` (TOT) vì ở đó có khung bao và nội dung là truy xuất MỘT PHẦN; "
+        "ở đây phần giữa là thứ được BỔ SUNG. Khác `gap_fill` vì không có vật liệu lạ nào"),
+})
+
 EXTRA_CARDS = [
     dict(n=1001, slug="action-bias", title="Action Bias", shape="(ngoài xlsx)", hue="amber"),
     dict(n=1002, slug="afterimage-effect", title="Afterimage Effect", shape="(ngoài xlsx)", hue="mint"),
@@ -659,6 +733,16 @@ EXTRA_CARDS = [
     dict(n=1008, slug="binocular-rivalry", title="Binocular Rivalry", shape="(ngoài xlsx)", hue="mint"),
     dict(n=1009, slug="bounded-rationality", title="Bounded Rationality", shape="(ngoài xlsx)", hue="amber"),
     dict(n=1010, slug="calibrated-confidence", title="Calibrated Confidence", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1011, slug="certainty-effect", title="Certainty Effect", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1012, slug="change-deafness", title="Change Deafness", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1013, slug="checker-shadow-illusion", title="Checker Shadow Illusion", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1014, slug="cocktail-party-effect", title="Cocktail Party Effect", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1015, slug="color-constancy", title="Color Constancy", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1016, slug="compounding-effect", title="Compounding Effect", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1017, slug="compromise-effect", title="Compromise Effect", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1018, slug="connectionism", title="Connectionism", shape="(ngoài xlsx)", hue="mint"),
+    dict(n=1019, slug="crux-identification", title="Crux Identification", shape="(ngoài xlsx)", hue="amber"),
+    dict(n=1020, slug="cutaneous-rabbit-illusion", title="Cutaneous Rabbit Illusion", shape="(ngoài xlsx)", hue="mint"),
 ]
 
 

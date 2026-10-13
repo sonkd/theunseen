@@ -8,6 +8,7 @@ tags: [hearing, attention, selective-listening]
 links: [selective-perception, attentional-bias, inattentional-blindness, self-relevance-effect]
 refs: ['https://en.wikipedia.org/wiki/Cocktail_party_effect', 'https://en.wikipedia.org/wiki/Dichotic_listening']
 strategy: 'Khi thiết kế cảnh báo, đừng tăng âm lượng — hãy gắn nó với thứ người nhận đã coi là của mình, vì bộ lọc chú ý mở cửa cho mức liên quan chứ không mở cửa cho cường độ.'
+image: /assets/stuff/cocktail-party-effect.png
 published: true
 ---
 

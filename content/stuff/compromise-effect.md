@@ -8,6 +8,7 @@ tags: [choice, pricing, context]
 links: [decoy-effect, contrast-effect, choice-overload, framing-effect]
 refs: ['https://en.wikipedia.org/wiki/Compromise_effect', 'https://en.wikipedia.org/wiki/Decoy_effect']
 strategy: 'Trước khi kết luận khách hàng "thích" gói giữa, hãy đổi cấu trúc tập lựa chọn và đo lại — nếu tỷ lệ chọn bám theo vị trí giữa chứ không bám theo sản phẩm, bạn đang đo cách bày hàng chứ không phải nhu cầu.'
+image: /assets/stuff/compromise-effect.png
 published: true
 ---
 

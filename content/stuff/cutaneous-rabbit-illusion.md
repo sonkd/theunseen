@@ -8,6 +8,7 @@ tags: [touch, multisensory, time-perception]
 links: [phi-phenomenon, flash-lag-effect, rubber-hand-illusion, motion-aftereffect]
 refs: ['https://en.wikipedia.org/wiki/Cutaneous_rabbit_illusion', 'https://en.wikipedia.org/wiki/Somatosensory_system']
 strategy: 'Khi thiết kế phản hồi rung (haptic) trên thiết bị đeo hoặc điện thoại, nhớ rằng người dùng cảm nhận chuỗi rung theo nhịp chứ không theo vị trí thật — có thể tạo cảm giác "vuốt" chỉ bằng hai motor rung đặt cách nhau.'
+image: /assets/stuff/cutaneous-rabbit-illusion.png
 published: true
 ---
 

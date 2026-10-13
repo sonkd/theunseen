@@ -8,6 +8,7 @@ tags: [decision, risk]
 links: [prospect-theory, pseudocertainty-effect, zero-risk-bias, framing-effect]
 refs: ['https://en.wikipedia.org/wiki/Allais_paradox', 'https://en.wikipedia.org/wiki/Prospect_theory']
 strategy: 'Trước khi trả giá cho sự chắc chắn tuyệt đối, quy nó về tiền: bạn đang mua bao nhiêu điểm phần trăm rủi ro, và mỗi điểm đó giá bao nhiêu?'
+image: /assets/stuff/certainty-effect.png
 published: true
 ---
 
