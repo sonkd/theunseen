@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "test:progress": "node --experimental-strip-types scripts/test-progress.mjs",
+    "test:graph": "node --test scripts/graph-layout.test.mjs",
     "mapdata": "node --experimental-strip-types ./scripts/build-map-data.mjs",
     "dev": "astro dev",
     "prebuild": "npm run mapdata && npm run graph:build",

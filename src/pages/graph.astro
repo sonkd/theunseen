@@ -21,7 +21,15 @@ const isEmpty = nodeCount === 0;
   <div class="graph-page">
     <div class="graph-title">
       <h1>Graph</h1>
-      <span class="hint">Kéo để xoay · Cuộn để zoom · Bấm để mở</span>
+      {!isEmpty && (
+        <div class="graph-title-controls">
+          <div id="graphViewToggle" class="graph-view-toggle" role="group" aria-label="Chế độ xem graph">
+            <button type="button" data-graph-view="2d" aria-pressed="false">2D</button>
+            <button type="button" data-graph-view="3d" aria-pressed="true">3D</button>
+          </div>
+          <span class="hint">Kéo để xoay · Cuộn để zoom · Bấm để mở</span>
+        </div>
+      )}
     </div>
     {isEmpty ? (
       <div class="graph-empty">Chưa có dữ liệu graph. Chạy <code>npm run graph</code> để tạo <code>public/graph/graph.json</code>.</div>
@@ -49,7 +57,12 @@ const isEmpty = nodeCount === 0;
   .graph-page { display: flex; flex-direction: column; height: 100%; width: 100%; padding: 0.75rem 1rem; box-sizing: border-box; }
   .graph-title { flex: none; display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
   .graph-title h1 { margin: 0; font-size: 20px; }
-  .graph-title .hint { color: var(--muted); font-size: 12px; }
+  .graph-title-controls { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
+  .graph-title-controls .hint { color: var(--muted); font-size: 12px; }
+  .graph-view-toggle { display: inline-flex; align-items: center; padding: 2px; gap: 2px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface); }
+  .graph-view-toggle button { min-width: 36px; padding: 3px 8px; border: 0; border-radius: 5px; background: transparent; color: var(--muted); font: inherit; font-size: 12px; line-height: 1.5; cursor: pointer; }
+  .graph-view-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  .graph-view-toggle button:focus-visible { outline: 2px solid var(--flame); outline-offset: 2px; }
   .graph-empty { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--muted); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
   .graph-container { flex: 1 1 auto; min-height: 0; width: 100%; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); overflow: hidden; position: relative; }
   .graph-mount { position: absolute; inset: 0; z-index: 1; }
@@ -73,11 +86,14 @@ const isEmpty = nodeCount === 0;
   .graph-a11y-list:focus-within { position: static; width: auto; height: auto; clip: auto; white-space: normal; background: var(--surface); padding: 1rem; overflow: auto; }
   .float-tooltip-kap { background: var(--ink) !important; color: #fff !important; border: 2px solid #fff !important; border-radius: 0 !important; font-family: var(--font-pixel) !important; font-size: 8px !important; padding: 6px 8px !important; box-shadow: none !important; }
   @media (max-width: 480px) {
-    .graph-title .hint { display: none; }
+    .graph-title-controls .hint { display: none; }
   }
 </style>
 <script>
-  const PALETTE = ['#c9563c', '#4c8577', '#7a6fb0', '#c9a13c', '#3c7fc9', '#a34c8f', '#5ba34c', '#8a8577'];
+  const PALETTE = [
+    '#c9563c', '#4c8577', '#7a6fb0', '#c9a13c', '#3c7fc9', '#a34c8f', '#5ba34c', '#8a8577',
+    '#e377c2', '#8c564b', '#17becf', '#bcbd22', '#393b79',
+  ];
 
   function hasWebGL2() {
     try {
@@ -136,6 +152,9 @@ const isEmpty = nodeCount === 0;
     const skeleton = document.getElementById('graphSkeleton');
     const fallbackEl = document.getElementById('graphFallback');
     const a11yList = document.getElementById('graphA11yList');
+    const viewToggle = document.getElementById('graphViewToggle');
+    const viewButtons = viewToggle?.querySelectorAll('[data-graph-view]');
+    const graphHint = document.querySelector('.graph-title .hint');
 
     const res = await fetch('/graph/graph.json');
     const { nodes, edges } = await res.json();
@@ -144,6 +163,7 @@ const isEmpty = nodeCount === 0;
 
     if (!hasWebGL2()) {
       if (skeleton) skeleton.classList.add('is-hidden');
+      if (viewToggle) viewToggle.hidden = true;
       if (fallbackEl) renderFallback(nodes, fallbackEl);
       return;
     }
@@ -158,6 +178,7 @@ const isEmpty = nodeCount === 0;
 
     const neighbors = new Map(nodes.map((n) => [n.id, new Set()]));
     const nodeLinks = new Map(nodes.map((n) => [n.id, new Set()]));
+    const communityByNodeId = new Map(nodes.map((n) => [n.id, n.communityId]));
     edges.forEach((e) => {
       neighbors.get(e.source)?.add(e.target);
       neighbors.get(e.target)?.add(e.source);
@@ -169,15 +190,19 @@ const isEmpty = nodeCount === 0;
     const bg = styles.getPropertyValue('--bg').trim() || '#303030';
     const { sphereRadius } = await import('../lib/graph-forces.mjs');
     const R = sphereRadius(nodes.length || 1);
+    const bakedPosition3DById = new Map(
+      nodes.map((node) => [node.id, { x: node.x, y: node.y, z: node.z }]),
+    );
+    let is2D = false;
 
     const highlightNodeIds = new Set();
     const highlightLinks = new Set();
-    const NODE_RADIUS = 1;
     const NODE_OPACITY = 1;
     const DIM_OPACITY = 0.15;
     const LABEL_OPACITY = 0.6;
     const LABEL_DIM_OPACITY = 0.12;
     const LINK_COLOR = 'rgba(137, 135, 133, 0.25)';
+    const LINK_COLOR_CROSS_COMMUNITY = 'rgba(137, 135, 133, 0.12)';
     const LINK_COLOR_HOVER = 'rgba(240,163,67,1)';
 
     // Dimming mutates each mesh/label's existing material in place (via
@@ -200,11 +225,13 @@ const isEmpty = nodeCount === 0;
       .backgroundColor(bg)
       .cooldownTicks(0)
       .warmupTicks(0)
+      .showNavInfo(false)
       .numDimensions(3)
       .nodeLabel((n) => n.title)
       .nodeThreeObject((node) => {
         const color = PALETTE[(node.communityId ?? PALETTE.length) % PALETTE.length];
-        const geometry = new THREE.SphereGeometry(NODE_RADIUS, 12, 12);
+        const nodeRadius = Math.min(2.6, 0.8 + Math.log1p(Math.max(0, node.degree ?? 0)) * 0.35);
+        const geometry = new THREE.SphereGeometry(nodeRadius, 12, 12);
         const material = new THREE.MeshLambertMaterial({ color, transparent: true, opacity: NODE_OPACITY });
         const mesh = new THREE.Mesh(geometry, material);
 
@@ -215,7 +242,7 @@ const isEmpty = nodeCount === 0;
         label.borderRadius = 0;
         label.material.opacity = LABEL_OPACITY;
         label.material.transparent = true;
-        label.position.set(0, -(NODE_RADIUS + 4), 0);
+        label.position.set(0, -(nodeRadius + 4), 0);
 
         const group = new THREE.Group();
         group.add(mesh);
@@ -223,7 +250,14 @@ const isEmpty = nodeCount === 0;
         nodeObjById.set(node.id, { mesh, label });
         return group;
       })
-      .linkColor((l) => (highlightLinks.has(l) ? LINK_COLOR_HOVER : LINK_COLOR))
+      .linkColor((l) => {
+        if (highlightLinks.has(l)) return LINK_COLOR_HOVER;
+        const sourceId = l.source.id ?? l.source;
+        const targetId = l.target.id ?? l.target;
+        return communityByNodeId.get(sourceId) === communityByNodeId.get(targetId)
+          ? LINK_COLOR
+          : LINK_COLOR_CROSS_COMMUNITY;
+      })
       .linkWidth((l) => (highlightLinks.has(l) ? 1.2 : 0.6))
       .linkOpacity(1)
       .onNodeHover((node) => {
@@ -240,15 +274,77 @@ const isEmpty = nodeCount === 0;
         container.style.cursor = node ? 'pointer' : 'grab';
       })
       .onNodeClick((node) => {
-        const distance = 160;
-        const ratio = 1 + distance / Math.hypot(node.x, node.y, node.z, 0.001);
-        Graph.cameraPosition(
-          { x: node.x * ratio, y: node.y * ratio, z: node.z * ratio },
-          node,
-          reducedMotion ? 0 : 800,
-        );
+        if (is2D) {
+          Graph.cameraPosition(
+            { x: node.x, y: node.y, z: R * 0.8 },
+            { x: node.x, y: node.y, z: 0 },
+            reducedMotion ? 0 : 800,
+          );
+        } else {
+          const distance = 160;
+          const ratio = 1 + distance / Math.hypot(node.x, node.y, node.z, 0.001);
+          Graph.cameraPosition(
+            { x: node.x * ratio, y: node.y * ratio, z: node.z * ratio },
+            node,
+            reducedMotion ? 0 : 800,
+          );
+        }
         window.dispatchEvent(new CustomEvent('stuff:open', { detail: { slug: node.id } }));
       });
+
+    const updateLabelVisibility = () => {
+      if (!is2D) {
+        nodeObjById.forEach(({ label }) => { label.visible = true; });
+        return;
+      }
+      const cameraDistance = Graph.camera().position.distanceTo(Graph.controls().target);
+      const showLabels = cameraDistance < R * 3;
+      nodeObjById.forEach(({ label }) => { label.visible = showLabels; });
+    };
+    Graph.controls().addEventListener('change', updateLabelVisibility);
+
+    viewButtons?.forEach((button) => {
+      button.addEventListener('click', () => {
+        const nextIs2D = button.dataset.graphView === '2d';
+        if (nextIs2D === is2D) return;
+
+        is2D = nextIs2D;
+        nodes.forEach((node) => {
+          const position = is2D
+            ? { x: node.x2d, y: node.y2d, z: 0 }
+            : bakedPosition3DById.get(node.id);
+          if (!position || !Number.isFinite(position.x) || !Number.isFinite(position.y)) return;
+          node.x = position.x;
+          node.y = position.y;
+          node.z = position.z;
+          node.vx = 0;
+          node.vy = 0;
+          node.vz = 0;
+        });
+
+        Graph.numDimensions(is2D ? 2 : 3);
+        Graph.controls().enableRotate = !is2D;
+        Graph.controls().noRotate = is2D;
+        container.setAttribute(
+          'aria-label',
+          is2D ? 'Đồ thị 2D các stuff đã kết nối' : 'Đồ thị 3D các stuff đã kết nối',
+        );
+        Graph.cameraPosition(
+          { x: 0, y: 0, z: is2D ? R * 6.4 : R * 3.4 },
+          { x: 0, y: 0, z: 0 },
+          reducedMotion ? 0 : 500,
+        );
+        updateLabelVisibility();
+        if (graphHint) {
+          graphHint.textContent = is2D
+            ? 'Kéo để di chuyển · Cuộn để zoom · Bấm để mở'
+            : 'Kéo để xoay · Cuộn để zoom · Bấm để mở';
+        }
+        viewButtons.forEach((viewButton) => {
+          viewButton.setAttribute('aria-pressed', String(viewButton.dataset.graphView === (is2D ? '2d' : '3d')));
+        });
+      });
+    });
 
     // Default distance is proportional to R so the whole baked sphere is
     // framed on first paint — the library's own default (~1000) sits far

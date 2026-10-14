@@ -29,6 +29,23 @@ export function computeMetrics(nodes, edges, { prevRankById, addedIds } = {}) {
     louvain.assign(graph, { rng: mulberry32(LOUVAIN_SEED) });
   }
 
+  const rawCommunities = new Map();
+  graph.forEachNode((id, attributes) => {
+    const rawId = attributes.community ?? 0;
+    const members = rawCommunities.get(rawId) ?? [];
+    members.push(id);
+    rawCommunities.set(rawId, members);
+  });
+  const stableCommunityId = new Map(
+    [...rawCommunities.entries()]
+      .map(([rawId, members]) => ({
+        rawId,
+        firstMember: members.reduce((first, id) => (id < first ? id : first)),
+      }))
+      .sort((a, b) => (a.firstMember < b.firstMember ? -1 : a.firstMember > b.firstMember ? 1 : 0))
+      .map(({ rawId }, index) => [rawId, index]),
+  );
+
   const rankById = prevRankById && addedIds
     ? updateRank(prevRankById, nodes, edges, addedIds)
     : computeRank(nodes, edges);
@@ -38,6 +55,6 @@ export function computeMetrics(nodes, edges, { prevRankById, addedIds } = {}) {
     degree: graph.hasNode(node.id) ? graph.degree(node.id) : 0,
     rank: rankById.get(node.id) ?? 0,
     componentId: componentId.get(node.id) ?? -1,
-    communityId: graph.hasNode(node.id) ? graph.getNodeAttribute(node.id, 'community') ?? 0 : 0,
+    communityId: stableCommunityId.get(graph.getNodeAttribute(node.id, 'community')) ?? 0,
   }));
 }

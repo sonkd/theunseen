@@ -1,5 +1,4 @@
-// Force parameters shared between the offline bake (scripts/lib/bake-layout.mjs)
-// and the browser re-heat (GraphView) so a re-heated layout matches the baked one.
+// Force parameters used by the offline bake (scripts/lib/bake-layout.mjs).
 export function sphereRadius(nodeCount) {
   return 4.5 * Math.sqrt(nodeCount);
 }
@@ -14,7 +13,43 @@ export function rankRadius(rank, maxRank, radius) {
   return radius - norm * (radius - minR);
 }
 
-export function configureForces(sim, { forceLink, forceManyBody, forceRadial, forceCenter }, links, degreeById, radius, rankById) {
+export function forceCluster(anchors, strength = 0.18, dimensions = 3) {
+  let nodes = [];
+
+  function force(alpha) {
+    nodes.forEach((node) => {
+      const anchor = anchors.get(node.communityId ?? 0);
+      if (!anchor) return;
+
+      const dx = node.x - anchor.x;
+      const dy = node.y - anchor.y;
+      const dz = dimensions === 3 ? node.z - anchor.z : 0;
+      const distance = Math.hypot(dx, dy, dz);
+      if (distance <= anchor.radius || distance === 0) return;
+
+      const pull = ((distance - anchor.radius) / distance) * strength * alpha;
+      node.vx -= dx * pull;
+      node.vy -= dy * pull;
+      if (dimensions === 3) node.vz -= dz * pull;
+    });
+  }
+
+  force.initialize = (simulationNodes) => {
+    nodes = simulationNodes;
+  };
+  return force;
+}
+
+export function configureForces(
+  sim,
+  { forceLink, forceManyBody, forceRadial, forceCenter, forceCollide },
+  links,
+  degreeById,
+  radius,
+  rankById,
+  communityById,
+  communityAnchors,
+) {
   const maxRank = rankById ? Math.max(1, ...rankById.values()) : 1;
   sim
     .force(
@@ -22,9 +57,15 @@ export function configureForces(sim, { forceLink, forceManyBody, forceRadial, fo
       forceLink(links)
         .id((n) => n.id)
         .distance(30)
-        .strength((l) => 1 / Math.min(degreeById.get(l.source.id ?? l.source) || 1, degreeById.get(l.target.id ?? l.target) || 1)),
+        .strength((l) => {
+          const sourceId = l.source.id ?? l.source;
+          const targetId = l.target.id ?? l.target;
+          const baseStrength = 1 / Math.min(degreeById.get(sourceId) || 1, degreeById.get(targetId) || 1);
+          return baseStrength * (communityById.get(sourceId) === communityById.get(targetId) ? 1 : 0.35);
+        }),
     )
     .force('charge', forceManyBody().strength(-120).theta(0.9).distanceMax(radius * 2))
+    .force('collide', forceCollide(2.5).strength(0.8).iterations(2))
     .force(
       'radial',
       forceRadial(
@@ -34,6 +75,7 @@ export function configureForces(sim, { forceLink, forceManyBody, forceRadial, fo
         0,
       ).strength(0.6),
     )
+    .force('cluster', forceCluster(communityAnchors))
     .force('center', forceCenter(0, 0, 0).strength(0.05));
   return sim;
 }
